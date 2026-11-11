@@ -1,0 +1,1 @@
+qubits 3; shots 32; h 0; cx 0 1; cx 1 2; measure_all;

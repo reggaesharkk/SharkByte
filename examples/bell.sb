@@ -1,0 +1,8 @@
+quantum bell {
+qubits 2;
+shots 1024;
+seed 42;
+h 0;
+cx 0 1;
+measure_all;
+}

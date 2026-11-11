@@ -1,0 +1,10 @@
+* text=auto eol=lf
+sharkbyte_alpha/cli.py -text whitespace=cr-at-eol
+sharkbyte_alpha/hybrid.py -text whitespace=cr-at-eol
+sharkbyte_alpha/quantum.py -text whitespace=cr-at-eol
+sharkbyte_alpha/__init__.py -text whitespace=cr-at-eol
+sharkbyte_alpha/_vendor/** -text whitespace=cr-at-eol
+examples/adaptive.sb -text whitespace=cr-at-eol
+examples/inverse_basis_37.sbq -text whitespace=cr-at-eol
+examples/qft_basis_37.sbq -text whitespace=cr-at-eol
+tests/test_cli.py -text whitespace=cr-at-eol

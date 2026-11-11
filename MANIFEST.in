@@ -1,0 +1,8 @@
+include README.md SPEC.md GRAMMAR.md CLAIM_BOUNDARIES.md SECURITY.md INSTALL.md REPRODUCIBILITY.md COMPATIBILITY.md RELEASE_GATE_MATRIX.md LICENSE_STATUS.md QISKIT_PROVENANCE.md PUBLIC_DISTRIBUTION_AUDIT.md BUILD_REQUIREMENTS.txt
+include sharkbyte_guarded_entry.py pyproject.toml setup.cfg
+recursive-include sharkbyte_alpha *.py *.json
+recursive-include tests *.py
+recursive-include examples *.sb *.sbq
+recursive-include evidence/qiskit_0.2.2a1 *.json *.md
+recursive-include evidence/qiskit_0.2.2a1/fixtures *.sbq *.qasm
+recursive-include tools *.py

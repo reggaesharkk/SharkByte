@@ -1,0 +1,33 @@
+hybrid adaptive_phase {
+prepare {
+qubits = 2;
+shots = 2048;
+seed = 20261110;
+theta = 2.0943951023931953;
+step = 0.5235987755982988;
+iterations = 4;
+}
+quantum {
+h 0;
+h 1;
+cp theta 0 1;
+h 0;
+h 1;
+measure_all;
+}
+feedback {
+print count_00;
+if (count_00 > count_11) {
+print 1;
+} else {
+print 0;
+}
+}
+update {
+if (count_00 < 1750) {
+theta = theta - step;
+} else {
+theta = theta;
+}
+}
+}

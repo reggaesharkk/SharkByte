@@ -1,0 +1,3 @@
+# Build frontend and backend pins; runtime dependencies are empty.
+setuptools==84.2.0
+build==1.2.2.post1

@@ -1,0 +1,11 @@
+quantum hybrid_custom {
+qubits 2;
+h 0;
+h 1;
+cp 1.5707963267948966 0 1;
+h 0;
+h 1;
+shots 2048;
+seed 20261111;
+measure_all;
+}

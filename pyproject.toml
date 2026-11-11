@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools==84.2.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sharkbyte-standalone-alpha"
+version = "0.2.1a2"
+description = "Experimental standalone SharkByte CLI"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+sharkbyte = "sharkbyte_guarded_entry:main"
+
+[tool.setuptools]
+packages = ["sharkbyte_alpha"]
+py-modules = ["sharkbyte_guarded_entry"]
+
+[tool.setuptools.package-data]
+sharkbyte_alpha = ["_vendor/*.py", "_vendor/*.json", "_vendor/dependencies/8093/web_ide/*.py"]

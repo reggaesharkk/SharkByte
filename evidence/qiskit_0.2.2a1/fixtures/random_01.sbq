@@ -1,0 +1,1 @@
+qubits 3; shots 32; seed 1; cx 2 1; cx 1 2; x 0; cp 0.2 0 1; h 0; cp 1.1 1 0; z 1; h 1; cp 0.2 1 0; h 2; h 1; x 0; measure_all;
