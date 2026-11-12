@@ -43,3 +43,13 @@ The current closure-tree Ubuntu installation/reproducibility run has not been pe
 After this closure state was prepared, GitHub Actions run [43171670647](https://github.com/reggaesharkk/SharkByte/actions/runs/43171670647) completed successfully for PR #1 head commit `3ddf25dc958e9102de239dde43f17f634e316414`. The `acceptance (windows-latest, 3.12)` and `acceptance (ubuntu-latest, 3.12)` jobs both completed with conclusion `success`; their isolated install/regression steps also passed. This is hosted-runner evidence for that exact commit, not ARM64 host evidence. See the dated [CI addendum](GITHUB_CI_ACCEPTANCE_20261112.md).
 
 The branch is pushed for review; no release tag or package publication was made. Gate 1 remains open, and Ubuntu ARM64 reproducibility for the exact Apache closure tree remains unverified.
+
+## Later evidence update — 2026-11-12
+
+The preceding release-gate snapshot is retained as a record of what was known when that closure report was written. Subsequent evidence is scoped as follows:
+
+- Ubuntu/aarch64 reproducible sdist and wheel builds, extracted-source installation, and 37 tests in normal, `-O`, and `-OO` passed for the separately identified worktree `worktree-sha256:f85ddd13830bd1c86c9818ebe2d08d986ac5dcbe92bb9b4d5040b685b4cf3821` whose recorded Git HEAD was `8a9ace7ccac7f9cb491604350006273cf256c196`. This does not establish reproducibility for every later PR commit. Exact artifact hashes and the 496-entry readback are recorded in [the staged acceptance report](../PUBLIC_STAGE_ACCEPTANCE.md).
+- Direct Ubuntu/aarch64 Qiskit 2.6.2 replay compared 22 circuits / 320 probabilities against the independent archived vectors; maximum per-state error was `4.440892098500626e-16`, and maximum L1 error was `5.273559366969494e-16`. The separate quantum provenance is described in [the Qiskit addendum](PUBLIC_QISKIT_REPLAY_ADDENDUM_20261112.md); it does not imply whole-package identity with v0.2.2a1 or hardware execution.
+- GitHub Actions run [43173517464](https://github.com/reggaesharkk/SharkByte/actions/runs/43173517464) passed on predecessor PR head `cb4db3d216fd53e90d466401907f8ab96722f2dc` for GitHub-hosted Ubuntu and Windows. CI for any later documentation commit must be checked separately.
+
+These updates do not close Gate 1. Native execution remains disabled, and no GitHub Release, tag, PyPI publication, or Zenodo deposit is authorized by this report.

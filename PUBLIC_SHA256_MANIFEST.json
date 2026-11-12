@@ -34,8 +34,8 @@
     },
     {
       "path": "docs/APACHE_RELEASE_CLOSURE_20261112.md",
-      "size_bytes": 5904,
-      "sha256": "e331eed2dcaeab3c50db4335c58bbe1729c5fd532409254d245fe84d5632cea0"
+      "size_bytes": 7493,
+      "sha256": "44f16d85a712144c1290f573961754d34e285e07530476fd376526a02cb54175"
     },
     {
       "path": "docs/APACHE_RIGHTS_CLEARANCE_20261112.md",
@@ -44,8 +44,8 @@
     },
     {
       "path": "docs/GITHUB_CI_ACCEPTANCE_20261112.md",
-      "size_bytes": 1358,
-      "sha256": "0478eff8880bc537f410525908b08d25a4e9d35ca586dca75a1352b48d61643d"
+      "size_bytes": 1873,
+      "sha256": "efb4bb9d178d2c934945709c82c20cf00fc729dc7d60e123fe22f97bcadbfb54"
     },
     {
       "path": "docs/PUBLIC_QISKIT_REPLAY_ADDENDUM_20261112.md",
@@ -59,8 +59,8 @@
     },
     {
       "path": "docs/UBUNTU_REPRODUCIBILITY_ADDENDUM_20261112.md",
-      "size_bytes": 2068,
-      "sha256": "787c2d53ed9cc3e6de095eaf107b0a76404ff9aa42403f9c18fa0fee847e7ff2"
+      "size_bytes": 3875,
+      "sha256": "1ba3b3af2851382cd0151abe3dfb9e3c228bf50cdbc63f36668b00497dc2b332"
     },
     {
       "path": "evidence/qiskit_0.2.2a1/fixtures/bell.qasm",
@@ -324,8 +324,8 @@
     },
     {
       "path": "GRAMMAR.md",
-      "size_bytes": 1516,
-      "sha256": "12c1299fbfc8b9d9c1523a36989fbbb4314e30517d32c0a8783e13e27cf1ff7b"
+      "size_bytes": 4913,
+      "sha256": "5e998a279fe195a29882eb52578b091dd161ef026389fdf236a92191e791ffbd"
     },
     {
       "path": "INSTALL.md",
@@ -364,8 +364,8 @@
     },
     {
       "path": "PUBLIC_STAGE_ACCEPTANCE.md",
-      "size_bytes": 1668,
-      "sha256": "3e92721d068f14de89375d5394989b09b45d6769ad760e3518d6b17e4dfea523"
+      "size_bytes": 4917,
+      "sha256": "a828fca7c8fbfe9ba325853b02b8127b77e7734a7a5e121a5db9f53a83721e9f"
     },
     {
       "path": "pyproject.toml",
@@ -379,18 +379,18 @@
     },
     {
       "path": "README.md",
-      "size_bytes": 3875,
-      "sha256": "02d31dee905ff7f0bc44ed2cd232f83332752c87fa9a0501d87b081525c52c46"
+      "size_bytes": 4103,
+      "sha256": "e7b5e7b5a174d210dd43838b7ef17ab294d469192eb4ce861b64719a58f34cc4"
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
-      "size_bytes": 4424,
-      "sha256": "2e5fc51264d08e995621d6a527d933fb08bdd307cf2987f15f44611ef6cd364f"
+      "size_bytes": 3678,
+      "sha256": "7ca47f18bdec0586a57e3c0fd2f809ebb14668d5c10b59b8dbb93bf996b73c67"
     },
     {
       "path": "REPRODUCIBILITY.md",
-      "size_bytes": 2136,
-      "sha256": "1d6d7acf2634cb1cd7863e661f8afdde5d69cd22abdbad518f37c8f89ffaf425"
+      "size_bytes": 2408,
+      "sha256": "106a78e6e92f272fa215e0b6a02c7c6dd8b3c3ee27f6c686f5f093a14274e29f"
     },
     {
       "path": "SECURITY.md",
