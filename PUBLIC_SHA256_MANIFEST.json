@@ -44,8 +44,8 @@
     },
     {
       "path": "docs/GITHUB_CI_ACCEPTANCE_20261112.md",
-      "size_bytes": 2333,
-      "sha256": "597f6a02f4ce16801d0405d53d52433fb6ad37895b2f350e6cf70bc08ed8e0cf"
+      "size_bytes": 2690,
+      "sha256": "74f1629237774ac381943dd99ada221b156e89b1812df26bf5714f70bc3a3b8f"
     },
     {
       "path": "docs/PUBLIC_QISKIT_REPLAY_ADDENDUM_20261112.md",
@@ -364,8 +364,8 @@
     },
     {
       "path": "PUBLIC_STAGE_ACCEPTANCE.md",
-      "size_bytes": 5115,
-      "sha256": "eb03049018898c9ea81c3e45955054f9691e277d4456c16370889becee57ebb0"
+      "size_bytes": 5269,
+      "sha256": "c7316bc259a52796dbe757e2ea896306f9366f9723e14e718160e8afce09a3ed"
     },
     {
       "path": "pyproject.toml",
@@ -384,8 +384,8 @@
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
-      "size_bytes": 3797,
-      "sha256": "5e53a1904803e84d974e53f92d6007cf7aa3008987c65ccc8e608c167e3e6ba6"
+      "size_bytes": 3867,
+      "sha256": "4e2d36c03afe5b0401e8538212af53eed577be791f29dcad12949e0ef47bb584"
     },
     {
       "path": "REPRODUCIBILITY.md",

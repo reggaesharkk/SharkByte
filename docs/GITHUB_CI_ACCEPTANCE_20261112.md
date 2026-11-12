@@ -31,4 +31,12 @@ These are hosted CI results, not ARM64 host results. Native containment remains 
 
 ## Later CI run — 2026-11-12
 
-GitHub Actions run [43173517464](https://github.com/reggaesharkk/SharkByte/actions/runs/43173517464) completed successfully for PR #1 predecessor head `cb4db3d216fd53e90d466401907f8ab96722f2dc`. The Windows and Ubuntu hosted jobs passed. These are GitHub-hosted runner results and do not establish ARM64 architecture. The grammar and evidence-documentation update is a subsequent commit; its Actions result is not represented by this historical run and must be verified separately.
+GitHub Actions run [43173517464](https://github.com/reggaesharkk/SharkByte/actions/runs/43173517464) completed successfully for PR #1 predecessor head `cb4db3d216fd53e90d466401907f8ab96722f2dc`. The Windows and Ubuntu hosted jobs passed. These are GitHub-hosted runner results and do not establish ARM64 architecture.
+
+## Latest documented follow-up CI — 2026-11-12
+
+- Tested commit: `3caf0d61a3e73de0c324b6b5d4fa92f889ac8aa0`
+- Workflow run: [43189130183](https://github.com/reggaesharkk/SharkByte/actions/runs/43189130183)
+- Result: `acceptance (windows-latest, 3.12)` and `acceptance (ubuntu-latest, 3.12)` both completed successfully, including isolated installation and regression tests.
+
+These hosted runners do not establish ARM64 host behavior. Native execution remains disabled and Gate 1 containment/cancellation remains open.
