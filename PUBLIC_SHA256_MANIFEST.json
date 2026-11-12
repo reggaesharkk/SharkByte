@@ -1,5 +1,6 @@
 {
-  "file_count": 95,
+  "algorithm": "SHA-256",
+  "file_count": 105,
   "files": [
     {
       "path": ".gitattributes",
@@ -23,13 +24,38 @@
     },
     {
       "path": "CLAIM_BOUNDARIES.md",
-      "sha256": "4a3926a5f74cc1305e58157b9774544aba29e9e76ea2521b26434bba4e64a44a",
-      "size_bytes": 930
+      "sha256": "823962dfb8a99bb6b22dfd3372bd2547e370c73e0e0a6756ee04dfe03c7d9b6d",
+      "size_bytes": 1118
     },
     {
       "path": "COMPATIBILITY.md",
       "sha256": "ffcbf15d508af8dd41c46bd180d715dffc3984b2c07566cfa6827fdb006ed3c8",
       "size_bytes": 620
+    },
+    {
+      "path": "docs/APACHE_RELEASE_CLOSURE_20261112.md",
+      "sha256": "00ee60e018762073e7e8623e691dc58dd2e0b98762068369ee04efe6a581868a",
+      "size_bytes": 5306
+    },
+    {
+      "path": "docs/APACHE_RIGHTS_CLEARANCE_20261112.md",
+      "sha256": "90ec08d8e5e299ca5c2bde3319f8db5079ca3262ae679a5ca4d395e2bc25fbbd",
+      "size_bytes": 17809
+    },
+    {
+      "path": "docs/PUBLIC_QISKIT_REPLAY_ADDENDUM_20261112.md",
+      "sha256": "ecb38497d7f3d3542911efa58e723375c2d64e07bd605c200fb57a326241708d",
+      "size_bytes": 2999
+    },
+    {
+      "path": "docs/RIGHTS_CLEARANCE_STATUS_20261112.md",
+      "sha256": "33bc4df2dfd50ff5952cb543486d9c87b37dee5af200e39dc470acb75901d112",
+      "size_bytes": 12463
+    },
+    {
+      "path": "docs/UBUNTU_REPRODUCIBILITY_ADDENDUM_20261112.md",
+      "sha256": "787c2d53ed9cc3e6de095eaf107b0a76404ff9aa42403f9c18fa0fee847e7ff2",
+      "size_bytes": 2068
     },
     {
       "path": "evidence/qiskit_0.2.2a1/fixtures/bell.qasm",
@@ -302,24 +328,34 @@
       "size_bytes": 1085
     },
     {
+      "path": "LICENSE",
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "size_bytes": 10174
+    },
+    {
       "path": "LICENSE_STATUS.md",
-      "sha256": "d00ea2aed4aab71c65bcaf0039153640fcfdb910652fb4875f738352facaa948",
-      "size_bytes": 243
+      "sha256": "a195a5a73d2f8d13d0c3e53e792ada3c1a08cb6572df866dd8ef87f1809c9184",
+      "size_bytes": 609
     },
     {
       "path": "MANIFEST.in",
-      "sha256": "e4638ecbeb6f28cb522a528ebfaf193d40027747c99296751bbb8d510875bf66",
-      "size_bytes": 550
+      "sha256": "f81288c6f51c946434ebb0459598d73e7ecc2aed48dac489eb993f924233f803",
+      "size_bytes": 616
+    },
+    {
+      "path": "NOTICE",
+      "sha256": "a44a32880167dd689869f489721556304113eb8cbdb98a2ea5073c6156fc9f5e",
+      "size_bytes": 585
     },
     {
       "path": "PUBLIC_CONTENT_AUDIT.json",
-      "sha256": "f586e42fe46a6ff4b59797afc87f6d1771ff3b3b0ea992a984f7c67b1985a990",
-      "size_bytes": 730
+      "sha256": "1ded62ee6c2e102fa80570cad4320ce00a4067558a58010d7ed499cd478a706c",
+      "size_bytes": 732
     },
     {
       "path": "PUBLIC_DISTRIBUTION_AUDIT.md",
-      "sha256": "ada9a972bac8d412db6a0f541f23bdeb9d76dc0533e17a7e9d8f91762cca2121",
-      "size_bytes": 1129
+      "sha256": "4ddb3c6ffb2e452a79d140f73d77a0a31d7efe9eaf75e35c8c0ddaaaaada581e",
+      "size_bytes": 1397
     },
     {
       "path": "PUBLIC_STAGE_ACCEPTANCE.md",
@@ -328,8 +364,8 @@
     },
     {
       "path": "pyproject.toml",
-      "sha256": "343a1ab2d0395953de70efdfb284f224ed2c3a29843a979a07a806cb3f40068c",
-      "size_bytes": 535
+      "sha256": "191da4fe640868c0bc83f2591afac27176c79aecdb34fe8184345554fe8a4d38",
+      "size_bytes": 622
     },
     {
       "path": "QISKIT_PROVENANCE.md",
@@ -338,23 +374,23 @@
     },
     {
       "path": "README.md",
-      "sha256": "905241e75076fe70c27e7b7393ae6669b3d524bd13570da45517aa0be27d1a3c",
-      "size_bytes": 2844
+      "sha256": "02d31dee905ff7f0bc44ed2cd232f83332752c87fa9a0501d87b081525c52c46",
+      "size_bytes": 3875
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
-      "sha256": "64078f45670d2967446c2d615ad0e5cee8669702ec7863e5682eb1b9fda1ffba",
-      "size_bytes": 1326
+      "sha256": "ce1ac95da8c4dc812651bb80bb463af0c750b03f4f90db78d4967755a641c87f",
+      "size_bytes": 4317
     },
     {
       "path": "REPRODUCIBILITY.md",
-      "sha256": "53f485f99ef368e8321f291a84efbff586d6917a2e4c0032d32503eb14f3095a",
-      "size_bytes": 1397
+      "sha256": "1d6d7acf2634cb1cd7863e661f8afdde5d69cd22abdbad518f37c8f89ffaf425",
+      "size_bytes": 2136
     },
     {
       "path": "SECURITY.md",
-      "sha256": "eda7c05b3767af4562a43d1badee7169d01754d4165e331246e5d8490201274c",
-      "size_bytes": 921
+      "sha256": "d4b039cde569df30b22ab0803bad8d2946e1fa5ec4c67eb7ae3ca97aec3f92d6",
+      "size_bytes": 1050
     },
     {
       "path": "setup.cfg",
@@ -462,14 +498,29 @@
       "size_bytes": 5075
     },
     {
+      "path": "tests/test_reproducible_sdist.py",
+      "sha256": "f8abdc0a5f2f088c515d2c33fb8c45db62c054b0b519ecd4947ef69724a82a51",
+      "size_bytes": 5984
+    },
+    {
       "path": "tests/test_three_mode.py",
       "sha256": "cbf6a57283638a6d14ed0784de6ff6ea329eb1f1fc770610e1c644ce2e998b4f",
       "size_bytes": 2833
     },
     {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "sha256": "dfad0b89389e2cb3bde338b9b3ed3fd7dc47343611c04d4aa7806fa1ffd7132d",
+      "size_bytes": 1491
+    },
+    {
+      "path": "tools/build_reproducible_sdist.py",
+      "sha256": "e6ce1a638281392bf443696bdf08a45f4b5a9ca45e1c629b6e3899c9131a8823",
+      "size_bytes": 7920
+    },
+    {
       "path": "tools/ci_acceptance.py",
-      "sha256": "a9f76321e5eb16eb619fe0472ba32bdfdea5add869fb652a08407e30bfbd42bd",
-      "size_bytes": 5305
+      "sha256": "8e0910d42cfeee1acd57e3842213b12264fce06227e82850c9336d74e9becb3b",
+      "size_bytes": 6837
     },
     {
       "path": "tools/replay_qiskit_vectors.py",
@@ -477,6 +528,5 @@
       "size_bytes": 2586
     }
   ],
-  "schema": 1,
-  "scope": "Publishable public source-tree files only; excludes Git metadata and this manifest."
-}
+  "schema": 1
+}\n

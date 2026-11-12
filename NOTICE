@@ -1,0 +1,11 @@
+SharkByte standalone alpha
+Copyright 2026 SharkByte project author.
+
+This distribution includes the first-party project material identified in
+`docs/APACHE_RIGHTS_CLEARANCE_20261112.md`. It is distributed under the Apache
+License, Version 2.0. See the accompanying LICENSE file for the license text.
+
+No third-party runtime implementation is bundled. External build and validation
+software is identified in THIRD_PARTY_NOTICES.md and is not relicensed here.
+The excluded frozen archives and unrelated repositories are outside this
+NOTICE and the Apache-2.0 grant for this curated tree.

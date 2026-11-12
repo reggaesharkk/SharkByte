@@ -6,4 +6,4 @@ The native interpreter and Direct AArch64 backends are intentionally refused wit
 
 `verify-run` checks unkeyed SHA-256 integrity only; it does not authenticate a producer or prove computational correctness. Quantum execution is classical statevector simulation. The Qiskit fixtures are scoped comparison data, not a security certification.
 
-Report security issues privately to the repository owner before filing public details. No support SLA, license, or security warranty is offered.
+Report security issues privately to the repository owner before filing public details. The curated source tree is distributed under Apache-2.0; the software is experimental and is provided without warranty under that license. No support SLA or security warranty is offered.

@@ -13,21 +13,39 @@ def main():
   base.mkdir(parents=True,exist_ok=True)
   if base==root or root in base.parents or base in root.parents:raise SystemExit("work directory must be outside source checkout")
  tmp=tempfile.TemporaryDirectory(prefix="sharkbyte-public-ci-",dir=str(base) if base else None);w=pathlib.Path(tmp.name);checks=[];fail=[];modes={};smoke=[]
+ build_temp=w/"build-temp";build_temp.mkdir()
  def check(n,ok,d=""):
   checks.append({"name":n,"status":"PASS" if ok else "FAIL","detail":d})
   if not ok:fail.append(n)
  try:
   vd=w/"venv";venv.EnvBuilder(with_pip=True).create(vd);py=vd/("Scripts/python.exe" if os.name=="nt" else "bin/python");exe=vd/("Scripts/sharkbyte.exe" if os.name=="nt" else "bin/sharkbyte")
   env=os.environ.copy();env.pop("PYTHONPATH",None);env.pop("PYTHONHOME",None);env["PYTHONNOUSERSITE"]="1";env["PIP_DISABLE_PIP_VERSION_CHECK"]="1"
+  # Keep nested PEP 517/pip temporary files inside the explicit acceptance
+  # work directory. This avoids inheriting an inaccessible host temp location
+  # in restricted runners and makes cleanup ownership unambiguous.
+  env["TMPDIR"]=str(build_temp);env["TEMP"]=str(build_temp);env["TMP"]=str(build_temp)
   cmd=[str(py),"-m","pip","install","--no-deps"]
   if a.build_wheelhouse:
    wh=a.build_wheelhouse.resolve()
    if not wh.is_dir():raise SystemExit("build wheelhouse not found")
+   # PEP 517 creates a nested pip process for build requirements. CLI
+   # --no-index/--find-links flags on the outer install are not inherited by
+   # that process, so carry the same offline source in its environment too.
+   env["PIP_NO_INDEX"]="1"
+   env["PIP_FIND_LINKS"]=str(wh)
    cmd += ["--no-index","--find-links",str(wh)]
   cmd += [str(root)];p=run(cmd,w,env,240);check("isolated_pep517_install",p.returncode==0,"exit="+str(p.returncode))
-  if p.returncode:raise RuntimeError("isolated package installation failed")
+  if p.returncode:
+   if a.report:
+    diagnostic_dir=a.report.parent/(a.report.stem+"_diagnostics");diagnostic_dir.mkdir(parents=True,exist_ok=True)
+    (diagnostic_dir/"pip_install.stdout.txt").write_text(p.stdout,encoding="utf-8")
+    (diagnostic_dir/"pip_install.stderr.txt").write_text(p.stderr,encoding="utf-8")
+   raise RuntimeError("isolated package installation failed")
   fixture=w/"fixture";fixture.mkdir()
-  for n in ("tests","examples","evidence"):shutil.copytree(root/n,fixture/n)
+  # Recreate the complete source-distribution test layout outside the checkout.
+  # The reproducible-sdist regression tests exercise the build helper itself,
+  # so omitting tools/ here would test a different, incomplete package tree.
+  for n in ("tests","examples","evidence","tools"):shutil.copytree(root/n,fixture/n)
   ident=run([str(py),"-c","import pathlib,sharkbyte_alpha;print(pathlib.Path(sharkbyte_alpha.__file__).resolve())"],fixture,env,20);ip=pathlib.Path(ident.stdout.strip()).resolve()
   check("installed_import_outside_checkout",ident.returncode==0 and root not in ip.parents,"exit="+str(ident.returncode))
   sp=root/"sharkbyte_alpha";dp=ip.parent;files=sorted(x for x in sp.rglob("*") if x.is_file() and x.suffix in (".py",".json"));matched=0
@@ -52,6 +70,8 @@ def main():
   if a.report:a.report.parent.mkdir(parents=True,exist_ok=True);a.report.write_text(json.dumps(report,sort_keys=True,indent=2)+"\n",encoding="utf-8")
   print(json.dumps(report,sort_keys=True));return int(bool(fail))
  except Exception as e:
-  print(json.dumps({"status":"FAIL","error_type":type(e).__name__,"message":str(e),"checks":checks},sort_keys=True));return 1
+  report={"schema":1,"status":"FAIL","candidate":"SharkByte standalone alpha 0.2.1a2 public source copy","host":{"system":platform.system(),"architecture":platform.machine(),"python":platform.python_version()},"checks":checks,"error_type":type(e).__name__,"message":str(e)}
+  if a.report:a.report.parent.mkdir(parents=True,exist_ok=True);a.report.write_text(json.dumps(report,sort_keys=True,indent=2)+"\n",encoding="utf-8")
+  print(json.dumps(report,sort_keys=True));return 1
  finally:tmp.cleanup()
 if __name__=="__main__":raise SystemExit(main())

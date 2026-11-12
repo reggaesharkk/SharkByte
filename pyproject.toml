@@ -8,6 +8,8 @@ version = "0.2.1a2"
 description = "Experimental standalone SharkByte CLI"
 requires-python = ">=3.10"
 dependencies = []
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE", "THIRD_PARTY_NOTICES.md"]
 
 [project.scripts]
 sharkbyte = "sharkbyte_guarded_entry:main"

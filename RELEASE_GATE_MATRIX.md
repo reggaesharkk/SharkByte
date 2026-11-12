@@ -1,17 +1,21 @@
-# Public alpha gate matrix - 0.2.1a2
+# Public alpha gate matrix - 0.2.1a2 (evidence addendum 2026-11-12)
 
 | Gate | Status | Scope |
 |---|---|---|
 | Classical VM | PASS, scoped | Exact public tree installed and smoke-tested on Windows ARM64; 30 tests passed in normal, -O, and -OO. |
-| Statevector simulator | PASS, scoped | Local CLI smoke and archived Qiskit comparison: 22 circuits / 320 probabilities. |
+| Statevector simulator | PASS, scoped | Local CLI smoke and separately accepted archived Qiskit comparison: 22 circuits / 320 probabilities. |
 | Bounded hybrid | PASS, scoped | Four-iteration adaptive fixture through installed CLI. |
 | OpenQASM output | PASS, scoped | 22 archived fixture outputs replay byte-for-byte; not universal conformance. |
-| Exact public-tree install/regressions | PASS on Windows ARM64 | PEP 517 isolated install with pinned local wheelhouse; GitHub Actions pending. |
-| Exact public-tree Ubuntu/aarch64 | NOT EXECUTED | No fresh acceptance of this exact curated tree. |
+| Exact closure-branch install/regressions | PASS (host-reported Windows ARM64) | Current closure working tree passed 13/13 acceptance checks on Windows ARM64 / CPython 3.12.10, including fresh isolated PEP 517 installation with the pinned offline build wheelhouse, installed source identity 14/14, and 37/37 tests in normal, `-O`, and `-OO`. The report is a host receipt in the owner's local acceptance staging area; it is not part of the public tree. GitHub-hosted Windows job previously passed on base commit 95f936a; hosted runner architecture is not established as ARM64. |
+| Exact public-tree Ubuntu/aarch64 | PASS (host-reported) | Earlier isolated host receipt: 30/30 tests in normal, `-O`, and `-OO`; source identity 14/14. |
+| Direct Qiskit replay of exact public source | PASS for probability distributions, with norm-diagnostic caveat | Ubuntu aarch64, commit `95f936aa32e10ee8ef726093889067086e4c4421`, Qiskit 2.6.2 / OpenQASM3 1.0.1: 22 circuits / 320 basis probabilities. Max per-state error `4.440892098500626e-16`, L1 `5.273559366969494e-16`, normalization `1.9984014443252818e-15`; four evidence files independently hash-verified. Original stderr contains a ComplexWarning from the auxiliary statevector norm expression; the warning is retained, and no warning-free norm-diagnostic rerun is claimed. The distribution comparison itself is complete. |
+| GitHub-hosted CI | PASS on base commit; closure branch CI pending | Run 43092173402; Ubuntu and Windows CPython 3.12 jobs both completed successfully on commit 95f936a. This is not CI evidence for the Apache closure commit. Hosted runner architecture is not claimed ARM64. |
 | Physical quantum hardware | NOT CLAIMED | No hardware executed. |
 | Native interpreter / Direct AArch64 | DISABLED | Both refuse before native execution; negative guard tests passed. |
-| Gate 1 containment/cancellation | CONDITIONAL / OPEN | Not resolved by this standalone alpha. |
+| Source archive and wheel reproducibility | PASS for accepted pre-closure snapshot; NOT RE-RUN on closure tree | Two isolated Ubuntu aarch64 builds of commit `8a9ace7ccac7f9cb491604350006273cf256c196` produced identical source archives and wheels; exact hashes and the 476-entry manifest readback are recorded in [the dated reproducibility addendum](docs/UBUNTU_REPRODUCIBILITY_ADDENDUM_20261112.md). The Apache-2.0 closure adds metadata, notices, documentation, and an offline PEP 517 acceptance fix, so those old artifact hashes do not identify this final tree. Windows ARM64 fresh-install/regression acceptance is a separate receipt; cross-host byte-for-byte build equivalence is not claimed. |
+| Apache-2.0 redistribution clearance | PASS (owner-attested scope) | Owner selected and authorized Apache-2.0. Git provenance and the owner’s written authorship/rights attestation cover the exact 55 previously inventoried first-party source, pin, fixture, and generated evidence files. The per-file paths, sizes, hashes, and basis are in [the dated rights clearance](docs/APACHE_RIGHTS_CLEARANCE_20261112.md). No third-party runtime code is bundled. This is not an independent legal opinion. |
+| Gate 1 containment/cancellation | CONDITIONAL / OPEN | Not resolved by this standalone alpha and not closed by this Qiskit or packaging work. |
 | Security sandbox | NOT CLAIMED | VM limits are not isolation. |
-| License | NOT SELECTED | Public visibility grants no license. |
+| License | PASS (curated tree only) | Apache-2.0 `LICENSE`, `NOTICE`, third-party notice, and package metadata are included. Frozen historical archives and unrelated repositories are outside this grant. |
 
-Historical evidence applies only to its stated artifact, version, host, and scope. See PUBLIC_STAGE_ACCEPTANCE.md.
+Historical evidence applies only to its stated artifact, version, host, and scope. Historical `NOT EXECUTED` reports remain unchanged; the dated addendum only records subsequent evidence. See `PUBLIC_STAGE_ACCEPTANCE.md` and `docs/PUBLIC_QISKIT_REPLAY_ADDENDUM_20261112.md`.

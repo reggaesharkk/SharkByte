@@ -10,4 +10,4 @@ Claims are limited to the documented CLI, VM, classical statevector simulator, b
 - SharkVM is not a security sandbox.
 - The working grammar is not normative or complete.
 - This is not a general-purpose production compiler.
-- No license has been selected; public visibility grants no license.
+- This curated public source tree is licensed under Apache-2.0 as authorized by its owner. See [LICENSE](LICENSE) and the dated [rights clearance](docs/APACHE_RIGHTS_CLEARANCE_20261112.md). Frozen archives and unrelated repositories are outside this grant.

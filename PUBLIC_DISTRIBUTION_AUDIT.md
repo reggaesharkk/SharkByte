@@ -4,4 +4,4 @@ This source tree is assembled from an explicit allowlist: installable package so
 
 `PUBLIC_CONTENT_AUDIT.json` records a recursive pattern scan of every staged file and any nested archives for email-shaped values, Windows user-profile paths, Linux home paths, GitHub/AWS credentials, private-key markers, and non-loopback IPv4 literals. Pattern scanning is a screening step, not a complete secret, privacy, or legal review.
 
-No `LICENSE` file is present because no license was selected. Public visibility is not a redistribution grant. No frozen release was changed.
+This curated tree now includes an Apache-2.0 `LICENSE`, `NOTICE`, third-party notice, and file-by-file owner-attested rights inventory. The rights basis and limits are documented in [the dated clearance](docs/APACHE_RIGHTS_CLEARANCE_20261112.md). External build and validation tools are not bundled. Public pattern scans remain screening, not a complete legal or privacy review. No frozen release was changed.
