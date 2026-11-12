@@ -33,9 +33,13 @@ The current closure-tree Ubuntu installation/reproducibility run has not been pe
 | Apache-2.0 repository and package metadata/notices | PASS — included in packaging metadata and installed successfully in the current Windows ARM64 isolated PEP 517 acceptance |
 | Ubuntu isolated reproducibility evidence | PASS for accepted pre-closure commit only; NOT RE-RUN on this closure tree |
 | Windows ARM64 isolated install and regression evidence | PASS on current closure working tree — 13/13 checks; 37 tests in each optimization mode; native refusal is a negative guard test only |
-| Current branch regression/disclosure checks | PASS locally: 37 tests in each Python mode; public-content scan covered 104 files with no findings; all 105 manifest entries independently matched byte sizes and SHA-256; `git diff --check` clean |
+| Current branch regression/disclosure checks | PASS locally: 37 tests in each Python mode; public-content scan covered 105 files with no findings; all 106 manifest entries independently matched byte sizes and SHA-256; `git diff --check` clean |
 | GitHub Actions on reviewed branch commit | PENDING — must complete on the exact branch commit |
 | Gate 1 native containment/cancellation | OPEN / CONDITIONAL; native stays disabled |
 | GitHub Release, tag, PyPI, Zenodo | NOT AUTHORIZED in this mission |
 
-The branch may be pushed for review and CI, but no release tag or package publication should be made until the remaining gates are deliberately selected and satisfied.
+## GitHub Actions result
+
+After this closure state was prepared, GitHub Actions run [43171670647](https://github.com/reggaesharkk/SharkByte/actions/runs/43171670647) completed successfully for PR #1 head commit `3ddf25dc958e9102de239dde43f17f634e316414`. The `acceptance (windows-latest, 3.12)` and `acceptance (ubuntu-latest, 3.12)` jobs both completed with conclusion `success`; their isolated install/regression steps also passed. This is hosted-runner evidence for that exact commit, not ARM64 host evidence. See the dated [CI addendum](GITHUB_CI_ACCEPTANCE_20261112.md).
+
+The branch is pushed for review; no release tag or package publication was made. Gate 1 remains open, and Ubuntu ARM64 reproducibility for the exact Apache closure tree remains unverified.

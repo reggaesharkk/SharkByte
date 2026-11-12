@@ -1,6 +1,7 @@
 {
+  "schema": 2,
+  "files_scanned": 105,
   "archive_files_scanned": [],
-  "files_scanned": 104,
   "findings": [],
   "patterns": [
     "absolute_windows_path",
@@ -14,7 +15,6 @@
     "private_key_marker",
     "non_loopback_ipv4"
   ],
-  "schema": 2,
   "scope": "recursive staged-file scan for email, absolute Windows/Linux/UNC paths, GitHub/AWS/bearer credentials, private-key markers and non-loopback IPv4; nested ZIP/TAR contents scanned in memory; Git metadata, this report and final manifest are excluded from the tree scan; the report and manifest are independently screened after writing",
   "status": "PASS_SCREENING_NO_MATCHES"
-}\n
+}
