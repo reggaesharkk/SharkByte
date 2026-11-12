@@ -21,6 +21,14 @@ The repository's default branch remained at `95f936aa32e10ee8ef726093889067086e4
 
 CI success establishes the workflow result for this commit, not Gate 1 native containment, ARM64 reproducible-build equivalence, physical quantum execution, or release readiness beyond the documented scope.
 
+## Follow-up documentation commit
+
+- Tested commit: `a816f564429dcc7f162a5b5f98162615e83feec1`
+- Workflow run: [43188130663](https://github.com/reggaesharkk/SharkByte/actions/runs/43188130663)
+- Result: both `acceptance (ubuntu-latest, 3.12)` and `acceptance (windows-latest, 3.12)` completed successfully, including the isolated install and regression step.
+
+These are hosted CI results, not ARM64 host results. Native containment remains separate and open.
+
 ## Later CI run — 2026-11-12
 
 GitHub Actions run [43173517464](https://github.com/reggaesharkk/SharkByte/actions/runs/43173517464) completed successfully for PR #1 predecessor head `cb4db3d216fd53e90d466401907f8ab96722f2dc`. The Windows and Ubuntu hosted jobs passed. These are GitHub-hosted runner results and do not establish ARM64 architecture. The grammar and evidence-documentation update is a subsequent commit; its Actions result is not represented by this historical run and must be verified separately.

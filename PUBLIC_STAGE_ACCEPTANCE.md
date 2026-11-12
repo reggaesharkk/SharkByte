@@ -48,7 +48,7 @@ The following later receipts close only their stated checks and source identitie
 
 ### GitHub-hosted CI
 
-GitHub Actions run [43173517464](https://github.com/reggaesharkk/SharkByte/actions/runs/43173517464) passed both GitHub-hosted Windows and Ubuntu jobs for PR #1 head `cb4db3d216fd53e90d466401907f8ab96722f2dc`. These hosted runner results are separate from Windows ARM64 and Ubuntu/aarch64 host evidence. The documentation commit carrying this update must receive its own CI run before its CI status can be called verified.
+GitHub Actions run [43173517464](https://github.com/reggaesharkk/SharkByte/actions/runs/43173517464) passed both GitHub-hosted Windows and Ubuntu jobs for PR #1 head `cb4db3d216fd53e90d466401907f8ab96722f2dc`. The later grammar and evidence-documentation commit `a816f564429dcc7f162a5b5f98162615e83feec1` was tested by [run 43188130663](https://github.com/reggaesharkk/SharkByte/actions/runs/43188130663); both `ubuntu-latest` and `windows-latest` jobs completed successfully. Hosted runner architectures are not claimed ARM64. These CI results are distinct from the Windows ARM64 and Ubuntu/aarch64 host receipts above.
 
 ## Scope and limitations
 
