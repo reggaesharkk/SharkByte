@@ -54,6 +54,13 @@ if __name__ == "__main__":
     rows = [run(ROOT / f"echo{n}.sb", echo) for n in (16, 30)]
     rows.append(run(ROOT / "branch12.sb", dict.fromkeys(range(4096), 1 / 64)))
     rows.append(run(ROOT / "branch13.sb", None))
+    # Input (|5> - |37>) / sqrt(2). Final swaps use natural DFT order.
+    qft_reference = {
+        k: (cmath.exp(2j * cmath.pi * 5 * k / 64)
+            - cmath.exp(2j * cmath.pi * 37 * k / 64)) / (128 ** 0.5)
+        for k in range(64)
+    }
+    rows.append(run(ROOT / "qft6_in_30.sb", qft_reference))
     report = dict(results=rows, module_sha256={
         name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
         for name in ("quantum_frontend.py", "sparse_backend.py", "sb_end_to_end_bench.py")
