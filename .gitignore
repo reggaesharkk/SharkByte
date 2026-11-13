@@ -7,3 +7,5 @@ dist/
 .coverage
 .pytest_cache/
 QISKIT_CANDIDATE_COMPARISON.json
+/benchmarks/backend_agreement/backend-suite-*/
+/benchmarks/backend_agreement/local-run-*/

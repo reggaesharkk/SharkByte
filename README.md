@@ -11,6 +11,8 @@ A separately curated, source-only public snapshot of a bounded experimental lang
 
 Native interpreter and Direct AArch64 backends are disabled and refuse before launching native code. Quantum circuits run in a classical simulator; no physical quantum hardware is used. SharkVM is not a security sandbox.
 
+For trusted local programs on Linux ARM64, the checkout includes a [standalone three-backend benchmark](benchmarks/backend_agreement/README.md) that runs SharkVM, Direct AArch64, and the native interpreter and checks each backend's execution budget.
+
 The included Qiskit fixture subset covers 22 circuits / 320 probabilities and uses separately accepted Qiskit 2.6.2 reference results with 0.2.2a1 quantum provenance. Only specified modules match this candidate; no whole-package identity is claimed. See QISKIT_PROVENANCE.md.
 
 ## Install

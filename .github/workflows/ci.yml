@@ -36,3 +36,32 @@ jobs:
           name: frontier30-${{ matrix.os }}-python-${{ matrix.python }}
           path: frontier30-ci.json
           if-no-files-found: error
+
+  backend-agreement:
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install native toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang lld
+      - name: Check all three backends
+        run: python3 -B benchmarks/backend_agreement/check_backend_agreement.py
+      - name: Check execution budgets
+        run: |
+          set -o pipefail
+          python3 -B benchmarks/backend_agreement/check_all_budgets.py | tee backend-budget-ci.txt
+      - name: Upload backend evidence
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-agreement-ubuntu-arm64
+          path: |
+            benchmarks/backend_agreement/backend-suite-*/results.json
+            backend-budget-ci.txt
+          if-no-files-found: warn

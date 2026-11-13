@@ -3,13 +3,15 @@ import argparse
 import os
 import importlib.util
 from pathlib import Path
+import platform
+import shutil
 import subprocess
 import sys
 import tempfile
 
 from native_compile import compile_job
 
-ROOT = Path(os.environ.get('SHARKBYTE_NATIVE_ROOT', '/mnt/d/SharkByteControl/dev_8099B_audit_20261110/dependencies/8093')).resolve()
+ROOT = Path(os.environ.get('SHARKBYTE_NATIVE_ROOT', Path(__file__).resolve().parent / 'toolchain')).resolve()
 sys.path.insert(0, str(ROOT / 'backend'))
 from direct_aarch64 import compile_source
 
@@ -26,12 +28,21 @@ parser.add_argument('--native-timeout', type=int, default=5,
 args = parser.parse_args()
 if not 1 <= args.native_timeout <= 300:
     parser.error('--native-timeout must be between 1 and 300 seconds')
-with args.source.open('rb') as source_file:
-    raw = source_file.read(65537)
+try:
+    with args.source.open('rb') as source_file:
+        raw = source_file.read(65537)
+    program = raw.decode('utf-8')
+except (OSError, UnicodeDecodeError) as exc:
+    parser.error(f'Cannot read source: {exc}')
 if not raw or len(raw) > 65536 or b'\x00' in raw:
     parser.error('Expected a nonempty UTF-8 source file of at most 65536 bytes')
-program = raw.decode('utf-8')
 backends = ('vm', 'direct_native', 'native_interpreter') if args.backend == 'all' else (args.backend,)
+if backends != ('vm',):
+    if sys.platform != 'linux' or platform.machine() not in ('aarch64', 'arm64'):
+        parser.error('Native backends require Linux on AArch64')
+    clang = shutil.which('clang')
+    if not clang or not shutil.which('ld.lld'):
+        parser.error('Native backends require clang and ld.lld on PATH')
 out = Path(tempfile.mkdtemp(prefix='local-run-', dir=Path(__file__).resolve().parent))
 print(f"Artifacts: {out}", file=sys.stderr)
 for backend in backends:
@@ -54,7 +65,7 @@ for backend in backends:
                           f'const unsigned long sb_program_len={len(artifact.data)}UL;\n')
         runtime = [ROOT / 'reference/native/runtime_v05.c']
     elf = out / (backend + '.elf')
-    subprocess.run(['/usr/bin/clang', '--target=aarch64-linux-gnu', '-O2',
+    subprocess.run([clang, '--target=aarch64-linux-gnu', '-O2',
                     '-fno-builtin', '-fuse-ld=lld', '-nostdlib', '-static',
                     '-Wl,-e,_start', '-Wl,--build-id=none', source, *runtime, '-o', elf],
                    check=True, timeout=20)
