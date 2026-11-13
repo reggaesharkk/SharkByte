@@ -855,8 +855,9 @@ def run_vm(binary, max_steps=None, stats=None, stop_check=None):
         return value
 
     while pc < len(binary):
-        if max_steps is not None:
+        if max_steps is not None or stats is not None or stop_check is not None:
             steps += 1
+        if max_steps is not None:
             if steps > max_steps:
                 if stats is not None:
                     stats["instructions"] = steps

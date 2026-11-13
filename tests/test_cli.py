@@ -37,6 +37,18 @@ class Toolchain(unittest.TestCase):
     def test_qasm_generated(self):
         circuit=quantum.parse('qubits 2; h 0; cx 0 1; measure_all;');qasm=quantum.to_qasm(circuit)
         self.assertIn('OPENQASM 3.0;',qasm);self.assertIn('cx q[0], q[1];',qasm)
+    def test_classical_vm_budget(self):
+        exit_code, stdout, _ = call(['doctor'])
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(json.loads(stdout)['vm_step_limit'], 50_000_000)
+        code = cli.vm.encode(*cli.vm.compile_source('print 42;'))
+        stats = {}
+        self.assertEqual(cli.vm.run_vm(code, stats=stats), '42\n')
+        steps = stats['instructions_executed']
+        self.assertEqual(cli.vm.run_vm(code, max_steps=steps), '42\n')
+        with self.assertRaisesRegex(cli.vm.SharkError, 'step limit exceeded'):
+            cli.vm.run_vm(code, max_steps=steps - 1)
+
     def test_vm_step_limit(self):
         binary=cli.vm.encode(*cli.vm.compile_source('let x = 0; while (x < 1) { x = x; }'))
         with self.assertRaises(cli.vm.SharkError):cli.vm.run_vm(binary,max_steps=50)
