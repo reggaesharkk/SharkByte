@@ -27,3 +27,12 @@ jobs:
 
       - name: Unit test suite
         run: python -m unittest discover -s tests -v
+      - name: Verify Frontier30 source benchmarks
+        run: python -B benchmarks/sb_quantum_benchmark/sb_end_to_end_bench.py > frontier30-ci.json
+
+      - name: Upload Frontier30 results
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontier30-${{ matrix.os }}-python-${{ matrix.python }}
+          path: frontier30-ci.json
+          if-no-files-found: error
