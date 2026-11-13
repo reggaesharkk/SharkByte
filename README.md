@@ -45,4 +45,4 @@ Run python tools/ci_acceptance.py for isolated install and regressions. python t
 
 See PUBLIC_STAGE_ACCEPTANCE.md for exact-tree test scope. Local acceptance passed on Windows ARM64; GitHub Actions and fresh Linux/aarch64 acceptance of this precise public tree were pending at report time.
 
-The frozen archive and wheel are excluded because their immutable nested evidence contains personal-data disclosures; this tree is not byte-identical to them. No license has been selected or authorized; public visibility is not a license grant. Gate 1/native containment remains separately unresolved.
+The frozen archive and wheel are excluded because their immutable nested evidence contains personal-data disclosures; this tree is not byte-identical to them. This project is licensed under the MIT License; see LICENSE for details. Public visibility is not a license grant beyond the terms of LICENSE. Gate 1/native containment remains separately unresolved.
