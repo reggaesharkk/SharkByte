@@ -24,9 +24,11 @@ def _initialize():
         else:sys.modules['gate2_parent']=previous
     return engine
 
-def run(source,step_limit=100000):
+MAX_VM_STEPS = 100_000
+
+def run(source,step_limit=MAX_VM_STEPS):
     if not isinstance(source,str) or len(source.encode('utf8'))>65536:raise ValueError('invalid hybrid source')
-    if type(step_limit) is not int or not 1<=step_limit<=100000:raise ValueError('invalid VM step limit')
+    if type(step_limit) is not int or not 1<=step_limit<=MAX_VM_STEPS:raise ValueError('invalid VM step limit')
     with _lock:
         engine=_initialize()
         engine.runtime.BACKENDS=('vm',)

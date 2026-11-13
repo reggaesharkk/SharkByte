@@ -3,7 +3,7 @@
 A separately curated, source-only public snapshot of a bounded experimental language toolchain. It includes an installable Python CLI, SharkVM, classical statevector simulator, bounded hybrid orchestration, examples, tests, and a scoped independent Qiskit reference fixture set.
 
 ## Supported functionality
-- Classical SharkVM execution with a 100,000-instruction limit.
+- Classical SharkVM execution with a 50,000,000-instruction limit.
 - Classical CPU statevector simulation for the documented quantum subset.
 - Bounded hybrid execution with measurement feedback and limited adaptive updates.
 - OpenQASM 3 output for the documented subset.

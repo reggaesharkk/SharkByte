@@ -24,9 +24,9 @@ This file captures the scoped contract from `SPEC.md` so any future session can 
 
 ### Resource bounds (enforced; violations raise ValueError)
 - Classical source: ≤ 65,536 UTF-8 bytes (`read_source`).
-- VM: ≤ 100,000 instructions (`VM_STEPS`).
+- Classical VM: ≤ 50,000,000 instructions (`VM_STEPS`).
 - Quantum: 1–6 qubits (`MAX_QUBITS=6`), ≤ 256 gates (`MAX_GATES=256`), 1–100,000 shots (`MAX_SHOTS=100000`), CP angle |angle| ≤ 4π.
-- Hybrid: 2–6 qubits, bounded shots, 1–8 iterations (9 iterations raises ValueError).
+- Hybrid: 2–6 qubits, up to 100,000 VM instructions, bounded shots, 1–8 iterations (9 iterations raises ValueError).
 
 ### Record envelope (`cli.envelope`)
 ```json

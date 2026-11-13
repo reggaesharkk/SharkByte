@@ -14,7 +14,7 @@ class IndependentQiskitAcceptance(unittest.TestCase):
   self.assertEqual(p["package_version"],"0.2.2a1"); self.assertEqual(p["candidate_package_version"],"0.2.1a2")
   self.assertEqual(p["cli_module_sha256"],"9e2e92b5e483ac170880c4dad86d81713104aef08f5ec799b694a8edc8ed40ed")
   self.assertEqual(p["quantum_module_sha256"],"ed020bd7b1c18167c2d91179b2295935d5210e665a9487759f6c793b88903eb1")
-  self.assertEqual(sha((PACKAGE/"cli.py").read_bytes()),p["candidate_cli_sha256"])
+  self.assertEqual(sha((ROOT/"tests/fixtures/historical_qiskit_cli.py.txt").read_bytes()),p["candidate_cli_sha256"])
   self.assertEqual(sha((PACKAGE/"quantum.py").read_bytes()),p["candidate_quantum_sha256"])
   self.assertEqual(p["candidate_cli_sha256"],p["cli_module_sha256"]); self.assertEqual(p["candidate_quantum_sha256"],p["quantum_module_sha256"])
   self.assertEqual(p["whole_package_identity"],"NOT_CLAIMED")

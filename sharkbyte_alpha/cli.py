@@ -3,7 +3,7 @@ import argparse, hashlib, json, pathlib, platform, re, sys
 from . import __version__, vm, quantum
 
 MAX_SOURCE_BYTES=65536
-VM_STEPS=100000
+VM_STEPS=50_000_000
 
 def digest(b): return hashlib.sha256(b).hexdigest()
 def canonical(obj): return json.dumps(obj,sort_keys=True,separators=(',',':'),ensure_ascii=True,allow_nan=False).encode('utf8')
@@ -51,7 +51,7 @@ def main(argv=None):
             if args.mode=='quantum':value=envelope(source,'quantum',quantum.evaluate(parse_quantum(source)))
             elif args.mode=='hybrid':
                 from . import hybrid
-                value=envelope(source,'hybrid',hybrid.run(source,VM_STEPS))
+                value=envelope(source,'hybrid',hybrid.run(source,min(VM_STEPS, hybrid.MAX_VM_STEPS)))
             else:
                 binary=vm.encode(*vm.compile_source(source));stats={};output=vm.run_vm(binary,max_steps=VM_STEPS,stats=stats)
                 value=envelope(source,'classical',{'stdout':output,'vm_instruction_count':stats.get('instructions_executed'),'vm_step_limit':VM_STEPS},binary)
