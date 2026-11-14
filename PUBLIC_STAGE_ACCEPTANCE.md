@@ -20,4 +20,8 @@ The staged package passed the isolated CI harness on Windows ARM64 / CPython 3.1
 - Vector replay reads archived Qiskit reference probabilities; it does not execute Qiskit.
 - No physical quantum hardware was used.
 
-Raw local run logs are kept outside the public tree because they contain workstation paths. The current Apache-licensed revision awaits its own hosted CI result. This is a scoped acceptance record, not a release or RC1 claim.
+## Hosted CI for the Apache-authorized source revision
+
+Commit `bfe52efe568249f7d9c5dd0f5bc26dcbd132d624` passed [GitHub Actions run 43602167885](https://github.com/reggaesharkk/SharkByte/actions/runs/43602167885). All three jobs completed: Ubuntu and Windows Python 3.12 isolated install, acceptance, unit, and Frontier30 checks; plus Ubuntu 24.04 ARM64 backend agreement and execution-budget checks.
+
+This hosted run does not replace the exact-tree Windows ARM64 acceptance above or establish NPU use, native host containment, physical-hardware execution, or a security sandbox. Later commits only update documentation records and manifest hashes. Raw local run logs are kept outside the public tree because they contain workstation paths. This is scoped acceptance evidence, not a release or RC1 claim.

@@ -58,8 +58,8 @@
     },
     {
       "path": "LICENSE_STATUS.md",
-      "sha256": "83452a327e96b37010689b9400ecd6c2690895bc85a749d409862debd49fb7aa",
-      "size_bytes": 1653
+      "sha256": "f974f0cf65e0f704b5232a72f95b9d7e8f86fb255f99d0b108f8e4577150737e",
+      "size_bytes": 1672
     },
     {
       "path": "MANIFEST.in",
@@ -98,8 +98,8 @@
     },
     {
       "path": "PUBLIC_STAGE_ACCEPTANCE.md",
-      "sha256": "4e6f18574b44c7694e4db612a94c1b0b66d376ef6d3ed05c1d93b6e4631f9bba",
-      "size_bytes": 2093
+      "sha256": "244497749b5b0fc9213b7942b977bab43dd56e65ab4fb65f2f8325471bd84d0a",
+      "size_bytes": 2673
     },
     {
       "path": "QISKIT_PROVENANCE.md",
@@ -108,13 +108,13 @@
     },
     {
       "path": "README.md",
-      "sha256": "7f70cd9d6aae38815f32449f9ee2eb1200cc949bd85261b38e9a2a2355a123b4",
-      "size_bytes": 10251
+      "sha256": "46e157591e61fe09c45bd964e49fc67fad9e0d6a19ceb0f56b02c8a8392e9b26",
+      "size_bytes": 10437
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
-      "sha256": "cc1babb4cbb0f62c0b84d9212fa5b35b9bb433b772a6a3e1cea374303b665171",
-      "size_bytes": 1988
+      "sha256": "4c2c6103b636aac16879b866db18a0cb6759a6d3fabc19a4b08a04ccf77b464a",
+      "size_bytes": 2080
     },
     {
       "path": "REPRODUCIBILITY.md",

@@ -13,6 +13,6 @@
 | Gate 1 containment/cancellation | OPEN for future native execution; excluded from this alpha | Containment and cancellation are not implemented or claimed. The gate must pass before native execution is enabled. |
 | Security sandbox | NOT CLAIMED | VM limits are not isolation. |
 | License | SELECTED: Apache-2.0 for current first-party tree | Earlier MIT-licensed revisions retain their original grant; see LICENSE_STATUS.md. |
-| Hosted CI | PENDING for this revision | The published MIT snapshot passed hosted CI. The Apache license, fixed-point example, and grounded terminal answers need the current revision's run before this row can pass. |
+| Hosted CI | PASS on current functional source | Source commit `bfe52efe568249f7d9c5dd0f5bc26dcbd132d624` passed [run 43602167885](https://github.com/reggaesharkk/SharkByte/actions/runs/43602167885): Ubuntu, Windows, and Ubuntu 24.04 ARM64 backend agreement. Later updates record documentation status only. |
 
 Historical evidence applies only to its stated artifact, version, host, and scope. See PUBLIC_STAGE_ACCEPTANCE.md.
