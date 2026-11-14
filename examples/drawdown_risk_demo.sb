@@ -10,13 +10,28 @@ let epsilon = 30;
 let remaining = limit - current_drawdown;
 let x = remaining * scale / epsilon;
 
-// Padé [7/6] approximation of tanh(x), evaluated in fixed-point arithmetic.
-let x2 = x * x / scale;
-let x4 = x2 * x2 / scale;
-let x6 = x4 * x2 / scale;
-let numerator = 135135 * scale + 17325 * x2 + 378 * x4 + x6;
-let denominator = 135135 * scale + 62370 * x2 + 3150 * x4 + 28 * x6;
-let multiplier_ppm = x * numerator / denominator;
+// Clamp outside the polynomial's safe range. At x >= 6, tanh(x) exceeds
+// 0.999987; saturation also prevents signed i64 overflow in the polynomial.
+let multiplier_ppm = scale;
+if (x <= 0) {
+    multiplier_ppm = 0;
+} else {
+    if (x >= 6000000) {
+        multiplier_ppm = scale;
+    } else {
+        // Padé [7/6] approximation of tanh(x), evaluated in fixed-point arithmetic.
+        let x2 = x * x / scale;
+        let x4 = x2 * x2 / scale;
+        let x6 = x4 * x2 / scale;
+        let numerator = 135135 * scale + 17325 * x2 + 378 * x4 + x6;
+        let denominator = 135135 * scale + 62370 * x2 + 3150 * x4 + 28 * x6;
+        multiplier_ppm = x * numerator / denominator;
+        // Keep the rational approximation inside the documented [0, 1] range.
+        if (multiplier_ppm > scale) {
+            multiplier_ppm = scale;
+        }
+    }
+}
 
 // Print, in order: ratio ppm, multiplier ppm, scaled quantity in micro-units.
 let example_quantity = 5;
