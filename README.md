@@ -2,11 +2,13 @@
 
 A separately curated, source-only public snapshot of a bounded experimental language toolchain. It includes an installable Python CLI, SharkVM, classical statevector simulator, bounded hybrid orchestration, examples, tests, and a scoped independent Qiskit reference fixture set.
 
-**Start with `main` for current SharkByte source and benchmarks.** Its first-party source uses the standard [MIT License](LICENSE), SPDX identifier `MIT`. See [License and branch history](LICENSE_STATUS.md) for the archived Apache candidate.
+**Start with `main` for current SharkByte source and benchmarks.** Current first-party source is licensed under [Apache License 2.0](LICENSE), SPDX identifier `Apache-2.0`. Earlier revisions already released under MIT remain available under their original terms; see [License and branch history](LICENSE_STATUS.md). Third-party tools retain their own terms.
 
 **Cite SharkByte standalone alpha 0.2.1a2** using the Zenodo version DOI. The archive preserves source commit `f5c537a76fe2f1cab12288fa29f6820cf453eb40`. [DOI 10.5281/zenodo.24213559](https://doi.org/10.5281/zenodo.24213559)
 
 **Choose a starting point.** [Terminal and optional local chat](#terminal-quickstart) · [Desktop chat](#sharkbyte-chat) · [Benchmarks](#reproduce-the-public-benchmarks) · [Install the CLI](#install) · [System map and evidence boundaries](ECOSYSTEM_MAP.md)
+
+**Which terminal should I use?** In Windows PowerShell, use `Open-SharkByte-AI.ps1 -Terminal` for GenieX chat on a supported NPU. In Ubuntu/WSL, use the Python commands below for CPU simulation and the Linux ARM64 backend-agreement workflow. The `.sb` language and simulator commands are independent of the chat model.
 
 ## Terminal quickstart
 
@@ -41,7 +43,7 @@ The first command downloads the model. Subsequent launches use the local cache. 
 
 The launcher binds GenieX to `127.0.0.1` and restricts browser access to its own origin. If a server already occupies the port with a different browser origin policy, close that server and relaunch. Both chat clients use loopback addresses and reject redirects and proxies.
 
-With the local GenieX service running, ordinary text is sent to the configured Qualcomm Qwen3 model. The launcher requests NPU execution; a configured backend or `/doctor` line alone does not prove that a particular reply ran on the NPU. Check GenieX's live device/runtime status for that. The bundled circuit commands run on the CPU and label their output as simulator results. The launcher uses Qualcomm's precompiled weights; this repository does not contain custom-trained model weights. For independent amplitude checks of the QFT example, run the [Frontier30 benchmark suite](benchmarks/sb_quantum_benchmark/).
+With the local GenieX service running, ordinary questions are sent to the configured Qualcomm Qwen3 model. The launcher requests NPU execution; a configured backend or `/doctor` line alone does not prove that a particular reply ran on the NPU. Check GenieX's live device/runtime status for that. In the terminal prompt, built-in commands such as `/bell`, `/bell-phase`, `/qft`, `/run`, `/verify`, and `/replay` run SharkByte locally on the CPU; they do not need an NPU reply. If GenieX disconnects, ordinary chat can fail while those simulator commands remain local. The launcher uses Qualcomm's precompiled weights; this repository does not contain custom-trained model weights. For independent amplitude checks of the QFT example, run the [Frontier30 benchmark suite](benchmarks/sb_quantum_benchmark/).
 
 ## Supported functionality
 - Classical SharkVM execution with a 50,000,000-instruction limit.
@@ -93,12 +95,16 @@ Keep pip's normal build isolation enabled. See INSTALL.md.
 sharkbyte run examples/example.sb --backend vm
 sharkbyte run examples/bell.sb --mode quantum
 sharkbyte run examples/adaptive.sb --mode hybrid --backend vm
+sharkbyte run examples/drawdown_risk_demo.sb --backend vm
+sharkbyte verify-run examples/drawdown_risk_demo.receipt.json
 sharkbyte qasm examples/bell.sb --output bell.qasm
 sharkbyte verify-run result.json
 ```
 
+`examples/drawdown_risk_demo.sb` calculates an illustrative drawdown multiplier in SharkByte's own integer VM. It prints, in order: the fixed-point ratio, the multiplier in parts per million, and an example quantity in millionths. For the bundled input, the outputs are `500000`, `462117`, and `2310585`. The saved receipt can be checked with the command above. The example uses a documented Padé approximation for `tanh`; it is a language demonstration, not a trading signal or order system. Receipt hashes are unkeyed integrity checks, not proof of authorship or correctness.
+
 Run python tools/ci_acceptance.py for isolated install and regressions. python tools/replay_qiskit_vectors.py compares archived reference values; it does not invoke Qiskit.
 
-See [PUBLIC_STAGE_ACCEPTANCE.md](PUBLIC_STAGE_ACCEPTANCE.md) for the original public snapshot's Windows ARM64 acceptance record.
+See [PUBLIC_STAGE_ACCEPTANCE.md](PUBLIC_STAGE_ACCEPTANCE.md) for the Windows ARM64 acceptance record and the scope of this current revision's hosted CI run.
 
-The frozen archive and wheel are excluded because their immutable nested evidence contains personal-data disclosures; this tree is not byte-identical to them. This project is licensed under the MIT License; see LICENSE for details. Public visibility is not a license grant beyond the terms of LICENSE. Gate 1/native containment remains separately unresolved.
+The frozen archive and wheel are excluded because their immutable nested evidence contains personal-data disclosures; this tree is not byte-identical to them. This project is licensed under Apache License 2.0; see LICENSE and NOTICE. Public visibility is not a license grant beyond those terms. Gate 1 containment and cancellation remain unresolved; native execution stays disabled.

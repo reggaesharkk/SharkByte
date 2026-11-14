@@ -1,0 +1,14 @@
+SharkByte standalone alpha
+Copyright 2026 Prince Upadhyay
+
+This distribution contains first-party SharkByte source, documentation,
+examples, tests, and validation records. Those materials in the current
+curated tree are licensed under the Apache License, Version 2.0. See LICENSE
+and docs/APACHE_RIGHTS_CLEARANCE_20261114.md.
+
+No third-party runtime implementation is bundled. External build and
+validation tools are listed in THIRD_PARTY_NOTICES.md and remain subject to
+their own terms.
+
+Earlier SharkByte revisions published under MIT remain available under their
+original license grants; see LICENSE_STATUS.md.

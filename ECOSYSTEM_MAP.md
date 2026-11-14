@@ -13,6 +13,7 @@ I built SharkByte as a programming-language and verification project. The chat w
 | Frontier30 sparse experiment | `benchmarks/sb_quantum_benchmark/` | Runs selected sparse `.sb` circuits on a classical CPU. The checked-in benchmark has a 4,096-populated-state limit and checks amplitudes against analytical references. | “30 qubits” describes register width, not a dense simulation of all 2³⁰ states. The separate larger-cap experiments are not part of the checked-in 4,096-state receipt. |
 | Backend-agreement evidence | `benchmarks/backend_agreement/` | Preserves a scoped set of legacy VM, native-interpreter, and direct-native comparisons. | These results are tied to their stated source revision and environment; they do not enable native execution in the installed CLI or establish host isolation. |
 | Independent quantum reference fixtures | `evidence/qiskit_0.2.2a1/`, `QISKIT_PROVENANCE.md` | Stores a bounded comparison set with provenance and replayable expected probabilities. | It is not a claim of full Qiskit or OpenQASM conformance. |
+| Fixed-point risk calculation example | `examples/drawdown_risk_demo.sb` | Recreates one illustrative IntentSeal drawdown calculation in SharkByte's integer VM using a documented fixed-point approximation. | It is a language example only; it is not a signal, a calibrated risk policy, or a broker integration. |
 
 ## What happens when I use the chat
 
@@ -25,7 +26,7 @@ I built SharkByte as a programming-language and verification project. The chat w
 
 The author's other SharkByte-named checkouts, SharkLang, Protocol, Interceptor, Witness, local research assistant, model-training experiments, and umbrella repository are related projects, but they are not all modules of this public package. Some have different versions, evidence status, or licenses. I keep them separate until a specific interface is mapped, the behavior is reconciled, and the source rights are checked.
 
-The intended connections are narrow: SharkByte supplies deterministic program execution and receipts; the local assistant may supply cited project context; language and protocol projects may supply separately versioned policy or verification adapters. This repository currently does not claim that those separate systems are bundled, trained into one model, or all connected at runtime.
+The intended connections are narrow: SharkByte supplies deterministic program execution and receipts; the local assistant may supply cited project context; language and protocol projects may supply separately versioned policy or verification adapters. This repository currently does not claim that those separate systems are bundled, trained into one model, or all connected at runtime. The risk example translates one formula from the separately prepared IntentSeal trading starter into SharkByte fixed-point integer operations so we can exercise our own language; it does not connect SharkByte to the trading scripts.
 
 ## Reproduce the public sparse benchmark
 

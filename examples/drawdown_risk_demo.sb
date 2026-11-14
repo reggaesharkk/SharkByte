@@ -1,0 +1,26 @@
+// Offline fixed-point demo of the IntentSeal soft-wall risk multiplier.
+// Inputs: limit 500, drawdown 485, epsilon 30, quantity 5.
+// The ratio is represented in parts per million; no floating point is used.
+// This program calculates a demonstration value and does not place trades.
+
+let scale = 1000000;
+let limit = 500;
+let current_drawdown = 485;
+let epsilon = 30;
+let remaining = limit - current_drawdown;
+let x = remaining * scale / epsilon;
+
+// Padé [7/6] approximation of tanh(x), evaluated in fixed-point arithmetic.
+let x2 = x * x / scale;
+let x4 = x2 * x2 / scale;
+let x6 = x4 * x2 / scale;
+let numerator = 135135 * scale + 17325 * x2 + 378 * x4 + x6;
+let denominator = 135135 * scale + 62370 * x2 + 3150 * x4 + 28 * x6;
+let multiplier_ppm = x * numerator / denominator;
+
+// Print, in order: ratio ppm, multiplier ppm, scaled quantity in micro-units.
+let example_quantity = 5;
+let scaled_quantity_micro = example_quantity * multiplier_ppm;
+print x;
+print multiplier_ppm;
+print scaled_quantity_micro;

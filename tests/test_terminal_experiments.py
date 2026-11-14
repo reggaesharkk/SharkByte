@@ -12,6 +12,20 @@ ROOT = Path(__file__).resolve().parents[1]
 
 @unittest.skipUnless((ROOT / "sharkbyte_terminal.py").is_file(), "requires a source checkout")
 class TerminalExperiments(unittest.TestCase):
+    def test_project_explanations_use_grounded_answers(self):
+        prompts = (
+            "Explain what /qft computed on the 30-qubit register and why the spectator qubits stay 0.",
+            "Explain what the Bell phase demo shows.",
+        )
+        output = subprocess.run(
+            [sys.executable, "-X", "utf8", "-B", str(ROOT / "sharkbyte_terminal.py")],
+            input="\n".join((*prompts, "/quit")) + "\n", cwd=ROOT,
+            text=True, encoding="utf-8", capture_output=True, check=True, timeout=30,
+        ).stdout
+        self.assertIn("not entangled with the active six-qubit register", output)
+        self.assertIn("all four outcomes at 25% each", output)
+        self.assertNotIn("SharkByte model:", output)
+
     def test_save_verify_and_replay(self):
         from sharkbyte_experiment import replay
         with tempfile.TemporaryDirectory() as directory:

@@ -17,6 +17,34 @@ SYSTEM = "You are SharkByte, a local assistant. Explain results accurately. Neve
 def sharkbyte_answer(question, bell_run):
     text = question.lower()
     answer = []
+    asks_qft_spectators = (
+        re.search(r"\bqft\b", text)
+        and ("spectator" in text or "30-qubit" in text or "30 qubit" in text)
+        and re.search(r"\b(explain|computed|compute|why|stay|remain)\b", text)
+    )
+    if asks_qft_spectators:
+        answer.append(
+            "The /qft demo runs the bundled six-qubit QFT circuit on qubits 0–5 of a 30-qubit "
+            "register. Its gates do not target qubits 6–29; those spectators start in |0>, stay "
+            "in |0>, and are not entangled with the active six-qubit register. The sparse run "
+            "reports 32 populated basis states; the displayed probabilities are 1/32 (0.03125) "
+            "for each shown state, with the 24 high-order spectator bits all zero."
+        )
+    asks_bell_phase = (
+        "bell-phase" in text
+        or ("bell" in text and "phase" in text and
+            re.search(r"\b(show|shows|demo|demonstrate|explain|mean|means|compare)\b", text))
+    )
+    if asks_bell_phase:
+        answer.append(
+            "The Bell phase demo shows how a relative phase becomes observable after a basis change. "
+            "In the computational basis, the plus Bell state, minus Bell state, and 50/50 mixture "
+            "all give 00 and 11 with 50% probability each. After applying H to both qubits, "
+            "the plus state gives 00/11 at 50% each, the minus state gives 01/10 at 50% each, "
+            "and the mixture gives all four outcomes at 25% each. The pure states have fixed "
+            "even or odd parity; the mixture can produce either. One shot cannot identify the "
+            "source with certainty, while repeated measurements can distinguish their distributions."
+        )
     if "rightmost" in text and ("bit" in text or "qubit" in text):
         answer.append("SharkByte displays bitstrings most-significant bit first. "
                       "The rightmost bit represents qubit 0, the least-significant bit.")

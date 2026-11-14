@@ -7,7 +7,7 @@ This file is a short orientation, not a copy of the full specification. The publ
 - Read `SPEC.md` for supported behavior, limits, and record format.
 - Read `GRAMMAR.md` for SharkByte source syntax.
 - Read `COMPATIBILITY.md` and `CLAIM_BOUNDARIES.md` before changing backend or release claims.
-- `LICENSE` is MIT for this repository's first-party source. Check each vendored component's notices and provenance before copying it elsewhere.
+- `LICENSE` is Apache-2.0 for the current first-party source distribution. Earlier MIT-licensed revisions remain available under the terms they were published with. Check each vendored component's notices and provenance before copying it elsewhere.
 - Use `README.md` for public entry points. Do not rely on a local absolute path, another checkout, an old commit hash, or an old test count as current state.
 
 ## Important boundaries
