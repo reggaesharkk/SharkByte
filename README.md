@@ -4,7 +4,7 @@ A separately curated, source-only public snapshot of a bounded experimental lang
 
 **Start with `main` for current SharkByte source and benchmarks.** Current first-party source is licensed under [Apache License 2.0](LICENSE), SPDX identifier `Apache-2.0`. Earlier revisions already released under MIT remain available under their original terms; see [License and branch history](LICENSE_STATUS.md). Third-party tools retain their own terms.
 
-**Cite SharkByte standalone alpha 0.2.1a2** using the Zenodo version DOI. The archive preserves source commit `f5c537a76fe2f1cab12288fa29f6820cf453eb40`. [DOI 10.5281/zenodo.24213559](https://doi.org/10.5281/zenodo.24213559)
+**Cite SharkByte standalone alpha 0.2.1a2** using the Zenodo version DOI. That immutable archive preserves source commit `f5c537a76fe2f1cab12288fa29f6820cf453eb40`, which carries the MIT grant. Current GitHub `main` uses Apache-2.0; a later `main` change does not alter the Zenodo archive. Choose the license that matches the exact version you download. [DOI 10.5281/zenodo.24213559](https://doi.org/10.5281/zenodo.24213559)
 
 **Choose a starting point.** [Terminal and optional local chat](#terminal-quickstart) · [Desktop chat](#sharkbyte-chat) · [Benchmarks](#reproduce-the-public-benchmarks) · [Install the CLI](#install) · [System map and evidence boundaries](ECOSYSTEM_MAP.md)
 

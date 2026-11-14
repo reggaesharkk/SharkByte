@@ -2,6 +2,7 @@
 
 | Source | License | Status |
 | --- | --- | --- |
+| [Zenodo DOI 10.5281/zenodo.24213559](https://doi.org/10.5281/zenodo.24213559), alpha 0.2.1a2 at `f5c537a76fe2f1cab12288fa29f6820cf453eb40` | MIT | Immutable archived version; the DOI record is not changed by the current `main` license. |
 | Current `main` | [Apache License 2.0](LICENSE), SPDX identifier `Apache-2.0` | Current first-party source has used Apache-2.0 since `bfe52efe568249f7d9c5dd0f5bc26dcbd132d624`. The grant covers first-party SharkByte material in this curated tree; see [NOTICE](NOTICE), [third-party notices](THIRD_PARTY_NOTICES.md), and the [current rights record](docs/APACHE_RIGHTS_CLEARANCE_20261114.md). |
 | Earlier `main` revisions through `6f366ffdd23e1e5240a7a82884a3647c4625ecf3` | MIT | Already published under MIT. Those copies and grants remain available in Git history; this change does not revoke them. |
 | [`archive/apache-2.0-candidate-20261112`](https://github.com/reggaesharkk/SharkByte/tree/archive/apache-2.0-candidate-20261112) | Apache License 2.0 | Separate historical candidate at `93d63308e471a6f3cdb1757c7a7962c79190ba57`. The tag preserves its own source, notices, build records, and evidence. |

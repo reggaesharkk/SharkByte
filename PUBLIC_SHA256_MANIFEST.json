@@ -58,8 +58,8 @@
     },
     {
       "path": "LICENSE_STATUS.md",
-      "sha256": "f974f0cf65e0f704b5232a72f95b9d7e8f86fb255f99d0b108f8e4577150737e",
-      "size_bytes": 1672
+      "sha256": "c4ad7428821fc19454d5a51e226fa2177b901854185a535663e8e410df44dc19",
+      "size_bytes": 1912
     },
     {
       "path": "MANIFEST.in",
@@ -108,8 +108,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "46e157591e61fe09c45bd964e49fc67fad9e0d6a19ceb0f56b02c8a8392e9b26",
-      "size_bytes": 10437
+      "sha256": "ebac0c52426feb620eaf0243d7ba5651743f6051782c60bfb01dfaa19f8565ac",
+      "size_bytes": 10637
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
