@@ -1,5 +1,5 @@
 {
-  "file_count": 140,
+  "file_count": 146,
   "files": [
     {
       "path": ".gitattributes",
@@ -63,8 +63,8 @@
     },
     {
       "path": "MANIFEST.in",
-      "sha256": "ba6a45df47441dd5b9f7080914d6eae377eabfc2431393978bcc19ef19a5508c",
-      "size_bytes": 685
+      "sha256": "4ea45ff8e0582c813d17415c902d90a1d62f8ba2c6599d7d354a6acf82ac2bf2",
+      "size_bytes": 727
     },
     {
       "path": "NOTICE",
@@ -88,7 +88,7 @@
     },
     {
       "path": "PUBLIC_CONTENT_AUDIT.json",
-      "sha256": "5a44d80a90a9faf8b475459c68d8413d145482ce065eb8ce6cdc4b8693578e6d",
+      "sha256": "61f0689f571062e8cf106552d19ca7899bced8b0b9a3ee7b3bce938a5ef8cc27",
       "size_bytes": 667
     },
     {
@@ -108,8 +108,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "607ddf32105375d1b4f883b9ee0360b190a3187bbd7b4259fda5550dfd551fa7",
-      "size_bytes": 10886
+      "sha256": "b34b7ced8dd1a5462e21c0aca29f072abb43a5620d92a6ba05adb2d3c7027ac3",
+      "size_bytes": 10952
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
@@ -143,13 +143,13 @@
     },
     {
       "path": "benchmarks/backend_agreement/budget_loop.sb",
-      "sha256": "a911288c7d94b29b071d504e68c82d76824320d8ec5c78d1423538b521ff4e30",
-      "size_bytes": 37
+      "sha256": "11592dd5e384fec9e1e6b8d802f4bda202d92c24fbc9f550190608d2c8a4bcca",
+      "size_bytes": 36
     },
     {
       "path": "benchmarks/backend_agreement/check_all_budgets.py",
-      "sha256": "0bfb5b229dea5827b8440f4d3e63b5dff08ec36e4c73c40af99c55d3812f7e3e",
-      "size_bytes": 1140
+      "sha256": "7c383e3429d6dd98ff214d8a40254750dab1a1a739a621e7e37014e4797a78f9",
+      "size_bytes": 1139
     },
     {
       "path": "benchmarks/backend_agreement/check_backend_agreement.py",
@@ -275,6 +275,11 @@
       "path": "docs/CALCULATION_CAPABILITIES.md",
       "sha256": "d41ccfeb0944bc30c0972753ccdbd6e9e2db2608e4d2bf5a140911985099792e",
       "size_bytes": 4770
+    },
+    {
+      "path": "docs/RESEARCH_GAP_CALCULATIONS.md",
+      "sha256": "8ea1ba818a293820afd3825fc3db1f0f50396172c3a94457514b3b53ac9843c1",
+      "size_bytes": 7264
     },
     {
       "path": "evidence/qiskit_0.2.2a1/INDEPENDENT_EVIDENCE_REVIEW.json",
@@ -547,6 +552,31 @@
       "size_bytes": 651
     },
     {
+      "path": "examples/research/README.md",
+      "sha256": "5af019145ad5edaf7ac403ff116c62d2c8516d40b1fc6c9113a80141858a45b5",
+      "size_bytes": 906
+    },
+    {
+      "path": "examples/research/navier_m15_gap.sb",
+      "sha256": "0736309662a8820016b33b38d2bd1a71f310c3adce39b1697df22c901d932125",
+      "size_bytes": 752
+    },
+    {
+      "path": "examples/research/protocol_wp19_assumed_rates.sb",
+      "sha256": "5b8a2226b10f7902dcccbe7ffe166915c0dbe961e75e6bfe071d037844ec89a9",
+      "size_bytes": 2282
+    },
+    {
+      "path": "examples/research/riemann_wp84_count.sb",
+      "sha256": "6a573eacdd33c2e9eac45f4a922a17883805e156a09b9c69f2ba5695fa89db7a",
+      "size_bytes": 1373
+    },
+    {
+      "path": "examples/research/strength_b3_threshold.sb",
+      "sha256": "3706edf33c567aa4c4d7542e58e7acb04e80ea655974a86037a0a594fbe95806",
+      "size_bytes": 1310
+    },
+    {
       "path": "pyproject.toml",
       "sha256": "e34215e053fd5596ba7597ab8551ccef5bfdffb6f74bb4585cfafc21ce0309ec",
       "size_bytes": 558
@@ -648,8 +678,8 @@
     },
     {
       "path": "sharkbyte_terminal.py",
-      "sha256": "61e68138e565a96772d06c226a73c4d452d7e4513d3c5fb39eed249d44df760f",
-      "size_bytes": 12390
+      "sha256": "45f57f9a6035517ea2aa8da7099c665ac29ac29f7f174281ded25aabcfc9230f",
+      "size_bytes": 12158
     },
     {
       "path": "tests/fixtures/.gitattributes",

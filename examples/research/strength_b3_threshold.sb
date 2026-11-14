@@ -1,0 +1,30 @@
+// Recalculate algebraic thresholds in STRENGTH-INTENT-NS-LEAN's B3 guard.
+// Inputs are a2_bound=0.184920, Lipschitz ceiling=49123.01,
+// strain threshold=39453.02, and the source's sample velocity/strain.
+// This is a threshold arithmetic check, not detector efficacy or security evidence.
+
+let a2_million = 184920;
+let lipschitz_ceiling_cents = 4912301;
+let strain_threshold_cents = 3945302;
+
+// Solve velocity * a2_bound <= ceiling for velocity in thousandths.
+let max_velocity_milli = lipschitz_ceiling_cents * 10000000 / a2_million;
+let max_product = max_velocity_milli * a2_million;
+let next_product = (max_velocity_milli + 1) * a2_million;
+let exact_limit_product = lipschitz_ceiling_cents * 10000000;
+
+// Source example: velocity=12500.5, strain=1420.0.
+let sample_velocity_milli = 12500500;
+let sample_product = sample_velocity_milli * a2_million;
+let sample_contracted_cents = sample_product / 10000000;
+let sample_lipschitz_margin_cents = lipschitz_ceiling_cents - sample_contracted_cents;
+let sample_strain_cents = 142000;
+let sample_strain_margin_cents = strain_threshold_cents - sample_strain_cents;
+
+print max_velocity_milli;
+print max_product;
+print next_product;
+print exact_limit_product;
+print sample_contracted_cents;
+print sample_lipschitz_margin_cents;
+print sample_strain_margin_cents;

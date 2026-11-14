@@ -1,6 +1,7 @@
 include README.md SPEC.md GRAMMAR.md CLAIM_BOUNDARIES.md SECURITY.md INSTALL.md REPRODUCIBILITY.md COMPATIBILITY.md RELEASE_GATE_MATRIX.md LICENSE_STATUS.md QISKIT_PROVENANCE.md PUBLIC_DISTRIBUTION_AUDIT.md BUILD_REQUIREMENTS.txt LICENSE NOTICE THIRD_PARTY_NOTICES.md
 include docs/APACHE_RIGHTS_CLEARANCE_20261114.md
 include docs/CALCULATION_CAPABILITIES.md
+include docs/RESEARCH_GAP_CALCULATIONS.md
 include sharkbyte_guarded_entry.py pyproject.toml setup.cfg
 recursive-include sharkbyte_alpha *.py *.json
 recursive-include tests *.py

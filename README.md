@@ -6,7 +6,7 @@ A separately curated, source-only public snapshot of a bounded experimental lang
 
 **Cite SharkByte standalone alpha 0.2.1a2** using the Zenodo version DOI. That immutable archive preserves source commit `f5c537a76fe2f1cab12288fa29f6820cf453eb40`, which carries the MIT grant. Current GitHub `main` uses Apache-2.0; a later `main` change does not alter the Zenodo archive. Choose the license that matches the exact version you download. [DOI 10.5281/zenodo.24213559](https://doi.org/10.5281/zenodo.24213559)
 
-**Choose a starting point.** [Terminal and optional local chat](#terminal-quickstart) · [What SharkByte can calculate](docs/CALCULATION_CAPABILITIES.md) · [Desktop chat](#sharkbyte-chat) · [Benchmarks](#reproduce-the-public-benchmarks) · [Install the CLI](#install) · [System map and evidence boundaries](ECOSYSTEM_MAP.md)
+**Choose a starting point.** [Terminal and optional local chat](#terminal-quickstart) · [What SharkByte can calculate](docs/CALCULATION_CAPABILITIES.md) · [Research gap calculations](docs/RESEARCH_GAP_CALCULATIONS.md) · [Desktop chat](#sharkbyte-chat) · [Benchmarks](#reproduce-the-public-benchmarks) · [Install the CLI](#install) · [System map and evidence boundaries](ECOSYSTEM_MAP.md)
 
 **Which terminal should I use?** In Windows PowerShell, use `Open-SharkByte-AI.ps1 -Terminal` for GenieX chat on a supported NPU. In Ubuntu/WSL, use the Python commands below for CPU simulation and the Linux ARM64 backend-agreement workflow. The `.sb` language and simulator commands are independent of the chat model.
 

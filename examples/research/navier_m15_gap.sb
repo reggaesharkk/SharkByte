@@ -1,0 +1,17 @@
+// Recalculate the recorded M15 remainder-versus-signed-lower-bound margin.
+// Inputs are rounded to thousandths from the documented decimal values.
+// This arithmetic diagnoses the recorded gap; it does not certify the inputs.
+
+let remainder_milli = 164063087678950089;
+let signed_lower_milli = 5758574435606;
+let signed_margin_milli = signed_lower_milli - remainder_milli;
+
+// Approximate remainder/lower ratio in thousandths, using the lower bound
+// truncated to whole units before division to keep every intermediate in i64.
+let lower_whole = signed_lower_milli / 1000;
+let remainder_ratio_thousandths = remainder_milli / lower_whole;
+
+print remainder_milli;
+print signed_lower_milli;
+print signed_margin_milli;
+print remainder_ratio_thousandths;

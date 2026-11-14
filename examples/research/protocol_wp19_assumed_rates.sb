@@ -1,0 +1,61 @@
+// Recompute the 120-step WP19 Duhamel parameter study with fixed-point math.
+// Rates and defects are the protocol JSON's assumed study inputs, not certified bounds.
+// Scale is 1e6. Exponential factors use a 20-term Taylor approximation;
+// recurrence products are truncated integer arithmetic, not outward intervals.
+
+let scale = 1000000;
+
+// exp(24.50 * 1.20 / 120) = exp(0.245), fixed-point Taylor sum.
+let whole_x = 245000;
+let whole_term = scale;
+let whole_factor = scale;
+let term_index = 1;
+while (term_index <= 20) {
+    whole_term = whole_term * whole_x / scale / term_index;
+    whole_factor = whole_factor + whole_term;
+    term_index = term_index + 1;
+}
+
+// exp(-3.50 * 1.20 / 120) = exp(-0.035), alternating Taylor sum.
+let local_x = -35000;
+let local_term = scale;
+let local_factor = scale;
+term_index = 1;
+while (term_index <= 20) {
+    local_term = local_term * local_x / scale / term_index;
+    local_factor = local_factor + local_term;
+    term_index = term_index + 1;
+}
+
+// Defect 2.35e-4 in micro-units is 235.
+let defect_micro = 235;
+let whole_error_micro = 0;
+let local_error_micro = 0;
+let segment = 0;
+while (segment < 120) {
+    // Split quotient and remainder to avoid overflow in error * factor.
+    whole_error_micro = (whole_error_micro / scale) * whole_factor
+        + (whole_error_micro % scale) * whole_factor / scale + defect_micro;
+    local_error_micro = (local_error_micro / scale) * local_factor
+        + (local_error_micro % scale) * local_factor / scale + defect_micro;
+    segment = segment + 1;
+}
+
+let signed_c500_lower_micro = 5758600000000000;
+let assumed_whole_path_margin_micro = signed_c500_lower_micro - whole_error_micro;
+
+// The protocol dataset also preserves a separate whole-path remainder bound.
+// Compare that recorded value with the signed lower bound in thousandths.
+let preserved_remainder_milli = 163640000000000000;
+let signed_c500_lower_milli = 5758600000000;
+let preserved_remainder_margin_milli = signed_c500_lower_milli - preserved_remainder_milli;
+
+print whole_factor;
+print local_factor;
+print whole_error_micro;
+print local_error_micro;
+print signed_c500_lower_micro;
+print assumed_whole_path_margin_micro;
+print preserved_remainder_milli;
+print signed_c500_lower_milli;
+print preserved_remainder_margin_milli;

@@ -1,0 +1,44 @@
+// Count C(45,4) candidate four-hyperplane intersections in SharkByte.
+// The 45 hyperplanes and 151 relevant vertices are reported by the frozen
+// WP84 C5 certificate; this program independently checks the combination count.
+
+let i = 0;
+let j = 0;
+let k = 0;
+let l = 0;
+let candidate_intersections = 0;
+
+while (i < 45) {
+    j = i + 1;
+    while (j < 45) {
+        k = j + 1;
+        while (k < 45) {
+            l = k + 1;
+            while (l < 45) {
+                candidate_intersections = candidate_intersections + 1;
+                l = l + 1;
+            }
+            k = k + 1;
+        }
+        j = j + 1;
+    }
+    i = i + 1;
+}
+
+let reported_relevant_vertices = 151;
+let vertex_fraction_ppm = reported_relevant_vertices * 1000000 / candidate_intersections;
+
+// Derive the displayed model frontier from the archived 11061/13891 ratio.
+// Value is in thousandths of a percentage point (79.6% -> 79600).
+let model_numerator = 11061;
+let model_denominator = 13891;
+let model_frontier_millipercent = model_numerator * 100000 / model_denominator;
+let above_79_millipercent = model_frontier_millipercent - 79000;
+let required_source_saving_ppb_truncated = 2057354;
+
+print candidate_intersections;
+print reported_relevant_vertices;
+print vertex_fraction_ppm;
+print model_frontier_millipercent;
+print above_79_millipercent;
+print required_source_saving_ppb_truncated;
