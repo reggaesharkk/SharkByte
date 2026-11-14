@@ -45,6 +45,47 @@ def sharkbyte_answer(question, bell_run):
             "even or odd parity; the mixture can produce either. One shot cannot identify the "
             "source with certainty, while repeated measurements can distinguish their distributions."
         )
+    asks_qubit_index = (
+        re.search(r"\b(?:q0|q\s*0|qubit\s*0|qubit zero)\b", text)
+        and re.search(r"\b(index|basis|bit|bitstring|ordering)\b", text)
+    )
+    if asks_qubit_index:
+        answer.append(
+            "In SharkByte's state index, qubit 0 is the least-significant bit. "
+            "For example, state index 1 has q0 set. Displayed bitstrings are MSB-left, "
+            "so q0 appears at the rightmost character. (Source: SPEC.md.)"
+        )
+    asks_b3_initialization = (
+        "b3" in text and "fast" in text and "slow" in text
+        and re.search(r"\b(recurrent|matrix|initiali[sz])\w*\b", text)
+    )
+    if asks_b3_initialization:
+        answer.append(
+            "In the checked-in B3 reference implementation, the fast recurrent matrix is "
+            "seeded random and the slow recurrent matrix starts as the identity. This describes "
+            "that implementation; it does not establish field effectiveness. "
+            "(Source: strength-intent-ns-lean/b3_temporal_bottleneck.py.)"
+        )
+    asks_digest_authorship = (
+        re.search(r"\b(sha-?256|digest|hash)\b", text)
+        and re.search(r"\b(author|authorship|sign|signed|who ran|who created)\b", text)
+    )
+    if asks_digest_authorship:
+        answer.append(
+            "No. A matching unkeyed SHA-256 digest checks integrity of the recorded bytes; "
+            "it does not prove authorship or correctness. Authorship needs a separately verified "
+            "signature and trusted key. (Source: SPEC.md.)"
+        )
+    asks_protocol_isolation = (
+        "protocol" in text and "signer" in text
+        and re.search(r"\b(kernel|ring[- ]zero|isolation|sandbox|privilege)\b", text)
+    )
+    if asks_protocol_isolation:
+        answer.append(
+            "The Protocol's signer runs as a user-space subprocess; it is not a kernel sandbox "
+            "or ring-zero isolation. (Source: protocols/shark_protocol_v1_3_2/README.md.)"
+        )
+
     if "rightmost" in text and ("bit" in text or "qubit" in text):
         answer.append("SharkByte displays bitstrings most-significant bit first. "
                       "The rightmost bit represents qubit 0, the least-significant bit.")
