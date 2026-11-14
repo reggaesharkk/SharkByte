@@ -6,12 +6,49 @@ A separately curated, source-only public snapshot of a bounded experimental lang
 
 **Cite SharkByte standalone alpha 0.2.1a2** using the Zenodo version DOI. The archive preserves source commit `f5c537a76fe2f1cab12288fa29f6820cf453eb40`. [DOI 10.5281/zenodo.24213559](https://doi.org/10.5281/zenodo.24213559)
 
+**Choose a starting point.** [Terminal and optional NPU chat](#terminal-quickstart) · [Desktop chat](#sharkbyte-chat) · [Benchmarks](#reproduce-the-public-benchmarks) · [Install the CLI](#install)
+
+## Terminal quickstart
+
+From the repository root, run `python -B sharkbyte_terminal.py` with Python 3.10 or later. The simulator commands work directly from the checkout and require no model.
+
+| Type at the prompt | What it does |
+| --- | --- |
+| `/help` | Lists commands. |
+| `/bell` | Samples a Bell circuit and checks the receipt hashes. |
+| `/bell-phase` | Computes measurement probabilities for two Bell states and a classical mixture. |
+| `/qft` | Runs a six-qubit Fourier transform embedded in a 30-qubit register and previews its probability distribution. |
+| `/doctor` | Shows the selected chat backend and SharkByte CLI settings. |
+| `/verify` | Rechecks the hashes of the last Bell receipt in this session. |
+| `/quit` | Exits. |
+
+### Enable local NPU chat on Windows ARM64
+
+Install [Qualcomm GenieX](https://geniex.aihub.qualcomm.com/en/get-started/what-is-geniex), make sure `geniex --version` works in PowerShell, then run these commands from the repository root:
+
+```powershell
+geniex --skip-update pull qualcomm/Qwen3-0.6B:W4A16 --model-hub aihub
+.\Open-SharkByte-AI.ps1 -Terminal
+```
+
+The first command downloads the model. Subsequent launches use the local cache. If GenieX is outside PATH, pass `-GenieXPath` with the executable path. For a custom cache, use GenieX's `--data-dir` when downloading and pass the same directory to the launcher with `-GenieXDataDir`.
+
+Ordinary text goes to the Qualcomm Qwen3 model through GenieX on the NPU. The circuit commands run on the CPU and label their output as simulator results. The launcher loads Qualcomm's precompiled weights. `/doctor` reports the configured backend, while a chat prompt exercises model inference. For independent amplitude checks of the QFT example, run the [Frontier30 benchmark suite](benchmarks/sb_quantum_benchmark/).
+
 ## Supported functionality
 - Classical SharkVM execution with a 50,000,000-instruction limit.
 - Classical CPU statevector simulation for the documented quantum subset.
 - Bounded hybrid execution with measurement feedback and limited adaptive updates.
 - OpenQASM 3 output for the documented subset.
 - SHA-256 receipt integrity checking; hashes do not authenticate a record.
+
+## SharkByte Chat
+
+I built a local chat window that runs SharkByte examples and your own `.sb` programs. On Windows, double-click [Open-SharkByte-Chat.cmd](Open-SharkByte-Chat.cmd). You can also run `python -B sharkbyte_chat.py` from this checkout with Python and Tk installed.
+
+Click **Run Bell**, **Run Frontier30**, or **Explain Bell** to start. You can also type `Run Classical` or `Run Hybrid`. Open a source file or paste an `sb` code block, then press **Enter** to send. Use **Shift+Enter** for a new line. For a custom sparse run, put `run frontier cap 8192` on the line before the code block. Use **Save result** to export the full result and source.
+
+For general conversation, start a local model and pass its chat completions URL and served model ID with `--endpoint` and `--model`. The URL must be on the local loopback interface. Model replies appear as text. The app runs SharkByte through its built-in commands.
 
 The installed CLI supports SharkVM and refuses native execution. Quantum circuits run in a classical simulator. SharkVM is not a security sandbox.
 
