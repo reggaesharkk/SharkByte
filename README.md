@@ -4,6 +4,8 @@ A separately curated, source-only public snapshot of a bounded experimental lang
 
 **Start with `main` for current SharkByte source and benchmarks.** Its first-party source uses the standard [MIT License](LICENSE), SPDX identifier `MIT`. See [License and branch history](LICENSE_STATUS.md) for the archived Apache candidate.
 
+**Cite SharkByte standalone alpha 0.2.1a2** using the Zenodo version DOI. The archive preserves source commit `f5c537a76fe2f1cab12288fa29f6820cf453eb40`. [DOI 10.5281/zenodo.24213559](https://doi.org/10.5281/zenodo.24213559)
+
 ## Supported functionality
 - Classical SharkVM execution with a 50,000,000-instruction limit.
 - Classical CPU statevector simulation for the documented quantum subset.
