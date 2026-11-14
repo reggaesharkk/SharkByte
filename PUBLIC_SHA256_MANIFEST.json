@@ -1,5 +1,5 @@
 {
-  "file_count": 139,
+  "file_count": 140,
   "files": [
     {
       "path": ".gitattributes",
@@ -63,8 +63,8 @@
     },
     {
       "path": "MANIFEST.in",
-      "sha256": "0349ccfec33c7d1277eff9343f8fbace210fb66e50e417f2798b6163899d0af7",
-      "size_bytes": 644
+      "sha256": "ba6a45df47441dd5b9f7080914d6eae377eabfc2431393978bcc19ef19a5508c",
+      "size_bytes": 685
     },
     {
       "path": "NOTICE",
@@ -88,8 +88,8 @@
     },
     {
       "path": "PUBLIC_CONTENT_AUDIT.json",
-      "sha256": "e0691d42480d61936b6c80c233fe24677cf6bc13c5fb1a63ac0eeca3daa4c043",
-      "size_bytes": 672
+      "sha256": "5a44d80a90a9faf8b475459c68d8413d145482ce065eb8ce6cdc4b8693578e6d",
+      "size_bytes": 667
     },
     {
       "path": "PUBLIC_DISTRIBUTION_AUDIT.md",
@@ -108,8 +108,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "ebac0c52426feb620eaf0243d7ba5651743f6051782c60bfb01dfaa19f8565ac",
-      "size_bytes": 10637
+      "sha256": "607ddf32105375d1b4f883b9ee0360b190a3187bbd7b4259fda5550dfd551fa7",
+      "size_bytes": 10886
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
@@ -143,13 +143,13 @@
     },
     {
       "path": "benchmarks/backend_agreement/budget_loop.sb",
-      "sha256": "11592dd5e384fec9e1e6b8d802f4bda202d92c24fbc9f550190608d2c8a4bcca",
-      "size_bytes": 36
+      "sha256": "a911288c7d94b29b071d504e68c82d76824320d8ec5c78d1423538b521ff4e30",
+      "size_bytes": 37
     },
     {
       "path": "benchmarks/backend_agreement/check_all_budgets.py",
-      "sha256": "7c383e3429d6dd98ff214d8a40254750dab1a1a739a621e7e37014e4797a78f9",
-      "size_bytes": 1139
+      "sha256": "0bfb5b229dea5827b8440f4d3e63b5dff08ec36e4c73c40af99c55d3812f7e3e",
+      "size_bytes": 1140
     },
     {
       "path": "benchmarks/backend_agreement/check_backend_agreement.py",
@@ -270,6 +270,11 @@
       "path": "docs/APACHE_RIGHTS_CLEARANCE_20261114.md",
       "sha256": "5cb2c846142f78cf6e0d16fa2c7063539d5571591c7898e4014c078b99c12fb1",
       "size_bytes": 1903
+    },
+    {
+      "path": "docs/CALCULATION_CAPABILITIES.md",
+      "sha256": "d41ccfeb0944bc30c0972753ccdbd6e9e2db2608e4d2bf5a140911985099792e",
+      "size_bytes": 4770
     },
     {
       "path": "evidence/qiskit_0.2.2a1/INDEPENDENT_EVIDENCE_REVIEW.json",
@@ -643,8 +648,8 @@
     },
     {
       "path": "sharkbyte_terminal.py",
-      "sha256": "45f57f9a6035517ea2aa8da7099c665ac29ac29f7f174281ded25aabcfc9230f",
-      "size_bytes": 12158
+      "sha256": "61e68138e565a96772d06c226a73c4d452d7e4513d3c5fb39eed249d44df760f",
+      "size_bytes": 12390
     },
     {
       "path": "tests/fixtures/.gitattributes",
