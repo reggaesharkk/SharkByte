@@ -19,8 +19,14 @@ From the repository root, run `python -B sharkbyte_terminal.py` with Python 3.10
 | `/bell-phase` | Computes measurement probabilities for two Bell states and a classical mixture. |
 | `/qft` | Runs a six-qubit Fourier transform embedded in a 30-qubit register and previews its probability distribution. |
 | `/doctor` | Shows the selected chat backend and SharkByte CLI settings. |
-| `/verify` | Rechecks the hashes of the last Bell receipt in this session. |
+| `/run FILE.sb` | Runs a custom quantum circuit using the CPU statevector simulator. |
+| `/run-frontier FILE.sb` | Runs a custom sparse circuit with a 4,096-state cap. |
+| `/save FILE.json` | Exports the last completed experiment to a new file. |
+| `/verify [FILE.json]` | Checks the last receipt or a saved receipt. |
+| `/replay FILE.json` | Reruns the source in a saved receipt and compares the result. |
 | `/quit` | Exits. |
+
+Try `/run examples/bell.sb`, `/save bell-result.json`, then `/verify bell-result.json` and `/replay bell-result.json`. Quote paths with spaces. You can also save and replay `/bell-phase` and `/qft` results. Receipts include the circuit source, SharkByte version, and result. Sampled circuits also record their seed and shot count. Replay compares the recorded result exactly on the same SharkByte version. Floating-point results can differ across platforms. Hash verification checks integrity, replay checks reproducibility, and the separate benchmark checks numerical accuracy against a reference.
 
 ### Enable local NPU chat on Windows ARM64
 
@@ -32,6 +38,8 @@ geniex --skip-update pull qualcomm/Qwen3-0.6B:W4A16 --model-hub aihub
 ```
 
 The first command downloads the model. Subsequent launches use the local cache. If GenieX is outside PATH, pass `-GenieXPath` with the executable path. For a custom cache, use GenieX's `--data-dir` when downloading and pass the same directory to the launcher with `-GenieXDataDir`.
+
+The launcher binds GenieX to `127.0.0.1` and restricts browser access to its own origin. If a server already occupies the port with a different browser origin policy, close that server and relaunch. Both chat clients use loopback addresses and reject redirects and proxies.
 
 Ordinary text goes to the Qualcomm Qwen3 model through GenieX on the NPU. The circuit commands run on the CPU and label their output as simulator results. The launcher loads Qualcomm's precompiled weights. `/doctor` reports the configured backend, while a chat prompt exercises model inference. For independent amplitude checks of the QFT example, run the [Frontier30 benchmark suite](benchmarks/sb_quantum_benchmark/).
 

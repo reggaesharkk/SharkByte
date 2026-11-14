@@ -5,7 +5,9 @@ import re
 import subprocess
 import sys
 from urllib.error import URLError
-from urllib.request import ProxyHandler, Request, build_opener
+from sharkbyte_local_http import open_local
+from sharkbyte_alpha.cli import canonical, read_source, verify
+from sharkbyte_experiment import FRONTIER, PHASE_SOURCES, read_receipt, replay, run_experiment
 
 from pathlib import Path
 REPO = Path(__file__).resolve().parent
@@ -38,23 +40,11 @@ def sharkbyte_answer(question, bell_run):
     return " ".join(answer)
 
 
-def bell_phase_comparison():
-    from sharkbyte_alpha.quantum import evaluate, parse
-
-    def probabilities(preparation):
-        statements = f"qubits 2; shots 1; seed 42; {preparation} h 0; h 1; measure_all;"
-        source = statements.replace(";", ";\n")
-        return evaluate(parse(source))["probabilities"]
-
-    plus = probabilities("h 0; cx 0 1;")
-    minus = probabilities("h 0; cx 0 1; z 0;")
-    zero = probabilities("")
-    one = probabilities("x 0; x 1;")
+def bell_phase_comparison(result):
     labels = ("00", "01", "10", "11")
-    mixture = {label: (zero[label] + one[label]) / 2 for label in labels}
     lines = ["Apply H to both qubits, then measure. SharkByte simulator probabilities:",
              "Input             00   01   10   11"]
-    for name, values in (("Plus Bell", plus), ("Minus Bell", minus), ("50/50 mixture", mixture)):
+    for name, values in result["probabilities"].items():
         lines.append(f"{name:16}" + " ".join(f"{values[label]:4.0%}" for label in labels))
     lines.append("The plus state always has even parity and the minus state always has odd parity. "
                  "The mixture can produce either parity, so no single shot identifies all three sources. "
@@ -70,14 +60,16 @@ def main(load_model=None, system=SYSTEM):
     model = None
     history = []
     bell_run = None
-    bell_receipt = None
-    from sharkbyte_alpha.cli import verify
+    receipt = None
     commands = {
         "/help": "Show this command list.",
         "/bell": "Sample the bundled Bell circuit and check its receipt.",
         "/bell-phase": "Compare three states after Hadamard gates.",
         "/qft": "Run the bundled six-qubit QFT in a 30-qubit register.",
-        "/verify": "Check the hashes of the last Bell receipt in this session.",
+        "/run FILE.sb": "Run a quantum circuit. Use /run-frontier FILE.sb for sparse circuits.",
+        "/save FILE.json": "Save the last result to a new receipt file.",
+        "/verify [FILE.json]": "Check the last receipt or a saved file.",
+        "/replay FILE.json": "Verify and rerun the circuit stored in a saved receipt.",
         "/doctor": "Show the chat backend and SharkByte CLI settings.",
         "/quit": "Exit SharkByte.",
     }
@@ -97,47 +89,60 @@ def main(load_model=None, system=SYSTEM):
             break
         if question == "/help":
             for command, description in commands.items():
-                print(f"  {command:<12}{description}")
+                print(f"  {command:<25}{description}")
             continue
         if question == "/doctor":
             print(f"Chat backend: {backend}\nQuantum simulator: CPU", flush=True)
             subprocess.run([sys.executable, "-B", "-m", "sharkbyte_alpha", "doctor"], cwd=REPO)
             continue
-        if question == "/qft":
-            frontier = REPO / "benchmarks" / "sb_quantum_benchmark"
-            result = subprocess.run([sys.executable, "-B", str(frontier / "frontier30.py"),
-                                     str(frontier / "qft6_in_30.sb")], cwd=REPO,
-                                    capture_output=True, text=True, timeout=30)
-            if result.returncode:
-                print("Frontier30:", result.stderr.strip() or result.stdout.strip())
-                continue
-            report = json.loads(result.stdout)
-            print(f"Frontier30: {report['result']} · {report['qubits']} qubits · "
-                  f"{report['final_populated_states']} final states · "
-                  f"{report['peak_populated_states']} peak states")
-            print("Basis probabilities (up to eight):")
-            for basis, probability in list(report["probabilities"].items())[:8]:
-                print(f"  {basis}  {probability:.8g}")
-            continue
-        if question == "/bell":
-            result = subprocess.run(
-                [sys.executable, "-B", "-m", "sharkbyte_alpha", "run",
-                 str(REPO / "examples/bell.sb"), "--mode", "quantum"],
-                cwd=REPO, capture_output=True, check=True, timeout=30,
-            )
-            record = json.loads(result.stdout)
-            counts = record["result"]["counts"]
-            verification = verify(record)
-            bell_run = counts, verification
-            bell_receipt = record
-            print("SharkByte runner:", counts, verification["status"])
-            continue
-        if question == "/verify":
-            if bell_receipt is None:
-                print("Run /bell first to create a receipt.")
-            else:
-                verification = verify(bell_receipt)
-                print(verification["status"], verification["note"])
+        command, _, argument = question.partition(" ")
+        argument = argument.strip()
+        if argument.startswith('"') and argument.endswith('"'):
+            argument = argument[1:-1]
+        if command in {"/run", "/run-frontier", "/save", "/verify", "/replay", "/bell", "/qft"}:
+            try:
+                if command == "/verify":
+                    candidate = read_receipt(argument) if argument else receipt
+                    if candidate is None:
+                        raise ValueError("Run a circuit first or supply a receipt path.")
+                    check = verify(candidate)
+                    print(check["status"], check["note"])
+                elif command == "/replay":
+                    print(replay(read_receipt(argument)))
+                elif command == "/save":
+                    if receipt is None:
+                        raise ValueError("Run a circuit first.")
+                    with Path(argument).open("xb") as stream:
+                        stream.write(canonical(receipt) + b"\n")
+                    print("Saved receipt:", argument)
+                else:
+                    mode = "frontier" if command in {"/qft", "/run-frontier"} else "quantum"
+                    source_path = {
+                        "/bell": REPO / "examples" / "bell.sb",
+                        "/qft": FRONTIER / "qft6_in_30.sb",
+                    }.get(command, Path(argument))
+                    candidate = run_experiment(read_source(source_path), mode)
+                    result = candidate["result"]
+                    if mode == "frontier" and result["result"] != "PASS":
+                        raise ValueError(result["reason"])
+                    receipt = candidate
+                    if command == "/bell":
+                        bell_run = result["counts"], verify(receipt)
+                        print("SharkByte runner:", result["counts"], bell_run[1]["status"])
+                    elif mode == "frontier":
+                        print(f"Frontier30 CPU: {result['qubits']} qubits, "
+                              f"{result['peak_populated_states']} peak states, "
+                              f"{result['support_cap']} support cap.")
+                    else:
+                        print(f"Statevector CPU: {result['qubits']} qubits, "
+                              f"{result['shots']} shots, seed {result['seed']}.")
+                    if command != "/bell":
+                        print("Basis probabilities (up to eight):")
+                        for basis, probability in list(result["probabilities"].items())[:8]:
+                            print(f"  {basis}  {probability:.8g}")
+                        print("Use /save FILE.json to export the complete result.")
+            except (OSError, ValueError, RuntimeError, subprocess.TimeoutExpired) as exc:
+                print(f"{command}: {exc}")
             continue
         if not question or len(question) > 2000:
             continue
@@ -150,7 +155,8 @@ def main(load_model=None, system=SYSTEM):
             and re.search(r"\b(probabilit\w*|distinguish|apart)\b", normalized)
         )
         if question == "/bell-phase" or phase_question:
-            print("SharkByte runner:", bell_phase_comparison(), flush=True)
+            receipt = run_experiment(canonical(PHASE_SOURCES).decode("ascii"), "bell-phase")
+            print("SharkByte runner:", bell_phase_comparison(receipt["result"]), flush=True)
             continue
         if re.fullmatch(r"/[\w-]+", question):
             print("Unknown command. Type /help for available commands.")
@@ -163,13 +169,12 @@ def main(load_model=None, system=SYSTEM):
         messages = [{"role": "system", "content": system}, *history, user_message]
         truncated = False
         if args.geniex_model:
-            request = Request("http://127.0.0.1:18181/v1/chat/completions",
-                              json.dumps({"model": args.geniex_model, "messages": messages,
-                                          "max_tokens": 384, "stream": False}).encode(),
-                              {"Content-Type": "application/json"})
+            payload = json.dumps({"model": args.geniex_model, "messages": messages,
+                                  "max_tokens": 384, "stream": False}).encode()
             try:
-                with build_opener(ProxyHandler({})).open(request, timeout=90) as response:
-                    reply = json.load(response)
+                with open_local("http://127.0.0.1:18181/v1/chat/completions",
+                                data=payload, timeout=90) as response:
+                    reply = json.loads(response.read(1_048_577))
                 choice = reply["choices"][0]
                 answer = choice["message"]["content"].strip()
                 truncated = choice.get("finish_reason") == "length"

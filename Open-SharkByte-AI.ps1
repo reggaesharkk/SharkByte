@@ -25,7 +25,7 @@ if ($geniex) {
         $cache = (Resolve-Path -LiteralPath $cache -ErrorAction Stop).Path
         $serverArgs += @('--data-dir', ('"{0}"' -f $cache))
     }
-    $serverArgs += @('serve', '--host', '127.0.0.1:18181', '--compute', 'npu', '--think=false')
+    $serverArgs += @('serve', '--host', '127.0.0.1:18181', '--origins', 'http://127.0.0.1:18181', '--compute', 'npu', '--think=false')
     $server = $null
     try {
         $models = Invoke-RestMethod "$address/v1/models" -TimeoutSec 2 -ErrorAction SilentlyContinue
@@ -41,6 +41,10 @@ if ($geniex) {
                     Start-Sleep -Milliseconds 250
                 }
             }
+        }
+        $originCheck = Invoke-WebRequest "$address/v1/models" -UseBasicParsing -TimeoutSec 3
+        if ([string]$originCheck.Headers['Access-Control-Allow-Origin'] -ne $address) {
+            throw 'The GenieX listener does not have the expected browser origin restriction. Close that server and relaunch SharkByte.'
         }
         $servedModel = $models.data.id | Where-Object { $_ -eq $model -or $_ -eq "${model}:W4A16" } | Select-Object -First 1
         if (-not $servedModel) { throw "The GenieX server did not list $model. Cache ${model}:W4A16 with geniex pull using the same data directory." }
