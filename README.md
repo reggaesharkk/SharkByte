@@ -2,6 +2,8 @@
 
 A separately curated, source-only public snapshot of a bounded experimental language toolchain. It includes an installable Python CLI, SharkVM, classical statevector simulator, bounded hybrid orchestration, examples, tests, and a scoped independent Qiskit reference fixture set.
 
+**Start with `main` for current SharkByte source and benchmarks.** Its first-party source uses the standard [MIT License](LICENSE), SPDX identifier `MIT`. See [License and branch history](LICENSE_STATUS.md) for the archived Apache candidate.
+
 ## Supported functionality
 - Classical SharkVM execution with a 50,000,000-instruction limit.
 - Classical CPU statevector simulation for the documented quantum subset.
