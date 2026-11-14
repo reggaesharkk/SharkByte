@@ -10,4 +10,4 @@ Claims are limited to the documented CLI, VM, classical statevector simulator, b
 - SharkVM is not a security sandbox.
 - The working grammar is not normative or complete.
 - This is not a general-purpose production compiler.
-- No license has been selected; public visibility grants no license.
+- The current public source tree is licensed under the standard MIT License (SPDX identifier `MIT`); see [LICENSE](LICENSE) and [License and branch history](LICENSE_STATUS.md). This applies to first-party material in this tree. Archived revisions keep the license file distributed with that revision, and external tools retain their own terms.
