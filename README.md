@@ -9,9 +9,14 @@ A separately curated, source-only public snapshot of a bounded experimental lang
 - OpenQASM 3 output for the documented subset.
 - SHA-256 receipt integrity checking; hashes do not authenticate a record.
 
-Native interpreter and Direct AArch64 backends are disabled and refuse before launching native code. Quantum circuits run in a classical simulator; no physical quantum hardware is used. SharkVM is not a security sandbox.
+The installed CLI supports SharkVM and refuses native execution. Quantum circuits run in a classical simulator. SharkVM is not a security sandbox.
 
-For trusted local programs on Linux ARM64, the checkout includes a [standalone three-backend benchmark](benchmarks/backend_agreement/README.md) that runs SharkVM, Direct AArch64, and the native interpreter and checks each backend's execution budget.
+## Reproduce the public benchmarks
+
+- [Backend agreement](benchmarks/backend_agreement/README.md) runs SharkVM, Direct AArch64, and the native interpreter from a source checkout on Linux ARM64 with Python, Clang, and LLD. On the [verified source revision](https://github.com/reggaesharkk/SharkByte/commit/0beed08fc99235d8de1f594448dfa7fc80a46c08), nine programs passed on each backend (27/27), and all three produced the expected diagnostic for their configured 50,000,000-instruction or tick budget. Use trusted local programs. Host isolation remains unverified.
+- [Frontier30](benchmarks/sb_quantum_benchmark/) runs bounded sparse simulations of `.sb` circuits on a classical CPU, including 30-qubit cases. The [same CI run](https://github.com/reggaesharkk/SharkByte/actions/runs/43512576013) passed the Windows and Ubuntu jobs and published the benchmark receipts.
+
+The [Reggae Shark Universe](https://github.com/reggaesharkk/Reggae-shark-universe-) indexes SharkByte alongside the other public projects.
 
 The included Qiskit fixture subset covers 22 circuits / 320 probabilities and uses separately accepted Qiskit 2.6.2 reference results with 0.2.2a1 quantum provenance. Only specified modules match this candidate; no whole-package identity is claimed. See QISKIT_PROVENANCE.md.
 
@@ -45,6 +50,6 @@ sharkbyte verify-run result.json
 
 Run python tools/ci_acceptance.py for isolated install and regressions. python tools/replay_qiskit_vectors.py compares archived reference values; it does not invoke Qiskit.
 
-See PUBLIC_STAGE_ACCEPTANCE.md for exact-tree test scope. Local acceptance passed on Windows ARM64; GitHub Actions and fresh Linux/aarch64 acceptance of this precise public tree were pending at report time.
+See [PUBLIC_STAGE_ACCEPTANCE.md](PUBLIC_STAGE_ACCEPTANCE.md) for the original public snapshot's Windows ARM64 acceptance record.
 
 The frozen archive and wheel are excluded because their immutable nested evidence contains personal-data disclosures; this tree is not byte-identical to them. This project is licensed under the MIT License; see LICENSE for details. Public visibility is not a license grant beyond the terms of LICENSE. Gate 1/native containment remains separately unresolved.
