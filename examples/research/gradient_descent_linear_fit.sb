@@ -1,0 +1,49 @@
+// Train one scalar weight in SharkByte using fixed-point gradient descent.
+// Fit y = w*x to the tiny synthetic data set (1,2), (2,4), (3,6).
+// Weight units are thousandths; learning rate is parts per million.
+// This is an interpretable arithmetic example, not B3 or LLM training.
+
+let scale = 1000000;
+let learning_rate_ppm = 50000;
+let x1 = 1;
+let x2 = 2;
+let x3 = 3;
+let y1_milli = 2000;
+let y2_milli = 4000;
+let y3_milli = 6000;
+let weight_milli = 0;
+
+let error1_milli = weight_milli * x1 - y1_milli;
+let error2_milli = weight_milli * x2 - y2_milli;
+let error3_milli = weight_milli * x3 - y3_milli;
+let loss_before = error1_milli * error1_milli
+    + error2_milli * error2_milli
+    + error3_milli * error3_milli;
+
+let epoch = 0;
+while (epoch < 12) {
+    error1_milli = weight_milli * x1 - y1_milli;
+    error2_milli = weight_milli * x2 - y2_milli;
+    error3_milli = weight_milli * x3 - y3_milli;
+
+    // Gradient of one-half the summed squared error.
+    let gradient_sum = x1 * error1_milli
+        + x2 * error2_milli
+        + x3 * error3_milli;
+    let update_milli = learning_rate_ppm * gradient_sum / scale;
+    weight_milli = weight_milli - update_milli;
+    epoch = epoch + 1;
+}
+
+error1_milli = weight_milli * x1 - y1_milli;
+error2_milli = weight_milli * x2 - y2_milli;
+error3_milli = weight_milli * x3 - y3_milli;
+let loss_after = error1_milli * error1_milli
+    + error2_milli * error2_milli
+    + error3_milli * error3_milli;
+
+// Outputs: learned weight (thousandths), epochs, initial and final SSE.
+print weight_milli;
+print epoch;
+print loss_before;
+print loss_after;

@@ -1,0 +1,32 @@
+// Synthetic arithmetic demonstration of the H2 reset rule described in the
+// STRENGTH B3 notes. These are illustrative vectors, not measured gradients.
+// For nonzero vectors, a negative dot product has the same sign as negative
+// cosine. This demonstrates a branch/reset policy, not interceptor efficacy.
+
+let fast_x = 3;
+let fast_y = 4;
+let slow_x = -3;
+let slow_y = -4;
+let gradient_dot = fast_x * slow_x + fast_y * slow_y;
+
+let hidden_x = 7;
+let hidden_y = -4;
+let hidden_energy_before = hidden_x * hidden_x + hidden_y * hidden_y;
+let reset_triggered = 0;
+
+if (gradient_dot < 0) {
+    hidden_x = 0;
+    hidden_y = 0;
+    reset_triggered = 1;
+}
+
+let hidden_energy_after = hidden_x * hidden_x + hidden_y * hidden_y;
+
+// Outputs: gradient dot product, reset flag, final hidden components,
+// and hidden-state squared energy before and after the policy.
+print gradient_dot;
+print reset_triggered;
+print hidden_x;
+print hidden_y;
+print hidden_energy_before;
+print hidden_energy_after;

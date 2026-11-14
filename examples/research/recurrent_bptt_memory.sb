@@ -1,0 +1,50 @@
+// A tiny, original recurrent-learning example in SharkByte.
+// It trains one scalar retention weight over three steps with the analytic
+// backpropagation-through-time gradient of h3 = w^3. Forward steps and updates
+// use fixed-point arithmetic at a 1,000,000 scale.
+// Synthetic teaching calculation only; it is not STRENGTH B3 or an LLM.
+
+let scale = 1000000;
+let learning_rate = 100000;
+let target = 1000000;
+let weight = 400000;
+
+let h1 = weight;
+let h2 = weight * h1 / scale;
+let h3 = weight * h2 / scale;
+let prediction_before = h3;
+let error_before = h3 - target;
+let error = 0;
+let dh3_dw = 0;
+let gradient = 0;
+let update = 0;
+let step = 0;
+
+// For h3 = weight^3 and L = 1/2 * (h3 - target)^2,
+// dL/dweight = (h3 - target) * 3 * weight^2.
+while (step < 30) {
+    h1 = weight;
+    h2 = weight * h1 / scale;
+    h3 = weight * h2 / scale;
+
+    error = h3 - target;
+    dh3_dw = 3 * weight * weight / scale;
+    gradient = error * dh3_dw / scale;
+    update = learning_rate * gradient / scale;
+    weight = weight - update;
+    step = step + 1;
+}
+
+h1 = weight;
+h2 = weight * h1 / scale;
+h3 = weight * h2 / scale;
+let error_after = h3 - target;
+
+// Outputs: initial prediction/error, learned weight, final prediction/error,
+// number of updates. Positive error means prediction is above the target.
+print prediction_before;
+print error_before;
+print weight;
+print h3;
+print error_after;
+print step;

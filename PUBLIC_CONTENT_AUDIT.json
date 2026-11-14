@@ -1,6 +1,6 @@
 {
   "archive_files_scanned": [],
-  "files_scanned": 145,
+  "files_scanned": 151,
   "findings": [],
   "patterns": [
     "absolute_windows_path",
@@ -15,6 +15,6 @@
     "unc_path"
   ],
   "schema": 2,
-  "scope": "screening of the exact staged public source set and any nested archives; excluded: Git metadata, ignored local run folders, this report, final manifest, and untracked local receipts and scratch outputs; the report and manifest are independently screened after writing",
+  "scope": "screening of the explicit public source allowlist and any nested archives; excluded: Git metadata, this report, final manifest, and local run receipts and scratch outputs; the report and manifest are independently screened after writing",
   "status": "PASS_SCREENING_NO_MATCHES"
 }

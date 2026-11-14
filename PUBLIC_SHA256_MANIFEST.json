@@ -1,5 +1,5 @@
 {
-  "file_count": 146,
+  "file_count": 152,
   "files": [
     {
       "path": ".gitattributes",
@@ -88,8 +88,8 @@
     },
     {
       "path": "PUBLIC_CONTENT_AUDIT.json",
-      "sha256": "61f0689f571062e8cf106552d19ca7899bced8b0b9a3ee7b3bce938a5ef8cc27",
-      "size_bytes": 667
+      "sha256": "15e8c810f9420598523e9d1c2f59b4640e30b9ee18b6a8572dc5ceeb5458daf6",
+      "size_bytes": 656
     },
     {
       "path": "PUBLIC_DISTRIBUTION_AUDIT.md",
@@ -143,13 +143,13 @@
     },
     {
       "path": "benchmarks/backend_agreement/budget_loop.sb",
-      "sha256": "11592dd5e384fec9e1e6b8d802f4bda202d92c24fbc9f550190608d2c8a4bcca",
-      "size_bytes": 36
+      "sha256": "a911288c7d94b29b071d504e68c82d76824320d8ec5c78d1423538b521ff4e30",
+      "size_bytes": 37
     },
     {
       "path": "benchmarks/backend_agreement/check_all_budgets.py",
-      "sha256": "7c383e3429d6dd98ff214d8a40254750dab1a1a739a621e7e37014e4797a78f9",
-      "size_bytes": 1139
+      "sha256": "0bfb5b229dea5827b8440f4d3e63b5dff08ec36e4c73c40af99c55d3812f7e3e",
+      "size_bytes": 1140
     },
     {
       "path": "benchmarks/backend_agreement/check_backend_agreement.py",
@@ -273,13 +273,13 @@
     },
     {
       "path": "docs/CALCULATION_CAPABILITIES.md",
-      "sha256": "d41ccfeb0944bc30c0972753ccdbd6e9e2db2608e4d2bf5a140911985099792e",
-      "size_bytes": 4770
+      "sha256": "9604c274a6c10a0712a67bc68a5b611b0e82e3153eb8df12717be4315ec74239",
+      "size_bytes": 5183
     },
     {
       "path": "docs/RESEARCH_GAP_CALCULATIONS.md",
-      "sha256": "8ea1ba818a293820afd3825fc3db1f0f50396172c3a94457514b3b53ac9843c1",
-      "size_bytes": 7264
+      "sha256": "9643e35745ac583e2812579f9115b8ebf8fb58285fca05e668ee7f4659c3df27",
+      "size_bytes": 13101
     },
     {
       "path": "evidence/qiskit_0.2.2a1/INDEPENDENT_EVIDENCE_REVIEW.json",
@@ -553,8 +553,23 @@
     },
     {
       "path": "examples/research/README.md",
-      "sha256": "5af019145ad5edaf7ac403ff116c62d2c8516d40b1fc6c9113a80141858a45b5",
-      "size_bytes": 906
+      "sha256": "a9758e9cb3974b1021b57290018f2e69be97b6d62bf3c526843d6727f56acd1d",
+      "size_bytes": 2739
+    },
+    {
+      "path": "examples/research/bounded_existence_floors.sb",
+      "sha256": "393bfa1c5732d3028f6c8b4a94bad3537eea8da513634ddce74f223ed8b2ed85",
+      "size_bytes": 1648
+    },
+    {
+      "path": "examples/research/bounded_existence_thresholds.sb",
+      "sha256": "04cfefd1dbbc0c2c551fe7b7e553bd60ffbcf14c88b195e267d7d892a9ab57e0",
+      "size_bytes": 1737
+    },
+    {
+      "path": "examples/research/gradient_descent_linear_fit.sb",
+      "sha256": "8e683dd3142649fa80b47e5ea21ce54c5d8da821a6eca88c7cfe0527fe185648",
+      "size_bytes": 1590
     },
     {
       "path": "examples/research/navier_m15_gap.sb",
@@ -567,6 +582,11 @@
       "size_bytes": 2282
     },
     {
+      "path": "examples/research/recurrent_bptt_memory.sb",
+      "sha256": "4b27661a49b298859fe13e76b3ebe12f467537f61b18d7caca3809d285598084",
+      "size_bytes": 1406
+    },
+    {
       "path": "examples/research/riemann_wp84_count.sb",
       "sha256": "6a573eacdd33c2e9eac45f4a922a17883805e156a09b9c69f2ba5695fa89db7a",
       "size_bytes": 1373
@@ -575,6 +595,16 @@
       "path": "examples/research/strength_b3_threshold.sb",
       "sha256": "3706edf33c567aa4c4d7542e58e7acb04e80ea655974a86037a0a594fbe95806",
       "size_bytes": 1310
+    },
+    {
+      "path": "examples/research/strength_h2_reset_gate.sb",
+      "sha256": "fd277de1a828b4b47a78faeddaf8db0817266ddcae7aee0f4aa029936ca571e8",
+      "size_bytes": 987
+    },
+    {
+      "path": "examples/research/strength_h4_split_audit.sb",
+      "sha256": "8f3794282381a8e17dcf748eb7121357a67292ceaee5e6f6cb09021504336d84",
+      "size_bytes": 1857
     },
     {
       "path": "pyproject.toml",
@@ -678,8 +708,8 @@
     },
     {
       "path": "sharkbyte_terminal.py",
-      "sha256": "45f57f9a6035517ea2aa8da7099c665ac29ac29f7f174281ded25aabcfc9230f",
-      "size_bytes": 12158
+      "sha256": "61e68138e565a96772d06c226a73c4d452d7e4513d3c5fb39eed249d44df760f",
+      "size_bytes": 12390
     },
     {
       "path": "tests/fixtures/.gitattributes",

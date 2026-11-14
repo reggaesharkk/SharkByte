@@ -13,6 +13,8 @@ SharkByte can run classical integer programs and bounded quantum circuits writte
 
 These are implementation bounds, not a claim that every program at the limit is fast or useful. A run can also be refused for invalid syntax, unsupported gates, or a resource cap.
 
+The [research examples](RESEARCH_GAP_CALCULATIONS.md) also include fixed-point gradient descent on a one-weight toy model, a synthetic recurrent BPTT update, exact threshold and asymptotic-floor arithmetic from the bounded-existence paper, an H2 reset-rule arithmetic demonstration, and an H4 80/20 split-integrity check. They run in SharkVM; none is a trained B3 interceptor or a security/effectiveness result.
+
 ## Try a real classical calculation
 
 From the repository root, run:

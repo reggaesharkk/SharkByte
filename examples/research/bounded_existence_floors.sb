@@ -1,0 +1,47 @@
+// Recalculate the model's stated asymptotic lower-floor formulas for one
+// published illustrative parameter tuple, using exact rational arithmetic.
+// This does not integrate the ODE or independently prove the comparison bounds.
+
+// a=b=c=f=g=E_avail=1, gamma_max=10, H_max=100,
+// I_erase=10, epsilon_I=1/20, e=18/5, and P0=1/10.
+let a_e = 1;
+let b = 1;
+let f = 1;
+let gamma_max = 10;
+let gamma_p = 1;
+let h_max = 100;
+let i_erase = 10;
+let epsilon_i_den = 20;
+let e_num = 18;
+let e_den = 5;
+let p0_num = 1;
+let p0_den = 10;
+
+// M_H = c * gamma_max * H_max + I_erase.
+let max_entropy_rate = gamma_p * gamma_max * h_max + i_erase;
+
+// I_floor = f * P0 / (g + e * M_H / epsilon_I).
+// Keep the result as an exact numerator/denominator pair.
+let processing_damping = b
+    + e_num * max_entropy_rate * epsilon_i_den / e_den;
+let i_floor_num = f * p0_num;
+let i_floor_den = p0_den * processing_damping;
+let i_floor_match = i_floor_num * 727210 == i_floor_den;
+
+// gamma_floor = a*E_avail*I_floor*gamma_max /
+//              (b/gamma_max + a*E_avail*I_floor).
+// Clearing rational denominators gives this exact numerator/denominator pair.
+let gamma_floor_num = a_e * gamma_max * gamma_max * i_floor_num;
+let gamma_floor_den = b * i_floor_den + a_e * gamma_max * i_floor_num;
+let gamma_floor_match = gamma_floor_num * 36361 == gamma_floor_den * 5;
+
+// Outputs: M_H, processing damping, exact I_floor fraction and match flag,
+// exact gamma_floor fraction and match flag.
+print max_entropy_rate;
+print processing_damping;
+print i_floor_num;
+print i_floor_den;
+print i_floor_match;
+print gamma_floor_num;
+print gamma_floor_den;
+print gamma_floor_match;

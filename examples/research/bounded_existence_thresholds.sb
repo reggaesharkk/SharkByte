@@ -1,0 +1,48 @@
+// Recalculate finite rational claims from Appendix B v1.0 of the
+// bounded-existence paper. No ODE integration or proof is performed here.
+
+// The paper's strict small-epsilon domain is P0 > 10/99.
+// Check equality and two neighboring illustrative rational inputs by
+// cross-multiplication, avoiding rounded decimal comparisons.
+let p_equal_num = 10;
+let p_equal_den = 99;
+let equal_is_above = p_equal_num * 99 > 10 * p_equal_den;
+let p_below_num = 10;
+let p_below_den = 100;
+let below_is_above = p_below_num * 99 > 10 * p_below_den;
+let p_above_num = 11;
+let p_above_den = 100;
+let above_is_above = p_above_num * 99 > 10 * p_above_den;
+
+// Exact integer numerator and denominator of the paper's e_c(P0) rational
+// function at P0 = 1, 4, and 5. Cross-products compare them with the paper's
+// published reduced fractions without using floating-point arithmetic.
+let p1_num = 1 * (1 + 20) * (11 * 1 + 10)
+    * (1 * 1 + 120 * 1 + 100);
+let p1_den = 100 * (1 + 10) * (1 * 1 + 130 * 1 + 200);
+let p1_match = p1_num * 364100 == p1_den * 97461;
+
+let p4_num = 4 * (4 + 20) * (11 * 4 + 10)
+    * (4 * 4 + 120 * 4 + 100);
+let p4_den = 100 * (4 + 10) * (4 * 4 + 130 * 4 + 200);
+let p4_match = p4_num * 4025 == p4_den * 12069;
+
+let p5_num = 5 * (5 + 20) * (11 * 5 + 10)
+    * (5 * 5 + 120 * 5 + 100);
+let p5_den = 100 * (5 + 10) * (5 * 5 + 130 * 5 + 200);
+let p5_match = p5_num * 84 == p5_den * 377;
+
+// Outputs: equality/below/above strict-domain flags, then each exact
+// numerator, denominator, and fraction-match flag for P0 = 1, 4, and 5.
+print equal_is_above;
+print below_is_above;
+print above_is_above;
+print p1_num;
+print p1_den;
+print p1_match;
+print p4_num;
+print p4_den;
+print p4_match;
+print p5_num;
+print p5_den;
+print p5_match;
