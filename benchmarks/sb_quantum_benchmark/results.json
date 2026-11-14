@@ -5,10 +5,11 @@
       "source_sha256": "38e3e5d9b68e61d839ddbe1fae7c331a6834c358a8ed37c84ee017f171d3822a",
       "qubits": 16,
       "gates": 33,
-      "seconds_with_tracing": 0.0029577999957837164,
-      "peak_python_bytes": 12475,
+      "seconds_with_tracing": 0.0031453000265173614,
+      "peak_python_bytes": 75059,
       "result": "PASS",
       "peak_populated_states": 2,
+      "peak_gate_index": 0,
       "max_amplitude_error": 1.2412670766236366e-16
     },
     {
@@ -16,10 +17,11 @@
       "source_sha256": "fa9f5aa44cf25ab39602acbc2aafe84d81ce51fce0c9a5aa3d8e7f56d2d27885",
       "qubits": 30,
       "gates": 61,
-      "seconds_with_tracing": 0.003367099998285994,
-      "peak_python_bytes": 13475,
+      "seconds_with_tracing": 0.0033475999953225255,
+      "peak_python_bytes": 75051,
       "result": "PASS",
       "peak_populated_states": 2,
+      "peak_gate_index": 0,
       "max_amplitude_error": 1.2412670766236366e-16
     },
     {
@@ -27,10 +29,11 @@
       "source_sha256": "7242b1b70e6a40040bb206ddb880beb55dba4da3d14e5164a0f27ee195e7270c",
       "qubits": 30,
       "gates": 12,
-      "seconds_with_tracing": 0.04261590001988225,
-      "peak_python_bytes": 740059,
+      "seconds_with_tracing": 0.04735299997264519,
+      "peak_python_bytes": 740179,
       "result": "PASS",
       "peak_populated_states": 4096,
+      "peak_gate_index": 11,
       "max_amplitude_error": 1.5612511283791264e-17
     },
     {
@@ -38,8 +41,8 @@
       "source_sha256": "d190e751d1959de470d8148b5ee8b4ce91f36df568283d31fac12e8f084b8d49",
       "qubits": 30,
       "gates": 13,
-      "seconds_with_tracing": 0.04891349998069927,
-      "peak_python_bytes": 789475,
+      "seconds_with_tracing": 0.05395659996429458,
+      "peak_python_bytes": 789565,
       "result": "REFUSED",
       "requested_support": 8192,
       "support_cap": 4096
@@ -49,17 +52,19 @@
       "source_sha256": "0d41b5ec81f8247cb8fd81b721c80c8f2ad4cb86793228b678df4aa93a89b65f",
       "qubits": 30,
       "gates": 34,
-      "seconds_with_tracing": 0.0020339000038802624,
-      "peak_python_bytes": 10675,
+      "seconds_with_tracing": 0.002603100030682981,
+      "peak_python_bytes": 75035,
       "result": "PASS",
       "peak_populated_states": 32,
+      "peak_gate_index": 24,
       "max_amplitude_error": 1.3739009929736312e-15
     }
   ],
   "module_sha256": {
     "quantum_frontend.py": "7d4a61de46bc8205ecc67477505bf70eac0b2513cd9992ae9cc76b7eef646fc3",
-    "sparse_backend.py": "6b0449f4a5b51e63768cfda16d7ac5aee028d63705931d06eeba4a6b96aa5ba7",
-    "sb_end_to_end_bench.py": "da1848246ec07e6ff451d8371b6dd7d1e00c96ce2548a508441ff30b0c37206a"
+    "sparse_backend.py": "c9dc8faf4598cb89e3601a6600092196e893fb3cad1a28987fd28e2f1b4ebd10",
+    "sb_end_to_end_bench.py": "3ef166ed6a10040158610926276a01f1416a37e46010ed08d582cf2a881655af",
+    "frontier30.py": "18fe6b27eddd3b4a863cef8ae841fde39a6be1509b39034cdf753ed2e86b37f6"
   },
-  "record_sha256": "bd726d0a8e9c791527a5ea54584e31abaf171824f4fc4e20189a31cb17ddbfd2"
+  "record_sha256": "2b47007062f11544e0cd887c682d24c55aaf5e4c5435de65cb3d73d6e175c3c2"
 }

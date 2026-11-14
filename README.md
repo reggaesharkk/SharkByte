@@ -6,7 +6,7 @@ A separately curated, source-only public snapshot of a bounded experimental lang
 
 **Cite SharkByte standalone alpha 0.2.1a2** using the Zenodo version DOI. The archive preserves source commit `f5c537a76fe2f1cab12288fa29f6820cf453eb40`. [DOI 10.5281/zenodo.24213559](https://doi.org/10.5281/zenodo.24213559)
 
-**Choose a starting point.** [Terminal and optional NPU chat](#terminal-quickstart) · [Desktop chat](#sharkbyte-chat) · [Benchmarks](#reproduce-the-public-benchmarks) · [Install the CLI](#install)
+**Choose a starting point.** [Terminal and optional local chat](#terminal-quickstart) · [Desktop chat](#sharkbyte-chat) · [Benchmarks](#reproduce-the-public-benchmarks) · [Install the CLI](#install) · [System map and evidence boundaries](ECOSYSTEM_MAP.md)
 
 ## Terminal quickstart
 
@@ -41,7 +41,7 @@ The first command downloads the model. Subsequent launches use the local cache. 
 
 The launcher binds GenieX to `127.0.0.1` and restricts browser access to its own origin. If a server already occupies the port with a different browser origin policy, close that server and relaunch. Both chat clients use loopback addresses and reject redirects and proxies.
 
-Ordinary text goes to the Qualcomm Qwen3 model through GenieX on the NPU. The circuit commands run on the CPU and label their output as simulator results. The launcher loads Qualcomm's precompiled weights. `/doctor` reports the configured backend, while a chat prompt exercises model inference. For independent amplitude checks of the QFT example, run the [Frontier30 benchmark suite](benchmarks/sb_quantum_benchmark/).
+With the local GenieX service running, ordinary text is sent to the configured Qualcomm Qwen3 model. The launcher requests NPU execution; a configured backend or `/doctor` line alone does not prove that a particular reply ran on the NPU. Check GenieX's live device/runtime status for that. The bundled circuit commands run on the CPU and label their output as simulator results. The launcher uses Qualcomm's precompiled weights; this repository does not contain custom-trained model weights. For independent amplitude checks of the QFT example, run the [Frontier30 benchmark suite](benchmarks/sb_quantum_benchmark/).
 
 ## Supported functionality
 - Classical SharkVM execution with a 50,000,000-instruction limit.
@@ -63,7 +63,7 @@ The installed CLI supports SharkVM and refuses native execution. Quantum circuit
 ## Reproduce the public benchmarks
 
 - [Backend agreement](benchmarks/backend_agreement/README.md) runs SharkVM, Direct AArch64, and the native interpreter from a source checkout on Linux ARM64 with Python, Clang, and LLD. On the [verified source revision](https://github.com/reggaesharkk/SharkByte/commit/0beed08fc99235d8de1f594448dfa7fc80a46c08), nine programs passed on each backend (27/27), and all three produced the expected diagnostic for their configured 50,000,000-instruction or tick budget. Use trusted local programs. Host isolation remains unverified.
-- I built Frontier30 to run custom SharkByte `.sb` circuits with a sparse simulator on a classical CPU. My 30-qubit checks on Ubuntu WSL reached 8,192 and 16,384 populated basis states. With the cap set to 16,384, the simulator refused a gate that would grow the state to 32,768 entries. [Run Frontier30 locally](benchmarks/sb_quantum_benchmark/) · [Windows and Ubuntu CI](https://github.com/reggaesharkk/SharkByte/actions/runs/43565847208)
+- I built Frontier30 to run custom SharkByte `.sb` circuits with a sparse simulator on a classical CPU. The checked-in benchmark uses a 4,096-state cap, compares bundled circuits with analytical amplitudes, and confirms that `branch13.sb` is refused when it would grow support to 8,192. You can run separate experiments with larger caps, but those results are distinct from the checked-in receipt. [Run Frontier30 locally](benchmarks/sb_quantum_benchmark/) · [Windows and Ubuntu CI](https://github.com/reggaesharkk/SharkByte/actions/runs/43565847208)
 
 The [Reggae Shark Universe](https://github.com/reggaesharkk/Reggae-shark-universe-) indexes SharkByte alongside the other public projects.
 

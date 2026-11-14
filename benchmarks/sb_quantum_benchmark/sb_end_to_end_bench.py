@@ -1,3 +1,4 @@
+import argparse
 import cmath
 import hashlib
 import json
@@ -41,7 +42,17 @@ def run(path, expected):
                 peak_gate_index=stats.peak_gate_index, max_amplitude_error=error)
 
 
-if __name__ == "__main__":
+def main(argv=None):
+    parser = argparse.ArgumentParser(
+        description="Check the bundled Frontier30 circuits against analytical amplitudes."
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        help="also write the complete JSON receipt to this path",
+    )
+    args = parser.parse_args(argv)
+
     phase = cmath.exp(1j * 1.0471975511965976)
     echo = {0: (1 + phase) / 2, 1: (1 - phase) / 2}
     rows = [run(ROOT / f"echo{n}.sb", echo) for n in (16, 30)]
@@ -59,4 +70,14 @@ if __name__ == "__main__":
         for name in ("quantum_frontend.py", "sparse_backend.py", "sb_end_to_end_bench.py", "frontier30.py")
     })
     report["record_sha256"] = hashlib.sha256(json.dumps(report, sort_keys=True).encode()).hexdigest()
-    print(json.dumps(report, indent=2))
+    payload = json.dumps(report, indent=2) + "\n"
+    if args.output:
+        output = args.output.resolve()
+        if not output.parent.is_dir():
+            parser.error(f"output directory does not exist: {output.parent}")
+        output.write_text(payload, encoding="utf-8", newline="\n")
+    print(payload, end="")
+
+
+if __name__ == "__main__":
+    main()
