@@ -33,6 +33,17 @@ class CircuitError(ValueError):
 class ResourceLimitError(RuntimeError):
     """Exact execution was refused before exceeding configured limits."""
 
+    def __init__(self, message, *, gate_index=None, requested_support=None):
+        super().__init__(message)
+        self.gate_index = gate_index
+        self.requested_support = requested_support
+
+
+@dataclass
+class EvolutionStats:
+    peak_support: int = 1
+    peak_gate_index: int | None = None
+
 
 @dataclass(frozen=True)
 class Circuit:
@@ -86,14 +97,19 @@ def _check_qubit(q: int, n: int, index: int) -> None:
         raise CircuitError(f"gate {index} qubit index {q} outside [0,{n})")
 
 
-def _check_deadline(deadline: float) -> None:
+def _check_deadline(deadline: float, gate_index=None) -> None:
     if time.monotonic() >= deadline:
-        raise ResourceLimitError("wall-clock limit exceeded; no approximate result returned")
+        raise ResourceLimitError("wall-clock limit exceeded; no approximate result returned",
+                                 gate_index=gate_index)
 
 
 def evolve(circuit: Circuit, *, support_cap: int = DEFAULT_SUPPORT_CAP,
            memory_budget_bytes: int = 64 * 1024 * 1024,
-           max_seconds: float = 30.0) -> dict[int, complex]:
+           max_seconds: float = 30.0,
+           stats: EvolutionStats | None = None) -> dict[int, complex]:
+    if stats is not None:
+        stats.peak_support = 1
+        stats.peak_gate_index = None
     validate(circuit, support_cap=support_cap, memory_budget_bytes=memory_budget_bytes)
     if isinstance(max_seconds, bool) or not isinstance(max_seconds, (int, float)):
         raise CircuitError("max_seconds must be finite and positive")
@@ -102,7 +118,7 @@ def evolve(circuit: Circuit, *, support_cap: int = DEFAULT_SUPPORT_CAP,
     deadline = time.monotonic() + float(max_seconds)
     state: dict[int, complex] = {0: 1.0 + 0.0j}
     for gate_no, gate in enumerate(circuit.gates):
-        _check_deadline(deadline)
+        _check_deadline(deadline, gate_no)
         op = gate[0].lower()
         if op == "h":
             bit = 1 << gate[1]
@@ -110,12 +126,13 @@ def evolve(circuit: Circuit, *, support_cap: int = DEFAULT_SUPPORT_CAP,
             projected_support = 2 * len(pair_bases)
             if projected_support > support_cap:
                 raise ResourceLimitError(
-                    f"H at gate {gate_no} may expand support to {projected_support}; cap is {support_cap}"
+                    f"H at gate {gate_no} may expand support to {projected_support}; cap is {support_cap}",
+                    gate_index=gate_no, requested_support=projected_support,
                 )
             nxt: dict[int, complex] = {}
             for k, base in enumerate(pair_bases):
                 if (k & 1023) == 0:
-                    _check_deadline(deadline)
+                    _check_deadline(deadline, gate_no)
                 low = state.get(base, 0.0j)
                 high = state.get(base | bit, 0.0j)
                 out_low = (low + high) * INV_SQRT2
@@ -148,8 +165,13 @@ def evolve(circuit: Circuit, *, support_cap: int = DEFAULT_SUPPORT_CAP,
             }
         if len(state) > support_cap:
             # Defensive postcondition; H has an exact pre-allocation bound.
-            raise ResourceLimitError("support cap exceeded; refusing non-exact result")
-    _check_deadline(deadline)
+            raise ResourceLimitError("support cap exceeded; refusing non-exact result",
+                                     gate_index=gate_no, requested_support=len(state))
+        _check_deadline(deadline, gate_no)
+        if stats is not None and len(state) > stats.peak_support:
+            stats.peak_support = len(state)
+            stats.peak_gate_index = gate_no
+    _check_deadline(deadline, len(circuit.gates) - 1 if circuit.gates else None)
     return state
 
 
