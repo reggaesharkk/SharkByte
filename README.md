@@ -18,7 +18,7 @@ The installed CLI supports SharkVM and refuses native execution. Quantum circuit
 ## Reproduce the public benchmarks
 
 - [Backend agreement](benchmarks/backend_agreement/README.md) runs SharkVM, Direct AArch64, and the native interpreter from a source checkout on Linux ARM64 with Python, Clang, and LLD. On the [verified source revision](https://github.com/reggaesharkk/SharkByte/commit/0beed08fc99235d8de1f594448dfa7fc80a46c08), nine programs passed on each backend (27/27), and all three produced the expected diagnostic for their configured 50,000,000-instruction or tick budget. Use trusted local programs. Host isolation remains unverified.
-- [Frontier30](benchmarks/sb_quantum_benchmark/) runs bounded sparse simulations of `.sb` circuits on a classical CPU, including 30-qubit cases. The [same CI run](https://github.com/reggaesharkk/SharkByte/actions/runs/43512576013) passed the Windows and Ubuntu jobs and published the benchmark receipts.
+- I built Frontier30 to run custom SharkByte `.sb` circuits with a sparse simulator on a classical CPU. My 30-qubit checks on Ubuntu WSL reached 8,192 and 16,384 populated basis states. With the cap set to 16,384, the simulator refused a gate that would grow the state to 32,768 entries. [Run Frontier30 locally](benchmarks/sb_quantum_benchmark/) · [Windows and Ubuntu CI](https://github.com/reggaesharkk/SharkByte/actions/runs/43565847208)
 
 The [Reggae Shark Universe](https://github.com/reggaesharkk/Reggae-shark-universe-) indexes SharkByte alongside the other public projects.
 
