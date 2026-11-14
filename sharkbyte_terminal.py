@@ -82,8 +82,8 @@ def sharkbyte_answer(question, bell_run):
     )
     if asks_protocol_isolation:
         answer.append(
-            "The Protocol's signer subprocess is a user-space process boundary, not a kernel "
-            "sandbox or ring-zero isolation. (Source: protocols/shark_protocol_v1_3_2/README.md.)"
+            "The Protocol's signer runs as a user-space subprocess; it is not a kernel sandbox "
+            "or ring-zero isolation. (Source: protocols/shark_protocol_v1_3_2/README.md.)"
         )
 
     if "rightmost" in text and ("bit" in text or "qubit" in text):
