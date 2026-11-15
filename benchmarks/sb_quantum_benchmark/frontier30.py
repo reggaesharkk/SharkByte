@@ -22,11 +22,17 @@ def load_circuit(path):
     if match is None:
         raise ValueError("Expected one named quantum block")
     parsed = parse(match[2], max_qubits=40, sparse=True)
-    gates = tuple(
-        (op, args[1], args[2], args[0]) if op == "cp" else (op, *args)
-        for op, args in parsed["gates"]
-    )
-    return Circuit(parsed["n"], gates, match[1]), hashlib.sha256(data).hexdigest()
+    gates = []
+    for op, args in parsed["gates"]:
+        if op == "cp":
+            angle, control, target = args
+            gates.append((op, control, target, angle))
+        elif op in ("rx", "ry", "rz"):
+            angle, target = args
+            gates.append((op, target, angle))
+        else:
+            gates.append((op, *args))
+    return Circuit(parsed["n"], tuple(gates), match[1]), hashlib.sha256(data).hexdigest()
 
 
 def main():

@@ -90,6 +90,21 @@ def parse(source):
                     if len(gates) > MAX_GATES:
                         raise ValueError("Gate limit exceeded")
 
+                elif op in ("rx", "ry", "rz"):
+                    if n is None or measured or len(args) != 2:
+                        raise ValueError(f"{op} requires an angle and qubit inside a circuit")
+                    if not re.fullmatch(r"[+-]?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)", args[0]):
+                        raise ValueError("Invalid rotation decimal angle")
+                    angle = float(args[0])
+                    if not math.isfinite(angle) or abs(angle) > 4 * math.pi:
+                        raise ValueError("Rotation angle outside [-4*pi, 4*pi]")
+                    target = int(args[1])
+                    if not 0 <= target < n:
+                        raise ValueError("Qubit index out of range")
+                    gates.append((op, (angle, target)))
+                    if len(gates) > MAX_GATES:
+                        raise ValueError("Gate limit exceeded")
+
                 elif op in ("h", "x", "z", "cx"):
                     if n is None or measured:
                         raise ValueError("Gate outside quantum circuit")
@@ -137,6 +152,22 @@ def simulate(circuit):
     state[0] = 1 + 0j
 
     for op, indices in circuit["gates"]:
+        if op in ("rx", "ry", "rz"):
+            angle, target = indices
+            mask = 1 << target
+            c, s = math.cos(angle / 2), math.sin(angle / 2)
+            for low in range(size):
+                if low & mask:
+                    continue
+                high = low | mask
+                a, b = state[low], state[high]
+                if op == "rx":
+                    state[low], state[high] = c*a - 1j*s*b, c*b - 1j*s*a
+                elif op == "ry":
+                    state[low], state[high] = c*a - s*b, s*a + c*b
+                else:
+                    state[low], state[high] = (c-1j*s)*a, (c+1j*s)*b
+            continue
         if op == "cp":
             angle, control, target = indices
             both = (1 << control) | (1 << target)
@@ -187,6 +218,20 @@ def independent_matrix_reference(circuit):
 
     for op, indices in circuit["gates"]:
         updated = [0j] * size
+        if op in ("rx", "ry", "rz"):
+            angle, target = indices
+            mask = 1 << target
+            phase = complex(math.cos(angle / 2), math.sin(angle / 2))
+            for i, amplitude in enumerate(state):
+                high = bool(i & mask)
+                if op == "rz":
+                    updated[i] += amplitude * (phase if high else phase.conjugate())
+                else:
+                    updated[i] += amplitude * phase.real
+                    flip = -1j * phase.imag if op == "rx" else (-phase.imag if high else phase.imag)
+                    updated[i ^ mask] += amplitude * flip
+            state = updated
+            continue
         if op == "cp":
             angle, control, target = indices
             both = (1 << control) | (1 << target)
@@ -294,6 +339,9 @@ def to_qasm(circuit):
         elif op == "cp":
             angle, control, target = indices
             lines.append(f"cp({angle:.17g}) q[{control}], q[{target}];")
+        elif op in ("rx", "ry", "rz"):
+            angle, target = indices
+            lines.append(f"{op}({angle:.17g}) q[{target}];")
         else:
             lines.append(f"{op} q[{indices[0]}];")
 

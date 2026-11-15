@@ -8,3 +8,5 @@ examples/adaptive.sb -text whitespace=cr-at-eol
 examples/inverse_basis_37.sbq -text whitespace=cr-at-eol
 examples/qft_basis_37.sbq -text whitespace=cr-at-eol
 tests/test_cli.py -text whitespace=cr-at-eol
+tests/fixtures/historical_qiskit_quantum.py.txt -text whitespace=cr-at-eol
+benchmarks/sb_quantum_benchmark/quantum_frontend.py whitespace=cr-at-eol

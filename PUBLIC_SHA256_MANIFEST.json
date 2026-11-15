@@ -1,10 +1,10 @@
 {
-  "file_count": 169,
+  "file_count": 172,
   "files": [
     {
       "path": ".gitattributes",
-      "sha256": "024c886ede55c7262715e09c19331379c36a860f72a7d7815ae06413b177bc71",
-      "size_bytes": 487
+      "sha256": "846a31bf11b3d9def46deeefd62e0e97146a37ec58ee1ab0a640dd7d0e548f6b",
+      "size_bytes": 636
     },
     {
       "path": ".github/workflows/ci.yml",
@@ -28,13 +28,13 @@
     },
     {
       "path": "CLAIM_BOUNDARIES.md",
-      "sha256": "a0ee1a4e0d588276c40cd740612ca299897ef68db4e7aa851ca7a1f502634cb7",
-      "size_bytes": 1276
+      "sha256": "50ff39bf036e54ca81dbc4d44a17dd12fe4f3d7f4dd3c378eca65f2b32f1be90",
+      "size_bytes": 1295
     },
     {
       "path": "COMPATIBILITY.md",
-      "sha256": "ffcbf15d508af8dd41c46bd180d715dffc3984b2c07566cfa6827fdb006ed3c8",
-      "size_bytes": 620
+      "sha256": "159599d93dbf044a3766b7528524964ba6ef563bb432328c6330ba6688867c42",
+      "size_bytes": 631
     },
     {
       "path": "ECOSYSTEM_MAP.md",
@@ -43,8 +43,8 @@
     },
     {
       "path": "GRAMMAR.md",
-      "sha256": "59f6b8c2fe5d99837fd9319679ee0fe695885f3bbe9cc46d62544913c2c5f524",
-      "size_bytes": 3233
+      "sha256": "f0094de469f971817666ff95abeb8418dd58c3b33eb28a3643702c779c0ad688",
+      "size_bytes": 3972
     },
     {
       "path": "INSTALL.md",
@@ -98,13 +98,13 @@
     },
     {
       "path": "QISKIT_PROVENANCE.md",
-      "sha256": "76308962d364c517f3fbe0ba92b3bcc30da851caca691f4e844b2c17f4f6d6b2",
-      "size_bytes": 1010
+      "sha256": "2edcd83b8a18b9fbe98eec936bae60bd5c9d658957b605ca9b103a9633baf17c",
+      "size_bytes": 1049
     },
     {
       "path": "README.md",
-      "sha256": "2c3b1f9308813bf46eec139b04cb5f4207be47f3bcce137b2285f92c126f50b3",
-      "size_bytes": 11708
+      "sha256": "5fb9ccbe39ee6d34681e1f495efb525bfd2e2aaa585418a56d0d5811a5de0b4c",
+      "size_bytes": 12048
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
@@ -113,8 +113,8 @@
     },
     {
       "path": "REPRODUCIBILITY.md",
-      "sha256": "53f485f99ef368e8321f291a84efbff586d6917a2e4c0032d32503eb14f3095a",
-      "size_bytes": 1397
+      "sha256": "d3cf58769c63cc8a0de510b5f6199b9d56cfc8b8aa2178fd4bb923321cf37885",
+      "size_bytes": 1405
     },
     {
       "path": "SECURITY.md",
@@ -123,8 +123,8 @@
     },
     {
       "path": "SPEC.md",
-      "sha256": "80516176a586fc75041bf53b6f36c9d15cd031c6b3a29b1cbce4026727a86fe9",
-      "size_bytes": 1335
+      "sha256": "84de903004081d800be40e78fd547bc3f23f0eb37c7eac843473bcafcd16471a",
+      "size_bytes": 1547
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
@@ -233,8 +233,8 @@
     },
     {
       "path": "benchmarks/sb_quantum_benchmark/frontier30.py",
-      "sha256": "18fe6b27eddd3b4a863cef8ae841fde39a6be1509b39034cdf753ed2e86b37f6",
-      "size_bytes": 2846
+      "sha256": "26d4d258ca87cc78e449879744478d714f162aa0cf5f474692d31cd18040cb52",
+      "size_bytes": 3059
     },
     {
       "path": "benchmarks/sb_quantum_benchmark/million-state-browser-receipt.json",
@@ -253,8 +253,8 @@
     },
     {
       "path": "benchmarks/sb_quantum_benchmark/quantum_frontend.py",
-      "sha256": "7d4a61de46bc8205ecc67477505bf70eac0b2513cd9992ae9cc76b7eef646fc3",
-      "size_bytes": 17742
+      "sha256": "1e373410a5494c5c257dd4916494d964d75758f1432997ebd704c07c07fcaf93",
+      "size_bytes": 20145
     },
     {
       "path": "benchmarks/sb_quantum_benchmark/results.json",
@@ -293,8 +293,8 @@
     },
     {
       "path": "benchmarks/sb_quantum_benchmark/sparse_backend.py",
-      "sha256": "c9dc8faf4598cb89e3601a6600092196e893fb3cad1a28987fd28e2f1b4ebd10",
-      "size_bytes": 13360
+      "sha256": "f655de6f68d392cc72af1d87430466d8c5ee7dff4861755bd2bbdea7756ec42b",
+      "size_bytes": 14743
     },
     {
       "path": "benchmarks/sb_quantum_benchmark/support_scaling.py",
@@ -562,6 +562,11 @@
       "size_bytes": 23186
     },
     {
+      "path": "evidence/rotation_gate_local.json",
+      "sha256": "f158082d4d59cd58a4e47c3b26655b24afbd0afadb6cea6362b4290217b6e364",
+      "size_bytes": 25469
+    },
+    {
       "path": "examples/adaptive.sb",
       "sha256": "cff05e46d806f3b2881af0d9002e3599e283cebc2c1ae7f966dfa0f44811ff17",
       "size_bytes": 409
@@ -743,13 +748,13 @@
     },
     {
       "path": "sharkbyte_alpha/hybrid.py",
-      "sha256": "4c36deb780fd5e7f7dfdfaea993403ca68276ca41c8a60e7f571a076ec9b90cc",
-      "size_bytes": 3460
+      "sha256": "f542154a059d5ab0c75d451e51137f5b7128fe8bea3a099a3b19f5705107a746",
+      "size_bytes": 5085
     },
     {
       "path": "sharkbyte_alpha/quantum.py",
-      "sha256": "ed020bd7b1c18167c2d91179b2295935d5210e665a9487759f6c793b88903eb1",
-      "size_bytes": 14054
+      "sha256": "9c6f2f068d76aacfd1a0b718a4b00dd6a1169133ca1013e5d69dc398532901a9",
+      "size_bytes": 16457
     },
     {
       "path": "sharkbyte_alpha/vm.py",
@@ -802,6 +807,11 @@
       "size_bytes": 5976
     },
     {
+      "path": "tests/fixtures/historical_qiskit_quantum.py.txt",
+      "sha256": "ed020bd7b1c18167c2d91179b2295935d5210e665a9487759f6c793b88903eb1",
+      "size_bytes": 14054
+    },
+    {
       "path": "tests/test_acceptance.py",
       "sha256": "dfed05767eee9b0bfbd69ec97cdea4604c149c28ec595400424888a909a7d658",
       "size_bytes": 3673
@@ -813,8 +823,8 @@
     },
     {
       "path": "tests/test_independent_qiskit_evidence.py",
-      "sha256": "1e6ae31a253ddfd9767a507363dc61b71652f3805f5f4274d79787b67d2b59d6",
-      "size_bytes": 3033
+      "sha256": "bad9e666420792d03ae31bcc5f3f5dd7d37590ef954070a9f4b8c5dd227d6a28",
+      "size_bytes": 3067
     },
     {
       "path": "tests/test_release_edges.py",
@@ -845,6 +855,11 @@
       "path": "tools/replay_qiskit_vectors.py",
       "sha256": "aab2c35ca1f4bf9be1c4a5015ec3693054583ff101c33341b9cfb7fc5c3e487e",
       "size_bytes": 2586
+    },
+    {
+      "path": "tools/rotation_gate_evidence.py",
+      "sha256": "1df27a084b63f6e6d364a8dec2f1e9b285a9ba262215fb7f0b3909184809dc5c",
+      "size_bytes": 4048
     }
   ]
 }

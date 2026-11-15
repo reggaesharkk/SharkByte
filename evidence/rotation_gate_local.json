@@ -1,0 +1,638 @@
+{
+  "status": "PASS",
+  "platform": "Windows",
+  "architecture": "ARM64",
+  "python": "3.12.10",
+  "cases": [
+    {
+      "gate": "rx",
+      "angle_sign": "+",
+      "expected_zero": 0.0,
+      "dense_receipt": {
+        "schema": 1,
+        "toolchain_version": "0.2.1a2",
+        "mode": "quantum",
+        "source": "quantum rotation { qubits 1; rx 1.5707963267948966 0; rx 1.5707963267948966 0; measure_all; }",
+        "source_sha256": "8e3b94ee1b2a0edb76a945ae6be628e05a95e13787d4774ac6b8a7badbde6b60",
+        "result": {
+          "backend": "classical_statevector_simulator",
+          "real_quantum_hardware_used": false,
+          "qubits": 1,
+          "gates": 2,
+          "shots": 1024,
+          "seed": 20261109,
+          "normalization": 1.0,
+          "reference_max_amplitude_error": 0.0,
+          "probabilities": {
+            "0": 4.930380657631324e-32,
+            "1": 1.0
+          },
+          "counts": {
+            "0": 0,
+            "1": 1024
+          }
+        },
+        "record_sha256": "d23538ddbcd5992410af58ddb68226aa89799d4cf24cb98ac3abb4ba1cbde016"
+      },
+      "openqasm": "OPENQASM 3.0;\ninclude \"stdgates.inc\";\nqubit[1] q;\nbit[1] c;\nrx(1.5707963267948966) q[0];\nrx(1.5707963267948966) q[0];\nc[0] = measure q[0];\n",
+      "sparse_source": "quantum rotation { qubits 40; rx 1.5707963267948966 0; rx 1.5707963267948966 0; measure_all; }",
+      "sparse_probability_zero": 4.930380657631324e-32
+    },
+    {
+      "gate": "rx",
+      "angle_sign": "-",
+      "expected_zero": 1.0,
+      "dense_receipt": {
+        "schema": 1,
+        "toolchain_version": "0.2.1a2",
+        "mode": "quantum",
+        "source": "quantum rotation { qubits 1; rx -1.5707963267948966 0; rx 1.5707963267948966 0; measure_all; }",
+        "source_sha256": "b96ac481e2564e1f60a655823eaa95b0bdfd10e8bd09793f83c6250faebf2c5c",
+        "result": {
+          "backend": "classical_statevector_simulator",
+          "real_quantum_hardware_used": false,
+          "qubits": 1,
+          "gates": 2,
+          "shots": 1024,
+          "seed": 20261109,
+          "normalization": 1.0,
+          "reference_max_amplitude_error": 0.0,
+          "probabilities": {
+            "0": 1.0,
+            "1": 0.0
+          },
+          "counts": {
+            "0": 1024,
+            "1": 0
+          }
+        },
+        "record_sha256": "ef973030fe3369910485f21a8b13f1a5e2b22105c9166321991d4d7916cbd5c1"
+      },
+      "openqasm": "OPENQASM 3.0;\ninclude \"stdgates.inc\";\nqubit[1] q;\nbit[1] c;\nrx(-1.5707963267948966) q[0];\nrx(1.5707963267948966) q[0];\nc[0] = measure q[0];\n",
+      "sparse_source": "quantum rotation { qubits 40; rx -1.5707963267948966 0; rx 1.5707963267948966 0; measure_all; }",
+      "sparse_probability_zero": 1.0
+    },
+    {
+      "gate": "ry",
+      "angle_sign": "+",
+      "expected_zero": 0.0,
+      "dense_receipt": {
+        "schema": 1,
+        "toolchain_version": "0.2.1a2",
+        "mode": "quantum",
+        "source": "quantum rotation { qubits 1; ry 1.5707963267948966 0; ry 1.5707963267948966 0; measure_all; }",
+        "source_sha256": "48d4f51a546a4d5ae6e2fb0b22bea478a7da9d449645b6dac47be0149728a694",
+        "result": {
+          "backend": "classical_statevector_simulator",
+          "real_quantum_hardware_used": false,
+          "qubits": 1,
+          "gates": 2,
+          "shots": 1024,
+          "seed": 20261109,
+          "normalization": 1.0,
+          "reference_max_amplitude_error": 0.0,
+          "probabilities": {
+            "0": 4.930380657631324e-32,
+            "1": 1.0
+          },
+          "counts": {
+            "0": 0,
+            "1": 1024
+          }
+        },
+        "record_sha256": "837ae603a81f33202ba4d9209c68bf4607bf82a6bd767ddbd39f7b06020d3288"
+      },
+      "openqasm": "OPENQASM 3.0;\ninclude \"stdgates.inc\";\nqubit[1] q;\nbit[1] c;\nry(1.5707963267948966) q[0];\nry(1.5707963267948966) q[0];\nc[0] = measure q[0];\n",
+      "sparse_source": "quantum rotation { qubits 40; ry 1.5707963267948966 0; ry 1.5707963267948966 0; measure_all; }",
+      "sparse_probability_zero": 4.930380657631324e-32
+    },
+    {
+      "gate": "ry",
+      "angle_sign": "-",
+      "expected_zero": 1.0,
+      "dense_receipt": {
+        "schema": 1,
+        "toolchain_version": "0.2.1a2",
+        "mode": "quantum",
+        "source": "quantum rotation { qubits 1; ry -1.5707963267948966 0; ry 1.5707963267948966 0; measure_all; }",
+        "source_sha256": "512807e0166e3ed66477733e813a6ef3555fcceb1be4f86c305884734e55ed55",
+        "result": {
+          "backend": "classical_statevector_simulator",
+          "real_quantum_hardware_used": false,
+          "qubits": 1,
+          "gates": 2,
+          "shots": 1024,
+          "seed": 20261109,
+          "normalization": 1.0,
+          "reference_max_amplitude_error": 0.0,
+          "probabilities": {
+            "0": 1.0,
+            "1": 0.0
+          },
+          "counts": {
+            "0": 1024,
+            "1": 0
+          }
+        },
+        "record_sha256": "39defadccb104117b841046ee0cb92b77dcf8317c0bc0f97ce18687921071594"
+      },
+      "openqasm": "OPENQASM 3.0;\ninclude \"stdgates.inc\";\nqubit[1] q;\nbit[1] c;\nry(-1.5707963267948966) q[0];\nry(1.5707963267948966) q[0];\nc[0] = measure q[0];\n",
+      "sparse_source": "quantum rotation { qubits 40; ry -1.5707963267948966 0; ry 1.5707963267948966 0; measure_all; }",
+      "sparse_probability_zero": 1.0
+    },
+    {
+      "gate": "rz",
+      "angle_sign": "+",
+      "expected_zero": 0.0,
+      "dense_receipt": {
+        "schema": 1,
+        "toolchain_version": "0.2.1a2",
+        "mode": "quantum",
+        "source": "quantum rotation { qubits 1; h 0; rz 1.5707963267948966 0; rz 1.5707963267948966 0; h 0; measure_all; }",
+        "source_sha256": "5971c2ca09d313769744c41c81d74d7ec8e2136ccd4c90bc0a00335656043d3e",
+        "result": {
+          "backend": "classical_statevector_simulator",
+          "real_quantum_hardware_used": false,
+          "qubits": 1,
+          "gates": 4,
+          "shots": 1024,
+          "seed": 20261109,
+          "normalization": 0.9999999999999996,
+          "reference_max_amplitude_error": 0.0,
+          "probabilities": {
+            "0": 2.4651903288156613e-32,
+            "1": 0.9999999999999996
+          },
+          "counts": {
+            "0": 0,
+            "1": 1024
+          }
+        },
+        "record_sha256": "f0c5c16d7076a37840635655a9631914037e3d5f01c81134e2e69396311e62c9"
+      },
+      "openqasm": "OPENQASM 3.0;\ninclude \"stdgates.inc\";\nqubit[1] q;\nbit[1] c;\nh q[0];\nrz(1.5707963267948966) q[0];\nrz(1.5707963267948966) q[0];\nh q[0];\nc[0] = measure q[0];\n",
+      "sparse_source": "quantum rotation { qubits 40; h 0; rz 1.5707963267948966 0; rz 1.5707963267948966 0; h 0; measure_all; }",
+      "sparse_probability_zero": 2.4651903288156613e-32
+    },
+    {
+      "gate": "rz",
+      "angle_sign": "-",
+      "expected_zero": 1.0,
+      "dense_receipt": {
+        "schema": 1,
+        "toolchain_version": "0.2.1a2",
+        "mode": "quantum",
+        "source": "quantum rotation { qubits 1; h 0; rz -1.5707963267948966 0; rz 1.5707963267948966 0; h 0; measure_all; }",
+        "source_sha256": "a4f5ddbd3587fdb83da7056a13d6ec82aacb2d72babd52d822c878ed042616b2",
+        "result": {
+          "backend": "classical_statevector_simulator",
+          "real_quantum_hardware_used": false,
+          "qubits": 1,
+          "gates": 4,
+          "shots": 1024,
+          "seed": 20261109,
+          "normalization": 0.9999999999999996,
+          "reference_max_amplitude_error": 0.0,
+          "probabilities": {
+            "0": 0.9999999999999996,
+            "1": 0.0
+          },
+          "counts": {
+            "0": 1024,
+            "1": 0
+          }
+        },
+        "record_sha256": "8f3f2b885959f2ef97eb661b592a7b3036222d5c5f5b21a86af706cb315accc1"
+      },
+      "openqasm": "OPENQASM 3.0;\ninclude \"stdgates.inc\";\nqubit[1] q;\nbit[1] c;\nh q[0];\nrz(-1.5707963267948966) q[0];\nrz(1.5707963267948966) q[0];\nh q[0];\nc[0] = measure q[0];\n",
+      "sparse_source": "quantum rotation { qubits 40; h 0; rz -1.5707963267948966 0; rz 1.5707963267948966 0; h 0; measure_all; }",
+      "sparse_probability_zero": 0.9999999999999996
+    },
+    {
+      "gate": "rx",
+      "cap": 1,
+      "requested_support": 2,
+      "status": "REFUSED"
+    },
+    {
+      "gate": "ry",
+      "cap": 1,
+      "requested_support": 2,
+      "status": "REFUSED"
+    },
+    {
+      "gate": "rz",
+      "cap": 1,
+      "populated_states": 1,
+      "status": "PASS"
+    }
+  ],
+  "adaptive_receipt": {
+    "schema": 1,
+    "toolchain_version": "0.2.1a2",
+    "mode": "hybrid",
+    "source": "hybrid adaptive_phase {\nprepare {\nqubits = 2;\nshots = 2048;\nseed = 20261110;\ntheta = 2.0943951023931953;\nstep = 0.5235987755982988;\niterations = 4;\n}\nquantum {\nry theta 0;\nmeasure_all;\n}\nfeedback {\nprint count_00;\nif (count_00 > count_11) {\nprint 1;\n} else {\nprint 0;\n}\n}\nupdate {\nif (count_00 < 1750) {\ntheta = theta - step;\n} else {\ntheta = theta;\n}\n}\n}",
+    "source_sha256": "6623130ab1b9d9c839809f00de3b1eacf188086c73ca40e4740aa4c7a763508b",
+    "result": {
+      "status": "HYBRID_ITERATIVE_EXECUTED",
+      "name": "adaptive_phase",
+      "source_sha256": "6623130ab1b9d9c839809f00de3b1eacf188086c73ca40e4740aa4c7a763508b",
+      "classical_backend": "vm",
+      "settings": {
+        "qubits": 2,
+        "shots": 2048,
+        "seed": 20261110,
+        "theta": 2.0943951023931953,
+        "iterations": 4,
+        "step": 0.5235987755982988
+      },
+      "iterations_executed": 4,
+      "history": [
+        {
+          "iteration": 0,
+          "theta": 2.0943951023931953,
+          "zero_state_count": 517,
+          "zero_state_probability": 0.2500000000000001,
+          "update_condition": "count_00 < 1750",
+          "condition_result": true,
+          "quantum_source_sha256": "99f0680d08ce3091a51b4cc260326d08e253a7f47599fe9fc9c3107a9ef59355",
+          "feedback_stdout": "517\n1\n",
+          "report": {
+            "status": "HYBRID_CUSTOM_QUANTUM_EXECUTED",
+            "name": "adaptive_phase_iteration_0",
+            "source_sha256": "8d96690537acbea446a2231bc1e4d48236d07ae378e1098c9419d70f6138559c",
+            "classical_backend": "vm",
+            "prepare": {
+              "qubits": 2,
+              "shots": 2048,
+              "seed": 20261110,
+              "theta": 2.0943951023931953
+            },
+            "quantum_source": "quantum hybrid_custom {\nqubits 2;\nry 2.0943951023931953 0;\nshots 2048;\nseed 20261110;\nmeasure_all;\n}",
+            "quantum_result": {
+              "status": "QUANTUM_SIMULATION_VERIFIED",
+              "source_sha256": "99f0680d08ce3091a51b4cc260326d08e253a7f47599fe9fc9c3107a9ef59355",
+              "result": {
+                "backend": "classical_statevector_simulator",
+                "real_quantum_hardware_used": false,
+                "qubits": 2,
+                "gates": 1,
+                "shots": 2048,
+                "seed": 20261110,
+                "normalization": 1.0,
+                "reference_max_amplitude_error": 0.0,
+                "probabilities": {
+                  "00": 0.2500000000000001,
+                  "01": 0.7499999999999999,
+                  "10": 0.0,
+                  "11": 0.0
+                },
+                "counts": {
+                  "00": 517,
+                  "01": 1531,
+                  "10": 0,
+                  "11": 0
+                }
+              },
+              "openqasm": "OPENQASM 3.0;\ninclude \"stdgates.inc\";\nqubit[2] q;\nbit[2] c;\nry(2.0943951023931953) q[0];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+              "hardware_used": false
+            },
+            "openqasm": "OPENQASM 3.0;\ninclude \"stdgates.inc\";\nqubit[2] q;\nbit[2] c;\nry(2.0943951023931953) q[0];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+            "feedback_variables": {
+              "even_shots": 517,
+              "odd_shots": 1531,
+              "total_shots": 2048,
+              "top_state_index": 1,
+              "top_state_count": 1531,
+              "observed_states": 2,
+              "count_00": 517,
+              "count_01": 1531,
+              "count_10": 0,
+              "count_11": 0
+            },
+            "top_state": "01",
+            "feedback_stdout": "517\n1\n",
+            "feedback_trace": [
+              {
+                "type": "print",
+                "expression": "count_00",
+                "value": 517
+              },
+              {
+                "type": "if",
+                "condition": "count_00 > count_11",
+                "condition_result": true
+              },
+              {
+                "type": "print",
+                "expression": "1",
+                "value": 1
+              }
+            ],
+            "real_quantum_hardware_used": false,
+            "limitations": [
+              "Quantum computation is classical statevector simulation",
+              "Custom hybrid circuits support 2-6 qubits and 256 gates",
+              "theta must be a finite bounded decimal literal",
+              "Feedback variables are integers; no float updates",
+              "This nested executor describes one iteration; bounded iteration is provided by the outer hybrid orchestrator"
+            ]
+          },
+          "theta_after_update": 1.5707963267948966
+        },
+        {
+          "iteration": 1,
+          "theta": 1.5707963267948966,
+          "zero_state_count": 1000,
+          "zero_state_probability": 0.5000000000000001,
+          "update_condition": "count_00 < 1750",
+          "condition_result": true,
+          "quantum_source_sha256": "d6acae5fccc4a13e4af70e3c886c9ae9ff79a3bad6e895b3f72dadff67363c24",
+          "feedback_stdout": "1000\n1\n",
+          "report": {
+            "status": "HYBRID_CUSTOM_QUANTUM_EXECUTED",
+            "name": "adaptive_phase_iteration_1",
+            "source_sha256": "3eb980b5429ed808c38925493777fd544597dd3b014e28d8fd106b9cef1f9c09",
+            "classical_backend": "vm",
+            "prepare": {
+              "qubits": 2,
+              "shots": 2048,
+              "seed": 20261111,
+              "theta": 1.5707963267948966
+            },
+            "quantum_source": "quantum hybrid_custom {\nqubits 2;\nry 1.5707963267948966 0;\nshots 2048;\nseed 20261111;\nmeasure_all;\n}",
+            "quantum_result": {
+              "status": "QUANTUM_SIMULATION_VERIFIED",
+              "source_sha256": "d6acae5fccc4a13e4af70e3c886c9ae9ff79a3bad6e895b3f72dadff67363c24",
+              "result": {
+                "backend": "classical_statevector_simulator",
+                "real_quantum_hardware_used": false,
+                "qubits": 2,
+                "gates": 1,
+                "shots": 2048,
+                "seed": 20261111,
+                "normalization": 1.0,
+                "reference_max_amplitude_error": 0.0,
+                "probabilities": {
+                  "00": 0.5000000000000001,
+                  "01": 0.4999999999999999,
+                  "10": 0.0,
+                  "11": 0.0
+                },
+                "counts": {
+                  "00": 1000,
+                  "01": 1048,
+                  "10": 0,
+                  "11": 0
+                }
+              },
+              "openqasm": "OPENQASM 3.0;\ninclude \"stdgates.inc\";\nqubit[2] q;\nbit[2] c;\nry(1.5707963267948966) q[0];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+              "hardware_used": false
+            },
+            "openqasm": "OPENQASM 3.0;\ninclude \"stdgates.inc\";\nqubit[2] q;\nbit[2] c;\nry(1.5707963267948966) q[0];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+            "feedback_variables": {
+              "even_shots": 1000,
+              "odd_shots": 1048,
+              "total_shots": 2048,
+              "top_state_index": 1,
+              "top_state_count": 1048,
+              "observed_states": 2,
+              "count_00": 1000,
+              "count_01": 1048,
+              "count_10": 0,
+              "count_11": 0
+            },
+            "top_state": "01",
+            "feedback_stdout": "1000\n1\n",
+            "feedback_trace": [
+              {
+                "type": "print",
+                "expression": "count_00",
+                "value": 1000
+              },
+              {
+                "type": "if",
+                "condition": "count_00 > count_11",
+                "condition_result": true
+              },
+              {
+                "type": "print",
+                "expression": "1",
+                "value": 1
+              }
+            ],
+            "real_quantum_hardware_used": false,
+            "limitations": [
+              "Quantum computation is classical statevector simulation",
+              "Custom hybrid circuits support 2-6 qubits and 256 gates",
+              "theta must be a finite bounded decimal literal",
+              "Feedback variables are integers; no float updates",
+              "This nested executor describes one iteration; bounded iteration is provided by the outer hybrid orchestrator"
+            ]
+          },
+          "theta_after_update": 1.0471975511965979
+        },
+        {
+          "iteration": 2,
+          "theta": 1.0471975511965979,
+          "zero_state_count": 1552,
+          "zero_state_probability": 0.7499999999999999,
+          "update_condition": "count_00 < 1750",
+          "condition_result": true,
+          "quantum_source_sha256": "6de3846107e811b9f1c7f26ea25367b065d23dedbd7e2eec664d7cfc0c336fb7",
+          "feedback_stdout": "1552\n1\n",
+          "report": {
+            "status": "HYBRID_CUSTOM_QUANTUM_EXECUTED",
+            "name": "adaptive_phase_iteration_2",
+            "source_sha256": "b0fe738b1b14bdac9f62dbbde2281c30a05ebf1f493a3224d4c1cfdf0575adc7",
+            "classical_backend": "vm",
+            "prepare": {
+              "qubits": 2,
+              "shots": 2048,
+              "seed": 20261112,
+              "theta": 1.0471975511965979
+            },
+            "quantum_source": "quantum hybrid_custom {\nqubits 2;\nry 1.0471975511965979 0;\nshots 2048;\nseed 20261112;\nmeasure_all;\n}",
+            "quantum_result": {
+              "status": "QUANTUM_SIMULATION_VERIFIED",
+              "source_sha256": "6de3846107e811b9f1c7f26ea25367b065d23dedbd7e2eec664d7cfc0c336fb7",
+              "result": {
+                "backend": "classical_statevector_simulator",
+                "real_quantum_hardware_used": false,
+                "qubits": 2,
+                "gates": 1,
+                "shots": 2048,
+                "seed": 20261112,
+                "normalization": 0.9999999999999999,
+                "reference_max_amplitude_error": 0.0,
+                "probabilities": {
+                  "00": 0.7499999999999999,
+                  "01": 0.25,
+                  "10": 0.0,
+                  "11": 0.0
+                },
+                "counts": {
+                  "00": 1552,
+                  "01": 496,
+                  "10": 0,
+                  "11": 0
+                }
+              },
+              "openqasm": "OPENQASM 3.0;\ninclude \"stdgates.inc\";\nqubit[2] q;\nbit[2] c;\nry(1.0471975511965979) q[0];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+              "hardware_used": false
+            },
+            "openqasm": "OPENQASM 3.0;\ninclude \"stdgates.inc\";\nqubit[2] q;\nbit[2] c;\nry(1.0471975511965979) q[0];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+            "feedback_variables": {
+              "even_shots": 1552,
+              "odd_shots": 496,
+              "total_shots": 2048,
+              "top_state_index": 0,
+              "top_state_count": 1552,
+              "observed_states": 2,
+              "count_00": 1552,
+              "count_01": 496,
+              "count_10": 0,
+              "count_11": 0
+            },
+            "top_state": "00",
+            "feedback_stdout": "1552\n1\n",
+            "feedback_trace": [
+              {
+                "type": "print",
+                "expression": "count_00",
+                "value": 1552
+              },
+              {
+                "type": "if",
+                "condition": "count_00 > count_11",
+                "condition_result": true
+              },
+              {
+                "type": "print",
+                "expression": "1",
+                "value": 1
+              }
+            ],
+            "real_quantum_hardware_used": false,
+            "limitations": [
+              "Quantum computation is classical statevector simulation",
+              "Custom hybrid circuits support 2-6 qubits and 256 gates",
+              "theta must be a finite bounded decimal literal",
+              "Feedback variables are integers; no float updates",
+              "This nested executor describes one iteration; bounded iteration is provided by the outer hybrid orchestrator"
+            ]
+          },
+          "theta_after_update": 0.523598775598299
+        },
+        {
+          "iteration": 3,
+          "theta": 0.523598775598299,
+          "zero_state_count": 1917,
+          "zero_state_probability": 0.9330127018922194,
+          "update_condition": "count_00 < 1750",
+          "condition_result": false,
+          "quantum_source_sha256": "cdbec04108c83e411a24584638b8c512343f10da9597007e437cf7399b697689",
+          "feedback_stdout": "1917\n1\n",
+          "report": {
+            "status": "HYBRID_CUSTOM_QUANTUM_EXECUTED",
+            "name": "adaptive_phase_iteration_3",
+            "source_sha256": "da7b733814dae4d7092a6a7d7591200256c74b8655fa67f69b2808005c770743",
+            "classical_backend": "vm",
+            "prepare": {
+              "qubits": 2,
+              "shots": 2048,
+              "seed": 20261113,
+              "theta": 0.523598775598299
+            },
+            "quantum_source": "quantum hybrid_custom {\nqubits 2;\nry 0.523598775598299 0;\nshots 2048;\nseed 20261113;\nmeasure_all;\n}",
+            "quantum_result": {
+              "status": "QUANTUM_SIMULATION_VERIFIED",
+              "source_sha256": "cdbec04108c83e411a24584638b8c512343f10da9597007e437cf7399b697689",
+              "result": {
+                "backend": "classical_statevector_simulator",
+                "real_quantum_hardware_used": false,
+                "qubits": 2,
+                "gates": 1,
+                "shots": 2048,
+                "seed": 20261113,
+                "normalization": 1.0000000000000002,
+                "reference_max_amplitude_error": 0.0,
+                "probabilities": {
+                  "00": 0.9330127018922194,
+                  "01": 0.06698729810778072,
+                  "10": 0.0,
+                  "11": 0.0
+                },
+                "counts": {
+                  "00": 1917,
+                  "01": 131,
+                  "10": 0,
+                  "11": 0
+                }
+              },
+              "openqasm": "OPENQASM 3.0;\ninclude \"stdgates.inc\";\nqubit[2] q;\nbit[2] c;\nry(0.52359877559829904) q[0];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+              "hardware_used": false
+            },
+            "openqasm": "OPENQASM 3.0;\ninclude \"stdgates.inc\";\nqubit[2] q;\nbit[2] c;\nry(0.52359877559829904) q[0];\nc[0] = measure q[0];\nc[1] = measure q[1];\n",
+            "feedback_variables": {
+              "even_shots": 1917,
+              "odd_shots": 131,
+              "total_shots": 2048,
+              "top_state_index": 0,
+              "top_state_count": 1917,
+              "observed_states": 2,
+              "count_00": 1917,
+              "count_01": 131,
+              "count_10": 0,
+              "count_11": 0
+            },
+            "top_state": "00",
+            "feedback_stdout": "1917\n1\n",
+            "feedback_trace": [
+              {
+                "type": "print",
+                "expression": "count_00",
+                "value": 1917
+              },
+              {
+                "type": "if",
+                "condition": "count_00 > count_11",
+                "condition_result": true
+              },
+              {
+                "type": "print",
+                "expression": "1",
+                "value": 1
+              }
+            ],
+            "real_quantum_hardware_used": false,
+            "limitations": [
+              "Quantum computation is classical statevector simulation",
+              "Custom hybrid circuits support 2-6 qubits and 256 gates",
+              "theta must be a finite bounded decimal literal",
+              "Feedback variables are integers; no float updates",
+              "This nested executor describes one iteration; bounded iteration is provided by the outer hybrid orchestrator"
+            ]
+          },
+          "theta_after_update": 0.523598775598299
+        }
+      ],
+      "best_observed": {
+        "iteration": 3,
+        "theta": 0.523598775598299,
+        "zero_state_count": 1917
+      },
+      "feedback_stdout": "517\n1\n1000\n1\n1552\n1\n1917\n1\n",
+      "real_quantum_hardware_used": false,
+      "limitations": [
+        "Classical statevector simulation, not quantum hardware",
+        "1-8 iterations; bounded 2-6-qubit quantum circuits",
+        "Classical conditions use the selected SharkByte backend",
+        "Floating-point theta updates use Python orchestration",
+        "Only theta +/- step with a guarded condition is supported",
+        "Observed best sample does not prove global optimization"
+      ]
+    },
+    "record_sha256": "4c4e91ee352b4836c4a080ff8fe6de5997c11e87572178b0ac051612aff828e8"
+  }
+}

@@ -73,6 +73,13 @@ def validate(circuit: Circuit, *, support_cap: int = DEFAULT_SUPPORT_CAP,
             if len(gate) != 2 or type(gate[1]) is not int:
                 raise CircuitError(f"{op} requires one integer qubit")
             _check_qubit(gate[1], circuit.qubits, index)
+        elif op in {"rx", "ry", "rz"}:
+            if len(gate) != 3 or type(gate[1]) is not int:
+                raise CircuitError(f"{op} requires a qubit and angle")
+            _check_qubit(gate[1], circuit.qubits, index)
+            angle = gate[2]
+            if type(angle) not in (int, float) or not abs(angle) <= ANGLE_LIMIT:
+                raise CircuitError(f"{op} angle must be finite and within [-4*pi, 4*pi]")
         elif op in {"cx", "cp"}:
             expected = 3 if op == "cx" else 4
             if len(gate) != expected or type(gate[1]) is not int or type(gate[2]) is not int:
@@ -120,23 +127,39 @@ def evolve(circuit: Circuit, *, support_cap: int = DEFAULT_SUPPORT_CAP,
     for gate_no, gate in enumerate(circuit.gates):
         _check_deadline(deadline, gate_no)
         op = gate[0].lower()
-        if op == "h":
+        if op == "rz":
+            bit = 1 << gate[1]
+            phase = cmath.exp(0.5j * gate[2])
+            state = {basis: amp * (phase if basis & bit else phase.conjugate())
+                     for basis, amp in state.items()}
+        elif op in ("h", "rx", "ry"):
+            if op != "h" and gate[2] == 0:
+                continue
             bit = 1 << gate[1]
             pair_bases = {basis & ~bit for basis in state}
             projected_support = 2 * len(pair_bases)
             if projected_support > support_cap:
                 raise ResourceLimitError(
-                    f"H at gate {gate_no} may expand support to {projected_support}; cap is {support_cap}",
+                    f"{op.upper()} at gate {gate_no} may expand support to {projected_support}; cap is {support_cap}",
                     gate_index=gate_no, requested_support=projected_support,
                 )
             nxt: dict[int, complex] = {}
+            if op != "h":
+                cosine, sine = math.cos(gate[2] / 2), math.sin(gate[2] / 2)
             for k, base in enumerate(pair_bases):
                 if (k & 1023) == 0:
                     _check_deadline(deadline, gate_no)
                 low = state.get(base, 0.0j)
                 high = state.get(base | bit, 0.0j)
-                out_low = (low + high) * INV_SQRT2
-                out_high = (low - high) * INV_SQRT2
+                if op == "h":
+                    out_low = (low + high) * INV_SQRT2
+                    out_high = (low - high) * INV_SQRT2
+                elif op == "rx":
+                    out_low = cosine * low - 1j * sine * high
+                    out_high = cosine * high - 1j * sine * low
+                else:
+                    out_low = cosine * low - sine * high
+                    out_high = sine * low + cosine * high
                 if out_low != 0.0j:
                     nxt[base] = out_low
                 if out_high != 0.0j:
@@ -255,6 +278,8 @@ def inverse_circuit(circuit: Circuit) -> Circuit:
     for gate in reversed(circuit.gates):
         if gate[0].lower() == "cp":
             inverse.append(("cp", gate[1], gate[2], -float(gate[3])))
+        elif gate[0].lower() in ("rx", "ry", "rz"):
+            inverse.append((gate[0], gate[1], -gate[2]))
         else:
             # H, X, Z, and CX are self-inverse.
             inverse.append(gate)
@@ -283,6 +308,8 @@ def qiskit_statevector(circuit: Circuit):
             qc.cx(gate[1], gate[2])
         elif op == "cp":
             qc.cp(float(gate[3]), gate[1], gate[2])
+        elif op in ("rx", "ry", "rz"):
+            getattr(qc, op)(gate[2], gate[1])
     return Statevector.from_instruction(qc).data
 
 

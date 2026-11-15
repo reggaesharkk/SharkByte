@@ -35,13 +35,22 @@ quantum_statement = "qubits" integer ";"
                   | ( "h" | "x" | "z" ) qubit ";"
                   | "cx" qubit qubit ";"
                   | "cp" signed_decimal qubit qubit ";"
+                  | rotation_gate
                   | "measure_all" ";" ;
+rotation_gate     = ( "rx" | "ry" | "rz" ) signed_decimal qubit ";" ;
+signed_decimal    = [ "+" | "-" ] ( digits [ "." [ digits ] ] | "." digits ) ;
+digits            = digit { digit } ;
+digit             = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
 ```
 
 Declare `qubits` once before the gates and end the gate sequence with
 `measure_all;`. Qubit indices start at zero. For `cx` and `cp`, give the
 control before the target and use distinct indices. Controlled phase takes a
-decimal angle in radians. Multiple statements can share a line, and `//`
+decimal angle in radians. Rotations use angles in radians within ±4π in
+Quantum and Frontier30. For example, `ry -.5 0;` rotates qubit 0 by −0.5
+radians. Frontier30 checks the potential expansion of `rx` and `ry` before
+applying them. `rz` preserves sparse support.
+Multiple statements can share a line, and `//`
 starts a line comment.
 
 Studio Quantum accepts 1–6 qubits and reports probabilities and sampled
@@ -59,7 +68,10 @@ The [adaptive example](examples/adaptive.sb) shows the full syntax.
 - `prepare` sets circuit and loop parameters such as `qubits`, `shots`,
   `seed`, `theta`, `step`, and `iterations`.
 - `quantum` contains gates and `measure_all;`. The qubit count comes from
-  `prepare`. A controlled-phase angle can reference `theta`.
+  `prepare`. Rotation and controlled-phase angles accept a signed decimal
+  or the name `theta`, within ±π. For example, `ry theta 0;` uses the value
+  bound for that iteration. The hybrid receipt records the generated circuit
+  with its numeric angle.
 - `feedback` reads measurement values such as `count_00` and can print
   results or branch on comparisons.
 - `update` can change `theta` for the next iteration, for example with

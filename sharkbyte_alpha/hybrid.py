@@ -4,6 +4,8 @@ The upstream dispatcher is replaced with direct, bounded VM and simulator calls.
 The vendored hybrid parser and iteration logic are unchanged.
 """
 import hashlib, importlib.util, pathlib, sys, threading
+from decimal import Decimal
+import math
 from . import vm, quantum
 
 VENDOR=pathlib.Path(__file__).resolve().parent/'_vendor'
@@ -24,6 +26,42 @@ def _initialize():
         else:sys.modules['gate2_parent']=previous
     return engine
 
+def _rotation_builder(build_quantum, angle_pattern):
+    def build(text, settings):
+        statements = [part.strip() for part in text.split(";") if part.strip()]
+        rotations = {}
+        for index, statement in enumerate(statements):
+            op, *args = statement.split()
+            if op not in ("rx", "ry", "rz"):
+                continue
+            if len(args) != 2:
+                raise ValueError(f"{op} requires an angle and qubit")
+            expression, target = args
+            if expression == "theta":
+                if "theta" not in settings:
+                    raise ValueError("theta was not declared")
+                angle = settings["theta"]
+            elif angle_pattern.fullmatch(expression):
+                angle = float(expression)
+            else:
+                raise ValueError(f"Invalid {op} angle: {expression}")
+            if not abs(angle) <= math.pi:
+                raise ValueError(f"{op} angle outside [-pi, pi]")
+            rotations[index] = f"{op} {Decimal(str(angle)):f} {target};"
+            statements[index] = f"z {target}"
+        if not rotations:
+            return build_quantum(text, settings)
+
+        # Reuse the frozen builder's validation and preserve gate order.
+        generated = build_quantum(";".join(statements) + ";", settings)
+        lines = generated.splitlines()
+        for index, gate in rotations.items():
+            lines[index + 2] = gate
+        return "\n".join(lines)
+
+    return build
+
+
 MAX_VM_STEPS = 100_000
 
 def run(source,step_limit=MAX_VM_STEPS):
@@ -32,6 +70,7 @@ def run(source,step_limit=MAX_VM_STEPS):
     with _lock:
         engine=_initialize()
         engine.runtime.BACKENDS=('vm',)
+        engine.core.build_quantum = _rotation_builder(engine.core.build_quantum, engine.core.ANGLE)
         def local_upstream(path,payload=None):
             if path!='/api/run' or not isinstance(payload,dict):raise ValueError('unsupported hybrid adapter call')
             text=payload.get('source')

@@ -1,6 +1,6 @@
 # Claim boundaries — 0.2.1a2 public source snapshot
 
-Claims are limited to the documented CLI, VM, classical statevector simulator, bounded hybrid subset, and checked-in examples/tests. The Qiskit comparison covers 22 circuits and 320 probabilities. It is separately sourced from 0.2.2a1: `cli.py` and `quantum.py` match by SHA-256, while whole-package identity is not claimed.
+Claims are limited to the documented CLI, VM, classical statevector simulator, bounded hybrid subset, and checked-in examples/tests. The Qiskit comparison covers 22 circuits and 320 probabilities. It is separately sourced from 0.2.2a1: the archived CLI and quantum source fixtures match by SHA-256, while whole-package identity is not claimed.
 
 - Quantum results are classical simulation, not hardware results.
 - OpenQASM behavior is checked for a finite subset, not all of OpenQASM 3.

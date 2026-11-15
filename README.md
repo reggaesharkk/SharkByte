@@ -35,6 +35,12 @@ Choose **Load example** or paste source, then select **Run**. Studio shows outpu
 
 Verify downloads with `python -m sharkbyte_alpha verify-run FILE.json` (`python3` on Linux). Hash verification checks record integrity. Replay and reference comparisons address reproducibility and numerical correctness separately.
 
+Try `rx 1.5707963267948966 0;`, `ry -.5 0;`, or `rz .25 0;` inside a
+Quantum or Frontier30 circuit. Bounded Hybrid also accepts a bound angle such as
+`ry theta 0;`. Reproduce the local analytical checks with
+`python -B tools/rotation_gate_evidence.py`.
+[Grammar](GRAMMAR.md) · [Local rotation evidence](evidence/rotation_gate_local.json)
+
 ### Five-qubit phase-flip recovery
 
 Choose **Quantum → Load phase-flip recovery → Run**. The [circuit](examples/phase_flip_recovery.sb) encodes a logical superposition with relative phase +π/3, extracts two parity bits, and applies coherent correction before the final measurement. Outcome strings start with the ancillas `q4 q3`, followed by the decoded data bits.

@@ -6,6 +6,6 @@ Build uses pinned PEP 517 backend `setuptools==84.2.0`; runtime dependencies are
 
 `tools/replay_qiskit_vectors.py` compares 22 circuits (320 probabilities) against separately accepted Qiskit 2.6.2 vectors. Tolerances: per-state absolute 1e-9; distribution L1 1e-8; normalization 1e-10. Bit order: q0 least significant, labels MSB-left, QASM `c[i]` measures `q[i]`.
 
-The reference provenance is 0.2.2a1. Its `cli.py` and `quantum.py` hashes match this candidate; other package modules differ, so whole-package equivalence is not claimed. Raw host reports and the original nested archive are omitted; the checked-in fixtures/vectors are a sanitized subset, not the complete evidence packet.
+The reference provenance is 0.2.2a1. The historical CLI and quantum source fixtures preserve its module hashes. The current source has evolved since those fixtures were recorded. Raw host reports and the original nested archive are omitted; the checked-in fixtures/vectors are a sanitized subset, not the complete evidence packet.
 
 SHA-256 proves identity/integrity, not correctness. Tests and numerical comparison are separate evidence. Gate 1/native containment remains unresolved and native execution remains disabled.
