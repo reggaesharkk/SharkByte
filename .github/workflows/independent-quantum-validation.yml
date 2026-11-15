@@ -9,6 +9,7 @@ on:
       - "validation/__init__.py"
       - "validation/independent_qiskit/**"
       - "tools/run_independent_quantum_validation.py"
+      - "tools/run_cirq_crosscheck.py"
       - "requirements-independent-quantum.txt"
       - ".github/workflows/independent-quantum-validation.yml"
   workflow_dispatch:
@@ -31,10 +32,17 @@ jobs:
         run: python -B tools/run_independent_quantum_validation.py --output independent-quantum-validation.json
       - name: Run automated validation tests
         run: python -B -m unittest validation.independent_qiskit.test_suite -v
+      - name: Cross-check the statevectors with Google Cirq
+        run: |
+          python -m venv .cirq-validation
+          .cirq-validation/bin/python -m pip install cirq-core==1.6.1
+          .cirq-validation/bin/python -B tools/run_cirq_crosscheck.py independent-quantum-validation.json --output cirq-crosscheck.json
       - name: Upload independent quantum evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: independent-quantum-validation
-          path: independent-quantum-validation.json
+          path: |
+            independent-quantum-validation.json
+            cirq-crosscheck.json
           if-no-files-found: warn
