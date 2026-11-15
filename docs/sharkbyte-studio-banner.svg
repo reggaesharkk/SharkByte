@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" role="img" aria-labelledby="title desc">
+  <title id="title">SharkByte Studio</title>
+  <desc id="desc">A 40-qubit circuit reached 1,048,576 active states in a local CPU benchmark.</desc>
+  <defs>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" fill="none" stroke="#26373b" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="fade"><stop stop-color="#101719"/><stop offset="1" stop-color="#20332d"/></linearGradient>
+  </defs>
+  <style>
+    .signal { stroke-dasharray: 12 140; animation: travel 3s linear 2; }
+    @keyframes travel { from { stroke-dashoffset: 152; } to { stroke-dashoffset: 0; } }
+    @media (prefers-reduced-motion: reduce) { .signal { animation: none; } }
+  </style>
+  <rect x="1" y="1" width="958" height="298" rx="22" fill="url(#fade)" stroke="#354745"/>
+  <rect x="570" y="35" width="348" height="230" rx="12" fill="url(#grid)"/>
+  <g fill="none" stroke="#637b70" stroke-width="2">
+    <path d="M591 151H665 M665 151L720 103H775 M665 151L720 199H775 M775 103L829 74H898 M775 103L829 127H898 M775 199L829 175H898 M775 199L829 228H898"/>
+    <path class="signal" stroke="#d6fa91" stroke-width="3" d="M591 151H665L720 103H775L829 74H898 M591 151H665L720 199H775L829 228H898"/>
+  </g>
+  <g fill="#d6fa91">
+    <circle cx="591" cy="151" r="6"/><circle cx="665" cy="151" r="5"/>
+    <circle cx="775" cy="103" r="5"/><circle cx="775" cy="199" r="5"/>
+    <circle cx="898" cy="74" r="5"/><circle cx="898" cy="127" r="5"/>
+    <circle cx="898" cy="175" r="5"/><circle cx="898" cy="228" r="5"/>
+  </g>
+  <g font-family="system-ui, sans-serif">
+    <text x="46" y="64" fill="#afbfba" font-size="18" letter-spacing="2">LOCAL BROWSER WORKSPACE</text>
+    <text x="44" y="126" fill="#f6faf6" font-size="54" font-weight="700">SharkByte Studio</text>
+    <text x="44" y="197" fill="#d6fa91" font-size="49" font-weight="700">1,048,576</text>
+    <text x="46" y="236" fill="#e2ece7" font-size="22">active states · 40 qubits · CPU simulation</text>
+  </g>
+</svg>

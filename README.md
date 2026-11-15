@@ -1,14 +1,24 @@
-# SharkByte standalone alpha 0.2.1a2
+# SharkByte
 
-A separately curated, source-only public snapshot of a bounded experimental language toolchain. It includes an installable Python CLI, SharkVM, classical statevector simulator, bounded hybrid orchestration, examples, tests, and a scoped independent Qiskit reference fixture set.
+![SharkByte Studio. A 40-qubit circuit reached 1,048,576 active states in a local CPU benchmark.](docs/sharkbyte-studio-banner.svg)
 
-> **A million active states on a laptop.** Run the SharkByte Studio benchmark in your browser and watch the local Python simulator complete a 52-gate circuit on a 40-qubit register. The browser run reached **1,048,576 active states** and took **3.020 seconds** for sparse evolution on Windows ARM64. [Download the browser run receipt](benchmarks/sb_quantum_benchmark/million-state-browser-receipt.json) or [run it yourself](#sharkbyte-studio).
+SharkByte is an experimental programming language with a local browser workspace, a Python CLI, and a CPU simulator for quantum circuits and bounded hybrid programs.
 
-**Start with `main` for current SharkByte source and benchmarks.** Current first-party source is licensed under [Apache License 2.0](LICENSE), SPDX identifier `Apache-2.0`. Earlier revisions already released under MIT remain available under their original terms; see [License and branch history](LICENSE_STATUS.md). Third-party tools retain their own terms.
+[Launch Studio](#sharkbyte-studio) · [See the benchmark](#experimental-sparse-scaling-to-1048576-active-states) · [Inspect the run receipt](benchmarks/sb_quantum_benchmark/million-state-browser-receipt.json) · [Cite SharkByte](#cite-sharkbyte)
 
-**Cite SharkByte standalone alpha 0.2.1a2** using the Zenodo version DOI. That immutable archive preserves source commit `f5c537a76fe2f1cab12288fa29f6820cf453eb40`, which carries the MIT grant. Current GitHub `main` uses Apache-2.0; a later `main` change does not alter the Zenodo archive. Choose the license that matches the exact version you download. [DOI 10.5281/zenodo.24213559](https://doi.org/10.5281/zenodo.24213559)
+**The laptop run.** SharkByte Studio launched a 52-gate sparse circuit on a 40-qubit register. The simulator tracked 1,048,576 active basis states at peak and completed sparse evolution in 3.020 seconds on Windows ARM64. To reproduce it, launch Studio and select **Million-state benchmark → Run**.
 
-**Choose a starting point.** [SharkByte Studio](#sharkbyte-studio) · [Terminal and optional local chat](#terminal-quickstart) · [What SharkByte can calculate](docs/CALCULATION_CAPABILITIES.md) · [Research gap calculations](docs/RESEARCH_GAP_CALCULATIONS.md) · [Benchmarks](#reproduce-the-public-benchmarks) · [Install the CLI](#install) · [System map and evidence boundaries](ECOSYSTEM_MAP.md)
+## Cite SharkByte
+
+| Cite | Zenodo DOI |
+| --- | --- |
+| SharkByte across all versions | [10.5281/zenodo.24213558](https://doi.org/10.5281/zenodo.24213558) |
+| Studio source snapshot and million-state benchmark | [10.5281/zenodo.24246003](https://doi.org/10.5281/zenodo.24246003) |
+| Original standalone alpha 0.2.1a2 | [10.5281/zenodo.24213559](https://doi.org/10.5281/zenodo.24213559) |
+
+The Studio archive pins commit [18e4eae](https://github.com/reggaesharkk/SharkByte/commit/18e4eae2463eef9c768f15c0818963337456d9a6). First-party source in this snapshot and on current `main` uses [Apache 2.0](LICENSE). The original Zenodo alpha at commit `f5c537a` remains MIT. See the [license history](LICENSE_STATUS.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
+
+[Terminal and local chat](#terminal-quickstart) · [Calculation capabilities](docs/CALCULATION_CAPABILITIES.md) · [Research examples](docs/RESEARCH_GAP_CALCULATIONS.md) · [Install the CLI](#install) · [System map](ECOSYSTEM_MAP.md)
 
 **Which terminal should I use?** In Windows PowerShell, use `Open-SharkByte-AI.ps1 -Terminal` for GenieX chat on a supported NPU. In Ubuntu/WSL, use the Python commands below for CPU simulation and the Linux ARM64 backend-agreement workflow. The `.sb` language and simulator commands are independent of the chat model.
 

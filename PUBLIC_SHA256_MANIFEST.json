@@ -1,5 +1,5 @@
 {
-  "file_count": 160,
+  "file_count": 161,
   "files": [
     {
       "path": ".gitattributes",
@@ -103,8 +103,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "ff195d688eb3d8c94b152f8e7a69f311ae5ded51134dd3708722ae0231c76b3f",
-      "size_bytes": 15542
+      "sha256": "6d13dec19f81c95b6e898387c34c55e03158d0bd7f54e950a8aa8b8140b2b380",
+      "size_bytes": 15456
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
@@ -290,6 +290,11 @@
       "path": "docs/RESEARCH_GAP_CALCULATIONS.md",
       "sha256": "9643e35745ac583e2812579f9115b8ebf8fb58285fca05e668ee7f4659c3df27",
       "size_bytes": 13101
+    },
+    {
+      "path": "docs/sharkbyte-studio-banner.svg",
+      "sha256": "e8497f157dff552ede9e0a934949f644573b0a68641255d38ab6eee32593f176",
+      "size_bytes": 2092
     },
     {
       "path": "evidence/qiskit_0.2.2a1/INDEPENDENT_EVIDENCE_REVIEW.json",
