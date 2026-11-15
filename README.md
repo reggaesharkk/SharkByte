@@ -74,9 +74,26 @@ Open [http://127.0.0.1:8120/](http://127.0.0.1:8120/) if the browser does not op
 
 Choose Classical, Quantum, Bounded Hybrid or Frontier30 (sparse), then select **Load example** or paste your own SharkByte source. Select **Run** to inspect the output, execution metrics, bytecode when emitted, and the exact source snapshot. **Save receipt** downloads the SharkByte JSON record for local inspection or verification with `python -m sharkbyte_alpha verify-run FILE.json`.
 
-Bounded Hybrid accepts 2–6 qubits. Frontier30 runs fixed quantum blocks with a selectable support cap (4,096 by default, or 8,192, 16,384, 32,768, or 65,536 states) and reports probabilities. The sparse parser accepts registers up to 40 qubits. Loading the bundled 40-qubit example selects 65,536 for its 16 branching Hadamards. The separate [30-qubit GHZ example](examples/ghz_phase_30.sb) fits the default cap. Frontier30 reports probabilities. Its output does not include sampled counts.
+Bounded Hybrid accepts 2–6 qubits. Frontier30 runs fixed quantum blocks with a selectable support cap (4,096 by default, or 8,192, 16,384, 32,768, 65,536, or 131,072 states) and reports probabilities. The sparse parser accepts registers up to 40 qubits. Loading the bundled 40-qubit example selects 131,072 states. The [65,536-state circuit](examples/frontier_sparse_40.sb) is also available. The separate [30-qubit GHZ example](examples/ghz_phase_30.sb) fits the default cap. Frontier30 reports probabilities. Its output does not include sampled counts.
 
 Studio listens on loopback and runs the public SharkVM and CPU simulation modes. Its worker timing includes process startup. The Linux ARM64 three-backend workflow is documented separately in the [backend agreement benchmark](benchmarks/backend_agreement/README.md).
+
+### Measured sparse simulation on Windows ARM64
+
+| Circuit | Qubits | Gates | Peak active states | Evidence |
+| --- | ---: | ---: | ---: | --- |
+| [Controlled-phase circuit](examples/frontier_sparse_40.sb) | 40 | 48 | 65,536 | Studio receipt passed SHA-256 verification |
+| [Extended controlled-phase circuit](examples/frontier_sparse_40_131072.sb) | 40 | 49 | 131,072 | Three local runs passed |
+
+The 131,072-state circuit ran on a Windows ARM64 laptop with Python 3.12.10. Across three runs, sparse evolution took 0.128 to 0.131 seconds. Process wall time, including startup and probability JSON output, was 1.43 to 1.48 seconds. Windows reported approximately 97 MiB of peak working set for the standalone runner process, observed by polling. Each JSON output was about 9.37 MB. The memory figure covers the runner process only. Chrome and Studio server memory were outside that measurement.
+
+For scale, a dense 40-qubit array with 16-byte complex amplitudes would occupy 16 TiB for the array alone. The measured circuit has 131,072 populated basis states, which is why sparse storage fits on a laptop.
+
+Reproduce from the checkout:
+
+```text
+python -B benchmarks/sb_quantum_benchmark/frontier30.py examples/frontier_sparse_40_131072.sb --support-cap 131072
+```
 
 ## Reproduce the public benchmarks
 

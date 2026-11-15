@@ -1,5 +1,5 @@
 {
-  "file_count": 156,
+  "file_count": 157,
   "files": [
     {
       "path": ".gitattributes",
@@ -103,8 +103,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "6cdcfa208eabddb5836f15b14698e6e0517ddcef07aa07c12d10ddc882dfb6a0",
-      "size_bytes": 12029
+      "sha256": "478fbf206fda8d9eae02d5eeb6ea10c3e295670484798de2868649204a281b88",
+      "size_bytes": 13358
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
@@ -547,6 +547,11 @@
       "size_bytes": 718
     },
     {
+      "path": "examples/frontier_sparse_40_131072.sb",
+      "sha256": "a24d8f389850e4a298f611d45ab4c5e953ead59c153777071916ecea73cd5316",
+      "size_bytes": 735
+    },
+    {
       "path": "examples/ghz_phase_30.sb",
       "sha256": "284ec09cb8acc39467e492963ff888eea66a38c691168a2effd760b558c6394e",
       "size_bytes": 981
@@ -703,8 +708,8 @@
     },
     {
       "path": "sharkbyte_experiment.py",
-      "sha256": "67aa2ca143d9ead8d287fc9d4e2e8bd83e3b2d98baa428592ebba82e488a3420",
-      "size_bytes": 3477
+      "sha256": "df2913190d811be3ab5e093cb507c5ff6f377e129da80daf198260468b7a8679",
+      "size_bytes": 3496
     },
     {
       "path": "sharkbyte_guarded_entry.py",
@@ -718,13 +723,13 @@
     },
     {
       "path": "sharkbyte_studio.html",
-      "sha256": "1fe8418f10e946d8151db0f3c39e63a9b0729444a06c76fcbadc0025e6325e1f",
-      "size_bytes": 7634
+      "sha256": "eeb119fdf294ab468eead58c04186d4f2b67b571230158ac7e5cb1f01a63d079",
+      "size_bytes": 7674
     },
     {
       "path": "sharkbyte_studio.py",
-      "sha256": "b85730d81123dccc942db372af7936590e2e07146a791e9833a5537bd073d31d",
-      "size_bytes": 6217
+      "sha256": "ee511388852d34344869b4fb6b9bfeeb364be0e6fd5719aace4a5af0a29c12ea",
+      "size_bytes": 6241
     },
     {
       "path": "sharkbyte_terminal.py",

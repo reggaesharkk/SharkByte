@@ -17,7 +17,7 @@ from sharkbyte_alpha.cli import MAX_SOURCE_BYTES
 
 ROOT = Path(__file__).resolve().parent
 EXAMPLES = {"classical": "example.sb", "quantum": "bell.sb", "hybrid": "adaptive.sb",
-            "frontier": "frontier_sparse_40.sb"}
+            "frontier": "frontier_sparse_40_131072.sb"}
 
 
 class Studio(BaseHTTPRequestHandler):
@@ -65,8 +65,8 @@ class Studio(BaseHTTPRequestHandler):
             if source.lstrip().startswith("hybrid ") and request["mode"] != "hybrid":
                 raise ValueError("Select Bounded Hybrid for a hybrid block. Frontier30 accepts a quantum block with fixed numeric angles.")
             support_cap = request.get("support_cap", 4096)
-            if request["mode"] == "frontier" and (type(support_cap) is not int or support_cap not in (4096, 8192, 16384, 32768, 65536)):
-                raise ValueError("Choose a Frontier30 support cap of 4,096, 8,192, 16,384, 32,768, or 65,536 states.")
+            if request["mode"] == "frontier" and (type(support_cap) is not int or support_cap not in (4096, 8192, 16384, 32768, 65536, 131072)):
+                raise ValueError("Choose a Frontier30 support cap of 4,096, 8,192, 16,384, 32,768, 65,536, or 131,072 states.")
         except (ValueError, TypeError) as exc:
             return self.reply(400, {"execution_id": execution_id, "error": str(exc)})
 
