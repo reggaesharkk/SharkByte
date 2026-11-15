@@ -1,5 +1,5 @@
 {
-  "file_count": 188,
+  "file_count": 190,
   "files": [
     {
       "path": ".gitattributes",
@@ -53,8 +53,8 @@
     },
     {
       "path": "INDEPENDENT_QUANTUM_VALIDATION.md",
-      "sha256": "ecfe41d8b5a418c06143e17c76fef392eccd410219b426c3d9acc3ae07922072",
-      "size_bytes": 5000
+      "sha256": "a72a4d851f24cb6acc11f373f59e360ca0918f852ad4603bb6bcec47d7ae8d67",
+      "size_bytes": 6061
     },
     {
       "path": "INSTALL.md",
@@ -113,8 +113,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "d964905b90cc4cd60b05a773a59539570886fc7983e7350e0deb629cd9e31cb1",
-      "size_bytes": 14328
+      "sha256": "3f7abb65c847ec6268558f05271bf422fba8a8368a83c4a4f8fd7805fa50ea8c",
+      "size_bytes": 14626
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
@@ -600,6 +600,16 @@
       "path": "evidence/rotation_gate_local.json",
       "sha256": "f158082d4d59cd58a4e47c3b26655b24afbd0afadb6cea6362b4290217b6e364",
       "size_bytes": 25469
+    },
+    {
+      "path": "evidence/windows-arm64-cirq/cirq-120.json",
+      "sha256": "db621c3ee1571e0f85f9bab4755abea8de2e5d506980177c51dfd77542931d09",
+      "size_bytes": 41740
+    },
+    {
+      "path": "evidence/windows-arm64-cirq/cirq-16777216.json",
+      "sha256": "a088f0e1af7a4846cba85fbbb5a6952309ceacbf9070514c79400bbb5160df5b",
+      "size_bytes": 2219
     },
     {
       "path": "examples/adaptive.sb",

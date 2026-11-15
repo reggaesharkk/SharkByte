@@ -121,10 +121,14 @@ Select a CPU runtime and choose **Run all** to reproduce the checks and download
 
 | Environment | Qiskit and Cirq reference suite | 16,777,216 active states |
 | --- | --- | --- |
-| Windows ARM64 | Native Qiskit setup blocked on rustworkx | SharkByte sparse run passed |
+| Windows ARM64 | Native Cirq 1.7.0 passed 120/120 against the Colab Qiskit receipt. Native live Qiskit awaits compatible Qiskit and rustworkx wheels. | Cirq matched every populated amplitude |
 | Ubuntu WSL2 ARM64 | Both references passed 120 seeded circuits | Cirq matched every populated amplitude |
 | GitHub Actions Ubuntu | Both references passed 120 seeded circuits | Large run is separate from CI |
 | Google Colab Linux x86_64 | Both references passed 120 seeded circuits | Cirq matched every populated amplitude |
+
+On native Windows ARM64, Cirq 1.7.0 also matched all 16,777,216 populated
+amplitudes with a maximum complex amplitude error of `6.36e-19`.
+[Windows ARM64 receipts](evidence/windows-arm64-cirq/)
 
 Colab compared 3,196 amplitudes in the seeded suite with a maximum error of
 `5.93e-16` against each engine. The 40-qubit circuit's maximum complex amplitude

@@ -23,6 +23,29 @@ receipts remain untouched.
     & "$results\.venv\Scripts\python.exe" -B -m unittest discover -s tests -v
     Pop-Location
 
+### Native Windows ARM64 Cirq
+
+The verified Windows run used ARM64 CPython 3.12 and Cirq 1.7.0. Use a
+fresh environment and results directory, then run these commands from
+the repository root:
+
+```powershell
+$results = Join-Path $env:TEMP ("sharkbyte-cirq-" + [guid]::NewGuid())
+New-Item -ItemType Directory $results | Out-Null
+python -m venv "$results/.venv"
+$cirqPython = "$results/.venv/Scripts/python.exe"
+& $cirqPython -m pip install --only-binary=:all: cirq-core==1.7.0
+& $cirqPython -m pip check
+& $cirqPython -B tools/run_cirq_crosscheck.py evidence/colab-bfad672/qiskit.json --output "$results/cirq-120.json"
+& $cirqPython -B tools/run_cirq_scaling_check.py --output "$results/cirq-16777216.json"
+```
+
+The small suite compares native Cirq against the archived Colab Qiskit
+and SharkByte vectors. The scaling check runs SharkByte and Cirq locally.
+Native live Qiskit remains open for the pinned 2.6.2 environment because
+both Qiskit and rustworkx lack compatible ARM64 wheels. Use the Ubuntu
+WSL2 steps below for live Qiskit on a Windows ARM64 laptop.
+
 ### Ubuntu WSL2
 
     RESULTS=/mnt/d/boss/results/independent-quantum-validation_2026-11-15/ubuntu-wsl2
