@@ -115,6 +115,10 @@ Run from the repository root using the
 
 #### Cross-platform evidence
 
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/reggaesharkk/SharkByte/blob/main/notebooks/SharkByte-Colab-Verification.ipynb)
+
+Select a CPU runtime and choose **Run all** to reproduce the checks and download the receipts.
+
 | Environment | Qiskit and Cirq reference suite | 16,777,216 active states |
 | --- | --- | --- |
 | Windows ARM64 | Native Qiskit setup blocked on rustworkx | SharkByte sparse run passed |

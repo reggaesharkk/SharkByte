@@ -1,5 +1,5 @@
 {
-  "file_count": 187,
+  "file_count": 188,
   "files": [
     {
       "path": ".gitattributes",
@@ -113,8 +113,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "839a79cf4f9c3d6e652bd5298ccd09847b70927c59617035c2def7e75a9a3d3a",
-      "size_bytes": 14034
+      "sha256": "d964905b90cc4cd60b05a773a59539570886fc7983e7350e0deb629cd9e31cb1",
+      "size_bytes": 14328
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
@@ -715,6 +715,11 @@
       "path": "examples/research/strength_h4_split_audit.sb",
       "sha256": "8f3794282381a8e17dcf748eb7121357a67292ceaee5e6f6cb09021504336d84",
       "size_bytes": 1857
+    },
+    {
+      "path": "notebooks/SharkByte-Colab-Verification.ipynb",
+      "sha256": "c0b3e48053f1413270c372ac82b11f1675439aa7b73af53349cdf84a6e8974d6",
+      "size_bytes": 5787
     },
     {
       "path": "pyproject.toml",
