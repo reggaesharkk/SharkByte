@@ -29,6 +29,8 @@ def main():
         circuit = source.replace("    z 1;\n", f"    z {first}; z {second};\n", 1)
         # The resulting logical X has squared overlap cos(pi/3)^2.
         cases.append(("two_errors", [first, second], syndrome, circuit, 0.25))
+    if len(cases) != 11:
+        raise RuntimeError(f"Expected 11 phase-flip cases, found {len(cases)}")
     evidence = []
     for mode, error, syndrome, circuit, expected in cases:
         result = evaluate(parse_quantum(circuit))
