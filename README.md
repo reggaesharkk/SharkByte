@@ -113,6 +113,21 @@ Run from the repository root using the
 "$CIRQ_ENV/bin/python" -B tools/run_cirq_scaling_check.py --output cirq-scaling-receipt.json
 ```
 
+#### Cross-platform evidence
+
+| Environment | Qiskit and Cirq reference suite | 16,777,216 active states |
+| --- | --- | --- |
+| Windows ARM64 | Native Qiskit setup blocked on rustworkx | SharkByte sparse run passed |
+| Ubuntu WSL2 ARM64 | Both references passed 120 seeded circuits | Cirq matched every populated amplitude |
+| GitHub Actions Ubuntu | Both references passed 120 seeded circuits | Large run is separate from CI |
+| Google Colab Linux x86_64 | Both references passed 120 seeded circuits | Cirq matched every populated amplitude |
+
+Colab compared 3,196 amplitudes in the seeded suite with a maximum error of
+`5.93e-16` against each engine. The 40-qubit circuit's maximum complex amplitude
+error was `7.40e-19`. SharkByte evolution took 36.025 s and the amplitude comparison
+took 8.901 s. The Colab receipts are tied to source revision `bfad672`.
+[Colab receipts and SHA-256 index](evidence/colab-bfad672/)
+
 ## Terminal quickstart
 
 From the checkout, run `python -B sharkbyte_terminal.py` (`python3` on Linux). Try `/help`, `/bell`, `/bell-phase`, or `/qft`. The QFT example embeds a six-qubit transform in a 30-qubit register. Use `/run FILE.sb` for a custom quantum circuit, or `/run-frontier FILE.sb` for a sparse circuit at the default cap.
@@ -125,7 +140,7 @@ For optional chat, install [Qualcomm GenieX](https://geniex.aihub.qualcomm.com/e
 
 ```powershell
 geniex --skip-update pull qualcomm/Qwen3-0.6B:W4A16 --model-hub aihub
-.Open-SharkByte-AI.ps1 -Terminal
+.\Open-SharkByte-AI.ps1 -Terminal
 ```
 
 The launcher uses Qualcomm's precompiled model weights and connects via loopback. Check live GenieX runtime status to confirm the device used for inference. The circuit and VM commands run independently on the CPU. For custom paths, see the [launcher parameters](Open-SharkByte-AI.ps1).
