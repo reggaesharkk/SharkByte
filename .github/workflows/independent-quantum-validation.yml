@@ -3,6 +3,7 @@ name: Independent Quantum Validation
 on:
   pull_request:
     paths:
+      - "INDEPENDENT_QUANTUM_VALIDATION.md"
       - "sharkbyte_alpha/quantum.py"
       - "sharkbyte_alpha/cli.py"
       - "benchmarks/sb_quantum_benchmark/**"
