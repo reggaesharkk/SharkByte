@@ -250,6 +250,7 @@ def main():
         "implementation_sha256": implementation_digests(), "plan_file_sha256": sha256(plan_raw),
         "source_name": source_path.name, "source_sha256": sha256(source),
         "source_bytes": len(source), "parsed_source_sha256": parsed_source_hash,
+        "numpy_version": np.__version__,
         "qubits": args.width, "gate_count": len(circuit.gates), "seed": plan["seed"],
         "gate_sequence_sha256": plan["gate_sequence_sha256"], "topology_kind": plan.get("topology_kind"),
         "two_qubit_edge_count": plan.get("two_qubit_edge_count"),
