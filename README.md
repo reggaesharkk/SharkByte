@@ -74,7 +74,7 @@ Open [http://127.0.0.1:8120/](http://127.0.0.1:8120/) if the browser does not op
 
 Choose Classical, Quantum, Bounded Hybrid or Frontier30 (sparse), then select **Load example** or paste your own SharkByte source. Select **Run** to inspect the output, execution metrics, bytecode when emitted, and the exact source snapshot. **Save receipt** downloads the SharkByte JSON record for local inspection or verification with `python -m sharkbyte_alpha verify-run FILE.json`.
 
-Bounded Hybrid accepts 2–6 qubits. Frontier30 runs fixed quantum blocks with a selectable support cap (4,096 by default, or 8,192, 16,384, or 32,768 states) and reports probabilities. Load its 30-qubit GHZ phase example to see a circuit whose support stays at two states.
+Bounded Hybrid accepts 2–6 qubits. Frontier30 runs fixed quantum blocks with a selectable support cap (4,096 by default, or 8,192, 16,384, 32,768, or 65,536 states) and reports probabilities. The sparse parser accepts registers up to 40 qubits. Loading the bundled 40-qubit example selects 65,536 for its 16 branching Hadamards. The separate [30-qubit GHZ example](examples/ghz_phase_30.sb) fits the default cap. Frontier30 reports probabilities. Its output does not include sampled counts.
 
 Studio listens on loopback and runs the public SharkVM and CPU simulation modes. Its worker timing includes process startup. The Linux ARM64 three-backend workflow is documented separately in the [backend agreement benchmark](benchmarks/backend_agreement/README.md).
 
