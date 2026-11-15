@@ -1,5 +1,5 @@
 {
-  "file_count": 164,
+  "file_count": 165,
   "files": [
     {
       "path": ".gitattributes",
@@ -103,8 +103,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "2f50bd8337d95b66e94c08d6fcf6778492e7c2d3456839b17d77b088474ac93b",
-      "size_bytes": 16378
+      "sha256": "625de0aca9f4e77d2a3fde4860a76491ab7a3f02178edc7ed96e144e49267fbc",
+      "size_bytes": 16480
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
@@ -265,6 +265,11 @@
       "path": "benchmarks/sb_quantum_benchmark/sb_end_to_end_bench.py",
       "sha256": "3ef166ed6a10040158610926276a01f1416a37e46010ed08d582cf2a881655af",
       "size_bytes": 3267
+    },
+    {
+      "path": "benchmarks/sb_quantum_benchmark/scaling-16777216.json",
+      "sha256": "9d129f59f7593bcd2d95c476f632260fa5f2e849989110d492ae7be7c638b668",
+      "size_bytes": 745
     },
     {
       "path": "benchmarks/sb_quantum_benchmark/scaling-2097152.json",

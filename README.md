@@ -126,20 +126,21 @@ One run per row on Windows ARM64 with Python 3.12.10. Evolution time excludes su
 python -B benchmarks/sb_quantum_benchmark/support_scaling.py 1048576
 ```
 
-### Scaling past eight million active states
+### Scaling to 16,777,216 active states
 
-The same 40-qubit circuit family reached **8,388,608 active states** on Windows ARM64 with Python 3.12.10. All three local runs passed checks for state count, normalization, and uniform probabilities.
+The same 40-qubit circuit family reached **16,777,216 active states** on Windows ARM64 with Python 3.12.10. All four local runs passed checks for state count, normalization, and uniform probabilities.
 
 | Active states | Gates | Sparse evolution | Peak runner working set | Run data |
 | ---: | ---: | ---: | ---: | --- |
 | 2,097,152 | 53 | 2.768 s | 369 MiB | [JSON](benchmarks/sb_quantum_benchmark/scaling-2097152.json) |
 | 4,194,304 | 54 | 5.988 s | 723 MiB | [JSON](benchmarks/sb_quantum_benchmark/scaling-4194304.json) |
 | 8,388,608 | 55 | 11.095 s | 1.39 GiB | [JSON](benchmarks/sb_quantum_benchmark/scaling-8388608.json) |
+| 16,777,216 | 56 | 17.614 s | 2.77 GiB | [JSON](benchmarks/sb_quantum_benchmark/scaling-16777216.json) |
 
 One run per row. Windows process peak working set was observed by polling. Times cover sparse evolution. These runs use the terminal benchmark with compact output.
 
 ```text
-python -B benchmarks/sb_quantum_benchmark/support_scaling.py 8388608
+python -B benchmarks/sb_quantum_benchmark/support_scaling.py 16777216
 ```
 
 ## Reproduce the public benchmarks
