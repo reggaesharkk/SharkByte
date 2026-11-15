@@ -95,6 +95,23 @@ Reproduce from the checkout:
 python -B benchmarks/sb_quantum_benchmark/frontier30.py examples/frontier_sparse_40_131072.sb --support-cap 131072
 ```
 
+### Experimental sparse scaling to 1,048,576 active states
+
+The experiment keeps the register at 40 qubits and appends one Hadamard per doubling to the 49-gate example above. Each run checked the expected active state count, probability normalization, and the analytical uniform probabilities for this circuit family.
+
+| Active states | Gates | Evolution time | Peak runner working set |
+| ---: | ---: | ---: | ---: |
+| 131,072 | 49 | 0.210 s | 46.5 MiB |
+| 262,144 | 50 | 0.647 s | 70.6 MiB |
+| 524,288 | 51 | 0.906 s | 110.4 MiB |
+| 1,048,576 | 52 | 2.033 s | 195.8 MiB |
+
+One run per row on Windows ARM64 with Python 3.12.10. Evolution time excludes summary serialization and the probability checks. Windows peak working set was observed by polling the runner process. This experiment emits a compact summary and uses an explicit sparse memory budget. Studio continues to offer full probability receipts through 131,072 states.
+
+```text
+python -B benchmarks/sb_quantum_benchmark/support_scaling.py 1048576
+```
+
 ## Reproduce the public benchmarks
 
 - [Backend agreement](benchmarks/backend_agreement/README.md) runs SharkVM, Direct AArch64, and the native interpreter from a source checkout on Linux ARM64 with Python, Clang, and LLD. On the [verified source revision](https://github.com/reggaesharkk/SharkByte/commit/0beed08fc99235d8de1f594448dfa7fc80a46c08), nine programs passed on each backend (27/27), and all three produced the expected diagnostic for their configured 50,000,000-instruction or tick budget. The Apache-authorized source revision also passed its Ubuntu 24.04 ARM64 backend and budget jobs in [GitHub Actions](https://github.com/reggaesharkk/SharkByte/actions/runs/43602167885). Use trusted local programs. Host isolation remains unverified.

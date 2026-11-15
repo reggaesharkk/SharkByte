@@ -1,5 +1,5 @@
 {
-  "file_count": 157,
+  "file_count": 158,
   "files": [
     {
       "path": ".gitattributes",
@@ -103,8 +103,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "478fbf206fda8d9eae02d5eeb6ea10c3e295670484798de2868649204a281b88",
-      "size_bytes": 13358
+      "sha256": "035a7faa6f83d698c13f700d3b777cf07d08b0f7b1a4dfb5dbecb2c9f8cdd4d2",
+      "size_bytes": 14372
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
@@ -260,6 +260,11 @@
       "path": "benchmarks/sb_quantum_benchmark/sparse_backend.py",
       "sha256": "c9dc8faf4598cb89e3601a6600092196e893fb3cad1a28987fd28e2f1b4ebd10",
       "size_bytes": 13360
+    },
+    {
+      "path": "benchmarks/sb_quantum_benchmark/support_scaling.py",
+      "sha256": "b5e161bbd38201238f9e5f06bebe9850770dfdf189a388ea487fac0479b9682e",
+      "size_bytes": 2009
     },
     {
       "path": "docs/APACHE_RIGHTS_CLEARANCE_20261114.md",
