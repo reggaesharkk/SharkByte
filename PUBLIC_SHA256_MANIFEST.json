@@ -103,8 +103,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "e0cc7d739e26e8d02f4782909627b9582efe38cdee6edabd892ac0af750c8556",
-      "size_bytes": 18562
+      "sha256": "131d47d88a779f544c3cd2aae7d77fc0efcb4bf2989efa7f24444abfc8a36f3f",
+      "size_bytes": 10819
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
@@ -318,8 +318,8 @@
     },
     {
       "path": "docs/sharkbyte-studio-banner.svg",
-      "sha256": "e8497f157dff552ede9e0a934949f644573b0a68641255d38ab6eee32593f176",
-      "size_bytes": 2092
+      "sha256": "bcf3da9745d5e3be14599b8e262175b7ed7583c61c3898893c9a28a6cfdb9c7a",
+      "size_bytes": 2095
     },
     {
       "path": "evidence/phase_flip_recovery_cases.json",
