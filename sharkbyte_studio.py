@@ -15,12 +15,12 @@ from uuid import uuid4
 import webbrowser
 
 from sharkbyte_alpha import vm
-from sharkbyte_alpha.cli import MAX_SOURCE_BYTES
+from sharkbyte_alpha.cli import MAX_SOURCE_BYTES, envelope
 
 
 ROOT = Path(__file__).resolve().parent
 EXAMPLES = {"classical": "example.sb", "quantum": "bell.sb", "hybrid": "adaptive.sb",
-            "frontier": "frontier_sparse_40_131072.sb"}
+            "frontier": "frontier_sparse_40_131072.sb", "scaling": "frontier_sparse_40_131072.sb"}
 
 
 class Studio(BaseHTTPRequestHandler):
@@ -80,6 +80,8 @@ class Studio(BaseHTTPRequestHandler):
             if source.lstrip().startswith("hybrid ") and request["mode"] != "hybrid":
                 raise ValueError("Select Bounded Hybrid for a hybrid block. Frontier30 accepts a quantum block with fixed numeric angles.")
             support_cap = request.get("support_cap", 4096)
+            if request["mode"] == "scaling" and source != (ROOT / "examples" / EXAMPLES["scaling"]).read_text(encoding="utf-8"):
+                raise ValueError("Load the bundled scaling example before running the benchmark.")
             if request["mode"] == "frontier" and (type(support_cap) is not int or support_cap not in (4096, 8192, 16384, 32768, 65536, 131072)):
                 raise ValueError("Choose a Frontier30 support cap of 4,096, 8,192, 16,384, 32,768, 65,536, or 131,072 states.")
         except (ValueError, TypeError) as exc:
@@ -90,7 +92,9 @@ class Studio(BaseHTTPRequestHandler):
             with tempfile.TemporaryDirectory(prefix="sharkbyte-studio-") as folder:
                 path = Path(folder) / "program.sb"
                 path.write_bytes(source.encode())
-                if request["mode"] == "frontier":
+                if request["mode"] == "scaling":
+                    command = [str(ROOT / "benchmarks" / "sb_quantum_benchmark" / "support_scaling.py"), "1048576"]
+                elif request["mode"] == "frontier":
                     command = ["-c", "import json,sys; from pathlib import Path; "
                                "from sharkbyte_experiment import run_experiment; "
                                "print(json.dumps(run_experiment(Path(sys.argv[1]).read_bytes().decode('utf-8'), 'frontier', int(sys.argv[2]))))",
@@ -107,8 +111,10 @@ class Studio(BaseHTTPRequestHandler):
 
         if completed.returncode:
             return self.reply(422, {"execution_id": execution_id,
-                                    "error": completed.stderr.strip() or f"Worker exited with code {completed.returncode}."})
+                                    "error": completed.stderr.strip() or completed.stdout.strip() or f"Worker exited with code {completed.returncode}."})
         record = json.loads(completed.stdout)
+        if request["mode"] == "scaling":
+            record = envelope(source, "scaling", record)
         if record["mode"] == "frontier" and record["result"]["result"] != "PASS":
             return self.reply(422, {"execution_id": execution_id, "error": record["result"]["reason"]})
         bytecode = record.get("bytecode_hex")

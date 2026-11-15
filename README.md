@@ -106,7 +106,7 @@ The experiment keeps the register at 40 qubits and appends one Hadamard per doub
 | 524,288 | 51 | 0.906 s | 110.4 MiB |
 | 1,048,576 | 52 | 2.033 s | 195.8 MiB |
 
-One run per row on Windows ARM64 with Python 3.12.10. Evolution time excludes summary serialization and the probability checks. Windows peak working set was observed by polling the runner process. This experiment emits a compact summary and uses an explicit sparse memory budget. Studio continues to offer full probability receipts through 131,072 states.
+One run per row on Windows ARM64 with Python 3.12.10. Evolution time excludes summary serialization and the probability checks. Windows peak working set was observed by polling the runner process. In Studio, select **Million-state benchmark** and click **Run** to reproduce a compact result and download its receipt. The runner appends the three Hadamards listed in the [published Studio receipt](benchmarks/sb_quantum_benchmark/million-state-receipt.json) to the source shown in the editor. This experiment emits a compact summary and uses an explicit sparse memory budget. Studio continues to offer full probability receipts through 131,072 states.
 
 ```text
 python -B benchmarks/sb_quantum_benchmark/support_scaling.py 1048576

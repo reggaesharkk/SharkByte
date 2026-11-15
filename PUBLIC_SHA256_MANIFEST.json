@@ -1,5 +1,5 @@
 {
-  "file_count": 158,
+  "file_count": 159,
   "files": [
     {
       "path": ".gitattributes",
@@ -103,8 +103,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "035a7faa6f83d698c13f700d3b777cf07d08b0f7b1a4dfb5dbecb2c9f8cdd4d2",
-      "size_bytes": 14372
+      "sha256": "8a561a85686d41ff173105e46bc794f41da804716bef7a35dd241d34bef45ee0",
+      "size_bytes": 14667
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
@@ -235,6 +235,11 @@
       "path": "benchmarks/sb_quantum_benchmark/frontier30.py",
       "sha256": "18fe6b27eddd3b4a863cef8ae841fde39a6be1509b39034cdf753ed2e86b37f6",
       "size_bytes": 2846
+    },
+    {
+      "path": "benchmarks/sb_quantum_benchmark/million-state-receipt.json",
+      "sha256": "2ba950d24d4b4ec7238d853a3b6e2c681795e9b24aa1a8bf5d3fcb48381d5ae6",
+      "size_bytes": 1625
     },
     {
       "path": "benchmarks/sb_quantum_benchmark/qft6_in_30.sb",
@@ -728,13 +733,13 @@
     },
     {
       "path": "sharkbyte_studio.html",
-      "sha256": "87bba1eb2b59c055f17450170be760fe3e76c1db353ae74d8a7f80ec0b318009",
-      "size_bytes": 7773
+      "sha256": "ba903aa86fba066dfc9ab203f1c11d85bcc1f04c60f34610db54a890333c289c",
+      "size_bytes": 7951
     },
     {
       "path": "sharkbyte_studio.py",
-      "sha256": "cc3b5b172f6602fcbf0e90cedef9e6c6a2c586a610bac5e0da7960bbb9b7dea7",
-      "size_bytes": 8071
+      "sha256": "8152ff3b750ee824970cd9df2802e4f3dd2c98c364706d07086e75167f203cc1",
+      "size_bytes": 8645
     },
     {
       "path": "sharkbyte_terminal.py",
