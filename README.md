@@ -126,6 +126,21 @@ One run per row on Windows ARM64 with Python 3.12.10. Evolution time excludes su
 python -B benchmarks/sb_quantum_benchmark/support_scaling.py 1048576
 ```
 
+### Scaling past four million active states
+
+The same 40-qubit circuit family reached **4,194,304 active states** on Windows ARM64 with Python 3.12.10. Both local runs passed checks for state count, normalization, and uniform probabilities.
+
+| Active states | Gates | Sparse evolution | Peak runner working set | Run data |
+| ---: | ---: | ---: | ---: | --- |
+| 2,097,152 | 53 | 2.768 s | 369 MiB | [JSON](benchmarks/sb_quantum_benchmark/scaling-2097152.json) |
+| 4,194,304 | 54 | 5.988 s | 723 MiB | [JSON](benchmarks/sb_quantum_benchmark/scaling-4194304.json) |
+
+One run per row. Windows process peak working set was observed by polling. Times cover sparse evolution. These runs use the terminal benchmark with compact output.
+
+```text
+python -B benchmarks/sb_quantum_benchmark/support_scaling.py 4194304
+```
+
 ## Reproduce the public benchmarks
 
 - [Backend agreement](benchmarks/backend_agreement/README.md) runs SharkVM, Direct AArch64, and the native interpreter from a source checkout on Linux ARM64 with Python, Clang, and LLD. On the [verified source revision](https://github.com/reggaesharkk/SharkByte/commit/0beed08fc99235d8de1f594448dfa7fc80a46c08), nine programs passed on each backend (27/27), and all three produced the expected diagnostic for their configured 50,000,000-instruction or tick budget. The Apache-authorized source revision also passed its Ubuntu 24.04 ARM64 backend and budget jobs in [GitHub Actions](https://github.com/reggaesharkk/SharkByte/actions/runs/43602167885). Use trusted local programs. Host isolation remains unverified.

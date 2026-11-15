@@ -1,5 +1,5 @@
 {
-  "file_count": 161,
+  "file_count": 163,
   "files": [
     {
       "path": ".gitattributes",
@@ -103,8 +103,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "6d13dec19f81c95b6e898387c34c55e03158d0bd7f54e950a8aa8b8140b2b380",
-      "size_bytes": 15456
+      "sha256": "3953f555c90f2e7ec68b355adb6fd784031a446f72e7738f1ad62dca7d5e398b",
+      "size_bytes": 16268
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
@@ -267,14 +267,24 @@
       "size_bytes": 3267
     },
     {
+      "path": "benchmarks/sb_quantum_benchmark/scaling-2097152.json",
+      "sha256": "5cdd41d784b3f2133b9cecf141816317fae7f832dbb324e74b5c1b11ee05d6bd",
+      "size_bytes": 646
+    },
+    {
+      "path": "benchmarks/sb_quantum_benchmark/scaling-4194304.json",
+      "sha256": "af2b137e710f4dce7061fa6dfdcb567548c08dcb9c24f400cdb52beba6fc2aaf",
+      "size_bytes": 677
+    },
+    {
       "path": "benchmarks/sb_quantum_benchmark/sparse_backend.py",
       "sha256": "c9dc8faf4598cb89e3601a6600092196e893fb3cad1a28987fd28e2f1b4ebd10",
       "size_bytes": 13360
     },
     {
       "path": "benchmarks/sb_quantum_benchmark/support_scaling.py",
-      "sha256": "b5e161bbd38201238f9e5f06bebe9850770dfdf189a388ea487fac0479b9682e",
-      "size_bytes": 2009
+      "sha256": "a42b5b308d2113a71ef8d5f28f9929b3162a4327fe7047b2bbc9e57c4bc0452d",
+      "size_bytes": 2035
     },
     {
       "path": "docs/APACHE_RIGHTS_CLEARANCE_20261114.md",

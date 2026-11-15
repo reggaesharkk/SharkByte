@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "qubits": 40,
+  "gates": 54,
+  "source_sha256": "a24d8f389850e4a298f611d45ab4c5e953ead59c153777071916ecea73cd5316",
+  "added_gates": [
+    [
+      "h",
+      14
+    ],
+    [
+      "h",
+      16
+    ],
+    [
+      "h",
+      18
+    ],
+    [
+      "h",
+      20
+    ],
+    [
+      "h",
+      22
+    ]
+  ],
+  "peak_active_states": 4194304,
+  "final_active_states": 4194304,
+  "estimated_budget_bytes": 2147483648,
+  "evolution_seconds": 5.988291600020602,
+  "probability_sum": 0.9999999999999963,
+  "max_uniform_probability_error": 9.529120656610879E-22,
+  "peak_runner_working_set_bytes": 757760000,
+  "platform": "Windows ARM64",
+  "python": "3.12.10"
+}
