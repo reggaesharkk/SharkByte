@@ -32,6 +32,9 @@ jobs:
           python -m pip install -r requirements-independent-quantum.txt cirq-core==1.7.0
           python -m pip check
 
+      - name: Verify checked-in connected-circuit evidence
+        run: python -B tools/verify_connected_circuit_evidence.py
+
       - name: Compare connected circuits with Qiskit and Cirq
         run: |
           python -B tools/run_connected_quantum_validation.py --backend qiskit --output connected-reference-results/qiskit.json --support-cap 65536 --memory-budget-mib 64 --timeout-seconds 60

@@ -6,9 +6,9 @@
       "sha256": "9b42ed7feceb29d869198d6650d01018fc7a2bf1997a873c9ec6218963385d08"
     },
     {
-      "bytes": 4031,
+      "bytes": 4157,
       "path": ".github/workflows/ci.yml",
-      "sha256": "4e1b821b6cf9cda8fbccdaa1f7bbfa985d7a0efc770a84e439f82149c6c72bf9"
+      "sha256": "c8da7674fa5fe9b49f77abf8dc9a8c950621bf7eeed0d16c433c94f668bf97e2"
     },
     {
       "bytes": 15695,
@@ -31,9 +31,9 @@
       "sha256": "f655de6f68d392cc72af1d87430466d8c5ee7dff4861755bd2bbdea7756ec42b"
     },
     {
-      "bytes": 8219,
+      "bytes": 8300,
       "path": "docs/connected-circuit-frontier.md",
-      "sha256": "3a04b56390da6e6d0c0b39072594d67e85dde174a5119d4c1476021c9457533b"
+      "sha256": "c2d9f10be5eb4cce485a569974f485daa93f1b07874a7c6f14d8e955645d8040"
     },
     {
       "bytes": 17770,
@@ -177,6 +177,6 @@
     }
   ],
   "integrity_note": "Unkeyed SHA-256 detects byte changes; it does not prove authorship or correctness.",
-  "manifest_sha256": "6176b23b6af8c8c0a99dc72272d686a9558c22abb533b14495314002f38098af",
+  "manifest_sha256": "c6eb621094683d523136655bf1bfbd7b772a874a50beb3bbfa07d7e1f3e6596c",
   "schema": 1
 }

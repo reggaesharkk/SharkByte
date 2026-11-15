@@ -124,7 +124,8 @@ comparison independently on GitHub's Ubuntu and Windows Python 3.12 runners and
 uploads the two receipts, statevectors, and comparison report. This is a
 repeatable CI check for the new corpus; it does not rerun the prior 120-case
 suite or the 16,777,216-state benchmark. The recorded local ARM64 measurements
-above remain distinct from the hosted CI environments.
+above remain distinct from the hosted CI environments. The job also verifies
+the checked-in byte manifest from a clean GitHub checkout.
 
 ## Reproduction
 
