@@ -46,7 +46,7 @@ class Studio(BaseHTTPRequestHandler):
             return self.reply(200, (ROOT / "sharkbyte_studio.html").read_bytes(), "text/html; charset=utf-8")
         if self.path == "/examples":
             return self.reply(200, {mode: (ROOT / "examples" / name).read_text(encoding="utf-8")
-                                    for mode, name in EXAMPLES.items()})
+                                    for mode, name in {**EXAMPLES, "phase_recovery": "phase_flip_recovery.sb"}.items()})
         match = re.fullmatch(r"/receipts/([a-f0-9]{32})\.json", self.path)
         if match and match[1] in self.server.receipts:
             path = self.server.receipts[match[1]]

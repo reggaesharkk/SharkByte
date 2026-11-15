@@ -1,5 +1,5 @@
 {
-  "file_count": 166,
+  "file_count": 169,
   "files": [
     {
       "path": ".gitattributes",
@@ -103,8 +103,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "4e1ddb367c1e1b547e7d06240e9531661b51988caec8338b9dd216c9aac2aea1",
-      "size_bytes": 16841
+      "sha256": "f3a3898fd0beab1edc1c828807d0f9f8ce7e3ba443c2bddcb1ac59e14cbea1bf",
+      "size_bytes": 18045
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
@@ -320,6 +320,11 @@
       "path": "docs/sharkbyte-studio-banner.svg",
       "sha256": "e8497f157dff552ede9e0a934949f644573b0a68641255d38ab6eee32593f176",
       "size_bytes": 2092
+    },
+    {
+      "path": "evidence/phase_flip_recovery_cases.json",
+      "sha256": "670cffe21a893913aae51875e50196e5e93839f9634bb05e29d39f977a66fc98",
+      "size_bytes": 27173
     },
     {
       "path": "evidence/qiskit_0.2.2a1/INDEPENDENT_EVIDENCE_REVIEW.json",
@@ -607,6 +612,11 @@
       "size_bytes": 1222
     },
     {
+      "path": "examples/phase_flip_recovery.sb",
+      "sha256": "89aa9248f96b1bd7166d82bcbbba0cbc9a17a2c479d2428e69eaf7716df31b90",
+      "size_bytes": 1222
+    },
+    {
       "path": "examples/qft_basis_37.sbq",
       "sha256": "43e663731bf8ad814f4c10ffa00ca19b285d22f0d7795d5fe340a6b0621d4033",
       "size_bytes": 651
@@ -768,13 +778,13 @@
     },
     {
       "path": "sharkbyte_studio.html",
-      "sha256": "ba903aa86fba066dfc9ab203f1c11d85bcc1f04c60f34610db54a890333c289c",
-      "size_bytes": 7951
+      "sha256": "3aca4da52ff5d3fbb6ae97461417742a367b100cf206aa7bda658c95adc8961a",
+      "size_bytes": 8243
     },
     {
       "path": "sharkbyte_studio.py",
-      "sha256": "8152ff3b750ee824970cd9df2802e4f3dd2c98c364706d07086e75167f203cc1",
-      "size_bytes": 8645
+      "sha256": "96f76fcd0aa82e664ddce961c9fafdea1c92f515a1fec8e2739d7c7bb0f9d9f2",
+      "size_bytes": 8693
     },
     {
       "path": "sharkbyte_terminal.py",
@@ -825,6 +835,11 @@
       "path": "tools/ci_acceptance.py",
       "sha256": "a9f76321e5eb16eb619fe0472ba32bdfdea5add869fb652a08407e30bfbd42bd",
       "size_bytes": 5305
+    },
+    {
+      "path": "tools/phase_flip_recovery_cases.py",
+      "sha256": "e3670e1a7b22daa50059fd248a5a6e55c19c9f50217d50f3a41def199867ae9c",
+      "size_bytes": 2010
     },
     {
       "path": "tools/replay_qiskit_vectors.py",

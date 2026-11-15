@@ -90,6 +90,23 @@ Bounded Hybrid accepts 2–6 qubits. Frontier30 runs fixed quantum blocks with a
 
 Studio listens on loopback and runs the public SharkVM and CPU simulation modes. Its worker timing includes process startup. The Linux ARM64 three-backend workflow is documented separately in the [backend agreement benchmark](benchmarks/backend_agreement/README.md).
 
+### Five-qubit phase-flip recovery
+
+In Studio, choose **Quantum > Load phase-flip recovery > Run**. The [circuit](examples/phase_flip_recovery.sb) encodes a logical superposition with relative phase +pi/3, injects a single Z error, and uses two ancillas to control the correction before the final measurement. The decoded data should read `000` after reversing the state preparation. Bitstrings put syndrome bits `q4 q3` first.
+
+| Case | Syndrome | Expected probability of decoded data `000` |
+| --- | --- | ---: |
+| No error, recovery on | 00 | 1 |
+| Z on q0, q1, or q2, recovery on | 01, 11, or 10 | 1 |
+| Z on q0, q1, or q2, recovery off | 01, 11, or 10 | 0 |
+| Z on q1, recovery on, input phase -pi/3 | 11 | 0.25 |
+
+The wrong-phase control keeps the verification phase fixed at +pi/3. The 25% overlap is the expected outcome; a test that requires perfect recovery rejects this input. These are ideal qubit simulations for this logical input and single-error model. The [eight case receipts](evidence/phase_flip_recovery_cases.json) include the complete source for each case, outcome probabilities, shot counts, and SHA-256 integrity hashes.
+
+```text
+python -B tools/phase_flip_recovery_cases.py
+```
+
 ### Measured sparse simulation on Windows ARM64
 
 | Circuit | Qubits | Gates | Peak active states | Evidence |
