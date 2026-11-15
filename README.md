@@ -99,11 +99,12 @@ sharkbyte run examples/bell.sb --mode quantum
 sharkbyte run examples/adaptive.sb --mode hybrid --backend vm
 sharkbyte run examples/drawdown_risk_demo.sb --backend vm
 sharkbyte verify-run examples/drawdown_risk_demo.receipt.json
+sharkbyte verify-run examples/drawdown_risk_demo_overflow_guard.receipt.json
 sharkbyte qasm examples/bell.sb --output bell.qasm
 sharkbyte verify-run result.json
 ```
 
-`examples/drawdown_risk_demo.sb` calculates an illustrative drawdown multiplier in SharkByte's own integer VM. It prints, in order: the fixed-point ratio, the multiplier in parts per million, and an example quantity in millionths. For the bundled input, the outputs are `500000`, `462117`, and `2310585`. The saved receipt can be checked with the command above. The example clamps nonpositive ratios to 0, uses a fixed-point Padé approximation for `tanh` below a ratio of 6, and saturates at 1.0 above that threshold. The threshold avoids signed 64-bit overflow, and the final result stays within `[0, 1]`. This is a language demonstration, not a trading signal or order system. Receipt hashes are unkeyed integrity checks, not proof of authorship or correctness.
+`examples/drawdown_risk_demo.sb` calculates an illustrative drawdown multiplier in SharkByte's own integer VM. It prints, in order: the fixed-point ratio, the multiplier in parts per million, and an example quantity in millionths. For the bundled input, the outputs are `500000`, `462117`, and `2310585`. The original saved receipt is retained as the pre-guard record; the current source-matched receipt is `examples/drawdown_risk_demo_overflow_guard.receipt.json`. The example clamps nonpositive ratios to 0, uses a fixed-point Padé approximation for `tanh` below a ratio of 6, and saturates at 1.0 above that threshold. The threshold avoids signed 64-bit overflow, and the final result stays within `[0, 1]`. This is a language demonstration, not a trading signal or order system. Receipt hashes are unkeyed integrity checks, not proof of authorship or correctness.
 
 Run python tools/ci_acceptance.py for isolated install and regressions. python tools/replay_qiskit_vectors.py compares archived reference values; it does not invoke Qiskit.
 
