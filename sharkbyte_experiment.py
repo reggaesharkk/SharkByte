@@ -34,8 +34,8 @@ def run_experiment(source, mode, support_cap=4096):
         cases["50/50 mixture"] = {label: (zero[label] + one[label]) / 2 for label in zero}
         result = {"qubits": 2, "probabilities": cases}
     elif mode == "frontier":
-        if type(support_cap) is not int or support_cap not in (4096, 8192, 16384):
-            raise ValueError("Frontier30 support cap must be 4096, 8192, or 16384.")
+        if type(support_cap) is not int or support_cap not in (4096, 8192, 16384, 32768):
+            raise ValueError("Frontier30 support cap must be 4096, 8192, 16384, or 32768.")
         with tempfile.TemporaryDirectory(prefix="sharkbyte-") as directory:
             path = Path(directory) / "circuit.sb"
             path.write_bytes(source.encode("utf-8"))

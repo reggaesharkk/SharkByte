@@ -65,8 +65,8 @@ class Studio(BaseHTTPRequestHandler):
             if source.lstrip().startswith("hybrid ") and request["mode"] != "hybrid":
                 raise ValueError("Select Bounded Hybrid for a hybrid block. Frontier30 accepts a quantum block with fixed numeric angles.")
             support_cap = request.get("support_cap", 4096)
-            if request["mode"] == "frontier" and (type(support_cap) is not int or support_cap not in (4096, 8192, 16384)):
-                raise ValueError("Choose a Frontier30 support cap of 4,096, 8,192, or 16,384 states.")
+            if request["mode"] == "frontier" and (type(support_cap) is not int or support_cap not in (4096, 8192, 16384, 32768)):
+                raise ValueError("Choose a Frontier30 support cap of 4,096, 8,192, 16,384, or 32,768 states.")
         except (ValueError, TypeError) as exc:
             return self.reply(400, {"execution_id": execution_id, "error": str(exc)})
 
