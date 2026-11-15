@@ -201,9 +201,11 @@ def _evaluate_source(source: str, expected_seed: int,
         raise AssertionError("parsed seed differs from requested seed")
     qiskit_circuit, qiskit_state = _build_qiskit(parsed, canonical_gates)
     dense_state = quantum.simulate(parsed)
+    sparse_source = "quantum validation {\n" + source + "\n}\n"
+    sparse_raw = sparse_source.encode("utf-8")
     with tempfile.TemporaryDirectory() as temp:
         path = Path(temp) / "validation.sb"
-        path.write_bytes(raw)
+        path.write_bytes(sparse_raw)
         sparse_circuit, sparse_source_hash = load_circuit(path)
     sparse_state = sparse_backend.evolve(sparse_circuit)
     sparse_dense = [sparse_state.get(index, 0.0j) for index in range(1 << parsed["n"])]
@@ -225,7 +227,7 @@ def _evaluate_source(source: str, expected_seed: int,
     checks = {
         "parsed_and_qiskit_sequences_match_canonical_source": gate_sequence_match,
         "frontier_source_matches_canonical": (
-            sparse_source_hash == _sha256(raw)
+            sparse_source_hash == _sha256(sparse_raw)
             and sparse_circuit.qubits == parsed["n"]
             and _tuple_descriptors(sparse_circuit.gates) == generated_gates
         ),
@@ -245,6 +247,8 @@ def _evaluate_source(source: str, expected_seed: int,
         "generated_gate_sequence_sha256": _sha256(_canonical(generated_gates)),
         "qiskit_gate_sequence_sha256": _sha256(_canonical(qiskit_gates)),
         "source": source,
+        "frontier_source": sparse_source,
+        "frontier_source_sha256": sparse_source_hash,
         "parsed_gate_sequence": source_gates,
         "generated_gate_sequence": generated_gates,
         "qiskit_gate_sequence": qiskit_gates,
