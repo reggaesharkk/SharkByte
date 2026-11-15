@@ -25,6 +25,10 @@ def main():
 
     wrong_phase = source.replace("cp 1.0471975511965976 3 0", "cp -1.0471975511965976 3 0", 1)
     cases.append(("wrong_phase", 1, "11", wrong_phase, 0.25))
+    for first, second, syndrome in ((0, 1, "10"), (0, 2, "11"), (1, 2, "01")):
+        circuit = source.replace("    z 1;\n", f"    z {first}; z {second};\n", 1)
+        # The resulting logical X has squared overlap cos(pi/3)^2.
+        cases.append(("two_errors", [first, second], syndrome, circuit, 0.25))
     evidence = []
     for mode, error, syndrome, circuit, expected in cases:
         result = evaluate(parse_quantum(circuit))

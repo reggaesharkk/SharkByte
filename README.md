@@ -101,7 +101,15 @@ In Studio, choose **Quantum > Load phase-flip recovery > Run**. The [circuit](ex
 | Z on q0, q1, or q2, recovery off | 01, 11, or 10 | 0 |
 | Z on q1, recovery on, input phase -pi/3 | 11 | 0.25 |
 
-The wrong-phase control keeps the verification phase fixed at +pi/3. The 25% overlap is the expected outcome; a test that requires perfect recovery rejects this input. These are ideal qubit simulations for this logical input and single-error model. The [eight case receipts](evidence/phase_flip_recovery_cases.json) include the complete source for each case, outcome probabilities, shot counts, and SHA-256 integrity hashes.
+In Studio, **Quantum > Load two-error control > Run** injects Z on q1 and q2. The syndrome is `01`, which also occurs for a single Z on q0. The decoder flips q0 and leaves a logical X after decoding. For this input, the final check has 25% overlap with the intended state, down from 100% with one error.
+
+| Injected pair | Syndrome | Decoder flips | Expected probability of decoded data `000` |
+| --- | --- | --- | ---: |
+| q0 and q1 | 10 | q2 | 0.25 |
+| q0 and q2 | 11 | q1 | 0.25 |
+| q1 and q2 | 01 | q0 | 0.25 |
+
+The wrong-phase control keeps the verification phase fixed at +pi/3. The 25% overlap is the expected outcome; a test that requires perfect recovery rejects this input. These are ideal qubit simulations for this logical input and ideal phase errors. The [eleven case receipts](evidence/phase_flip_recovery_cases.json) include the complete source for each case, outcome probabilities, shot counts, and SHA-256 integrity hashes.
 
 ```text
 python -B tools/phase_flip_recovery_cases.py
