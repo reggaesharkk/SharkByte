@@ -31,9 +31,9 @@
       "sha256": "f655de6f68d392cc72af1d87430466d8c5ee7dff4861755bd2bbdea7756ec42b"
     },
     {
-      "bytes": 8300,
+      "bytes": 8966,
       "path": "docs/connected-circuit-frontier.md",
-      "sha256": "c2d9f10be5eb4cce485a569974f485daa93f1b07874a7c6f14d8e955645d8040"
+      "sha256": "3f8d9a4244cac53585e546a2f3baab4538c5ff399107ea9b24e6299f67db2003"
     },
     {
       "bytes": 17770,
@@ -177,6 +177,6 @@
     }
   ],
   "integrity_note": "Unkeyed SHA-256 detects byte changes; it does not prove authorship or correctness.",
-  "manifest_sha256": "c6eb621094683d523136655bf1bfbd7b772a874a50beb3bbfa07d7e1f3e6596c",
+  "manifest_sha256": "68688a875cabc5e7d97734e28be6fab82e600da5dabc0bca2083c24be28aee71",
   "schema": 1
 }

@@ -47,6 +47,16 @@ directory. The comparison script additionally computes reduced-density-matrix
 purity by matrix products and checks it against the separate SVD Schmidt
 witnesses in the two run receipts.
 
+Independence boundary: one fixed corpus supplies canonical gate tuples and
+generated SharkByte source. SharkByte's loader parses that source and must
+recover the exact ordered tuples and source digest. Qiskit and Cirq then build
+separate native circuit objects through separate library APIs and evolve them
+with their own statevector implementations and qubit-order conventions. They
+share the corpus and canonical gate tuple input, so this is not independent
+source parsing or independently generated random topologies. The analytic GHZ
+formula, product-state control, and separate density-matrix/SVD checks reduce
+but do not eliminate that shared-input boundary.
+
 The first Qiskit run completed all simulations but stopped while serializing
 the receipt: a NumPy `int64` Schmidt rank is not a JSON-native integer. The
 failure log is preserved in the evidence bundle. The rank is now converted to a
