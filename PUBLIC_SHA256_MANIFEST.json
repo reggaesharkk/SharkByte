@@ -103,8 +103,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "1d8ec7f736ef68b50a3012f339b9efc53470524d5189ccc18c4e5b4e5763f2e9",
-      "size_bytes": 11756
+      "sha256": "31f0f1ef038f2273b03849a9ffea8323eb9c983ecf569a53fef71b674e3b52a4",
+      "size_bytes": 11801
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
@@ -713,13 +713,13 @@
     },
     {
       "path": "sharkbyte_studio.html",
-      "sha256": "dc2e8051db09b50e19ead4e59402f1e24e0697123d57f07f92e29cfe7f50636b",
-      "size_bytes": 6872
+      "sha256": "e10a686b9ab4b313602931d9fe1a79f25f26e58ca42d2a899ec4525441a58d17",
+      "size_bytes": 7486
     },
     {
       "path": "sharkbyte_studio.py",
-      "sha256": "a67efffcde2ae8e9ef0d599859c50f0a643946f6d04271d723a44a3f2c10790a",
-      "size_bytes": 5741
+      "sha256": "a03813c2b5bdd5a498e77c56ff5baff3189eca18e34e8fca3a163b17b2b7d515",
+      "size_bytes": 6093
     },
     {
       "path": "sharkbyte_terminal.py",

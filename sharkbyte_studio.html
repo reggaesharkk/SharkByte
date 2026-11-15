@@ -18,6 +18,8 @@ textarea,pre{font:14px/1.6 'IBM Plex Mono',Consolas,monospace;tab-size:4}textare
     <div class="bar"><h2 id="sourceTitle">Source</h2><label for="mode">Mode</label>
       <select id="mode"><option value="classical">Classical</option><option value="quantum">Quantum</option><option value="hybrid">Bounded Hybrid (2–6 qubits)</option><option value="frontier">Frontier30 (sparse)</option></select>
       <button id="example" disabled>Load example</button><button id="run" class="primary" disabled>Run</button></div>
+    <div class="bar" id="sparseOptions" hidden style="display:none"><label for="supportCap">Sparse state cap</label>
+      <select id="supportCap"><option value="4096">4,096</option><option value="8192">8,192</option><option value="16384">16,384</option></select></div>
     <textarea id="source" aria-label="SharkByte source" spellcheck="false"></textarea>
     <div class="foot"><small>Ctrl / ⌘ + Enter to run · SharkVM and CPU simulation</small></div>
   </section>
@@ -51,6 +53,7 @@ function render() {
     output: result.stdout ?? format(result),
     metrics: format({execution_id, toolchain_version, worker_wall_seconds,
       vm_instruction_count:result.vm_instruction_count, vm_step_limit:result.vm_step_limit,
+      qubits:result.qubits, support_cap:result.support_cap, peak_populated_states:result.peak_populated_states,
       source_sha256, bytecode_sha256, record_sha256}),
     bytecode: disassembly ? `${disassembly}\n\nEncoded bytes (hex)\n${record.bytecode_hex}` : 'This run did not emit a SharkVM bytecode artifact.',
     source: record.source,
@@ -76,7 +79,7 @@ async function execute() {
   selectView('output');
   try {
     const response = await fetch('/run', {method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({source:source.value,mode:mode.value})});
+      body:JSON.stringify({source:source.value,mode:mode.value,support_cap:Number(byId('supportCap').value)})});
     const data = await response.json();
     if (!response.ok) throw new Error(data.error || `Request failed (${response.status})`);
     latest = data;
@@ -94,6 +97,11 @@ async function execute() {
 
 for (const button of views) button.addEventListener('click', () => selectView(button.dataset.view));
 run.addEventListener('click', execute);
+mode.addEventListener('change', () => {
+  const options = byId('sparseOptions');
+  options.hidden = mode.value !== 'frontier';
+  options.style.display = options.hidden ? 'none' : '';
+});
 source.addEventListener('keydown', event => {
   if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') { event.preventDefault(); execute(); }
 });
