@@ -12,6 +12,7 @@ python -B -m sharkbyte_alpha run examples/research/bounded_existence_thresholds.
 python -B -m sharkbyte_alpha run examples/research/bounded_existence_floors.sb --backend vm
 python -B -m sharkbyte_alpha run examples/research/riemann_wp84_count.sb --backend vm
 python -B -m sharkbyte_alpha run examples/research/protocol_wp19_assumed_rates.sb --backend vm
+python -B -m sharkbyte_alpha run examples/research/protocol_wp19_outward_upper.sb --backend vm
 python -B -m sharkbyte_alpha run examples/research/strength_b3_threshold.sb --backend vm
 python -B -m sharkbyte_alpha run examples/research/strength_h2_reset_gate.sb --backend vm
 python -B -m sharkbyte_alpha run examples/research/strength_h4_split_audit.sb --backend vm
@@ -58,6 +59,8 @@ SharkByte output: `148995` candidates; `151` reported vertices; `1013` parts per
 That output is only a SharkByte-language replay of the illustrative parameter study. With the documented assumptions it prints factors `1.277619` and `0.965605`, corresponding to approximate recurrence errors `4,955,569,994.441750` and `0.006716`. The first recurrence alone appears below the signed C500 lower bound by about `803,030,005.558250`, but the dataset separately preserves a whole-path remainder of `163,640,000,000,000`, which exceeds the `5,758,600,000` signed lower bound by `163,634,241,400,000`. That preserved bound is still a negative margin, so the apparent recurrence margin does not close the gate.
 
 The original protocol labels these rates assumed and says a per-segment Arb enclosure is needed before using them as Navier–Stokes bounds. The fixed-point recurrence here is not outward rounded and must not be read as a rigorous interval result. Sources: [protocol study inputs](https://github.com/reggaesharkk/The-Reggae-Shark-Protocol/blob/main/data/wp19_segments.json), [study implementation and evidence boundary](https://github.com/reggaesharkk/The-Reggae-Shark-Protocol/blob/main/shark_protocol/kernel.py).
+
+`protocol_wp19_outward_upper.sb` is a separate conservative replay of the same assumed inputs. It upper-bounds `exp(0.245)` with upward-rounded positive Taylor terms and a geometric tail; it upper-bounds `exp(-0.035)` by taking the reciprocal of a downward-rounded positive-series lower bound for `exp(0.035)`. It then rounds each positive recurrence update upward in integer micro-units. SharkByte output at scale `1e6`: factor upper bounds `1.277641` and `0.965607`; final recurrence-error upper bounds `4,981,012,756.025091` and `0.006745`; and whole-recurrence margin `777,587,243.974909` over the signed C500 lower bound. The separately preserved whole-path remainder still exceeds that lower bound by `163,634,241,400,000`, so the protocol gate remains open. This bounds arithmetic rounding for the stated model; it does not validate the assumed rates, replace Arb outward intervals, certify the PDE inputs, or close the underlying project gap.
 
 ### STRENGTH B3 guard thresholds
 
