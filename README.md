@@ -51,6 +51,8 @@ Choose **Quantum → Load phase-flip recovery → Run**. The [circuit](examples/
 
 [All eleven receipts and their exact circuits](evidence/phase_flip_recovery_cases.json) · Reproduce with `python -B tools/phase_flip_recovery_cases.py`.
 
+Studio also includes an interactive **Phase-flip noise sweep**. It shows the exact expected decoded-`000` probability under an independent per-data-qubit Z channel, comparing one unencoded qubit with the three-qubit code and ideal recovery. For this logical input, zero or one error is corrected exactly; two or more errors leave a 25% decoded-`000` overlap. Thus the curves are `1 − 0.75p` (unencoded) and `1 − 0.75(3p² − 2p³)` (encoded). This is an analytical channel model, not gate-by-gate noise, noisy readout, finite-shot sampling, or a claim about hardware.
+
 ## Sparse simulation benchmarks
 
 Active states are the basis states tracked at once. Register width and active state count measure different things. A dense array for 40 qubits would occupy 16 TiB at 16 bytes per complex amplitude. The circuits below use sparse storage and run on a CPU.

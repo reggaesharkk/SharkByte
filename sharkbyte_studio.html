@@ -11,6 +11,8 @@ main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}.pa
 button,select{font:inherit;background:#252e35;color:var(--text);border:1px solid var(--line);border-radius:7px;padding:8px 11px}button{cursor:pointer}button:disabled{opacity:.5;cursor:default}button:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}.primary{background:var(--accent);color:#16200c;font-weight:750}.view[aria-pressed=true]{border-color:var(--accent);color:var(--accent)}
 textarea,pre{font:14px/1.6 'IBM Plex Mono',Consolas,monospace;tab-size:4}textarea{width:100%;min-height:430px;display:block;background:#11171b;color:var(--text);border:0;resize:vertical;padding:18px}pre{min-height:300px;max-height:570px;overflow:auto;padding:16px;margin:0;white-space:pre-wrap;overflow-wrap:anywhere}.foot{padding:12px 16px;border-top:1px solid var(--line)}#status{min-height:1.4em;color:var(--accent);overflow-wrap:anywhere}#status[data-error=true]{color:#ffad9f}
 @media(max-width:860px){main{grid-template-columns:1fr}textarea{min-height:270px}}
+.noise-panel{grid-column:1/-1;padding:20px 22px}.noise-panel>p{max-width:100ch;color:var(--muted);line-height:1.55}.noise-layout{display:grid;grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr);gap:24px;align-items:center}.noise-control{display:grid;gap:14px}.noise-control label{display:flex;justify-content:space-between;gap:12px}.noise-control output{color:var(--accent);font-variant-numeric:tabular-nums}.noise-control input{width:100%;accent-color:var(--accent)}.noise-values{display:grid;gap:8px;margin:0}.noise-values div{display:flex;justify-content:space-between;gap:12px}.noise-values dt{color:var(--muted)}.noise-values dd{margin:0;font-variant-numeric:tabular-nums}.noise-chart{width:100%;height:auto;min-height:230px;background:#11171b;border:1px solid var(--line);border-radius:8px}.noise-chart text{fill:var(--muted);font:12px Inter,system-ui,sans-serif}.noise-chart .axis,.noise-chart .grid{stroke:var(--line);stroke-width:1}.noise-chart .direct{stroke:#60b9ff;stroke-width:3;fill:none}.noise-chart .encoded{stroke:var(--accent);stroke-width:3;fill:none}.noise-chart .cursor{stroke:#edf1ec;stroke-dasharray:4 5;opacity:.65}.noise-legend{display:flex;gap:20px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin-top:8px}.noise-legend span::before{content:"";display:inline-block;width:16px;height:3px;vertical-align:middle;margin-right:7px;background:#60b9ff}.noise-legend span+span::before{background:var(--accent)}
+@media(max-width:860px){.noise-panel{grid-column:1}.noise-layout{grid-template-columns:1fr}}
 </style>
 <header><h1>SharkByte <span>Studio</span></h1><span class="badge">Local workspace</span></header>
 <main>
@@ -34,6 +36,35 @@ textarea,pre{font:14px/1.6 'IBM Plex Mono',Consolas,monospace;tab-size:4}textare
     </div>
     <pre id="result">Run a program to see its output.</pre>
     <div class="foot" id="status" role="status"></div>
+  </section>
+  <section class="panel noise-panel" aria-labelledby="noiseTitle">
+    <h2 id="noiseTitle">Phase-flip noise sweep</h2>
+    <p>This is an exact channel model for the five-qubit demo: each of the three encoded data qubits independently receives one Z error with probability p, followed by ideal syndrome extraction and correction. It compares the expected decoded <code>000</code> probability with an unencoded qubit. It does not add noise to SharkByte source execution or model faulty gates, readout, or hardware.</p>
+    <div class="noise-layout">
+      <div class="noise-control">
+        <label for="noiseRate">Z-error probability per data qubit <output id="noiseRateValue" for="noiseRate">10.0%</output></label>
+        <input id="noiseRate" type="range" min="0" max="0.5" step="0.005" value="0.1" aria-describedby="noiseModelNote">
+        <dl class="noise-values" aria-live="polite">
+          <div><dt>Unencoded expected decoded 000</dt><dd id="directValue">92.5%</dd></div>
+          <div><dt>Encoded expected decoded 000</dt><dd id="encodedValue">97.9%</dd></div>
+        </dl>
+        <small id="noiseModelNote">Exact probabilities for the specified independent Z channel; no finite-shot sampling.</small>
+      </div>
+      <div>
+        <svg class="noise-chart" viewBox="0 0 740 280" role="img" aria-labelledby="noiseChartTitle noiseChartDesc">
+          <title id="noiseChartTitle">Expected decoded zero probability as phase-flip rate increases</title>
+          <desc id="noiseChartDesc">Analytical comparison of a single unencoded qubit and a three-qubit phase-flip repetition code with ideal recovery.</desc>
+          <line class="grid" x1="74" y1="22" x2="700" y2="22"/><line class="grid" x1="74" y1="119.5" x2="700" y2="119.5"/><line class="grid" x1="74" y1="217" x2="700" y2="217"/>
+          <line class="axis" x1="74" y1="22" x2="74" y2="217"/><line class="axis" x1="74" y1="217" x2="700" y2="217"/>
+          <text x="34" y="27">100%</text><text x="42" y="124">50%</text><text x="49" y="221">0%</text>
+          <text x="70" y="242">0%</text><text x="366" y="242">25%</text><text x="684" y="242">50%</text><text x="300" y="268">Independent phase-flip probability p</text>
+          <polyline id="directCurve" class="direct"/><polyline id="encodedCurve" class="encoded"/>
+          <line id="noiseCursor" class="cursor" x1="199" y1="22" x2="199" y2="217"/>
+          <circle id="directDot" cx="199" cy="51.25" r="5" fill="#60b9ff"/><circle id="encodedDot" cx="199" cy="26.1" r="5" fill="#c9ef81"/>
+        </svg>
+        <div class="noise-legend"><span>Single unencoded qubit</span><span>Three-qubit code, ideal recovery</span></div>
+      </div>
+    </div>
   </section>
 </main>
 <script>
@@ -136,5 +167,35 @@ fetch('/examples').then(response => {
   byId('phaseFailure').disabled = !data.phase_recovery;
   if (!source.value) source.value = examples[mode.value];
 }).catch(error => { status.textContent = error.message; });
+
+const noiseRate = byId('noiseRate');
+const percent = value => `${(100 * value).toFixed(1)}%`;
+function updateNoiseSweep() {
+  const p = Number(noiseRate.value);
+  const direct = 1 - 0.75 * p;
+  const twoOrMoreErrors = 3 * p * p - 2 * p * p * p;
+  const encoded = 1 - 0.75 * twoOrMoreErrors;
+  const x = 74 + (p / 0.5) * 626;
+  const y = value => 22 + (1 - value) * 195;
+  byId('noiseRateValue').textContent = percent(p);
+  byId('directValue').textContent = percent(direct);
+  byId('encodedValue').textContent = percent(encoded);
+  byId('noiseCursor').setAttribute('x1', x); byId('noiseCursor').setAttribute('x2', x);
+  byId('directDot').setAttribute('cx', x); byId('directDot').setAttribute('cy', y(direct));
+  byId('encodedDot').setAttribute('cx', x); byId('encodedDot').setAttribute('cy', y(encoded));
+}
+function drawNoiseCurves() {
+  const direct = [], encoded = [];
+  for (let i = 0; i <= 100; i++) {
+    const p = i / 200;
+    direct.push(`${74 + (p / 0.5) * 626},${22 + 0.75 * p * 195}`);
+    encoded.push(`${74 + (p / 0.5) * 626},${22 + 0.75 * (3 * p * p - 2 * p * p * p) * 195}`);
+  }
+  byId('directCurve').setAttribute('points', direct.join(' '));
+  byId('encodedCurve').setAttribute('points', encoded.join(' '));
+  updateNoiseSweep();
+}
+noiseRate.addEventListener('input', updateNoiseSweep);
+drawNoiseCurves();
 </script>
 </html>
