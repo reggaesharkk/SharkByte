@@ -1,0 +1,40 @@
+name: Independent Quantum Validation
+
+on:
+  pull_request:
+    paths:
+      - "sharkbyte_alpha/quantum.py"
+      - "sharkbyte_alpha/cli.py"
+      - "benchmarks/sb_quantum_benchmark/**"
+      - "validation/__init__.py"
+      - "validation/independent_qiskit/**"
+      - "tools/run_independent_quantum_validation.py"
+      - "requirements-independent-quantum.txt"
+      - ".github/workflows/independent-quantum-validation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  live-qiskit-statevector:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pinned independent reference
+        run: python -m pip install -r requirements-independent-quantum.txt
+      - name: Run live Statevector validation and write provenance receipt
+        run: python -B tools/run_independent_quantum_validation.py --output independent-quantum-validation.json
+      - name: Run automated validation tests
+        run: python -B -m unittest validation.independent_qiskit.test_suite -v
+      - name: Upload independent quantum evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: independent-quantum-validation
+          path: independent-quantum-validation.json
+          if-no-files-found: warn
