@@ -2,8 +2,8 @@
 
 This code consumes the public SharkByte parser and simulator without modifying
 or enabling any production or native execution path. Circuits are rendered
-once as SharkByte source, parsed by SharkByte, and then replayed instruction by
-instruction in Qiskit. Statevector.from_instruction performs the reference run.
+as SharkByte source and built independently in Qiskit from the canonical
+register width and gate tuples. Statevector.from_instruction performs the reference run.
 """
 from __future__ import annotations
 
@@ -134,11 +134,11 @@ def _source_descriptors(parsed: dict) -> list[dict]:
     return result
 
 
-def _build_qiskit(parsed: dict, canonical_gates: list[tuple] | tuple[tuple, ...]):
+def _build_qiskit(qubits: int, canonical_gates: list[tuple] | tuple[tuple, ...]):
     from qiskit import QuantumCircuit
     from qiskit.quantum_info import Statevector
 
-    circuit = QuantumCircuit(parsed["n"])
+    circuit = QuantumCircuit(qubits)
     for gate in canonical_gates:
         op = gate[0]
         if op in ("h", "x", "z"):
@@ -191,7 +191,7 @@ def _norm_error(state) -> tuple[float, float]:
     return norm, abs(norm - 1.0)
 
 
-def _evaluate_source(source: str, expected_seed: int,
+def _evaluate_source(source: str, expected_seed: int, expected_qubits: int,
                      canonical_gates: list[tuple] | tuple[tuple, ...],
                      *, include_vectors: bool = True) -> dict:
     """Execute one source circuit in dense SharkByte, sparse SharkByte and Qiskit."""
@@ -199,7 +199,9 @@ def _evaluate_source(source: str, expected_seed: int,
     parsed = cli.parse_quantum(source)
     if parsed["seed"] != expected_seed:
         raise AssertionError("parsed seed differs from requested seed")
-    qiskit_circuit, qiskit_state = _build_qiskit(parsed, canonical_gates)
+    if parsed["n"] != expected_qubits:
+        raise ValueError(f'Dense parser reported {parsed["n"]} qubits, expected {expected_qubits}')
+    qiskit_circuit, qiskit_state = _build_qiskit(expected_qubits, canonical_gates)
     dense_state = quantum.simulate(parsed)
     sparse_source = "quantum validation {\n" + source + "\n}\n"
     sparse_raw = sparse_source.encode("utf-8")
@@ -228,7 +230,7 @@ def _evaluate_source(source: str, expected_seed: int,
         "parsed_and_qiskit_sequences_match_canonical_source": gate_sequence_match,
         "frontier_source_matches_canonical": (
             sparse_source_hash == _sha256(sparse_raw)
-            and sparse_circuit.qubits == parsed["n"]
+            and sparse_circuit.qubits == expected_qubits
             and _tuple_descriptors(sparse_circuit.gates) == generated_gates
         ),
         "global_phase_aligned_amplitudes": amplitude.get("max_complex_amplitude_error_global_phase_aligned", math.inf) <= AMPLITUDE_TOLERANCE,
@@ -307,7 +309,7 @@ def validate_randomized() -> dict:
         duplicate, duplicate_qubits, duplicate_gates = generate_circuit(seed)
         reproducibility = (reproducibility and source == duplicate
                            and qubits == duplicate_qubits and gates == duplicate_gates)
-        case = _evaluate_source(source, seed, gates)
+        case = _evaluate_source(source, seed, qubits, gates)
         gate_coverage.update(gate["op"] for gate in case["parsed_gate_sequence"])
         cases.append(case)
     summary = _summarize_cases(cases)
@@ -342,13 +344,13 @@ def validate_gate_inverses() -> dict:
         prefix_source = render_program(3, prefix, seed)
         parsed_prefix = cli.parse_quantum(prefix_source)
         initial = quantum.simulate(parsed_prefix)
-        _, qiskit_initial = _build_qiskit(parsed_prefix, prefix)
+        _, qiskit_initial = _build_qiskit(3, prefix)
         source = render_program(3, prefix + _inverse_gates(target), seed)
         operations = prefix + _inverse_gates(target)
-        result = _evaluate_source(source, seed, operations, include_vectors=False)
+        result = _evaluate_source(source, seed, 3, operations, include_vectors=False)
         parsed_final = cli.parse_quantum(source)
         final_dense = quantum.simulate(parsed_final)
-        _, final_qiskit = _build_qiskit(parsed_final, operations)
+        _, final_qiskit = _build_qiskit(3, operations)
         dense_return = _state_metrics(initial, final_dense)
         qiskit_return = _state_metrics(qiskit_initial, final_qiskit)
         passed = (result["status"] == "PASS"
@@ -379,10 +381,10 @@ def validate_interference() -> dict:
     seed = MASTER_SEED + RANDOM_CIRCUIT_COUNT + 20
     for name, qubits, gates, expected in examples:
         source = render_program(qubits, gates, seed)
-        result = _evaluate_source(source, seed, gates, include_vectors=False)
+        result = _evaluate_source(source, seed, qubits, gates, include_vectors=False)
         parsed = cli.parse_quantum(source)
         dense_prob = _probabilities(quantum.simulate(parsed))
-        _, qiskit_state = _build_qiskit(parsed, gates)
+        _, qiskit_state = _build_qiskit(qubits, gates)
         qiskit_prob = _probabilities(qiskit_state)
         expected_dense = max(abs(dense_prob[index] - value) for index, value in expected.items())
         expected_qiskit = max(abs(qiskit_prob[index] - value) for index, value in expected.items())
@@ -411,10 +413,10 @@ def validate_controlled_phase() -> dict:
                 continue
             gates = [("x", control), ("x", target), ("cp", control, target, angle)]
             source = render_program(3, gates, seed)
-            result = _evaluate_source(source, seed, gates, include_vectors=False)
+            result = _evaluate_source(source, seed, 3, gates, include_vectors=False)
             parsed = cli.parse_quantum(source)
             dense_state = quantum.simulate(parsed)
-            _, qiskit_state = _build_qiskit(parsed, gates)
+            _, qiskit_state = _build_qiskit(3, gates)
             basis = (1 << control) | (1 << target)
             expected = cmath.exp(1j * angle)
             dense_error = abs(dense_state[basis] - expected)
@@ -449,7 +451,7 @@ def validate_numerical_boundaries() -> dict:
                 gates, qubits = [("h", 0), (op, 0, angle)], 1
             source = render_program(qubits, gates, seed)
             try:
-                result = _evaluate_source(source, seed, gates, include_vectors=False)
+                result = _evaluate_source(source, seed, qubits, gates, include_vectors=False)
                 accepted.append({"op": op, "angle": angle, "seed": seed,
                                  "source": result["source"],
                                  "parsed_gate_sequence": result["parsed_gate_sequence"],
@@ -508,10 +510,10 @@ def validate_bit_ordering() -> dict:
     for qubit in range(4):
         source = render_program(4, [("x", qubit)], seed)
         gates = [("x", qubit)]
-        result = _evaluate_source(source, seed, gates, include_vectors=False)
+        result = _evaluate_source(source, seed, 4, gates, include_vectors=False)
         parsed = cli.parse_quantum(source)
         dense = quantum.simulate(parsed)
-        _, qiskit_state = _build_qiskit(parsed, gates)
+        _, qiskit_state = _build_qiskit(4, gates)
         display_probabilities = quantum.evaluate(parsed)["probabilities"]
         expected_index = 1 << qubit
         dense_index = max(range(len(dense)), key=lambda index: abs(dense[index]))
@@ -534,10 +536,10 @@ def validate_bit_ordering() -> dict:
     # q2 controls q0; basis index 5 distinguishes integer index from label order.
     source = render_program(3, [("x", 2), ("cx", 2, 0)], seed)
     gates = [("x", 2), ("cx", 2, 0)]
-    result = _evaluate_source(source, seed, gates, include_vectors=False)
+    result = _evaluate_source(source, seed, 3, gates, include_vectors=False)
     parsed = cli.parse_quantum(source)
     dense = quantum.simulate(parsed)
-    _, qiskit_state = _build_qiskit(parsed, gates)
+    _, qiskit_state = _build_qiskit(3, gates)
     display_probabilities = quantum.evaluate(parsed)["probabilities"]
     cases.append({"control": 2, "target": 0, "expected_basis_index": 5,
                   "expected_display_label": "101",

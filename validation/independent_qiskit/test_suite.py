@@ -1,6 +1,8 @@
 """Automated unit tests for the independent live-Qiskit validation suite."""
+from dataclasses import replace
 import importlib.util
 import unittest
+from unittest.mock import patch
 
 from validation.independent_qiskit import suite
 
@@ -52,6 +54,46 @@ class LiveQiskitValidationTests(unittest.TestCase):
                          self.sections["sparse_dense_agreement"])
         self.assertEqual(self.sections["sparse_dense_agreement"]["circuits_compared"],
                          suite.RANDOM_CIRCUIT_COUNT)
+
+
+    def test_incorrect_register_width_is_rejected(self):
+        gates = [("x", 0)]
+        source = suite.render_program(2, gates, 42)
+        with self.assertRaisesRegex(ValueError, "reported 2 qubits, expected 3"):
+            suite._evaluate_source(source, 42, 3, gates)
+
+    def test_wrong_sparse_angle_sign_fails(self):
+        gates = [("ry", 0, 0.75), ("h", 0)]
+        source = suite.render_program(1, gates, 42)
+        original = suite.load_circuit
+
+        def flipped_angle(path):
+            circuit, digest = original(path)
+            return replace(circuit, gates=(("ry", 0, -0.75), circuit.gates[1])), digest
+
+        with patch.object(suite, "load_circuit", flipped_angle):
+            result = suite._evaluate_source(source, 42, 1, gates)
+        self.assertEqual(result["status"], "FAIL")
+        self.assertFalse(result["checks"]["frontier_source_matches_canonical"])
+        self.assertFalse(result["checks"]["sparse_dense_probabilities"])
+
+    def test_incorrect_dense_rotation_matrix_fails(self):
+        gates = [("rx", 0, 0.75)]
+        source = suite.render_program(1, gates, 42)
+        original = suite.quantum.simulate
+
+        def wrong_matrix_element(circuit):
+            state = original(circuit)
+            # Substitute the real RY coefficient for RX's imaginary coefficient.
+            state[1] *= 1j
+            return state
+
+        with patch.object(suite.quantum, "simulate", wrong_matrix_element):
+            result = suite._evaluate_source(source, 42, 1, gates)
+        self.assertEqual(result["status"], "FAIL")
+        self.assertTrue(result["checks"]["probabilities"])
+        self.assertTrue(result["checks"]["state_normalization"])
+        self.assertFalse(result["checks"]["global_phase_aligned_amplitudes"])
 
 
 if __name__ == "__main__":
