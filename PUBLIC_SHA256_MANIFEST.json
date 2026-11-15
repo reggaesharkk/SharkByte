@@ -1,5 +1,5 @@
 {
-  "file_count": 172,
+  "file_count": 181,
   "files": [
     {
       "path": ".gitattributes",
@@ -10,6 +10,11 @@
       "path": ".github/workflows/ci.yml",
       "sha256": "dd5aabdc928982f94c79d43422dedf0f34e27ed073da3e719335cbdcbdf53a06",
       "size_bytes": 2402
+    },
+    {
+      "path": ".github/workflows/independent-quantum-validation.yml",
+      "sha256": "f11e519438596f664c3ad52770632a314fadc2053ea8626c2efa4bba71a47f6c",
+      "size_bytes": 1840
     },
     {
       "path": ".gitignore",
@@ -45,6 +50,11 @@
       "path": "GRAMMAR.md",
       "sha256": "f0094de469f971817666ff95abeb8418dd58c3b33eb28a3643702c779c0ad688",
       "size_bytes": 3972
+    },
+    {
+      "path": "INDEPENDENT_QUANTUM_VALIDATION.md",
+      "sha256": "ecfe41d8b5a418c06143e17c76fef392eccd410219b426c3d9acc3ae07922072",
+      "size_bytes": 5000
     },
     {
       "path": "INSTALL.md",
@@ -103,8 +113,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "5fb9ccbe39ee6d34681e1f495efb525bfd2e2aaa585418a56d0d5811a5de0b4c",
-      "size_bytes": 12048
+      "sha256": "937fa7df7fc74f3aa1bfd41534638039f0bcf7642c1b48de2145a7b5024c2bb3",
+      "size_bytes": 12274
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
@@ -687,6 +697,11 @@
       "size_bytes": 558
     },
     {
+      "path": "requirements-independent-quantum.txt",
+      "sha256": "d5af996a5943b421f663848707fc9d34c549b4e01fb29190ad49f45b3706acda",
+      "size_bytes": 115
+    },
+    {
       "path": "setup.cfg",
       "sha256": "294d88fadd0577ba82205225cc8ee39f2e0341cd2c8b00076109606837627452",
       "size_bytes": 36
@@ -860,6 +875,36 @@
       "path": "tools/rotation_gate_evidence.py",
       "sha256": "1df27a084b63f6e6d364a8dec2f1e9b285a9ba262215fb7f0b3909184809dc5c",
       "size_bytes": 4048
+    },
+    {
+      "path": "tools/run_cirq_crosscheck.py",
+      "sha256": "df7315a659da53069394a6520e8d42a81986f7f977bbf9576513b9f11453ddb4",
+      "size_bytes": 3844
+    },
+    {
+      "path": "tools/run_independent_quantum_validation.py",
+      "sha256": "f63b9941fc3f817c2f734e385c3d84d425273f3216e6da6cd75e5fe8738733ef",
+      "size_bytes": 1186
+    },
+    {
+      "path": "validation/__init__.py",
+      "sha256": "f4f10c484268efd1bcd91c6f15043f54c478ff7d1f2e875f85416a9a2ac649a2",
+      "size_bytes": 46
+    },
+    {
+      "path": "validation/independent_qiskit/__init__.py",
+      "sha256": "7af26a050f471d19c330b10a43b9c8b8beecf5912a66054233d6c59783efee51",
+      "size_bytes": 64
+    },
+    {
+      "path": "validation/independent_qiskit/suite.py",
+      "sha256": "a16f453958daf1fea15ea9c83e49f6542f9d7e7abaf8e35fce9d893cbe0fc52c",
+      "size_bytes": 35644
+    },
+    {
+      "path": "validation/independent_qiskit/test_suite.py",
+      "sha256": "3f377c951aa6efa91f41165774c29d18b3c155786a8ecd84b4a43ec300d79b09",
+      "size_bytes": 4565
     }
   ]
 }
