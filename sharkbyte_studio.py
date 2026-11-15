@@ -100,6 +100,7 @@ class Studio(BaseHTTPRequestHandler):
         self.reply(200, {"execution_id": execution_id,
                          "worker_wall_seconds": time.perf_counter() - started,
                          "record": record,
+                         "receipt_json": json.dumps(record, indent=2, allow_nan=False),
                          "disassembly": vm.disassemble(bytes.fromhex(bytecode)) if bytecode else None})
 
 

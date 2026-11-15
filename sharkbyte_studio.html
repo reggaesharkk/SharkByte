@@ -57,7 +57,7 @@ function render() {
       source_sha256, bytecode_sha256, record_sha256}),
     bytecode: disassembly ? `${disassembly}\n\nEncoded bytes (hex)\n${record.bytecode_hex}` : 'This run did not emit a SharkVM bytecode artifact.',
     source: record.source,
-    receipt: format(record),
+    receipt: latest.receipt_json,
   };
   output.textContent = panels[active];
 }
@@ -107,7 +107,7 @@ source.addEventListener('keydown', event => {
 });
 example.addEventListener('click', () => { source.value = examples[mode.value]; });
 save.addEventListener('click', () => {
-  const url = URL.createObjectURL(new Blob([format(latest.record)], {type:'application/json'}));
+  const url = URL.createObjectURL(new Blob([latest.receipt_json], {type:'application/json'}));
   const link = document.createElement('a');
   link.href = url;
   link.download = `sharkbyte-${latest.execution_id}.json`;
