@@ -1,5 +1,5 @@
 {
-  "file_count": 159,
+  "file_count": 160,
   "files": [
     {
       "path": ".gitattributes",
@@ -103,8 +103,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "8a561a85686d41ff173105e46bc794f41da804716bef7a35dd241d34bef45ee0",
-      "size_bytes": 14667
+      "sha256": "ff195d688eb3d8c94b152f8e7a69f311ae5ded51134dd3708722ae0231c76b3f",
+      "size_bytes": 15542
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
@@ -235,6 +235,11 @@
       "path": "benchmarks/sb_quantum_benchmark/frontier30.py",
       "sha256": "18fe6b27eddd3b4a863cef8ae841fde39a6be1509b39034cdf753ed2e86b37f6",
       "size_bytes": 2846
+    },
+    {
+      "path": "benchmarks/sb_quantum_benchmark/million-state-browser-receipt.json",
+      "sha256": "3efbb52d5dcd4ff12a0f9e22a4b0d346af3f5c9f463f28641f428a5b42783a4d",
+      "size_bytes": 1625
     },
     {
       "path": "benchmarks/sb_quantum_benchmark/million-state-receipt.json",

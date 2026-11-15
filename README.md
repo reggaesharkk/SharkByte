@@ -2,6 +2,8 @@
 
 A separately curated, source-only public snapshot of a bounded experimental language toolchain. It includes an installable Python CLI, SharkVM, classical statevector simulator, bounded hybrid orchestration, examples, tests, and a scoped independent Qiskit reference fixture set.
 
+> **A million active states on a laptop.** Run the SharkByte Studio benchmark in your browser and watch the local Python simulator complete a 52-gate circuit on a 40-qubit register. The browser run reached **1,048,576 active states** and took **3.020 seconds** for sparse evolution on Windows ARM64. [Download the browser run receipt](benchmarks/sb_quantum_benchmark/million-state-browser-receipt.json) or [run it yourself](#sharkbyte-studio).
+
 **Start with `main` for current SharkByte source and benchmarks.** Current first-party source is licensed under [Apache License 2.0](LICENSE), SPDX identifier `Apache-2.0`. Earlier revisions already released under MIT remain available under their original terms; see [License and branch history](LICENSE_STATUS.md). Third-party tools retain their own terms.
 
 **Cite SharkByte standalone alpha 0.2.1a2** using the Zenodo version DOI. That immutable archive preserves source commit `f5c537a76fe2f1cab12288fa29f6820cf453eb40`, which carries the MIT grant. Current GitHub `main` uses Apache-2.0; a later `main` change does not alter the Zenodo archive. Choose the license that matches the exact version you download. [DOI 10.5281/zenodo.24213559](https://doi.org/10.5281/zenodo.24213559)
@@ -105,6 +107,8 @@ The experiment keeps the register at 40 qubits and appends one Hadamard per doub
 | 262,144 | 50 | 0.647 s | 70.6 MiB |
 | 524,288 | 51 | 0.906 s | 110.4 MiB |
 | 1,048,576 | 52 | 2.033 s | 195.8 MiB |
+
+In a separate run started from the Studio Web IDE, the 52-gate circuit reached 1,048,576 active states in 3.020 seconds of evolution. The probabilities summed to 0.9999999999999967, with a maximum absolute error of 3.60e-21 against the expected uniform distribution. The downloaded receipt passed SharkByte SHA-256 integrity verification. [Browser run receipt](benchmarks/sb_quantum_benchmark/million-state-browser-receipt.json)
 
 One run per row on Windows ARM64 with Python 3.12.10. Evolution time excludes summary serialization and the probability checks. Windows peak working set was observed by polling the runner process. In Studio, select **Million-state benchmark** and click **Run** to reproduce a compact result and download its receipt. The runner appends the three Hadamards listed in the [published Studio receipt](benchmarks/sb_quantum_benchmark/million-state-receipt.json) to the source shown in the editor. This experiment emits a compact summary and uses an explicit sparse memory budget. Studio continues to offer full probability receipts through 131,072 states.
 
