@@ -12,17 +12,17 @@ from sparse_backend import Circuit, ESTIMATED_BYTES_PER_AMPLITUDE, EvolutionStat
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("states", type=int, choices=(131072, 262144, 524288, 1048576, 2097152, 4194304))
+    parser.add_argument("states", type=int, choices=tuple(1 << bits for bits in range(17, 25)))
     args = parser.parse_args()
     source = Path(__file__).resolve().parents[2] / "examples" / "frontier_sparse_40_131072.sb"
     base, source_hash = load_circuit(source)
-    added = tuple(("h", q) for q in (14, 16, 18, 20, 22)[: args.states.bit_length() - 18])
+    added = tuple(("h", q) for q in (14, 16, 18, 20, 22, 2, 6)[: args.states.bit_length() - 18])
     circuit = Circuit(base.qubits, base.gates + added, "support_scaling")
     budget = args.states * ESTIMATED_BYTES_PER_AMPLITUDE
     stats = EvolutionStats()
     started = perf_counter()
     state = evolve(circuit, support_cap=args.states, memory_budget_bytes=budget,
-                   max_seconds=20, stats=stats)
+                   max_seconds=60 if args.states >= 8388608 else 20, stats=stats)
     evolution_seconds = perf_counter() - started
     expected = 1 / args.states
     total = math.fsum(abs(amplitude)**2 for amplitude in state.values())
