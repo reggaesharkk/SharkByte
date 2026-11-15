@@ -1,0 +1,55 @@
+{
+  "environment": {
+    "platform": "Ubuntu ARM64 on WSL2",
+    "python": "3.14.4",
+    "address_space_limit_bytes": 3285649981
+  },
+  "result": {
+    "status": "PASS",
+    "qubits": 40,
+    "gates": 56,
+    "source_sha256": "a24d8f389850e4a298f611d45ab4c5e953ead59c153777071916ecea73cd5316",
+    "added_gates": [
+      [
+        "h",
+        14
+      ],
+      [
+        "h",
+        16
+      ],
+      [
+        "h",
+        18
+      ],
+      [
+        "h",
+        20
+      ],
+      [
+        "h",
+        22
+      ],
+      [
+        "h",
+        2
+      ],
+      [
+        "h",
+        6
+      ]
+    ],
+    "peak_active_states": 16777216,
+    "final_active_states": 16777216,
+    "estimated_budget_bytes": 8589934592,
+    "evolution_seconds": 15.6392027,
+    "probability_sum": 0.999999999999996,
+    "max_uniform_probability_error": 2.6469779601696886e-22
+  },
+  "measurement": {
+    "peak_rss_kib": 2911140,
+    "elapsed_seconds": 19.2289173,
+    "exit_status": 0
+  },
+  "provenance": "Structured transcription of captured benchmark stdout and process measurements. The Linux address-space limit was applied with resource.setrlimit(RLIMIT_AS) before invoking the benchmark; peak RSS was read with resource.getrusage(RUSAGE_SELF)."
+}

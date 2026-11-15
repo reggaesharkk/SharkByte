@@ -137,6 +137,8 @@ The same 40-qubit circuit family reached **16,777,216 active states** on Windows
 | 8,388,608 | 55 | 11.095 s | 1.39 GiB | [JSON](benchmarks/sb_quantum_benchmark/scaling-8388608.json) |
 | 16,777,216 | 56 | 17.614 s | 2.77 GiB | [JSON](benchmarks/sb_quantum_benchmark/scaling-16777216.json) |
 
+Ubuntu ARM64 under WSL2 also completed the 16,777,216-state circuit with Python 3.14.4. Evolution took **15.639 s** and peak resident memory was **2.78 GiB** under a **3.06 GiB** process address-space limit. The state count and probability checks matched the Windows result. [Ubuntu run data](benchmarks/sb_quantum_benchmark/scaling-16777216-ubuntu-wsl.json).
+
 One run per row. Windows process peak working set was observed by polling. Times cover sparse evolution. These runs use the terminal benchmark with compact output.
 
 ```text
