@@ -723,13 +723,13 @@
     },
     {
       "path": "sharkbyte_studio.html",
-      "sha256": "eeb119fdf294ab468eead58c04186d4f2b67b571230158ac7e5cb1f01a63d079",
-      "size_bytes": 7674
+      "sha256": "87bba1eb2b59c055f17450170be760fe3e76c1db353ae74d8a7f80ec0b318009",
+      "size_bytes": 7773
     },
     {
       "path": "sharkbyte_studio.py",
-      "sha256": "ee511388852d34344869b4fb6b9bfeeb364be0e6fd5719aace4a5af0a29c12ea",
-      "size_bytes": 6241
+      "sha256": "cc3b5b172f6602fcbf0e90cedef9e6c6a2c586a610bac5e0da7960bbb9b7dea7",
+      "size_bytes": 8071
     },
     {
       "path": "sharkbyte_terminal.py",

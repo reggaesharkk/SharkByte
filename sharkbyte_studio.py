@@ -3,7 +3,10 @@
 import argparse
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
+from itertools import islice
 from pathlib import Path
+import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -44,6 +47,18 @@ class Studio(BaseHTTPRequestHandler):
         if self.path == "/examples":
             return self.reply(200, {mode: (ROOT / "examples" / name).read_text(encoding="utf-8")
                                     for mode, name in EXAMPLES.items()})
+        match = re.fullmatch(r"/receipts/([a-f0-9]{32})\.json", self.path)
+        if match and match[1] in self.server.receipts:
+            path = self.server.receipts[match[1]]
+            with path.open("rb") as receipt:
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json")
+                self.send_header("Content-Disposition", f'attachment; filename="sharkbyte-{match[1]}.json"')
+                self.send_header("Content-Length", str(path.stat().st_size))
+                self.send_header("Cache-Control", "no-store")
+                self.end_headers()
+                shutil.copyfileobj(receipt, self.wfile)
+            return
         self.reply(404, {"error": "Page not found."})
 
     def do_POST(self):
@@ -97,11 +112,28 @@ class Studio(BaseHTTPRequestHandler):
         if record["mode"] == "frontier" and record["result"]["result"] != "PASS":
             return self.reply(422, {"execution_id": execution_id, "error": record["result"]["reason"]})
         bytecode = record.get("bytecode_hex")
+        path = self.server.receipt_dir / f"{execution_id}.json"
+        with path.open("w", encoding="utf-8", newline="\n") as output:
+            json.dump(record, output, indent=2, allow_nan=False)
+        self.server.receipts[execution_id] = path
+        if len(self.server.receipts) > 4:
+            oldest = next(iter(self.server.receipts))
+            self.server.receipts.pop(oldest).unlink()
+
+        result = record["result"]
+        probabilities = result.get("probabilities")
+        preview = record
+        if isinstance(probabilities, dict) and len(probabilities) > 64:
+            preview = {**record, "result": {**result,
+                       "probabilities": dict(islice(probabilities.items(), 64)),
+                       "probability_entries": len(probabilities)}}
+        if len(record.get("bytecode_hex", "")) > 16384:
+            preview = {**preview, "bytecode_hex": record["bytecode_hex"][:16384], "bytecode_preview": True}
         self.reply(200, {"execution_id": execution_id,
                          "worker_wall_seconds": time.perf_counter() - started,
-                         "record": record,
-                         "receipt_json": json.dumps(record, indent=2, allow_nan=False),
-                         "disassembly": vm.disassemble(bytes.fromhex(bytecode)) if bytecode else None})
+                         "record": preview,
+                         "receipt_url": f"/receipts/{execution_id}.json",
+                         "disassembly": vm.disassemble(bytes.fromhex(bytecode))[:32768] if bytecode else None})
 
 
 def main():
@@ -109,7 +141,9 @@ def main():
     parser.add_argument("--port", type=int, default=8120)
     parser.add_argument("--no-browser", action="store_true")
     args = parser.parse_args()
-    with HTTPServer(("127.0.0.1", args.port), Studio) as server:
+    with tempfile.TemporaryDirectory(prefix="sharkbyte-receipts-") as folder, HTTPServer(("127.0.0.1", args.port), Studio) as server:
+        server.receipt_dir = Path(folder)
+        server.receipts = {}
         url = f"http://127.0.0.1:{server.server_port}/"
         print(f"SharkByte Studio · {url}", flush=True)
         if not args.no_browser:

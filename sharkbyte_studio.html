@@ -49,15 +49,17 @@ function render() {
   if (!latest?.record) return;
   const {record, execution_id, worker_wall_seconds, disassembly} = latest;
   const {result, source_sha256, bytecode_sha256, record_sha256, toolchain_version} = record;
+  const omitted = result.probability_entries ?? 0;
+  const note = omitted ? `Showing 64 of ${omitted.toLocaleString()} probabilities. Save receipt for the full data.\n\n` : '';
   const panels = {
-    output: result.stdout ?? format(result),
+    output: result.stdout ?? note + format(result),
     metrics: format({execution_id, toolchain_version, worker_wall_seconds,
       vm_instruction_count:result.vm_instruction_count, vm_step_limit:result.vm_step_limit,
       qubits:result.qubits, support_cap:result.support_cap, peak_populated_states:result.peak_populated_states,
       source_sha256, bytecode_sha256, record_sha256}),
-    bytecode: disassembly ? `${disassembly}\n\nEncoded bytes (hex)\n${record.bytecode_hex}` : 'This run did not emit a SharkVM bytecode artifact.',
+    bytecode: disassembly ? `${disassembly}\n\nEncoded bytes (hex${record.bytecode_preview ? ', preview' : ''})\n${record.bytecode_hex}` : 'This run did not emit a SharkVM bytecode artifact.',
     source: record.source,
-    receipt: latest.receipt_json,
+    receipt: note + format(record),
   };
   output.textContent = panels[active];
 }
@@ -110,12 +112,10 @@ example.addEventListener('click', () => {
   if (mode.value === 'frontier') byId('supportCap').value = '131072';
 });
 save.addEventListener('click', () => {
-  const url = URL.createObjectURL(new Blob([latest.receipt_json], {type:'application/json'}));
   const link = document.createElement('a');
-  link.href = url;
+  link.href = latest.receipt_url;
   link.download = `sharkbyte-${latest.execution_id}.json`;
   link.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
 run.disabled = false;
 fetch('/examples').then(response => {
