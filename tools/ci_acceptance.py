@@ -27,7 +27,11 @@ def main():
   cmd += [str(root)];p=run(cmd,w,env,240);check("isolated_pep517_install",p.returncode==0,"exit="+str(p.returncode))
   if p.returncode:raise RuntimeError("isolated package installation failed")
   fixture=w/"fixture";fixture.mkdir()
-  for n in ("tests","examples","evidence"):shutil.copytree(root/n,fixture/n)
+  for n in ("tests","examples","evidence","validation"):shutil.copytree(root/n,fixture/n)
+  # The tests include the experimental sparse-circuit corpus, which imports
+  # the checked-in Frontier30 parser/backend from this precise subdirectory.
+  shutil.copytree(root/"benchmarks"/"sb_quantum_benchmark",
+                  fixture/"benchmarks"/"sb_quantum_benchmark")
   ident=run([str(py),"-c","import pathlib,sharkbyte_alpha;print(pathlib.Path(sharkbyte_alpha.__file__).resolve())"],fixture,env,20);ip=pathlib.Path(ident.stdout.strip()).resolve()
   check("installed_import_outside_checkout",ident.returncode==0 and root not in ip.parents,"exit="+str(ident.returncode))
   sp=root/"sharkbyte_alpha";dp=ip.parent;files=sorted(x for x in sp.rglob("*") if x.is_file() and x.suffix in (".py",".json"));matched=0

@@ -1,0 +1,1890 @@
+{
+  "cases": [
+    {
+      "cirq_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999999,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.9999999738141161
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999999,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.9999999738141161
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999999,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.9999999738141161
+        }
+      },
+      "entanglement_crosscheck_status": "PASS",
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "id": "connected_02q_seed_2026111800",
+      "inverse": {
+        "basis_states_compared": 4,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": -6.03115903580585e-17,
+        "l1_probability_error": 4.440892098500626e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 2.220446049250313e-16,
+        "max_probability_error": 4.440892098500626e-16,
+        "status": "PASS"
+      },
+      "prefix": {
+        "basis_states_compared": 4,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": -2.6797581352284306e-17,
+        "l1_probability_error": 4.780653954303271e-18,
+        "max_complex_amplitude_error_global_phase_aligned": 5.647850449853784e-17,
+        "max_probability_error": 4.7704895589362195e-18,
+        "status": "PASS"
+      },
+      "qiskit_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999999,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.9999999738141161
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999999,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.9999999738141161
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999999,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.9999999738141161
+        }
+      },
+      "source_sha256": "e7e65bf90ddc68a789846be155acd84ef84f8440f90dbe43ee1c702c75db4cbb",
+      "status": "PASS",
+      "width": 2
+    },
+    {
+      "cirq_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 1.0,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.997587061991763
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 1.0,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.997587061991763
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 1.0,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.997587061991763
+        }
+      },
+      "entanglement_crosscheck_status": "PASS",
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "id": "connected_02q_seed_2026111801",
+      "inverse": {
+        "basis_states_compared": 4,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": 1.7795670838678838e-16,
+        "l1_probability_error": 1.3322676295501878e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 6.661338147750939e-16,
+        "max_probability_error": 1.3322676295501878e-15,
+        "status": "PASS"
+      },
+      "prefix": {
+        "basis_states_compared": 4,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": -9.757819552369544e-19,
+        "l1_probability_error": 1.1726730697603216e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 4.710277376051326e-16,
+        "max_probability_error": 1.1102230246251565e-15,
+        "status": "PASS"
+      },
+      "qiskit_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.999999999999999,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.9975870619917612
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.999999999999999,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.9975870619917612
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.999999999999999,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.9975870619917612
+        }
+      },
+      "source_sha256": "1b1d43c499a970c3f23e2cdad5f9f445c133d92364bb7cda7585fa9c5995bdc2",
+      "status": "PASS",
+      "width": 2
+    },
+    {
+      "cirq_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000002,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.9990490858227593
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000002,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.9937993254950633
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000002,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.9937993254950633
+        }
+      },
+      "entanglement_crosscheck_status": "PASS",
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "id": "connected_03q_seed_2026111900",
+      "inverse": {
+        "basis_states_compared": 8,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": -1.3806078765107988e-16,
+        "l1_probability_error": 1.1102230246251565e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 5.551115123125783e-16,
+        "max_probability_error": 1.1102230246251565e-15,
+        "status": "PASS"
+      },
+      "prefix": {
+        "basis_states_compared": 8,
+        "cirq_norm": 1.0000000000000002,
+        "cirq_norm_error": 2.220446049250313e-16,
+        "global_phase_radians": -1.179611963664229e-16,
+        "l1_probability_error": 8.427503486729826e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 2.482534153247273e-16,
+        "max_probability_error": 4.440892098500626e-16,
+        "status": "PASS"
+      },
+      "qiskit_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999994,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.9990490858227578
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999993,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.9937993254950617
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999993,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.9937993254950617
+        }
+      },
+      "source_sha256": "83c73981fe7fdca965a820512a5fa5a9f655eaffb5cb74dfdacd15c9478f9435",
+      "status": "PASS",
+      "width": 3
+    },
+    {
+      "cirq_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000004,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.7609351177447577
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000002,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.5432828409536712
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000002,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.5432828409536712
+        }
+      },
+      "entanglement_crosscheck_status": "PASS",
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "id": "connected_03q_seed_2026111901",
+      "inverse": {
+        "basis_states_compared": 8,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": 3.681325940213931e-17,
+        "l1_probability_error": 1.3322676295501878e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 6.661338147750939e-16,
+        "max_probability_error": 1.3322676295501878e-15,
+        "status": "PASS"
+      },
+      "prefix": {
+        "basis_states_compared": 8,
+        "cirq_norm": 1.0000000000000002,
+        "cirq_norm_error": 2.220446049250313e-16,
+        "global_phase_radians": 5.551115123125784e-17,
+        "l1_probability_error": 9.477756578689378e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 4.335559509131367e-16,
+        "max_probability_error": 5.551115123125783e-16,
+        "status": "PASS"
+      },
+      "qiskit_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999993,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.7609351177447563
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999992,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.54328284095367
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999992,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.54328284095367
+        }
+      },
+      "source_sha256": "000f3607e2d823eb32f23f9bb5a540ae0c2d2049cf5407142ea66987baa75d39",
+      "status": "PASS",
+      "width": 3
+    },
+    {
+      "cirq_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 1.0,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.5665696945556838
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 1.0,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.7929575825979254
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 1.0,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.5690831189569475
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999999,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.6968336394236413
+        }
+      },
+      "entanglement_crosscheck_status": "PASS",
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "id": "connected_04q_seed_2026112000",
+      "inverse": {
+        "basis_states_compared": 16,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": -7.682681478738393e-17,
+        "l1_probability_error": 2.220446049250313e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 1.1102230246251565e-15,
+        "max_probability_error": 2.220446049250313e-15,
+        "status": "PASS"
+      },
+      "prefix": {
+        "basis_states_compared": 16,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": -1.6935237934223587e-16,
+        "l1_probability_error": 1.1082172506060584e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 4.2276033262255756e-16,
+        "max_probability_error": 4.996003610813204e-16,
+        "status": "PASS"
+      },
+      "qiskit_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.999999999999999,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.5665696945556827
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.999999999999999,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.7929575825979235
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999989,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.5690831189569465
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999989,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.6968336394236399
+        }
+      },
+      "source_sha256": "59ce1643099cabf11acd1850a76926839179d476c689e9b08cd7ce6f9df39e05",
+      "status": "PASS",
+      "width": 4
+    },
+    {
+      "cirq_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999998,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.635932806903343
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999999,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.5334106267586158
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999998,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.48499991837908085
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999998,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.6049525800453806
+        }
+      },
+      "entanglement_crosscheck_status": "PASS",
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "id": "connected_04q_seed_2026112001",
+      "inverse": {
+        "basis_states_compared": 16,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": -5.799928226400147e-17,
+        "l1_probability_error": 1.3322676295501878e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 6.661338147750939e-16,
+        "max_probability_error": 1.3322676295501878e-15,
+        "status": "PASS"
+      },
+      "prefix": {
+        "basis_states_compared": 16,
+        "cirq_norm": 0.9999999999999999,
+        "cirq_norm_error": 1.1102230246251565e-16,
+        "global_phase_radians": 1.3877787807814463e-17,
+        "l1_probability_error": 5.585809592645319e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 2.8177377798042847e-16,
+        "max_probability_error": 2.498001805406602e-16,
+        "status": "PASS"
+      },
+      "qiskit_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999993,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.6359328069033425
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999993,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.5334106267586153
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999993,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.4849999183790802
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999993,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.6049525800453801
+        }
+      },
+      "source_sha256": "d452e6a3fb1dedd56f932c651b2047bf7fa7d1051c3fb168d4c3f23d6e3a9249",
+      "status": "PASS",
+      "width": 4
+    },
+    {
+      "cirq_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 1.0,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.35694496460548913
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 1.0,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.6322063264563039
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 1.0,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.5426818052244904
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 1.0,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.791169214719051
+        }
+      },
+      "entanglement_crosscheck_status": "PASS",
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "id": "connected_05q_seed_2026112100",
+      "inverse": {
+        "basis_states_compared": 32,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": -1.0840941382374006e-16,
+        "l1_probability_error": 1.3322676295501878e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 6.661338147750939e-16,
+        "max_probability_error": 1.3322676295501878e-15,
+        "status": "PASS"
+      },
+      "prefix": {
+        "basis_states_compared": 32,
+        "cirq_norm": 0.9999999999999999,
+        "cirq_norm_error": 1.1102230246251565e-16,
+        "global_phase_radians": -1.8691645453650104e-16,
+        "l1_probability_error": 7.114873469028782e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 3.433175098891678e-16,
+        "max_probability_error": 4.440892098500626e-16,
+        "status": "PASS"
+      },
+      "qiskit_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999992,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.35694496460548863
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999993,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.6322063264563028
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999993,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.5426818052244894
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999992,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.7911692147190496
+        }
+      },
+      "source_sha256": "9e9ae9b209169367315978e1b96bc7bb407e710f11fce53fb4f32db13ad9f110",
+      "status": "PASS",
+      "width": 5
+    },
+    {
+      "cirq_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000002,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.3005379305164822
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000002,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.4048459397060101
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000002,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.35245221710760954
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000002,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.5269249833980967
+        }
+      },
+      "entanglement_crosscheck_status": "PASS",
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "id": "connected_05q_seed_2026112101",
+      "inverse": {
+        "basis_states_compared": 32,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": -4.851615184203779e-17,
+        "l1_probability_error": 1.5543122344752194e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 7.771561172376096e-16,
+        "max_probability_error": 1.5543122344752192e-15,
+        "status": "PASS"
+      },
+      "prefix": {
+        "basis_states_compared": 32,
+        "cirq_norm": 1.0000000000000002,
+        "cirq_norm_error": 2.220446049250313e-16,
+        "global_phase_radians": -6.418476861114187e-17,
+        "l1_probability_error": 9.571336778702033e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 2.8609792490763985e-16,
+        "max_probability_error": 1.942890293094024e-16,
+        "status": "PASS"
+      },
+      "qiskit_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999992,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.30053793051648153
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999991,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.40484593970600935
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999992,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.35245221710760877
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999991,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.5269249833980956
+        }
+      },
+      "source_sha256": "5019e8c62921122ba8d7b68e132799a4df5bf3b3bf251b38b4f54fb5d3d31d44",
+      "status": "PASS",
+      "width": 5
+    },
+    {
+      "cirq_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 1.0,
+          "reduced_dimension": 8,
+          "reduced_state_purity": 0.41395773702964567
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999999,
+          "reduced_dimension": 8,
+          "reduced_state_purity": 0.4300322703001096
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999998,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.3581555350298812
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999998,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.6347720656720292
+        }
+      },
+      "entanglement_crosscheck_status": "PASS",
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "id": "connected_06q_seed_2026112200",
+      "inverse": {
+        "basis_states_compared": 64,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": 1.1605102543298906e-16,
+        "l1_probability_error": 1.7763568394002505e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 8.881784197001252e-16,
+        "max_probability_error": 1.7763568394002505e-15,
+        "status": "PASS"
+      },
+      "prefix": {
+        "basis_states_compared": 64,
+        "cirq_norm": 0.9999999999999998,
+        "cirq_norm_error": 2.220446049250313e-16,
+        "global_phase_radians": 1.4333152720258376e-16,
+        "l1_probability_error": 7.644972098408941e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 1.6883057536160646e-16,
+        "max_probability_error": 1.6653345369377348e-16,
+        "status": "PASS"
+      },
+      "qiskit_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999993,
+          "reduced_dimension": 8,
+          "reduced_state_purity": 0.4139577370296451
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999993,
+          "reduced_dimension": 8,
+          "reduced_state_purity": 0.43003227030010893
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999991,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.3581555350298806
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.999999999999999,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.6347720656720287
+        }
+      },
+      "source_sha256": "db52b83776c8f754b9c1e14f11142b8c5804ed0b815394fa278b47e06826670d",
+      "status": "PASS",
+      "width": 6
+    },
+    {
+      "cirq_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000002,
+          "reduced_dimension": 8,
+          "reduced_state_purity": 0.6537335542936213
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000002,
+          "reduced_dimension": 8,
+          "reduced_state_purity": 0.4813058985244105
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000002,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.49891252136509223
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000002,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.9573051056247268
+        }
+      },
+      "entanglement_crosscheck_status": "PASS",
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "id": "connected_06q_seed_2026112201",
+      "inverse": {
+        "basis_states_compared": 64,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": 6.169475922486275e-17,
+        "l1_probability_error": 8.881784197001252e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 4.440892098500626e-16,
+        "max_probability_error": 8.881784197001252e-16,
+        "status": "PASS"
+      },
+      "prefix": {
+        "basis_states_compared": 64,
+        "cirq_norm": 1.0000000000000002,
+        "cirq_norm_error": 2.220446049250313e-16,
+        "global_phase_radians": 1.7607443281164587e-16,
+        "l1_probability_error": 5.718563877525602e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 2.2887833992611187e-16,
+        "max_probability_error": 1.6653345369377348e-16,
+        "status": "PASS"
+      },
+      "qiskit_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 1.0,
+          "reduced_dimension": 8,
+          "reduced_state_purity": 0.653733554293621
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999999,
+          "reduced_dimension": 8,
+          "reduced_state_purity": 0.48130589852441036
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999999,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.49891252136509207
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999999,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.9573051056247259
+        }
+      },
+      "source_sha256": "343ec1de4a55128155d9c46326968479119c681c82e01b285f2500a1bfb849dc",
+      "status": "PASS",
+      "width": 6
+    },
+    {
+      "cirq_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999993,
+          "reduced_dimension": 16,
+          "reduced_state_purity": 0.42142130253680055
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999998,
+          "reduced_dimension": 16,
+          "reduced_state_purity": 0.38057684859654295
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999994,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.648294652863593
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999997,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.9721247587308253
+        }
+      },
+      "entanglement_crosscheck_status": "PASS",
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "id": "connected_08q_seed_2026112400",
+      "inverse": {
+        "basis_states_compared": 256,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": 8.606773970131549e-17,
+        "l1_probability_error": 2.886579864025407e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 1.4432899320127035e-15,
+        "max_probability_error": 2.886579864025407e-15,
+        "status": "PASS"
+      },
+      "prefix": {
+        "basis_states_compared": 256,
+        "cirq_norm": 0.9999999999999993,
+        "cirq_norm_error": 6.661338147750939e-16,
+        "global_phase_radians": -7.459310946700275e-17,
+        "l1_probability_error": 8.370273811372611e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 3.365900013051177e-16,
+        "max_probability_error": 3.885780586188048e-16,
+        "status": "PASS"
+      },
+      "qiskit_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999986,
+          "reduced_dimension": 16,
+          "reduced_state_purity": 0.4214213025368
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999991,
+          "reduced_dimension": 16,
+          "reduced_state_purity": 0.3805768485965423
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999987,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.6482946528635919
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999988,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.9721247587308235
+        }
+      },
+      "source_sha256": "3440791a68946b3178fc8d934ac0491a02a48a515ca9081be0fd8651b944f541",
+      "status": "PASS",
+      "width": 8
+    },
+    {
+      "cirq_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999998,
+          "reduced_dimension": 16,
+          "reduced_state_purity": 0.13127769487331972
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999994,
+          "reduced_dimension": 16,
+          "reduced_state_purity": 0.19806682703564268
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999994,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.3790707435550833
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999993,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.5000552344577879
+        }
+      },
+      "entanglement_crosscheck_status": "PASS",
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "id": "connected_08q_seed_2026112401",
+      "inverse": {
+        "basis_states_compared": 256,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": -4.0392210799025043e-17,
+        "l1_probability_error": 3.552713678800501e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 1.7763568394002505e-15,
+        "max_probability_error": 3.552713678800501e-15,
+        "status": "PASS"
+      },
+      "prefix": {
+        "basis_states_compared": 256,
+        "cirq_norm": 0.9999999999999997,
+        "cirq_norm_error": 3.3306690738754696e-16,
+        "global_phase_radians": -2.2551405187698523e-17,
+        "l1_probability_error": 1.2859968202975313e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 2.9893669801409083e-16,
+        "max_probability_error": 1.8041124150158794e-16,
+        "status": "PASS"
+      },
+      "qiskit_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999983,
+          "reduced_dimension": 16,
+          "reduced_state_purity": 0.13127769487331936
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999982,
+          "reduced_dimension": 16,
+          "reduced_state_purity": 0.19806682703564216
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 0.999999999999998,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.3790707435550823
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.999999999999998,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.5000552344577865
+        }
+      },
+      "source_sha256": "818157f010ae0c5da4ec07fb8c8f605eeb0f789bfa97cd183e1bd363a53ad04a",
+      "status": "PASS",
+      "width": 8
+    },
+    {
+      "cirq_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000009,
+          "reduced_dimension": 32,
+          "reduced_state_purity": 0.16092726378797634
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000007,
+          "reduced_dimension": 32,
+          "reduced_state_purity": 0.08126106301676628
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000009,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.4742108737435204
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000009,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.5089612970418038
+        }
+      },
+      "entanglement_crosscheck_status": "PASS",
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "id": "connected_10q_seed_2026112600",
+      "inverse": {
+        "basis_states_compared": 1024,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": -1.163587940895493e-18,
+        "l1_probability_error": 3.9968028886505635e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 1.9984014443252818e-15,
+        "max_probability_error": 3.9968028886505635e-15,
+        "status": "PASS"
+      },
+      "prefix": {
+        "basis_states_compared": 1024,
+        "cirq_norm": 1.0000000000000007,
+        "cirq_norm_error": 6.661338147750939e-16,
+        "global_phase_radians": -9.714451465470132e-17,
+        "l1_probability_error": 2.5678426223002133e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 5.585701844806365e-16,
+        "max_probability_error": 3.191891195797325e-16,
+        "status": "PASS"
+      },
+      "qiskit_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999987,
+          "reduced_dimension": 32,
+          "reduced_state_purity": 0.16092726378797556
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999982,
+          "reduced_dimension": 32,
+          "reduced_state_purity": 0.08126106301676589
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999983,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.47421087374351806
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999986,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.5089612970418015
+        }
+      },
+      "source_sha256": "b8bcbe8d1b799d04ee200a8e14fb5b4fffa5cf3d5c2a3755ac409146cb41506e",
+      "status": "PASS",
+      "width": 10
+    },
+    {
+      "cirq_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999994,
+          "reduced_dimension": 32,
+          "reduced_state_purity": 0.16149973337088308
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999994,
+          "reduced_dimension": 32,
+          "reduced_state_purity": 0.19871447159483674
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000002,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.2618678431272236
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999998,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.5001247851485298
+        }
+      },
+      "entanglement_crosscheck_status": "PASS",
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "id": "connected_10q_seed_2026112601",
+      "inverse": {
+        "basis_states_compared": 1024,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": -6.866645180347339e-17,
+        "l1_probability_error": 3.774758283725532e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 1.887379141862766e-15,
+        "max_probability_error": 3.774758283725532e-15,
+        "status": "PASS"
+      },
+      "prefix": {
+        "basis_states_compared": 1024,
+        "cirq_norm": 0.9999999999999997,
+        "cirq_norm_error": 3.3306690738754696e-16,
+        "global_phase_radians": -1.9775847626135618e-16,
+        "l1_probability_error": 1.289368364394618e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 2.8066088919804617e-16,
+        "max_probability_error": 1.942890293094024e-16,
+        "status": "PASS"
+      },
+      "qiskit_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999984,
+          "reduced_dimension": 32,
+          "reduced_state_purity": 0.1614997333708827
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999981,
+          "reduced_dimension": 32,
+          "reduced_state_purity": 0.1987144715948363
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999991,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.26186784312722294
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999987,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.5001247851485286
+        }
+      },
+      "source_sha256": "4dbdca180d98056d4a137acb1607f29759b19c5646a4c1c18cc9665cb23f34b8",
+      "status": "PASS",
+      "width": 10
+    },
+    {
+      "cirq_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000013,
+          "reduced_dimension": 64,
+          "reduced_state_purity": 0.2158350333718936
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000013,
+          "reduced_dimension": 64,
+          "reduced_state_purity": 0.06217696813951028
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000007,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.3061982836902209
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 1.000000000000001,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.5000075485466241
+        }
+      },
+      "entanglement_crosscheck_status": "PASS",
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "id": "connected_12q_seed_2026112800",
+      "inverse": {
+        "basis_states_compared": 4096,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": 1.841940594068785e-17,
+        "l1_probability_error": 4.218847493575595e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 2.1094237467877974e-15,
+        "max_probability_error": 4.218847493575595e-15,
+        "status": "PASS"
+      },
+      "prefix": {
+        "basis_states_compared": 4096,
+        "cirq_norm": 1.0000000000000009,
+        "cirq_norm_error": 8.881784197001252e-16,
+        "global_phase_radians": -3.469446951953621e-17,
+        "l1_probability_error": 2.926839644327663e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 4.4256872386577647e-16,
+        "max_probability_error": 2.0816681711721685e-16,
+        "status": "PASS"
+      },
+      "qiskit_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999986,
+          "reduced_dimension": 64,
+          "reduced_state_purity": 0.21583503337189236
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999984,
+          "reduced_dimension": 64,
+          "reduced_state_purity": 0.062176968139509944
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999974,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.3061982836902192
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.999999999999998,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.5000075485466211
+        }
+      },
+      "source_sha256": "5e1cc1a3b29f9bd2b3382e3fc5b24090ae0fef9a0df817ef41c4bec7010ed585",
+      "status": "PASS",
+      "width": 12
+    },
+    {
+      "cirq_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000007,
+          "reduced_dimension": 64,
+          "reduced_state_purity": 0.04991422963324719
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000004,
+          "reduced_dimension": 64,
+          "reduced_state_purity": 0.04069664725631777
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000009,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.25749309287898225
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000002,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.5061841658720503
+        }
+      },
+      "entanglement_crosscheck_status": "PASS",
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "id": "connected_12q_seed_2026112801",
+      "inverse": {
+        "basis_states_compared": 4096,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": 7.823890291812023e-17,
+        "l1_probability_error": 3.1086244689504383e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 1.5543122344752192e-15,
+        "max_probability_error": 3.1086244689504383e-15,
+        "status": "PASS"
+      },
+      "prefix": {
+        "basis_states_compared": 4096,
+        "cirq_norm": 0.9999999999999998,
+        "cirq_norm_error": 2.220446049250313e-16,
+        "global_phase_radians": 1.296705798292665e-16,
+        "l1_probability_error": 1.5376956026100162e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 3.433175098891678e-16,
+        "max_probability_error": 1.734723475976807e-16,
+        "status": "PASS"
+      },
+      "qiskit_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999992,
+          "reduced_dimension": 64,
+          "reduced_state_purity": 0.04991422963324704
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999989,
+          "reduced_dimension": 64,
+          "reduced_state_purity": 0.04069664725631765
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999993,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.2574930928789814
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999988,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.5061841658720487
+        }
+      },
+      "source_sha256": "4c21034dc6a2fb891d49c34f5224550f69986632ebe4dcce74874440bdc23a1c",
+      "status": "PASS",
+      "width": 12
+    },
+    {
+      "cirq_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000084,
+          "reduced_dimension": 128,
+          "reduced_state_purity": 0.24568442108468
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000049,
+          "reduced_dimension": 128,
+          "reduced_state_purity": 0.23407928359276187
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000107,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.5209335577585203
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000044,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.5560693300653906
+        }
+      },
+      "entanglement_crosscheck_status": "PASS",
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "id": "connected_14q_seed_2026113000",
+      "inverse": {
+        "basis_states_compared": 16384,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": 5.9475083365446984e-18,
+        "l1_probability_error": 4.440892098500626e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 2.220446049250313e-15,
+        "max_probability_error": 4.440892098500626e-15,
+        "status": "PASS"
+      },
+      "prefix": {
+        "basis_states_compared": 16384,
+        "cirq_norm": 1.000000000000016,
+        "cirq_norm_error": 1.5987211554602254e-14,
+        "global_phase_radians": 1.934216675714151e-16,
+        "l1_probability_error": 1.817494646990478e-14,
+        "max_complex_amplitude_error_global_phase_aligned": 4.775895048822463e-15,
+        "max_probability_error": 5.051514762044462e-15,
+        "status": "PASS"
+      },
+      "qiskit_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999907,
+          "reduced_dimension": 128,
+          "reduced_state_purity": 0.2456844210846711
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.999999999999987,
+          "reduced_dimension": 128,
+          "reduced_state_purity": 0.23407928359275343
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999928,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.5209335577585014
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999868,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.5560693300653705
+        }
+      },
+      "source_sha256": "a7e2aab3d474338893d6fb6531e985cc3e30f4b7d84c8d97cf517f2a7a292704",
+      "status": "PASS",
+      "width": 14
+    },
+    {
+      "cirq_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999956,
+          "reduced_dimension": 128,
+          "reduced_state_purity": 0.039111310435734965
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999963,
+          "reduced_dimension": 128,
+          "reduced_state_purity": 0.031429584192843446
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999992,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.28816076269269436
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.999999999999998,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.5067624290849384
+        }
+      },
+      "entanglement_crosscheck_status": "PASS",
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "id": "connected_14q_seed_2026113001",
+      "inverse": {
+        "basis_states_compared": 16384,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": -3.164949229384387e-17,
+        "l1_probability_error": 4.440892098500626e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 2.220446049250313e-15,
+        "max_probability_error": 4.440892098500626e-15,
+        "status": "PASS"
+      },
+      "prefix": {
+        "basis_states_compared": 16384,
+        "cirq_norm": 0.9999999999999997,
+        "cirq_norm_error": 3.3306690738754696e-16,
+        "global_phase_radians": 6.071532165918825e-18,
+        "l1_probability_error": 1.7308727337374289e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 1.6883057536160646e-16,
+        "max_probability_error": 5.551115123125783e-17,
+        "status": "PASS"
+      },
+      "qiskit_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999938,
+          "reduced_dimension": 128,
+          "reduced_state_purity": 0.03911131043573483
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999947,
+          "reduced_dimension": 128,
+          "reduced_state_purity": 0.031429584192843335
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999977,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.2881607626926934
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999964,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.5067624290849367
+        }
+      },
+      "source_sha256": "f8030fd8bc47dc2b7b08214b87bcfaecc68b29ffa1160f08dbe388ef7af29ab9",
+      "status": "PASS",
+      "width": 14
+    },
+    {
+      "cirq_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999953,
+          "reduced_dimension": 256,
+          "reduced_state_purity": 0.05448913050379724
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000004,
+          "reduced_dimension": 256,
+          "reduced_state_purity": 0.024159242730774712
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999942,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.30550597909944205
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999938,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.5000059949761263
+        }
+      },
+      "entanglement_crosscheck_status": "PASS",
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "id": "connected_16q_seed_2026113200",
+      "inverse": {
+        "basis_states_compared": 65536,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": -1.625865860779853e-17,
+        "l1_probability_error": 3.9968028886505635e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 1.9984014443252818e-15,
+        "max_probability_error": 3.9968028886505635e-15,
+        "status": "PASS"
+      },
+      "prefix": {
+        "basis_states_compared": 65536,
+        "cirq_norm": 1.0000000000000033,
+        "cirq_norm_error": 3.3306690738754696e-15,
+        "global_phase_radians": 5.10008701937186e-16,
+        "l1_probability_error": 5.129321478427163e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 6.288031628281616e-16,
+        "max_probability_error": 2.706168622523819e-16,
+        "status": "PASS"
+      },
+      "qiskit_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999898,
+          "reduced_dimension": 256,
+          "reduced_state_purity": 0.05448913050379668
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999949,
+          "reduced_dimension": 256,
+          "reduced_state_purity": 0.024159242730774466
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 0.999999999999989,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.305505979099439
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999887,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.5000059949761212
+        }
+      },
+      "source_sha256": "ee4ac1e62d05e56e3a622700488d58c0310a81cebb0eec26441c3414d39da3f9",
+      "status": "PASS",
+      "width": 16
+    },
+    {
+      "cirq_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000036,
+          "reduced_dimension": 256,
+          "reduced_state_purity": 0.01867014683424865
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000002,
+          "reduced_dimension": 256,
+          "reduced_state_purity": 0.01870301790634786
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000056,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.25084166663344487
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000062,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.5000277287898136
+        }
+      },
+      "entanglement_crosscheck_status": "PASS",
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "id": "connected_16q_seed_2026113201",
+      "inverse": {
+        "basis_states_compared": 65536,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": -5.73187809279474e-17,
+        "l1_probability_error": 6.217248937900877e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 3.1086244689504383e-15,
+        "max_probability_error": 6.217248937900877e-15,
+        "status": "PASS"
+      },
+      "prefix": {
+        "basis_states_compared": 65536,
+        "cirq_norm": 1.000000000000002,
+        "cirq_norm_error": 1.9984014443252818e-15,
+        "global_phase_radians": -8.196568423990444e-17,
+        "l1_probability_error": 5.11076877470742e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 4.810535519880077e-16,
+        "max_probability_error": 1.491862189340054e-16,
+        "status": "PASS"
+      },
+      "qiskit_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999984,
+          "reduced_dimension": 256,
+          "reduced_state_purity": 0.018670146834248457
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999953,
+          "reduced_dimension": 256,
+          "reduced_state_purity": 0.018703017906347666
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000004,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.2508416666334421
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000009,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.5000277287898086
+        }
+      },
+      "source_sha256": "c71969bd5cc370ed33a6a2c1f11e3f7131efea3218fb0d4a4b2d46905adcb966",
+      "status": "PASS",
+      "width": 16
+    },
+    {
+      "cirq_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 1.0,
+          "reduced_dimension": 16,
+          "reduced_state_purity": 0.5
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 1.0,
+          "reduced_dimension": 16,
+          "reduced_state_purity": 0.5
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 1.0,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.5
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": false,
+          "normalization": 1.0,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 1.0
+        }
+      },
+      "entanglement_crosscheck_status": "PASS",
+      "entanglement_expectation": "record-without-required-classification",
+      "id": "adversarial_connected_cancellation_8q",
+      "inverse": {
+        "basis_states_compared": 256,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": -2.8676565431329774e-18,
+        "l1_probability_error": 1.9984014443252818e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 9.992007221626409e-16,
+        "max_probability_error": 1.9984014443252818e-15,
+        "status": "PASS"
+      },
+      "prefix": {
+        "basis_states_compared": 256,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": 2.4377067483110137e-16,
+        "l1_probability_error": 1.1102230246251565e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 3.8858194551412386e-16,
+        "max_probability_error": 3.885780586188048e-16,
+        "status": "PASS"
+      },
+      "qiskit_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999989,
+          "reduced_dimension": 16,
+          "reduced_state_purity": 0.4999999999999989
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999989,
+          "reduced_dimension": 16,
+          "reduced_state_purity": 0.4999999999999989
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999989,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.4999999999999989
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": false,
+          "normalization": 0.9999999999999989,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.9999999999999978
+        }
+      },
+      "source_sha256": "b2eff4bd68b79a159794379ee848ba765211f66a44212d3f161be1e2490ec22e",
+      "status": "PASS",
+      "width": 8
+    },
+    {
+      "cirq_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000002,
+          "reduced_dimension": 16,
+          "reduced_state_purity": 0.5000000000000002
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000002,
+          "reduced_dimension": 16,
+          "reduced_state_purity": 0.5000000000000002
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000002,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.5000000000000002
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000002,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.5000000000000002
+        }
+      },
+      "entanglement_crosscheck_status": "PASS",
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "id": "adversarial_connected_sparse_ghz_8q",
+      "inverse": {
+        "basis_states_compared": 256,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": 6.179440273853944e-17,
+        "l1_probability_error": 6.661338147750939e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 3.3306690738754696e-16,
+        "max_probability_error": 6.661338147750939e-16,
+        "status": "PASS"
+      },
+      "prefix": {
+        "basis_states_compared": 256,
+        "cirq_norm": 1.0000000000000002,
+        "cirq_norm_error": 2.220446049250313e-16,
+        "global_phase_radians": 8.627689913559496e-17,
+        "l1_probability_error": 3.469446951953614e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 1.3877787807814457e-16,
+        "max_probability_error": 1.6653345369377348e-16,
+        "status": "PASS"
+      },
+      "qiskit_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999999,
+          "reduced_dimension": 16,
+          "reduced_state_purity": 0.4999999999999999
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 1.0,
+          "reduced_dimension": 16,
+          "reduced_state_purity": 0.4999999999999999
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999999,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.4999999999999999
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 0.9999999999999999,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.4999999999999999
+        }
+      },
+      "source_sha256": "6dbeed3d2f9d45d9c267e43ca353b9834c025639a490d48ef5a6570646815234",
+      "status": "PASS",
+      "width": 8
+    },
+    {
+      "cirq_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000002,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.8118384440118869
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000002,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.8118384440118869
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000002,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.8118384440118869
+        }
+      },
+      "entanglement_crosscheck_status": "PASS",
+      "entanglement_expectation": "record-without-required-classification",
+      "id": "adversarial_gate_budget_256_2q",
+      "inverse": {
+        "basis_states_compared": 4,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": -8.405638182817384e-17,
+        "l1_probability_error": 3.6669461880531193e-31,
+        "max_complex_amplitude_error_global_phase_aligned": 3.907489209798933e-16,
+        "max_probability_error": 1.9168889433536912e-31,
+        "status": "PASS"
+      },
+      "prefix": {
+        "basis_states_compared": 4,
+        "cirq_norm": 1.0000000000000002,
+        "cirq_norm_error": 2.220446049250313e-16,
+        "global_phase_radians": 5.551115123125783e-17,
+        "l1_probability_error": 4.371503159461554e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 4.47545209131181e-16,
+        "max_probability_error": 1.942890293094024e-16,
+        "status": "PASS"
+      },
+      "qiskit_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000002,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.8118384440118869
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000002,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.8118384440118869
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": true,
+          "normalization": 1.0000000000000002,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.8118384440118869
+        }
+      },
+      "source_sha256": "f0bf2d41ee27ff77a44dc223be10ee94555085b43121251f90d8ec6d3a48a12a",
+      "status": "PASS",
+      "width": 2
+    },
+    {
+      "cirq_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": false,
+          "normalization": 0.9999999999999999,
+          "reduced_dimension": 8,
+          "reduced_state_purity": 0.9999999999999997
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": false,
+          "normalization": 0.9999999999999999,
+          "reduced_dimension": 8,
+          "reduced_state_purity": 0.9999999999999998
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": false,
+          "normalization": 0.9999999999999998,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.9999999999999998
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": false,
+          "normalization": 0.9999999999999998,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 1.0
+        }
+      },
+      "entanglement_crosscheck_status": "PASS",
+      "entanglement_expectation": "separable-product-control",
+      "id": "adversarial_connected_but_separable_6q",
+      "inverse": {
+        "basis_states_compared": 64,
+        "cirq_norm": 1.0,
+        "cirq_norm_error": 0.0,
+        "global_phase_radians": 1.2560313312964373e-17,
+        "l1_probability_error": 2.4424906541753444e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 1.2212453270876722e-15,
+        "max_probability_error": 2.4424906541753444e-15,
+        "status": "PASS"
+      },
+      "prefix": {
+        "basis_states_compared": 64,
+        "cirq_norm": 0.9999999999999999,
+        "cirq_norm_error": 1.1102230246251565e-16,
+        "global_phase_radians": 1.0408340855860852e-17,
+        "l1_probability_error": 1.0720591081536668e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 9.934984129320279e-17,
+        "max_probability_error": 2.7755575615628914e-17,
+        "status": "PASS"
+      },
+      "qiskit_entanglement_witnesses": {
+        "even_qubits_vs_odd_qubits": {
+          "entangled_across_cut": false,
+          "normalization": 0.9999999999999987,
+          "reduced_dimension": 8,
+          "reduced_state_purity": 0.9999999999999979
+        },
+        "lower_half_vs_upper_half": {
+          "entangled_across_cut": false,
+          "normalization": 0.9999999999999988,
+          "reduced_dimension": 8,
+          "reduced_state_purity": 0.9999999999999978
+        },
+        "outer_qubits_vs_middle": {
+          "entangled_across_cut": false,
+          "normalization": 0.9999999999999989,
+          "reduced_dimension": 4,
+          "reduced_state_purity": 0.9999999999999978
+        },
+        "q0_vs_rest": {
+          "entangled_across_cut": false,
+          "normalization": 0.9999999999999989,
+          "reduced_dimension": 2,
+          "reduced_state_purity": 0.9999999999999978
+        }
+      },
+      "source_sha256": "28721339f27f2677d6cbd283a08f1fbd6b7631acdb79d2a69a6278efa4d78bc5",
+      "status": "PASS",
+      "width": 6
+    }
+  ],
+  "cirq_core_version": "1.7.0",
+  "comparator_sha256": "f9fcde750abf1bdbe11e81472cd55404be135c412020eea2c8e418bbe7729301",
+  "corpus_cases": 24,
+  "corpus_sha256": "bd23f5a6bcf12cf45ea1a64f1a641c9bb55af7ca59657ee7cc9d037d1d77e310",
+  "entanglement_crosscheck_method": "Independent reduced-density-matrix purity from matrix products; run receipts compute Schmidt spectra by SVD.",
+  "failed_cases": [],
+  "numpy_cirq_version": "2.5.4",
+  "numpy_qiskit_version": "2.5.4",
+  "qiskit_version": "2.6.2",
+  "report_sha256": "f68a98edec2852e9a4d50925a386293028e5c0f87812f82827e0ad2b4065f4aa",
+  "schema": 1,
+  "status": "PASS",
+  "windows_arm64_cirq_host": {
+    "architecture": "ARM64",
+    "cpu_count": 8,
+    "platform": "Windows-11-10.0.26300-SP0",
+    "processor": "ARMv8 (64-bit) Family 8 Model 1 Revision 201, Qualcomm Technologies Inc",
+    "system": "Windows"
+  },
+  "windows_arm64_qiskit_host": {
+    "architecture": "ARM64",
+    "cpu_count": 8,
+    "platform": "Windows-11-10.0.26300-SP0",
+    "processor": "ARMv8 (64-bit) Family 8 Model 1 Revision 201, Qualcomm Technologies Inc",
+    "system": "Windows"
+  }
+}

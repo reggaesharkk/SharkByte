@@ -1,0 +1,137 @@
+{
+  "candidate": "SharkByte standalone alpha 0.2.1a2 public source copy",
+  "checks": [
+    {
+      "detail": "exit=0",
+      "name": "isolated_pep517_install",
+      "status": "PASS"
+    },
+    {
+      "detail": "exit=0",
+      "name": "installed_import_outside_checkout",
+      "status": "PASS"
+    },
+    {
+      "detail": "14/14",
+      "name": "installed_source_identity",
+      "status": "PASS"
+    },
+    {
+      "detail": "tests=49; exit=0",
+      "name": "tests_normal",
+      "status": "PASS"
+    },
+    {
+      "detail": "tests=49; exit=0",
+      "name": "tests_O",
+      "status": "PASS"
+    },
+    {
+      "detail": "tests=49; exit=0",
+      "name": "tests_OO",
+      "status": "PASS"
+    },
+    {
+      "detail": "exit=0",
+      "name": "smoke_version",
+      "status": "PASS"
+    },
+    {
+      "detail": "exit=0",
+      "name": "smoke_doctor",
+      "status": "PASS"
+    },
+    {
+      "detail": "exit=0",
+      "name": "smoke_classical",
+      "status": "PASS"
+    },
+    {
+      "detail": "exit=0",
+      "name": "smoke_quantum",
+      "status": "PASS"
+    },
+    {
+      "detail": "exit=0",
+      "name": "smoke_hybrid",
+      "status": "PASS"
+    },
+    {
+      "detail": "exit=1",
+      "name": "smoke_native_guard_native_interpreter",
+      "status": "PASS"
+    },
+    {
+      "detail": "exit=1",
+      "name": "smoke_native_guard_direct_native",
+      "status": "PASS"
+    }
+  ],
+  "host": {
+    "architecture": "ARM64",
+    "python": "3.12.10",
+    "system": "Windows"
+  },
+  "schema": 1,
+  "status": "PASS",
+  "summary": {
+    "check_count": 13,
+    "failures": [],
+    "installed_source_files_compared": 14,
+    "native_functionality": "DISABLED; guard refusals are negative tests only",
+    "optimization_test_runs": {
+      "O": {
+        "exit_code": 0,
+        "status": "PASS",
+        "tests_run": 49
+      },
+      "OO": {
+        "exit_code": 0,
+        "status": "PASS",
+        "tests_run": 49
+      },
+      "normal": {
+        "exit_code": 0,
+        "status": "PASS",
+        "tests_run": 49
+      }
+    },
+    "smoke_checks": [
+      {
+        "exit_code": 0,
+        "name": "version",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "doctor",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "classical",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "quantum",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 0,
+        "name": "hybrid",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 1,
+        "name": "native_guard_native_interpreter",
+        "status": "PASS"
+      },
+      {
+        "exit_code": 1,
+        "name": "native_guard_direct_native",
+        "status": "PASS"
+      }
+    ]
+  }
+}

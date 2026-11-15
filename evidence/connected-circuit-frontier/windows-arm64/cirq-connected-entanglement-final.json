@@ -1,0 +1,3744 @@
+{
+  "adversarial_cases": 4,
+  "backend": "cirq",
+  "cases": [
+    {
+      "connected_interaction_graph": true,
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "gate_count": 24,
+      "id": "connected_02q_seed_2026111800",
+      "interaction_edges": 1,
+      "inverse_comparison": {
+        "actual_norm": 0.9999999999999993,
+        "actual_norm_error": 6.661338147750939e-16,
+        "basis_states_compared": 4,
+        "global_phase_radians": -3.655812244050375e-17,
+        "l1_probability_error": 6.661338147750939e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 3.3306690738754696e-16,
+        "max_probability_error": 6.661338147750939e-16,
+        "overlap_magnitude": 0.9999999999999997,
+        "status": "PASS"
+      },
+      "inverse_reference": {
+        "backend_metadata": {
+          "instruction_count": 24,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "inverse_identity_status": "PASS",
+        "maximum_nonvacuum_amplitude": 7.871841308277005e-17,
+        "seconds": 0.0015749000012874603,
+        "state_sha256": "29b46de44d60c83c727b8fd05f7cf1fce120fc725676d92a64b590e6f0e6aee0",
+        "vacuum_probability": 1.0
+      },
+      "inverse_sparse": {
+        "evolution_seconds": 6.640003994107246e-05,
+        "final_support": 4,
+        "peak_gate_index": 1,
+        "peak_support": 4,
+        "state_sha256": "774187464a40f2b8e842c74f53a75d1056efa4aa3fc464d9e7afb8e52c7b0e3e"
+      },
+      "kind": "random-connected",
+      "ordered_gate_sequence_matches": true,
+      "prefix_comparison": {
+        "actual_norm": 0.9999999999999998,
+        "actual_norm_error": 2.220446049250313e-16,
+        "basis_states_compared": 4,
+        "global_phase_radians": -1.2926993324521508e-17,
+        "l1_probability_error": 2.3030317616076074e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 1.1102230246251565e-16,
+        "max_probability_error": 2.220446049250313e-16,
+        "overlap_magnitude": 0.9999999999999998,
+        "status": "PASS"
+      },
+      "prefix_entanglement": {
+        "classification": "NONFACTORIZING_ACROSS_TESTED_CUTS",
+        "status": "PASS",
+        "witnesses": {
+          "even_qubits_vs_odd_qubits": {
+            "complement_qubits": [
+              1
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 2.6185883239548957e-08,
+            "normalized_state": true,
+            "reduced_state_purity": 0.9999999738141168,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 3.617492215028827e-07
+          },
+          "lower_half_vs_upper_half": {
+            "complement_qubits": [
+              1
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 2.6185883239548957e-08,
+            "normalized_state": true,
+            "reduced_state_purity": 0.9999999738141168,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 3.617492215028827e-07
+          },
+          "q0_vs_rest": {
+            "complement_qubits": [
+              1
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 2.6185883239548957e-08,
+            "normalized_state": true,
+            "reduced_state_purity": 0.9999999738141168,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 3.617492215028827e-07
+          }
+        }
+      },
+      "prefix_gate_count": 12,
+      "prefix_reference": {
+        "backend_metadata": {
+          "instruction_count": 12,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "seconds": 1.6503826000262052,
+        "state_sha256": "d6d7b75485290e371d8477fb42877c8334e0dc058a9bd3d9e4a1897b99ff1d1e"
+      },
+      "prefix_sparse": {
+        "evolution_seconds": 6.469996878877282e-05,
+        "final_support": 4,
+        "peak_gate_index": 1,
+        "peak_support": 4,
+        "state_sha256": "e5a31e44d273a318c4408e9d8c38eb8497060be76d9ed676f391e2c7d2ed5eee"
+      },
+      "seed": 2026111800,
+      "source": "quantum connected_02q_seed_2026111800 {\n  qubits 2;\n  shots 1;\n  seed 2026111800;\n  h 1;\n  h 0;\n  ry -1.46248 1;\n  ry -1.661953 0;\n  cx 0 1;\n  cp -2.770961 0 1;\n  rz -0.313279 1;\n  rz 1.04023 0;\n  cx 0 1;\n  cp 2.839152 1 0;\n  x 0;\n  z 0;\n  z 0;\n  x 0;\n  cp -2.839152 1 0;\n  cx 0 1;\n  rz -1.04023 0;\n  rz 0.313279 1;\n  cp 2.770961 0 1;\n  cx 0 1;\n  ry 1.661953 0;\n  ry 1.46248 1;\n  h 0;\n  h 1;\n  measure_all;\n}\n",
+      "source_sha256": "e7e65bf90ddc68a789846be155acd84ef84f8440f90dbe43ee1c702c75db4cbb",
+      "status": "PASS",
+      "width": 2
+    },
+    {
+      "connected_interaction_graph": true,
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "gate_count": 24,
+      "id": "connected_02q_seed_2026111801",
+      "interaction_edges": 1,
+      "inverse_comparison": {
+        "actual_norm": 0.9999999999999991,
+        "actual_norm_error": 8.881784197001252e-16,
+        "basis_states_compared": 4,
+        "global_phase_radians": -1.0654427418946243e-16,
+        "l1_probability_error": 8.881784197001252e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 4.440892098500626e-16,
+        "max_probability_error": 8.881784197001252e-16,
+        "overlap_magnitude": 0.9999999999999996,
+        "status": "PASS"
+      },
+      "inverse_reference": {
+        "backend_metadata": {
+          "instruction_count": 24,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "inverse_identity_status": "PASS",
+        "maximum_nonvacuum_amplitude": 1.1832259246957013e-16,
+        "seconds": 0.0015244000242091715,
+        "state_sha256": "41b1545d18dedc7627272060ed1bbbd814302df5863e108cc98f51a30dfb2119",
+        "vacuum_probability": 1.0
+      },
+      "inverse_sparse": {
+        "evolution_seconds": 6.230000872164965e-05,
+        "final_support": 4,
+        "peak_gate_index": 1,
+        "peak_support": 4,
+        "state_sha256": "a6242b39200c1c2e00f7b690288ca1fcf6112765d1765f2e8fbfd42578a854e7"
+      },
+      "kind": "random-connected",
+      "ordered_gate_sequence_matches": true,
+      "prefix_comparison": {
+        "actual_norm": 0.9999999999999993,
+        "actual_norm_error": 6.661338147750939e-16,
+        "basis_states_compared": 4,
+        "global_phase_radians": 1.658829323902822e-17,
+        "l1_probability_error": 7.227291681788373e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 3.1401849173675503e-16,
+        "max_probability_error": 6.661338147750939e-16,
+        "overlap_magnitude": 0.9999999999999998,
+        "status": "PASS"
+      },
+      "prefix_entanglement": {
+        "classification": "NONFACTORIZING_ACROSS_TESTED_CUTS",
+        "status": "PASS",
+        "witnesses": {
+          "even_qubits_vs_odd_qubits": {
+            "complement_qubits": [
+              1
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.0024129380082367202,
+            "normalized_state": true,
+            "reduced_state_purity": 0.9975870619917633,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.013450367584983483
+          },
+          "lower_half_vs_upper_half": {
+            "complement_qubits": [
+              1
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.0024129380082367202,
+            "normalized_state": true,
+            "reduced_state_purity": 0.9975870619917633,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.013450367584983483
+          },
+          "q0_vs_rest": {
+            "complement_qubits": [
+              1
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.0024129380082367202,
+            "normalized_state": true,
+            "reduced_state_purity": 0.9975870619917633,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.013450367584983483
+          }
+        }
+      },
+      "prefix_gate_count": 12,
+      "prefix_reference": {
+        "backend_metadata": {
+          "instruction_count": 12,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "seconds": 0.0010824999772012234,
+        "state_sha256": "da9d98a78b183bf82927309d32494ee1a5407bd419093d18e012d86ec573b125"
+      },
+      "prefix_sparse": {
+        "evolution_seconds": 4.1499966755509377e-05,
+        "final_support": 4,
+        "peak_gate_index": 1,
+        "peak_support": 4,
+        "state_sha256": "8ecf7233c4485864d53f9c3c36923d10284979cad2c26fff0d99b49287eb0987"
+      },
+      "seed": 2026111801,
+      "source": "quantum connected_02q_seed_2026111801 {\n  qubits 2;\n  shots 1;\n  seed 2026111801;\n  h 0;\n  h 1;\n  ry 1.993863 0;\n  ry -1.951404 1;\n  cx 0 1;\n  cp -1.497138 1 0;\n  rz -1.380265 1;\n  rz -0.358928 0;\n  cx 0 1;\n  cp 2.971346 1 0;\n  x 0;\n  z 1;\n  z 1;\n  x 0;\n  cp -2.971346 1 0;\n  cx 0 1;\n  rz 0.358928 0;\n  rz 1.380265 1;\n  cp 1.497138 1 0;\n  cx 0 1;\n  ry 1.951404 1;\n  ry -1.993863 0;\n  h 1;\n  h 0;\n  measure_all;\n}\n",
+      "source_sha256": "1b1d43c499a970c3f23e2cdad5f9f445c133d92364bb7cda7585fa9c5995bdc2",
+      "status": "PASS",
+      "width": 2
+    },
+    {
+      "connected_interaction_graph": true,
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "gate_count": 38,
+      "id": "connected_03q_seed_2026111900",
+      "interaction_edges": 2,
+      "inverse_comparison": {
+        "actual_norm": 0.9999999999999993,
+        "actual_norm_error": 6.661338147750939e-16,
+        "basis_states_compared": 8,
+        "global_phase_radians": -2.4360837578141113e-17,
+        "l1_probability_error": 6.661338147750939e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 3.3306690738754696e-16,
+        "max_probability_error": 6.661338147750939e-16,
+        "overlap_magnitude": 0.9999999999999997,
+        "status": "PASS"
+      },
+      "inverse_reference": {
+        "backend_metadata": {
+          "instruction_count": 38,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "inverse_identity_status": "PASS",
+        "maximum_nonvacuum_amplitude": 1.403209972796274e-16,
+        "seconds": 0.002295800019055605,
+        "state_sha256": "fcc0befbd0336fe5331e927ae3849ece3fa5b45ea49b5098559c894d7b3a0217",
+        "vacuum_probability": 1.0
+      },
+      "inverse_sparse": {
+        "evolution_seconds": 0.00010850001126527786,
+        "final_support": 8,
+        "peak_gate_index": 2,
+        "peak_support": 8,
+        "state_sha256": "85a4b786795c487f71db431f1f94042edfd074448aaedc3d3c4bc11554e7667c"
+      },
+      "kind": "random-connected",
+      "ordered_gate_sequence_matches": true,
+      "prefix_comparison": {
+        "actual_norm": 0.9999999999999994,
+        "actual_norm_error": 5.551115123125783e-16,
+        "basis_states_compared": 8,
+        "global_phase_radians": -7.285838599102591e-17,
+        "l1_probability_error": 8.454066439955721e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 2.2887833992611187e-16,
+        "max_probability_error": 4.440892098500626e-16,
+        "overlap_magnitude": 0.9999999999999999,
+        "status": "PASS"
+      },
+      "prefix_entanglement": {
+        "classification": "NONFACTORIZING_ACROSS_TESTED_CUTS",
+        "status": "PASS",
+        "witnesses": {
+          "even_qubits_vs_odd_qubits": {
+            "complement_qubits": [
+              1
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.0009509141772410246,
+            "normalized_state": true,
+            "reduced_state_purity": 0.999049085822759,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0,
+              2
+            ],
+            "von_neumann_entropy_bits": 0.005936558182058209
+          },
+          "lower_half_vs_upper_half": {
+            "complement_qubits": [
+              1,
+              2
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.006200674504936332,
+            "normalized_state": true,
+            "reduced_state_purity": 0.9937993254950637,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.030382660508893062
+          },
+          "q0_vs_rest": {
+            "complement_qubits": [
+              1,
+              2
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.006200674504936332,
+            "normalized_state": true,
+            "reduced_state_purity": 0.9937993254950637,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.030382660508893062
+          }
+        }
+      },
+      "prefix_gate_count": 19,
+      "prefix_reference": {
+        "backend_metadata": {
+          "instruction_count": 19,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "seconds": 0.001450000039767474,
+        "state_sha256": "506b708eaf9232dcbed0614f9d44444cd234246b3fca0f9906a390f9a8ebccaf"
+      },
+      "prefix_sparse": {
+        "evolution_seconds": 6.330001633614302e-05,
+        "final_support": 8,
+        "peak_gate_index": 2,
+        "peak_support": 8,
+        "state_sha256": "0d6fcdd361fa5c388e830f593623e7c4ed641fbf9a53ca6fc1b0b2d6c48e792e"
+      },
+      "seed": 2026111900,
+      "source": "quantum connected_03q_seed_2026111900 {\n  qubits 3;\n  shots 1;\n  seed 2026111900;\n  h 0;\n  h 1;\n  h 2;\n  ry 1.456446 2;\n  ry 2.249693 1;\n  ry 2.958159 0;\n  cx 2 0;\n  cp 2.631912 0 2;\n  cx 1 2;\n  cp -1.229238 1 2;\n  rz -0.646588 2;\n  rz -2.46605 1;\n  rz -1.690077 0;\n  cx 1 2;\n  cp -1.213652 1 2;\n  cx 2 0;\n  cp 2.150552 0 2;\n  x 1;\n  z 2;\n  z 2;\n  x 1;\n  cp -2.150552 0 2;\n  cx 2 0;\n  cp 1.213652 1 2;\n  cx 1 2;\n  rz 1.690077 0;\n  rz 2.46605 1;\n  rz 0.646588 2;\n  cp 1.229238 1 2;\n  cx 1 2;\n  cp -2.631912 0 2;\n  cx 2 0;\n  ry -2.958159 0;\n  ry -2.249693 1;\n  ry -1.456446 2;\n  h 2;\n  h 1;\n  h 0;\n  measure_all;\n}\n",
+      "source_sha256": "83c73981fe7fdca965a820512a5fa5a9f655eaffb5cb74dfdacd15c9478f9435",
+      "status": "PASS",
+      "width": 3
+    },
+    {
+      "connected_interaction_graph": true,
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "gate_count": 38,
+      "id": "connected_03q_seed_2026111901",
+      "interaction_edges": 3,
+      "inverse_comparison": {
+        "actual_norm": 0.9999999999999984,
+        "actual_norm_error": 1.5543122344752192e-15,
+        "basis_states_compared": 8,
+        "global_phase_radians": 2.3729940059010423e-18,
+        "l1_probability_error": 1.5543122344752192e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 7.771561172376096e-16,
+        "max_probability_error": 1.5543122344752192e-15,
+        "overlap_magnitude": 0.9999999999999992,
+        "status": "PASS"
+      },
+      "inverse_reference": {
+        "backend_metadata": {
+          "instruction_count": 38,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "inverse_identity_status": "PASS",
+        "maximum_nonvacuum_amplitude": 2.831211555929845e-16,
+        "seconds": 0.0022642999538220465,
+        "state_sha256": "1e750389466ba116f2a931763ffefcc8e53e4d261e4206b57b5ed1dee80668da",
+        "vacuum_probability": 1.0
+      },
+      "inverse_sparse": {
+        "evolution_seconds": 0.00010720000136643648,
+        "final_support": 8,
+        "peak_gate_index": 2,
+        "peak_support": 8,
+        "state_sha256": "33c8ce0bcafb15b959037d366204a3ebe25f22e2c9ebea76aecb956b9f282cab"
+      },
+      "kind": "random-connected",
+      "ordered_gate_sequence_matches": true,
+      "prefix_comparison": {
+        "actual_norm": 0.9999999999999993,
+        "actual_norm_error": 6.661338147750939e-16,
+        "basis_states_compared": 8,
+        "global_phase_radians": -2.081668171172169e-17,
+        "l1_probability_error": 1.00337490052671e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 4.335559509131367e-16,
+        "max_probability_error": 5.551115123125783e-16,
+        "overlap_magnitude": 0.9999999999999998,
+        "status": "PASS"
+      },
+      "prefix_entanglement": {
+        "classification": "NONFACTORIZING_ACROSS_TESTED_CUTS",
+        "status": "PASS",
+        "witnesses": {
+          "even_qubits_vs_odd_qubits": {
+            "complement_qubits": [
+              1
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.23906488225524247,
+            "normalized_state": true,
+            "reduced_state_purity": 0.7609351177447575,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0,
+              2
+            ],
+            "von_neumann_entropy_bits": 0.5810797478270289
+          },
+          "lower_half_vs_upper_half": {
+            "complement_qubits": [
+              1,
+              2
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.4567171590463295,
+            "normalized_state": true,
+            "reduced_state_purity": 0.5432828409536705,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.9366224180596546
+          },
+          "q0_vs_rest": {
+            "complement_qubits": [
+              1,
+              2
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.4567171590463295,
+            "normalized_state": true,
+            "reduced_state_purity": 0.5432828409536705,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.9366224180596546
+          }
+        }
+      },
+      "prefix_gate_count": 19,
+      "prefix_reference": {
+        "backend_metadata": {
+          "instruction_count": 19,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "seconds": 0.0014826999977231026,
+        "state_sha256": "d53142d9d22fa86d71e0e712e9af6473e5433bf723d8d4b083f86be206605baf"
+      },
+      "prefix_sparse": {
+        "evolution_seconds": 6.140000186860561e-05,
+        "final_support": 8,
+        "peak_gate_index": 2,
+        "peak_support": 8,
+        "state_sha256": "5c6ea0522248e7a62ce30cda045b887a41629e9f4be1b0f98283878092c18c21"
+      },
+      "seed": 2026111901,
+      "source": "quantum connected_03q_seed_2026111901 {\n  qubits 3;\n  shots 1;\n  seed 2026111901;\n  h 0;\n  h 1;\n  h 2;\n  ry 0.298563 0;\n  ry 2.874169 1;\n  ry 1.603451 2;\n  cx 0 2;\n  cp -2.148771 0 2;\n  cx 1 0;\n  cp -2.876392 0 1;\n  rz 2.302932 0;\n  rz -2.459193 2;\n  rz -0.12793 1;\n  cx 1 0;\n  cp -2.164827 1 0;\n  cx 2 1;\n  cp -0.55867 1 2;\n  x 2;\n  z 2;\n  z 2;\n  x 2;\n  cp 0.55867 1 2;\n  cx 2 1;\n  cp 2.164827 1 0;\n  cx 1 0;\n  rz 0.12793 1;\n  rz 2.459193 2;\n  rz -2.302932 0;\n  cp 2.876392 0 1;\n  cx 1 0;\n  cp 2.148771 0 2;\n  cx 0 2;\n  ry -1.603451 2;\n  ry -2.874169 1;\n  ry -0.298563 0;\n  h 2;\n  h 1;\n  h 0;\n  measure_all;\n}\n",
+      "source_sha256": "000f3607e2d823eb32f23f9bb5a540ae0c2d2049cf5407142ea66987baa75d39",
+      "status": "PASS",
+      "width": 3
+    },
+    {
+      "connected_interaction_graph": true,
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "gate_count": 60,
+      "id": "connected_04q_seed_2026112000",
+      "interaction_edges": 6,
+      "inverse_comparison": {
+        "actual_norm": 0.9999999999999984,
+        "actual_norm_error": 1.5543122344752192e-15,
+        "basis_states_compared": 16,
+        "global_phase_radians": 1.1338836456062307e-16,
+        "l1_probability_error": 1.5543122344752192e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 7.771561172376096e-16,
+        "max_probability_error": 1.5543122344752192e-15,
+        "overlap_magnitude": 0.9999999999999992,
+        "status": "PASS"
+      },
+      "inverse_reference": {
+        "backend_metadata": {
+          "instruction_count": 60,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "inverse_identity_status": "PASS",
+        "maximum_nonvacuum_amplitude": 8.13361237955796e-17,
+        "seconds": 0.0034863000037148595,
+        "state_sha256": "02972c8b673c8ce88e2175cbbd919c475c537f848c3dffaed967a37bb6c7d470",
+        "vacuum_probability": 1.0
+      },
+      "inverse_sparse": {
+        "evolution_seconds": 0.00022300001000985503,
+        "final_support": 16,
+        "peak_gate_index": 3,
+        "peak_support": 16,
+        "state_sha256": "6ebcab0c73b443268922fb4607b64cfd63548213157c9f61b58151e34bf43f6d"
+      },
+      "kind": "random-connected",
+      "ordered_gate_sequence_matches": true,
+      "prefix_comparison": {
+        "actual_norm": 0.999999999999999,
+        "actual_norm_error": 9.992007221626409e-16,
+        "basis_states_compared": 16,
+        "global_phase_radians": 6.537739100087594e-17,
+        "l1_probability_error": 1.11641652953548e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 4.2276033262255756e-16,
+        "max_probability_error": 4.996003610813204e-16,
+        "overlap_magnitude": 0.9999999999999996,
+        "status": "PASS"
+      },
+      "prefix_entanglement": {
+        "classification": "NONFACTORIZING_ACROSS_TESTED_CUTS",
+        "status": "PASS",
+        "witnesses": {
+          "even_qubits_vs_odd_qubits": {
+            "complement_qubits": [
+              1,
+              3
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.4334303054443164,
+            "normalized_state": true,
+            "reduced_state_purity": 0.5665696945556836,
+            "schmidt_rank_at_1e-10": 4,
+            "subset_qubits": [
+              0,
+              2
+            ],
+            "von_neumann_entropy_bits": 1.1720582750222044
+          },
+          "lower_half_vs_upper_half": {
+            "complement_qubits": [
+              2,
+              3
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.20704241740207452,
+            "normalized_state": true,
+            "reduced_state_purity": 0.7929575825979255,
+            "schmidt_rank_at_1e-10": 4,
+            "subset_qubits": [
+              0,
+              1
+            ],
+            "von_neumann_entropy_bits": 0.5630563183064939
+          },
+          "outer_qubits_vs_middle": {
+            "complement_qubits": [
+              1,
+              2
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.43091688104305226,
+            "normalized_state": true,
+            "reduced_state_purity": 0.5690831189569477,
+            "schmidt_rank_at_1e-10": 4,
+            "subset_qubits": [
+              0,
+              3
+            ],
+            "von_neumann_entropy_bits": 1.16592155639714
+          },
+          "q0_vs_rest": {
+            "complement_qubits": [
+              1,
+              2,
+              3
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.3031663605763586,
+            "normalized_state": true,
+            "reduced_state_purity": 0.6968336394236414,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.6936359080678433
+          }
+        }
+      },
+      "prefix_gate_count": 30,
+      "prefix_reference": {
+        "backend_metadata": {
+          "instruction_count": 30,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "seconds": 0.0019373000250197947,
+        "state_sha256": "396910151d3c3f5bd9db5720bded0933ad6e42a146845496da6add566b224a3b"
+      },
+      "prefix_sparse": {
+        "evolution_seconds": 0.00011850002920255065,
+        "final_support": 16,
+        "peak_gate_index": 3,
+        "peak_support": 16,
+        "state_sha256": "d74e2943b2ddbd58d46d6c2de340ff97b59d9db2461906107f56822c888f4c2c"
+      },
+      "seed": 2026112000,
+      "source": "quantum connected_04q_seed_2026112000 {\n  qubits 4;\n  shots 1;\n  seed 2026112000;\n  h 1;\n  h 2;\n  h 0;\n  h 3;\n  ry 0.885262 3;\n  ry -0.898522 0;\n  ry -1.828102 2;\n  ry 2.950466 1;\n  cx 1 2;\n  cp -0.173302 1 2;\n  cx 3 0;\n  cp 0.643695 3 0;\n  cx 0 2;\n  cp 0.546769 2 0;\n  cx 1 0;\n  cp 1.397543 0 1;\n  rz 0.662067 2;\n  rz -2.371363 1;\n  rz 1.624626 0;\n  rz -2.530019 3;\n  cx 3 2;\n  cp 1.126284 3 2;\n  cx 0 3;\n  cp -3.049462 0 3;\n  cx 1 2;\n  cp 1.917931 2 1;\n  cx 1 3;\n  cp -1.072089 1 3;\n  x 0;\n  z 2;\n  z 2;\n  x 0;\n  cp 1.072089 1 3;\n  cx 1 3;\n  cp -1.917931 2 1;\n  cx 1 2;\n  cp 3.049462 0 3;\n  cx 0 3;\n  cp -1.126284 3 2;\n  cx 3 2;\n  rz 2.530019 3;\n  rz -1.624626 0;\n  rz 2.371363 1;\n  rz -0.662067 2;\n  cp -1.397543 0 1;\n  cx 1 0;\n  cp -0.546769 2 0;\n  cx 0 2;\n  cp -0.643695 3 0;\n  cx 3 0;\n  cp 0.173302 1 2;\n  cx 1 2;\n  ry -2.950466 1;\n  ry 1.828102 2;\n  ry 0.898522 0;\n  ry -0.885262 3;\n  h 3;\n  h 0;\n  h 2;\n  h 1;\n  measure_all;\n}\n",
+      "source_sha256": "59ce1643099cabf11acd1850a76926839179d476c689e9b08cd7ce6f9df39e05",
+      "status": "PASS",
+      "width": 4
+    },
+    {
+      "connected_interaction_graph": true,
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "gate_count": 60,
+      "id": "connected_04q_seed_2026112001",
+      "interaction_edges": 6,
+      "inverse_comparison": {
+        "actual_norm": 0.9999999999999984,
+        "actual_norm_error": 1.5543122344752192e-15,
+        "basis_states_compared": 16,
+        "global_phase_radians": -3.259732989540731e-17,
+        "l1_probability_error": 1.5543122344752192e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 7.771561172376096e-16,
+        "max_probability_error": 1.5543122344752192e-15,
+        "overlap_magnitude": 0.9999999999999992,
+        "status": "PASS"
+      },
+      "inverse_reference": {
+        "backend_metadata": {
+          "instruction_count": 60,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "inverse_identity_status": "PASS",
+        "maximum_nonvacuum_amplitude": 1.4723114652714825e-16,
+        "seconds": 0.003409600001759827,
+        "state_sha256": "f99bbbd36d63d58d97bb612078359d697d55f7bd8af494fb7574ac1c55fbd2fc",
+        "vacuum_probability": 1.0
+      },
+      "inverse_sparse": {
+        "evolution_seconds": 0.00022929999977350235,
+        "final_support": 16,
+        "peak_gate_index": 3,
+        "peak_support": 16,
+        "state_sha256": "9227a9cd70987223a0ae5a803ad6b072c75788652ff8b2d11c03e5cc2066c944"
+      },
+      "kind": "random-connected",
+      "ordered_gate_sequence_matches": true,
+      "prefix_comparison": {
+        "actual_norm": 0.9999999999999993,
+        "actual_norm_error": 6.661338147750939e-16,
+        "basis_states_compared": 16,
+        "global_phase_radians": -1.3877787807814462e-16,
+        "l1_probability_error": 6.435824095873954e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 2.7894008272968645e-16,
+        "max_probability_error": 2.498001805406602e-16,
+        "overlap_magnitude": 0.9999999999999996,
+        "status": "PASS"
+      },
+      "prefix_entanglement": {
+        "classification": "NONFACTORIZING_ACROSS_TESTED_CUTS",
+        "status": "PASS",
+        "witnesses": {
+          "even_qubits_vs_odd_qubits": {
+            "complement_qubits": [
+              1,
+              3
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.3640671930966569,
+            "normalized_state": true,
+            "reduced_state_purity": 0.6359328069033431,
+            "schmidt_rank_at_1e-10": 4,
+            "subset_qubits": [
+              0,
+              2
+            ],
+            "von_neumann_entropy_bits": 0.8749166312754989
+          },
+          "lower_half_vs_upper_half": {
+            "complement_qubits": [
+              2,
+              3
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.4665893732413844,
+            "normalized_state": true,
+            "reduced_state_purity": 0.5334106267586156,
+            "schmidt_rank_at_1e-10": 4,
+            "subset_qubits": [
+              0,
+              1
+            ],
+            "von_neumann_entropy_bits": 1.1458722669793682
+          },
+          "outer_qubits_vs_middle": {
+            "complement_qubits": [
+              1,
+              2
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.5150000816209195,
+            "normalized_state": true,
+            "reduced_state_purity": 0.4849999183790805,
+            "schmidt_rank_at_1e-10": 4,
+            "subset_qubits": [
+              0,
+              3
+            ],
+            "von_neumann_entropy_bits": 1.1965260242343545
+          },
+          "q0_vs_rest": {
+            "complement_qubits": [
+              1,
+              2,
+              3
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.39504741995461956,
+            "normalized_state": true,
+            "reduced_state_purity": 0.6049525800453804,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.8427859110489822
+          }
+        }
+      },
+      "prefix_gate_count": 30,
+      "prefix_reference": {
+        "backend_metadata": {
+          "instruction_count": 30,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "seconds": 0.0019231000333093107,
+        "state_sha256": "a4281823c260e504ccf79b68819341032888c85f46e829aa598d29d57bab054b"
+      },
+      "prefix_sparse": {
+        "evolution_seconds": 0.00011980003910139203,
+        "final_support": 16,
+        "peak_gate_index": 3,
+        "peak_support": 16,
+        "state_sha256": "304ea953dae30ab29d3d810832a7528db87b1058f290611636ac1d9d40467b54"
+      },
+      "seed": 2026112001,
+      "source": "quantum connected_04q_seed_2026112001 {\n  qubits 4;\n  shots 1;\n  seed 2026112001;\n  h 1;\n  h 3;\n  h 0;\n  h 2;\n  ry 2.845055 1;\n  ry -2.975947 0;\n  ry 2.156308 3;\n  ry -3.010948 2;\n  cx 1 3;\n  cp 2.234014 1 3;\n  cx 3 0;\n  cp -0.712648 3 0;\n  cx 1 0;\n  cp -2.025651 1 0;\n  cx 2 0;\n  cp -1.298922 0 2;\n  rz -0.246942 1;\n  rz -0.746008 3;\n  rz 1.304965 2;\n  rz -0.649739 0;\n  cx 2 3;\n  cp 2.746167 3 2;\n  cx 3 1;\n  cp 0.18006 1 3;\n  cx 1 2;\n  cp 1.084679 2 1;\n  cx 0 1;\n  cp 0.518728 0 1;\n  x 0;\n  z 0;\n  z 0;\n  x 0;\n  cp -0.518728 0 1;\n  cx 0 1;\n  cp -1.084679 2 1;\n  cx 1 2;\n  cp -0.18006 1 3;\n  cx 3 1;\n  cp -2.746167 3 2;\n  cx 2 3;\n  rz 0.649739 0;\n  rz -1.304965 2;\n  rz 0.746008 3;\n  rz 0.246942 1;\n  cp 1.298922 0 2;\n  cx 2 0;\n  cp 2.025651 1 0;\n  cx 1 0;\n  cp 0.712648 3 0;\n  cx 3 0;\n  cp -2.234014 1 3;\n  cx 1 3;\n  ry 3.010948 2;\n  ry -2.156308 3;\n  ry 2.975947 0;\n  ry -2.845055 1;\n  h 2;\n  h 0;\n  h 3;\n  h 1;\n  measure_all;\n}\n",
+      "source_sha256": "d452e6a3fb1dedd56f932c651b2047bf7fa7d1051c3fb168d4c3f23d6e3a9249",
+      "status": "PASS",
+      "width": 4
+    },
+    {
+      "connected_interaction_graph": true,
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "gate_count": 74,
+      "id": "connected_05q_seed_2026112100",
+      "interaction_edges": 8,
+      "inverse_comparison": {
+        "actual_norm": 0.9999999999999991,
+        "actual_norm_error": 8.881784197001252e-16,
+        "basis_states_compared": 32,
+        "global_phase_radians": 1.5894155035420145e-16,
+        "l1_probability_error": 8.881784197001252e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 4.440892098500626e-16,
+        "max_probability_error": 8.881784197001252e-16,
+        "overlap_magnitude": 0.9999999999999996,
+        "status": "PASS"
+      },
+      "inverse_reference": {
+        "backend_metadata": {
+          "instruction_count": 74,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "inverse_identity_status": "PASS",
+        "maximum_nonvacuum_amplitude": 2.3236374059708558e-16,
+        "seconds": 0.004481199954170734,
+        "state_sha256": "2d5f43cbbc596e06369a2f203a762bbac6c6dc432fa6fbeb74f52b58e609cdc0",
+        "vacuum_probability": 1.0
+      },
+      "inverse_sparse": {
+        "evolution_seconds": 0.00043080002069473267,
+        "final_support": 32,
+        "peak_gate_index": 4,
+        "peak_support": 32,
+        "state_sha256": "efaf9d0c97c10e07fae36150d02123a98e67c234567d90e94b86bdc449c0ec42"
+      },
+      "kind": "random-connected",
+      "ordered_gate_sequence_matches": true,
+      "prefix_comparison": {
+        "actual_norm": 0.9999999999999994,
+        "actual_norm_error": 5.551115123125783e-16,
+        "basis_states_compared": 32,
+        "global_phase_radians": 2.818925648462312e-16,
+        "l1_probability_error": 7.14611204412352e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 3.342213888644167e-16,
+        "max_probability_error": 4.440892098500626e-16,
+        "overlap_magnitude": 0.9999999999999998,
+        "status": "PASS"
+      },
+      "prefix_entanglement": {
+        "classification": "NONFACTORIZING_ACROSS_TESTED_CUTS",
+        "status": "PASS",
+        "witnesses": {
+          "even_qubits_vs_odd_qubits": {
+            "complement_qubits": [
+              1,
+              3
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.643055035394511,
+            "normalized_state": true,
+            "reduced_state_purity": 0.35694496460548897,
+            "schmidt_rank_at_1e-10": 4,
+            "subset_qubits": [
+              0,
+              2,
+              4
+            ],
+            "von_neumann_entropy_bits": 1.7098294280657504
+          },
+          "lower_half_vs_upper_half": {
+            "complement_qubits": [
+              2,
+              3,
+              4
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.3677936735436961,
+            "normalized_state": true,
+            "reduced_state_purity": 0.6322063264563039,
+            "schmidt_rank_at_1e-10": 4,
+            "subset_qubits": [
+              0,
+              1
+            ],
+            "von_neumann_entropy_bits": 0.9175804272144564
+          },
+          "outer_qubits_vs_middle": {
+            "complement_qubits": [
+              1,
+              2,
+              3
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.4573181947755097,
+            "normalized_state": true,
+            "reduced_state_purity": 0.5426818052244903,
+            "schmidt_rank_at_1e-10": 4,
+            "subset_qubits": [
+              0,
+              4
+            ],
+            "von_neumann_entropy_bits": 1.240074868236492
+          },
+          "q0_vs_rest": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.20883078528094867,
+            "normalized_state": true,
+            "reduced_state_purity": 0.7911692147190513,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.5248730089524468
+          }
+        }
+      },
+      "prefix_gate_count": 37,
+      "prefix_reference": {
+        "backend_metadata": {
+          "instruction_count": 37,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "seconds": 0.00243130000308156,
+        "state_sha256": "12851a2e3f71248d2cc1df5786f2fe96e827f1b501b9bd22a3957bd598793559"
+      },
+      "prefix_sparse": {
+        "evolution_seconds": 0.00021679996279999614,
+        "final_support": 32,
+        "peak_gate_index": 4,
+        "peak_support": 32,
+        "state_sha256": "5f41d81942dc5c9af7da2b7ff6af44b1b203912160ff6d2417cf474f39bd8e0c"
+      },
+      "seed": 2026112100,
+      "source": "quantum connected_05q_seed_2026112100 {\n  qubits 5;\n  shots 1;\n  seed 2026112100;\n  h 1;\n  h 4;\n  h 0;\n  h 3;\n  h 2;\n  ry 1.224802 3;\n  ry -2.008587 0;\n  ry -2.227936 4;\n  ry -0.666202 1;\n  ry -2.721966 2;\n  cx 3 1;\n  cp -0.793924 1 3;\n  cx 0 4;\n  cp -2.295805 4 0;\n  cx 4 1;\n  cp 0.138363 4 1;\n  cx 2 0;\n  cp -2.189947 2 0;\n  cx 3 2;\n  cp 1.205033 3 2;\n  rz 2.686648 1;\n  rz -1.50573 4;\n  rz -2.45571 0;\n  rz -0.499174 2;\n  rz -2.796681 3;\n  cx 1 4;\n  cp -2.680139 1 4;\n  cx 4 2;\n  cp 1.50145 4 2;\n  cx 0 3;\n  cp 2.836982 0 3;\n  cx 2 0;\n  cp -0.26056 2 0;\n  cx 1 0;\n  cp 0.877525 0 1;\n  x 2;\n  z 1;\n  z 1;\n  x 2;\n  cp -0.877525 0 1;\n  cx 1 0;\n  cp 0.26056 2 0;\n  cx 2 0;\n  cp -2.836982 0 3;\n  cx 0 3;\n  cp -1.50145 4 2;\n  cx 4 2;\n  cp 2.680139 1 4;\n  cx 1 4;\n  rz 2.796681 3;\n  rz 0.499174 2;\n  rz 2.45571 0;\n  rz 1.50573 4;\n  rz -2.686648 1;\n  cp -1.205033 3 2;\n  cx 3 2;\n  cp 2.189947 2 0;\n  cx 2 0;\n  cp -0.138363 4 1;\n  cx 4 1;\n  cp 2.295805 4 0;\n  cx 0 4;\n  cp 0.793924 1 3;\n  cx 3 1;\n  ry 2.721966 2;\n  ry 0.666202 1;\n  ry 2.227936 4;\n  ry 2.008587 0;\n  ry -1.224802 3;\n  h 2;\n  h 3;\n  h 0;\n  h 4;\n  h 1;\n  measure_all;\n}\n",
+      "source_sha256": "9e9ae9b209169367315978e1b96bc7bb407e710f11fce53fb4f32db13ad9f110",
+      "status": "PASS",
+      "width": 5
+    },
+    {
+      "connected_interaction_graph": true,
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "gate_count": 74,
+      "id": "connected_05q_seed_2026112101",
+      "interaction_edges": 8,
+      "inverse_comparison": {
+        "actual_norm": 0.9999999999999984,
+        "actual_norm_error": 1.5543122344752192e-15,
+        "basis_states_compared": 32,
+        "global_phase_radians": 6.315985300012559e-17,
+        "l1_probability_error": 1.5543122344752194e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 7.771561172376096e-16,
+        "max_probability_error": 1.5543122344752192e-15,
+        "overlap_magnitude": 0.9999999999999992,
+        "status": "PASS"
+      },
+      "inverse_reference": {
+        "backend_metadata": {
+          "instruction_count": 74,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "inverse_identity_status": "PASS",
+        "maximum_nonvacuum_amplitude": 2.574726624291331e-16,
+        "seconds": 0.004186499980278313,
+        "state_sha256": "8a95b59d8ffcb3ee0d1caa961d037846929db69e2da8b4a4fa0b799e418c84e3",
+        "vacuum_probability": 1.0
+      },
+      "inverse_sparse": {
+        "evolution_seconds": 0.00041779997991397977,
+        "final_support": 32,
+        "peak_gate_index": 4,
+        "peak_support": 32,
+        "state_sha256": "f8c1dbacc0f71d1eb9b7f86d7fb14a1301144fc1f9f31e3502fcfde21b1e88f1"
+      },
+      "kind": "random-connected",
+      "ordered_gate_sequence_matches": true,
+      "prefix_comparison": {
+        "actual_norm": 0.9999999999999992,
+        "actual_norm_error": 7.771561172376096e-16,
+        "basis_states_compared": 32,
+        "global_phase_radians": 5.898059818321145e-17,
+        "l1_probability_error": 1.0321604682062002e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 2.9406505148178845e-16,
+        "max_probability_error": 1.942890293094024e-16,
+        "overlap_magnitude": 0.9999999999999998,
+        "status": "PASS"
+      },
+      "prefix_entanglement": {
+        "classification": "NONFACTORIZING_ACROSS_TESTED_CUTS",
+        "status": "PASS",
+        "witnesses": {
+          "even_qubits_vs_odd_qubits": {
+            "complement_qubits": [
+              1,
+              3
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.6994620694835179,
+            "normalized_state": true,
+            "reduced_state_purity": 0.3005379305164821,
+            "schmidt_rank_at_1e-10": 4,
+            "subset_qubits": [
+              0,
+              2,
+              4
+            ],
+            "von_neumann_entropy_bits": 1.8506540480788067
+          },
+          "lower_half_vs_upper_half": {
+            "complement_qubits": [
+              2,
+              3,
+              4
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.5951540602939895,
+            "normalized_state": true,
+            "reduced_state_purity": 0.4048459397060105,
+            "schmidt_rank_at_1e-10": 4,
+            "subset_qubits": [
+              0,
+              1
+            ],
+            "von_neumann_entropy_bits": 1.4776746883566256
+          },
+          "outer_qubits_vs_middle": {
+            "complement_qubits": [
+              1,
+              2,
+              3
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.6475477828923906,
+            "normalized_state": true,
+            "reduced_state_purity": 0.3524522171076095,
+            "schmidt_rank_at_1e-10": 4,
+            "subset_qubits": [
+              0,
+              4
+            ],
+            "von_neumann_entropy_bits": 1.7125146409427443
+          },
+          "q0_vs_rest": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.4730750166019032,
+            "normalized_state": true,
+            "reduced_state_purity": 0.5269249833980968,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.9607990967974167
+          }
+        }
+      },
+      "prefix_gate_count": 37,
+      "prefix_reference": {
+        "backend_metadata": {
+          "instruction_count": 37,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "seconds": 0.0023849999997764826,
+        "state_sha256": "3a2223976388bfdda6aca2676a6398d8e35967808735ee2bd562095204cffcff"
+      },
+      "prefix_sparse": {
+        "evolution_seconds": 0.00020839995704591274,
+        "final_support": 32,
+        "peak_gate_index": 4,
+        "peak_support": 32,
+        "state_sha256": "e48c63fc7b769affe4070cd1fc007a1f9d8e7626f1446222eee01b8499e5a771"
+      },
+      "seed": 2026112101,
+      "source": "quantum connected_05q_seed_2026112101 {\n  qubits 5;\n  shots 1;\n  seed 2026112101;\n  h 2;\n  h 1;\n  h 0;\n  h 3;\n  h 4;\n  ry 0.2902 4;\n  ry -2.883457 0;\n  ry 0.401045 3;\n  ry -3.099523 2;\n  ry 0.964159 1;\n  cx 1 0;\n  cp -2.283307 0 1;\n  cx 3 0;\n  cp -1.821021 0 3;\n  cx 4 2;\n  cp -2.270617 4 2;\n  cx 2 1;\n  cp -2.048915 2 1;\n  cx 4 0;\n  cp 0.427874 4 0;\n  rz 1.015479 2;\n  rz -2.391015 1;\n  rz -2.072635 3;\n  rz 1.015988 0;\n  rz -1.180645 4;\n  cx 0 4;\n  cp -2.269804 0 4;\n  cx 2 3;\n  cp 2.378079 3 2;\n  cx 3 1;\n  cp 0.576043 1 3;\n  cx 1 2;\n  cp -2.73113 2 1;\n  cx 3 4;\n  cp -1.854518 4 3;\n  x 2;\n  z 2;\n  z 2;\n  x 2;\n  cp 1.854518 4 3;\n  cx 3 4;\n  cp 2.73113 2 1;\n  cx 1 2;\n  cp -0.576043 1 3;\n  cx 3 1;\n  cp -2.378079 3 2;\n  cx 2 3;\n  cp 2.269804 0 4;\n  cx 0 4;\n  rz 1.180645 4;\n  rz -1.015988 0;\n  rz 2.072635 3;\n  rz 2.391015 1;\n  rz -1.015479 2;\n  cp -0.427874 4 0;\n  cx 4 0;\n  cp 2.048915 2 1;\n  cx 2 1;\n  cp 2.270617 4 2;\n  cx 4 2;\n  cp 1.821021 0 3;\n  cx 3 0;\n  cp 2.283307 0 1;\n  cx 1 0;\n  ry -0.964159 1;\n  ry 3.099523 2;\n  ry -0.401045 3;\n  ry 2.883457 0;\n  ry -0.2902 4;\n  h 4;\n  h 3;\n  h 0;\n  h 1;\n  h 2;\n  measure_all;\n}\n",
+      "source_sha256": "5019e8c62921122ba8d7b68e132799a4df5bf3b3bf251b38b4f54fb5d3d31d44",
+      "status": "PASS",
+      "width": 5
+    },
+    {
+      "connected_interaction_graph": true,
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "gate_count": 88,
+      "id": "connected_06q_seed_2026112200",
+      "interaction_edges": 9,
+      "inverse_comparison": {
+        "actual_norm": 0.999999999999998,
+        "actual_norm_error": 1.9984014443252818e-15,
+        "basis_states_compared": 64,
+        "global_phase_radians": -9.856727100162133e-17,
+        "l1_probability_error": 1.9984014443252818e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 9.992007221626409e-16,
+        "max_probability_error": 1.9984014443252818e-15,
+        "overlap_magnitude": 0.999999999999999,
+        "status": "PASS"
+      },
+      "inverse_reference": {
+        "backend_metadata": {
+          "instruction_count": 88,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "inverse_identity_status": "PASS",
+        "maximum_nonvacuum_amplitude": 2.223141544548052e-16,
+        "seconds": 0.005057099973782897,
+        "state_sha256": "bac2325ef9c7b0524e946baff3a3b24681d2b10a79890822d2264a8261e38c21",
+        "vacuum_probability": 1.0
+      },
+      "inverse_sparse": {
+        "evolution_seconds": 0.0008483999990858138,
+        "final_support": 64,
+        "peak_gate_index": 5,
+        "peak_support": 64,
+        "state_sha256": "a6e45fd19b0eedad81e2a01b7aa351b657d7705cf41feff42ab78f36d99a7c40"
+      },
+      "kind": "random-connected",
+      "ordered_gate_sequence_matches": true,
+      "prefix_comparison": {
+        "actual_norm": 0.9999999999999991,
+        "actual_norm_error": 8.881784197001252e-16,
+        "basis_states_compared": 64,
+        "global_phase_radians": -1.1991276027689684e-16,
+        "l1_probability_error": 7.933810333422657e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 2.8609792490763985e-16,
+        "max_probability_error": 2.220446049250313e-16,
+        "overlap_magnitude": 0.9999999999999996,
+        "status": "PASS"
+      },
+      "prefix_entanglement": {
+        "classification": "NONFACTORIZING_ACROSS_TESTED_CUTS",
+        "status": "PASS",
+        "witnesses": {
+          "even_qubits_vs_odd_qubits": {
+            "complement_qubits": [
+              1,
+              3,
+              5
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.5860422629703543,
+            "normalized_state": true,
+            "reduced_state_purity": 0.4139577370296457,
+            "schmidt_rank_at_1e-10": 8,
+            "subset_qubits": [
+              0,
+              2,
+              4
+            ],
+            "von_neumann_entropy_bits": 1.7191031615967847
+          },
+          "lower_half_vs_upper_half": {
+            "complement_qubits": [
+              3,
+              4,
+              5
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.5699677296998905,
+            "normalized_state": true,
+            "reduced_state_purity": 0.4300322703001095,
+            "schmidt_rank_at_1e-10": 8,
+            "subset_qubits": [
+              0,
+              1,
+              2
+            ],
+            "von_neumann_entropy_bits": 1.4480042037792804
+          },
+          "outer_qubits_vs_middle": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.6418444649701189,
+            "normalized_state": true,
+            "reduced_state_purity": 0.3581555350298811,
+            "schmidt_rank_at_1e-10": 4,
+            "subset_qubits": [
+              0,
+              5
+            ],
+            "von_neumann_entropy_bits": 1.6450238777082424
+          },
+          "q0_vs_rest": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.36522793432797107,
+            "normalized_state": true,
+            "reduced_state_purity": 0.6347720656720289,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.7957244203703586
+          }
+        }
+      },
+      "prefix_gate_count": 44,
+      "prefix_reference": {
+        "backend_metadata": {
+          "instruction_count": 44,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "seconds": 0.002922500018030405,
+        "state_sha256": "4f7de311e4c17fe91be53e3b3f0eed71af9d2dd8ccb7635a6b3b0333cdca9c34"
+      },
+      "prefix_sparse": {
+        "evolution_seconds": 0.00041720003355294466,
+        "final_support": 64,
+        "peak_gate_index": 5,
+        "peak_support": 64,
+        "state_sha256": "8d995ce7b397ac7187f781ae98938104ea151e2b31459b876b3e161fcfd92552"
+      },
+      "seed": 2026112200,
+      "source": "quantum connected_06q_seed_2026112200 {\n  qubits 6;\n  shots 1;\n  seed 2026112200;\n  h 2;\n  h 1;\n  h 4;\n  h 3;\n  h 0;\n  h 5;\n  ry -2.269332 2;\n  ry 0.935335 5;\n  ry 2.918866 3;\n  ry 2.397698 0;\n  ry -0.290132 4;\n  ry 1.238125 1;\n  cx 5 0;\n  cp -2.019884 0 5;\n  cx 1 4;\n  cp 2.449804 4 1;\n  cx 4 5;\n  cp 1.096759 5 4;\n  cx 1 2;\n  cp 3.023423 1 2;\n  cx 3 4;\n  cp -1.027311 4 3;\n  cx 1 0;\n  cp 2.885428 1 0;\n  rz -2.578036 2;\n  rz -0.13918 4;\n  rz -2.454531 3;\n  rz 1.02508 5;\n  rz -0.887991 0;\n  rz 1.675599 1;\n  cx 0 2;\n  cp -1.060904 2 0;\n  cx 1 4;\n  cp 2.824991 1 4;\n  cx 3 2;\n  cp 2.980776 2 3;\n  cx 4 5;\n  cp 1.855416 4 5;\n  cx 3 1;\n  cp 2.018744 3 1;\n  cx 0 1;\n  cp -2.736442 1 0;\n  x 3;\n  z 0;\n  z 0;\n  x 3;\n  cp 2.736442 1 0;\n  cx 0 1;\n  cp -2.018744 3 1;\n  cx 3 1;\n  cp -1.855416 4 5;\n  cx 4 5;\n  cp -2.980776 2 3;\n  cx 3 2;\n  cp -2.824991 1 4;\n  cx 1 4;\n  cp 1.060904 2 0;\n  cx 0 2;\n  rz -1.675599 1;\n  rz 0.887991 0;\n  rz -1.02508 5;\n  rz 2.454531 3;\n  rz 0.13918 4;\n  rz 2.578036 2;\n  cp -2.885428 1 0;\n  cx 1 0;\n  cp 1.027311 4 3;\n  cx 3 4;\n  cp -3.023423 1 2;\n  cx 1 2;\n  cp -1.096759 5 4;\n  cx 4 5;\n  cp -2.449804 4 1;\n  cx 1 4;\n  cp 2.019884 0 5;\n  cx 5 0;\n  ry -1.238125 1;\n  ry 0.290132 4;\n  ry -2.397698 0;\n  ry -2.918866 3;\n  ry -0.935335 5;\n  ry 2.269332 2;\n  h 5;\n  h 0;\n  h 3;\n  h 4;\n  h 1;\n  h 2;\n  measure_all;\n}\n",
+      "source_sha256": "db52b83776c8f754b9c1e14f11142b8c5804ed0b815394fa278b47e06826670d",
+      "status": "PASS",
+      "width": 6
+    },
+    {
+      "connected_interaction_graph": true,
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "gate_count": 88,
+      "id": "connected_06q_seed_2026112201",
+      "interaction_edges": 11,
+      "inverse_comparison": {
+        "actual_norm": 0.9999999999999991,
+        "actual_norm_error": 8.881784197001252e-16,
+        "basis_states_compared": 64,
+        "global_phase_radians": -1.883458391075268e-17,
+        "l1_probability_error": 8.881784197001252e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 4.440892098500626e-16,
+        "max_probability_error": 8.881784197001252e-16,
+        "overlap_magnitude": 0.9999999999999996,
+        "status": "PASS"
+      },
+      "inverse_reference": {
+        "backend_metadata": {
+          "instruction_count": 88,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "inverse_identity_status": "PASS",
+        "maximum_nonvacuum_amplitude": 2.787764270096187e-16,
+        "seconds": 0.00531610002508387,
+        "state_sha256": "9cc0d13c117be7d12b2003e8253adcf1e0f86edfc4f5197c140fe28cbb606a5e",
+        "vacuum_probability": 1.0
+      },
+      "inverse_sparse": {
+        "evolution_seconds": 0.0008539000409655273,
+        "final_support": 64,
+        "peak_gate_index": 5,
+        "peak_support": 64,
+        "state_sha256": "1389cbdfba8e34139a1aba18661fe017686813164ad265fa7d5874e9c76a89a6"
+      },
+      "kind": "random-connected",
+      "ordered_gate_sequence_matches": true,
+      "prefix_comparison": {
+        "actual_norm": 0.9999999999999996,
+        "actual_norm_error": 4.440892098500626e-16,
+        "basis_states_compared": 64,
+        "global_phase_radians": -1.687018580387445e-16,
+        "l1_probability_error": 5.770809553040981e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 3.3306690738754696e-16,
+        "max_probability_error": 1.942890293094024e-16,
+        "overlap_magnitude": 1.0,
+        "status": "PASS"
+      },
+      "prefix_entanglement": {
+        "classification": "NONFACTORIZING_ACROSS_TESTED_CUTS",
+        "status": "PASS",
+        "witnesses": {
+          "even_qubits_vs_odd_qubits": {
+            "complement_qubits": [
+              1,
+              3,
+              5
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.34626644570637877,
+            "normalized_state": true,
+            "reduced_state_purity": 0.6537335542936212,
+            "schmidt_rank_at_1e-10": 8,
+            "subset_qubits": [
+              0,
+              2,
+              4
+            ],
+            "von_neumann_entropy_bits": 1.0317498696890035
+          },
+          "lower_half_vs_upper_half": {
+            "complement_qubits": [
+              3,
+              4,
+              5
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.5186941014755899,
+            "normalized_state": true,
+            "reduced_state_purity": 0.48130589852441,
+            "schmidt_rank_at_1e-10": 8,
+            "subset_qubits": [
+              0,
+              1,
+              2
+            ],
+            "von_neumann_entropy_bits": 1.2025068783883215
+          },
+          "outer_qubits_vs_middle": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.5010874786349078,
+            "normalized_state": true,
+            "reduced_state_purity": 0.4989125213650923,
+            "schmidt_rank_at_1e-10": 4,
+            "subset_qubits": [
+              0,
+              5
+            ],
+            "von_neumann_entropy_bits": 1.0974101784172083
+          },
+          "q0_vs_rest": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.04269489437527274,
+            "normalized_state": true,
+            "reduced_state_purity": 0.9573051056247273,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.15156129272542865
+          }
+        }
+      },
+      "prefix_gate_count": 44,
+      "prefix_reference": {
+        "backend_metadata": {
+          "instruction_count": 44,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "seconds": 0.0028357999981381,
+        "state_sha256": "14445dfcc9e9f99951eca0037130fdbb05caf146ba543635bb8c7dde59b7089c"
+      },
+      "prefix_sparse": {
+        "evolution_seconds": 0.00040419999277219176,
+        "final_support": 64,
+        "peak_gate_index": 5,
+        "peak_support": 64,
+        "state_sha256": "0b7a21fc9aabcdd9569dd2ce8e2fd7033b7e60118897ef202ed06b98deab50c6"
+      },
+      "seed": 2026112201,
+      "source": "quantum connected_06q_seed_2026112201 {\n  qubits 6;\n  shots 1;\n  seed 2026112201;\n  h 2;\n  h 5;\n  h 1;\n  h 3;\n  h 0;\n  h 4;\n  ry 1.087884 5;\n  ry 0.430572 1;\n  ry 1.274282 0;\n  ry 0.82516 4;\n  ry -1.575024 2;\n  ry 0.500741 3;\n  cx 3 1;\n  cp 1.294292 3 1;\n  cx 0 1;\n  cp -1.524231 0 1;\n  cx 2 1;\n  cp -2.501619 1 2;\n  cx 5 0;\n  cp -1.583837 0 5;\n  cx 0 4;\n  cp 0.589319 0 4;\n  cx 5 2;\n  cp -1.851237 5 2;\n  rz 2.451532 5;\n  rz 1.953054 4;\n  rz 1.786674 2;\n  rz 3.073774 0;\n  rz -1.508062 1;\n  rz -0.463472 3;\n  cx 1 5;\n  cp 1.421631 5 1;\n  cx 2 0;\n  cp 1.314173 2 0;\n  cx 1 4;\n  cp -1.858293 1 4;\n  cx 2 3;\n  cp -1.626287 2 3;\n  cx 0 5;\n  cp -2.482464 5 0;\n  cx 3 4;\n  cp -1.852126 3 4;\n  x 1;\n  z 1;\n  z 1;\n  x 1;\n  cp 1.852126 3 4;\n  cx 3 4;\n  cp 2.482464 5 0;\n  cx 0 5;\n  cp 1.626287 2 3;\n  cx 2 3;\n  cp 1.858293 1 4;\n  cx 1 4;\n  cp -1.314173 2 0;\n  cx 2 0;\n  cp -1.421631 5 1;\n  cx 1 5;\n  rz 0.463472 3;\n  rz 1.508062 1;\n  rz -3.073774 0;\n  rz -1.786674 2;\n  rz -1.953054 4;\n  rz -2.451532 5;\n  cp 1.851237 5 2;\n  cx 5 2;\n  cp -0.589319 0 4;\n  cx 0 4;\n  cp 1.583837 0 5;\n  cx 5 0;\n  cp 2.501619 1 2;\n  cx 2 1;\n  cp 1.524231 0 1;\n  cx 0 1;\n  cp -1.294292 3 1;\n  cx 3 1;\n  ry -0.500741 3;\n  ry 1.575024 2;\n  ry -0.82516 4;\n  ry -1.274282 0;\n  ry -0.430572 1;\n  ry -1.087884 5;\n  h 4;\n  h 0;\n  h 3;\n  h 1;\n  h 5;\n  h 2;\n  measure_all;\n}\n",
+      "source_sha256": "343ec1de4a55128155d9c46326968479119c681c82e01b285f2500a1bfb849dc",
+      "status": "PASS",
+      "width": 6
+    },
+    {
+      "connected_interaction_graph": true,
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "gate_count": 124,
+      "id": "connected_08q_seed_2026112400",
+      "interaction_edges": 16,
+      "inverse_comparison": {
+        "actual_norm": 0.9999999999999971,
+        "actual_norm_error": 2.886579864025407e-15,
+        "basis_states_compared": 256,
+        "global_phase_radians": -1.704921447827286e-17,
+        "l1_probability_error": 2.886579864025407e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 1.4432899320127035e-15,
+        "max_probability_error": 2.886579864025407e-15,
+        "overlap_magnitude": 0.9999999999999986,
+        "status": "PASS"
+      },
+      "inverse_reference": {
+        "backend_metadata": {
+          "instruction_count": 124,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "inverse_identity_status": "PASS",
+        "maximum_nonvacuum_amplitude": 2.033762964713988e-16,
+        "seconds": 0.007428499986417592,
+        "state_sha256": "8db3784f78a32f3b364852378f932b8cf7283180ddf078eb0d7e191f5ea58203",
+        "vacuum_probability": 1.0
+      },
+      "inverse_sparse": {
+        "evolution_seconds": 0.004271099984180182,
+        "final_support": 256,
+        "peak_gate_index": 7,
+        "peak_support": 256,
+        "state_sha256": "2cd80089ee494b0e35eb57aed41ba6c8f3786ac91cb0c2ec91dab7df79022b3d"
+      },
+      "kind": "random-connected",
+      "ordered_gate_sequence_matches": true,
+      "prefix_comparison": {
+        "actual_norm": 0.9999999999999982,
+        "actual_norm_error": 1.7763568394002505e-15,
+        "basis_states_compared": 256,
+        "global_phase_radians": 8.565197162635495e-17,
+        "l1_probability_error": 1.1989331880539071e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 3.3306690738754696e-16,
+        "max_probability_error": 3.885780586188048e-16,
+        "overlap_magnitude": 0.999999999999999,
+        "status": "PASS"
+      },
+      "prefix_entanglement": {
+        "classification": "NONFACTORIZING_ACROSS_TESTED_CUTS",
+        "status": "PASS",
+        "witnesses": {
+          "even_qubits_vs_odd_qubits": {
+            "complement_qubits": [
+              1,
+              3,
+              5,
+              7
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.5785786974631992,
+            "normalized_state": true,
+            "reduced_state_purity": 0.42142130253680077,
+            "schmidt_rank_at_1e-10": 16,
+            "subset_qubits": [
+              0,
+              2,
+              4,
+              6
+            ],
+            "von_neumann_entropy_bits": 1.7641290073693916
+          },
+          "lower_half_vs_upper_half": {
+            "complement_qubits": [
+              4,
+              5,
+              6,
+              7
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.6194231514034565,
+            "normalized_state": true,
+            "reduced_state_purity": 0.38057684859654345,
+            "schmidt_rank_at_1e-10": 16,
+            "subset_qubits": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "von_neumann_entropy_bits": 1.8702719141787485
+          },
+          "outer_qubits_vs_middle": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.3517053471364072,
+            "normalized_state": true,
+            "reduced_state_purity": 0.6482946528635928,
+            "schmidt_rank_at_1e-10": 4,
+            "subset_qubits": [
+              0,
+              7
+            ],
+            "von_neumann_entropy_bits": 0.8507632279573982
+          },
+          "q0_vs_rest": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.027875241269174067,
+            "normalized_state": true,
+            "reduced_state_purity": 0.9721247587308259,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.1071166295971183
+          }
+        }
+      },
+      "prefix_gate_count": 62,
+      "prefix_reference": {
+        "backend_metadata": {
+          "instruction_count": 62,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "seconds": 0.0038623999571427703,
+        "state_sha256": "8f17efc9af727d199460a57f8fa8acf4637374ebe3414f3216bb37c3b99bb784"
+      },
+      "prefix_sparse": {
+        "evolution_seconds": 0.0019124000100418925,
+        "final_support": 256,
+        "peak_gate_index": 7,
+        "peak_support": 256,
+        "state_sha256": "f00b3ee9fc561705804f0d7e14c604ec53ad62ff2fa1c8ada60b5dd45144686c"
+      },
+      "seed": 2026112400,
+      "source": "quantum connected_08q_seed_2026112400 {\n  qubits 8;\n  shots 1;\n  seed 2026112400;\n  h 1;\n  h 0;\n  h 4;\n  h 3;\n  h 6;\n  h 7;\n  h 5;\n  h 2;\n  ry 1.303651 2;\n  ry 1.186569 4;\n  ry 0.672757 7;\n  ry -1.33243 0;\n  ry -2.716633 3;\n  ry 2.304469 5;\n  ry -1.405412 1;\n  ry -2.726471 6;\n  cx 4 1;\n  cp -0.869618 1 4;\n  cx 1 6;\n  cp -1.376973 1 6;\n  cx 3 5;\n  cp -1.077104 3 5;\n  cx 0 5;\n  cp 2.868839 5 0;\n  cx 4 3;\n  cp 1.944531 4 3;\n  cx 4 7;\n  cp -3.075076 4 7;\n  cx 0 7;\n  cp -0.986958 7 0;\n  cx 2 6;\n  cp 1.132675 6 2;\n  cx 3 7;\n  cp 0.743926 7 3;\n  rz 2.45014 6;\n  rz 2.388871 0;\n  rz -0.747369 3;\n  rz -0.514043 4;\n  rz -1.677884 5;\n  rz 0.19318 7;\n  rz -1.117905 1;\n  rz 2.357034 2;\n  cx 1 6;\n  cp -0.348588 6 1;\n  cx 0 4;\n  cp 0.361095 4 0;\n  cx 3 7;\n  cp -1.579622 7 3;\n  cx 0 2;\n  cp 1.983408 2 0;\n  cx 4 6;\n  cp 0.804255 4 6;\n  cx 1 5;\n  cp -0.464009 5 1;\n  cx 6 3;\n  cp -1.969553 3 6;\n  cx 0 6;\n  cp -3.052288 6 0;\n  cx 7 2;\n  cp 2.393845 7 2;\n  x 4;\n  z 7;\n  z 7;\n  x 4;\n  cp -2.393845 7 2;\n  cx 7 2;\n  cp 3.052288 6 0;\n  cx 0 6;\n  cp 1.969553 3 6;\n  cx 6 3;\n  cp 0.464009 5 1;\n  cx 1 5;\n  cp -0.804255 4 6;\n  cx 4 6;\n  cp -1.983408 2 0;\n  cx 0 2;\n  cp 1.579622 7 3;\n  cx 3 7;\n  cp -0.361095 4 0;\n  cx 0 4;\n  cp 0.348588 6 1;\n  cx 1 6;\n  rz -2.357034 2;\n  rz 1.117905 1;\n  rz -0.19318 7;\n  rz 1.677884 5;\n  rz 0.514043 4;\n  rz 0.747369 3;\n  rz -2.388871 0;\n  rz -2.45014 6;\n  cp -0.743926 7 3;\n  cx 3 7;\n  cp -1.132675 6 2;\n  cx 2 6;\n  cp 0.986958 7 0;\n  cx 0 7;\n  cp 3.075076 4 7;\n  cx 4 7;\n  cp -1.944531 4 3;\n  cx 4 3;\n  cp -2.868839 5 0;\n  cx 0 5;\n  cp 1.077104 3 5;\n  cx 3 5;\n  cp 1.376973 1 6;\n  cx 1 6;\n  cp 0.869618 1 4;\n  cx 4 1;\n  ry 2.726471 6;\n  ry 1.405412 1;\n  ry -2.304469 5;\n  ry 2.716633 3;\n  ry 1.33243 0;\n  ry -0.672757 7;\n  ry -1.186569 4;\n  ry -1.303651 2;\n  h 2;\n  h 5;\n  h 7;\n  h 6;\n  h 3;\n  h 4;\n  h 0;\n  h 1;\n  measure_all;\n}\n",
+      "source_sha256": "3440791a68946b3178fc8d934ac0491a02a48a515ca9081be0fd8651b944f541",
+      "status": "PASS",
+      "width": 8
+    },
+    {
+      "connected_interaction_graph": true,
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "gate_count": 124,
+      "id": "connected_08q_seed_2026112401",
+      "interaction_edges": 17,
+      "inverse_comparison": {
+        "actual_norm": 0.9999999999999969,
+        "actual_norm_error": 3.1086244689504383e-15,
+        "basis_states_compared": 256,
+        "global_phase_radians": 3.278921172916466e-17,
+        "l1_probability_error": 3.1086244689504383e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 1.5543122344752192e-15,
+        "max_probability_error": 3.1086244689504383e-15,
+        "overlap_magnitude": 0.9999999999999984,
+        "status": "PASS"
+      },
+      "inverse_reference": {
+        "backend_metadata": {
+          "instruction_count": 124,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "inverse_identity_status": "PASS",
+        "maximum_nonvacuum_amplitude": 2.0183201262370162e-16,
+        "seconds": 0.007225999957881868,
+        "state_sha256": "130f9f5bbb3d102c97e38b6f5da79897ca7c89b94bc70879859f16dc3f6ab628",
+        "vacuum_probability": 1.0
+      },
+      "inverse_sparse": {
+        "evolution_seconds": 0.004176000016741455,
+        "final_support": 256,
+        "peak_gate_index": 7,
+        "peak_support": 256,
+        "state_sha256": "9f82143cabe61e424232f1e526f8a0765dad3a942da1504efb14abc58f2847a2"
+      },
+      "kind": "random-connected",
+      "ordered_gate_sequence_matches": true,
+      "prefix_comparison": {
+        "actual_norm": 0.9999999999999987,
+        "actual_norm_error": 1.3322676295501878e-15,
+        "basis_states_compared": 256,
+        "global_phase_radians": 1.90819582357449e-17,
+        "l1_probability_error": 1.0280344425071296e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 2.9893669801409083e-16,
+        "max_probability_error": 1.8041124150158794e-16,
+        "overlap_magnitude": 0.999999999999999,
+        "status": "PASS"
+      },
+      "prefix_entanglement": {
+        "classification": "NONFACTORIZING_ACROSS_TESTED_CUTS",
+        "status": "PASS",
+        "witnesses": {
+          "even_qubits_vs_odd_qubits": {
+            "complement_qubits": [
+              1,
+              3,
+              5,
+              7
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.8687223051266802,
+            "normalized_state": true,
+            "reduced_state_purity": 0.13127769487331978,
+            "schmidt_rank_at_1e-10": 16,
+            "subset_qubits": [
+              0,
+              2,
+              4,
+              6
+            ],
+            "von_neumann_entropy_bits": 3.068606840858382
+          },
+          "lower_half_vs_upper_half": {
+            "complement_qubits": [
+              4,
+              5,
+              6,
+              7
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.8019331729643573,
+            "normalized_state": true,
+            "reduced_state_purity": 0.19806682703564274,
+            "schmidt_rank_at_1e-10": 16,
+            "subset_qubits": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "von_neumann_entropy_bits": 2.5314445767436915
+          },
+          "outer_qubits_vs_middle": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.6209292564449167,
+            "normalized_state": true,
+            "reduced_state_purity": 0.37907074355508336,
+            "schmidt_rank_at_1e-10": 4,
+            "subset_qubits": [
+              0,
+              7
+            ],
+            "von_neumann_entropy_bits": 1.5875972223187969
+          },
+          "q0_vs_rest": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.49994476554221157,
+            "normalized_state": true,
+            "reduced_state_purity": 0.5000552344577884,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.999920312054451
+          }
+        }
+      },
+      "prefix_gate_count": 62,
+      "prefix_reference": {
+        "backend_metadata": {
+          "instruction_count": 62,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "seconds": 0.003959800000302494,
+        "state_sha256": "22a3a7cfbd1159dec1cd32db0b9621c3a080918cfbcc4471ab9ed079e4a8d5fe"
+      },
+      "prefix_sparse": {
+        "evolution_seconds": 0.0018684000242501497,
+        "final_support": 256,
+        "peak_gate_index": 7,
+        "peak_support": 256,
+        "state_sha256": "79ae6d2814d20a6116ec430fec9357cda9647c5e7a4bd1478152f03322d8b916"
+      },
+      "seed": 2026112401,
+      "source": "quantum connected_08q_seed_2026112401 {\n  qubits 8;\n  shots 1;\n  seed 2026112401;\n  h 5;\n  h 6;\n  h 4;\n  h 2;\n  h 0;\n  h 1;\n  h 3;\n  h 7;\n  ry -3.093752 1;\n  ry 0.24321 7;\n  ry 0.975069 3;\n  ry 1.379106 0;\n  ry -3.083744 4;\n  ry 1.702765 6;\n  ry -0.127302 2;\n  ry 1.989853 5;\n  cx 5 7;\n  cp 1.382957 5 7;\n  cx 4 1;\n  cp 1.868716 1 4;\n  cx 6 1;\n  cp -1.032441 6 1;\n  cx 1 0;\n  cp 0.820065 0 1;\n  cx 4 5;\n  cp -1.672092 4 5;\n  cx 3 1;\n  cp -2.02824 3 1;\n  cx 6 2;\n  cp 2.497546 6 2;\n  cx 0 3;\n  cp -1.149575 0 3;\n  cx 0 2;\n  cp 0.700528 2 0;\n  rz -0.198558 6;\n  rz 2.965903 2;\n  rz -1.971251 3;\n  rz -2.788044 1;\n  rz 2.361487 4;\n  rz 1.846166 5;\n  rz -2.953195 0;\n  rz 2.440631 7;\n  cx 5 2;\n  cp -0.739499 5 2;\n  cx 4 6;\n  cp 1.860241 6 4;\n  cx 3 7;\n  cp -0.12858 7 3;\n  cx 6 0;\n  cp 2.024895 6 0;\n  cx 0 4;\n  cp -0.937708 0 4;\n  cx 7 0;\n  cp 2.265323 0 7;\n  cx 2 1;\n  cp -2.486404 1 2;\n  cx 5 6;\n  cp 2.981412 6 5;\n  cx 1 3;\n  cp -1.014078 3 1;\n  x 5;\n  z 0;\n  z 0;\n  x 5;\n  cp 1.014078 3 1;\n  cx 1 3;\n  cp -2.981412 6 5;\n  cx 5 6;\n  cp 2.486404 1 2;\n  cx 2 1;\n  cp -2.265323 0 7;\n  cx 7 0;\n  cp 0.937708 0 4;\n  cx 0 4;\n  cp -2.024895 6 0;\n  cx 6 0;\n  cp 0.12858 7 3;\n  cx 3 7;\n  cp -1.860241 6 4;\n  cx 4 6;\n  cp 0.739499 5 2;\n  cx 5 2;\n  rz -2.440631 7;\n  rz 2.953195 0;\n  rz -1.846166 5;\n  rz -2.361487 4;\n  rz 2.788044 1;\n  rz 1.971251 3;\n  rz -2.965903 2;\n  rz 0.198558 6;\n  cp -0.700528 2 0;\n  cx 0 2;\n  cp 1.149575 0 3;\n  cx 0 3;\n  cp -2.497546 6 2;\n  cx 6 2;\n  cp 2.02824 3 1;\n  cx 3 1;\n  cp 1.672092 4 5;\n  cx 4 5;\n  cp -0.820065 0 1;\n  cx 1 0;\n  cp 1.032441 6 1;\n  cx 6 1;\n  cp -1.868716 1 4;\n  cx 4 1;\n  cp -1.382957 5 7;\n  cx 5 7;\n  ry -1.989853 5;\n  ry 0.127302 2;\n  ry -1.702765 6;\n  ry 3.083744 4;\n  ry -1.379106 0;\n  ry -0.975069 3;\n  ry -0.24321 7;\n  ry 3.093752 1;\n  h 7;\n  h 3;\n  h 1;\n  h 0;\n  h 2;\n  h 4;\n  h 6;\n  h 5;\n  measure_all;\n}\n",
+      "source_sha256": "818157f010ae0c5da4ec07fb8c8f605eeb0f789bfa97cd183e1bd363a53ad04a",
+      "status": "PASS",
+      "width": 8
+    },
+    {
+      "connected_interaction_graph": true,
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "gate_count": 152,
+      "id": "connected_10q_seed_2026112600",
+      "interaction_edges": 18,
+      "inverse_comparison": {
+        "actual_norm": 0.9999999999999964,
+        "actual_norm_error": 3.552713678800501e-15,
+        "basis_states_compared": 1024,
+        "global_phase_radians": 3.225117907147244e-17,
+        "l1_probability_error": 3.552713678800501e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 1.7763568394002505e-15,
+        "max_probability_error": 3.552713678800501e-15,
+        "overlap_magnitude": 0.9999999999999982,
+        "status": "PASS"
+      },
+      "inverse_reference": {
+        "backend_metadata": {
+          "instruction_count": 152,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "inverse_identity_status": "PASS",
+        "maximum_nonvacuum_amplitude": 1.415481057376139e-16,
+        "seconds": 0.010812999971676618,
+        "state_sha256": "1d51d9f6f5a4e1677a414f42485a1fa35257706bd0ef586b9fa21669c386e6ca",
+        "vacuum_probability": 1.0
+      },
+      "inverse_sparse": {
+        "evolution_seconds": 0.020685900002717972,
+        "final_support": 1024,
+        "peak_gate_index": 9,
+        "peak_support": 1024,
+        "state_sha256": "c5f3b8acc798b5b2f30a7180c79b5a7af0a5d5c76a4e5717da0c63c103d04951"
+      },
+      "kind": "random-connected",
+      "ordered_gate_sequence_matches": true,
+      "prefix_comparison": {
+        "actual_norm": 0.9999999999999979,
+        "actual_norm_error": 2.1094237467877974e-15,
+        "basis_states_compared": 1024,
+        "global_phase_radians": 7.2858385991026e-17,
+        "l1_probability_error": 2.6330672760937128e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 6.955527313080394e-16,
+        "max_probability_error": 3.885780586188048e-16,
+        "overlap_magnitude": 0.9999999999999988,
+        "status": "PASS"
+      },
+      "prefix_entanglement": {
+        "classification": "NONFACTORIZING_ACROSS_TESTED_CUTS",
+        "status": "PASS",
+        "witnesses": {
+          "even_qubits_vs_odd_qubits": {
+            "complement_qubits": [
+              1,
+              3,
+              5,
+              7,
+              9
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.8390727362120237,
+            "normalized_state": true,
+            "reduced_state_purity": 0.16092726378797628,
+            "schmidt_rank_at_1e-10": 32,
+            "subset_qubits": [
+              0,
+              2,
+              4,
+              6,
+              8
+            ],
+            "von_neumann_entropy_bits": 2.956835627492854
+          },
+          "lower_half_vs_upper_half": {
+            "complement_qubits": [
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.9187389369832337,
+            "normalized_state": true,
+            "reduced_state_purity": 0.08126106301676633,
+            "schmidt_rank_at_1e-10": 32,
+            "subset_qubits": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "von_neumann_entropy_bits": 4.094148293720972
+          },
+          "outer_qubits_vs_middle": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.5257891262564789,
+            "normalized_state": true,
+            "reduced_state_purity": 0.47421087374352117,
+            "schmidt_rank_at_1e-10": 4,
+            "subset_qubits": [
+              0,
+              9
+            ],
+            "von_neumann_entropy_bits": 1.213016510664876
+          },
+          "q0_vs_rest": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.4910387029581966,
+            "normalized_state": true,
+            "reduced_state_purity": 0.5089612970418034,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.9870326831853324
+          }
+        }
+      },
+      "prefix_gate_count": 76,
+      "prefix_reference": {
+        "backend_metadata": {
+          "instruction_count": 76,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "seconds": 0.005675900029018521,
+        "state_sha256": "e0d2288f20be409588d9feb4c33e0ce6d6831189fa99c8a13f6b5dd77b25782b"
+      },
+      "prefix_sparse": {
+        "evolution_seconds": 0.009387800004333258,
+        "final_support": 1024,
+        "peak_gate_index": 9,
+        "peak_support": 1024,
+        "state_sha256": "0db75c636adad961d5b07d61e0bfb87a7f4e53ea035574c47d6834301276717d"
+      },
+      "seed": 2026112600,
+      "source": "quantum connected_10q_seed_2026112600 {\n  qubits 10;\n  shots 1;\n  seed 2026112600;\n  h 0;\n  h 4;\n  h 9;\n  h 5;\n  h 7;\n  h 3;\n  h 6;\n  h 1;\n  h 8;\n  h 2;\n  ry 1.676011 3;\n  ry -1.934776 6;\n  ry 1.957063 8;\n  ry -1.717275 2;\n  ry -2.916381 1;\n  ry 2.893907 5;\n  ry 2.30654 7;\n  ry 2.200581 4;\n  ry 0.126541 9;\n  ry 2.514141 0;\n  cx 0 1;\n  cp -2.915779 1 0;\n  cx 9 8;\n  cp 2.242327 9 8;\n  cx 7 3;\n  cp -2.892006 3 7;\n  cx 0 2;\n  cp -1.283721 2 0;\n  cx 4 6;\n  cp 2.975267 4 6;\n  cx 7 6;\n  cp -2.463273 7 6;\n  cx 5 0;\n  cp 1.420635 0 5;\n  cx 9 4;\n  cp 0.238119 9 4;\n  cx 5 9;\n  cp -0.240317 5 9;\n  cx 8 5;\n  cp -1.399087 5 8;\n  cx 5 2;\n  cp -1.353554 5 2;\n  rz 2.940173 8;\n  rz -1.586578 1;\n  rz -1.078294 5;\n  rz -2.679653 6;\n  rz -1.804524 0;\n  rz 1.595806 7;\n  rz -0.388678 9;\n  rz -0.907924 2;\n  rz 2.426292 3;\n  rz 0.873227 4;\n  cx 4 1;\n  cp -1.752278 1 4;\n  cx 8 0;\n  cp -0.839697 8 0;\n  cx 2 5;\n  cp 2.326262 5 2;\n  cx 4 3;\n  cp 0.976063 3 4;\n  cx 3 0;\n  cp -3.011033 0 3;\n  cx 3 9;\n  cp -0.180194 3 9;\n  cx 7 6;\n  cp 2.671075 7 6;\n  cx 5 0;\n  cp 0.386749 0 5;\n  cx 9 8;\n  cp 3.034501 9 8;\n  cx 1 7;\n  cp -1.72454 1 7;\n  cx 2 6;\n  cp 1.60074 2 6;\n  x 5;\n  z 7;\n  z 7;\n  x 5;\n  cp -1.60074 2 6;\n  cx 2 6;\n  cp 1.72454 1 7;\n  cx 1 7;\n  cp -3.034501 9 8;\n  cx 9 8;\n  cp -0.386749 0 5;\n  cx 5 0;\n  cp -2.671075 7 6;\n  cx 7 6;\n  cp 0.180194 3 9;\n  cx 3 9;\n  cp 3.011033 0 3;\n  cx 3 0;\n  cp -0.976063 3 4;\n  cx 4 3;\n  cp -2.326262 5 2;\n  cx 2 5;\n  cp 0.839697 8 0;\n  cx 8 0;\n  cp 1.752278 1 4;\n  cx 4 1;\n  rz -0.873227 4;\n  rz -2.426292 3;\n  rz 0.907924 2;\n  rz 0.388678 9;\n  rz -1.595806 7;\n  rz 1.804524 0;\n  rz 2.679653 6;\n  rz 1.078294 5;\n  rz 1.586578 1;\n  rz -2.940173 8;\n  cp 1.353554 5 2;\n  cx 5 2;\n  cp 1.399087 5 8;\n  cx 8 5;\n  cp 0.240317 5 9;\n  cx 5 9;\n  cp -0.238119 9 4;\n  cx 9 4;\n  cp -1.420635 0 5;\n  cx 5 0;\n  cp 2.463273 7 6;\n  cx 7 6;\n  cp -2.975267 4 6;\n  cx 4 6;\n  cp 1.283721 2 0;\n  cx 0 2;\n  cp 2.892006 3 7;\n  cx 7 3;\n  cp -2.242327 9 8;\n  cx 9 8;\n  cp 2.915779 1 0;\n  cx 0 1;\n  ry -2.514141 0;\n  ry -0.126541 9;\n  ry -2.200581 4;\n  ry -2.30654 7;\n  ry -2.893907 5;\n  ry 2.916381 1;\n  ry 1.717275 2;\n  ry -1.957063 8;\n  ry 1.934776 6;\n  ry -1.676011 3;\n  h 2;\n  h 8;\n  h 1;\n  h 6;\n  h 3;\n  h 7;\n  h 5;\n  h 9;\n  h 4;\n  h 0;\n  measure_all;\n}\n",
+      "source_sha256": "b8bcbe8d1b799d04ee200a8e14fb5b4fffa5cf3d5c2a3755ac409146cb41506e",
+      "status": "PASS",
+      "width": 10
+    },
+    {
+      "connected_interaction_graph": true,
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "gate_count": 152,
+      "id": "connected_10q_seed_2026112601",
+      "interaction_edges": 18,
+      "inverse_comparison": {
+        "actual_norm": 0.9999999999999958,
+        "actual_norm_error": 4.218847493575595e-15,
+        "basis_states_compared": 1024,
+        "global_phase_radians": 8.421390887053708e-18,
+        "l1_probability_error": 4.218847493575595e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 2.1094237467877974e-15,
+        "max_probability_error": 4.218847493575595e-15,
+        "overlap_magnitude": 0.9999999999999979,
+        "status": "PASS"
+      },
+      "inverse_reference": {
+        "backend_metadata": {
+          "instruction_count": 152,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "inverse_identity_status": "PASS",
+        "maximum_nonvacuum_amplitude": 1.5864075553148652e-16,
+        "seconds": 0.009173700003884733,
+        "state_sha256": "96c9023dd1fa906f398bd534ab9fbaf35aa5a8268d7b154c4d3a2912a9237261",
+        "vacuum_probability": 1.0
+      },
+      "inverse_sparse": {
+        "evolution_seconds": 0.021479999995790422,
+        "final_support": 1024,
+        "peak_gate_index": 9,
+        "peak_support": 1024,
+        "state_sha256": "c5c51b233df7e8c1d39e0465d1285680a112d9c43881510a31be59985a72ba95"
+      },
+      "kind": "random-connected",
+      "ordered_gate_sequence_matches": true,
+      "prefix_comparison": {
+        "actual_norm": 0.999999999999998,
+        "actual_norm_error": 1.9984014443252818e-15,
+        "basis_states_compared": 1024,
+        "global_phase_radians": 1.144917494144694e-16,
+        "l1_probability_error": 1.716657531169892e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 4.0412728104402656e-16,
+        "max_probability_error": 2.7755575615628914e-16,
+        "overlap_magnitude": 0.999999999999999,
+        "status": "PASS"
+      },
+      "prefix_entanglement": {
+        "classification": "NONFACTORIZING_ACROSS_TESTED_CUTS",
+        "status": "PASS",
+        "witnesses": {
+          "even_qubits_vs_odd_qubits": {
+            "complement_qubits": [
+              1,
+              3,
+              5,
+              7,
+              9
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.8385002666291169,
+            "normalized_state": true,
+            "reduced_state_purity": 0.16149973337088308,
+            "schmidt_rank_at_1e-10": 32,
+            "subset_qubits": [
+              0,
+              2,
+              4,
+              6,
+              8
+            ],
+            "von_neumann_entropy_bits": 3.0939632467724025
+          },
+          "lower_half_vs_upper_half": {
+            "complement_qubits": [
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.8012855284051633,
+            "normalized_state": true,
+            "reduced_state_purity": 0.19871447159483668,
+            "schmidt_rank_at_1e-10": 32,
+            "subset_qubits": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "von_neumann_entropy_bits": 2.6358949918463357
+          },
+          "outer_qubits_vs_middle": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.7381321568727763,
+            "normalized_state": true,
+            "reduced_state_purity": 0.26186784312722367,
+            "schmidt_rank_at_1e-10": 4,
+            "subset_qubits": [
+              0,
+              9
+            ],
+            "von_neumann_entropy_bits": 1.9659138716509825
+          },
+          "q0_vs_rest": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.49987521485147024,
+            "normalized_state": true,
+            "reduced_state_purity": 0.5001247851485298,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.9998199655960633
+          }
+        }
+      },
+      "prefix_gate_count": 76,
+      "prefix_reference": {
+        "backend_metadata": {
+          "instruction_count": 76,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "seconds": 0.0050629000179469585,
+        "state_sha256": "c80aa312830112f2ced3440ec9232dfefe0ba9d54890db2d0f0a3728cc4c5605"
+      },
+      "prefix_sparse": {
+        "evolution_seconds": 0.009427800017874688,
+        "final_support": 1024,
+        "peak_gate_index": 9,
+        "peak_support": 1024,
+        "state_sha256": "abad1e326ed69ab2850fd15a261be8b3f9c8d560c5bcd99670bd982107a7c246"
+      },
+      "seed": 2026112601,
+      "source": "quantum connected_10q_seed_2026112601 {\n  qubits 10;\n  shots 1;\n  seed 2026112601;\n  h 4;\n  h 8;\n  h 9;\n  h 2;\n  h 6;\n  h 3;\n  h 1;\n  h 5;\n  h 0;\n  h 7;\n  ry -0.770464 3;\n  ry 1.881877 9;\n  ry 0.473103 8;\n  ry -1.647912 7;\n  ry 3.064028 6;\n  ry 0.512432 1;\n  ry -1.997263 5;\n  ry 2.199691 2;\n  ry -0.675535 0;\n  ry -2.655366 4;\n  cx 7 3;\n  cp 0.789392 3 7;\n  cx 5 1;\n  cp -1.712372 5 1;\n  cx 9 4;\n  cp 0.511419 4 9;\n  cx 6 9;\n  cp -0.845097 6 9;\n  cx 5 0;\n  cp 1.180393 0 5;\n  cx 1 2;\n  cp 2.519241 1 2;\n  cx 8 6;\n  cp -1.939929 8 6;\n  cx 1 4;\n  cp -0.790413 4 1;\n  cx 2 5;\n  cp -0.257444 5 2;\n  cx 8 7;\n  cp -1.241849 7 8;\n  cx 0 1;\n  cp -1.265658 0 1;\n  rz -0.717591 9;\n  rz 1.17134 1;\n  rz -0.21172 4;\n  rz -1.891347 0;\n  rz 0.665244 3;\n  rz 1.123809 7;\n  rz 1.051395 5;\n  rz 2.610682 2;\n  rz -0.264089 8;\n  rz -0.740503 6;\n  cx 7 8;\n  cp -0.405567 8 7;\n  cx 0 4;\n  cp 2.99747 0 4;\n  cx 1 0;\n  cp 1.87886 1 0;\n  cx 3 4;\n  cp 2.930632 4 3;\n  cx 5 1;\n  cp -2.528053 5 1;\n  cx 9 7;\n  cp 1.675201 9 7;\n  cx 9 2;\n  cp -3.01743 2 9;\n  cx 6 0;\n  cp 0.58812 0 6;\n  cx 4 2;\n  cp -0.71858 4 2;\n  cx 8 6;\n  cp -1.443662 6 8;\n  cx 8 3;\n  cp 1.356461 8 3;\n  x 6;\n  z 6;\n  z 6;\n  x 6;\n  cp -1.356461 8 3;\n  cx 8 3;\n  cp 1.443662 6 8;\n  cx 8 6;\n  cp 0.71858 4 2;\n  cx 4 2;\n  cp -0.58812 0 6;\n  cx 6 0;\n  cp 3.01743 2 9;\n  cx 9 2;\n  cp -1.675201 9 7;\n  cx 9 7;\n  cp 2.528053 5 1;\n  cx 5 1;\n  cp -2.930632 4 3;\n  cx 3 4;\n  cp -1.87886 1 0;\n  cx 1 0;\n  cp -2.99747 0 4;\n  cx 0 4;\n  cp 0.405567 8 7;\n  cx 7 8;\n  rz 0.740503 6;\n  rz 0.264089 8;\n  rz -2.610682 2;\n  rz -1.051395 5;\n  rz -1.123809 7;\n  rz -0.665244 3;\n  rz 1.891347 0;\n  rz 0.21172 4;\n  rz -1.17134 1;\n  rz 0.717591 9;\n  cp 1.265658 0 1;\n  cx 0 1;\n  cp 1.241849 7 8;\n  cx 8 7;\n  cp 0.257444 5 2;\n  cx 2 5;\n  cp 0.790413 4 1;\n  cx 1 4;\n  cp 1.939929 8 6;\n  cx 8 6;\n  cp -2.519241 1 2;\n  cx 1 2;\n  cp -1.180393 0 5;\n  cx 5 0;\n  cp 0.845097 6 9;\n  cx 6 9;\n  cp -0.511419 4 9;\n  cx 9 4;\n  cp 1.712372 5 1;\n  cx 5 1;\n  cp -0.789392 3 7;\n  cx 7 3;\n  ry 2.655366 4;\n  ry 0.675535 0;\n  ry -2.199691 2;\n  ry 1.997263 5;\n  ry -0.512432 1;\n  ry -3.064028 6;\n  ry 1.647912 7;\n  ry -0.473103 8;\n  ry -1.881877 9;\n  ry 0.770464 3;\n  h 7;\n  h 0;\n  h 5;\n  h 1;\n  h 3;\n  h 6;\n  h 2;\n  h 9;\n  h 8;\n  h 4;\n  measure_all;\n}\n",
+      "source_sha256": "4dbdca180d98056d4a137acb1607f29759b19c5646a4c1c18cc9665cb23f34b8",
+      "status": "PASS",
+      "width": 10
+    },
+    {
+      "connected_interaction_graph": true,
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "gate_count": 188,
+      "id": "connected_12q_seed_2026112800",
+      "interaction_edges": 23,
+      "inverse_comparison": {
+        "actual_norm": 0.9999999999999958,
+        "actual_norm_error": 4.218847493575595e-15,
+        "basis_states_compared": 4096,
+        "global_phase_radians": -4.970085125971493e-17,
+        "l1_probability_error": 4.218847493575595e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 2.1094237467877974e-15,
+        "max_probability_error": 4.218847493575595e-15,
+        "overlap_magnitude": 0.9999999999999979,
+        "status": "PASS"
+      },
+      "inverse_reference": {
+        "backend_metadata": {
+          "instruction_count": 188,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "inverse_identity_status": "PASS",
+        "maximum_nonvacuum_amplitude": 7.763619486271982e-17,
+        "seconds": 0.012688299990259111,
+        "state_sha256": "a9cb5334070080f6cae7c5676c4bd4b8545bd36ca23d84e58f6e0d30440667b1",
+        "vacuum_probability": 1.0
+      },
+      "inverse_sparse": {
+        "evolution_seconds": 0.10332560003735125,
+        "final_support": 4096,
+        "peak_gate_index": 11,
+        "peak_support": 4096,
+        "state_sha256": "29dfdbd8707e5153b00db64dcf06e7240ad10971def32a62d3e02ce0ba40db5c"
+      },
+      "kind": "random-connected",
+      "ordered_gate_sequence_matches": true,
+      "prefix_comparison": {
+        "actual_norm": 0.9999999999999979,
+        "actual_norm_error": 2.1094237467877974e-15,
+        "basis_states_compared": 4096,
+        "global_phase_radians": 5.898059818321156e-17,
+        "l1_probability_error": 3.020514216884605e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 4.718447854656915e-16,
+        "max_probability_error": 2.0816681711721685e-16,
+        "overlap_magnitude": 0.999999999999998,
+        "status": "PASS"
+      },
+      "prefix_entanglement": {
+        "classification": "NONFACTORIZING_ACROSS_TESTED_CUTS",
+        "status": "PASS",
+        "witnesses": {
+          "even_qubits_vs_odd_qubits": {
+            "complement_qubits": [
+              1,
+              3,
+              5,
+              7,
+              9,
+              11
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.7841649666281066,
+            "normalized_state": true,
+            "reduced_state_purity": 0.21583503337189336,
+            "schmidt_rank_at_1e-10": 64,
+            "subset_qubits": [
+              0,
+              2,
+              4,
+              6,
+              8,
+              10
+            ],
+            "von_neumann_entropy_bits": 2.8255874942042127
+          },
+          "lower_half_vs_upper_half": {
+            "complement_qubits": [
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.9378230318604897,
+            "normalized_state": true,
+            "reduced_state_purity": 0.06217696813951035,
+            "schmidt_rank_at_1e-10": 64,
+            "subset_qubits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "von_neumann_entropy_bits": 4.435413773008319
+          },
+          "outer_qubits_vs_middle": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.6938017163097796,
+            "normalized_state": true,
+            "reduced_state_purity": 0.3061982836902204,
+            "schmidt_rank_at_1e-10": 4,
+            "subset_qubits": [
+              0,
+              11
+            ],
+            "von_neumann_entropy_bits": 1.831163608780482
+          },
+          "q0_vs_rest": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.4999924514533769,
+            "normalized_state": true,
+            "reduced_state_purity": 0.5000075485466231,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.999989109721819
+          }
+        }
+      },
+      "prefix_gate_count": 94,
+      "prefix_reference": {
+        "backend_metadata": {
+          "instruction_count": 94,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "seconds": 0.006428199994843453,
+        "state_sha256": "d517d5c0eb040ac3ea1d0011279914bc7011f6639f15d9d82849e48ee2f90cd5"
+      },
+      "prefix_sparse": {
+        "evolution_seconds": 0.045924399979412556,
+        "final_support": 4096,
+        "peak_gate_index": 11,
+        "peak_support": 4096,
+        "state_sha256": "d677b9069126c561c230ea50a43b9a9841838bad2858ce9f6f24c5f5d5447141"
+      },
+      "seed": 2026112800,
+      "source": "quantum connected_12q_seed_2026112800 {\n  qubits 12;\n  shots 1;\n  seed 2026112800;\n  h 8;\n  h 2;\n  h 10;\n  h 4;\n  h 5;\n  h 7;\n  h 9;\n  h 6;\n  h 0;\n  h 1;\n  h 11;\n  h 3;\n  ry 1.456286 11;\n  ry -2.971442 5;\n  ry 1.784878 6;\n  ry -1.395864 10;\n  ry 0.811159 4;\n  ry -2.706256 7;\n  ry 2.230216 9;\n  ry -0.800948 1;\n  ry 0.157759 8;\n  ry 0.502236 0;\n  ry 1.593653 3;\n  ry 0.2018 2;\n  cx 6 4;\n  cp 0.125016 6 4;\n  cx 10 1;\n  cp 2.211105 10 1;\n  cx 11 3;\n  cp -1.982252 11 3;\n  cx 5 8;\n  cp -0.340306 8 5;\n  cx 5 11;\n  cp 1.44004 5 11;\n  cx 0 6;\n  cp 2.461627 0 6;\n  cx 3 5;\n  cp -1.523062 5 3;\n  cx 9 2;\n  cp 0.628655 9 2;\n  cx 11 10;\n  cp 1.333218 10 11;\n  cx 2 5;\n  cp -2.959845 5 2;\n  cx 5 0;\n  cp 1.326516 5 0;\n  cx 7 4;\n  cp -0.241141 7 4;\n  cx 3 0;\n  cp 1.484903 0 3;\n  cx 9 1;\n  cp -2.335933 9 1;\n  rz -0.275656 1;\n  rz 2.948572 9;\n  rz 1.795046 8;\n  rz 2.829469 5;\n  rz 0.348728 7;\n  rz 0.592689 4;\n  rz 1.677883 10;\n  rz 0.675368 3;\n  rz -1.003272 0;\n  rz 0.864999 2;\n  rz 2.850819 11;\n  rz -3.011789 6;\n  cx 3 10;\n  cp -0.874808 10 3;\n  cx 10 1;\n  cp 1.482077 10 1;\n  cx 0 5;\n  cp 1.279489 0 5;\n  cx 8 2;\n  cp 2.427314 2 8;\n  cx 1 3;\n  cp -2.384059 1 3;\n  cx 4 0;\n  cp 2.774806 4 0;\n  cx 2 6;\n  cp 1.913433 6 2;\n  cx 11 6;\n  cp 1.689806 6 11;\n  cx 7 1;\n  cp 1.979659 7 1;\n  cx 5 11;\n  cp 0.59904 11 5;\n  cx 10 11;\n  cp -0.847145 11 10;\n  cx 9 10;\n  cp -2.669219 9 10;\n  cx 7 4;\n  cp 2.910292 7 4;\n  cx 8 6;\n  cp 1.52304 8 6;\n  x 4;\n  z 3;\n  z 3;\n  x 4;\n  cp -1.52304 8 6;\n  cx 8 6;\n  cp -2.910292 7 4;\n  cx 7 4;\n  cp 2.669219 9 10;\n  cx 9 10;\n  cp 0.847145 11 10;\n  cx 10 11;\n  cp -0.59904 11 5;\n  cx 5 11;\n  cp -1.979659 7 1;\n  cx 7 1;\n  cp -1.689806 6 11;\n  cx 11 6;\n  cp -1.913433 6 2;\n  cx 2 6;\n  cp -2.774806 4 0;\n  cx 4 0;\n  cp 2.384059 1 3;\n  cx 1 3;\n  cp -2.427314 2 8;\n  cx 8 2;\n  cp -1.279489 0 5;\n  cx 0 5;\n  cp -1.482077 10 1;\n  cx 10 1;\n  cp 0.874808 10 3;\n  cx 3 10;\n  rz 3.011789 6;\n  rz -2.850819 11;\n  rz -0.864999 2;\n  rz 1.003272 0;\n  rz -0.675368 3;\n  rz -1.677883 10;\n  rz -0.592689 4;\n  rz -0.348728 7;\n  rz -2.829469 5;\n  rz -1.795046 8;\n  rz -2.948572 9;\n  rz 0.275656 1;\n  cp 2.335933 9 1;\n  cx 9 1;\n  cp -1.484903 0 3;\n  cx 3 0;\n  cp 0.241141 7 4;\n  cx 7 4;\n  cp -1.326516 5 0;\n  cx 5 0;\n  cp 2.959845 5 2;\n  cx 2 5;\n  cp -1.333218 10 11;\n  cx 11 10;\n  cp -0.628655 9 2;\n  cx 9 2;\n  cp 1.523062 5 3;\n  cx 3 5;\n  cp -2.461627 0 6;\n  cx 0 6;\n  cp -1.44004 5 11;\n  cx 5 11;\n  cp 0.340306 8 5;\n  cx 5 8;\n  cp 1.982252 11 3;\n  cx 11 3;\n  cp -2.211105 10 1;\n  cx 10 1;\n  cp -0.125016 6 4;\n  cx 6 4;\n  ry -0.2018 2;\n  ry -1.593653 3;\n  ry -0.502236 0;\n  ry -0.157759 8;\n  ry 0.800948 1;\n  ry -2.230216 9;\n  ry 2.706256 7;\n  ry -0.811159 4;\n  ry 1.395864 10;\n  ry -1.784878 6;\n  ry 2.971442 5;\n  ry -1.456286 11;\n  h 3;\n  h 11;\n  h 1;\n  h 0;\n  h 6;\n  h 9;\n  h 7;\n  h 5;\n  h 4;\n  h 10;\n  h 2;\n  h 8;\n  measure_all;\n}\n",
+      "source_sha256": "5e1cc1a3b29f9bd2b3382e3fc5b24090ae0fef9a0df817ef41c4bec7010ed585",
+      "status": "PASS",
+      "width": 12
+    },
+    {
+      "connected_interaction_graph": true,
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "gate_count": 188,
+      "id": "connected_12q_seed_2026112801",
+      "interaction_edges": 24,
+      "inverse_comparison": {
+        "actual_norm": 0.9999999999999964,
+        "actual_norm_error": 3.552713678800501e-15,
+        "basis_states_compared": 4096,
+        "global_phase_radians": -8.862678617849414e-17,
+        "l1_probability_error": 3.552713678800501e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 1.7763568394002505e-15,
+        "max_probability_error": 3.552713678800501e-15,
+        "overlap_magnitude": 0.9999999999999982,
+        "status": "PASS"
+      },
+      "inverse_reference": {
+        "backend_metadata": {
+          "instruction_count": 188,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "inverse_identity_status": "PASS",
+        "maximum_nonvacuum_amplitude": 2.319302340269762e-16,
+        "seconds": 0.05276869999943301,
+        "state_sha256": "8f35a3221f38fe36a13adab9a64b39f6fa1ba24a57d3e9a4bdc6526378c3618d",
+        "vacuum_probability": 1.0
+      },
+      "inverse_sparse": {
+        "evolution_seconds": 0.10744649998378009,
+        "final_support": 4096,
+        "peak_gate_index": 11,
+        "peak_support": 4096,
+        "state_sha256": "9798b1b0a62b4d3e55323667f8e952ba3e5e11b64330d1c912e233632ed1391c"
+      },
+      "kind": "random-connected",
+      "ordered_gate_sequence_matches": true,
+      "prefix_comparison": {
+        "actual_norm": 0.9999999999999981,
+        "actual_norm_error": 1.887379141862766e-15,
+        "basis_states_compared": 4096,
+        "global_phase_radians": -1.09287578986539e-16,
+        "l1_probability_error": 1.6818456651065912e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 3.469446951953614e-16,
+        "max_probability_error": 1.734723475976807e-16,
+        "overlap_magnitude": 0.9999999999999988,
+        "status": "PASS"
+      },
+      "prefix_entanglement": {
+        "classification": "NONFACTORIZING_ACROSS_TESTED_CUTS",
+        "status": "PASS",
+        "witnesses": {
+          "even_qubits_vs_odd_qubits": {
+            "complement_qubits": [
+              1,
+              3,
+              5,
+              7,
+              9,
+              11
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.9500857703667528,
+            "normalized_state": true,
+            "reduced_state_purity": 0.049914229633247216,
+            "schmidt_rank_at_1e-10": 64,
+            "subset_qubits": [
+              0,
+              2,
+              4,
+              6,
+              8,
+              10
+            ],
+            "von_neumann_entropy_bits": 4.648354355362751
+          },
+          "lower_half_vs_upper_half": {
+            "complement_qubits": [
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.9593033527436823,
+            "normalized_state": true,
+            "reduced_state_purity": 0.040696647256317775,
+            "schmidt_rank_at_1e-10": 64,
+            "subset_qubits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "von_neumann_entropy_bits": 4.856469066009785
+          },
+          "outer_qubits_vs_middle": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.7425069071210175,
+            "normalized_state": true,
+            "reduced_state_purity": 0.2574930928789824,
+            "schmidt_rank_at_1e-10": 4,
+            "subset_qubits": [
+              0,
+              11
+            ],
+            "von_neumann_entropy_bits": 1.9782611333645228
+          },
+          "q0_vs_rest": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.49381583412795127,
+            "normalized_state": true,
+            "reduced_state_purity": 0.5061841658720487,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.991059651536353
+          }
+        }
+      },
+      "prefix_gate_count": 94,
+      "prefix_reference": {
+        "backend_metadata": {
+          "instruction_count": 94,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "seconds": 0.007820800004992634,
+        "state_sha256": "7664a776d0745ae2f1fc692a5b8d2c57f70c634f47360fbfd18a6cf5d2ab2120"
+      },
+      "prefix_sparse": {
+        "evolution_seconds": 0.04712559998733923,
+        "final_support": 4096,
+        "peak_gate_index": 11,
+        "peak_support": 4096,
+        "state_sha256": "45942e51900fe8c9975e362f35bb3ec9932dfc1ed2c361a18e440e9b608a3d47"
+      },
+      "seed": 2026112801,
+      "source": "quantum connected_12q_seed_2026112801 {\n  qubits 12;\n  shots 1;\n  seed 2026112801;\n  h 9;\n  h 6;\n  h 4;\n  h 0;\n  h 3;\n  h 10;\n  h 5;\n  h 7;\n  h 2;\n  h 8;\n  h 1;\n  h 11;\n  ry 0.349806 5;\n  ry -2.929621 11;\n  ry -1.300241 7;\n  ry 0.807539 3;\n  ry -1.814228 8;\n  ry 1.080161 10;\n  ry 2.569263 4;\n  ry 2.060654 2;\n  ry 2.824211 9;\n  ry -0.401585 1;\n  ry -1.112211 6;\n  ry -3.03015 0;\n  cx 3 6;\n  cp 0.62407 6 3;\n  cx 2 3;\n  cp -0.970749 3 2;\n  cx 2 7;\n  cp -1.764021 2 7;\n  cx 4 10;\n  cp -2.769588 10 4;\n  cx 3 5;\n  cp 1.439741 3 5;\n  cx 0 10;\n  cp -2.857848 0 10;\n  cx 11 9;\n  cp 0.432373 9 11;\n  cx 11 4;\n  cp -2.684171 11 4;\n  cx 7 10;\n  cp 2.846618 10 7;\n  cx 1 6;\n  cp 2.562652 6 1;\n  cx 1 4;\n  cp -1.255915 4 1;\n  cx 9 5;\n  cp 0.597618 5 9;\n  cx 10 5;\n  cp 0.626803 10 5;\n  cx 8 6;\n  cp -2.248667 8 6;\n  rz 1.46231 3;\n  rz -0.71686 2;\n  rz -1.58862 4;\n  rz -0.913575 6;\n  rz 2.183134 11;\n  rz 1.632806 1;\n  rz -1.884909 5;\n  rz -2.830488 7;\n  rz 2.111746 10;\n  rz -2.878378 8;\n  rz -0.339828 9;\n  rz 0.458628 0;\n  cx 11 3;\n  cp -2.136094 11 3;\n  cx 4 10;\n  cp 3.075255 4 10;\n  cx 5 1;\n  cp 0.379985 1 5;\n  cx 8 4;\n  cp 0.274773 8 4;\n  cx 6 8;\n  cp -1.988918 6 8;\n  cx 7 6;\n  cp 0.339309 7 6;\n  cx 1 7;\n  cp -1.858282 1 7;\n  cx 0 3;\n  cp 0.298139 3 0;\n  cx 6 9;\n  cp 2.030193 9 6;\n  cx 5 11;\n  cp 1.563182 11 5;\n  cx 5 10;\n  cp 0.23075 10 5;\n  cx 9 11;\n  cp 2.185768 9 11;\n  cx 2 8;\n  cp -2.320033 8 2;\n  cx 9 2;\n  cp 0.536086 9 2;\n  x 3;\n  z 11;\n  z 11;\n  x 3;\n  cp -0.536086 9 2;\n  cx 9 2;\n  cp 2.320033 8 2;\n  cx 2 8;\n  cp -2.185768 9 11;\n  cx 9 11;\n  cp -0.23075 10 5;\n  cx 5 10;\n  cp -1.563182 11 5;\n  cx 5 11;\n  cp -2.030193 9 6;\n  cx 6 9;\n  cp -0.298139 3 0;\n  cx 0 3;\n  cp 1.858282 1 7;\n  cx 1 7;\n  cp -0.339309 7 6;\n  cx 7 6;\n  cp 1.988918 6 8;\n  cx 6 8;\n  cp -0.274773 8 4;\n  cx 8 4;\n  cp -0.379985 1 5;\n  cx 5 1;\n  cp -3.075255 4 10;\n  cx 4 10;\n  cp 2.136094 11 3;\n  cx 11 3;\n  rz -0.458628 0;\n  rz 0.339828 9;\n  rz 2.878378 8;\n  rz -2.111746 10;\n  rz 2.830488 7;\n  rz 1.884909 5;\n  rz -1.632806 1;\n  rz -2.183134 11;\n  rz 0.913575 6;\n  rz 1.58862 4;\n  rz 0.71686 2;\n  rz -1.46231 3;\n  cp 2.248667 8 6;\n  cx 8 6;\n  cp -0.626803 10 5;\n  cx 10 5;\n  cp -0.597618 5 9;\n  cx 9 5;\n  cp 1.255915 4 1;\n  cx 1 4;\n  cp -2.562652 6 1;\n  cx 1 6;\n  cp -2.846618 10 7;\n  cx 7 10;\n  cp 2.684171 11 4;\n  cx 11 4;\n  cp -0.432373 9 11;\n  cx 11 9;\n  cp 2.857848 0 10;\n  cx 0 10;\n  cp -1.439741 3 5;\n  cx 3 5;\n  cp 2.769588 10 4;\n  cx 4 10;\n  cp 1.764021 2 7;\n  cx 2 7;\n  cp 0.970749 3 2;\n  cx 2 3;\n  cp -0.62407 6 3;\n  cx 3 6;\n  ry 3.03015 0;\n  ry 1.112211 6;\n  ry 0.401585 1;\n  ry -2.824211 9;\n  ry -2.060654 2;\n  ry -2.569263 4;\n  ry -1.080161 10;\n  ry 1.814228 8;\n  ry -0.807539 3;\n  ry 1.300241 7;\n  ry 2.929621 11;\n  ry -0.349806 5;\n  h 11;\n  h 1;\n  h 8;\n  h 2;\n  h 7;\n  h 5;\n  h 10;\n  h 3;\n  h 0;\n  h 4;\n  h 6;\n  h 9;\n  measure_all;\n}\n",
+      "source_sha256": "4c21034dc6a2fb891d49c34f5224550f69986632ebe4dcce74874440bdc23a1c",
+      "status": "PASS",
+      "width": 12
+    },
+    {
+      "connected_interaction_graph": true,
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "gate_count": 216,
+      "id": "connected_14q_seed_2026113000",
+      "interaction_edges": 27,
+      "inverse_comparison": {
+        "actual_norm": 0.9999999999999953,
+        "actual_norm_error": 4.6629367034256575e-15,
+        "basis_states_compared": 16384,
+        "global_phase_radians": 5.927754508193752e-17,
+        "l1_probability_error": 4.6629367034256575e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 2.3314683517128287e-15,
+        "max_probability_error": 4.6629367034256575e-15,
+        "overlap_magnitude": 0.9999999999999977,
+        "status": "PASS"
+      },
+      "inverse_reference": {
+        "backend_metadata": {
+          "instruction_count": 216,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "inverse_identity_status": "PASS",
+        "maximum_nonvacuum_amplitude": 4.4199305097757734e-16,
+        "seconds": 0.018036299967207015,
+        "state_sha256": "b04c99d1f6f24ff45dfc6aeb6c03c7f1d517bf3e0cd1168d198802f6d61e93e5",
+        "vacuum_probability": 1.0
+      },
+      "inverse_sparse": {
+        "evolution_seconds": 0.4892645999789238,
+        "final_support": 16384,
+        "peak_gate_index": 13,
+        "peak_support": 16384,
+        "state_sha256": "c32f59a1fa1b0265b78c450e45455a9c030d9762e5a42e2949467d3c28e7360e"
+      },
+      "kind": "random-connected",
+      "ordered_gate_sequence_matches": true,
+      "prefix_comparison": {
+        "actual_norm": 0.9999999999999976,
+        "actual_norm_error": 2.4424906541753444e-15,
+        "basis_states_compared": 16384,
+        "global_phase_radians": -1.2273168592535982e-16,
+        "l1_probability_error": 1.8340829156927326e-14,
+        "max_complex_amplitude_error_global_phase_aligned": 4.733200554074387e-15,
+        "max_probability_error": 4.9404924595819466e-15,
+        "overlap_magnitude": 0.9999999999999943,
+        "status": "PASS"
+      },
+      "prefix_entanglement": {
+        "classification": "NONFACTORIZING_ACROSS_TESTED_CUTS",
+        "status": "PASS",
+        "witnesses": {
+          "even_qubits_vs_odd_qubits": {
+            "complement_qubits": [
+              1,
+              3,
+              5,
+              7,
+              9,
+              11,
+              13
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.7543155789153199,
+            "normalized_state": true,
+            "reduced_state_purity": 0.24568442108468017,
+            "schmidt_rank_at_1e-10": 64,
+            "subset_qubits": [
+              0,
+              2,
+              4,
+              6,
+              8,
+              10,
+              12
+            ],
+            "von_neumann_entropy_bits": 2.5225770528400657
+          },
+          "lower_half_vs_upper_half": {
+            "complement_qubits": [
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.765920716407238,
+            "normalized_state": true,
+            "reduced_state_purity": 0.23407928359276195,
+            "schmidt_rank_at_1e-10": 128,
+            "subset_qubits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "von_neumann_entropy_bits": 2.5917740147422226
+          },
+          "outer_qubits_vs_middle": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.47906644224147976,
+            "normalized_state": true,
+            "reduced_state_purity": 0.5209335577585202,
+            "schmidt_rank_at_1e-10": 4,
+            "subset_qubits": [
+              0,
+              13
+            ],
+            "von_neumann_entropy_bits": 1.1359593114060729
+          },
+          "q0_vs_rest": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.44393066993461705,
+            "normalized_state": true,
+            "reduced_state_purity": 0.556069330065383,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.917525026080467
+          }
+        }
+      },
+      "prefix_gate_count": 108,
+      "prefix_reference": {
+        "backend_metadata": {
+          "instruction_count": 108,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "seconds": 0.008612400037236512,
+        "state_sha256": "82f91a57abfa8b48a600e2934ac782bf6956ede256dca2a7ffbde21e40e24f85"
+      },
+      "prefix_sparse": {
+        "evolution_seconds": 0.22074229997815564,
+        "final_support": 16384,
+        "peak_gate_index": 13,
+        "peak_support": 16384,
+        "state_sha256": "15bbda35d6dff328791cdc5a513acc0fada967abff2166a3c6bdf9b07027c8f9"
+      },
+      "seed": 2026113000,
+      "source": "quantum connected_14q_seed_2026113000 {\n  qubits 14;\n  shots 1;\n  seed 2026113000;\n  h 10;\n  h 3;\n  h 6;\n  h 0;\n  h 8;\n  h 1;\n  h 11;\n  h 12;\n  h 4;\n  h 5;\n  h 9;\n  h 13;\n  h 7;\n  h 2;\n  ry -2.181944 9;\n  ry 2.35877 7;\n  ry 1.553649 4;\n  ry -1.26971 13;\n  ry -1.229253 2;\n  ry 1.730854 12;\n  ry -1.755743 10;\n  ry -1.864879 1;\n  ry -1.956746 8;\n  ry 1.83598 5;\n  ry 1.993825 6;\n  ry -2.774321 0;\n  ry -1.814293 3;\n  ry -2.907877 11;\n  cx 10 1;\n  cp 2.336268 10 1;\n  cx 2 3;\n  cp -2.646224 2 3;\n  cx 2 9;\n  cp 2.242963 2 9;\n  cx 8 0;\n  cp 1.770353 8 0;\n  cx 5 7;\n  cp -1.67242 5 7;\n  cx 12 9;\n  cp 2.621854 9 12;\n  cx 13 1;\n  cp 0.17169 1 13;\n  cx 6 4;\n  cp -0.288363 4 6;\n  cx 7 3;\n  cp -0.455394 3 7;\n  cx 11 12;\n  cp 0.522302 12 11;\n  cx 5 4;\n  cp -2.10667 5 4;\n  cx 9 0;\n  cp -1.14539 9 0;\n  cx 4 11;\n  cp -1.808568 4 11;\n  cx 8 12;\n  cp 1.402865 8 12;\n  cx 8 11;\n  cp 0.268173 8 11;\n  cx 10 5;\n  cp 2.756238 10 5;\n  rz 1.334739 8;\n  rz 3.030255 4;\n  rz 1.53001 1;\n  rz 2.94557 13;\n  rz -0.703195 6;\n  rz 2.716139 5;\n  rz -2.71276 3;\n  rz 0.339728 11;\n  rz 1.380772 10;\n  rz 1.447394 2;\n  rz 2.486221 12;\n  rz -0.134532 0;\n  rz -0.530008 9;\n  rz 0.940745 7;\n  cx 10 12;\n  cp 1.74173 10 12;\n  cx 10 3;\n  cp -1.572305 3 10;\n  cx 9 0;\n  cp 1.390238 9 0;\n  cx 4 0;\n  cp 0.71634 0 4;\n  cx 0 1;\n  cp -2.243199 0 1;\n  cx 8 4;\n  cp -1.827135 8 4;\n  cx 12 2;\n  cp 1.947303 2 12;\n  cx 7 3;\n  cp 1.662566 7 3;\n  cx 2 9;\n  cp -0.224338 9 2;\n  cx 10 1;\n  cp 0.367373 1 10;\n  cx 5 13;\n  cp 1.325682 13 5;\n  cx 11 7;\n  cp 3.032919 7 11;\n  cx 1 13;\n  cp 2.64466 1 13;\n  cx 8 6;\n  cp 2.685905 6 8;\n  cx 5 9;\n  cp -2.843609 5 9;\n  cx 3 6;\n  cp 1.179238 6 3;\n  x 1;\n  z 11;\n  z 11;\n  x 1;\n  cp -1.179238 6 3;\n  cx 3 6;\n  cp 2.843609 5 9;\n  cx 5 9;\n  cp -2.685905 6 8;\n  cx 8 6;\n  cp -2.64466 1 13;\n  cx 1 13;\n  cp -3.032919 7 11;\n  cx 11 7;\n  cp -1.325682 13 5;\n  cx 5 13;\n  cp -0.367373 1 10;\n  cx 10 1;\n  cp 0.224338 9 2;\n  cx 2 9;\n  cp -1.662566 7 3;\n  cx 7 3;\n  cp -1.947303 2 12;\n  cx 12 2;\n  cp 1.827135 8 4;\n  cx 8 4;\n  cp 2.243199 0 1;\n  cx 0 1;\n  cp -0.71634 0 4;\n  cx 4 0;\n  cp -1.390238 9 0;\n  cx 9 0;\n  cp 1.572305 3 10;\n  cx 10 3;\n  cp -1.74173 10 12;\n  cx 10 12;\n  rz -0.940745 7;\n  rz 0.530008 9;\n  rz 0.134532 0;\n  rz -2.486221 12;\n  rz -1.447394 2;\n  rz -1.380772 10;\n  rz -0.339728 11;\n  rz 2.71276 3;\n  rz -2.716139 5;\n  rz 0.703195 6;\n  rz -2.94557 13;\n  rz -1.53001 1;\n  rz -3.030255 4;\n  rz -1.334739 8;\n  cp -2.756238 10 5;\n  cx 10 5;\n  cp -0.268173 8 11;\n  cx 8 11;\n  cp -1.402865 8 12;\n  cx 8 12;\n  cp 1.808568 4 11;\n  cx 4 11;\n  cp 1.14539 9 0;\n  cx 9 0;\n  cp 2.10667 5 4;\n  cx 5 4;\n  cp -0.522302 12 11;\n  cx 11 12;\n  cp 0.455394 3 7;\n  cx 7 3;\n  cp 0.288363 4 6;\n  cx 6 4;\n  cp -0.17169 1 13;\n  cx 13 1;\n  cp -2.621854 9 12;\n  cx 12 9;\n  cp 1.67242 5 7;\n  cx 5 7;\n  cp -1.770353 8 0;\n  cx 8 0;\n  cp -2.242963 2 9;\n  cx 2 9;\n  cp 2.646224 2 3;\n  cx 2 3;\n  cp -2.336268 10 1;\n  cx 10 1;\n  ry 2.907877 11;\n  ry 1.814293 3;\n  ry 2.774321 0;\n  ry -1.993825 6;\n  ry -1.83598 5;\n  ry 1.956746 8;\n  ry 1.864879 1;\n  ry 1.755743 10;\n  ry -1.730854 12;\n  ry 1.229253 2;\n  ry 1.26971 13;\n  ry -1.553649 4;\n  ry -2.35877 7;\n  ry 2.181944 9;\n  h 2;\n  h 7;\n  h 13;\n  h 9;\n  h 5;\n  h 4;\n  h 12;\n  h 11;\n  h 1;\n  h 8;\n  h 0;\n  h 6;\n  h 3;\n  h 10;\n  measure_all;\n}\n",
+      "source_sha256": "a7e2aab3d474338893d6fb6531e985cc3e30f4b7d84c8d97cf517f2a7a292704",
+      "status": "PASS",
+      "width": 14
+    },
+    {
+      "connected_interaction_graph": true,
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "gate_count": 216,
+      "id": "connected_14q_seed_2026113001",
+      "interaction_edges": 30,
+      "inverse_comparison": {
+        "actual_norm": 0.9999999999999958,
+        "actual_norm_error": 4.218847493575595e-15,
+        "basis_states_compared": 16384,
+        "global_phase_radians": 1.6354137987855247e-17,
+        "l1_probability_error": 4.218847493575595e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 2.1094237467877974e-15,
+        "max_probability_error": 4.218847493575595e-15,
+        "overlap_magnitude": 0.9999999999999979,
+        "status": "PASS"
+      },
+      "inverse_reference": {
+        "backend_metadata": {
+          "instruction_count": 216,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "inverse_identity_status": "PASS",
+        "maximum_nonvacuum_amplitude": 1.9664812392610796e-16,
+        "seconds": 0.017831399978604168,
+        "state_sha256": "ddd9dc32db2d3a0ff5362cfefe0e513f5877e6d16234ea879831dbe191a72bb6",
+        "vacuum_probability": 1.0
+      },
+      "inverse_sparse": {
+        "evolution_seconds": 0.48909899999853224,
+        "final_support": 16384,
+        "peak_gate_index": 13,
+        "peak_support": 16384,
+        "state_sha256": "ef79dc3c94a4de024d70d1b44b77831767107d58338c25e7ecca3109d05ae928"
+      },
+      "kind": "random-connected",
+      "ordered_gate_sequence_matches": true,
+      "prefix_comparison": {
+        "actual_norm": 0.9999999999999978,
+        "actual_norm_error": 2.220446049250313e-15,
+        "basis_states_compared": 16384,
+        "global_phase_radians": 7.806255641895633e-18,
+        "l1_probability_error": 1.887751643870634e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 2.532458630424097e-16,
+        "max_probability_error": 8.326672684688674e-17,
+        "overlap_magnitude": 0.9999999999999998,
+        "status": "PASS"
+      },
+      "prefix_entanglement": {
+        "classification": "NONFACTORIZING_ACROSS_TESTED_CUTS",
+        "status": "PASS",
+        "witnesses": {
+          "even_qubits_vs_odd_qubits": {
+            "complement_qubits": [
+              1,
+              3,
+              5,
+              7,
+              9,
+              11,
+              13
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.960888689564265,
+            "normalized_state": true,
+            "reduced_state_purity": 0.03911131043573498,
+            "schmidt_rank_at_1e-10": 128,
+            "subset_qubits": [
+              0,
+              2,
+              4,
+              6,
+              8,
+              10,
+              12
+            ],
+            "von_neumann_entropy_bits": 5.169550108613029
+          },
+          "lower_half_vs_upper_half": {
+            "complement_qubits": [
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.9685704158071565,
+            "normalized_state": true,
+            "reduced_state_purity": 0.031429584192843495,
+            "schmidt_rank_at_1e-10": 128,
+            "subset_qubits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "von_neumann_entropy_bits": 5.5043543932240295
+          },
+          "outer_qubits_vs_middle": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.7118392373073059,
+            "normalized_state": true,
+            "reduced_state_purity": 0.28816076269269403,
+            "schmidt_rank_at_1e-10": 4,
+            "subset_qubits": [
+              0,
+              13
+            ],
+            "von_neumann_entropy_bits": 1.8948201380577798
+          },
+          "q0_vs_rest": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.4932375709150618,
+            "normalized_state": true,
+            "reduced_state_purity": 0.5067624290849382,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.9902217655551936
+          }
+        }
+      },
+      "prefix_gate_count": 108,
+      "prefix_reference": {
+        "backend_metadata": {
+          "instruction_count": 108,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "seconds": 0.008523399999830872,
+        "state_sha256": "e529532c257236bc0bf4736b5de16133deeaadba980cb3680f92551d20f8064f"
+      },
+      "prefix_sparse": {
+        "evolution_seconds": 0.21944379998603836,
+        "final_support": 16384,
+        "peak_gate_index": 13,
+        "peak_support": 16384,
+        "state_sha256": "bae74f620b0a66bff7aafbbf071aa23d378534f4e1197b28d8b8e4115f7ab60a"
+      },
+      "seed": 2026113001,
+      "source": "quantum connected_14q_seed_2026113001 {\n  qubits 14;\n  shots 1;\n  seed 2026113001;\n  h 4;\n  h 7;\n  h 9;\n  h 6;\n  h 0;\n  h 2;\n  h 12;\n  h 11;\n  h 10;\n  h 5;\n  h 3;\n  h 1;\n  h 8;\n  h 13;\n  ry 0.457315 9;\n  ry 1.494732 1;\n  ry 0.743974 4;\n  ry 1.684612 5;\n  ry 0.974054 11;\n  ry -0.762523 6;\n  ry -0.587977 12;\n  ry -2.751901 3;\n  ry -2.132599 13;\n  ry -2.478805 10;\n  ry -2.860714 0;\n  ry -0.261765 8;\n  ry 0.510412 7;\n  ry 2.464421 2;\n  cx 1 13;\n  cp -1.301714 13 1;\n  cx 3 10;\n  cp 2.544062 3 10;\n  cx 8 1;\n  cp -2.682629 8 1;\n  cx 3 7;\n  cp 0.222875 3 7;\n  cx 3 12;\n  cp -1.648995 12 3;\n  cx 5 0;\n  cp 1.973335 0 5;\n  cx 2 10;\n  cp 2.659754 2 10;\n  cx 11 13;\n  cp 1.547956 11 13;\n  cx 6 5;\n  cp -1.370535 5 6;\n  cx 4 6;\n  cp -2.586244 4 6;\n  cx 0 7;\n  cp -1.348575 7 0;\n  cx 8 9;\n  cp -1.646781 9 8;\n  cx 11 12;\n  cp 1.281012 11 12;\n  cx 9 4;\n  cp -2.37952 4 9;\n  cx 2 13;\n  cp 2.007126 2 13;\n  cx 13 5;\n  cp 2.722973 5 13;\n  rz 2.953005 6;\n  rz 0.137371 7;\n  rz 2.271138 0;\n  rz -2.443625 4;\n  rz -2.851719 10;\n  rz -1.003597 3;\n  rz 2.081577 2;\n  rz 0.494112 5;\n  rz 2.228043 9;\n  rz -1.79202 13;\n  rz 1.069171 8;\n  rz -2.403168 1;\n  rz 1.931546 11;\n  rz -2.461242 12;\n  cx 6 9;\n  cp -2.06445 6 9;\n  cx 8 6;\n  cp -0.720878 8 6;\n  cx 5 3;\n  cp -1.576987 5 3;\n  cx 1 4;\n  cp 1.905824 1 4;\n  cx 10 8;\n  cp 0.244644 10 8;\n  cx 10 1;\n  cp 1.161368 1 10;\n  cx 11 10;\n  cp 0.148914 11 10;\n  cx 4 5;\n  cp -1.275061 4 5;\n  cx 12 5;\n  cp 1.028302 5 12;\n  cx 3 13;\n  cp -0.126044 13 3;\n  cx 2 7;\n  cp 0.924217 7 2;\n  cx 2 13;\n  cp -1.675798 13 2;\n  cx 7 0;\n  cp -2.034738 0 7;\n  cx 0 12;\n  cp 3.018212 0 12;\n  cx 8 3;\n  cp 2.15288 8 3;\n  cx 0 6;\n  cp -0.790645 0 6;\n  x 13;\n  z 3;\n  z 3;\n  x 13;\n  cp 0.790645 0 6;\n  cx 0 6;\n  cp -2.15288 8 3;\n  cx 8 3;\n  cp -3.018212 0 12;\n  cx 0 12;\n  cp 2.034738 0 7;\n  cx 7 0;\n  cp 1.675798 13 2;\n  cx 2 13;\n  cp -0.924217 7 2;\n  cx 2 7;\n  cp 0.126044 13 3;\n  cx 3 13;\n  cp -1.028302 5 12;\n  cx 12 5;\n  cp 1.275061 4 5;\n  cx 4 5;\n  cp -0.148914 11 10;\n  cx 11 10;\n  cp -1.161368 1 10;\n  cx 10 1;\n  cp -0.244644 10 8;\n  cx 10 8;\n  cp -1.905824 1 4;\n  cx 1 4;\n  cp 1.576987 5 3;\n  cx 5 3;\n  cp 0.720878 8 6;\n  cx 8 6;\n  cp 2.06445 6 9;\n  cx 6 9;\n  rz 2.461242 12;\n  rz -1.931546 11;\n  rz 2.403168 1;\n  rz -1.069171 8;\n  rz 1.79202 13;\n  rz -2.228043 9;\n  rz -0.494112 5;\n  rz -2.081577 2;\n  rz 1.003597 3;\n  rz 2.851719 10;\n  rz 2.443625 4;\n  rz -2.271138 0;\n  rz -0.137371 7;\n  rz -2.953005 6;\n  cp -2.722973 5 13;\n  cx 13 5;\n  cp -2.007126 2 13;\n  cx 2 13;\n  cp 2.37952 4 9;\n  cx 9 4;\n  cp -1.281012 11 12;\n  cx 11 12;\n  cp 1.646781 9 8;\n  cx 8 9;\n  cp 1.348575 7 0;\n  cx 0 7;\n  cp 2.586244 4 6;\n  cx 4 6;\n  cp 1.370535 5 6;\n  cx 6 5;\n  cp -1.547956 11 13;\n  cx 11 13;\n  cp -2.659754 2 10;\n  cx 2 10;\n  cp -1.973335 0 5;\n  cx 5 0;\n  cp 1.648995 12 3;\n  cx 3 12;\n  cp -0.222875 3 7;\n  cx 3 7;\n  cp 2.682629 8 1;\n  cx 8 1;\n  cp -2.544062 3 10;\n  cx 3 10;\n  cp 1.301714 13 1;\n  cx 1 13;\n  ry -2.464421 2;\n  ry -0.510412 7;\n  ry 0.261765 8;\n  ry 2.860714 0;\n  ry 2.478805 10;\n  ry 2.132599 13;\n  ry 2.751901 3;\n  ry 0.587977 12;\n  ry 0.762523 6;\n  ry -0.974054 11;\n  ry -1.684612 5;\n  ry -0.743974 4;\n  ry -1.494732 1;\n  ry -0.457315 9;\n  h 13;\n  h 8;\n  h 1;\n  h 3;\n  h 5;\n  h 10;\n  h 11;\n  h 12;\n  h 2;\n  h 0;\n  h 6;\n  h 9;\n  h 7;\n  h 4;\n  measure_all;\n}\n",
+      "source_sha256": "f8030fd8bc47dc2b7b08214b87bcfaecc68b29ffa1160f08dbe388ef7af29ab9",
+      "status": "PASS",
+      "width": 14
+    },
+    {
+      "connected_interaction_graph": true,
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "gate_count": 252,
+      "id": "connected_16q_seed_2026113200",
+      "interaction_edges": 34,
+      "inverse_comparison": {
+        "actual_norm": 0.9999999999999962,
+        "actual_norm_error": 3.774758283725532e-15,
+        "basis_states_compared": 65536,
+        "global_phase_radians": -1.4461921551377946e-17,
+        "l1_probability_error": 3.774758283725532e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 1.887379141862766e-15,
+        "max_probability_error": 3.774758283725532e-15,
+        "overlap_magnitude": 0.9999999999999981,
+        "status": "PASS"
+      },
+      "inverse_reference": {
+        "backend_metadata": {
+          "instruction_count": 252,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "inverse_identity_status": "PASS",
+        "maximum_nonvacuum_amplitude": 2.0182640707019554e-16,
+        "seconds": 0.032443400006741285,
+        "state_sha256": "c6a7c0f2f43a0f578a0008c9b21fe69fb2dc87bef34da07a786a430f6df46196",
+        "vacuum_probability": 1.0
+      },
+      "inverse_sparse": {
+        "evolution_seconds": 2.4413266999763437,
+        "final_support": 65536,
+        "peak_gate_index": 15,
+        "peak_support": 65536,
+        "state_sha256": "b3e58485541894dac27198e3f76925afb7afbd290a5b68ded0e06719a3839434"
+      },
+      "kind": "random-connected",
+      "ordered_gate_sequence_matches": true,
+      "prefix_comparison": {
+        "actual_norm": 0.9999999999999981,
+        "actual_norm_error": 1.887379141862766e-15,
+        "basis_states_compared": 65536,
+        "global_phase_radians": -5.447031714567226e-16,
+        "l1_probability_error": 5.1097354659432174e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 6.866350197783356e-16,
+        "max_probability_error": 2.914335439641036e-16,
+        "overlap_magnitude": 0.9999999999999907,
+        "status": "PASS"
+      },
+      "prefix_entanglement": {
+        "classification": "NONFACTORIZING_ACROSS_TESTED_CUTS",
+        "status": "PASS",
+        "witnesses": {
+          "even_qubits_vs_odd_qubits": {
+            "complement_qubits": [
+              1,
+              3,
+              5,
+              7,
+              9,
+              11,
+              13,
+              15
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.9455108694962028,
+            "normalized_state": true,
+            "reduced_state_purity": 0.05448913050379722,
+            "schmidt_rank_at_1e-10": 256,
+            "subset_qubits": [
+              0,
+              2,
+              4,
+              6,
+              8,
+              10,
+              12,
+              14
+            ],
+            "von_neumann_entropy_bits": 4.886802260319943
+          },
+          "lower_half_vs_upper_half": {
+            "complement_qubits": [
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.9758407572692253,
+            "normalized_state": true,
+            "reduced_state_purity": 0.02415924273077469,
+            "schmidt_rank_at_1e-10": 256,
+            "subset_qubits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "von_neumann_entropy_bits": 6.129961561167485
+          },
+          "outer_qubits_vs_middle": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.694494020900561,
+            "normalized_state": true,
+            "reduced_state_purity": 0.305505979099439,
+            "schmidt_rank_at_1e-10": 4,
+            "subset_qubits": [
+              0,
+              15
+            ],
+            "von_neumann_entropy_bits": 1.8333302356155787
+          },
+          "q0_vs_rest": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.499994005023886,
+            "normalized_state": true,
+            "reduced_state_purity": 0.500005994976114,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.9999913510603978
+          }
+        }
+      },
+      "prefix_gate_count": 126,
+      "prefix_reference": {
+        "backend_metadata": {
+          "instruction_count": 126,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "seconds": 0.013592700008302927,
+        "state_sha256": "a437d01dd30e2b7049d7dabdf44fe08940223fe488374c830bcfb209c9740804"
+      },
+      "prefix_sparse": {
+        "evolution_seconds": 1.1063012999948114,
+        "final_support": 65536,
+        "peak_gate_index": 15,
+        "peak_support": 65536,
+        "state_sha256": "df1cc15094cd3ef9986240ee345603619187bdd805ee355bed4fb1c58bfbdf45"
+      },
+      "seed": 2026113200,
+      "source": "quantum connected_16q_seed_2026113200 {\n  qubits 16;\n  shots 1;\n  seed 2026113200;\n  h 5;\n  h 0;\n  h 9;\n  h 1;\n  h 12;\n  h 13;\n  h 11;\n  h 3;\n  h 7;\n  h 10;\n  h 14;\n  h 8;\n  h 2;\n  h 15;\n  h 6;\n  h 4;\n  ry 2.741244 14;\n  ry 0.344351 4;\n  ry -1.363965 11;\n  ry 0.307014 3;\n  ry -2.594259 7;\n  ry 1.052981 1;\n  ry 2.026358 5;\n  ry -2.009544 15;\n  ry -1.595226 8;\n  ry -1.365282 0;\n  ry 0.719743 6;\n  ry 2.774601 12;\n  ry 3.036651 9;\n  ry -1.884888 13;\n  ry -1.899359 10;\n  ry 2.500423 2;\n  cx 8 9;\n  cp -1.169715 8 9;\n  cx 15 0;\n  cp -2.181051 0 15;\n  cx 7 15;\n  cp 0.872094 7 15;\n  cx 14 1;\n  cp -2.44383 1 14;\n  cx 14 10;\n  cp -1.911374 10 14;\n  cx 6 0;\n  cp -1.432797 6 0;\n  cx 7 8;\n  cp 2.51269 7 8;\n  cx 2 12;\n  cp -1.843923 2 12;\n  cx 13 1;\n  cp -0.860874 1 13;\n  cx 12 11;\n  cp -1.789057 12 11;\n  cx 9 13;\n  cp -0.836249 9 13;\n  cx 7 12;\n  cp 0.704914 7 12;\n  cx 7 2;\n  cp -2.004503 2 7;\n  cx 5 13;\n  cp 1.183324 5 13;\n  cx 6 8;\n  cp -1.035458 8 6;\n  cx 7 1;\n  cp 0.685385 7 1;\n  cx 3 5;\n  cp -3.039374 3 5;\n  cx 4 9;\n  cp 2.991638 4 9;\n  cx 11 3;\n  cp 0.684439 11 3;\n  rz -2.010227 12;\n  rz -2.796634 1;\n  rz -1.675412 5;\n  rz -3.037855 10;\n  rz 1.458369 3;\n  rz 1.833603 2;\n  rz 0.326121 6;\n  rz -1.436318 4;\n  rz 0.477088 0;\n  rz 1.603311 7;\n  rz 1.87105 15;\n  rz -2.859859 9;\n  rz -2.582782 14;\n  rz -2.604539 11;\n  rz -0.615446 13;\n  rz 1.399491 8;\n  cx 15 2;\n  cp 1.898236 2 15;\n  cx 10 7;\n  cp 2.549085 10 7;\n  cx 8 12;\n  cp 0.992976 8 12;\n  cx 6 3;\n  cp 1.462655 3 6;\n  cx 15 3;\n  cp 0.80756 15 3;\n  cx 15 13;\n  cp 2.345527 13 15;\n  cx 1 10;\n  cp -2.809084 10 1;\n  cx 14 6;\n  cp 2.73866 6 14;\n  cx 1 9;\n  cp 2.192003 9 1;\n  cx 11 5;\n  cp -1.814891 5 11;\n  cx 10 13;\n  cp -0.164295 13 10;\n  cx 11 3;\n  cp -2.258256 3 11;\n  cx 0 7;\n  cp 1.097567 0 7;\n  cx 6 8;\n  cp -1.587646 6 8;\n  cx 4 14;\n  cp 1.907628 4 14;\n  cx 0 1;\n  cp 1.413856 0 1;\n  cx 2 12;\n  cp 1.885752 2 12;\n  cx 9 0;\n  cp 1.491455 0 9;\n  cx 4 9;\n  cp 1.022762 4 9;\n  x 12;\n  z 0;\n  z 0;\n  x 12;\n  cp -1.022762 4 9;\n  cx 4 9;\n  cp -1.491455 0 9;\n  cx 9 0;\n  cp -1.885752 2 12;\n  cx 2 12;\n  cp -1.413856 0 1;\n  cx 0 1;\n  cp -1.907628 4 14;\n  cx 4 14;\n  cp 1.587646 6 8;\n  cx 6 8;\n  cp -1.097567 0 7;\n  cx 0 7;\n  cp 2.258256 3 11;\n  cx 11 3;\n  cp 0.164295 13 10;\n  cx 10 13;\n  cp 1.814891 5 11;\n  cx 11 5;\n  cp -2.192003 9 1;\n  cx 1 9;\n  cp -2.73866 6 14;\n  cx 14 6;\n  cp 2.809084 10 1;\n  cx 1 10;\n  cp -2.345527 13 15;\n  cx 15 13;\n  cp -0.80756 15 3;\n  cx 15 3;\n  cp -1.462655 3 6;\n  cx 6 3;\n  cp -0.992976 8 12;\n  cx 8 12;\n  cp -2.549085 10 7;\n  cx 10 7;\n  cp -1.898236 2 15;\n  cx 15 2;\n  rz -1.399491 8;\n  rz 0.615446 13;\n  rz 2.604539 11;\n  rz 2.582782 14;\n  rz 2.859859 9;\n  rz -1.87105 15;\n  rz -1.603311 7;\n  rz -0.477088 0;\n  rz 1.436318 4;\n  rz -0.326121 6;\n  rz -1.833603 2;\n  rz -1.458369 3;\n  rz 3.037855 10;\n  rz 1.675412 5;\n  rz 2.796634 1;\n  rz 2.010227 12;\n  cp -0.684439 11 3;\n  cx 11 3;\n  cp -2.991638 4 9;\n  cx 4 9;\n  cp 3.039374 3 5;\n  cx 3 5;\n  cp -0.685385 7 1;\n  cx 7 1;\n  cp 1.035458 8 6;\n  cx 6 8;\n  cp -1.183324 5 13;\n  cx 5 13;\n  cp 2.004503 2 7;\n  cx 7 2;\n  cp -0.704914 7 12;\n  cx 7 12;\n  cp 0.836249 9 13;\n  cx 9 13;\n  cp 1.789057 12 11;\n  cx 12 11;\n  cp 0.860874 1 13;\n  cx 13 1;\n  cp 1.843923 2 12;\n  cx 2 12;\n  cp -2.51269 7 8;\n  cx 7 8;\n  cp 1.432797 6 0;\n  cx 6 0;\n  cp 1.911374 10 14;\n  cx 14 10;\n  cp 2.44383 1 14;\n  cx 14 1;\n  cp -0.872094 7 15;\n  cx 7 15;\n  cp 2.181051 0 15;\n  cx 15 0;\n  cp 1.169715 8 9;\n  cx 8 9;\n  ry -2.500423 2;\n  ry 1.899359 10;\n  ry 1.884888 13;\n  ry -3.036651 9;\n  ry -2.774601 12;\n  ry -0.719743 6;\n  ry 1.365282 0;\n  ry 1.595226 8;\n  ry 2.009544 15;\n  ry -2.026358 5;\n  ry -1.052981 1;\n  ry 2.594259 7;\n  ry -0.307014 3;\n  ry 1.363965 11;\n  ry -0.344351 4;\n  ry -2.741244 14;\n  h 4;\n  h 6;\n  h 15;\n  h 2;\n  h 8;\n  h 14;\n  h 10;\n  h 7;\n  h 3;\n  h 11;\n  h 13;\n  h 12;\n  h 1;\n  h 9;\n  h 0;\n  h 5;\n  measure_all;\n}\n",
+      "source_sha256": "ee4ac1e62d05e56e3a622700488d58c0310a81cebb0eec26441c3414d39da3f9",
+      "status": "PASS",
+      "width": 16
+    },
+    {
+      "connected_interaction_graph": true,
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "gate_count": 252,
+      "id": "connected_16q_seed_2026113201",
+      "interaction_edges": 38,
+      "inverse_comparison": {
+        "actual_norm": 0.9999999999999938,
+        "actual_norm_error": 6.217248937900877e-15,
+        "basis_states_compared": 65536,
+        "global_phase_radians": 5.493393786196208e-17,
+        "l1_probability_error": 6.217248937900877e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 3.1086244689504383e-15,
+        "max_probability_error": 6.217248937900877e-15,
+        "overlap_magnitude": 0.9999999999999969,
+        "status": "PASS"
+      },
+      "inverse_reference": {
+        "backend_metadata": {
+          "instruction_count": 252,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "inverse_identity_status": "PASS",
+        "maximum_nonvacuum_amplitude": 1.5688874845594754e-16,
+        "seconds": 0.03337070002453402,
+        "state_sha256": "f864031a12bca4cdc5893c5d88f2bb895126bc5d9082a9351d9c7160d15f5bbd",
+        "vacuum_probability": 1.0
+      },
+      "inverse_sparse": {
+        "evolution_seconds": 2.5245057999854907,
+        "final_support": 65536,
+        "peak_gate_index": 15,
+        "peak_support": 65536,
+        "state_sha256": "ce3b7db3c047d685a7b5f794ebfc095bb52088e75ee83f5f4ce0143cb2762af9"
+      },
+      "kind": "random-connected",
+      "ordered_gate_sequence_matches": true,
+      "prefix_comparison": {
+        "actual_norm": 0.9999999999999968,
+        "actual_norm_error": 3.219646771412954e-15,
+        "basis_states_compared": 65536,
+        "global_phase_radians": 5.29090660172928e-17,
+        "l1_probability_error": 5.161764469849477e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 5.525032997054197e-16,
+        "max_probability_error": 1.700029006457271e-16,
+        "overlap_magnitude": 0.9999999999999964,
+        "status": "PASS"
+      },
+      "prefix_entanglement": {
+        "classification": "NONFACTORIZING_ACROSS_TESTED_CUTS",
+        "status": "PASS",
+        "witnesses": {
+          "even_qubits_vs_odd_qubits": {
+            "complement_qubits": [
+              1,
+              3,
+              5,
+              7,
+              9,
+              11,
+              13,
+              15
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.9813298531657514,
+            "normalized_state": true,
+            "reduced_state_purity": 0.01867014683424864,
+            "schmidt_rank_at_1e-10": 256,
+            "subset_qubits": [
+              0,
+              2,
+              4,
+              6,
+              8,
+              10,
+              12,
+              14
+            ],
+            "von_neumann_entropy_bits": 6.438956411151843
+          },
+          "lower_half_vs_upper_half": {
+            "complement_qubits": [
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.9812969820936521,
+            "normalized_state": true,
+            "reduced_state_purity": 0.018703017906347853,
+            "schmidt_rank_at_1e-10": 256,
+            "subset_qubits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "von_neumann_entropy_bits": 6.281401911351127
+          },
+          "outer_qubits_vs_middle": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.7491583333665562,
+            "normalized_state": true,
+            "reduced_state_purity": 0.25084166663344376,
+            "schmidt_rank_at_1e-10": 4,
+            "subset_qubits": [
+              0,
+              15
+            ],
+            "von_neumann_entropy_bits": 1.9975845588666066
+          },
+          "q0_vs_rest": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.4999722712101884,
+            "normalized_state": true,
+            "reduced_state_purity": 0.5000277287898116,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.9999599954426845
+          }
+        }
+      },
+      "prefix_gate_count": 126,
+      "prefix_reference": {
+        "backend_metadata": {
+          "instruction_count": 126,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "seconds": 0.013032899994868785,
+        "state_sha256": "4f26c8bba6cc893f3c3b7d5c62a521bda31b405971ca5baed3192634a4539846"
+      },
+      "prefix_sparse": {
+        "evolution_seconds": 1.075149499985855,
+        "final_support": 65536,
+        "peak_gate_index": 15,
+        "peak_support": 65536,
+        "state_sha256": "ee621fe8713d018bf79ef1aef6ae0e952726c4d91ff16dffc1adf694b1049067"
+      },
+      "seed": 2026113201,
+      "source": "quantum connected_16q_seed_2026113201 {\n  qubits 16;\n  shots 1;\n  seed 2026113201;\n  h 3;\n  h 12;\n  h 10;\n  h 9;\n  h 13;\n  h 4;\n  h 2;\n  h 15;\n  h 7;\n  h 0;\n  h 11;\n  h 1;\n  h 6;\n  h 14;\n  h 5;\n  h 8;\n  ry -0.944148 12;\n  ry 2.254681 2;\n  ry 2.622029 5;\n  ry 0.862914 14;\n  ry 0.931725 7;\n  ry -0.693689 10;\n  ry -1.430755 15;\n  ry -2.030781 0;\n  ry -1.866118 3;\n  ry 3.016205 9;\n  ry -2.972229 8;\n  ry 3.00182 6;\n  ry 1.616462 11;\n  ry -1.079421 1;\n  ry 2.680949 13;\n  ry 0.30644 4;\n  cx 12 9;\n  cp 3.013256 9 12;\n  cx 11 1;\n  cp -2.875509 11 1;\n  cx 0 8;\n  cp -2.605918 8 0;\n  cx 6 12;\n  cp 1.979914 12 6;\n  cx 4 2;\n  cp 2.759993 4 2;\n  cx 15 6;\n  cp 0.27148 6 15;\n  cx 5 10;\n  cp -1.091737 10 5;\n  cx 4 6;\n  cp -2.21262 6 4;\n  cx 4 7;\n  cp -2.382271 7 4;\n  cx 2 14;\n  cp -2.91404 2 14;\n  cx 3 7;\n  cp 1.050789 7 3;\n  cx 0 2;\n  cp 2.945673 2 0;\n  cx 1 4;\n  cp -1.540919 4 1;\n  cx 1 5;\n  cp 2.386896 1 5;\n  cx 13 8;\n  cp 3.060651 8 13;\n  cx 0 11;\n  cp 0.842864 11 0;\n  cx 9 10;\n  cp 3.030655 9 10;\n  cx 15 14;\n  cp 1.987791 14 15;\n  cx 13 15;\n  cp -1.843182 15 13;\n  rz -0.276292 4;\n  rz -0.335867 1;\n  rz -3.050284 7;\n  rz 2.008741 2;\n  rz 2.310214 8;\n  rz 0.957758 14;\n  rz 3.089526 13;\n  rz 1.898871 3;\n  rz 1.4988 12;\n  rz 1.358197 9;\n  rz 2.120491 5;\n  rz 0.143194 0;\n  rz -2.66368 10;\n  rz 2.115776 11;\n  rz -1.697718 6;\n  rz 2.796075 15;\n  cx 12 15;\n  cp -2.960574 15 12;\n  cx 10 1;\n  cp -2.733332 1 10;\n  cx 15 4;\n  cp 0.510768 4 15;\n  cx 14 9;\n  cp -2.372625 14 9;\n  cx 9 4;\n  cp -2.488287 4 9;\n  cx 11 2;\n  cp -0.624017 11 2;\n  cx 7 13;\n  cp 0.993718 7 13;\n  cx 6 0;\n  cp 2.05929 6 0;\n  cx 9 0;\n  cp -2.048232 9 0;\n  cx 6 11;\n  cp -2.529205 6 11;\n  cx 2 1;\n  cp -0.490536 2 1;\n  cx 13 1;\n  cp -2.809513 13 1;\n  cx 8 12;\n  cp -2.488464 12 8;\n  cx 3 5;\n  cp -1.891533 3 5;\n  cx 2 3;\n  cp -1.439344 3 2;\n  cx 3 13;\n  cp -1.506681 13 3;\n  cx 5 8;\n  cp -3.099693 5 8;\n  cx 14 7;\n  cp -2.735891 7 14;\n  cx 2 6;\n  cp -1.223959 6 2;\n  x 9;\n  z 2;\n  z 2;\n  x 9;\n  cp 1.223959 6 2;\n  cx 2 6;\n  cp 2.735891 7 14;\n  cx 14 7;\n  cp 3.099693 5 8;\n  cx 5 8;\n  cp 1.506681 13 3;\n  cx 3 13;\n  cp 1.439344 3 2;\n  cx 2 3;\n  cp 1.891533 3 5;\n  cx 3 5;\n  cp 2.488464 12 8;\n  cx 8 12;\n  cp 2.809513 13 1;\n  cx 13 1;\n  cp 0.490536 2 1;\n  cx 2 1;\n  cp 2.529205 6 11;\n  cx 6 11;\n  cp 2.048232 9 0;\n  cx 9 0;\n  cp -2.05929 6 0;\n  cx 6 0;\n  cp -0.993718 7 13;\n  cx 7 13;\n  cp 0.624017 11 2;\n  cx 11 2;\n  cp 2.488287 4 9;\n  cx 9 4;\n  cp 2.372625 14 9;\n  cx 14 9;\n  cp -0.510768 4 15;\n  cx 15 4;\n  cp 2.733332 1 10;\n  cx 10 1;\n  cp 2.960574 15 12;\n  cx 12 15;\n  rz -2.796075 15;\n  rz 1.697718 6;\n  rz -2.115776 11;\n  rz 2.66368 10;\n  rz -0.143194 0;\n  rz -2.120491 5;\n  rz -1.358197 9;\n  rz -1.4988 12;\n  rz -1.898871 3;\n  rz -3.089526 13;\n  rz -0.957758 14;\n  rz -2.310214 8;\n  rz -2.008741 2;\n  rz 3.050284 7;\n  rz 0.335867 1;\n  rz 0.276292 4;\n  cp 1.843182 15 13;\n  cx 13 15;\n  cp -1.987791 14 15;\n  cx 15 14;\n  cp -3.030655 9 10;\n  cx 9 10;\n  cp -0.842864 11 0;\n  cx 0 11;\n  cp -3.060651 8 13;\n  cx 13 8;\n  cp -2.386896 1 5;\n  cx 1 5;\n  cp 1.540919 4 1;\n  cx 1 4;\n  cp -2.945673 2 0;\n  cx 0 2;\n  cp -1.050789 7 3;\n  cx 3 7;\n  cp 2.91404 2 14;\n  cx 2 14;\n  cp 2.382271 7 4;\n  cx 4 7;\n  cp 2.21262 6 4;\n  cx 4 6;\n  cp 1.091737 10 5;\n  cx 5 10;\n  cp -0.27148 6 15;\n  cx 15 6;\n  cp -2.759993 4 2;\n  cx 4 2;\n  cp -1.979914 12 6;\n  cx 6 12;\n  cp 2.605918 8 0;\n  cx 0 8;\n  cp 2.875509 11 1;\n  cx 11 1;\n  cp -3.013256 9 12;\n  cx 12 9;\n  ry -0.30644 4;\n  ry -2.680949 13;\n  ry 1.079421 1;\n  ry -1.616462 11;\n  ry -3.00182 6;\n  ry 2.972229 8;\n  ry -3.016205 9;\n  ry 1.866118 3;\n  ry 2.030781 0;\n  ry 1.430755 15;\n  ry 0.693689 10;\n  ry -0.931725 7;\n  ry -0.862914 14;\n  ry -2.622029 5;\n  ry -2.254681 2;\n  ry 0.944148 12;\n  h 8;\n  h 5;\n  h 14;\n  h 6;\n  h 1;\n  h 11;\n  h 0;\n  h 7;\n  h 15;\n  h 2;\n  h 4;\n  h 13;\n  h 9;\n  h 10;\n  h 12;\n  h 3;\n  measure_all;\n}\n",
+      "source_sha256": "c71969bd5cc370ed33a6a2c1f11e3f7131efea3218fb0d4a4b2d46905adcb966",
+      "status": "PASS",
+      "width": 16
+    },
+    {
+      "connected_interaction_graph": true,
+      "entanglement_expectation": "record-without-required-classification",
+      "gate_count": 40,
+      "id": "adversarial_connected_cancellation_8q",
+      "interaction_edges": 7,
+      "inverse_comparison": {
+        "actual_norm": 0.999999999999998,
+        "actual_norm_error": 1.9984014443252818e-15,
+        "basis_states_compared": 256,
+        "global_phase_radians": -8.65510838472568e-20,
+        "l1_probability_error": 1.9984014443252818e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 9.992007221626409e-16,
+        "max_probability_error": 1.9984014443252818e-15,
+        "overlap_magnitude": 0.999999999999999,
+        "status": "PASS"
+      },
+      "inverse_reference": {
+        "backend_metadata": {
+          "instruction_count": 40,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "inverse_identity_status": "PASS",
+        "maximum_nonvacuum_amplitude": 8.655108384728145e-20,
+        "seconds": 0.00288609997369349,
+        "state_sha256": "940fbb42423884ca73cbe913b63cfb32d3b41fa9bbc699b7ea95000a33cb7425",
+        "vacuum_probability": 1.0
+      },
+      "inverse_sparse": {
+        "evolution_seconds": 0.00010060000931844115,
+        "final_support": 4,
+        "peak_gate_index": 13,
+        "peak_support": 8,
+        "state_sha256": "0db308ff3b5d40eb460855f151f50a5d91be4b7ba417959492323845d3db6561"
+      },
+      "kind": "adversarial-cancellation-and-angle-boundaries",
+      "ordered_gate_sequence_matches": true,
+      "prefix_comparison": {
+        "actual_norm": 0.9999999999999989,
+        "actual_norm_error": 1.1102230246251565e-15,
+        "basis_states_compared": 256,
+        "global_phase_radians": -2.450159109133179e-16,
+        "l1_probability_error": 1.1102230246251565e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 3.885780803067925e-16,
+        "max_probability_error": 3.885780586188048e-16,
+        "overlap_magnitude": 0.9999999999999994,
+        "status": "PASS"
+      },
+      "prefix_entanglement": {
+        "classification": "MEASURED_NO_REQUIRED_CLASSIFICATION",
+        "status": "PASS",
+        "witnesses": {
+          "even_qubits_vs_odd_qubits": {
+            "complement_qubits": [
+              1,
+              3,
+              5,
+              7
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.4999999999999998,
+            "normalized_state": true,
+            "reduced_state_purity": 0.5000000000000002,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0,
+              2,
+              4,
+              6
+            ],
+            "von_neumann_entropy_bits": 0.9999999999999999
+          },
+          "lower_half_vs_upper_half": {
+            "complement_qubits": [
+              4,
+              5,
+              6,
+              7
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.4999999999999998,
+            "normalized_state": true,
+            "reduced_state_purity": 0.5000000000000002,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "von_neumann_entropy_bits": 0.9999999999999999
+          },
+          "outer_qubits_vs_middle": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.5,
+            "normalized_state": true,
+            "reduced_state_purity": 0.5,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0,
+              7
+            ],
+            "von_neumann_entropy_bits": 1.0
+          },
+          "q0_vs_rest": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "entangled_across_cut": false,
+            "linear_entropy": 0.0,
+            "normalized_state": true,
+            "reduced_state_purity": 1.0,
+            "schmidt_rank_at_1e-10": 1,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 3.13582942881926e-32
+          }
+        }
+      },
+      "prefix_gate_count": 20,
+      "prefix_reference": {
+        "backend_metadata": {
+          "instruction_count": 20,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "seconds": 0.002066299959551543,
+        "state_sha256": "d03e12f9f4f648123f50d790cbd186c75278f366400925a54183023a85ad5eb4"
+      },
+      "prefix_sparse": {
+        "evolution_seconds": 6.579997716471553e-05,
+        "final_support": 4,
+        "peak_gate_index": 13,
+        "peak_support": 8,
+        "state_sha256": "574a5224559c33d04167859671cafd95d875baf475873c9e96308ceb3b19cd76"
+      },
+      "seed": 2026111691,
+      "source": "quantum adversarial_connected_cancellation_8q {\n  qubits 8;\n  shots 1;\n  seed 2026111691;\n  h 0;\n  h 1;\n  cx 0 1;\n  cx 1 2;\n  cx 2 3;\n  cx 3 4;\n  cx 4 5;\n  cx 5 6;\n  cx 6 7;\n  cp 0.8125 0 7;\n  cp -0.8125 0 7;\n  cx 3 4;\n  cx 3 4;\n  rx 1.125 2;\n  rx -1.125 2;\n  ry 12.566370614359172 0;\n  rz -12.566370614359172 7;\n  cp 12.566370614359172 1 6;\n  h 1;\n  h 1;\n  h 1;\n  h 1;\n  cp -12.566370614359172 1 6;\n  rz 12.566370614359172 7;\n  ry -12.566370614359172 0;\n  rx 1.125 2;\n  rx -1.125 2;\n  cx 3 4;\n  cx 3 4;\n  cp 0.8125 0 7;\n  cp -0.8125 0 7;\n  cx 6 7;\n  cx 5 6;\n  cx 4 5;\n  cx 3 4;\n  cx 2 3;\n  cx 1 2;\n  cx 0 1;\n  h 1;\n  h 0;\n  measure_all;\n}\n",
+      "source_sha256": "b2eff4bd68b79a159794379ee848ba765211f66a44212d3f161be1e2490ec22e",
+      "status": "PASS",
+      "width": 8
+    },
+    {
+      "connected_interaction_graph": true,
+      "entanglement_expectation": "nonfactorizing-across-tested-cuts",
+      "gate_count": 24,
+      "id": "adversarial_connected_sparse_ghz_8q",
+      "interaction_edges": 7,
+      "inverse_comparison": {
+        "actual_norm": 0.9999999999999996,
+        "actual_norm_error": 4.440892098500626e-16,
+        "basis_states_compared": 256,
+        "global_phase_radians": -1.0189945458188409e-16,
+        "l1_probability_error": 4.440892098500626e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 2.220446049250313e-16,
+        "max_probability_error": 4.440892098500626e-16,
+        "overlap_magnitude": 0.9999999999999998,
+        "status": "PASS"
+      },
+      "inverse_reference": {
+        "backend_metadata": {
+          "instruction_count": 24,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "inverse_identity_status": "PASS",
+        "maximum_nonvacuum_amplitude": 8.755986951079002e-17,
+        "seconds": 0.001807799970265478,
+        "state_sha256": "de4b714737935ada18ceaa4a8011713ed56071ee97f1877a35faa9e733080eef",
+        "vacuum_probability": 1.0
+      },
+      "inverse_sparse": {
+        "evolution_seconds": 5.420000525191426e-05,
+        "final_support": 4,
+        "peak_gate_index": 11,
+        "peak_support": 4,
+        "state_sha256": "1287f6b73d28593f3275791715dafc758311e11b97f0ff33253588a112262501"
+      },
+      "kind": "adversarial-connected-low-support",
+      "ordered_gate_sequence_matches": true,
+      "prefix_comparison": {
+        "actual_norm": 0.9999999999999999,
+        "actual_norm_error": 1.1102230246251565e-16,
+        "basis_states_compared": 256,
+        "global_phase_radians": -8.835202616064597e-17,
+        "l1_probability_error": 3.469446951953614e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 1.3877787807814457e-16,
+        "max_probability_error": 1.6653345369377348e-16,
+        "overlap_magnitude": 1.0,
+        "status": "PASS"
+      },
+      "prefix_entanglement": {
+        "classification": "NONFACTORIZING_ACROSS_TESTED_CUTS",
+        "status": "PASS",
+        "witnesses": {
+          "even_qubits_vs_odd_qubits": {
+            "complement_qubits": [
+              1,
+              3,
+              5,
+              7
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.4999999999999998,
+            "normalized_state": true,
+            "reduced_state_purity": 0.5000000000000002,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0,
+              2,
+              4,
+              6
+            ],
+            "von_neumann_entropy_bits": 0.9999999999999999
+          },
+          "lower_half_vs_upper_half": {
+            "complement_qubits": [
+              4,
+              5,
+              6,
+              7
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.49999999999999967,
+            "normalized_state": true,
+            "reduced_state_purity": 0.5000000000000003,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "von_neumann_entropy_bits": 0.9999999999999999
+          },
+          "outer_qubits_vs_middle": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.4999999999999998,
+            "normalized_state": true,
+            "reduced_state_purity": 0.5000000000000002,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0,
+              7
+            ],
+            "von_neumann_entropy_bits": 0.9999999999999999
+          },
+          "q0_vs_rest": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.4999999999999998,
+            "normalized_state": true,
+            "reduced_state_purity": 0.5000000000000002,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.9999999999999999
+          }
+        }
+      },
+      "prefix_gate_count": 12,
+      "prefix_reference": {
+        "backend_metadata": {
+          "instruction_count": 12,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "seconds": 0.0013227000017650425,
+        "state_sha256": "b247f7602ab556254dc4b1237282ec29a602222ddc3d7553ea3fcd15774db7d4"
+      },
+      "prefix_sparse": {
+        "evolution_seconds": 3.549997927621007e-05,
+        "final_support": 4,
+        "peak_gate_index": 11,
+        "peak_support": 4,
+        "state_sha256": "db17bbe9a9d4e9e17c4c072d13ec840c89b23102ae0eb6b3884b3234e63857ac"
+      },
+      "seed": 2026111692,
+      "source": "quantum adversarial_connected_sparse_ghz_8q {\n  qubits 8;\n  shots 1;\n  seed 2026111692;\n  h 0;\n  cx 0 1;\n  cx 1 2;\n  cx 2 3;\n  cx 3 4;\n  cx 4 5;\n  cx 5 6;\n  cx 6 7;\n  cp 0.73 0 7;\n  cp -1.1875 2 5;\n  rz 0.625 4;\n  rx 0.875 3;\n  rx -0.875 3;\n  rz -0.625 4;\n  cp 1.1875 2 5;\n  cp -0.73 0 7;\n  cx 6 7;\n  cx 5 6;\n  cx 4 5;\n  cx 3 4;\n  cx 2 3;\n  cx 1 2;\n  cx 0 1;\n  h 0;\n  measure_all;\n}\n",
+      "source_sha256": "6dbeed3d2f9d45d9c267e43ca353b9834c025639a490d48ef5a6570646815234",
+      "status": "PASS",
+      "width": 8
+    },
+    {
+      "connected_interaction_graph": true,
+      "entanglement_expectation": "record-without-required-classification",
+      "gate_count": 256,
+      "id": "adversarial_gate_budget_256_2q",
+      "interaction_edges": 1,
+      "inverse_comparison": {
+        "actual_norm": 0.9999999999999996,
+        "actual_norm_error": 4.440892098500626e-16,
+        "basis_states_compared": 4,
+        "global_phase_radians": -2.693395471185877e-18,
+        "l1_probability_error": 4.44089209850063e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 5.302941149499963e-16,
+        "max_probability_error": 4.440892098500626e-16,
+        "overlap_magnitude": 0.9999999999999998,
+        "status": "PASS"
+      },
+      "inverse_reference": {
+        "backend_metadata": {
+          "instruction_count": 256,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "inverse_identity_status": "PASS",
+        "maximum_nonvacuum_amplitude": 5.091257520448775e-16,
+        "seconds": 0.012752000009641051,
+        "state_sha256": "f8f7292339b1bfb664e1a3594b9aaba91b1a43319c4494389b093afe659bb942",
+        "vacuum_probability": 1.0
+      },
+      "inverse_sparse": {
+        "evolution_seconds": 0.0005005000275559723,
+        "final_support": 4,
+        "peak_gate_index": 2,
+        "peak_support": 4,
+        "state_sha256": "ee11bdf59b8b9e8273dd9dd33e37417b1ea1ee32f8124f71461a756034188e42"
+      },
+      "kind": "adversarial-maximum-gate-budget",
+      "ordered_gate_sequence_matches": true,
+      "prefix_comparison": {
+        "actual_norm": 1.0000000000000004,
+        "actual_norm_error": 4.440892098500626e-16,
+        "basis_states_compared": 4,
+        "global_phase_radians": -1.6306400674181984e-16,
+        "l1_probability_error": 3.0531133177191805e-16,
+        "max_complex_amplitude_error_global_phase_aligned": 5.721958498152797e-16,
+        "max_probability_error": 2.636779683484747e-16,
+        "overlap_magnitude": 1.0000000000000002,
+        "status": "PASS"
+      },
+      "prefix_entanglement": {
+        "classification": "MEASURED_NO_REQUIRED_CLASSIFICATION",
+        "status": "PASS",
+        "witnesses": {
+          "even_qubits_vs_odd_qubits": {
+            "complement_qubits": [
+              1
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.1881615559881138,
+            "normalized_state": true,
+            "reduced_state_purity": 0.8118384440118862,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.4850616121690091
+          },
+          "lower_half_vs_upper_half": {
+            "complement_qubits": [
+              1
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.1881615559881138,
+            "normalized_state": true,
+            "reduced_state_purity": 0.8118384440118862,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.4850616121690091
+          },
+          "q0_vs_rest": {
+            "complement_qubits": [
+              1
+            ],
+            "entangled_across_cut": true,
+            "linear_entropy": 0.1881615559881138,
+            "normalized_state": true,
+            "reduced_state_purity": 0.8118384440118862,
+            "schmidt_rank_at_1e-10": 2,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 0.4850616121690091
+          }
+        }
+      },
+      "prefix_gate_count": 128,
+      "prefix_reference": {
+        "backend_metadata": {
+          "instruction_count": 128,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "seconds": 0.006792599975597113,
+        "state_sha256": "992cb7744cbe375c174fc31e5dc5b3494ffecb522d99dadf4cf56ef8083b70de"
+      },
+      "prefix_sparse": {
+        "evolution_seconds": 0.0002630999661050737,
+        "final_support": 4,
+        "peak_gate_index": 2,
+        "peak_support": 4,
+        "state_sha256": "0cf32000334e752310ef6e45b066150fd44de4c83d3f61807221d7c00658c7eb"
+      },
+      "seed": 2026111693,
+      "source": "quantum adversarial_gate_budget_256_2q {\n  qubits 2;\n  shots 1;\n  seed 2026111693;\n  h 0;\n  cx 0 1;\n  rx 1.957855 0;\n  cp 1.707319 0 1;\n  cx 0 1;\n  ry -1.644972 1;\n  cp -2.56132 0 1;\n  z 1;\n  rz 0.248218 0;\n  cp -2.96667 0 1;\n  z 0;\n  rx 0.653113 1;\n  cp 1.90963 0 1;\n  cx 0 1;\n  ry 2.293456 0;\n  cp -1.259376 0 1;\n  z 0;\n  rz 0.926174 1;\n  cp 2.625357 0 1;\n  z 1;\n  rx 0.17668 0;\n  cp 1.712268 0 1;\n  cx 0 1;\n  ry -1.42541 1;\n  cp 0.258017 0 1;\n  z 1;\n  rz -0.939019 0;\n  cp 2.751073 0 1;\n  z 0;\n  rx -1.950832 1;\n  cp 2.924921 0 1;\n  cx 0 1;\n  ry 2.640725 0;\n  cp -1.283671 0 1;\n  z 0;\n  rz 2.565611 1;\n  cp 2.745373 0 1;\n  z 1;\n  rx 0.383842 0;\n  cp 2.980716 0 1;\n  cx 0 1;\n  ry -1.414743 1;\n  cp 1.742137 0 1;\n  z 1;\n  rz -0.65641 0;\n  cp 1.747285 0 1;\n  z 0;\n  rx -0.401722 1;\n  cp -1.10523 0 1;\n  cx 0 1;\n  ry 0.477923 0;\n  cp -2.666567 0 1;\n  z 0;\n  rz -2.635887 1;\n  cp -1.689275 0 1;\n  z 1;\n  rx -1.368448 0;\n  cp -2.364748 0 1;\n  cx 0 1;\n  ry -2.165352 1;\n  cp 1.165332 0 1;\n  z 1;\n  rz -1.440865 0;\n  cp 0.357766 0 1;\n  z 0;\n  rx 1.16501 1;\n  cp 2.365752 0 1;\n  cx 0 1;\n  ry 1.14095 0;\n  cp -2.026351 0 1;\n  z 0;\n  rz 1.181519 1;\n  cp 1.948786 0 1;\n  z 1;\n  rx -2.765429 0;\n  cp -2.093915 0 1;\n  cx 0 1;\n  ry -2.931468 1;\n  cp 0.442192 0 1;\n  z 1;\n  rz 1.33203 0;\n  cp 1.240439 0 1;\n  z 0;\n  rx -0.764221 1;\n  cp -0.463985 0 1;\n  cx 0 1;\n  ry 1.619494 0;\n  cp 0.488634 0 1;\n  z 0;\n  rz 1.474426 1;\n  cp 1.710076 0 1;\n  z 1;\n  rx 1.515453 0;\n  cp -2.039193 0 1;\n  cx 0 1;\n  ry -0.562435 1;\n  cp 1.711137 0 1;\n  z 1;\n  rz 2.921249 0;\n  cp -0.22133 0 1;\n  z 0;\n  rx -2.640598 1;\n  cp -1.234019 0 1;\n  cx 0 1;\n  ry -2.24582 0;\n  cp -2.021232 0 1;\n  z 0;\n  rz 0.38971 1;\n  cp -2.282116 0 1;\n  z 1;\n  rx 1.109731 0;\n  cp -1.16803 0 1;\n  cx 0 1;\n  ry 1.855108 1;\n  cp 1.075607 0 1;\n  z 1;\n  rz -1.358022 0;\n  cp -0.19201 0 1;\n  z 0;\n  rx -2.115326 1;\n  cp 2.777291 0 1;\n  cx 0 1;\n  ry -1.585579 0;\n  cp -0.360457 0 1;\n  z 0;\n  rz -0.517603 1;\n  cp 1.246511 0 1;\n  z 1;\n  z 1;\n  cp -1.246511 0 1;\n  rz 0.517603 1;\n  z 0;\n  cp 0.360457 0 1;\n  ry 1.585579 0;\n  cx 0 1;\n  cp -2.777291 0 1;\n  rx 2.115326 1;\n  z 0;\n  cp 0.19201 0 1;\n  rz 1.358022 0;\n  z 1;\n  cp -1.075607 0 1;\n  ry -1.855108 1;\n  cx 0 1;\n  cp 1.16803 0 1;\n  rx -1.109731 0;\n  z 1;\n  cp 2.282116 0 1;\n  rz -0.38971 1;\n  z 0;\n  cp 2.021232 0 1;\n  ry 2.24582 0;\n  cx 0 1;\n  cp 1.234019 0 1;\n  rx 2.640598 1;\n  z 0;\n  cp 0.22133 0 1;\n  rz -2.921249 0;\n  z 1;\n  cp -1.711137 0 1;\n  ry 0.562435 1;\n  cx 0 1;\n  cp 2.039193 0 1;\n  rx -1.515453 0;\n  z 1;\n  cp -1.710076 0 1;\n  rz -1.474426 1;\n  z 0;\n  cp -0.488634 0 1;\n  ry -1.619494 0;\n  cx 0 1;\n  cp 0.463985 0 1;\n  rx 0.764221 1;\n  z 0;\n  cp -1.240439 0 1;\n  rz -1.33203 0;\n  z 1;\n  cp -0.442192 0 1;\n  ry 2.931468 1;\n  cx 0 1;\n  cp 2.093915 0 1;\n  rx 2.765429 0;\n  z 1;\n  cp -1.948786 0 1;\n  rz -1.181519 1;\n  z 0;\n  cp 2.026351 0 1;\n  ry -1.14095 0;\n  cx 0 1;\n  cp -2.365752 0 1;\n  rx -1.16501 1;\n  z 0;\n  cp -0.357766 0 1;\n  rz 1.440865 0;\n  z 1;\n  cp -1.165332 0 1;\n  ry 2.165352 1;\n  cx 0 1;\n  cp 2.364748 0 1;\n  rx 1.368448 0;\n  z 1;\n  cp 1.689275 0 1;\n  rz 2.635887 1;\n  z 0;\n  cp 2.666567 0 1;\n  ry -0.477923 0;\n  cx 0 1;\n  cp 1.10523 0 1;\n  rx 0.401722 1;\n  z 0;\n  cp -1.747285 0 1;\n  rz 0.65641 0;\n  z 1;\n  cp -1.742137 0 1;\n  ry 1.414743 1;\n  cx 0 1;\n  cp -2.980716 0 1;\n  rx -0.383842 0;\n  z 1;\n  cp -2.745373 0 1;\n  rz -2.565611 1;\n  z 0;\n  cp 1.283671 0 1;\n  ry -2.640725 0;\n  cx 0 1;\n  cp -2.924921 0 1;\n  rx 1.950832 1;\n  z 0;\n  cp -2.751073 0 1;\n  rz 0.939019 0;\n  z 1;\n  cp -0.258017 0 1;\n  ry 1.42541 1;\n  cx 0 1;\n  cp -1.712268 0 1;\n  rx -0.17668 0;\n  z 1;\n  cp -2.625357 0 1;\n  rz -0.926174 1;\n  z 0;\n  cp 1.259376 0 1;\n  ry -2.293456 0;\n  cx 0 1;\n  cp -1.90963 0 1;\n  rx -0.653113 1;\n  z 0;\n  cp 2.96667 0 1;\n  rz -0.248218 0;\n  z 1;\n  cp 2.56132 0 1;\n  ry 1.644972 1;\n  cx 0 1;\n  cp -1.707319 0 1;\n  rx -1.957855 0;\n  cx 0 1;\n  h 0;\n  measure_all;\n}\n",
+      "source_sha256": "f0bf2d41ee27ff77a44dc223be10ee94555085b43121251f90d8ec6d3a48a12a",
+      "status": "PASS",
+      "width": 2
+    },
+    {
+      "connected_interaction_graph": true,
+      "entanglement_expectation": "separable-product-control",
+      "gate_count": 54,
+      "id": "adversarial_connected_but_separable_6q",
+      "interaction_edges": 5,
+      "inverse_comparison": {
+        "actual_norm": 0.9999999999999978,
+        "actual_norm_error": 2.220446049250313e-15,
+        "basis_states_compared": 64,
+        "global_phase_radians": -1.2560313312964372e-17,
+        "l1_probability_error": 2.220446049250313e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 1.1102230246251565e-15,
+        "max_probability_error": 2.220446049250313e-15,
+        "overlap_magnitude": 0.9999999999999989,
+        "status": "PASS"
+      },
+      "inverse_reference": {
+        "backend_metadata": {
+          "instruction_count": 54,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "inverse_identity_status": "PASS",
+        "maximum_nonvacuum_amplitude": 8.330736706674182e-17,
+        "seconds": 0.0033239999902434647,
+        "state_sha256": "d08a8a4f238eef7c065e02eeec9e97e32c815d2ddb52fc93d773f98ce3678195",
+        "vacuum_probability": 1.0
+      },
+      "inverse_sparse": {
+        "evolution_seconds": 0.0004876000457443297,
+        "final_support": 63,
+        "peak_gate_index": 5,
+        "peak_support": 64,
+        "state_sha256": "0aa71f3bd145210d5a42651e125485b0cab62940471dbfcc569733d285b337ff"
+      },
+      "kind": "adversarial-connected-but-separable",
+      "ordered_gate_sequence_matches": true,
+      "prefix_comparison": {
+        "actual_norm": 0.9999999999999989,
+        "actual_norm_error": 1.1102230246251565e-15,
+        "basis_states_compared": 64,
+        "global_phase_radians": -6.071532165918829e-18,
+        "l1_probability_error": 1.0304257447302234e-15,
+        "max_complex_amplitude_error_global_phase_aligned": 9.934984129320279e-17,
+        "max_probability_error": 2.7755575615628914e-17,
+        "overlap_magnitude": 0.9999999999999993,
+        "status": "PASS"
+      },
+      "prefix_entanglement": {
+        "classification": "SEPARABLE_ACROSS_TESTED_CUTS",
+        "status": "PASS",
+        "witnesses": {
+          "even_qubits_vs_odd_qubits": {
+            "complement_qubits": [
+              1,
+              3,
+              5
+            ],
+            "entangled_across_cut": false,
+            "linear_entropy": 1.3322676295501878e-15,
+            "normalized_state": true,
+            "reduced_state_purity": 0.9999999999999987,
+            "schmidt_rank_at_1e-10": 1,
+            "subset_qubits": [
+              0,
+              2,
+              4
+            ],
+            "von_neumann_entropy_bits": 9.610279511444776e-16
+          },
+          "lower_half_vs_upper_half": {
+            "complement_qubits": [
+              3,
+              4,
+              5
+            ],
+            "entangled_across_cut": false,
+            "linear_entropy": 1.3322676295501878e-15,
+            "normalized_state": true,
+            "reduced_state_purity": 0.9999999999999987,
+            "schmidt_rank_at_1e-10": 1,
+            "subset_qubits": [
+              0,
+              1,
+              2
+            ],
+            "von_neumann_entropy_bits": 9.61027951144476e-16
+          },
+          "outer_qubits_vs_middle": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "entangled_across_cut": false,
+            "linear_entropy": 0.0,
+            "normalized_state": true,
+            "reduced_state_purity": 1.0000000000000009,
+            "schmidt_rank_at_1e-10": 1,
+            "subset_qubits": [
+              0,
+              5
+            ],
+            "von_neumann_entropy_bits": -6.406853007629768e-16
+          },
+          "q0_vs_rest": {
+            "complement_qubits": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "entangled_across_cut": false,
+            "linear_entropy": 4.440892098500626e-16,
+            "normalized_state": true,
+            "reduced_state_purity": 0.9999999999999996,
+            "schmidt_rank_at_1e-10": 1,
+            "subset_qubits": [
+              0
+            ],
+            "von_neumann_entropy_bits": 3.203426503814988e-16
+          }
+        }
+      },
+      "prefix_gate_count": 27,
+      "prefix_reference": {
+        "backend_metadata": {
+          "instruction_count": 27,
+          "instruction_order_and_qubits_match": true,
+          "qubit_order": "q0 is least-significant basis-index bit"
+        },
+        "seconds": 0.001992099976632744,
+        "state_sha256": "63f231709a3915940802a96ccf941b1ebd82ce6fcafb2e7a59a58a1e25cd4787"
+      },
+      "prefix_sparse": {
+        "evolution_seconds": 0.00021580001339316368,
+        "final_support": 64,
+        "peak_gate_index": 5,
+        "peak_support": 64,
+        "state_sha256": "bf66e70d9b66f339760ac3ab6792c1d23082b6242bf95a46baf058ea15fafcce"
+      },
+      "seed": 2026111694,
+      "source": "quantum adversarial_connected_but_separable_6q {\n  qubits 6;\n  shots 1;\n  seed 2026111694;\n  h 0;\n  h 1;\n  h 2;\n  h 3;\n  h 4;\n  h 5;\n  cx 0 1;\n  cx 0 1;\n  cx 1 2;\n  cx 1 2;\n  cx 2 3;\n  cx 2 3;\n  cx 3 4;\n  cx 3 4;\n  cx 4 5;\n  cx 4 5;\n  cp 0.0 0 1;\n  cp 0.0 1 2;\n  cp 0.0 2 3;\n  cp 0.0 3 4;\n  cp 0.0 4 5;\n  rz 0.0625 0;\n  rz 0.125 1;\n  rz 0.1875 2;\n  rz 0.25 3;\n  rz 0.3125 4;\n  rz 0.375 5;\n  rz -0.375 5;\n  rz -0.3125 4;\n  rz -0.25 3;\n  rz -0.1875 2;\n  rz -0.125 1;\n  rz -0.0625 0;\n  cp -0.0 4 5;\n  cp -0.0 3 4;\n  cp -0.0 2 3;\n  cp -0.0 1 2;\n  cp -0.0 0 1;\n  cx 4 5;\n  cx 4 5;\n  cx 3 4;\n  cx 3 4;\n  cx 2 3;\n  cx 2 3;\n  cx 1 2;\n  cx 1 2;\n  cx 0 1;\n  cx 0 1;\n  h 5;\n  h 4;\n  h 3;\n  h 2;\n  h 1;\n  h 0;\n  measure_all;\n}\n",
+      "source_sha256": "28721339f27f2677d6cbd283a08f1fbd6b7631acdb79d2a69a6278efa4d78bc5",
+      "status": "PASS",
+      "width": 6
+    }
+  ],
+  "code_sha256": {
+    "benchmarks/sb_quantum_benchmark/frontier30.py": "26d4d258ca87cc78e449879744478d714f162aa0cf5f474692d31cd18040cb52",
+    "benchmarks/sb_quantum_benchmark/quantum_frontend.py": "1e373410a5494c5c257dd4916494d964d75758f1432997ebd704c07c07fcaf93",
+    "benchmarks/sb_quantum_benchmark/sparse_backend.py": "f655de6f68d392cc72af1d87430466d8c5ee7dff4861755bd2bbdea7756ec42b",
+    "tools/run_connected_quantum_validation.py": "a00c37fc0a32c2192b064d51d3b225eb9bf0988e2d0743197cc05630dda14c92",
+    "validation/connected_quantum/corpus.py": "9c32eddafb59566e51d76953421b272d27592711f5a428d827a33d579a0a1e5f"
+  },
+  "corpus_cases": 24,
+  "corpus_sha256": "bd23f5a6bcf12cf45ea1a64f1a641c9bb55af7ca59657ee7cc9d037d1d77e310",
+  "failed_cases": [],
+  "host": {
+    "architecture": "ARM64",
+    "cpu_count": 8,
+    "platform": "Windows-11-10.0.26300-SP0",
+    "processor": "ARMv8 (64-bit) Family 8 Model 1 Revision 201, Qualcomm Technologies Inc",
+    "system": "Windows"
+  },
+  "memory_budget_bytes": 67108864,
+  "numpy_version": "2.5.4",
+  "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:31:18) [MSC v.1943 64 bit (ARM64)]",
+  "randomized_connected_cases": 20,
+  "receipt_sha256": "77cbe0e49a383b6fc7ebed02eb3ca39dab3ec3ca8f2180bc9c8fa9f5661e710a",
+  "reference_library_version": "1.7.0",
+  "schema": 1,
+  "state_archive": {
+    "file": "cirq-connected-entanglement-final.states.npz",
+    "sha256": "36a266d103442c93d51007ec8e67ef2dd844d68ac62bd3b08c45215b6786ffdb",
+    "vectors": 48
+  },
+  "status": "PASS",
+  "support_cap": 65536,
+  "timeout_seconds_per_evolution": 60.0,
+  "tolerances": {
+    "normalization": 1e-10,
+    "phase_aligned_amplitude_max": 1e-10,
+    "probability_l1": 1e-09,
+    "probability_max": 1e-10
+  },
+  "widths": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16
+  ]
+}

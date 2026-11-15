@@ -1,4 +1,5 @@
 * text=auto eol=lf
+evidence/connected-circuit-frontier/** -text whitespace=cr-at-eol
 sharkbyte_alpha/cli.py -text whitespace=cr-at-eol
 sharkbyte_alpha/hybrid.py -text whitespace=cr-at-eol
 sharkbyte_alpha/quantum.py -text whitespace=cr-at-eol

@@ -4,7 +4,7 @@
 
 SharkByte is an experimental programming language and CPU simulation toolchain. Write and run `.sb` programs in a local browser workspace or from the terminal, inspect the results, and save JSON receipts with the exact source.
 
-[Start Studio](#sharkbyte-studio) · [Try error correction](#five-qubit-phase-flip-recovery) · [See the 16-million-state results](#scaling-to-16777216-active-states) · [Cite SharkByte](#cite-sharkbyte)
+[Start Studio](#sharkbyte-studio) · [Try error correction](#five-qubit-phase-flip-recovery) · [See the 16-million-state results](#scaling-to-16777216-active-states) · [See connected-circuit verification](#connected-circuit-verification) · [Cite SharkByte](#cite-sharkbyte)
 
 | What to try | Where it runs | What you can reproduce |
 | --- | --- | --- |
@@ -135,6 +135,21 @@ Colab compared 3,196 amplitudes in the seeded suite with a maximum error of
 error was `7.40e-19`. SharkByte evolution took 36.025 s and the amplitude comparison
 took 8.901 s. The Colab receipts are tied to source revision `bfad672`.
 [Colab receipts and SHA-256 index](evidence/colab-bfad672/)
+
+### Connected-circuit verification
+
+The earlier 120-circuit reference suite and 16,777,216-state disconnected
+benchmark are described above. New isolated-branch work adds 24 connected
+circuits compared with independent Qiskit and Cirq statevectors through 16
+qubits, plus exact sparse/analytic connected GHZ checks at 20, 24, 30, and 40
+qubits. A connected-but-separable control confirms that a connected gate graph
+alone does not prove entanglement. The 20–40-qubit checks use a closed-form GHZ
+oracle; they are not dense general-circuit simulations.
+
+The new suite, compiler edge-case fix, exact commands, limits, performance
+measurements, source hashes, and receipts are documented in the
+[connected-circuit audit](docs/connected-circuit-frontier.md). The packaged
+receipts and state vectors are indexed by its [SHA-256 manifest](evidence/connected-circuit-frontier/MANIFEST.json).
 
 ## Terminal quickstart
 

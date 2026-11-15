@@ -25,6 +25,9 @@ MAX_OPERAND_STACK = 65536
 MAX_ARRAY_LENGTH = 65536
 MAX_HEAP_ELEMENTS = 65536
 MAX_ARRAYS = 4096
+MAX_SOURCE_BYTES = 65536
+MAX_PARSE_NESTING = 128
+MAX_EXPRESSION_CHAIN = 128
 
 OPS = {
     "PUSH": 1, "LOAD": 2, "STORE": 3,
@@ -93,6 +96,15 @@ PATTERN = re.compile(
 )
 
 def tokenize(src):
+    if not isinstance(src, str):
+        raise SharkError("Source must be text")
+    try:
+        source_bytes = len(src.encode("utf-8"))
+    except UnicodeEncodeError as exc:
+        raise SharkError("Source contains invalid Unicode") from exc
+    if source_bytes > MAX_SOURCE_BYTES:
+        raise SharkError(f"Source exceeds {MAX_SOURCE_BYTES} UTF-8 bytes")
+
     out = []
     pos = 0
     while pos < len(src):
@@ -103,6 +115,31 @@ def tokenize(src):
         if not s.isspace() and not s.startswith("//"):
             out.append(s)
         pos = m.end()
+
+    # Both parser variants use recursion for nested expressions and blocks.
+    # Reject excessive nesting before Python's process-wide recursion limit can
+    # escape as an unhandled RecursionError. Repeated unary minus is recursive
+    # too, even though it has no surrounding delimiter.
+    nesting = 0
+    minus_chain = 0
+    opening = {"(", "{", "["}
+    closing = {")": "(", "}": "{", "]": "["}
+    stack = []
+    for token in out:
+        if token in opening:
+            stack.append(token)
+            nesting = max(nesting, len(stack))
+            if nesting > MAX_PARSE_NESTING:
+                raise SharkError(f"Parse nesting limit exceeded ({MAX_PARSE_NESTING})")
+        elif token in closing:
+            if stack and stack[-1] == closing[token]:
+                stack.pop()
+        if token == "-":
+            minus_chain += 1
+            if minus_chain > MAX_PARSE_NESTING:
+                raise SharkError(f"Parse nesting limit exceeded ({MAX_PARSE_NESTING})")
+        else:
+            minus_chain = 0
     return out + ["<EOF>"]
 
 class Parser:
@@ -155,14 +192,22 @@ class Parser:
 
     def term(self):
         x = self.factor()
+        operators = 0
         while self.peek() in ("*", "/", "%"):
+            operators += 1
+            if operators > MAX_EXPRESSION_CHAIN:
+                raise SharkError(f"Expression chain limit exceeded ({MAX_EXPRESSION_CHAIN})")
             op = self.eat()
             x = ("bin", op, x, self.factor())
         return x
 
     def expr(self):
         x = self.term()
+        operators = 0
         while self.peek() in ("+", "-"):
+            operators += 1
+            if operators > MAX_EXPRESSION_CHAIN:
+                raise SharkError(f"Expression chain limit exceeded ({MAX_EXPRESSION_CHAIN})")
             op = self.eat()
             x = ("bin", op, x, self.term())
         return x
@@ -490,13 +535,21 @@ class V05Parser:
 
     def term(self, scopes):
         node = self.factor(scopes)
+        operators = 0
         while self.peek() in ("*", "/", "%"):
+            operators += 1
+            if operators > MAX_EXPRESSION_CHAIN:
+                raise SharkError(f"Expression chain limit exceeded ({MAX_EXPRESSION_CHAIN})")
             op = self.eat(); node = ("bin", op, node, self.factor(scopes))
         return node
 
     def expr(self, scopes):
         node = self.term(scopes)
+        operators = 0
         while self.peek() in ("+", "-"):
+            operators += 1
+            if operators > MAX_EXPRESSION_CHAIN:
+                raise SharkError(f"Expression chain limit exceeded ({MAX_EXPRESSION_CHAIN})")
             op = self.eat(); node = ("bin", op, node, self.term(scopes))
         return node
 

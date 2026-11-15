@@ -7,6 +7,44 @@ on:
   workflow_dispatch:
 
 jobs:
+  connected-statevector-reference:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ["3.12"]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python ${{ matrix.python }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Install pinned independent references
+        run: |
+          python -m pip install -r requirements-independent-quantum.txt cirq-core==1.7.0
+          python -m pip check
+
+      - name: Compare connected circuits with Qiskit and Cirq
+        run: |
+          python -B tools/run_connected_quantum_validation.py --backend qiskit --output connected-reference-results/qiskit.json --support-cap 65536 --memory-budget-mib 64 --timeout-seconds 60
+          python -B tools/run_connected_quantum_validation.py --backend cirq --output connected-reference-results/cirq.json --support-cap 65536 --memory-budget-mib 64 --timeout-seconds 60
+          python -B tools/compare_connected_quantum_receipts.py connected-reference-results/qiskit.json connected-reference-results/cirq.json --output connected-reference-results/qiskit-cirq-comparison.json
+
+      - name: Upload connected-circuit receipts and statevectors
+        uses: actions/upload-artifact@v4
+        with:
+          name: connected-statevector-${{ matrix.os }}-python-${{ matrix.python }}
+          path: connected-reference-results/
+          if-no-files-found: error
+
   test:
     strategy:
       fail-fast: false
