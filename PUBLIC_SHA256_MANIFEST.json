@@ -1,5 +1,5 @@
 {
-  "file_count": 154,
+  "file_count": 155,
   "files": [
     {
       "path": ".gitattributes",
@@ -103,8 +103,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "e8ccbc42fa7183024fe142b0f1fdf16e71fc4c3d08dc491352cb75710689e222",
-      "size_bytes": 11514
+      "sha256": "1d8ec7f736ef68b50a3012f339b9efc53470524d5189ccc18c4e5b4e5763f2e9",
+      "size_bytes": 11756
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
@@ -542,6 +542,11 @@
       "size_bytes": 14
     },
     {
+      "path": "examples/ghz_phase_30.sb",
+      "sha256": "284ec09cb8acc39467e492963ff888eea66a38c691168a2effd760b558c6394e",
+      "size_bytes": 981
+    },
+    {
       "path": "examples/inverse_basis_37.sbq",
       "sha256": "52bb889645626ec100b8e63552755d2c5fb84ecf61eb75fe392460dec2851722",
       "size_bytes": 1222
@@ -708,13 +713,13 @@
     },
     {
       "path": "sharkbyte_studio.html",
-      "sha256": "f95294ff16cf995c7efd443774397768fa581275e634dd3ff59cbce65f901859",
-      "size_bytes": 6804
+      "sha256": "dc2e8051db09b50e19ead4e59402f1e24e0697123d57f07f92e29cfe7f50636b",
+      "size_bytes": 6872
     },
     {
       "path": "sharkbyte_studio.py",
-      "sha256": "e3f28328381b9a211112c4810c7ecec7c6a2cb05b498936700694cd93abb1108",
-      "size_bytes": 4863
+      "sha256": "a67efffcde2ae8e9ef0d599859c50f0a643946f6d04271d723a44a3f2c10790a",
+      "size_bytes": 5741
     },
     {
       "path": "sharkbyte_terminal.py",

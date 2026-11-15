@@ -16,7 +16,8 @@ from sharkbyte_alpha.cli import MAX_SOURCE_BYTES
 
 
 ROOT = Path(__file__).resolve().parent
-EXAMPLES = {"classical": "example.sb", "quantum": "bell.sb", "hybrid": "adaptive.sb"}
+EXAMPLES = {"classical": "example.sb", "quantum": "bell.sb", "hybrid": "adaptive.sb",
+            "frontier": "ghz_phase_30.sb"}
 
 
 class Studio(BaseHTTPRequestHandler):
@@ -57,10 +58,12 @@ class Studio(BaseHTTPRequestHandler):
                 raise ValueError("Expected a bounded JSON request.")
             request = json.loads(self.rfile.read(size))
             if not isinstance(request, dict) or request.get("mode") not in EXAMPLES:
-                raise ValueError("Select Classical, Quantum or Hybrid.")
+                raise ValueError("Select a supported Studio mode.")
             source = request.get("source")
             if not isinstance(source, str) or len(source.encode()) > MAX_SOURCE_BYTES:
                 raise ValueError("Source must be UTF-8 text up to 65,536 bytes.")
+            if source.lstrip().startswith("hybrid ") and request["mode"] != "hybrid":
+                raise ValueError("Select Bounded Hybrid for a hybrid block. Frontier30 accepts a quantum block with fixed numeric angles.")
         except (ValueError, TypeError) as exc:
             return self.reply(400, {"execution_id": execution_id, "error": str(exc)})
 
@@ -69,9 +72,15 @@ class Studio(BaseHTTPRequestHandler):
             with tempfile.TemporaryDirectory(prefix="sharkbyte-studio-") as folder:
                 path = Path(folder) / "program.sb"
                 path.write_bytes(source.encode())
+                if request["mode"] == "frontier":
+                    command = ["-c", "import json,sys; from pathlib import Path; "
+                               "from sharkbyte_experiment import run_experiment; "
+                               "print(json.dumps(run_experiment(Path(sys.argv[1]).read_bytes().decode('utf-8'), 'frontier')))", str(path)]
+                else:
+                    command = ["-m", "sharkbyte_alpha", "run", str(path),
+                               "--mode", request["mode"], "--backend", "vm"]
                 completed = subprocess.run(
-                    [sys.executable, "-B", "-m", "sharkbyte_alpha", "run", str(path),
-                     "--mode", request["mode"], "--backend", "vm"],
+                    [sys.executable, "-B", *command],
                     cwd=ROOT, capture_output=True, encoding="utf-8", errors="replace", timeout=30,
                 )
         except (subprocess.TimeoutExpired, OSError) as exc:
@@ -81,6 +90,8 @@ class Studio(BaseHTTPRequestHandler):
             return self.reply(422, {"execution_id": execution_id,
                                     "error": completed.stderr.strip() or f"Worker exited with code {completed.returncode}."})
         record = json.loads(completed.stdout)
+        if record["mode"] == "frontier" and record["result"]["result"] != "PASS":
+            return self.reply(422, {"execution_id": execution_id, "error": record["result"]["reason"]})
         bytecode = record.get("bytecode_hex")
         self.reply(200, {"execution_id": execution_id,
                          "worker_wall_seconds": time.perf_counter() - started,

@@ -72,7 +72,9 @@ python3 -B sharkbyte_studio.py --no-browser
 
 Open [http://127.0.0.1:8120/](http://127.0.0.1:8120/) if the browser does not open automatically. Keep the terminal running while using Studio. Press Ctrl+C to stop it. If port 8120 is in use, pass `--port 8121` and use the URL printed in the terminal.
 
-Choose Classical, Quantum or Bounded Hybrid, then select **Load example** or paste your own SharkByte source. Select **Run** to inspect the output, execution metrics, bytecode when emitted, and the exact source snapshot. **Save receipt** downloads the SharkByte JSON record for local inspection or verification with `python -m sharkbyte_alpha verify-run FILE.json`.
+Choose Classical, Quantum, Bounded Hybrid or Frontier30 (sparse), then select **Load example** or paste your own SharkByte source. Select **Run** to inspect the output, execution metrics, bytecode when emitted, and the exact source snapshot. **Save receipt** downloads the SharkByte JSON record for local inspection or verification with `python -m sharkbyte_alpha verify-run FILE.json`.
+
+Bounded Hybrid accepts 2–6 qubits. Frontier30 runs fixed quantum blocks with a 4,096-state support cap and reports probabilities. Load its 30-qubit GHZ phase example to see a circuit whose support stays at two states.
 
 Studio listens on loopback and runs the public SharkVM and CPU simulation modes. Its worker timing includes process startup. The Linux ARM64 three-backend workflow is documented separately in the [backend agreement benchmark](benchmarks/backend_agreement/README.md).
 
