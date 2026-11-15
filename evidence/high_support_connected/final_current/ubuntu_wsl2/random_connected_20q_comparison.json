@@ -1,0 +1,253 @@
+{
+  "case": "random_connected",
+  "checks": {
+    "all_amplitudes_match_qiskit": true,
+    "all_backends_produce_dense_support": true,
+    "all_backends_returned_full_vector": true,
+    "all_backends_used_same_gate_sequence": true,
+    "all_backends_used_same_source_bytes": true,
+    "all_checks_pass": true,
+    "all_norms_within_tolerance": true,
+    "all_probabilities_match_qiskit": true,
+    "cirq_schmidt_rank_exceeds_one": true,
+    "interaction_graph_connected": true,
+    "qiskit_schmidt_rank_exceeds_one": true,
+    "reference_spectra_match_analytic_oracle": true
+  },
+  "qubits": 20,
+  "results": {
+    "backend_measurements": {
+      "cirq": {
+        "active_amplitudes_exact_nonzero": 1048576,
+        "backend_run_details": [
+          {
+            "circuit_build_seconds": 0.001749299990478903,
+            "cirq_core_version": "1.7.0",
+            "instruction_count": 116,
+            "qubit_order": "reversed; q0 is LSB",
+            "statevector_evolution_seconds": 0.12750139995478094
+          },
+          {
+            "circuit_build_seconds": 0.001077399996574968,
+            "cirq_core_version": "1.7.0",
+            "instruction_count": 116,
+            "qubit_order": "reversed; q0 is LSB",
+            "statevector_evolution_seconds": 0.12698409997392446
+          },
+          {
+            "circuit_build_seconds": 0.0010712000075727701,
+            "cirq_core_version": "1.7.0",
+            "instruction_count": 116,
+            "qubit_order": "reversed; q0 is LSB",
+            "statevector_evolution_seconds": 0.1277970999944955
+          }
+        ],
+        "median_elapsed_seconds": 0.13140710000880063,
+        "norm": 1.0000000000000082,
+        "peak_rss_bytes_process_lifetime": 304758784,
+        "state_vector_sha256": "fcb33d77f549e5ed8c1c38eb8df72f4bf28933c8cb86faabd28b5c318066a760"
+      },
+      "dense": {
+        "active_amplitudes_exact_nonzero": 1048576,
+        "backend_run_details": [
+          {
+            "evolution_seconds": 0.26055838400134235,
+            "representation": "complex128 dense NumPy array"
+          },
+          {
+            "evolution_seconds": 0.2528948830004083,
+            "representation": "complex128 dense NumPy array"
+          },
+          {
+            "evolution_seconds": 0.27372629399906145,
+            "representation": "complex128 dense NumPy array"
+          }
+        ],
+        "median_elapsed_seconds": 0.2739800939998531,
+        "norm": 1.000000000000003,
+        "peak_rss_bytes_process_lifetime": 133865472,
+        "state_vector_sha256": "43ad3e1c556d626b6984788d9e329cea1598e7f13e98c61f3cb629d06a5f9323"
+      },
+      "qiskit": {
+        "active_amplitudes_exact_nonzero": 1048576,
+        "backend_run_details": [
+          {
+            "circuit_build_seconds": 0.00044069999785278924,
+            "instruction_count": 116,
+            "qiskit_aer_used": false,
+            "qiskit_version": "2.6.2",
+            "statevector_evolution_seconds": 0.735336035999353
+          },
+          {
+            "circuit_build_seconds": 0.00034779999987222254,
+            "instruction_count": 116,
+            "qiskit_aer_used": false,
+            "qiskit_version": "2.6.2",
+            "statevector_evolution_seconds": 0.5604516800012789
+          },
+          {
+            "circuit_build_seconds": 0.0003282999969087541,
+            "instruction_count": 116,
+            "qiskit_aer_used": false,
+            "qiskit_version": "2.6.2",
+            "statevector_evolution_seconds": 0.6888951220025774
+          }
+        ],
+        "median_elapsed_seconds": 0.6957111240008089,
+        "norm": 1.000000000000003,
+        "peak_rss_bytes_process_lifetime": 191569920,
+        "state_vector_sha256": "444f49dbd3528091b208795a47603e78b2f950aa49131a0c9ced4b90237adf4f"
+      },
+      "sparse": {
+        "active_amplitudes_exact_nonzero": 1048576,
+        "backend_run_details": [
+          {
+            "configured_estimated_memory_bytes": 536870912,
+            "dense_materialization_seconds": 0.07382112499908544,
+            "evolution_seconds": 10.919851335998828,
+            "peak_gate_index": 19,
+            "peak_support": 1048576,
+            "sparse_dictionary_entries": 1048576
+          },
+          {
+            "configured_estimated_memory_bytes": 536870912,
+            "dense_materialization_seconds": 0.07391202500002692,
+            "evolution_seconds": 11.026221385000099,
+            "peak_gate_index": 19,
+            "peak_support": 1048576,
+            "sparse_dictionary_entries": 1048576
+          },
+          {
+            "configured_estimated_memory_bytes": 536870912,
+            "dense_materialization_seconds": 0.07243262400152162,
+            "evolution_seconds": 11.206076665999717,
+            "peak_gate_index": 19,
+            "peak_support": 1048576,
+            "sparse_dictionary_entries": 1048576
+          }
+        ],
+        "median_elapsed_seconds": 11.314717801997176,
+        "norm": 1.0000000000000033,
+        "peak_rss_bytes_process_lifetime": 414449664,
+        "state_vector_sha256": "ecf67bd8e8dcb8965fbb2a67e936608b9fca75b91ba59e7b0985d63793e22f04"
+      }
+    },
+    "case": "random_connected",
+    "comparison_code_sha256": "812e3fc2ec84d8d001b5e9fc901257dbf48cfaf6ced469011ea983fa29724e18",
+    "comparison_to_qiskit": {
+      "cirq": {
+        "actual_norm": 1.0000000000000082,
+        "expected_norm": 1.000000000000003,
+        "global_phase_radians": -5.029681640796005e-17,
+        "l1_probability_error": 5.096918329658546e-15,
+        "l2_amplitude_error_after_global_phase_alignment": 2.6155326365258976e-15,
+        "max_amplitude_error_after_global_phase_alignment": 5.931487665005387e-18,
+        "max_probability_error": 2.202285662861181e-20
+      },
+      "dense": {
+        "actual_norm": 1.000000000000003,
+        "expected_norm": 1.000000000000003,
+        "global_phase_radians": 1.0686167662560219e-17,
+        "l1_probability_error": 3.6535448790604553e-16,
+        "l2_amplitude_error_after_global_phase_alignment": 3.229250698380065e-16,
+        "max_amplitude_error_after_global_phase_alignment": 1.4465061162897556e-18,
+        "max_probability_error": 5.505714157152952e-21
+      },
+      "qiskit": {
+        "actual_norm": 1.000000000000003,
+        "expected_norm": 1.000000000000003,
+        "global_phase_radians": -9.486769009248135e-20,
+        "l1_probability_error": 0.0,
+        "l2_amplitude_error_after_global_phase_alignment": 4.809534223803275e-21,
+        "max_amplitude_error_after_global_phase_alignment": 2.117582368135751e-22,
+        "max_probability_error": 0.0
+      },
+      "sparse": {
+        "actual_norm": 1.0000000000000033,
+        "expected_norm": 1.000000000000003,
+        "global_phase_radians": 4.2351647362714887e-19,
+        "l1_probability_error": 3.5433691061581314e-16,
+        "l2_amplitude_error_after_global_phase_alignment": 3.1690309977633473e-16,
+        "max_amplitude_error_after_global_phase_alignment": 1.4347808060169158e-18,
+        "max_probability_error": 5.082197683525802e-21
+      }
+    },
+    "corpus_generator_sha256": "4e640beda28f047548667db361e633fb44eeeaa6cd1ae358be7d9b667e255b72",
+    "entanglement": {
+      "analytic_phase_matrix": {
+        "entropy_fraction_of_maximum": 0.9004717479857423,
+        "maximum_entropy_bits": 10.0,
+        "normalization": 1.0000000000000002,
+        "purity": 0.0025705787191599577,
+        "relative_singular_value_cutoff": 1e-10,
+        "schmidt_rank_at_relative_cutoff": 1024,
+        "von_neumann_entropy_bits": 9.004717479857423
+      },
+      "backend_schmidt_metrics": {
+        "cirq": {
+          "entropy_fraction_of_maximum": 0.9004717479857423,
+          "maximum_entropy_bits": 10.0,
+          "normalization": 1.0000000000000022,
+          "purity": 0.0025705787191599586,
+          "relative_singular_value_cutoff": 1e-10,
+          "schmidt_rank_at_relative_cutoff": 1024,
+          "von_neumann_entropy_bits": 9.004717479857423
+        },
+        "qiskit": {
+          "entropy_fraction_of_maximum": 0.9004717479857423,
+          "maximum_entropy_bits": 10.0,
+          "normalization": 0.9999999999999967,
+          "purity": 0.0025705787191599586,
+          "relative_singular_value_cutoff": 1e-10,
+          "schmidt_rank_at_relative_cutoff": 1024,
+          "von_neumann_entropy_bits": 9.004717479857423
+        }
+      },
+      "max_singular_value_error_vs_analytic_oracle": {
+        "cirq": 4.3021142204224816e-16,
+        "qiskit": 4.718447854656915e-16
+      },
+      "partition": {
+        "A_qubits": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "B_qubits": [
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ]
+      },
+      "witness_method": "Schmidt spectrum of independently simulated complete statevector; analytic controlled-phase matrix provides a separate oracle because within-partition CX and final single-qubit rotations are local unitaries across this cut."
+    },
+    "gate_sequence_sha256": "4e4eb06bee22b473bd98cdf7e8e53cb81d2dc860b141a4c4d7bcaaa2506233dd",
+    "gates": 116,
+    "numpy_version": "2.5.4",
+    "plan_file_sha256": "8de074c93ffbbbddf6eff65f1340cfab7f1f73378f8a14bd396eda0ec563316d",
+    "qubits": 20,
+    "source_sha256": "b87f4bbff2b69854575c71dcb38b6e1cbc15e10f28ad2bfa902f14bf099cebe8",
+    "tolerances": {
+      "amplitude_max": 2e-10,
+      "normalization": 1e-10,
+      "probability_l1": 2e-09,
+      "probability_max": 2e-10
+    }
+  },
+  "schema": 1,
+  "status": "PASS"
+}

@@ -1,0 +1,159 @@
+{
+  "case": "roundtrip",
+  "checks": {
+    "all_amplitudes_match_qiskit": true,
+    "all_backends_return_to_zero_within_tolerance": true,
+    "all_backends_returned_full_vector": true,
+    "all_backends_used_same_gate_sequence": true,
+    "all_backends_used_same_source_bytes": true,
+    "all_checks_pass": true,
+    "all_norms_within_tolerance": true,
+    "all_probabilities_match_qiskit": true,
+    "interaction_graph_connected": true
+  },
+  "qubits": 18,
+  "results": {
+    "backend_measurements": {
+      "cirq": {
+        "active_amplitudes_exact_nonzero": 262144,
+        "backend_run_details": [
+          {
+            "circuit_build_seconds": 0.0030469000339508057,
+            "cirq_core_version": "1.7.0",
+            "instruction_count": 236,
+            "qubit_order": "reversed; q0 is LSB",
+            "statevector_evolution_seconds": 0.06681100005516782
+          }
+        ],
+        "median_elapsed_seconds": 1.6853851999621838,
+        "norm": 1.0,
+        "peak_rss_bytes_process_lifetime": 221097984,
+        "state_vector_sha256": "776c4fd9a2a250f56254eea0c76706a9834501ca2c551ba52178b728f8fdf0dd"
+      },
+      "dense": {
+        "active_amplitudes_exact_nonzero": 262144,
+        "backend_run_details": [
+          {
+            "evolution_seconds": 0.11535920004826039,
+            "representation": "complex128 dense NumPy array"
+          }
+        ],
+        "median_elapsed_seconds": 0.1762427000212483,
+        "norm": 0.9999999999999947,
+        "peak_rss_bytes_process_lifetime": 56524800,
+        "state_vector_sha256": "40af13417b28ce4aa47522fa94b8d30aebc1ba98a408b8b3f3e514335ddbdffe"
+      },
+      "qiskit": {
+        "active_amplitudes_exact_nonzero": 262144,
+        "backend_run_details": [
+          {
+            "circuit_build_seconds": 0.0009486000053584576,
+            "instruction_count": 236,
+            "qiskit_aer_used": false,
+            "qiskit_version": "2.6.2",
+            "statevector_evolution_seconds": 0.24839580000843853
+          }
+        ],
+        "median_elapsed_seconds": 0.6614305999828503,
+        "norm": 0.9999999999999944,
+        "peak_rss_bytes_process_lifetime": 90959872,
+        "state_vector_sha256": "cfd6fefe2072ab9183ae9147b1d3c63bdd509fb7298a6c1c6d0483af9bae7373"
+      },
+      "sparse": {
+        "active_amplitudes_exact_nonzero": 262144,
+        "backend_run_details": [
+          {
+            "configured_estimated_memory_bytes": 134217728,
+            "dense_materialization_seconds": 0.02420630003325641,
+            "evolution_seconds": 11.271435000002384,
+            "peak_gate_index": 17,
+            "peak_support": 262144,
+            "sparse_dictionary_entries": 262144
+          }
+        ],
+        "median_elapsed_seconds": 11.375179899972863,
+        "norm": 0.9999999999999947,
+        "peak_rss_bytes_process_lifetime": 120238080,
+        "state_vector_sha256": "f3a03382844f28dc744bfc4b0ada0360c830a3565443684a8fb0e058fcd4b020"
+      }
+    },
+    "case": "roundtrip",
+    "comparison_code_sha256": "812e3fc2ec84d8d001b5e9fc901257dbf48cfaf6ced469011ea983fa29724e18",
+    "comparison_to_qiskit": {
+      "cirq": {
+        "actual_norm": 1.0,
+        "expected_norm": 0.9999999999999944,
+        "global_phase_radians": 2.1926467350729876e-17,
+        "l1_probability_error": 5.551115123125783e-15,
+        "l2_amplitude_error_after_global_phase_alignment": 2.8797806949031952e-15,
+        "max_amplitude_error_after_global_phase_alignment": 2.7755575615628914e-15,
+        "max_probability_error": 5.551115123125783e-15
+      },
+      "dense": {
+        "actual_norm": 0.9999999999999947,
+        "expected_norm": 0.9999999999999944,
+        "global_phase_radians": -1.1752270534611587e-18,
+        "l1_probability_error": 2.220446049250314e-16,
+        "l2_amplitude_error_after_global_phase_alignment": 5.801230570994565e-16,
+        "max_amplitude_error_after_global_phase_alignment": 1.388419105311988e-16,
+        "max_probability_error": 2.220446049250313e-16
+      },
+      "qiskit": {
+        "actual_norm": 0.9999999999999944,
+        "expected_norm": 0.9999999999999944,
+        "global_phase_radians": -1.380163798602674e-34,
+        "l1_probability_error": 0.0,
+        "l2_amplitude_error_after_global_phase_alignment": 0.0,
+        "max_amplitude_error_after_global_phase_alignment": 0.0,
+        "max_probability_error": 0.0
+      },
+      "sparse": {
+        "actual_norm": 0.9999999999999947,
+        "expected_norm": 0.9999999999999944,
+        "global_phase_radians": -5.830915995737562e-18,
+        "l1_probability_error": 2.220446049250314e-16,
+        "l2_amplitude_error_after_global_phase_alignment": 5.893275164119328e-16,
+        "max_amplitude_error_after_global_phase_alignment": 1.3881266696298116e-16,
+        "max_probability_error": 2.220446049250313e-16
+      }
+    },
+    "corpus_generator_sha256": "4e640beda28f047548667db361e633fb44eeeaa6cd1ae358be7d9b667e255b72",
+    "gate_sequence_sha256": "374d321d3029acc293fded87b93fae10d3a7c2ed79ab801d7659f1308bd103c0",
+    "gates": 236,
+    "numpy_version": "2.5.3",
+    "plan_file_sha256": "1f54f891d64d5385545ba781c80b079ed1b1278d9a05db0163c1a205f8d717e2",
+    "qubits": 18,
+    "roundtrip": {
+      "exact_nonzero_support_by_backend": {
+        "cirq": 262144,
+        "dense": 262144,
+        "qiskit": 262144,
+        "sparse": 262144
+      },
+      "expected_basis_state": "000000000000000000",
+      "max_off_target_amplitude": {
+        "cirq": 4.718348966005849e-16,
+        "dense": 1.374078732551868e-16,
+        "qiskit": 1.1343647258833814e-16,
+        "sparse": 1.3738348105291411e-16
+      },
+      "note": "Floating residual amplitudes are reported; no threshold pruning is applied.",
+      "sparse_support_compaction_status": "OPEN",
+      "target_probability": {
+        "cirq": 1.0,
+        "dense": 0.9999999999999947,
+        "qiskit": 0.9999999999999944,
+        "sparse": 0.9999999999999947
+      }
+    },
+    "source_sha256": "f97b819aa51e1312c7623d42b04e61d21152c135c28c3eea9523a10bec6f6435",
+    "tolerances": {
+      "amplitude_max": 2e-10,
+      "normalization": 1e-10,
+      "probability_l1": 2e-09,
+      "probability_max": 2e-10
+    }
+  },
+  "schema": 1,
+  "status": "PASS"
+}

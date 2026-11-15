@@ -39,6 +39,22 @@ CI runs the randomized 20-qubit case, the connected separable negative control, 
 
 ## Performance and limits
 
-The existing sparse implementation is measured without changing its exact behavior. A separate dense NumPy implementation is used as an exploratory performance candidate; it is not enabled in the product. Each receipt records repeated elapsed times and medians, peak process memory, host CPU, Python/NumPy/reference versions, and hashes for the source and implementations. Sparse measurements include conversion to a complete dense vector for archival/comparison, separately timed from sparse evolution.
+The existing sparse implementation is measured without changing its exact behavior. A separate dense NumPy implementation is an exploratory comparison candidate; it is not enabled in the product. The 20-qubit randomized circuit was run three times per backend. The table reports the median of the three evolution intervals and median runner interval. Qiskit and Cirq evolution intervals exclude circuit construction; dense reports its array evolution; sparse reports dictionary evolution separately from dense-vector materialization. Runner intervals include circuit construction and, for sparse, state-vector materialization. Peak RSS is the process-lifetime peak, including imports and allocations.
 
-These are classical CPU simulations, not quantum hardware runs. Circuits above 20 qubits, circuits exceeding the checked-in source support, and execution on a QPU are NOT TESTED here. A connected graph is not itself an entanglement proof; entanglement claims are based on the independently computed statevector Schmidt spectra.
+| Environment | Backend | Runtime versions | Median evolution | Median runner | Peak process RSS |
+| --- | --- | --- | ---: | ---: | ---: |
+| Windows 11 ARM64 | Qiskit | Python 3.12.10, Qiskit 2.6.2, NumPy 2.5.4 | 1.621 s | 1.623 s | 146.6 MiB |
+| Windows 11 ARM64 | Cirq | Python 3.12.10, Cirq 1.7.0, NumPy 2.5.4 | 0.128 s | 0.131 s | 290.6 MiB |
+| Windows 11 ARM64 | Dense candidate | Python 3.12.10, NumPy 2.5.3 | 0.698 s | 0.725 s | 119.9 MiB |
+| Windows 11 ARM64 | SharkByte sparse | Python 3.12.10, NumPy 2.5.3 | 18.131 s | 18.272 s | 351.5 MiB |
+| Ubuntu ARM64 / WSL2 | Qiskit | Python 3.14.4, Qiskit 2.6.2, NumPy 2.5.4 | 0.689 s | 0.696 s | 182.7 MiB |
+| Ubuntu ARM64 / WSL2 | Dense candidate | Python 3.14.4, NumPy 2.5.4 | 0.261 s | 0.274 s | 127.7 MiB |
+| Ubuntu ARM64 / WSL2 | SharkByte sparse | Python 3.14.4, NumPy 2.5.4 | 11.206 s | 11.315 s | 395.3 MiB |
+
+The WSL2 comparison reuses the independently generated Cirq statevector from the same Windows ARM64 run; Cirq is not installed in the WSL reference environment. Cirq's Windows runner samples were `1.717, 0.131, 0.131` seconds; the median is reported alongside the individual source receipts, so the first-run cost is visible. The statevector calculations use the same source and gate sequence, but these timings are not a general engine ranking.
+
+A `cProfile` run on the 17-qubit, 84-gate sparse case spent 1.64 s in `sparse_backend.evolve` (1.55 s self time); 525,492 dictionary lookups accounted for 0.081 s. The remaining time is in its Python-level state traversal and rebuilding maps gate by gate. This is consistent with the 20-qubit result: when the state becomes dense, the exact sparse dictionary path is slower and has a higher process peak than the dense-array candidate. The dense candidate is not a product optimization and is not enabled in SharkByte. No performance optimization was applied in this phase.
+
+Every backend receipt records Python and NumPy versions, the applicable Qiskit or Cirq version, source/plan/parser/implementation/vector digests, repeat timings, and process memory. The complete local vectors, raw profiler data, and a SHA-256 inventory are preserved in `D:\boss\results\sharkbyte-high-support-entanglement\final_current`; the committed evidence directory contains the JSON receipts and manifest.
+
+These are classical CPU simulations, not quantum hardware runs. Circuits above 20 qubits, circuits exceeding the checked-in source support, and execution on a QPU are NOT TESTED here. A connected graph is not itself an entanglement proof; entanglement claims are based on independently computed full-statevector Schmidt spectra. Exact sparse support compaction after floating-point cancellation remains OPEN.

@@ -1,0 +1,161 @@
+{
+  "case": "connected_separable",
+  "checks": {
+    "all_amplitudes_match_qiskit": true,
+    "all_backends_returned_full_vector": true,
+    "all_backends_used_same_gate_sequence": true,
+    "all_backends_used_same_source_bytes": true,
+    "all_checks_pass": true,
+    "all_norms_within_tolerance": true,
+    "all_probabilities_match_qiskit": true,
+    "cirq_schmidt_rank_is_one": true,
+    "control_has_dense_support": true,
+    "interaction_graph_connected": true,
+    "qiskit_schmidt_rank_is_one": true
+  },
+  "qubits": 20,
+  "results": {
+    "backend_measurements": {
+      "cirq": {
+        "active_amplitudes_exact_nonzero": 1048576,
+        "backend_run_details": [
+          {
+            "circuit_build_seconds": 0.0011698000016622245,
+            "cirq_core_version": "1.7.0",
+            "instruction_count": 39,
+            "qubit_order": "reversed; q0 is LSB",
+            "statevector_evolution_seconds": 0.08153359999414533
+          }
+        ],
+        "median_elapsed_seconds": 1.9580358999664895,
+        "norm": 1.0000000000000002,
+        "peak_rss_bytes_process_lifetime": 275935232,
+        "state_vector_sha256": "833ac603da684de2b0433899f81bc008ce189132e46b33d08958a1229431d1b5"
+      },
+      "dense": {
+        "active_amplitudes_exact_nonzero": 1048576,
+        "backend_run_details": [
+          {
+            "evolution_seconds": 0.6050316999899223,
+            "representation": "complex128 dense NumPy array"
+          }
+        ],
+        "median_elapsed_seconds": 0.6647489999886602,
+        "norm": 0.9999999999999999,
+        "peak_rss_bytes_process_lifetime": 88133632,
+        "state_vector_sha256": "999d21f56d0d8648cc5f7d31c36485175d2dd084f0d4608197453f00c69d6116"
+      },
+      "qiskit": {
+        "active_amplitudes_exact_nonzero": 1048576,
+        "backend_run_details": [
+          {
+            "circuit_build_seconds": 0.00017770001431927085,
+            "instruction_count": 39,
+            "qiskit_aer_used": false,
+            "qiskit_version": "2.6.2",
+            "statevector_evolution_seconds": 0.7421350999502465
+          }
+        ],
+        "median_elapsed_seconds": 1.169307400006801,
+        "norm": 0.9999999999999999,
+        "peak_rss_bytes_process_lifetime": 138645504,
+        "state_vector_sha256": "999d21f56d0d8648cc5f7d31c36485175d2dd084f0d4608197453f00c69d6116"
+      },
+      "sparse": {
+        "active_amplitudes_exact_nonzero": 1048576,
+        "backend_run_details": [
+          {
+            "configured_estimated_memory_bytes": 536870912,
+            "dense_materialization_seconds": 0.08207380003295839,
+            "evolution_seconds": 3.61569430003874,
+            "peak_gate_index": 19,
+            "peak_support": 1048576,
+            "sparse_dictionary_entries": 1048576
+          }
+        ],
+        "median_elapsed_seconds": 3.7857487000292167,
+        "norm": 0.9999999999999999,
+        "peak_rss_bytes_process_lifetime": 317960192,
+        "state_vector_sha256": "999d21f56d0d8648cc5f7d31c36485175d2dd084f0d4608197453f00c69d6116"
+      }
+    },
+    "case": "connected_separable",
+    "comparison_code_sha256": "812e3fc2ec84d8d001b5e9fc901257dbf48cfaf6ced469011ea983fa29724e18",
+    "comparison_to_qiskit": {
+      "cirq": {
+        "actual_norm": 1.0000000000000002,
+        "expected_norm": 0.9999999999999999,
+        "global_phase_radians": 0.0,
+        "l1_probability_error": 3.552713678800501e-15,
+        "l2_amplitude_error_after_global_phase_alignment": 1.7763568394002505e-15,
+        "max_amplitude_error_after_global_phase_alignment": 1.734723475976807e-18,
+        "max_probability_error": 3.3881317890172014e-21
+      },
+      "dense": {
+        "actual_norm": 0.9999999999999999,
+        "expected_norm": 0.9999999999999999,
+        "global_phase_radians": 0.0,
+        "l1_probability_error": 0.0,
+        "l2_amplitude_error_after_global_phase_alignment": 0.0,
+        "max_amplitude_error_after_global_phase_alignment": 0.0,
+        "max_probability_error": 0.0
+      },
+      "qiskit": {
+        "actual_norm": 0.9999999999999999,
+        "expected_norm": 0.9999999999999999,
+        "global_phase_radians": 0.0,
+        "l1_probability_error": 0.0,
+        "l2_amplitude_error_after_global_phase_alignment": 0.0,
+        "max_amplitude_error_after_global_phase_alignment": 0.0,
+        "max_probability_error": 0.0
+      },
+      "sparse": {
+        "actual_norm": 0.9999999999999999,
+        "expected_norm": 0.9999999999999999,
+        "global_phase_radians": 0.0,
+        "l1_probability_error": 0.0,
+        "l2_amplitude_error_after_global_phase_alignment": 0.0,
+        "max_amplitude_error_after_global_phase_alignment": 0.0,
+        "max_probability_error": 0.0
+      }
+    },
+    "corpus_generator_sha256": "4e640beda28f047548667db361e633fb44eeeaa6cd1ae358be7d9b667e255b72",
+    "entanglement": {
+      "backend_schmidt_metrics": {
+        "cirq": {
+          "entropy_fraction_of_maximum": 2.4240061531478513e-25,
+          "maximum_entropy_bits": 10.0,
+          "normalization": 1.0,
+          "purity": 1.0,
+          "relative_singular_value_cutoff": 1e-10,
+          "schmidt_rank_at_relative_cutoff": 1,
+          "von_neumann_entropy_bits": 2.4240061531478515e-24
+        },
+        "qiskit": {
+          "entropy_fraction_of_maximum": 2.7872992868397233e-25,
+          "maximum_entropy_bits": 10.0,
+          "normalization": 0.9999999999999969,
+          "purity": 1.0,
+          "relative_singular_value_cutoff": 1e-10,
+          "schmidt_rank_at_relative_cutoff": 1,
+          "von_neumann_entropy_bits": 2.7872992868397234e-24
+        }
+      },
+      "witness_method": "Schmidt spectrum of Qiskit and Cirq full statevectors across the balanced cut."
+    },
+    "gate_sequence_sha256": "53d0b8d2c9bfcbc557080c7dc5dd031a35fed1754bb74ce10d003169d2a3ab5e",
+    "gates": 39,
+    "numpy_version": "2.5.3",
+    "plan_file_sha256": "682fffa86501c42b59cde32bd69559fd5a08f53b1d47502045eabbe20bc79093",
+    "qubits": 20,
+    "source_sha256": "870418d7b7c5d826b3f25462d02d256eded067636f80453bad6afbbe011ce661",
+    "tolerances": {
+      "amplitude_max": 2e-10,
+      "normalization": 1e-10,
+      "probability_l1": 2e-09,
+      "probability_max": 2e-10
+    }
+  },
+  "schema": 1,
+  "status": "PASS"
+}

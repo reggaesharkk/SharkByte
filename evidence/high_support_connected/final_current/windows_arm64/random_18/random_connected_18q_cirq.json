@@ -1,0 +1,57 @@
+{
+  "active_amplitudes_exact_nonzero": 262144,
+  "architecture": "ARM64",
+  "backend": "cirq",
+  "backend_run_details": [
+    {
+      "circuit_build_seconds": 0.0015319999656639993,
+      "cirq_core_version": "1.7.0",
+      "instruction_count": 92,
+      "qubit_order": "reversed; q0 is LSB",
+      "statevector_evolution_seconds": 0.0249712000368163
+    }
+  ],
+  "basis_vector_length": 262144,
+  "case": "random_connected",
+  "elapsed_seconds": [
+    1.817389399977401
+  ],
+  "gate_count": 92,
+  "gate_sequence_sha256": "c453b9cfd0a4d6adcb3dc0e66b93eddd84a2fe67c9918a1554ee1de7fcdc838a",
+  "host": "Windows-11-10.0.26300-SP0",
+  "implementation_sha256": {
+    "corpus_generator": "4e640beda28f047548667db361e633fb44eeeaa6cd1ae358be7d9b667e255b72",
+    "dense_candidate": "1e309d8a65b88e74d1c2e7ec79524fa76469e1d959b7177440d0e5a922560ac2",
+    "frontier_parser": "26d4d258ca87cc78e449879744478d714f162aa0cf5f474692d31cd18040cb52",
+    "quantum_frontend": "1e373410a5494c5c257dd4916494d964d75758f1432997ebd704c07c07fcaf93",
+    "runner": "6e0e4fef92cb7ceda83f9b8f6f356166fe04dcff53ee0a27f2e80e7d3e57156c",
+    "sparse_backend": "f655de6f68d392cc72af1d87430466d8c5ee7dff4861755bd2bbdea7756ec42b"
+  },
+  "limits": {
+    "full_statevector": true,
+    "hardware": "classical simulation",
+    "shots": "not sampled"
+  },
+  "median_elapsed_seconds": 1.817389399977401,
+  "norm": 1.000000000000013,
+  "numpy_version": "2.5.4",
+  "parsed_gate_sequence_sha256": "c453b9cfd0a4d6adcb3dc0e66b93eddd84a2fe67c9918a1554ee1de7fcdc838a",
+  "parsed_source_sha256": "5fce3d3ed2fe3f185204bb82ee033576d0d14bf0189a6de838721f0bcf2c7b01",
+  "peak_rss_bytes_process_lifetime": 224288768,
+  "plan_file_sha256": "a28968dc0a029ca38278753a59bdc175b80ed59f2b1bcbb1890a5a52bac44fd8",
+  "processor": "Snapdragon(R) X - X126100 - Qualcomm(R) Oryon(TM) CPU",
+  "python": "3.12.10",
+  "qubits": 18,
+  "revision": "a2b59ec83b5a00dbca11b5548ac1f5982289ce2b",
+  "saved_npy": "random_connected_18q_cirq.npy",
+  "saved_npy_sha256": "14c67266030493e0bca48cd572e118a418a2fc5110c17113f84ac110dc6c8a21",
+  "schema": 1,
+  "seed": 2026111618,
+  "source_bytes": 2312,
+  "source_name": "random_connected_18q.sbq",
+  "source_sha256": "5fce3d3ed2fe3f185204bb82ee033576d0d14bf0189a6de838721f0bcf2c7b01",
+  "state_vector_sha256_little_endian_complex128": "7e5eeb8a43b8a3c144e4d38c5fc9145fcf165c03e12693247e43e381b2262ddb",
+  "status": "PASS",
+  "topology_kind": "seeded_erdos_renyi_bipartite_phase_edges_with_random_partition_trees",
+  "two_qubit_edge_count": 71
+}

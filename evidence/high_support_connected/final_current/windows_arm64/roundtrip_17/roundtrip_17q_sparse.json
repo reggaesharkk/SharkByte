@@ -1,0 +1,58 @@
+{
+  "active_amplitudes_exact_nonzero": 131072,
+  "architecture": "ARM64",
+  "backend": "sparse",
+  "backend_run_details": [
+    {
+      "configured_estimated_memory_bytes": 67108864,
+      "dense_materialization_seconds": 0.012784000020474195,
+      "evolution_seconds": 4.368603200011421,
+      "peak_gate_index": 16,
+      "peak_support": 131072,
+      "sparse_dictionary_entries": 131072
+    }
+  ],
+  "basis_vector_length": 131072,
+  "case": "roundtrip",
+  "elapsed_seconds": [
+    4.444638599990867
+  ],
+  "gate_count": 214,
+  "gate_sequence_sha256": "64e11da81398b682ed13c0395cee294b842962835bcccb2fb7cfffb00daf3854",
+  "host": "Windows-11-10.0.26300-SP0",
+  "implementation_sha256": {
+    "corpus_generator": "4e640beda28f047548667db361e633fb44eeeaa6cd1ae358be7d9b667e255b72",
+    "dense_candidate": "1e309d8a65b88e74d1c2e7ec79524fa76469e1d959b7177440d0e5a922560ac2",
+    "frontier_parser": "26d4d258ca87cc78e449879744478d714f162aa0cf5f474692d31cd18040cb52",
+    "quantum_frontend": "1e373410a5494c5c257dd4916494d964d75758f1432997ebd704c07c07fcaf93",
+    "runner": "6e0e4fef92cb7ceda83f9b8f6f356166fe04dcff53ee0a27f2e80e7d3e57156c",
+    "sparse_backend": "f655de6f68d392cc72af1d87430466d8c5ee7dff4861755bd2bbdea7756ec42b"
+  },
+  "limits": {
+    "full_statevector": true,
+    "hardware": "classical simulation",
+    "shots": "not sampled"
+  },
+  "median_elapsed_seconds": 4.444638599990867,
+  "norm": 0.999999999999994,
+  "numpy_version": "2.5.3",
+  "parsed_gate_sequence_sha256": "64e11da81398b682ed13c0395cee294b842962835bcccb2fb7cfffb00daf3854",
+  "parsed_source_sha256": "3023e64e7e1df05a284927fc0e625385e3a43baeeda7deaa0e5a4896e0c49c11",
+  "peak_rss_bytes_process_lifetime": 82808832,
+  "plan_file_sha256": "2af69b40c7825f94c1e6ad4264e4802ef98dd1cf276f0b678458ad32d61a8e50",
+  "processor": "Snapdragon(R) X - X126100 - Qualcomm(R) Oryon(TM) CPU",
+  "python": "3.12.10",
+  "qubits": 17,
+  "revision": "a2b59ec83b5a00dbca11b5548ac1f5982289ce2b",
+  "saved_npy": "roundtrip_17q_sparse.npy",
+  "saved_npy_sha256": "506efa9b4d28e9ad2fcccc937d59ff48c1488b9ee649c5bbce4ea35e4831e22c",
+  "schema": 1,
+  "seed": 2026111617,
+  "source_bytes": 5604,
+  "source_name": "roundtrip_17q.sbq",
+  "source_sha256": "3023e64e7e1df05a284927fc0e625385e3a43baeeda7deaa0e5a4896e0c49c11",
+  "state_vector_sha256_little_endian_complex128": "8ea7ba1c31e5ce09db2ad7bb2bb0ebe98644ef311521ae18813a373d8dc27522",
+  "status": "PASS",
+  "topology_kind": "complete_bipartite_controlled_phase_with_partition_chains",
+  "two_qubit_edge_count": 87
+}
