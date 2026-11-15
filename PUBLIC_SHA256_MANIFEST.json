@@ -1,5 +1,5 @@
 {
-  "file_count": 190,
+  "file_count": 195,
   "files": [
     {
       "path": ".gitattributes",
@@ -53,8 +53,8 @@
     },
     {
       "path": "INDEPENDENT_QUANTUM_VALIDATION.md",
-      "sha256": "a72a4d851f24cb6acc11f373f59e360ca0918f852ad4603bb6bcec47d7ae8d67",
-      "size_bytes": 6061
+      "sha256": "4eb1302c35f87b50f9a906b702f355f93708299fc4788a22d108d6fc95205b1c",
+      "size_bytes": 6690
     },
     {
       "path": "INSTALL.md",
@@ -113,8 +113,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "3f7abb65c847ec6268558f05271bf422fba8a8368a83c4a4f8fd7805fa50ea8c",
-      "size_bytes": 14626
+      "sha256": "4990d9e649114f41d21b633f101ee76cd6512c618a6f890cf7e641f8af46c0b2",
+      "size_bytes": 14734
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
@@ -612,6 +612,21 @@
       "size_bytes": 2219
     },
     {
+      "path": "evidence/windows-arm64-qiskit/cirq-120.json",
+      "sha256": "260b6d890a1d2a0584ef42ea7be1dc8d9f3ca9dc7e1d1933e24a2d5acfd858fa",
+      "size_bytes": 41699
+    },
+    {
+      "path": "evidence/windows-arm64-qiskit/qiskit.json",
+      "sha256": "075102e3b755523460b72556e842308b87a09328c566fbe6898cf011a71b7c84",
+      "size_bytes": 2462642
+    },
+    {
+      "path": "evidence/windows-arm64-qiskit/wheel-provenance.json",
+      "sha256": "9c6f5a87fd557b5c979f529d5a188e3994ae99785e2560877a4a4c489906923c",
+      "size_bytes": 636
+    },
+    {
       "path": "examples/adaptive.sb",
       "sha256": "cff05e46d806f3b2881af0d9002e3599e283cebc2c1ae7f966dfa0f44811ff17",
       "size_bytes": 409
@@ -897,6 +912,11 @@
       "size_bytes": 2833
     },
     {
+      "path": "tools/build_windows_arm64_qiskit.ps1",
+      "sha256": "f9a34bee6a1280b20b58e0893e0721ed87dbafac40f112faa4689e6820952e26",
+      "size_bytes": 3282
+    },
+    {
       "path": "tools/ci_acceptance.py",
       "sha256": "a9f76321e5eb16eb619fe0472ba32bdfdea5add869fb652a08407e30bfbd42bd",
       "size_bytes": 5305
@@ -930,6 +950,11 @@
       "path": "tools/run_independent_quantum_validation.py",
       "sha256": "f63b9941fc3f817c2f734e385c3d84d425273f3216e6da6cd75e5fe8738733ef",
       "size_bytes": 1186
+    },
+    {
+      "path": "tools/verify_windows_arm64_qiskit_wheels.py",
+      "sha256": "16f1b063744f4e3d3ec9ecd07eb1f1ed52c48123b17a102a218ee126b091bcd5",
+      "size_bytes": 1286
     },
     {
       "path": "validation/__init__.py",

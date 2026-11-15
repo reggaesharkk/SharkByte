@@ -11,17 +11,31 @@ Keep the verification environment and receipts outside the source checkout.
 The commands below use a fresh date-stamped result folder, so prior host
 receipts remain untouched.
 
-### Windows PowerShell ARM64
+### Native Windows ARM64 Qiskit
 
-    $results = 'D:\boss\results\independent-quantum-validation_2026-11-15\windows-arm64'
-    New-Item -ItemType Directory -Force $results | Out-Null
-    python -m venv "$results\.venv"
-    & "$results\.venv\Scripts\python.exe" -m pip install -r 'D:\boss\SharkByte\requirements-independent-quantum.txt'
-    & "$results\.venv\Scripts\python.exe" -B 'D:\boss\SharkByte\tools\run_independent_quantum_validation.py' --output "$results\receipt.json"
-    Push-Location 'D:\boss\SharkByte'
-    & "$results\.venv\Scripts\python.exe" -B -m unittest validation.independent_qiskit.test_suite -v
-    & "$results\.venv\Scripts\python.exe" -B -m unittest discover -s tests -v
-    Pop-Location
+Native CPython 3.12.10 passed the live suite using locally built ARM64
+wheels for Qiskit 2.6.2 and rustworkx 0.18.1. The pinned upstream archives
+are checked by SHA-256. The build used ARM64 MSVC 14.34.31933, Windows SDK
+10.0.22621.0, and Rust 1.100.0. Regenerating the rustworkx lockfile pruned
+ten unused crate entries. The remaining crate identities and checksums
+matched the original lockfile. Qiskit's lockfile stayed byte-identical.
+
+Use an ARM64 Rust bin directory and an MSVC root that contains
+`bin/Hostarm64/arm64`. From the repository root in PowerShell:
+
+```powershell
+$results = Join-Path $env:TEMP ("sharkbyte-qiskit-" + [guid]::NewGuid())
+.\tools\build_windows_arm64_qiskit.ps1 -Output $results -RustBin $rustBin -MsvcRoot $msvcRoot
+$qiskitPython = "$results/.venv/Scripts/python.exe"
+& $qiskitPython -B tools/verify_windows_arm64_qiskit_wheels.py "$results/wheelhouse"
+& $qiskitPython -m pip install --only-binary=:all: --find-links "$results/wheelhouse" -r requirements-independent-quantum.txt
+& $qiskitPython -m pip check
+& $qiskitPython -B tools/run_independent_quantum_validation.py --output "$results/qiskit.json"
+& $qiskitPython -B -m unittest validation.independent_qiskit.test_suite -v
+```
+
+[Native live Qiskit, Cirq, and wheel receipts](evidence/windows-arm64-qiskit/)
+record the result and the ARM64 PE machine type of both extension modules.
 
 ### Native Windows ARM64 Cirq
 
@@ -42,9 +56,8 @@ $cirqPython = "$results/.venv/Scripts/python.exe"
 
 The small suite compares native Cirq against the archived Colab Qiskit
 and SharkByte vectors. The scaling check runs SharkByte and Cirq locally.
-Native live Qiskit remains open for the pinned 2.6.2 environment because
-both Qiskit and rustworkx lack compatible ARM64 wheels. Use the Ubuntu
-WSL2 steps below for live Qiskit on a Windows ARM64 laptop.
+To compare with a fresh native Qiskit run, pass its `qiskit.json` instead of
+the archived Colab path. Ubuntu WSL2 is also supported below.
 
 ### Ubuntu WSL2
 

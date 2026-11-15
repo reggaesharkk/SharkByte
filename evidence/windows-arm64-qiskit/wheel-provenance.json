@@ -1,0 +1,23 @@
+{
+  "host": "Windows-11-10.0.26300-SP0",
+  "architecture": "ARM64",
+  "python": "3.12.10",
+  "wheels": {
+    "qiskit": {
+      "file": "qiskit-2.6.2-cp310-abi3-win_arm64.whl",
+      "sha256": "08d210ebfcade40751e6a25b607043c8a8ccf33a769b970ce0154a6e07060efa",
+      "pe_machine": "0xAA64",
+      "native_modules": [
+        "qiskit/_accelerate.pyd"
+      ]
+    },
+    "rustworkx": {
+      "file": "rustworkx-0.18.1-cp310-abi3-win_arm64.whl",
+      "sha256": "e4b4b688684638419df0451b57adaabc732a8478675a41cb93f071ddddb6d04a",
+      "pe_machine": "0xAA64",
+      "native_modules": [
+        "rustworkx/rustworkx.pyd"
+      ]
+    }
+  }
+}
