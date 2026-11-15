@@ -96,6 +96,23 @@ The Ubuntu process ran with a 3.06 GiB address-space limit. These are single loc
 python -B benchmarks/sb_quantum_benchmark/support_scaling.py 16777216
 ```
 
+#### Independent Cirq comparison
+
+A separate Ubuntu ARM64 WSL2 run checked **all 16,777,216 complex amplitudes**
+against Google Cirq 1.6.1. The 56-gate circuit separates into eight groups
+with at most seven qubits each. Cirq simulated each group in double precision,
+and the checker multiplied their amplitudes for every populated SharkByte
+basis state. The reference support count matched SharkByte's, and the maximum
+complex amplitude error was **6.36e-19**. This result relies on the circuit's
+disconnected groups. [Cirq receipt](benchmarks/sb_quantum_benchmark/scaling-16777216-cirq.json)
+
+Run from the repository root using the
+[Cirq validation environment](INDEPENDENT_QUANTUM_VALIDATION.md#google-cirq-cross-check-on-ubuntu):
+
+```sh
+"$CIRQ_ENV/bin/python" -B tools/run_cirq_scaling_check.py --output cirq-scaling-receipt.json
+```
+
 ## Terminal quickstart
 
 From the checkout, run `python -B sharkbyte_terminal.py` (`python3` on Linux). Try `/help`, `/bell`, `/bell-phase`, or `/qft`. The QFT example embeds a six-qubit transform in a 30-qubit register. Use `/run FILE.sb` for a custom quantum circuit, or `/run-frontier FILE.sb` for a sparse circuit at the default cap.

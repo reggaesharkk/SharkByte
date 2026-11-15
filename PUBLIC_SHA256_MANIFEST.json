@@ -1,5 +1,5 @@
 {
-  "file_count": 181,
+  "file_count": 183,
   "files": [
     {
       "path": ".gitattributes",
@@ -113,8 +113,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "937fa7df7fc74f3aa1bfd41534638039f0bcf7642c1b48de2145a7b5024c2bb3",
-      "size_bytes": 12274
+      "sha256": "cadc6a2bab1a0bfb8c6d37d7aac35eeeecdb79bd8c08cd5323b02339e98f656e",
+      "size_bytes": 13112
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
@@ -275,6 +275,11 @@
       "path": "benchmarks/sb_quantum_benchmark/sb_end_to_end_bench.py",
       "sha256": "3ef166ed6a10040158610926276a01f1416a37e46010ed08d582cf2a881655af",
       "size_bytes": 3267
+    },
+    {
+      "path": "benchmarks/sb_quantum_benchmark/scaling-16777216-cirq.json",
+      "sha256": "1bdbd879ee5f1b4a1928798c14014959235fa3d2b0f2272b2240a714ef829617",
+      "size_bytes": 2218
     },
     {
       "path": "benchmarks/sb_quantum_benchmark/scaling-16777216-ubuntu-wsl.json",
@@ -880,6 +885,11 @@
       "path": "tools/run_cirq_crosscheck.py",
       "sha256": "df7315a659da53069394a6520e8d42a81986f7f977bbf9576513b9f11453ddb4",
       "size_bytes": 3844
+    },
+    {
+      "path": "tools/run_cirq_scaling_check.py",
+      "sha256": "8dc540f9c79c6bde0bd4896ba247d41a3241ef2b88f6fed2d09d8e5a2196f6da",
+      "size_bytes": 5448
     },
     {
       "path": "tools/run_independent_quantum_validation.py",
