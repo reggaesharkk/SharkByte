@@ -1,6 +1,6 @@
 {
   "archive_files_scanned": [],
-  "files_scanned": 151,
+  "files_scanned": 153,
   "findings": [],
   "patterns": [
     "absolute_windows_path",

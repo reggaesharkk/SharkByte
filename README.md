@@ -6,7 +6,7 @@ A separately curated, source-only public snapshot of a bounded experimental lang
 
 **Cite SharkByte standalone alpha 0.2.1a2** using the Zenodo version DOI. That immutable archive preserves source commit `f5c537a76fe2f1cab12288fa29f6820cf453eb40`, which carries the MIT grant. Current GitHub `main` uses Apache-2.0; a later `main` change does not alter the Zenodo archive. Choose the license that matches the exact version you download. [DOI 10.5281/zenodo.24213559](https://doi.org/10.5281/zenodo.24213559)
 
-**Choose a starting point.** [Terminal and optional local chat](#terminal-quickstart) · [What SharkByte can calculate](docs/CALCULATION_CAPABILITIES.md) · [Research gap calculations](docs/RESEARCH_GAP_CALCULATIONS.md) · [Desktop chat](#sharkbyte-chat) · [Benchmarks](#reproduce-the-public-benchmarks) · [Install the CLI](#install) · [System map and evidence boundaries](ECOSYSTEM_MAP.md)
+**Choose a starting point.** [SharkByte Studio](#sharkbyte-studio) · [Terminal and optional local chat](#terminal-quickstart) · [What SharkByte can calculate](docs/CALCULATION_CAPABILITIES.md) · [Research gap calculations](docs/RESEARCH_GAP_CALCULATIONS.md) · [Benchmarks](#reproduce-the-public-benchmarks) · [Install the CLI](#install) · [System map and evidence boundaries](ECOSYSTEM_MAP.md)
 
 **Which terminal should I use?** In Windows PowerShell, use `Open-SharkByte-AI.ps1 -Terminal` for GenieX chat on a supported NPU. In Ubuntu/WSL, use the Python commands below for CPU simulation and the Linux ARM64 backend-agreement workflow. The `.sb` language and simulator commands are independent of the chat model.
 
@@ -54,15 +54,27 @@ With the local GenieX service running, ordinary questions are sent to the config
 
 For runnable calculations and the precise classical, statevector, hybrid, and sparse-simulation limits, see [What SharkByte can calculate today](docs/CALCULATION_CAPABILITIES.md).
 
-## SharkByte Chat
+## SharkByte Studio
 
-I built a local chat window that runs SharkByte examples and your own `.sb` programs. On Windows, double-click [Open-SharkByte-Chat.cmd](Open-SharkByte-Chat.cmd). You can also run `python -B sharkbyte_chat.py` from this checkout with Python and Tk installed.
+Run SharkByte in a browser on your own computer. Studio uses Python 3.10+ and the source checkout. Clone this repository or download and extract the GitHub source ZIP, then open a terminal in the checkout.
 
-Click **Run Bell**, **Run Frontier30**, or **Explain Bell** to start. You can also type `Run Classical` or `Run Hybrid`. Open a source file or paste an `sb` code block, then press **Enter** to send. Use **Shift+Enter** for a new line. For a custom sparse run, put `run frontier cap 8192` on the line before the code block. Use **Save result** to export the full result and source.
+**Windows PowerShell**
 
-For general conversation, start a local model and pass its chat completions URL and served model ID with `--endpoint` and `--model`. The URL must be on the local loopback interface. Model replies appear as text. The app runs SharkByte through its built-in commands.
+```powershell
+python -B sharkbyte_studio.py
+```
 
-The installed CLI supports SharkVM and refuses native execution. Quantum circuits run in a classical simulator. SharkVM is not a security sandbox.
+**Linux or WSL**
+
+```bash
+python3 -B sharkbyte_studio.py --no-browser
+```
+
+Open [http://127.0.0.1:8120/](http://127.0.0.1:8120/) if the browser does not open automatically. Keep the terminal running while using Studio. Press Ctrl+C to stop it. If port 8120 is in use, pass `--port 8121` and use the URL printed in the terminal.
+
+Choose Classical, Quantum or Bounded Hybrid, then select **Load example** or paste your own SharkByte source. Select **Run** to inspect the output, execution metrics, bytecode when emitted, and the exact source snapshot. **Save receipt** downloads the SharkByte JSON record for local inspection or verification with `python -m sharkbyte_alpha verify-run FILE.json`.
+
+Studio listens on loopback and runs the public SharkVM and CPU simulation modes. Its worker timing includes process startup. The Linux ARM64 three-backend workflow is documented separately in the [backend agreement benchmark](benchmarks/backend_agreement/README.md).
 
 ## Reproduce the public benchmarks
 

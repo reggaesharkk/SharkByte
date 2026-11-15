@@ -1,5 +1,5 @@
 {
-  "file_count": 152,
+  "file_count": 154,
   "files": [
     {
       "path": ".gitattributes",
@@ -82,14 +82,9 @@
       "size_bytes": 4382
     },
     {
-      "path": "Open-SharkByte-Chat.cmd",
-      "sha256": "b9ea24872d3702c832165c7390d8571649df73f6e419f67243660c73b95546e2",
-      "size_bytes": 77
-    },
-    {
       "path": "PUBLIC_CONTENT_AUDIT.json",
-      "sha256": "15e8c810f9420598523e9d1c2f59b4640e30b9ee18b6a8572dc5ceeb5458daf6",
-      "size_bytes": 656
+      "sha256": "2afc4cfa3305467aeaa7eb93cc04ed56d5292d52d29db3a1a052424a4f67a42b",
+      "size_bytes": 636
     },
     {
       "path": "PUBLIC_DISTRIBUTION_AUDIT.md",
@@ -108,8 +103,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "b34b7ced8dd1a5462e21c0aca29f072abb43a5620d92a6ba05adb2d3c7027ac3",
-      "size_bytes": 10952
+      "sha256": "e8ccbc42fa7183024fe142b0f1fdf16e71fc4c3d08dc491352cb75710689e222",
+      "size_bytes": 11514
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
@@ -143,13 +138,13 @@
     },
     {
       "path": "benchmarks/backend_agreement/budget_loop.sb",
-      "sha256": "a911288c7d94b29b071d504e68c82d76824320d8ec5c78d1423538b521ff4e30",
-      "size_bytes": 37
+      "sha256": "11592dd5e384fec9e1e6b8d802f4bda202d92c24fbc9f550190608d2c8a4bcca",
+      "size_bytes": 36
     },
     {
       "path": "benchmarks/backend_agreement/check_all_budgets.py",
-      "sha256": "0bfb5b229dea5827b8440f4d3e63b5dff08ec36e4c73c40af99c55d3812f7e3e",
-      "size_bytes": 1140
+      "sha256": "7c383e3429d6dd98ff214d8a40254750dab1a1a739a621e7e37014e4797a78f9",
+      "size_bytes": 1139
     },
     {
       "path": "benchmarks/backend_agreement/check_backend_agreement.py",
@@ -533,8 +528,13 @@
     },
     {
       "path": "examples/drawdown_risk_demo.sb",
-      "sha256": "4af3075c86fac7305d41ff63eeebc6af115e67acc666ac9192c442cc4c9d3f72",
-      "size_bytes": 1014
+      "sha256": "c9fb8e9d48cd8ed20e0ce2d46602434ecd7a2149d616ae3fa482791bd3ddfce3",
+      "size_bytes": 1531
+    },
+    {
+      "path": "examples/drawdown_risk_demo_overflow_guard.receipt.json",
+      "sha256": "45bbb51b4705c7f4230a35337e76e24fdd0e7983c6f87e813031b8336c7e70cf",
+      "size_bytes": 2778
     },
     {
       "path": "examples/example.sb",
@@ -707,9 +707,19 @@
       "size_bytes": 1087
     },
     {
+      "path": "sharkbyte_studio.html",
+      "sha256": "f95294ff16cf995c7efd443774397768fa581275e634dd3ff59cbce65f901859",
+      "size_bytes": 6804
+    },
+    {
+      "path": "sharkbyte_studio.py",
+      "sha256": "e3f28328381b9a211112c4810c7ecec7c6a2cb05b498936700694cd93abb1108",
+      "size_bytes": 4863
+    },
+    {
       "path": "sharkbyte_terminal.py",
-      "sha256": "61e68138e565a96772d06c226a73c4d452d7e4513d3c5fb39eed249d44df760f",
-      "size_bytes": 12390
+      "sha256": "81f2ccacc60b74bf09b9a83bad684db2f7fdc7f273013a32d2ffc23da258c33b",
+      "size_bytes": 14127
     },
     {
       "path": "tests/fixtures/.gitattributes",
