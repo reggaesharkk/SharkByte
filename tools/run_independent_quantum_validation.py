@@ -19,10 +19,9 @@ def main() -> int:
     report = run_validations()
     output = args.output.resolve()
     output.parent.mkdir(parents=True, exist_ok=True)
-    if output.exists():
-        raise SystemExit("refusing to overwrite existing result: " + str(output))
-    output.write_text(json.dumps(report, sort_keys=True, indent=2, allow_nan=False) + "\n",
-                      encoding="utf-8")
+    serialized = json.dumps(report, sort_keys=True, indent=2, allow_nan=False) + "\n"
+    with output.open("x", encoding="utf-8", newline="\n") as receipt:
+        receipt.write(serialized)
     print(json.dumps({"status": report["status"], "result": str(output),
                       "revision": report["revision"], "summary": report["summary"]},
                      sort_keys=True))

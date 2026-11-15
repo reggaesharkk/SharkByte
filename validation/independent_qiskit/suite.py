@@ -16,6 +16,7 @@ import platform
 import random
 import subprocess
 import sys
+import tempfile
 import time
 from datetime import datetime, timezone
 from decimal import Decimal
@@ -29,6 +30,7 @@ for _path in (str(ROOT), str(BENCHMARK_DIR)):
         sys.path.insert(0, _path)
 
 from sharkbyte_alpha import cli, quantum  # noqa: E402
+from frontier30 import load_circuit  # noqa: E402
 import sparse_backend  # noqa: E402
 
 MASTER_SEED = 2026111500
@@ -189,22 +191,6 @@ def _norm_error(state) -> tuple[float, float]:
     return norm, abs(norm - 1.0)
 
 
-def _sparse_circuit(parsed: dict, name: str) -> sparse_backend.Circuit:
-    gates = []
-    for op, args in parsed["gates"]:
-        if op in ("h", "x", "z"):
-            gates.append((op, args[0]))
-        elif op == "cx":
-            gates.append((op, args[0], args[1]))
-        elif op == "cp":
-            angle, control, target = args
-            gates.append((op, control, target, float(angle)))
-        else:
-            angle, target = args
-            gates.append((op, target, float(angle)))
-    return sparse_backend.Circuit(parsed["n"], tuple(gates), name)
-
-
 def _evaluate_source(source: str, expected_seed: int,
                      canonical_gates: list[tuple] | tuple[tuple, ...],
                      *, include_vectors: bool = True) -> dict:
@@ -215,7 +201,11 @@ def _evaluate_source(source: str, expected_seed: int,
         raise AssertionError("parsed seed differs from requested seed")
     qiskit_circuit, qiskit_state = _build_qiskit(parsed, canonical_gates)
     dense_state = quantum.simulate(parsed)
-    sparse_state = sparse_backend.evolve(_sparse_circuit(parsed, "live-validation"))
+    with tempfile.TemporaryDirectory() as temp:
+        path = Path(temp) / "validation.sb"
+        path.write_bytes(raw)
+        sparse_circuit, sparse_source_hash = load_circuit(path)
+    sparse_state = sparse_backend.evolve(sparse_circuit)
     sparse_dense = [sparse_state.get(index, 0.0j) for index in range(1 << parsed["n"])]
 
     source_gates = _source_descriptors(parsed)
@@ -234,6 +224,11 @@ def _evaluate_source(source: str, expected_seed: int,
     gate_sequence_match = source_gates == generated_gates == qiskit_gates
     checks = {
         "parsed_and_qiskit_sequences_match_canonical_source": gate_sequence_match,
+        "frontier_source_matches_canonical": (
+            sparse_source_hash == _sha256(raw)
+            and sparse_circuit.qubits == parsed["n"]
+            and _tuple_descriptors(sparse_circuit.gates) == generated_gates
+        ),
         "global_phase_aligned_amplitudes": amplitude.get("max_complex_amplitude_error_global_phase_aligned", math.inf) <= AMPLITUDE_TOLERANCE,
         "probabilities": max(probability_errors, default=0.0) <= PROBABILITY_MAX_TOLERANCE
             and math.fsum(probability_errors) <= PROBABILITY_L1_TOLERANCE,
@@ -600,6 +595,8 @@ def _source_hashes() -> dict:
         ROOT / "sharkbyte_alpha" / "quantum.py",
         ROOT / "sharkbyte_alpha" / "cli.py",
         BENCHMARK_DIR / "sparse_backend.py",
+        BENCHMARK_DIR / "frontier30.py",
+        BENCHMARK_DIR / "quantum_frontend.py",
         ROOT / "validation" / "independent_qiskit" / "suite.py",
         ROOT / "validation" / "independent_qiskit" / "test_suite.py",
         ROOT / "tools" / "run_independent_quantum_validation.py",
@@ -607,7 +604,7 @@ def _source_hashes() -> dict:
         ROOT / ".github" / "workflows" / "independent-quantum-validation.yml",
     ]
     return {str(path.relative_to(ROOT)).replace("\\", "/"): _sha256(path.read_bytes())
-            for path in paths if path.is_file()}
+            for path in paths}
 
 
 def _revision() -> str | None:
