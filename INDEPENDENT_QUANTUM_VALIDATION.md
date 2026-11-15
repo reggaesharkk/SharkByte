@@ -36,7 +36,8 @@ receipts remain untouched.
     "$RESULTS/.venv/bin/python" -B -m unittest discover -s tests -v
 
 The new virtual environments are per-run. The runner refuses to overwrite an
-existing receipt. requirements-independent-quantum.txt pins Qiskit 2.6.2.
+existing receipt. requirements-independent-quantum.txt pins Qiskit and its
+direct runtime dependencies; the receipt records all installed distributions.
 
 ## Method
 

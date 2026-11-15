@@ -584,6 +584,14 @@ def _versions() -> dict:
             result[name] = importlib.metadata.version(name)
         except importlib.metadata.PackageNotFoundError:
             result[name] = "NOT_INSTALLED"
+    distributions = {}
+    for distribution in importlib.metadata.distributions():
+        name = distribution.metadata.get("Name")
+        if name:
+            distributions[name] = distribution.version
+    result["all_distributions"] = dict(
+        sorted(distributions.items(), key=lambda item: item[0].casefold())
+    )
     return result
 
 
