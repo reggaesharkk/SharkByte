@@ -77,4 +77,3 @@ print whole_recurrence_margin_micro;
 print preserved_remainder_milli;
 print signed_c500_lower_milli;
 print preserved_remainder_margin_milli;
-
