@@ -1,15 +1,15 @@
 {
-  "file_count": 195,
+  "file_count": 202,
   "files": [
     {
       "path": ".gitattributes",
-      "sha256": "846a31bf11b3d9def46deeefd62e0e97146a37ec58ee1ab0a640dd7d0e548f6b",
-      "size_bytes": 636
+      "sha256": "9b42ed7feceb29d869198d6650d01018fc7a2bf1997a873c9ec6218963385d08",
+      "size_bytes": 702
     },
     {
       "path": ".github/workflows/ci.yml",
-      "sha256": "dd5aabdc928982f94c79d43422dedf0f34e27ed073da3e719335cbdcbdf53a06",
-      "size_bytes": 2402
+      "sha256": "5881138da9f79e25d9363a2aae7350a29b8811e8be81ba933ff2fb460e2d4a3f",
+      "size_bytes": 5866
     },
     {
       "path": ".github/workflows/independent-quantum-validation.yml",
@@ -33,13 +33,13 @@
     },
     {
       "path": "CLAIM_BOUNDARIES.md",
-      "sha256": "50ff39bf036e54ca81dbc4d44a17dd12fe4f3d7f4dd3c378eca65f2b32f1be90",
-      "size_bytes": 1295
+      "sha256": "ae7c631b3cd09f3beab987bcfeeda97fb3d16fd29c8c3ae2c7179577b269cf8f",
+      "size_bytes": 2361
     },
     {
       "path": "COMPATIBILITY.md",
-      "sha256": "159599d93dbf044a3766b7528524964ba6ef563bb432328c6330ba6688867c42",
-      "size_bytes": 631
+      "sha256": "6915c0dc8fc2a816dcdc350e1a7ea1d308ffd02945f63a9184b4f11d67477537",
+      "size_bytes": 1516
     },
     {
       "path": "ECOSYSTEM_MAP.md",
@@ -113,8 +113,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "4990d9e649114f41d21b633f101ee76cd6512c618a6f890cf7e641f8af46c0b2",
-      "size_bytes": 14734
+      "sha256": "05fc685b10b619f0597b7a6f876a2c7b1b4a96b9bd2f1a71a5e26ab7ac9b0553",
+      "size_bytes": 24920
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
@@ -308,13 +308,13 @@
     },
     {
       "path": "benchmarks/sb_quantum_benchmark/sparse_backend.py",
-      "sha256": "f655de6f68d392cc72af1d87430466d8c5ee7dff4861755bd2bbdea7756ec42b",
-      "size_bytes": 14743
+      "sha256": "7870c39077f6bc4163475c31ddf42e4a3713c81a6bdb9e8f288d424914903dbe",
+      "size_bytes": 15709
     },
     {
       "path": "benchmarks/sb_quantum_benchmark/support_scaling.py",
-      "sha256": "0f6deb01c3fe6422521f9628e8a545124021d68e74c023978ec659d39a6c35f3",
-      "size_bytes": 2066
+      "sha256": "ac2a718c387949d82a9e53b1d29f1652a756723857d1cd16b4e652be9eb283f2",
+      "size_bytes": 3982
     },
     {
       "path": "docs/APACHE_RIGHTS_CLEARANCE_20261114.md",
@@ -328,8 +328,8 @@
     },
     {
       "path": "docs/RESEARCH_GAP_CALCULATIONS.md",
-      "sha256": "9643e35745ac583e2812579f9115b8ebf8fb58285fca05e668ee7f4659c3df27",
-      "size_bytes": 13101
+      "sha256": "db6c7044f40057382f050ebff9d470e2cc2d46e1806219118b37940faacb5bde",
+      "size_bytes": 14148
     },
     {
       "path": "docs/sharkbyte-studio-banner.svg",
@@ -355,6 +355,41 @@
       "path": "evidence/colab-bfad672/qiskit.json",
       "sha256": "40d04c0930287dd288a6d7f615d7f86df9d2f6d06c328321e56ddb7c07cd5106",
       "size_bytes": 2461462
+    },
+    {
+      "path": "evidence/colab-q8w4bj57/bundle-verification.json",
+      "sha256": "f07c6f8b0e36dab69c4ed41967c139b50453fd6f04db992454921b60d5a51ae2",
+      "size_bytes": 1604
+    },
+    {
+      "path": "evidence/colab-q8w4bj57/cirq-40q-16777216.json",
+      "sha256": "b0e5b5b7d64d19307cd19bac59bac64646dd90efa2cfde6027713c6ef1c1113d",
+      "size_bytes": 2271
+    },
+    {
+      "path": "evidence/colab-q8w4bj57/colab-summary.json",
+      "sha256": "8be29d962701b7affaa7156a25463f68b43ff291c9aede87271576b643d5d550",
+      "size_bytes": 15874
+    },
+    {
+      "path": "evidence/colab-q8w4bj57/connected-comparison.json",
+      "sha256": "740000e1287299950fca37c175d9a6f87a130dbef5e2932dffd216a48fb8cb4e",
+      "size_bytes": 69756
+    },
+    {
+      "path": "evidence/colab-q8w4bj57/integrated-results-q8w4bj57.zip",
+      "sha256": "215a436cdf5a72f8cd8babc7f0ae73ebe446b3cff4c2b71337951c3b7268951d",
+      "size_bytes": 10006461
+    },
+    {
+      "path": "evidence/colab-q8w4bj57/random_connected-20/random_connected_20q_comparison.json",
+      "sha256": "a71e9b9fe9bda3747860dd0877b5c2540a13482c36530a51e0555731b7093ac4",
+      "size_bytes": 7546
+    },
+    {
+      "path": "evidence/colab-q8w4bj57/roundtrip-17/roundtrip_17q_comparison.json",
+      "sha256": "2db3b02c695da55fa3e9bd3c5b750da0dbc63cd15da0a16d4e2f880aa6ae9cb1",
+      "size_bytes": 6155
     },
     {
       "path": "evidence/phase_flip_recovery_cases.json",
@@ -688,8 +723,8 @@
     },
     {
       "path": "examples/research/README.md",
-      "sha256": "a9758e9cb3974b1021b57290018f2e69be97b6d62bf3c526843d6727f56acd1d",
-      "size_bytes": 2739
+      "sha256": "3cada00a4c47f7123b724502a21abc0a0d3ba4c515ce7b4e35d9557fd5040953",
+      "size_bytes": 3059
     },
     {
       "path": "examples/research/bounded_existence_floors.sb",
@@ -828,8 +863,8 @@
     },
     {
       "path": "sharkbyte_alpha/vm.py",
-      "sha256": "bc86726453524e9b021feb6e3e78dcc647dce8a237e40da5f84d93bc6d4aa99b",
-      "size_bytes": 56498
+      "sha256": "7a251e61acb94c06421a9b0e17b040be8c118ba06dab53d1188fa17008897dcd",
+      "size_bytes": 58728
     },
     {
       "path": "sharkbyte_chat.py",
@@ -853,13 +888,13 @@
     },
     {
       "path": "sharkbyte_studio.html",
-      "sha256": "1ef7a2fad4599b973f976d05ac71624c38d32591c3b7b04e6d755e03fe39296b",
-      "size_bytes": 14120
+      "sha256": "fc06fbe52bd47c273c9455609d45d7f7de8f8428dce86aa01027168dc3aad347",
+      "size_bytes": 17682
     },
     {
       "path": "sharkbyte_studio.py",
-      "sha256": "96f76fcd0aa82e664ddce961c9fafdea1c92f515a1fec8e2739d7c7bb0f9d9f2",
-      "size_bytes": 8693
+      "sha256": "99f33d7678fb2d1dcb5bd6ca8fcec5a2edcdc463d53f42fb15d0b0523d57e812",
+      "size_bytes": 10540
     },
     {
       "path": "sharkbyte_terminal.py",
@@ -918,8 +953,8 @@
     },
     {
       "path": "tools/ci_acceptance.py",
-      "sha256": "a9f76321e5eb16eb619fe0472ba32bdfdea5add869fb652a08407e30bfbd42bd",
-      "size_bytes": 5305
+      "sha256": "dbc6509c6c7a1b4a59f31523ce93f454e990f0e23ef5012e6df7874435666bd8",
+      "size_bytes": 6092
     },
     {
       "path": "tools/phase_flip_recovery_cases.py",
@@ -933,8 +968,8 @@
     },
     {
       "path": "tools/rotation_gate_evidence.py",
-      "sha256": "1df27a084b63f6e6d364a8dec2f1e9b285a9ba262215fb7f0b3909184809dc5c",
-      "size_bytes": 4048
+      "sha256": "1cb8f8800002d6ef60daa9162ce079153196952f89a4abd8c756441bb81945f4",
+      "size_bytes": 4128
     },
     {
       "path": "tools/run_cirq_crosscheck.py",

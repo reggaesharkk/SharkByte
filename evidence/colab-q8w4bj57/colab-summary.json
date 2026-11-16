@@ -1,0 +1,477 @@
+{
+  "revision": "ec876e2c51844068e01d8fac2ee86b83983514a9",
+  "host": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "architecture": "x86_64",
+  "versions": {
+    "python": "3.13.18",
+    "qiskit": "2.6.2",
+    "cirq": "1.7.0",
+    "numpy": "2.5.4"
+  },
+  "checks": {
+    "full-40q-cirq": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        "/tmp/sharkbyte-colab-imrhyt9z/references-ufuoc4im/bin/python",
+        "-B",
+        "tools/run_cirq_scaling_check.py",
+        "--output",
+        "/tmp/sharkbyte-colab-imrhyt9z/integrated-results-q8w4bj57/cirq-40q-16777216.json"
+      ]
+    },
+    "checkout-tests": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        "/tmp/sharkbyte-colab-imrhyt9z/references-ufuoc4im/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ]
+    },
+    "high-support-tests": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        "/tmp/sharkbyte-colab-imrhyt9z/references-ufuoc4im/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "validation.high_support.test_high_support",
+        "-v"
+      ]
+    },
+    "studio-browser-receipt": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        "/tmp/sharkbyte-colab-imrhyt9z/references-ufuoc4im/bin/python",
+        "-B",
+        "tools/verify_studio_scaling_receipt.py",
+        "evidence/studio_16m/windows_arm64/sharkbyte-85c74d14dcb54040a295e3c2fe422e53.json"
+      ]
+    },
+    "rotation-normal": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        "/tmp/sharkbyte-colab-imrhyt9z/references-ufuoc4im/bin/python",
+        "-B",
+        "tools/rotation_gate_evidence.py"
+      ]
+    },
+    "rotation-O": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        "/tmp/sharkbyte-colab-imrhyt9z/references-ufuoc4im/bin/python",
+        "-O",
+        "-B",
+        "tools/rotation_gate_evidence.py"
+      ]
+    },
+    "rotation-OO": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        "/tmp/sharkbyte-colab-imrhyt9z/references-ufuoc4im/bin/python",
+        "-OO",
+        "-B",
+        "tools/rotation_gate_evidence.py"
+      ]
+    },
+    "connected-ghz-analytic": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        "/tmp/sharkbyte-colab-imrhyt9z/references-ufuoc4im/bin/python",
+        "-B",
+        "tools/run_connected_sparse_analytic_validation.py",
+        "--output",
+        "/tmp/sharkbyte-colab-imrhyt9z/integrated-results-q8w4bj57/connected-ghz.json"
+      ]
+    },
+    "connected-qiskit": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        "/tmp/sharkbyte-colab-imrhyt9z/references-ufuoc4im/bin/python",
+        "-B",
+        "tools/run_connected_quantum_validation.py",
+        "--backend",
+        "qiskit",
+        "--output",
+        "/tmp/sharkbyte-colab-imrhyt9z/integrated-results-q8w4bj57/connected-qiskit.json",
+        "--support-cap",
+        "65536",
+        "--memory-budget-mib",
+        "64",
+        "--timeout-seconds",
+        "60"
+      ]
+    },
+    "connected-cirq": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        "/tmp/sharkbyte-colab-imrhyt9z/references-ufuoc4im/bin/python",
+        "-B",
+        "tools/run_connected_quantum_validation.py",
+        "--backend",
+        "cirq",
+        "--output",
+        "/tmp/sharkbyte-colab-imrhyt9z/integrated-results-q8w4bj57/connected-cirq.json",
+        "--support-cap",
+        "65536",
+        "--memory-budget-mib",
+        "64",
+        "--timeout-seconds",
+        "60"
+      ]
+    },
+    "connected-comparison": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        "/tmp/sharkbyte-colab-imrhyt9z/references-ufuoc4im/bin/python",
+        "-B",
+        "tools/compare_connected_quantum_receipts.py",
+        "/tmp/sharkbyte-colab-imrhyt9z/integrated-results-q8w4bj57/connected-qiskit.json",
+        "/tmp/sharkbyte-colab-imrhyt9z/integrated-results-q8w4bj57/connected-cirq.json",
+        "--output",
+        "/tmp/sharkbyte-colab-imrhyt9z/integrated-results-q8w4bj57/connected-comparison.json"
+      ]
+    },
+    "random_connected-17": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        "/tmp/sharkbyte-colab-imrhyt9z/references-ufuoc4im/bin/python",
+        "-B",
+        "tools/high_support/run_suite.py",
+        "--case",
+        "random_connected",
+        "--width",
+        "17",
+        "--output-dir",
+        "/tmp/sharkbyte-colab-imrhyt9z/integrated-results-q8w4bj57/random_connected-17",
+        "--repeat",
+        "1",
+        "--delete-vectors-after-comparison"
+      ]
+    },
+    "random_connected-18": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        "/tmp/sharkbyte-colab-imrhyt9z/references-ufuoc4im/bin/python",
+        "-B",
+        "tools/high_support/run_suite.py",
+        "--case",
+        "random_connected",
+        "--width",
+        "18",
+        "--output-dir",
+        "/tmp/sharkbyte-colab-imrhyt9z/integrated-results-q8w4bj57/random_connected-18",
+        "--repeat",
+        "1",
+        "--delete-vectors-after-comparison"
+      ]
+    },
+    "random_connected-20": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        "/tmp/sharkbyte-colab-imrhyt9z/references-ufuoc4im/bin/python",
+        "-B",
+        "tools/high_support/run_suite.py",
+        "--case",
+        "random_connected",
+        "--width",
+        "20",
+        "--output-dir",
+        "/tmp/sharkbyte-colab-imrhyt9z/integrated-results-q8w4bj57/random_connected-20",
+        "--repeat",
+        "1",
+        "--delete-vectors-after-comparison"
+      ]
+    },
+    "connected_separable-20": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        "/tmp/sharkbyte-colab-imrhyt9z/references-ufuoc4im/bin/python",
+        "-B",
+        "tools/high_support/run_suite.py",
+        "--case",
+        "connected_separable",
+        "--width",
+        "20",
+        "--output-dir",
+        "/tmp/sharkbyte-colab-imrhyt9z/integrated-results-q8w4bj57/connected_separable-20",
+        "--repeat",
+        "1",
+        "--delete-vectors-after-comparison"
+      ]
+    },
+    "numerical_adversary-17": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        "/tmp/sharkbyte-colab-imrhyt9z/references-ufuoc4im/bin/python",
+        "-B",
+        "tools/high_support/run_suite.py",
+        "--case",
+        "numerical_adversary",
+        "--width",
+        "17",
+        "--output-dir",
+        "/tmp/sharkbyte-colab-imrhyt9z/integrated-results-q8w4bj57/numerical_adversary-17",
+        "--repeat",
+        "1",
+        "--delete-vectors-after-comparison"
+      ]
+    },
+    "roundtrip-17": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        "/tmp/sharkbyte-colab-imrhyt9z/references-ufuoc4im/bin/python",
+        "-B",
+        "tools/high_support/run_suite.py",
+        "--case",
+        "roundtrip",
+        "--width",
+        "17",
+        "--output-dir",
+        "/tmp/sharkbyte-colab-imrhyt9z/integrated-results-q8w4bj57/roundtrip-17",
+        "--repeat",
+        "1",
+        "--delete-vectors-after-comparison"
+      ]
+    }
+  },
+  "files": {
+    "checkout-tests.log": {
+      "bytes": 9806,
+      "sha256": "988019c49c00a26502c133bbe8ed0977016cf88e13d5087831dfbd23fb2d8287"
+    },
+    "cirq-40q-16777216.json": {
+      "bytes": 2271,
+      "sha256": "b0e5b5b7d64d19307cd19bac59bac64646dd90efa2cfde6027713c6ef1c1113d"
+    },
+    "connected-cirq.json": {
+      "bytes": 172491,
+      "sha256": "5f9c2eb599b2c64aa9279e99224abb9620e0ec6ad97b1f08e4c64a62db6f9c65"
+    },
+    "connected-cirq.log": {
+      "bytes": 1073,
+      "sha256": "ce3eb30706b5a3baf1a487b55cbc6ef9cb9acf973025be1f8b313944f006073d"
+    },
+    "connected-cirq.states.npz": {
+      "bytes": 5628294,
+      "sha256": "2e68b70f81594565c1741244d9a72a333fc7f051e29675cf5842401f585b7501"
+    },
+    "connected-comparison.json": {
+      "bytes": 69756,
+      "sha256": "740000e1287299950fca37c175d9a6f87a130dbef5e2932dffd216a48fb8cb4e"
+    },
+    "connected-comparison.log": {
+      "bytes": 134,
+      "sha256": "dd7e2c224d2243776468a89f9ffb9de5dc769c96141a67556fabc2c89874967b"
+    },
+    "connected-ghz-analytic.log": {
+      "bytes": 258,
+      "sha256": "93654dd36021d13a7dda2c641cf7cd2c04d16aa6cc45bd8c9c57ad824c26919d"
+    },
+    "connected-ghz.json": {
+      "bytes": 17751,
+      "sha256": "64337b8620ce9304516adcdaa8bd4df24790c48ab23743b164fdcf42ac948e45"
+    },
+    "connected-qiskit.json": {
+      "bytes": 775545,
+      "sha256": "3494788c3a8916822eb87f0d6fbefab3355f8e4d2461250441f4461607095975"
+    },
+    "connected-qiskit.log": {
+      "bytes": 1079,
+      "sha256": "e5191efb1a7b6cbb95098eb64dfd59cf6d99f2154e3ce7f31bbc39d6efd70e51"
+    },
+    "connected-qiskit.states.npz": {
+      "bytes": 5628294,
+      "sha256": "526bc024f01cb1906c1f617295a413684311984bcb8f4f69b6c9d239311815da"
+    },
+    "connected_separable-20/connected_separable_20q_cirq.json": {
+      "bytes": 2485,
+      "sha256": "aa5d4f6a7299b88691c17ea0b1a6b84155034080d8fb10f2cdc998d9a43a066a"
+    },
+    "connected_separable-20/connected_separable_20q_comparison.json": {
+      "bytes": 6230,
+      "sha256": "4d1872e720de28e54c89ee0cc0620e95a844ca75a2d368099e891800b3d32aa3"
+    },
+    "connected_separable-20/connected_separable_20q_dense.json": {
+      "bytes": 2364,
+      "sha256": "e76bc417e4959dcf52ac718276bcd079fe9082d88500ffe32b44e89b089767cf"
+    },
+    "connected_separable-20/connected_separable_20q_qiskit.json": {
+      "bytes": 2470,
+      "sha256": "b364869655fd4c0468848bc5bca9be6b6e8364f57115ae5b2d9f5d411d670762"
+    },
+    "connected_separable-20/connected_separable_20q_sparse.json": {
+      "bytes": 2527,
+      "sha256": "fa51bf8a8629a4b522b838aef32089c10ccba28b194183a00a65c30334d9dc03"
+    },
+    "connected_separable-20.log": {
+      "bytes": 3088,
+      "sha256": "e7de82fe8c99a70eee928b26b2e605d7348eb91414accba8a8dd96d1c8cc9461"
+    },
+    "full-40q-cirq.log": {
+      "bytes": 61,
+      "sha256": "6942f00418f17c3ea3bb991b4fc2eee7c2cd92dd400045a8e6b408b737d4fff9"
+    },
+    "high-support-tests.log": {
+      "bytes": 1454,
+      "sha256": "89d4770d4ddec24a2ed6b3eece970b6bf6d617c1dedb137ba76d372484425497"
+    },
+    "numerical_adversary-17/numerical_adversary_17q_cirq.json": {
+      "bytes": 2502,
+      "sha256": "7f2574c57bfc9c1d5e7570f9b3555b9e6ebe6842bb8a2c67e2ba9f13b4988826"
+    },
+    "numerical_adversary-17/numerical_adversary_17q_comparison.json": {
+      "bytes": 6580,
+      "sha256": "7f8fa4ff01f44f55a39315c68b045b54297fdb24adcae2d4442d76f0db5b2a35"
+    },
+    "numerical_adversary-17/numerical_adversary_17q_dense.json": {
+      "bytes": 2386,
+      "sha256": "133e413aaea9603fa46ce86fe3eb1901a96bee2e8923cb0560345f5f96212784"
+    },
+    "numerical_adversary-17/numerical_adversary_17q_qiskit.json": {
+      "bytes": 2493,
+      "sha256": "65eef0afcaeaa9ac00399cf069a4952e1bc059b8165d1f29d8448db512ea0b50"
+    },
+    "numerical_adversary-17/numerical_adversary_17q_sparse.json": {
+      "bytes": 2542,
+      "sha256": "baf5e19911e2bc2030067c5c3e6e6a9217cd4c9e751b64201fe3f1c1ae2cd41d"
+    },
+    "numerical_adversary-17.log": {
+      "bytes": 3162,
+      "sha256": "d30afe1eb35d69f4db8b56aac4a75b21c8d723ac2df2f3fc6f44a288eb7927b5"
+    },
+    "random_connected-17/random_connected_17q_cirq.json": {
+      "bytes": 2502,
+      "sha256": "73e8bf4e174c6d405bc6a8722ebcc005d23960dd53e5051b8efc5e207585724d"
+    },
+    "random_connected-17/random_connected_17q_comparison.json": {
+      "bytes": 7499,
+      "sha256": "a49e3fca00976bac53e7f22723244478fdcac28774d68b8a99684b394478d5ad"
+    },
+    "random_connected-17/random_connected_17q_dense.json": {
+      "bytes": 2387,
+      "sha256": "527308c2edc2fb0c9f199757cc20ff02d2012475a837a0fb74670eb34856d85f"
+    },
+    "random_connected-17/random_connected_17q_qiskit.json": {
+      "bytes": 2493,
+      "sha256": "8f9ebd6ac2e2a6f8fc7d71c7b4a2f16e8b7a9b504439f805d50abfa3028d5777"
+    },
+    "random_connected-17/random_connected_17q_sparse.json": {
+      "bytes": 2543,
+      "sha256": "dc902e17ca01cbd6c8aa5a3f7997c122e87c339bd2546c36c37a8e040abb5b2d"
+    },
+    "random_connected-17.log": {
+      "bytes": 4068,
+      "sha256": "7201c5e25603070d6ea049becce2a784216063d9bc155c1ab875c66904a755b4"
+    },
+    "random_connected-18/random_connected_18q_cirq.json": {
+      "bytes": 2506,
+      "sha256": "e7e3b3e233108cb0b037eac762cea6cd3df0d30ad5cb9abbc67a6bea76c665fc"
+    },
+    "random_connected-18/random_connected_18q_comparison.json": {
+      "bytes": 7510,
+      "sha256": "1c6e89468f80904a2afa43ee8b5e4bb9d81d5fd8b5f02539d9df6e9330b028af"
+    },
+    "random_connected-18/random_connected_18q_dense.json": {
+      "bytes": 2386,
+      "sha256": "a98003a606e7720f029f8d9ff97659b28f4255000c7bb70e6b81f5c9336c9272"
+    },
+    "random_connected-18/random_connected_18q_qiskit.json": {
+      "bytes": 2492,
+      "sha256": "015c44f1fd9b4257364f87afefe170b2b0dce4e50df79ea37bfb5823bf10791d"
+    },
+    "random_connected-18/random_connected_18q_sparse.json": {
+      "bytes": 2543,
+      "sha256": "3607790c2c4c411b5f88679ed5f22dfc1ca6cfe86a29e4d8a2dba03425c32992"
+    },
+    "random_connected-18.log": {
+      "bytes": 4080,
+      "sha256": "3ffa981d98d3a6da618106b25f76a512fd4c01f06ff0a57febc438237ec8de05"
+    },
+    "random_connected-20/random_connected_20q_cirq.json": {
+      "bytes": 2506,
+      "sha256": "c12f401176d9ce726c5135f0cfbf23f0b881ed43c2038775ecfb11befd0d3ada"
+    },
+    "random_connected-20/random_connected_20q_comparison.json": {
+      "bytes": 7546,
+      "sha256": "a71e9b9fe9bda3747860dd0877b5c2540a13482c36530a51e0555731b7093ac4"
+    },
+    "random_connected-20/random_connected_20q_dense.json": {
+      "bytes": 2388,
+      "sha256": "fed1de9d2a786fb2ebb8018c247b8c48b3afe03c03bda0c7ad27d51d47d55413"
+    },
+    "random_connected-20/random_connected_20q_qiskit.json": {
+      "bytes": 2497,
+      "sha256": "04a7dea2af29c73ce731f1cb91b9f04402786f1f72715e9747f3815475093465"
+    },
+    "random_connected-20/random_connected_20q_sparse.json": {
+      "bytes": 2549,
+      "sha256": "1955afce0eb71070bbb0194d390d25e6e827df27038ceac2a971e981fb5367da"
+    },
+    "random_connected-20.log": {
+      "bytes": 4114,
+      "sha256": "40d6826d1cd0b75969f508d2e0d857ea0770d4224cd0a9a54e7fd5410bb5f3c8"
+    },
+    "rotation-O.log": {
+      "bytes": 25468,
+      "sha256": "3562f79e1bf94d56793079b141ff2db40e055003326997c7a1bcde5503e26aa3"
+    },
+    "rotation-OO.log": {
+      "bytes": 25468,
+      "sha256": "3562f79e1bf94d56793079b141ff2db40e055003326997c7a1bcde5503e26aa3"
+    },
+    "rotation-normal.log": {
+      "bytes": 25468,
+      "sha256": "3562f79e1bf94d56793079b141ff2db40e055003326997c7a1bcde5503e26aa3"
+    },
+    "roundtrip-17/roundtrip_17q_cirq.json": {
+      "bytes": 2457,
+      "sha256": "96a357a08e736fde4f43cb9a448cbb870d103375a183e0b1d8aff2d41b3a1416"
+    },
+    "roundtrip-17/roundtrip_17q_comparison.json": {
+      "bytes": 6155,
+      "sha256": "2db3b02c695da55fa3e9bd3c5b750da0dbc63cd15da0a16d4e2f880aa6ae9cb1"
+    },
+    "roundtrip-17/roundtrip_17q_dense.json": {
+      "bytes": 2354,
+      "sha256": "8583e0baa9709276581e564e54b350f89e3bdbf1b80982b0867abc37aef98b19"
+    },
+    "roundtrip-17/roundtrip_17q_qiskit.json": {
+      "bytes": 2463,
+      "sha256": "5c3ad4f5fc9f1da4e20d8a79a064930dd49d8dc977c12ea392e9858524467285"
+    },
+    "roundtrip-17/roundtrip_17q_sparse.json": {
+      "bytes": 2510,
+      "sha256": "e05dcd6d76a606e2bd84e0bed0354d0eb762f9695dea7aeaba2b2bc4b45d9613"
+    },
+    "roundtrip-17.log": {
+      "bytes": 2786,
+      "sha256": "f125ddf421ca4dc2af4cb825e33e44901b887fe2ee85449b1dcde5ed77965740"
+    },
+    "studio-browser-receipt.log": {
+      "bytes": 415,
+      "sha256": "9abdf31e9acc0d1f10168ac35d1a45a1379385b5f6f0a517edb78db67378f5af"
+    }
+  }
+}

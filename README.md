@@ -10,11 +10,15 @@ SharkByte is an experimental programming language and CPU simulation toolchain. 
 
 | Result | What the evidence establishes | Evidence |
 | --- | --- | --- |
-| **40 qubits, 16,777,216 active states** | Colab compared every populated complex amplitude with Cirq. Maximum error was `7.40e-19`. The 56-gate circuit has eight disconnected components. | [Colab receipt](evidence/colab-ec876e2/cirq-40q-16777216.json) · [Scaling details](#scaling-to-16777216-active-states) |
-| **16,777,216 active states from Studio** | A manual Windows ARM64 browser run completed in 21.672 s of worker time with 2.77 GiB peak process memory. | [Studio receipt](evidence/studio_16m/windows_arm64/sharkbyte-85c74d14dcb54040a295e3c2fe422e53.json) |
-| **20 connected qubits, 1,048,576 amplitudes** | Four engines agreed on the complete statevector. The balanced cut had Schmidt rank 1,024 and 9.005 bits of entropy in the documented experiment. | [High-support methods and controls](docs/high-support-connected-entanglement.md) · [Colab comparison](evidence/colab-ec876e2/random_connected-20/random_connected_20q_comparison.json) |
-| **120 seeded circuits and 24 connected cases** | The 120-case suite covers up to six qubits. A separate Qiskit/Cirq corpus covers connected cases through 16 qubits, with analytic GHZ checks through 40 qubits. | [120-case suite](INDEPENDENT_QUANTUM_VALIDATION.md) · [24-case Colab comparison](evidence/colab-ec876e2/connected-comparison.json) · [Connected methods](docs/connected-circuit-frontier.md) |
-| **17 integrated Colab checks passed** | Includes the 40-qubit comparison, checkout tests, receipt verification, optimized-Python rotation checks, and connected numerical controls. | [Evidence index](evidence/colab-ec876e2/) · [Run summary and hashes](evidence/colab-ec876e2/colab-summary.json) |
+| **40 qubits, 16,777,216 active states** | Colab Linux x86_64, Cirq 1.7.0: every populated complex amplitude compared; maximum error `7.40e-19`. SharkByte evolution took 33.996 s and comparison took 7.816 s. The 56-gate circuit has eight disconnected components. | [Colab receipt](evidence/colab-q8w4bj57/cirq-40q-16777216.json) · [Complete run bundle](evidence/colab-q8w4bj57/integrated-results-q8w4bj57.zip) · [Scaling details](#scaling-to-16777216-active-states) |
+| **16,777,216 active states from Studio** | A manual Windows ARM64 browser run completed in 21.672 s of worker time with 2.77 GiB peak process memory. Receipt hashes establish record integrity, not authorship. | [Studio receipt](evidence/studio_16m/windows_arm64/sharkbyte-85c74d14dcb54040a295e3c2fe422e53.json) |
+| **20 connected qubits, 1,048,576 amplitudes** | Four engines agreed on the complete statevector. The balanced cut had Schmidt rank 1,024 and 9.005 bits of entropy in the documented experiment. | [High-support methods and controls](docs/high-support-connected-entanglement.md) · [Colab comparison](evidence/colab-q8w4bj57/random_connected-20/random_connected_20q_comparison.json) |
+| **120 seeded circuits and 24 connected cases** | The 120-case suite covers up to six qubits. A separate Qiskit/Cirq corpus covers connected cases through 16 qubits, with analytic GHZ checks through 40 qubits. | [120-case suite](INDEPENDENT_QUANTUM_VALIDATION.md) · [24-case Colab comparison](evidence/colab-q8w4bj57/connected-comparison.json) · [Connected methods](docs/connected-circuit-frontier.md) |
+| **17 integrated Colab checks passed** | Includes the 40-qubit comparison, checkout tests, receipt verification, optimized-Python rotation checks, and connected numerical controls. | [Run summary](evidence/colab-q8w4bj57/colab-summary.json) · [Complete run bundle](evidence/colab-q8w4bj57/integrated-results-q8w4bj57.zip) · [Bundle integrity record](evidence/colab-q8w4bj57/bundle-verification.json) |
+
+The complete Colab bundle is preserved byte-for-byte. Its 54 inventoried payload files match the embedded size and SHA-256 inventory; the archive SHA-256 is `215a436cdf5a72f8cd8babc7f0ae73ebe446b3cff4c2b71337951c3b7268951d`. The run summary records Linux x86_64, Python 3.13.18, Qiskit 2.6.2, Cirq 1.7.0, and 17/17 passing checks. These hashes establish integrity, not authorship. [Bundle verification record](evidence/colab-q8w4bj57/bundle-verification.json)
+
+**Open limitation — sparse support compaction:** In the 17-qubit round-trip case, all four backends return the state to `|0⟩` within the recorded tolerances, but each still reports 131,072 exact nonzero amplitudes because floating-point residuals are not pruned. Exact sparse uncomputation/compaction remains **OPEN**; the passing comparison does not establish that support shrinks back to one state. [Round-trip comparison](evidence/colab-q8w4bj57/roundtrip-17/roundtrip_17q_comparison.json)
 
 ![SharkByte Studio and the 16,777,216-active-state terminal benchmark](docs/sharkbyte-studio-banner.svg)
 
@@ -62,7 +66,7 @@ Choose **Quantum → Load phase-flip recovery → Run**. The [circuit](examples/
 | Z on q1, input phase −π/3, check fixed at +π/3 | `11` | 25% |
 | Two Z errors, recovery on | `10` for q0+q1, `11` for q0+q2, `01` for q1+q2 | 25% |
 
-**Load two-error control** injects Z on q1 and q2. Its syndrome matches a single error on q0, so the decoder flips q0 and leaves a logical X. The wrong-phase and two-error controls each returned `000` in 247 of 1,024 shots, consistent with 25% overlap for this input. The recovery cases returned `000` in all 1,024 shots each. The results describe ideal simulated gates, this logical input, and the specified injected errors.
+**Load two-error control** injects Z on q1 and q2. Its syndrome matches a single error on q0, so the decoder flips q0 and leaves a logical X. The wrong-phase and two-error controls each returned `000` in 247 of 1,024 shots (24.1%). The ideal probability is 25% (256 counts); the observed difference is 9 counts, about 0.65 binomial standard deviations, consistent with finite-shot sampling noise. The recovery cases returned `000` in all 1,024 shots each. The results describe ideal simulated gates, this logical input, and the specified injected errors.
 
 [All eleven receipts and their exact circuits](evidence/phase_flip_recovery_cases.json) · Reproduce with `python -B tools/phase_flip_recovery_cases.py`.
 
@@ -143,7 +147,7 @@ On native Windows ARM64, Cirq 1.7.0 also matched all 16,777,216 populated
 amplitudes with a maximum complex amplitude error of `6.36e-19`.
 [Windows ARM64 Cirq scaling receipt](evidence/windows-arm64-cirq/cirq-16777216.json) · [Native Qiskit and Cirq suite receipts](evidence/windows-arm64-qiskit/)
 
-Colab compared 3,196 amplitudes in the seeded suite with a maximum error of
+An earlier Colab Linux x86_64 run compared 3,196 amplitudes in the seeded suite with a maximum error of
 `5.93e-16` against each engine. The 40-qubit circuit's maximum complex amplitude
 error was `7.40e-19`. SharkByte evolution took 36.025 s and the amplitude comparison
 took 8.901 s. The Colab receipts are tied to source revision `bfad672`.

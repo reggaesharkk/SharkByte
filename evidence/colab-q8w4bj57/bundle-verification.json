@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "run_id": "q8w4bj57",
+  "archive": {
+    "path": "integrated-results-q8w4bj57.zip",
+    "bytes": 10006461,
+    "sha256": "215a436cdf5a72f8cd8babc7f0ae73ebe446b3cff4c2b71337951c3b7268951d",
+    "zip_entries": 61,
+    "payload_files_verified": 54,
+    "payload_bytes": 12507249,
+    "verification": "PASS",
+    "failure_count": 0
+  },
+  "source_revision": "ec876e2c51844068e01d8fac2ee86b83983514a9",
+  "environment": {
+    "host": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "architecture": "x86_64",
+    "python": "3.13.18",
+    "qiskit": "2.6.2",
+    "cirq": "1.7.0",
+    "numpy": "2.5.4"
+  },
+  "checks": {
+    "total": 17,
+    "pass": 17,
+    "fail": 0
+  },
+  "selected_payloads": [
+    {
+      "path": "connected-comparison.json",
+      "bytes": 69756,
+      "sha256": "740000e1287299950fca37c175d9a6f87a130dbef5e2932dffd216a48fb8cb4e"
+    },
+    {
+      "path": "random_connected-20/random_connected_20q_comparison.json",
+      "bytes": 7546,
+      "sha256": "a71e9b9fe9bda3747860dd0877b5c2540a13482c36530a51e0555731b7093ac4"
+    },
+    {
+      "path": "roundtrip-17/roundtrip_17q_comparison.json",
+      "bytes": 6155,
+      "sha256": "2db3b02c695da55fa3e9bd3c5b750da0dbc63cd15da0a16d4e2f880aa6ae9cb1"
+    },
+    {
+      "path": "cirq-40q-16777216.json",
+      "bytes": 2271,
+      "sha256": "b0e5b5b7d64d19307cd19bac59bac64646dd90efa2cfde6027713c6ef1c1113d"
+    },
+    {
+      "path": "colab-summary.json",
+      "bytes": 15874,
+      "sha256": "8be29d962701b7affaa7156a25463f68b43ff291c9aede87271576b643d5d550"
+    }
+  ]
+}
