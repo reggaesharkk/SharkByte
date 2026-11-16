@@ -1,0 +1,199 @@
+{
+  "case": "random_connected",
+  "checks": {
+    "all_amplitudes_match_qiskit": true,
+    "all_backends_produce_dense_support": true,
+    "all_backends_returned_full_vector": true,
+    "all_backends_used_same_gate_sequence": true,
+    "all_backends_used_same_source_bytes": true,
+    "all_checks_pass": true,
+    "all_norms_within_tolerance": true,
+    "all_probabilities_match_qiskit": true,
+    "cirq_schmidt_rank_exceeds_one": true,
+    "interaction_graph_connected": true,
+    "qiskit_schmidt_rank_exceeds_one": true,
+    "reference_spectra_match_analytic_oracle": true
+  },
+  "qubits": 18,
+  "results": {
+    "backend_measurements": {
+      "cirq": {
+        "active_amplitudes_exact_nonzero": 262144,
+        "backend_run_details": [
+          {
+            "circuit_build_seconds": 0.008048943000062536,
+            "cirq_core_version": "1.7.0",
+            "instruction_count": 92,
+            "qubit_order": "reversed; q0 is LSB",
+            "statevector_evolution_seconds": 0.08298949999993965
+          }
+        ],
+        "median_elapsed_seconds": 2.650911170000086,
+        "norm": 1.0000000000000029,
+        "peak_rss_bytes_process_lifetime": 212410368,
+        "state_vector_sha256": "340ff2832c2b239a4ad8a8608f5cafbbce23d03d3f93636040b8f784ed514832"
+      },
+      "dense": {
+        "active_amplitudes_exact_nonzero": 262144,
+        "backend_run_details": [
+          {
+            "evolution_seconds": 0.23549814099999367,
+            "representation": "complex128 dense NumPy array"
+          }
+        ],
+        "median_elapsed_seconds": 0.3913172530000111,
+        "norm": 0.999999999999998,
+        "peak_rss_bytes_process_lifetime": 54861824,
+        "state_vector_sha256": "8521f096f6682a072c88376a5072a89be305b4b572a9642ae341d560140a2a61"
+      },
+      "qiskit": {
+        "active_amplitudes_exact_nonzero": 262144,
+        "backend_run_details": [
+          {
+            "circuit_build_seconds": 0.0006840500000180327,
+            "instruction_count": 92,
+            "qiskit_aer_used": false,
+            "qiskit_version": "2.6.2",
+            "statevector_evolution_seconds": 0.43879442200000085
+          }
+        ],
+        "median_elapsed_seconds": 0.932589194000002,
+        "norm": 0.999999999999998,
+        "peak_rss_bytes_process_lifetime": 108097536,
+        "state_vector_sha256": "12dedfcb14c86f0f061abc64c7536928f877a672e0673e639da4b631a61c2c24"
+      },
+      "sparse": {
+        "active_amplitudes_exact_nonzero": 262144,
+        "backend_run_details": [
+          {
+            "configured_estimated_memory_bytes": 134217728,
+            "dense_materialization_seconds": 0.039820667999947545,
+            "evolution_seconds": 4.742465892000041,
+            "peak_gate_index": 17,
+            "peak_support": 262144,
+            "sparse_dictionary_entries": 262144
+          }
+        ],
+        "median_elapsed_seconds": 4.9291964149999785,
+        "norm": 0.999999999999998,
+        "peak_rss_bytes_process_lifetime": 120541184,
+        "state_vector_sha256": "bd62d038e67c4ee2065a9529d832eecd1ec9f67c209b53831f03cfe1d04a968a"
+      }
+    },
+    "case": "random_connected",
+    "comparison_code_sha256": "812e3fc2ec84d8d001b5e9fc901257dbf48cfaf6ced469011ea983fa29724e18",
+    "comparison_to_qiskit": {
+      "cirq": {
+        "actual_norm": 1.0000000000000029,
+        "expected_norm": 0.999999999999998,
+        "global_phase_radians": -9.757819552369535e-17,
+        "l1_probability_error": 4.802004673429989e-15,
+        "l2_amplitude_error_after_global_phase_alignment": 2.4607662307260213e-15,
+        "max_amplitude_error_after_global_phase_alignment": 1.0491581911751869e-17,
+        "max_probability_error": 6.606856988583543e-20
+      },
+      "dense": {
+        "actual_norm": 0.999999999999998,
+        "expected_norm": 0.999999999999998,
+        "global_phase_radians": -5.6378512969246346e-18,
+        "l1_probability_error": 3.195032440693358e-16,
+        "l2_amplitude_error_after_global_phase_alignment": 2.869075005102828e-16,
+        "max_amplitude_error_after_global_phase_alignment": 2.8189256484623115e-18,
+        "max_probability_error": 1.5246593050577406e-20
+      },
+      "qiskit": {
+        "actual_norm": 0.999999999999998,
+        "expected_norm": 0.999999999999998,
+        "global_phase_radians": 0.0,
+        "l1_probability_error": 0.0,
+        "l2_amplitude_error_after_global_phase_alignment": 0.0,
+        "max_amplitude_error_after_global_phase_alignment": 0.0,
+        "max_probability_error": 0.0
+      },
+      "sparse": {
+        "actual_norm": 0.999999999999998,
+        "expected_norm": 0.999999999999998,
+        "global_phase_radians": -4.336808689942026e-19,
+        "l1_probability_error": 8.513104217901888e-17,
+        "l2_amplitude_error_after_global_phase_alignment": 1.0375298149068243e-16,
+        "max_amplitude_error_after_global_phase_alignment": 1.454609855418324e-18,
+        "max_probability_error": 1.1858461261560205e-20
+      }
+    },
+    "corpus_generator_sha256": "4e640beda28f047548667db361e633fb44eeeaa6cd1ae358be7d9b667e255b72",
+    "entanglement": {
+      "analytic_phase_matrix": {
+        "entropy_fraction_of_maximum": 0.8939692872071051,
+        "maximum_entropy_bits": 9.0,
+        "normalization": 0.9999999999999999,
+        "purity": 0.004901441239288662,
+        "relative_singular_value_cutoff": 1e-10,
+        "schmidt_rank_at_relative_cutoff": 512,
+        "von_neumann_entropy_bits": 8.045723584863946
+      },
+      "backend_schmidt_metrics": {
+        "cirq": {
+          "entropy_fraction_of_maximum": 0.8939692872071051,
+          "maximum_entropy_bits": 9.0,
+          "normalization": 1.0000000000000018,
+          "purity": 0.004901441239288657,
+          "relative_singular_value_cutoff": 1e-10,
+          "schmidt_rank_at_relative_cutoff": 512,
+          "von_neumann_entropy_bits": 8.045723584863946
+        },
+        "qiskit": {
+          "entropy_fraction_of_maximum": 0.8939692872071051,
+          "maximum_entropy_bits": 9.0,
+          "normalization": 0.9999999999999971,
+          "purity": 0.004901441239288661,
+          "relative_singular_value_cutoff": 1e-10,
+          "schmidt_rank_at_relative_cutoff": 512,
+          "von_neumann_entropy_bits": 8.045723584863946
+        }
+      },
+      "max_singular_value_error_vs_analytic_oracle": {
+        "cirq": 2.7755575615628914e-16,
+        "qiskit": 5.273559366969494e-16
+      },
+      "partition": {
+        "A_qubits": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "B_qubits": [
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ]
+      },
+      "witness_method": "Schmidt spectrum of independently simulated complete statevector; analytic controlled-phase matrix provides a separate oracle because within-partition CX and final single-qubit rotations are local unitaries across this cut."
+    },
+    "gate_sequence_sha256": "c453b9cfd0a4d6adcb3dc0e66b93eddd84a2fe67c9918a1554ee1de7fcdc838a",
+    "gates": 92,
+    "numpy_version": "2.5.4",
+    "plan_file_sha256": "d61ff76fac44cc16d524c260e9e801cafb210a48a32d1fc0eedb34978ada2a00",
+    "qubits": 18,
+    "source_sha256": "5fce3d3ed2fe3f185204bb82ee033576d0d14bf0189a6de838721f0bcf2c7b01",
+    "tolerances": {
+      "amplitude_max": 2e-10,
+      "normalization": 1e-10,
+      "probability_l1": 2e-09,
+      "probability_max": 2e-10
+    }
+  },
+  "schema": 1,
+  "status": "PASS"
+}

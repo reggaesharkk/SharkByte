@@ -1,0 +1,57 @@
+{
+  "active_amplitudes_exact_nonzero": 131072,
+  "architecture": "x86_64",
+  "backend": "qiskit",
+  "backend_run_details": [
+    {
+      "circuit_build_seconds": 0.001482686000031208,
+      "instruction_count": 214,
+      "qiskit_aer_used": false,
+      "qiskit_version": "2.6.2",
+      "statevector_evolution_seconds": 0.654785367000045
+    }
+  ],
+  "basis_vector_length": 131072,
+  "case": "roundtrip",
+  "elapsed_seconds": [
+    1.1623595840000007
+  ],
+  "gate_count": 214,
+  "gate_sequence_sha256": "64e11da81398b682ed13c0395cee294b842962835bcccb2fb7cfffb00daf3854",
+  "host": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "implementation_sha256": {
+    "corpus_generator": "4e640beda28f047548667db361e633fb44eeeaa6cd1ae358be7d9b667e255b72",
+    "dense_candidate": "dc1670f363e555930f2ca1e5ee9a8e478559883af6b83c64f35c00396eb8faf6",
+    "frontier_parser": "26d4d258ca87cc78e449879744478d714f162aa0cf5f474692d31cd18040cb52",
+    "quantum_frontend": "1e373410a5494c5c257dd4916494d964d75758f1432997ebd704c07c07fcaf93",
+    "runner": "6e0e4fef92cb7ceda83f9b8f6f356166fe04dcff53ee0a27f2e80e7d3e57156c",
+    "sparse_backend": "7870c39077f6bc4163475c31ddf42e4a3713c81a6bdb9e8f288d424914903dbe"
+  },
+  "limits": {
+    "full_statevector": true,
+    "hardware": "classical simulation",
+    "shots": "not sampled"
+  },
+  "median_elapsed_seconds": 1.1623595840000007,
+  "norm": 0.9999999999999938,
+  "numpy_version": "2.5.4",
+  "parsed_gate_sequence_sha256": "64e11da81398b682ed13c0395cee294b842962835bcccb2fb7cfffb00daf3854",
+  "parsed_source_sha256": "3023e64e7e1df05a284927fc0e625385e3a43baeeda7deaa0e5a4896e0c49c11",
+  "peak_rss_bytes_process_lifetime": 99602432,
+  "plan_file_sha256": "737ac3d5912745b25487cdb08cb2738d34ed25a70abeeda44685b97650b4f964",
+  "processor": "Intel(R) Xeon(R) CPU @ 2.20GHz",
+  "python": "3.13.18",
+  "qubits": 17,
+  "revision": "ec876e2c51844068e01d8fac2ee86b83983514a9",
+  "saved_npy": "roundtrip_17q_qiskit.npy",
+  "saved_npy_sha256": "db741436af8a1a2f48fe89c4c924d555627751f28bf8f487b50e60b3c9e6cabf",
+  "schema": 1,
+  "seed": 2026111617,
+  "source_bytes": 5604,
+  "source_name": "roundtrip_17q.sbq",
+  "source_sha256": "3023e64e7e1df05a284927fc0e625385e3a43baeeda7deaa0e5a4896e0c49c11",
+  "state_vector_sha256_little_endian_complex128": "76659a836c4c1f16568e3d9fd4cad58a255b237b0fb46b3f79b10ed7841854d4",
+  "status": "PASS",
+  "topology_kind": "complete_bipartite_controlled_phase_with_partition_chains",
+  "two_qubit_edge_count": 87
+}

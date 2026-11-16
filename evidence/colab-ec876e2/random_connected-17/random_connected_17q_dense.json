@@ -1,0 +1,54 @@
+{
+  "active_amplitudes_exact_nonzero": 131072,
+  "architecture": "x86_64",
+  "backend": "dense",
+  "backend_run_details": [
+    {
+      "evolution_seconds": 0.08535510399997293,
+      "representation": "complex128 dense NumPy array"
+    }
+  ],
+  "basis_vector_length": 131072,
+  "case": "random_connected",
+  "elapsed_seconds": [
+    0.1820768310000176
+  ],
+  "gate_count": 84,
+  "gate_sequence_sha256": "b4c2c8b0a277b6807df2d2ececdc019ecb5aafba9b8c9c6e28ef1a940c0af27d",
+  "host": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "implementation_sha256": {
+    "corpus_generator": "4e640beda28f047548667db361e633fb44eeeaa6cd1ae358be7d9b667e255b72",
+    "dense_candidate": "dc1670f363e555930f2ca1e5ee9a8e478559883af6b83c64f35c00396eb8faf6",
+    "frontier_parser": "26d4d258ca87cc78e449879744478d714f162aa0cf5f474692d31cd18040cb52",
+    "quantum_frontend": "1e373410a5494c5c257dd4916494d964d75758f1432997ebd704c07c07fcaf93",
+    "runner": "6e0e4fef92cb7ceda83f9b8f6f356166fe04dcff53ee0a27f2e80e7d3e57156c",
+    "sparse_backend": "7870c39077f6bc4163475c31ddf42e4a3713c81a6bdb9e8f288d424914903dbe"
+  },
+  "limits": {
+    "full_statevector": true,
+    "hardware": "classical simulation",
+    "shots": "not sampled"
+  },
+  "median_elapsed_seconds": 0.1820768310000176,
+  "norm": 0.9999999999999973,
+  "numpy_version": "2.5.4",
+  "parsed_gate_sequence_sha256": "b4c2c8b0a277b6807df2d2ececdc019ecb5aafba9b8c9c6e28ef1a940c0af27d",
+  "parsed_source_sha256": "6c16756d4a91c559d9ba142d46dbdce49119b3ceb791818ecc5b96344ba9a258",
+  "peak_rss_bytes_process_lifetime": 46235648,
+  "plan_file_sha256": "f187b550c6a9e0b666bc9550025bf92643d3180be9b5c9c7a3d7b22f979e22e8",
+  "processor": "Intel(R) Xeon(R) CPU @ 2.20GHz",
+  "python": "3.13.18",
+  "qubits": 17,
+  "revision": "ec876e2c51844068e01d8fac2ee86b83983514a9",
+  "saved_npy": "random_connected_17q_dense.npy",
+  "saved_npy_sha256": "c49ad0e45fe81bb4384b0e829d2a1480ecc0472a70532860d82bdf281e8241df",
+  "schema": 1,
+  "seed": 2026111617,
+  "source_bytes": 2097,
+  "source_name": "random_connected_17q.sbq",
+  "source_sha256": "6c16756d4a91c559d9ba142d46dbdce49119b3ceb791818ecc5b96344ba9a258",
+  "state_vector_sha256_little_endian_complex128": "868d3391a4978d0f14c94119bbe6371bcfb883bb15d25417b01727760612d10c",
+  "status": "PASS",
+  "topology_kind": "seeded_erdos_renyi_bipartite_phase_edges_with_random_partition_trees",
+  "two_qubit_edge_count": 64
+}

@@ -1,0 +1,406 @@
+{
+  "amplitude_probability_normalization_tolerance": 1e-10,
+  "cases": [
+    {
+      "connected_interaction_graph": true,
+      "controlled_phase_angles": [
+        0.375,
+        -0.625,
+        0.8125,
+        -1.1875
+      ],
+      "entangled_ghz_checkpoint": {
+        "every_nontrivial_bipartition": {
+          "entropy_bits": 1.0,
+          "reason": "The two phase-GHZ branches differ on every nonempty proper subset and its complement, leaving two orthogonal Schmidt terms.",
+          "reduced_state_purity": 0.5,
+          "schmidt_probabilities": [
+            0.5,
+            0.5
+          ],
+          "schmidt_rank": 2,
+          "status": "PASS"
+        },
+        "evolution_seconds": 0.0002987130000065008,
+        "gate_count": 44,
+        "maximum_complex_amplitude_error": 2.2887833992611187e-16,
+        "peak_support": 2,
+        "populated_states": 2,
+        "state_sha256": "7b1db9d58a6065fba1f31f51d579ea2aee66f02e7c19c5edb81b0c09a61de9bd"
+      },
+      "entangling_edges": 23,
+      "exact_relative_phase_radians": -0.65625,
+      "expected_nonzero_amplitudes": [
+        {
+          "basis_index": 0,
+          "imag": -0.29103613515690907,
+          "probability": 0.8961429298385891,
+          "real": 0.9008001431347125
+        },
+        {
+          "basis_index": 1,
+          "imag": 0.30666049938179246,
+          "probability": 0.10385707016141071,
+          "real": 0.09907778903629408
+        }
+      ],
+      "final_interference_checkpoint": {
+        "peak_support": 2,
+        "populated_states": 2,
+        "status": "PASS"
+      },
+      "gate_count": 64,
+      "id": "connected_ghz_analytic_20q",
+      "maximum_complex_amplitude_error": 1.6243534171511178e-16,
+      "maximum_probability_error": 0.0,
+      "normalization": 0.9999999999999998,
+      "reference_method": "GHZ branch phase accumulation, inverse CNOT chain, final H projection",
+      "rz_angles": [
+        0.03125,
+        -0.0625,
+        0.09375,
+        -0.125,
+        0.15625,
+        -0.1875,
+        0.21875,
+        -0.25,
+        0.28125,
+        -0.03125,
+        0.0625,
+        -0.09375,
+        0.125,
+        -0.15625,
+        0.1875,
+        -0.21875,
+        0.25,
+        -0.28125,
+        0.03125,
+        -0.0625
+      ],
+      "source": "quantum connected_ghz_analytic_20q {\n  qubits 20;\n  shots 1;\n  seed 2026111720;\n  h 0;\n  cx 0 1;\n  cx 1 2;\n  cx 2 3;\n  cx 3 4;\n  cx 4 5;\n  cx 5 6;\n  cx 6 7;\n  cx 7 8;\n  cx 8 9;\n  cx 9 10;\n  cx 10 11;\n  cx 11 12;\n  cx 12 13;\n  cx 13 14;\n  cx 14 15;\n  cx 15 16;\n  cx 16 17;\n  cx 17 18;\n  cx 18 19;\n  cp 0.375 0 19;\n  cp -0.625 5 15;\n  cp 0.8125 1 10;\n  cp -1.1875 6 18;\n  rz 0.03125 0;\n  rz -0.0625 1;\n  rz 0.09375 2;\n  rz -0.125 3;\n  rz 0.15625 4;\n  rz -0.1875 5;\n  rz 0.21875 6;\n  rz -0.25 7;\n  rz 0.28125 8;\n  rz -0.03125 9;\n  rz 0.0625 10;\n  rz -0.09375 11;\n  rz 0.125 12;\n  rz -0.15625 13;\n  rz 0.1875 14;\n  rz -0.21875 15;\n  rz 0.25 16;\n  rz -0.28125 17;\n  rz 0.03125 18;\n  rz -0.0625 19;\n  cx 18 19;\n  cx 17 18;\n  cx 16 17;\n  cx 15 16;\n  cx 14 15;\n  cx 13 14;\n  cx 12 13;\n  cx 11 12;\n  cx 10 11;\n  cx 9 10;\n  cx 8 9;\n  cx 7 8;\n  cx 6 7;\n  cx 5 6;\n  cx 4 5;\n  cx 3 4;\n  cx 2 3;\n  cx 1 2;\n  cx 0 1;\n  h 0;\n  measure_all;\n}\n",
+      "source_sha256": "b1cd8490b7ce343d52d17ae2d37783b0ac6d3a56f351a9a529ec187f41298dee",
+      "sparse_evolution_seconds": 0.0002944579999848429,
+      "sparse_peak_gate_index": 0,
+      "sparse_peak_support": 2,
+      "sparse_populated_states": 2,
+      "state_sha256": "d1687d47d344dce47542d1ebe41b4cc89ec142bf010b94cb9a5fd54261dc5c8b",
+      "status": "PASS",
+      "width": 20
+    },
+    {
+      "connected_interaction_graph": true,
+      "controlled_phase_angles": [
+        0.375,
+        -0.625,
+        0.8125,
+        -1.1875
+      ],
+      "entangled_ghz_checkpoint": {
+        "every_nontrivial_bipartition": {
+          "entropy_bits": 1.0,
+          "reason": "The two phase-GHZ branches differ on every nonempty proper subset and its complement, leaving two orthogonal Schmidt terms.",
+          "reduced_state_purity": 0.5,
+          "schmidt_probabilities": [
+            0.5,
+            0.5
+          ],
+          "schmidt_rank": 2,
+          "status": "PASS"
+        },
+        "evolution_seconds": 0.0002745770000274206,
+        "gate_count": 52,
+        "maximum_complex_amplitude_error": 1.2412670766236366e-16,
+        "peak_support": 2,
+        "populated_states": 2,
+        "state_sha256": "9cdd587f2ca4f54fed0f08e3019b2324c88d7ac38f422c5190e175ea1d8e50fe"
+      },
+      "entangling_edges": 27,
+      "exact_relative_phase_radians": -0.71875,
+      "expected_nonzero_amplitudes": [
+        {
+          "basis_index": 0,
+          "imag": -0.28779836223710475,
+          "probability": 0.8763146862090333,
+          "real": 0.8907787541823579
+        },
+        {
+          "basis_index": 1,
+          "imag": 0.334656197985239,
+          "probability": 0.12368531379096678,
+          "real": 0.10812281415608505
+        }
+      ],
+      "final_interference_checkpoint": {
+        "peak_support": 2,
+        "populated_states": 2,
+        "status": "PASS"
+      },
+      "gate_count": 76,
+      "id": "connected_ghz_analytic_24q",
+      "maximum_complex_amplitude_error": 1.5700924586837752e-16,
+      "maximum_probability_error": 2.220446049250313e-16,
+      "normalization": 0.9999999999999999,
+      "reference_method": "GHZ branch phase accumulation, inverse CNOT chain, final H projection",
+      "rz_angles": [
+        0.03125,
+        -0.0625,
+        0.09375,
+        -0.125,
+        0.15625,
+        -0.1875,
+        0.21875,
+        -0.25,
+        0.28125,
+        -0.03125,
+        0.0625,
+        -0.09375,
+        0.125,
+        -0.15625,
+        0.1875,
+        -0.21875,
+        0.25,
+        -0.28125,
+        0.03125,
+        -0.0625,
+        0.09375,
+        -0.125,
+        0.15625,
+        -0.1875
+      ],
+      "source": "quantum connected_ghz_analytic_24q {\n  qubits 24;\n  shots 1;\n  seed 2026111724;\n  h 0;\n  cx 0 1;\n  cx 1 2;\n  cx 2 3;\n  cx 3 4;\n  cx 4 5;\n  cx 5 6;\n  cx 6 7;\n  cx 7 8;\n  cx 8 9;\n  cx 9 10;\n  cx 10 11;\n  cx 11 12;\n  cx 12 13;\n  cx 13 14;\n  cx 14 15;\n  cx 15 16;\n  cx 16 17;\n  cx 17 18;\n  cx 18 19;\n  cx 19 20;\n  cx 20 21;\n  cx 21 22;\n  cx 22 23;\n  cp 0.375 0 23;\n  cp -0.625 6 18;\n  cp 0.8125 1 12;\n  cp -1.1875 8 22;\n  rz 0.03125 0;\n  rz -0.0625 1;\n  rz 0.09375 2;\n  rz -0.125 3;\n  rz 0.15625 4;\n  rz -0.1875 5;\n  rz 0.21875 6;\n  rz -0.25 7;\n  rz 0.28125 8;\n  rz -0.03125 9;\n  rz 0.0625 10;\n  rz -0.09375 11;\n  rz 0.125 12;\n  rz -0.15625 13;\n  rz 0.1875 14;\n  rz -0.21875 15;\n  rz 0.25 16;\n  rz -0.28125 17;\n  rz 0.03125 18;\n  rz -0.0625 19;\n  rz 0.09375 20;\n  rz -0.125 21;\n  rz 0.15625 22;\n  rz -0.1875 23;\n  cx 22 23;\n  cx 21 22;\n  cx 20 21;\n  cx 19 20;\n  cx 18 19;\n  cx 17 18;\n  cx 16 17;\n  cx 15 16;\n  cx 14 15;\n  cx 13 14;\n  cx 12 13;\n  cx 11 12;\n  cx 10 11;\n  cx 9 10;\n  cx 8 9;\n  cx 7 8;\n  cx 6 7;\n  cx 5 6;\n  cx 4 5;\n  cx 3 4;\n  cx 2 3;\n  cx 1 2;\n  cx 0 1;\n  h 0;\n  measure_all;\n}\n",
+      "source_sha256": "0021d1bb2148ea28ff5d0a469cff1158357ad2b9074121ebc307a7daffc5d8fb",
+      "sparse_evolution_seconds": 0.0003273129999570301,
+      "sparse_peak_gate_index": 0,
+      "sparse_peak_support": 2,
+      "sparse_populated_states": 2,
+      "state_sha256": "4f5b124631c472f4f6d201153d7ed81eddff31a9a6d99ee592cafd29d0b2854e",
+      "status": "PASS",
+      "width": 24
+    },
+    {
+      "connected_interaction_graph": true,
+      "controlled_phase_angles": [
+        0.375,
+        -0.625,
+        0.8125,
+        -1.1875
+      ],
+      "entangled_ghz_checkpoint": {
+        "every_nontrivial_bipartition": {
+          "entropy_bits": 1.0,
+          "reason": "The two phase-GHZ branches differ on every nonempty proper subset and its complement, leaving two orthogonal Schmidt terms.",
+          "reduced_state_purity": 0.5,
+          "schmidt_probabilities": [
+            0.5,
+            0.5
+          ],
+          "schmidt_rank": 2,
+          "status": "PASS"
+        },
+        "evolution_seconds": 0.0002997620000542156,
+        "gate_count": 64,
+        "maximum_complex_amplitude_error": 2.2887833992611187e-16,
+        "peak_support": 2,
+        "populated_states": 2,
+        "state_sha256": "d5d123bb9623b852d21546abc2142e9135287bf01a5b89dca13ee3deefadf9d6"
+      },
+      "entangling_edges": 33,
+      "exact_relative_phase_radians": -0.53125,
+      "expected_nonzero_amplitudes": [
+        {
+          "basis_index": 0,
+          "imag": -0.2966562213336689,
+          "probability": 0.9310872399674402,
+          "real": 0.9181951460944833
+        },
+        {
+          "basis_index": 1,
+          "imag": 0.2497983855855347,
+          "probability": 0.06891276003255976,
+          "real": 0.0807064222439596
+        }
+      ],
+      "final_interference_checkpoint": {
+        "peak_support": 2,
+        "populated_states": 2,
+        "status": "PASS"
+      },
+      "gate_count": 94,
+      "id": "connected_ghz_analytic_30q",
+      "maximum_complex_amplitude_error": 2.2887833992611187e-16,
+      "maximum_probability_error": 4.440892098500626e-16,
+      "normalization": 0.9999999999999996,
+      "reference_method": "GHZ branch phase accumulation, inverse CNOT chain, final H projection",
+      "rz_angles": [
+        0.03125,
+        -0.0625,
+        0.09375,
+        -0.125,
+        0.15625,
+        -0.1875,
+        0.21875,
+        -0.25,
+        0.28125,
+        -0.03125,
+        0.0625,
+        -0.09375,
+        0.125,
+        -0.15625,
+        0.1875,
+        -0.21875,
+        0.25,
+        -0.28125,
+        0.03125,
+        -0.0625,
+        0.09375,
+        -0.125,
+        0.15625,
+        -0.1875,
+        0.21875,
+        -0.25,
+        0.28125,
+        -0.03125,
+        0.0625,
+        -0.09375
+      ],
+      "source": "quantum connected_ghz_analytic_30q {\n  qubits 30;\n  shots 1;\n  seed 2026111730;\n  h 0;\n  cx 0 1;\n  cx 1 2;\n  cx 2 3;\n  cx 3 4;\n  cx 4 5;\n  cx 5 6;\n  cx 6 7;\n  cx 7 8;\n  cx 8 9;\n  cx 9 10;\n  cx 10 11;\n  cx 11 12;\n  cx 12 13;\n  cx 13 14;\n  cx 14 15;\n  cx 15 16;\n  cx 16 17;\n  cx 17 18;\n  cx 18 19;\n  cx 19 20;\n  cx 20 21;\n  cx 21 22;\n  cx 22 23;\n  cx 23 24;\n  cx 24 25;\n  cx 25 26;\n  cx 26 27;\n  cx 27 28;\n  cx 28 29;\n  cp 0.375 0 29;\n  cp -0.625 7 22;\n  cp 0.8125 1 15;\n  cp -1.1875 10 28;\n  rz 0.03125 0;\n  rz -0.0625 1;\n  rz 0.09375 2;\n  rz -0.125 3;\n  rz 0.15625 4;\n  rz -0.1875 5;\n  rz 0.21875 6;\n  rz -0.25 7;\n  rz 0.28125 8;\n  rz -0.03125 9;\n  rz 0.0625 10;\n  rz -0.09375 11;\n  rz 0.125 12;\n  rz -0.15625 13;\n  rz 0.1875 14;\n  rz -0.21875 15;\n  rz 0.25 16;\n  rz -0.28125 17;\n  rz 0.03125 18;\n  rz -0.0625 19;\n  rz 0.09375 20;\n  rz -0.125 21;\n  rz 0.15625 22;\n  rz -0.1875 23;\n  rz 0.21875 24;\n  rz -0.25 25;\n  rz 0.28125 26;\n  rz -0.03125 27;\n  rz 0.0625 28;\n  rz -0.09375 29;\n  cx 28 29;\n  cx 27 28;\n  cx 26 27;\n  cx 25 26;\n  cx 24 25;\n  cx 23 24;\n  cx 22 23;\n  cx 21 22;\n  cx 20 21;\n  cx 19 20;\n  cx 18 19;\n  cx 17 18;\n  cx 16 17;\n  cx 15 16;\n  cx 14 15;\n  cx 13 14;\n  cx 12 13;\n  cx 11 12;\n  cx 10 11;\n  cx 9 10;\n  cx 8 9;\n  cx 7 8;\n  cx 6 7;\n  cx 5 6;\n  cx 4 5;\n  cx 3 4;\n  cx 2 3;\n  cx 1 2;\n  cx 0 1;\n  h 0;\n  measure_all;\n}\n",
+      "source_sha256": "8f6ef8a6c9fff162fa1f2aba8fbf4aad8c49a23bd60e880a9dc85aa8beb86ecb",
+      "sparse_evolution_seconds": 0.0003902529999777471,
+      "sparse_peak_gate_index": 0,
+      "sparse_peak_support": 2,
+      "sparse_populated_states": 2,
+      "state_sha256": "005cd8e52718dea4497581e3dd2cc8b1b16cf31c76788e9b86e357a99ba2d5ef",
+      "status": "PASS",
+      "width": 30
+    },
+    {
+      "connected_interaction_graph": true,
+      "controlled_phase_angles": [
+        0.375,
+        -0.625,
+        0.8125,
+        -1.1875
+      ],
+      "entangled_ghz_checkpoint": {
+        "every_nontrivial_bipartition": {
+          "entropy_bits": 1.0,
+          "reason": "The two phase-GHZ branches differ on every nonempty proper subset and its complement, leaving two orthogonal Schmidt terms.",
+          "reduced_state_purity": 0.5,
+          "schmidt_probabilities": [
+            0.5,
+            0.5
+          ],
+          "schmidt_rank": 2,
+          "status": "PASS"
+        },
+        "evolution_seconds": 0.0004081840000935699,
+        "gate_count": 84,
+        "maximum_complex_amplitude_error": 3.1401849173675503e-16,
+        "peak_support": 2,
+        "populated_states": 2,
+        "state_sha256": "81c590360af62cf8014e0b64566a83adfd6f9bf0ce324d67f32d44fe21a2221b"
+      },
+      "entangling_edges": 43,
+      "exact_relative_phase_radians": -0.6875,
+      "expected_nonzero_amplitudes": [
+        {
+          "basis_index": 0,
+          "imag": -0.2894525815452327,
+          "probability": 0.8864174730762358,
+          "real": 0.8958988090811575
+        },
+        {
+          "basis_index": 1,
+          "imag": 0.32069749553055876,
+          "probability": 0.11358252692376426,
+          "real": 0.10361294940397893
+        }
+      ],
+      "final_interference_checkpoint": {
+        "peak_support": 2,
+        "populated_states": 2,
+        "status": "PASS"
+      },
+      "gate_count": 124,
+      "id": "connected_ghz_analytic_40q",
+      "maximum_complex_amplitude_error": 3.11864493316497e-16,
+      "maximum_probability_error": 3.3306690738754696e-16,
+      "normalization": 0.9999999999999997,
+      "reference_method": "GHZ branch phase accumulation, inverse CNOT chain, final H projection",
+      "rz_angles": [
+        0.03125,
+        -0.0625,
+        0.09375,
+        -0.125,
+        0.15625,
+        -0.1875,
+        0.21875,
+        -0.25,
+        0.28125,
+        -0.03125,
+        0.0625,
+        -0.09375,
+        0.125,
+        -0.15625,
+        0.1875,
+        -0.21875,
+        0.25,
+        -0.28125,
+        0.03125,
+        -0.0625,
+        0.09375,
+        -0.125,
+        0.15625,
+        -0.1875,
+        0.21875,
+        -0.25,
+        0.28125,
+        -0.03125,
+        0.0625,
+        -0.09375,
+        0.125,
+        -0.15625,
+        0.1875,
+        -0.21875,
+        0.25,
+        -0.28125,
+        0.03125,
+        -0.0625,
+        0.09375,
+        -0.125
+      ],
+      "source": "quantum connected_ghz_analytic_40q {\n  qubits 40;\n  shots 1;\n  seed 2026111740;\n  h 0;\n  cx 0 1;\n  cx 1 2;\n  cx 2 3;\n  cx 3 4;\n  cx 4 5;\n  cx 5 6;\n  cx 6 7;\n  cx 7 8;\n  cx 8 9;\n  cx 9 10;\n  cx 10 11;\n  cx 11 12;\n  cx 12 13;\n  cx 13 14;\n  cx 14 15;\n  cx 15 16;\n  cx 16 17;\n  cx 17 18;\n  cx 18 19;\n  cx 19 20;\n  cx 20 21;\n  cx 21 22;\n  cx 22 23;\n  cx 23 24;\n  cx 24 25;\n  cx 25 26;\n  cx 26 27;\n  cx 27 28;\n  cx 28 29;\n  cx 29 30;\n  cx 30 31;\n  cx 31 32;\n  cx 32 33;\n  cx 33 34;\n  cx 34 35;\n  cx 35 36;\n  cx 36 37;\n  cx 37 38;\n  cx 38 39;\n  cp 0.375 0 39;\n  cp -0.625 10 30;\n  cp 0.8125 1 20;\n  cp -1.1875 13 38;\n  rz 0.03125 0;\n  rz -0.0625 1;\n  rz 0.09375 2;\n  rz -0.125 3;\n  rz 0.15625 4;\n  rz -0.1875 5;\n  rz 0.21875 6;\n  rz -0.25 7;\n  rz 0.28125 8;\n  rz -0.03125 9;\n  rz 0.0625 10;\n  rz -0.09375 11;\n  rz 0.125 12;\n  rz -0.15625 13;\n  rz 0.1875 14;\n  rz -0.21875 15;\n  rz 0.25 16;\n  rz -0.28125 17;\n  rz 0.03125 18;\n  rz -0.0625 19;\n  rz 0.09375 20;\n  rz -0.125 21;\n  rz 0.15625 22;\n  rz -0.1875 23;\n  rz 0.21875 24;\n  rz -0.25 25;\n  rz 0.28125 26;\n  rz -0.03125 27;\n  rz 0.0625 28;\n  rz -0.09375 29;\n  rz 0.125 30;\n  rz -0.15625 31;\n  rz 0.1875 32;\n  rz -0.21875 33;\n  rz 0.25 34;\n  rz -0.28125 35;\n  rz 0.03125 36;\n  rz -0.0625 37;\n  rz 0.09375 38;\n  rz -0.125 39;\n  cx 38 39;\n  cx 37 38;\n  cx 36 37;\n  cx 35 36;\n  cx 34 35;\n  cx 33 34;\n  cx 32 33;\n  cx 31 32;\n  cx 30 31;\n  cx 29 30;\n  cx 28 29;\n  cx 27 28;\n  cx 26 27;\n  cx 25 26;\n  cx 24 25;\n  cx 23 24;\n  cx 22 23;\n  cx 21 22;\n  cx 20 21;\n  cx 19 20;\n  cx 18 19;\n  cx 17 18;\n  cx 16 17;\n  cx 15 16;\n  cx 14 15;\n  cx 13 14;\n  cx 12 13;\n  cx 11 12;\n  cx 10 11;\n  cx 9 10;\n  cx 8 9;\n  cx 7 8;\n  cx 6 7;\n  cx 5 6;\n  cx 4 5;\n  cx 3 4;\n  cx 2 3;\n  cx 1 2;\n  cx 0 1;\n  h 0;\n  measure_all;\n}\n",
+      "source_sha256": "bbc09728098d5e7744618ceac17b50ea6b5e9ffc05025d29c5b4d3f1beb8929d",
+      "sparse_evolution_seconds": 0.0005028680000123131,
+      "sparse_peak_gate_index": 0,
+      "sparse_peak_support": 2,
+      "sparse_populated_states": 2,
+      "state_sha256": "f9c534be37b91af7bf87b9d99010bde84f7f4f55a32a67f9e6b83dfe78304fa9",
+      "status": "PASS",
+      "width": 40
+    }
+  ],
+  "code_sha256": {
+    "benchmarks/sb_quantum_benchmark/frontier30.py": "26d4d258ca87cc78e449879744478d714f162aa0cf5f474692d31cd18040cb52",
+    "benchmarks/sb_quantum_benchmark/quantum_frontend.py": "1e373410a5494c5c257dd4916494d964d75758f1432997ebd704c07c07fcaf93",
+    "benchmarks/sb_quantum_benchmark/sparse_backend.py": "7870c39077f6bc4163475c31ddf42e4a3713c81a6bdb9e8f288d424914903dbe",
+    "tools/run_connected_sparse_analytic_validation.py": "35a8f50a495df7ed31597c5ff901bc2ef0b1cc47c60e63e186147a147221662c",
+    "validation/connected_quantum/corpus.py": "9c32eddafb59566e51d76953421b272d27592711f5a428d827a33d579a0a1e5f"
+  },
+  "failed_cases": [],
+  "host": {
+    "architecture": "x86_64",
+    "cpu_count": 2,
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "processor": "x86_64",
+    "system": "Linux"
+  },
+  "memory_budget_bytes": 1048576,
+  "python_version": "3.13.18 (main, Oct 26 2026, 15:28:15) [GCC 13.3.0]",
+  "receipt_sha256": "e6b9c9531847825db707a26c4dbacdf4e33b5be9e11985b2a9c887e8d65de7eb",
+  "reference_type": "exact analytical closed-form statevector; no dense simulation claimed",
+  "schema": 1,
+  "status": "PASS",
+  "support_cap": 16,
+  "timeout_seconds_per_case": 15.0
+}

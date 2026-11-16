@@ -1,0 +1,57 @@
+{
+  "active_amplitudes_exact_nonzero": 1048576,
+  "architecture": "x86_64",
+  "backend": "qiskit",
+  "backend_run_details": [
+    {
+      "circuit_build_seconds": 0.00042484799996600486,
+      "instruction_count": 39,
+      "qiskit_aer_used": false,
+      "qiskit_version": "2.6.2",
+      "statevector_evolution_seconds": 0.6319773710000618
+    }
+  ],
+  "basis_vector_length": 1048576,
+  "case": "connected_separable",
+  "elapsed_seconds": [
+    1.1184178250000514
+  ],
+  "gate_count": 39,
+  "gate_sequence_sha256": "53d0b8d2c9bfcbc557080c7dc5dd031a35fed1754bb74ce10d003169d2a3ab5e",
+  "host": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "implementation_sha256": {
+    "corpus_generator": "4e640beda28f047548667db361e633fb44eeeaa6cd1ae358be7d9b667e255b72",
+    "dense_candidate": "dc1670f363e555930f2ca1e5ee9a8e478559883af6b83c64f35c00396eb8faf6",
+    "frontier_parser": "26d4d258ca87cc78e449879744478d714f162aa0cf5f474692d31cd18040cb52",
+    "quantum_frontend": "1e373410a5494c5c257dd4916494d964d75758f1432997ebd704c07c07fcaf93",
+    "runner": "6e0e4fef92cb7ceda83f9b8f6f356166fe04dcff53ee0a27f2e80e7d3e57156c",
+    "sparse_backend": "7870c39077f6bc4163475c31ddf42e4a3713c81a6bdb9e8f288d424914903dbe"
+  },
+  "limits": {
+    "full_statevector": true,
+    "hardware": "classical simulation",
+    "shots": "not sampled"
+  },
+  "median_elapsed_seconds": 1.1184178250000514,
+  "norm": 0.9999999999999999,
+  "numpy_version": "2.5.4",
+  "parsed_gate_sequence_sha256": "53d0b8d2c9bfcbc557080c7dc5dd031a35fed1754bb74ce10d003169d2a3ab5e",
+  "parsed_source_sha256": "870418d7b7c5d826b3f25462d02d256eded067636f80453bad6afbbe011ce661",
+  "peak_rss_bytes_process_lifetime": 158023680,
+  "plan_file_sha256": "c1695712b5c1626646a3c80ba95e8e01f0a7afa4e2de75ba8ab5454ba41f81b5",
+  "processor": "Intel(R) Xeon(R) CPU @ 2.20GHz",
+  "python": "3.13.18",
+  "qubits": 20,
+  "revision": "ec876e2c51844068e01d8fac2ee86b83983514a9",
+  "saved_npy": "connected_separable_20q_qiskit.npy",
+  "saved_npy_sha256": "06b5862f529b0e4c8a0008cdb12f6d672a1ca44190340d1e38f76a1f2fd33105",
+  "schema": 1,
+  "seed": 2026111620,
+  "source_bytes": 552,
+  "source_name": "connected_separable_20q.sbq",
+  "source_sha256": "870418d7b7c5d826b3f25462d02d256eded067636f80453bad6afbbe011ce661",
+  "state_vector_sha256_little_endian_complex128": "999d21f56d0d8648cc5f7d31c36485175d2dd084f0d4608197453f00c69d6116",
+  "status": "PASS",
+  "topology_kind": "connected_cnot_chain_separable_control",
+  "two_qubit_edge_count": 19
+}
