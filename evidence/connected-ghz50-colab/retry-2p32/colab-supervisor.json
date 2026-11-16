@@ -1,0 +1,23 @@
+{
+  "architecture": "x86_64",
+  "attempts": [
+    {
+      "elapsed_seconds": 1825.5931375290002,
+      "receipt_sha256": "24cfd919a9a048a047feba957301150ff5452377e5181a6ab5131c8934fe01c2",
+      "return_code": 0,
+      "sampled_peak_worker_rss_bytes": 662106112,
+      "states": 4294967296,
+      "status": "PASS"
+    }
+  ],
+  "available_ram_before_bytes": 12374814720,
+  "format": "sharkbyte-colab-50q-supervisor-v1",
+  "free_disk_before_runs_bytes": 114261815296,
+  "host": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "notebook_sha256": "9262d30585b2b823468a62b374c72d88ae1004d6c8b2bbe05bc95aebe6e5941d",
+  "python_numpy_cirq": "3.13.18 2.5.4 1.6.1",
+  "source_commit": "441b5df1cbfc7060a9656537ca9feb2c78f7d955",
+  "status": "PASS",
+  "worker_rss_stop_bytes": 3758096384,
+  "worker_timeout_seconds": 2700
+}

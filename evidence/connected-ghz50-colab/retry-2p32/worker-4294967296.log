@@ -1,0 +1,2 @@
+{"status": "PASS", "qubits": 50, "active_states": 4294967296, "max_amplitude_error": 0.0, "probability_sum": 1.0, "worker_peak_rss_bytes": 461332480, "generation_seconds": 617.819724509, "verification_seconds": 1193.5092105669996}
+Receipt: /content/sharkbyte-connected-50q-iaiv4jwf/results/sharkbyte-connected-ghz50-4294967296-colab.json

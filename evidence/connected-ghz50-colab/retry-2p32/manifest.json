@@ -1,0 +1,51 @@
+{
+  "claim_scope": "Connected 50-qubit GHZ-family disk-backed analytical materialization. The frozen SharkByte source identity and ordered gates are validated, but the gates are not executed through SharkByte sparse backend. All 4,294,967,296 entries in this retry passed a separate closed-form parity comparison. Cirq checks the 512-shot Clifford measurement invariant only; no dense or general gate-by-gate simulation is claimed.",
+  "files": [
+    {
+      "bytes": 808,
+      "path": "retry-2p32/colab-supervisor.json",
+      "sha256": "02f7089c04a91b7066cf1a1981b8f3fec49b0f7d38f52285a1c7dbb695451a40"
+    },
+    {
+      "bytes": 154098,
+      "path": "retry-2p32/progress-4294967296.jsonl",
+      "sha256": "4a2566750dc86083dc604601cb02811f4efcdf0739143ed39e2b2c50602fa067"
+    },
+    {
+      "bytes": 4408,
+      "path": "retry-2p32/sharkbyte-connected-ghz50-4294967296-colab.json",
+      "sha256": "24cfd919a9a048a047feba957301150ff5452377e5181a6ab5131c8934fe01c2"
+    },
+    {
+      "bytes": 338,
+      "path": "retry-2p32/worker-4294967296.log",
+      "sha256": "74c15f48224cefb16113c9fa6ee5ffb15a07a45772337e10f3ef25987b17c96b"
+    }
+  ],
+  "integrity_note": "Unkeyed SHA-256 detects byte changes; it does not prove authorship or correctness.",
+  "manifest_sha256": "f416acfb8c90f9fa339fcf8771833b92a02f43b826873a5999ec2fe0b83cfd42",
+  "memory_measurements": {
+    "configured_budget_bytes": 3758096384,
+    "worker_current_rss_at_receipt_bytes": 360439808,
+    "worker_high_water_rss_bytes": 662573056,
+    "worker_sampled_peak_rss_bytes": 461332480
+  },
+  "notebook_sha256": "9262d30585b2b823468a62b374c72d88ae1004d6c8b2bbe05bc95aebe6e5941d",
+  "receipt_file": "sharkbyte-connected-ghz50-4294967296-colab.json",
+  "receipt_file_sha256": "24cfd919a9a048a047feba957301150ff5452377e5181a6ab5131c8934fe01c2",
+  "receipt_self_sha256": "f317983a184a4da44d58351926c8df2cdbf5a906fd20a2a519abd18abce339ef",
+  "schema": 1,
+  "source_commit": "441b5df1cbfc7060a9656537ca9feb2c78f7d955",
+  "status": "PASS",
+  "supervisor_file": "colab-supervisor.json",
+  "supervisor_sha256": "02f7089c04a91b7066cf1a1981b8f3fec49b0f7d38f52285a1c7dbb695451a40",
+  "timing_seconds": {
+    "full_array_verification_and_hashing": 1193.5092105669996,
+    "packed_disk_materialization": 617.819724509,
+    "total_before_receipt": 1811.3291610899996
+  },
+  "zip_bytes": 16655,
+  "zip_crc32": "PASS",
+  "zip_file": "retry-2p32-results.zip",
+  "zip_sha256": "eac9fb535e31943284d044c7911ba06d5ab007fe35d3c5e0e75380e8525a052e"
+}
