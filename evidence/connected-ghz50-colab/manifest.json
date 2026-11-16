@@ -1,0 +1,68 @@
+{
+  "attempts": [
+    {
+      "elapsed_seconds": 903.767760844,
+      "progress_file": "progress-4294967296.jsonl",
+      "receipt_file": "sharkbyte-connected-ghz50-4294967296-colab.json",
+      "receipt_sha256": "85f1a0d48f1817db3df9bbd629957435b2b8b25dd13994a93944c87f7f284e14",
+      "return_code": 3,
+      "sampled_peak_worker_rss_bytes": 656830464,
+      "states": 4294967296,
+      "status": "RESOURCE_STOP",
+      "worker_log_file": "worker-4294967296.log"
+    },
+    {
+      "elapsed_seconds": 904.7727225770002,
+      "progress_file": "progress-2147483648.jsonl",
+      "receipt_file": "sharkbyte-connected-ghz50-2147483648-colab.json",
+      "receipt_sha256": "f85846d93f30e76524d5f5e9df66a51703c05c15865aa5e776f3dc6fac8af9e9",
+      "return_code": 0,
+      "sampled_peak_worker_rss_bytes": 659148800,
+      "states": 2147483648,
+      "status": "PASS",
+      "worker_log_file": "worker-2147483648.log"
+    }
+  ],
+  "claim_scope": "Connected 50-qubit GHZ-family disk-backed materialization; every entry at 2^31 compared to a separate closed-form parity calculation; Cirq is an independent 512-shot Clifford measurement check only; no general gate-by-gate or dense 50-qubit simulation.",
+  "files": {
+    "colab-supervisor.json": {
+      "bytes": 1086,
+      "sha256": "845d1202c1d8f8c43de81afab9a8d4949bc91a529bd1e3d073c048b2070a51f4"
+    },
+    "progress-2147483648.jsonl": {
+      "bytes": 76786,
+      "sha256": "ec2697ea73306fdbefc56fff61c66fe9af61ed2941a705f8b6888a3822c92ce9"
+    },
+    "progress-4294967296.jsonl": {
+      "bytes": 101027,
+      "sha256": "5cce42c9535be659fff4642482ebd961d05b6809c1416e03c93a49e2068b2df9"
+    },
+    "sharkbyte-connected-ghz50-2147483648-colab.json": {
+      "bytes": 4441,
+      "sha256": "f85846d93f30e76524d5f5e9df66a51703c05c15865aa5e776f3dc6fac8af9e9"
+    },
+    "sharkbyte-connected-ghz50-4294967296-colab.json": {
+      "bytes": 2606,
+      "sha256": "85f1a0d48f1817db3df9bbd629957435b2b8b25dd13994a93944c87f7f284e14"
+    },
+    "sharkbyte-connected-ghz50-results-first-run.zip": {
+      "bytes": 20381,
+      "sha256": "23d124e57a9e924735be50ac72b15c13a56f039cdb4ef4cb4697de8ad5a25fdd"
+    },
+    "worker-2147483648.log": {
+      "bytes": 353,
+      "sha256": "84317cf5bc9081d054b043f52b3bab78ef1624197a04c1093972b78a3a4f7287"
+    },
+    "worker-4294967296.log": {
+      "bytes": 117,
+      "sha256": "1e700d836a3afc3709588cb3fe15b0c74fdc67870b86d2eec8a0d409e948051d"
+    }
+  },
+  "manifest_sha256": "3d77bfc4d3204754a83a89d02c57395e20f25707e42d56e34401f703da0e8081",
+  "notebook_sha256": "122809300812b8e82f71a1e02f097ccdeb2a5b1da7762a57863cfe3039c974fc",
+  "schema": 1,
+  "source_commit": "26752ac6209b451b3f73a8298e7672eb0acfe12f",
+  "status": "PASS",
+  "supervisor_file": "colab-supervisor.json",
+  "zip_crc32": "PASS"
+}

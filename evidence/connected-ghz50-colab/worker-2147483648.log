@@ -1,0 +1,2 @@
+{"status": "PASS", "qubits": 50, "active_states": 2147483648, "max_amplitude_error": 0.0, "probability_sum": 0.9999999999999999, "worker_peak_rss_bytes": 462508032, "generation_seconds": 308.74914145699995, "verification_seconds": 578.887614945}
+Receipt: /content/sharkbyte-connected-50q-jse7bsdy/results/sharkbyte-connected-ghz50-2147483648-colab.json

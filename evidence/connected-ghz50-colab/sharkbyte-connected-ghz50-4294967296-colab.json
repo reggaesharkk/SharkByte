@@ -1,0 +1,52 @@
+{
+  "circuit_identity": {
+    "connected_cnot_chain_edges": 49,
+    "expanded_local_hadamards": 31,
+    "gate_count": 81,
+    "ordered_gates_sha256": "7945eae6c8e6b814d7689fc1041e098bd1a6f9729c2155e604f4253a68a26a74",
+    "qubits": 50
+  },
+  "code_sha256": {
+    "benchmarks/sb_quantum_benchmark/frontier30.py": "d221c2157fc22ae0b1d517fd64003c9aa933df7eba00b4133a61ff698647529d",
+    "benchmarks/sb_quantum_benchmark/quantum_frontend.py": "beec7c5f3e428143a74035c842cd08ecc545310d428a5f6173d3896d2615f837",
+    "benchmarks/sb_quantum_benchmark/sparse_backend.py": "186aad8bed0b0c0ff13efc642fe284a6d1fc9cccdd2c36174b434b6ddbe8572c",
+    "examples/connected_ghz50_4294967296.sb": "ef63f4e335e113d1e7123cf04370c9cc265c678cee1c19077b1afa012a9f894d",
+    "tools/run_connected_ghz50_materialization.py": "baf044d04046aa41d2e62467f6dab8ce31a3cdc010ca8357e64dbf3e4f1c878a"
+  },
+  "completed_items": 1245708288,
+  "environment": {
+    "architecture": "x86_64",
+    "available_memory_before_bytes": 12280668160,
+    "chunk_elements": 4194304,
+    "cirq_core": "1.6.1",
+    "disk_reserve_bytes": 10737418240,
+    "free_disk_before_bytes": 114854371328,
+    "memory_budget_bytes": 3758096384,
+    "numpy": "2.5.4",
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "python": "3.13.18"
+  },
+  "format": "sharkbyte-connected-ghz50-disk-materialization-v1",
+  "interpretation": {
+    "claim_limit": "The amplitude table is a structured GHZ-family result. Cirq independently checks a Clifford measurement invariant; it does not independently compare every amplitude.",
+    "dense_complex128_statevector_bytes": 18014398509481984,
+    "dense_size_human": "16 PiB",
+    "method": "exhaustive disk-backed materialization and full-array verification from the closed-form GHZ/local-H amplitude equation",
+    "not_a_dense_50_qubit_statevector": true,
+    "not_a_general_gate_by_gate_simulation": true
+  },
+  "notebook_sha256": "122809300812b8e82f71a1e02f097ccdeb2a5b1da7762a57863cfe3039c974fc",
+  "packed_array_bytes": 103079215104,
+  "packed_format": {
+    "amplitude": "little-endian complex128",
+    "basis": "little-endian uint64"
+  },
+  "receipt_sha256": "6dfe8c27474946281b63d4e347342a9b0f5e5541c3c5c40d2af33efb273d1a03",
+  "resource_stop_reason": "wall-clock limit reached during verification",
+  "source_commit": "26752ac6209b451b3f73a8298e7672eb0acfe12f",
+  "source_path": "examples/connected_ghz50_4294967296.sb",
+  "source_sha256": "ef63f4e335e113d1e7123cf04370c9cc265c678cee1c19077b1afa012a9f894d",
+  "status": "RESOURCE_STOP",
+  "target_active_states": 4294967296,
+  "worker_peak_rss_bytes": 657154048
+}

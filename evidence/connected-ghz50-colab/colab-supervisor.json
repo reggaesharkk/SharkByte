@@ -1,0 +1,31 @@
+{
+  "architecture": "x86_64",
+  "attempts": [
+    {
+      "elapsed_seconds": 903.767760844,
+      "receipt_sha256": "85f1a0d48f1817db3df9bbd629957435b2b8b25dd13994a93944c87f7f284e14",
+      "return_code": 3,
+      "sampled_peak_worker_rss_bytes": 656830464,
+      "states": 4294967296,
+      "status": "RESOURCE_STOP"
+    },
+    {
+      "elapsed_seconds": 904.7727225770002,
+      "receipt_sha256": "f85846d93f30e76524d5f5e9df66a51703c05c15865aa5e776f3dc6fac8af9e9",
+      "return_code": 0,
+      "sampled_peak_worker_rss_bytes": 659148800,
+      "states": 2147483648,
+      "status": "PASS"
+    }
+  ],
+  "available_ram_before_bytes": 12368113664,
+  "format": "sharkbyte-colab-50q-supervisor-v1",
+  "free_disk_before_runs_bytes": 114854449152,
+  "host": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "notebook_sha256": "122809300812b8e82f71a1e02f097ccdeb2a5b1da7762a57863cfe3039c974fc",
+  "python_numpy_cirq": "3.13.18 2.5.4 1.6.1",
+  "source_commit": "26752ac6209b451b3f73a8298e7672eb0acfe12f",
+  "status": "PASS",
+  "worker_rss_stop_bytes": 3758096384,
+  "worker_timeout_seconds": 1200
+}
