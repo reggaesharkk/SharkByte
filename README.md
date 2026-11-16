@@ -4,13 +4,13 @@
 
 SharkByte is an experimental programming language and CPU simulation toolchain. Write and run `.sb` programs in a local browser workspace or from the terminal, inspect the results, and save JSON receipts with the exact source.
 
-[Start Studio](#sharkbyte-studio) · [Try error correction](#five-qubit-phase-flip-recovery) · [See the 16-million-state results](#scaling-to-16777216-active-states) · [Cite SharkByte](#cite-sharkbyte)
+[Start Studio](#sharkbyte-studio) · [Try error correction](#five-qubit-phase-flip-recovery) · [See the 16-million-state results](#scaling-to-16777216-active-states) · [See connected-circuit verification](#connected-circuit-verification) · [Cite SharkByte](#cite-sharkbyte)
 
 | What to try | Where it runs | What you can reproduce |
 | --- | --- | --- |
 | Phase-flip recovery | Studio, Quantum mode | Five qubits and eleven cases, including single-error recovery and two-error failure controls |
 | Million-state benchmark | Studio, built-in preset | 40 qubits, 52 gates, and 1,048,576 active states. A browser-launched run took 3.020 s of CPU evolution. |
-| 16-million-state benchmark | Terminal, standalone sparse runner | 40 qubits, 56 gates, and 16,777,216 active states on Windows ARM64 and Ubuntu WSL2 |
+| 16-million-state benchmark | Studio or terminal, bounded sparse worker | 40 qubits, 56 gates, and 16,777,216 active states; historical standalone runs are recorded for Windows ARM64 and Ubuntu WSL2 |
 
 ## SharkByte Studio
 
@@ -30,10 +30,13 @@ Open [http://127.0.0.1:8120/](http://127.0.0.1:8120/). Studio listens on your ow
 | Bounded Hybrid | Experimental quantum circuits with classical feedback and limited adaptive updates, using 2–6 qubits |
 | Frontier30 (sparse) | Fixed quantum circuits with registers up to 40 qubits. Select a support cap from 4,096 to 131,072 active states. |
 | Million-state benchmark | Bundled 40-qubit scaling case with a compact 1,048,576-state result |
+| 16-million-state benchmark | Fixed 40-qubit, 56-gate run in a background worker; checks available RAM first, reports progress and process peak memory, and supports cancellation |
 
 Choose **Load example** or paste source, then select **Run**. Studio shows output, metrics, the source used for the run, and SharkVM bytecode when available. The sparse mode previews large probability tables and **Save receipt** downloads the full JSON directly from the local server. Frontier30 returns probabilities. Standard Quantum mode can also report sampled counts. The [30-qubit GHZ example](examples/ghz_phase_30.sb) fits the default sparse cap, and the bundled Frontier30 example selects 131,072 automatically.
 
 Verify downloads with `python -m sharkbyte_alpha verify-run FILE.json` (`python3` on Linux). Hash verification checks record integrity. Replay and reference comparisons address reproducibility and numerical correctness separately.
+
+The 16-million-state Studio mode is a fixed bundled workload. It does not send its amplitude table to the browser. Before launch, Studio requires at least **4.25 GiB available physical memory** and limits the worker to **3.25 GiB**; it enforces a 90-second timeout and lets you cancel the worker. A completed run can be downloaded as a compact receipt with the source and expanded gate identity, measured elapsed time and worker memory, environment, implementation hashes, numerical checks, and references to the already archived independent Cirq checks. Verify it with `python -B tools/verify_studio_scaling_receipt.py FILE.json`. The receipt verifier checks integrity and recorded claims; hashes alone do not establish authorship.
 
 Try `rx 1.5707963267948966 0;`, `ry -.5 0;`, or `rz .25 0;` inside a
 Quantum or Frontier30 circuit. Bounded Hybrid also accepts a bound angle such as
@@ -61,7 +64,7 @@ Studio also includes an interactive **Phase-flip noise sweep**. It shows the exa
 
 ## Sparse simulation benchmarks
 
-Active states are the basis states tracked at once. Register width and active state count measure different things. A dense array for 40 qubits would occupy 16 TiB at 16 bytes per complex amplitude. The circuits below use sparse storage and run on a CPU.
+Active states are the basis states tracked at once. Register width and active state count measure different things. A dense array for 40 qubits would occupy 16 TiB at 16 bytes per complex amplitude. The production simulator uses sparse storage and runs on a CPU; the adaptive candidate below is an experimental 20-qubit comparison and does not change the default backend.
 
 ### Experimental sparse scaling to 1,048,576 active states
 
@@ -85,16 +88,20 @@ The terminal measurements use this same 40-qubit circuit family, with additional
 
 The terminal runner completed the **40-qubit, 56-gate** experiment on both platforms. Each run checked state count, probability normalization, and agreement with the expected uniform probabilities.
 
+The new Studio worker was also launched through the local Studio `/run` endpoint on Windows ARM64. It reached **16,777,216 active states**, passed its exact count and probability checks, and produced a compact downloadable receipt. Sparse evolution took **16.338 s**, total worker time including startup and validation was **22.016 s**, and the Windows Job Object recorded **2.77 GiB peak process memory**. The probability sum was `0.999999999999996`; the maximum uniform-probability error was `2.65e-22`. [Studio receipt](evidence/studio_16m/windows_arm64/sharkbyte-studio-154ec294e514455890da424efe9b9361.json) · [Evidence manifest](evidence/studio_16m/windows_arm64/manifest.json)
+
 | Environment | Python | Sparse evolution | Runner process memory | Evidence |
 | --- | --- | ---: | ---: | --- |
 | Windows ARM64 | 3.12.10 | 17.614 s | 2.77 GiB peak working set | [Windows JSON](benchmarks/sb_quantum_benchmark/scaling-16777216.json) |
 | Ubuntu ARM64 under WSL2 | 3.14.4 | 15.639 s | 2.78 GiB peak RSS | [Ubuntu JSON](benchmarks/sb_quantum_benchmark/scaling-16777216-ubuntu-wsl.json) |
 
-The Ubuntu process ran with a 3.06 GiB address-space limit. These are single local measurements and use different OS memory counters. The 16-million-state runner prints a compact summary. Studio supports the separate million-state preset and full probability receipts through 131,072 active states.
+The Ubuntu process ran with a 3.06 GiB address-space limit. These are single local measurements and use different OS memory counters. The terminal runner prints a compact summary. Studio now also offers this fixed 16-million-state case as a resource-bounded background run; it does not materialize the full probability table in the browser.
 
 ```text
 python -B benchmarks/sb_quantum_benchmark/support_scaling.py 16777216
 ```
+
+A separate manual browser run on Windows ARM64 completed the same 40-qubit, 56-gate circuit in **15.900 s** of evolution and **21.672 s** of worker time, with **2.77 GiB** peak process memory and a probability sum of `0.999999999999996`. Its receipt retains the original local revision and dirty-tree flag. The five recorded implementation hashes match the reviewed code. [Manual browser receipt](evidence/studio_16m/windows_arm64/sharkbyte-85c74d14dcb54040a295e3c2fe422e53.json) · [Evidence manifest](evidence/studio_16m/windows_arm64/manifest.json)
 
 #### Independent Cirq comparison
 
@@ -136,6 +143,42 @@ error was `7.40e-19`. SharkByte evolution took 36.025 s and the amplitude compar
 took 8.901 s. The Colab receipts are tied to source revision `bfad672`.
 [Colab receipts and SHA-256 index](evidence/colab-bfad672/)
 
+### Connected-circuit verification
+
+The earlier 120-circuit reference suite and 16,777,216-state disconnected
+benchmark are described above. The connected reference suite adds 24 connected
+circuits compared with independent Qiskit and Cirq statevectors through 16
+qubits, plus exact sparse/analytic connected GHZ checks at 20, 24, 30, and 40
+qubits. A connected-but-separable control confirms that a connected gate graph
+alone does not prove entanglement. The 20–40-qubit checks use a closed-form GHZ
+oracle; they are not dense general-circuit simulations.
+
+The new suite, compiler edge-case fix, exact commands, limits, performance
+measurements, source hashes, and receipts are documented in the
+[connected-circuit audit](docs/connected-circuit-frontier.md). The packaged
+receipts and state vectors are indexed by its [SHA-256 manifest](evidence/connected-circuit-frontier/MANIFEST.json).
+
+The historical manifest binds repository files to revision `5b882fb430f00fcd15fd1fe32d5294883ba9dd13`. Run `python -B tools/verify_connected_circuit_evidence.py` from that revision to verify those exact bytes. Hosted CI verifies the historical bundle there and runs fresh Qiskit and Cirq comparisons from the integrated checkout.
+
+The 17-, 18-, and 20-qubit high-support experiments compare complete vectors across SharkByte sparse, dense NumPy, Qiskit, and Cirq. Their balanced-cut Schmidt ranks were 256, 512, and 1,024, respectively, at the documented cutoff. The 20-qubit case populated 1,048,576 amplitudes and reached 9.005 bits of balanced-cut entropy. A separate connected control had the same support and Schmidt rank 1. See the [methods, limits, and reproduction commands](docs/high-support-connected-entanglement.md).
+
+### Experimental adaptive sparse/dense comparison
+
+This experimental driver runs the same connected 20-qubit circuits through the original sparse engine, a dense NumPy candidate, and an adaptive sparse/dense candidate. Each backend ran in its own process, with one warmup and seven timed repetitions. The table reports median state evolution time and process-lifetime peak RSS. All three cases passed full componentwise comparison against the dense candidate, exact support checks, and normalization checks. The 1,048,576-state connected circuit also reuses the already archived complete Qiskit and Cirq comparisons for this exact source and gate sequence; those reference runs were not repeated here.
+
+| Host | Circuit | Exact support | Sparse median / RSS | Dense median / RSS | Adaptive median / RSS |
+| --- | --- | ---: | ---: | ---: | ---: |
+| Windows ARM64 | Connected GHZ | 2 | 0.000039 s / 67.7 MiB | 0.211745 s / 101.1 MiB | 0.000114 s / 67.6 MiB |
+| Windows ARM64 | Intermediate support | 1,024 | 0.002583 s / 67.9 MiB | 0.376259 s / 101.2 MiB | 0.007553 s / 68.0 MiB |
+| Windows ARM64 | Random connected | 1,048,576 | 22.070 s / 439.0 MiB | 0.629 s / 118.7 MiB | 0.480 s / 110.6 MiB |
+| Ubuntu WSL2 ARM64 | Connected GHZ | 2 | 0.000038 s / 53.3 MiB | 0.117005 s / 104.0 MiB | 0.000108 s / 53.3 MiB |
+| Ubuntu WSL2 ARM64 | Intermediate support | 1,024 | 0.001712 s / 93.3 MiB | 0.154134 s / 102.0 MiB | 0.003983 s / 93.3 MiB |
+| Ubuntu WSL2 ARM64 | Random connected | 1,048,576 | 15.508 s / 481.7 MiB | 0.239 s / 126.0 MiB | 0.236 s / 115.0 MiB |
+
+The adaptive candidate switched once from sparse to dense on the random connected case, before a Hadamard expanded support from 65,536 to 131,072 states. Its complete vector matched the dense candidate exactly in both environments. It was substantially faster than the sparse dictionary on this high-support workload, faster than dense on Windows, and effectively tied with dense on WSL2; the small WSL2 timing difference is not treated as a demonstrated speedup. Sparse remains faster for the low-support cases, where adaptive bookkeeping adds overhead. The candidate therefore remains experimental and is not enabled by default. No amplitudes were pruned, and dense simulation was limited to 20 qubits.
+
+[Combined evidence index](evidence/adaptive_sparse_dense/manifest.json) · [Windows ARM64 report](evidence/adaptive_sparse_dense/windows_arm64/adaptive-sparse-dense-windows-arm64.json) · [Windows manifest](evidence/adaptive_sparse_dense/windows_arm64/manifest.json) · [Ubuntu WSL2 ARM64 report](evidence/adaptive_sparse_dense/ubuntu_wsl2/adaptive-sparse-dense-ubuntu-wsl2-aarch64.json) · [Ubuntu manifest](evidence/adaptive_sparse_dense/ubuntu_wsl2/manifest.json) · [Run the comparison](tools/high_support/benchmark_adaptive.py) · [Adaptive implementation](tools/high_support/adaptive_statevector.py)
+
 ## Terminal quickstart
 
 From the checkout, run `python -B sharkbyte_terminal.py` (`python3` on Linux). Try `/help`, `/bell`, `/bell-phase`, or `/qft`. The QFT example embeds a six-qubit transform in a 30-qubit register. Use `/run FILE.sb` for a custom quantum circuit, or `/run-frontier FILE.sb` for a sparse circuit at the default cap.
@@ -175,6 +218,7 @@ The OpenQASM 3 exporter covers the documented circuit subset. See [installation 
 - The same Windows and Ubuntu CI matrix runs the [eleven phase-flip recovery cases](tools/phase_flip_recovery_cases.py) and uploads each platform's JSON receipts as a workflow artifact. The committed [reference receipts](evidence/phase_flip_recovery_cases.json) remain directly reproducible from the command above.
 - [Backend agreement](benchmarks/backend_agreement/README.md) compares SharkVM, the native interpreter, and Direct AArch64 on Linux ARM64. [The recorded reference check](https://github.com/reggaesharkk/SharkByte/commit/0beed08fc99235d8de1f594448dfa7fc80a46c08) passed 27 cases. Native execution remains disabled in the public CLI and Studio.
 - [Live Qiskit and Cirq validation](INDEPENDENT_QUANTUM_VALIDATION.md) compares 120 seeded circuits across SharkByte's dense and sparse CPU simulators and two independent reference engines. GitHub Actions uploads the reports.
+- [High-support connected-circuit verification](docs/high-support-connected-entanglement.md) compares seeded 17-, 18-, and 20-qubit full statevectors with Qiskit and Cirq, checks entanglement by Schmidt spectra, and records the connected separable control and cancellation limitation.
 - [Qiskit reference provenance](QISKIT_PROVENANCE.md) describes the archived comparisons for 22 circuits and 320 probabilities. Run `python tools/replay_qiskit_vectors.py` to compare those archived reference values.
 - [Acceptance scope](PUBLIC_STAGE_ACCEPTANCE.md) · [Claim boundaries](CLAIM_BOUNDARIES.md) · [System map](ECOSYSTEM_MAP.md) · [Reggae Shark Universe](https://github.com/reggaesharkk/Reggae-shark-universe-)
 

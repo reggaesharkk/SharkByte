@@ -7,6 +7,62 @@ on:
   workflow_dispatch:
 
 jobs:
+  connected-statevector-reference:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ["3.12"]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Set up Python ${{ matrix.python }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Install pinned independent references
+        run: |
+          python -m pip install -r requirements-independent-quantum.txt cirq-core==1.7.0
+          python -m pip check
+
+      - name: Verify historical connected-circuit evidence at its source revision
+        shell: pwsh
+        run: |
+          $revision = '5b882fb430f00fcd15fd1fe32d5294883ba9dd13'
+          git diff --exit-code $revision HEAD -- evidence/connected-circuit-frontier
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $archive = Join-Path $env:RUNNER_TEMP 'connected-circuit-source.zip'
+          $historical = Join-Path $env:RUNNER_TEMP 'connected-circuit-source'
+          git archive --format=zip --output=$archive $revision
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -m zipfile -e $archive $historical
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -B (Join-Path $historical 'tools/verify_connected_circuit_evidence.py')
+
+      - name: Verify the manual Studio receipt
+        run: python -B tools/verify_studio_scaling_receipt.py evidence/studio_16m/windows_arm64/sharkbyte-85c74d14dcb54040a295e3c2fe422e53.json
+
+      - name: Compare connected circuits with Qiskit and Cirq
+        run: |
+          python -B tools/run_connected_quantum_validation.py --backend qiskit --output connected-reference-results/qiskit.json --support-cap 65536 --memory-budget-mib 64 --timeout-seconds 60
+          python -B tools/run_connected_quantum_validation.py --backend cirq --output connected-reference-results/cirq.json --support-cap 65536 --memory-budget-mib 64 --timeout-seconds 60
+          python -B tools/compare_connected_quantum_receipts.py connected-reference-results/qiskit.json connected-reference-results/cirq.json --output connected-reference-results/qiskit-cirq-comparison.json
+
+      - name: Upload connected-circuit receipts and statevectors
+        uses: actions/upload-artifact@v4
+        with:
+          name: connected-statevector-${{ matrix.os }}-python-${{ matrix.python }}
+          path: connected-reference-results/
+          if-no-files-found: error
+
   test:
     strategy:
       fail-fast: false
@@ -22,6 +78,9 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
 
+      - name: Install numerical test dependency
+        run: python -m pip install numpy==2.3.5
+
       - name: Isolated install + acceptance regressions
         run: python tools/ci_acceptance.py
 
@@ -36,6 +95,25 @@ jobs:
         with:
           name: phase-flip-recovery-${{ matrix.os }}-python-${{ matrix.python }}
           path: phase-flip-recovery-ci.json
+          if-no-files-found: error
+
+      - name: Verify rotation gates (normal)
+        run: python -B tools/rotation_gate_evidence.py > rotation-gates-normal.json
+
+      - name: Verify rotation gates (-O)
+        run: python -O -B tools/rotation_gate_evidence.py > rotation-gates-O.json
+
+      - name: Verify rotation gates (-OO)
+        run: python -OO -B tools/rotation_gate_evidence.py > rotation-gates-OO.json
+
+      - name: Upload rotation-gate evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: rotation-gates-${{ matrix.os }}-python-${{ matrix.python }}
+          path: |
+            rotation-gates-normal.json
+            rotation-gates-O.json
+            rotation-gates-OO.json
           if-no-files-found: error
 
       - name: Verify Frontier30 source benchmarks

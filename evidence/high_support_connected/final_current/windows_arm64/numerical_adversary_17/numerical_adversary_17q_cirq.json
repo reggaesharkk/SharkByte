@@ -1,0 +1,57 @@
+{
+  "active_amplitudes_exact_nonzero": 131072,
+  "architecture": "ARM64",
+  "backend": "cirq",
+  "backend_run_details": [
+    {
+      "circuit_build_seconds": 0.002065200009383261,
+      "cirq_core_version": "1.7.0",
+      "instruction_count": 85,
+      "qubit_order": "reversed; q0 is LSB",
+      "statevector_evolution_seconds": 0.02550280001014471
+    }
+  ],
+  "basis_vector_length": 131072,
+  "case": "numerical_adversary",
+  "elapsed_seconds": [
+    1.60897699999623
+  ],
+  "gate_count": 85,
+  "gate_sequence_sha256": "1ca527e387f10f456854346892c07e005210ecda3512b19482fb7df4bfc0e897",
+  "host": "Windows-11-10.0.26300-SP0",
+  "implementation_sha256": {
+    "corpus_generator": "4e640beda28f047548667db361e633fb44eeeaa6cd1ae358be7d9b667e255b72",
+    "dense_candidate": "1e309d8a65b88e74d1c2e7ec79524fa76469e1d959b7177440d0e5a922560ac2",
+    "frontier_parser": "26d4d258ca87cc78e449879744478d714f162aa0cf5f474692d31cd18040cb52",
+    "quantum_frontend": "1e373410a5494c5c257dd4916494d964d75758f1432997ebd704c07c07fcaf93",
+    "runner": "6e0e4fef92cb7ceda83f9b8f6f356166fe04dcff53ee0a27f2e80e7d3e57156c",
+    "sparse_backend": "f655de6f68d392cc72af1d87430466d8c5ee7dff4861755bd2bbdea7756ec42b"
+  },
+  "limits": {
+    "full_statevector": true,
+    "hardware": "classical simulation",
+    "shots": "not sampled"
+  },
+  "median_elapsed_seconds": 1.60897699999623,
+  "norm": 1.0000000000000002,
+  "numpy_version": "2.5.4",
+  "parsed_gate_sequence_sha256": "1ca527e387f10f456854346892c07e005210ecda3512b19482fb7df4bfc0e897",
+  "parsed_source_sha256": "402c12bcf3f73351652b9bc72a44e2d18d235d24b71d638bc8ee7b56d11ff1b9",
+  "peak_rss_bytes_process_lifetime": 209113088,
+  "plan_file_sha256": "1fc6e67f024f6246e545e14259e8086d0bed0a4e224826a5ba4b1480c7aa94bc",
+  "processor": "Snapdragon(R) X - X126100 - Qualcomm(R) Oryon(TM) CPU",
+  "python": "3.12.10",
+  "qubits": 17,
+  "revision": "a2b59ec83b5a00dbca11b5548ac1f5982289ce2b",
+  "saved_npy": "numerical_adversary_17q_cirq.npy",
+  "saved_npy_sha256": "0e1fae425d47aa78318bbd37ec61dead787ad74fec0fbdd62da8f4e51cc59ded",
+  "schema": 1,
+  "seed": 2026111617,
+  "source_bytes": 2391,
+  "source_name": "numerical_adversary_17q.sbq",
+  "source_sha256": "402c12bcf3f73351652b9bc72a44e2d18d235d24b71d638bc8ee7b56d11ff1b9",
+  "state_vector_sha256_little_endian_complex128": "d01cbcfd55440898a9a604a6f75b86ea4ab1869e14a529ede232a30a03c3f11f",
+  "status": "PASS",
+  "topology_kind": "connected_chain_of_near_4pi_controlled_phase_inverse_pairs",
+  "two_qubit_edge_count": 34
+}

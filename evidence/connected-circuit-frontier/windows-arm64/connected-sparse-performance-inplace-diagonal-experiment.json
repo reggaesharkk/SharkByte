@@ -1,0 +1,115 @@
+{
+  "cases": [
+    {
+      "elapsed_seconds": [
+        0.052612599974963814,
+        0.05340169998817146,
+        0.052286699996329844,
+        0.05357310001272708,
+        0.052461199986282736,
+        0.053028900001663715,
+        0.05297279998194426
+      ],
+      "id": "connected_12q_seed_2026112800",
+      "median_absolute_deviation_seconds": 0.00042890000622719526,
+      "median_seconds": 0.05297279998194426,
+      "peak_populated_states": 4096,
+      "prefix_gate_count": 94,
+      "python_heap_peak_bytes_max": 1238278,
+      "python_heap_peak_bytes_samples": [
+        1238278,
+        1238262
+      ],
+      "repeats": 7,
+      "seed": 2026112800,
+      "source_sha256": "5e1cc1a3b29f9bd2b3382e3fc5b24090ae0fef9a0df817ef41c4bec7010ed585",
+      "state_sha256": "c3654bd083209113a6183e795f1312dd041e87e47bb4e6475d2cf236e9cb923a",
+      "status": "PASS",
+      "warmups": 1,
+      "width": 12
+    },
+    {
+      "elapsed_seconds": [
+        0.24930249998578802,
+        0.24577849998604506,
+        0.24549239996122196,
+        0.2498500000219792,
+        0.2521040000137873,
+        0.2419013000326231,
+        0.2430515000014566
+      ],
+      "id": "connected_14q_seed_2026113000",
+      "median_absolute_deviation_seconds": 0.003523999999742955,
+      "median_seconds": 0.24577849998604506,
+      "peak_populated_states": 16384,
+      "prefix_gate_count": 108,
+      "python_heap_peak_bytes_max": 5014758,
+      "python_heap_peak_bytes_samples": [
+        5014758,
+        5014742
+      ],
+      "repeats": 7,
+      "seed": 2026113000,
+      "source_sha256": "a7e2aab3d474338893d6fb6531e985cc3e30f4b7d84c8d97cf517f2a7a292704",
+      "state_sha256": "3a30732a934b39b6db8f61f01afca4cdfd72bcef09be4a2a5a4e0cf699fddac9",
+      "status": "PASS",
+      "warmups": 1,
+      "width": 14
+    },
+    {
+      "cprofile_top_cumulative": "         1709008 function calls in 1.698 seconds\n\n   Ordered by: cumulative time\n   List reduced from 22 to 18 due to restriction <18>\n\n   ncalls  tottime  percall  cumtime  percall filename:lineno(function)\n        1    0.002    0.002    1.698    1.698 D:\\boss\\results\\sharkbyte-connected-circuit-frontier\\tools\\benchmark_connected_sparse.py:46(_execute)\n        1    1.489    1.489    1.697    1.697 D:\\boss\\results\\sharkbyte-connected-circuit-frontier\\benchmarks\\sb_quantum_benchmark\\sparse_backend.py:113(evolve)\n  1179646    0.151    0.000    0.151    0.000 {method 'get' of 'dict' objects}\n   524288    0.055    0.000    0.055    0.000 {method 'conjugate' of 'complex' objects}\n     1718    0.000    0.000    0.001    0.000 D:\\boss\\results\\sharkbyte-connected-circuit-frontier\\benchmarks\\sb_quantum_benchmark\\sparse_backend.py:107(_check_deadline)\n        1    0.000    0.000    0.000    0.000 D:\\boss\\results\\sharkbyte-connected-circuit-frontier\\benchmarks\\sb_quantum_benchmark\\sparse_backend.py:55(validate)\n     1719    0.000    0.000    0.000    0.000 {built-in method time.monotonic}\n       54    0.000    0.000    0.000    0.000 {built-in method cmath.exp}\n      429    0.000    0.000    0.000    0.000 {built-in method builtins.len}\n      252    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}\n       16    0.000    0.000    0.000    0.000 {built-in method math.cos}\n      330    0.000    0.000    0.000    0.000 {built-in method builtins.isinstance}\n        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}\n      127    0.000    0.000    0.000    0.000 D:\\boss\\results\\sharkbyte-connected-circuit-frontier\\tools\\benchmark_connected_sparse.py:47(<genexpr>)\n       94    0.000    0.000    0.000    0.000 {method 'items' of 'dict' objects}\n      202    0.000    0.000    0.000    0.000 D:\\boss\\results\\sharkbyte-connected-circuit-frontier\\benchmarks\\sb_quantum_benchmark\\sparse_backend.py:102(_check_qubit)\n       16    0.000    0.000    0.000    0.000 {built-in method math.sin}\n       70    0.000    0.000    0.000    0.000 {built-in method builtins.abs}\n\n\n",
+      "elapsed_seconds": [
+        1.2079970000195317,
+        1.1937429000390694,
+        1.222643600020092,
+        1.2529591000056826,
+        1.2562736000400037,
+        1.2333319999743253,
+        1.2211405000416562
+      ],
+      "id": "connected_16q_seed_2026113200",
+      "median_absolute_deviation_seconds": 0.014646600000560284,
+      "median_seconds": 1.222643600020092,
+      "peak_populated_states": 65536,
+      "prefix_gate_count": 126,
+      "python_heap_peak_bytes_max": 21039118,
+      "python_heap_peak_bytes_samples": [
+        21039118,
+        21039118
+      ],
+      "repeats": 7,
+      "seed": 2026113200,
+      "source_sha256": "ee4ac1e62d05e56e3a622700488d58c0310a81cebb0eec26441c3414d39da3f9",
+      "state_sha256": "844c94dcda8f19147475c4ae22b15af5cb27e8ee4bc42beee81053a3d121d1b3",
+      "status": "PASS",
+      "warmups": 1,
+      "width": 16
+    }
+  ],
+  "code_sha256": {
+    "benchmarks/sb_quantum_benchmark/sparse_backend.py": "cf911baaf59dcd95e975f5f9361d8424aa933a3f46edd245ce2e074fcb09fb83",
+    "tools/benchmark_connected_sparse.py": "11bd9f7e2460f51c09f0f0ff5a8a598ee7aa8652bc2eaa1abf6c5eab5c8f84af",
+    "validation/connected_quantum/corpus.py": "9c32eddafb59566e51d76953421b272d27592711f5a428d827a33d579a0a1e5f"
+  },
+  "host": {
+    "architecture": "ARM64",
+    "cpu_count": 8,
+    "platform": "Windows-11-10.0.26300-SP0",
+    "processor": "ARMv8 (64-bit) Family 8 Model 1 Revision 201, Qualcomm Technologies Inc",
+    "system": "Windows"
+  },
+  "measurement_method": {
+    "memory": "tracemalloc peak Python heap; two separate instrumented runs, excluded from timing samples",
+    "profile": "cProfile cumulative top 18 functions; profiling run excluded from timing samples",
+    "timing": "perf_counter; one warmup; median and median absolute deviation"
+  },
+  "memory_budget_bytes": 67108864,
+  "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:31:18) [MSC v.1943 64 bit (ARM64)]",
+  "repeats": 7,
+  "report_sha256": "f3a4177a45714bc8b8625319a32fca42135b02d581045369f2c003aabda55546",
+  "schema": 1,
+  "status": "PASS",
+  "support_cap": 65536,
+  "warmups": 1,
+  "workload": "new randomized connected-circuit prefix; excludes old disconnected scaling benchmark"
+}

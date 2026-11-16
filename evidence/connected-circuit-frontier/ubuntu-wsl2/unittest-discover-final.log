@@ -1,0 +1,54 @@
+test_conflicting_pythonpath_refused (test_acceptance.Acceptance.test_conflicting_pythonpath_refused) ... ok
+test_hybrid_six_qubits_eight_iterations_and_false_branch (test_acceptance.Acceptance.test_hybrid_six_qubits_eight_iterations_and_false_branch) ... ok
+test_maximum_hybrid_iterations (test_acceptance.Acceptance.test_maximum_hybrid_iterations) ... ok
+test_quantum_limits_and_recovery (test_acceptance.Acceptance.test_quantum_limits_and_recovery) ... ok
+test_reject_changed_source_hash (test_acceptance.Acceptance.test_reject_changed_source_hash) ... ok
+test_summary_needs_output (test_acceptance.Acceptance.test_summary_needs_output) ... ok
+test_summary_preserves_full_record_and_refuses_overwrite (test_acceptance.Acceptance.test_summary_preserves_full_record_and_refuses_overwrite) ... ok
+test_bell_independent_probabilities (test_cli.Toolchain.test_bell_independent_probabilities) ... ok
+test_classical_and_integrity (test_cli.Toolchain.test_classical_and_integrity) ... ok
+test_classical_vm_budget (test_cli.Toolchain.test_classical_vm_budget) ... ok
+test_cp_matches_hand_calculation (test_cli.Toolchain.test_cp_matches_hand_calculation) ... ok
+test_ghz_independent_probabilities (test_cli.Toolchain.test_ghz_independent_probabilities) ... ok
+test_invalid_syntax_and_limits (test_cli.Toolchain.test_invalid_syntax_and_limits) ... ok
+test_native_rejected (test_cli.Toolchain.test_native_rejected) ... ok
+test_qasm_generated (test_cli.Toolchain.test_qasm_generated) ... ok
+test_vm_step_limit (test_cli.Toolchain.test_vm_step_limit) ... ok
+test_compile_api_enforces_documented_utf8_source_limit (test_compiler_hardening.CompilerHardeningTests.test_compile_api_enforces_documented_utf8_source_limit) ... ok
+test_invalid_surrogate_is_a_controlled_language_error (test_compiler_hardening.CompilerHardeningTests.test_invalid_surrogate_is_a_controlled_language_error) ... ok
+test_left_associative_chains_are_bounded_in_both_compilers (test_compiler_hardening.CompilerHardeningTests.test_left_associative_chains_are_bounded_in_both_compilers) ... ok
+test_nested_block_fails_with_stable_language_error (test_compiler_hardening.CompilerHardeningTests.test_nested_block_fails_with_stable_language_error) ... ok
+test_parenthesis_nesting_fails_with_stable_language_error (test_compiler_hardening.CompilerHardeningTests.test_parenthesis_nesting_fails_with_stable_language_error) ... ok
+test_unary_minus_chain_fails_with_stable_language_error (test_compiler_hardening.CompilerHardeningTests.test_unary_minus_chain_fails_with_stable_language_error) ... ok
+test_20_to_40_qubit_connected_ghz_matches_closed_form (test_connected_quantum_corpus.ConnectedCircuitCorpusTests.test_20_to_40_qubit_connected_ghz_matches_closed_form) ... ok
+test_all_register_interaction_graphs_are_connected (test_connected_quantum_corpus.ConnectedCircuitCorpusTests.test_all_register_interaction_graphs_are_connected) ... ok
+test_connected_gate_graph_can_still_be_separable (test_connected_quantum_corpus.ConnectedCircuitCorpusTests.test_connected_gate_graph_can_still_be_separable) ... ok
+test_connected_ghz_is_nonfactorizing_across_every_bipartition (test_connected_quantum_corpus.ConnectedCircuitCorpusTests.test_connected_ghz_is_nonfactorizing_across_every_bipartition) ... ok
+test_connected_sparse_ghz_case_keeps_low_support (test_connected_quantum_corpus.ConnectedCircuitCorpusTests.test_connected_sparse_ghz_case_keeps_low_support) ... ok
+test_dense_support_cap_refuses_before_expansion (test_connected_quantum_corpus.ConnectedCircuitCorpusTests.test_dense_support_cap_refuses_before_expansion) ... ok
+test_exact_256_gate_limit_is_accepted_and_257th_is_rejected (test_connected_quantum_corpus.ConnectedCircuitCorpusTests.test_exact_256_gate_limit_is_accepted_and_257th_is_rejected) ... ok
+test_fixed_seed_corpus_is_reproducible (test_connected_quantum_corpus.ConnectedCircuitCorpusTests.test_fixed_seed_corpus_is_reproducible) ... ok
+test_inverse_restores_vacuum_on_random_connected_case (test_connected_quantum_corpus.ConnectedCircuitCorpusTests.test_inverse_restores_vacuum_on_random_connected_case) ... ok
+test_source_hash_and_ordered_gate_parse_match_corpus (test_connected_quantum_corpus.ConnectedCircuitCorpusTests.test_source_hash_and_ordered_gate_parse_match_corpus) ... ok
+test_all_22_qasm_files_and_full_probability_vectors (test_independent_qiskit_evidence.IndependentQiskitAcceptance.test_all_22_qasm_files_and_full_probability_vectors) ... ok
+test_public_evidence_manifest (test_independent_qiskit_evidence.IndependentQiskitAcceptance.test_public_evidence_manifest) ... ok
+test_scoped_module_provenance (test_independent_qiskit_evidence.IndependentQiskitAcceptance.test_scoped_module_provenance) ... ok
+test_hybrid_bounds_determinism_and_recovery (test_release_edges.ReleaseEdges.test_hybrid_bounds_determinism_and_recovery) ... ok
+test_malformed_classical_and_vm_step_limit (test_release_edges.ReleaseEdges.test_malformed_classical_and_vm_step_limit) ... ok
+test_native_backend_refusal_precedes_launch (test_release_edges.ReleaseEdges.test_native_backend_refusal_precedes_launch) ... ok
+test_qasm_export_and_no_overwrite (test_release_edges.ReleaseEdges.test_qasm_export_and_no_overwrite) ... ok
+test_quantum_parameter_and_structure_negatives (test_release_edges.ReleaseEdges.test_quantum_parameter_and_structure_negatives) ... ok
+test_seeded_sampling_and_normalization (test_release_edges.ReleaseEdges.test_seeded_sampling_and_normalization) ... ok
+test_source_encoding_and_size_bounds (test_release_edges.ReleaseEdges.test_source_encoding_and_size_bounds) ... ok
+test_tampered_receipt_and_native_refusal (test_release_edges.ReleaseEdges.test_tampered_receipt_and_native_refusal) ... ok
+test_project_explanations_use_grounded_answers (test_terminal_experiments.TerminalExperiments.test_project_explanations_use_grounded_answers) ... ok
+test_save_verify_and_replay (test_terminal_experiments.TerminalExperiments.test_save_verify_and_replay) ... ok
+test_adaptive_feedback_and_analytic_probabilities (test_three_mode.ThreeMode.test_adaptive_feedback_and_analytic_probabilities) ... ok
+test_five_bit_phase_estimation (test_three_mode.ThreeMode.test_five_bit_phase_estimation) ... ok
+test_historical_qft_inverse_recovers_basis (test_three_mode.ThreeMode.test_historical_qft_inverse_recovers_basis) ... ok
+test_historical_six_qubit_qft_against_dft (test_three_mode.ThreeMode.test_historical_six_qubit_qft_against_dft) ... ok
+
+----------------------------------------------------------------------
+Ran 49 tests in 2.559s
+
+OK

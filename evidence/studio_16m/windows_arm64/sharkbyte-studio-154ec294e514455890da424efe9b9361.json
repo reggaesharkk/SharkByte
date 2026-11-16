@@ -1,0 +1,386 @@
+{
+  "mode": "scaling_16m",
+  "record_sha256": "e79f97641ac34a9c38644fbbf2ce8ee7583c55d94b3097bb51e985e9dffc3ffc",
+  "result": {
+    "added_gates": [
+      [
+        "h",
+        14
+      ],
+      [
+        "h",
+        16
+      ],
+      [
+        "h",
+        18
+      ],
+      [
+        "h",
+        20
+      ],
+      [
+        "h",
+        22
+      ],
+      [
+        "h",
+        2
+      ],
+      [
+        "h",
+        6
+      ]
+    ],
+    "circuit_identity": {
+      "base_source_sha256": "a24d8f389850e4a298f611d45ab4c5e953ead59c153777071916ecea73cd5316",
+      "gate_count": 56,
+      "gates": [
+        [
+          "h",
+          0
+        ],
+        [
+          "h",
+          2
+        ],
+        [
+          "h",
+          4
+        ],
+        [
+          "h",
+          6
+        ],
+        [
+          "h",
+          8
+        ],
+        [
+          "h",
+          10
+        ],
+        [
+          "h",
+          12
+        ],
+        [
+          "h",
+          14
+        ],
+        [
+          "h",
+          16
+        ],
+        [
+          "h",
+          18
+        ],
+        [
+          "h",
+          20
+        ],
+        [
+          "h",
+          22
+        ],
+        [
+          "cx",
+          0,
+          1
+        ],
+        [
+          "cx",
+          2,
+          3
+        ],
+        [
+          "cx",
+          4,
+          5
+        ],
+        [
+          "cx",
+          6,
+          7
+        ],
+        [
+          "cx",
+          8,
+          9
+        ],
+        [
+          "cx",
+          10,
+          11
+        ],
+        [
+          "cx",
+          12,
+          13
+        ],
+        [
+          "cx",
+          14,
+          15
+        ],
+        [
+          "cx",
+          16,
+          17
+        ],
+        [
+          "cx",
+          18,
+          19
+        ],
+        [
+          "cx",
+          20,
+          21
+        ],
+        [
+          "cx",
+          22,
+          23
+        ],
+        [
+          "cx",
+          0,
+          24
+        ],
+        [
+          "cx",
+          2,
+          25
+        ],
+        [
+          "cx",
+          4,
+          26
+        ],
+        [
+          "cx",
+          6,
+          27
+        ],
+        [
+          "cx",
+          8,
+          28
+        ],
+        [
+          "cx",
+          10,
+          29
+        ],
+        [
+          "cx",
+          12,
+          30
+        ],
+        [
+          "cx",
+          14,
+          31
+        ],
+        [
+          "cx",
+          16,
+          32
+        ],
+        [
+          "cx",
+          18,
+          33
+        ],
+        [
+          "cx",
+          20,
+          34
+        ],
+        [
+          "cx",
+          22,
+          35
+        ],
+        [
+          "cx",
+          0,
+          36
+        ],
+        [
+          "cx",
+          2,
+          37
+        ],
+        [
+          "cx",
+          4,
+          38
+        ],
+        [
+          "cx",
+          6,
+          39
+        ],
+        [
+          "cp",
+          0,
+          12,
+          1.0471975511965976
+        ],
+        [
+          "cp",
+          4,
+          16,
+          -0.7853981633974483
+        ],
+        [
+          "cp",
+          8,
+          20,
+          0.5235987755982988
+        ],
+        [
+          "cp",
+          2,
+          29,
+          0.39269908169872414
+        ],
+        [
+          "h",
+          0
+        ],
+        [
+          "h",
+          4
+        ],
+        [
+          "h",
+          8
+        ],
+        [
+          "h",
+          10
+        ],
+        [
+          "h",
+          12
+        ],
+        [
+          "h",
+          14
+        ],
+        [
+          "h",
+          16
+        ],
+        [
+          "h",
+          18
+        ],
+        [
+          "h",
+          20
+        ],
+        [
+          "h",
+          22
+        ],
+        [
+          "h",
+          2
+        ],
+        [
+          "h",
+          6
+        ]
+      ],
+      "name": "support_scaling",
+      "qubits": 40,
+      "sha256": "201859ee8cc1c5248ef5ca49d191f1fb35d4878cb4b7257a5e7a2d5c6455758e"
+    },
+    "estimated_budget_bytes": 8589934592,
+    "evolution_seconds": 16.337603699998,
+    "final_active_states": 16777216,
+    "gates": 56,
+    "max_uniform_probability_error": 2.6469779601696886e-22,
+    "peak_active_states": 16777216,
+    "probability_sum": 0.999999999999996,
+    "qubits": 40,
+    "result_sha256": "7bfb4c46cd8d60181c24b40665a39b06f849de466b470fc642b2298eb8137fdf",
+    "source_sha256": "a24d8f389850e4a298f611d45ab4c5e953ead59c153777071916ecea73cd5316",
+    "status": "PASS",
+    "studio_execution": {
+      "environment": {
+        "cpu_count": 8,
+        "machine": "ARM64",
+        "platform": "Windows-11-10.0.26300-SP0",
+        "processor": "ARMv8 (64-bit) Family 8 Model 1 Revision 201, Qualcomm Technologies Inc",
+        "python": "3.12.10",
+        "system": "Windows"
+      },
+      "execution_id": "154ec294e514455890da424efe9b9361",
+      "implementation_sha256": {
+        "frontier_parser": "26d4d258ca87cc78e449879744478d714f162aa0cf5f474692d31cd18040cb52",
+        "resource_limited_worker": "4bc3b34dd585cfde6b70221eeed7772694198cb71d1fb3bdf08fbdf47954a9f8",
+        "scaling_runner": "ac2a718c387949d82a9e53b1d29f1652a756723857d1cd16b4e652be9eb283f2",
+        "sparse_backend": "7870c39077f6bc4163475c31ddf42e4a3713c81a6bdb9e8f288d424914903dbe",
+        "studio_server": "99f33d7678fb2d1dcb5bd6ca8fcec5a2edcdc463d53f42fb15d0b0523d57e812"
+      },
+      "memory_measurement": "Windows Job Object peak process memory",
+      "process_peak_memory_bytes": 2975457280,
+      "reference_receipt_paths": [
+        "benchmarks/sb_quantum_benchmark/scaling-16777216-cirq.json",
+        "evidence/windows-arm64-cirq/cirq-16777216.json"
+      ],
+      "resource_limits": {
+        "minimum_available_memory_bytes": 4563402752,
+        "preflight_available_memory_bytes": 6283038720,
+        "process_memory_limit_bytes": 3489660928,
+        "timeout_seconds": 90.0
+      },
+      "source_revision": "8dc227002186f58b1c667000239d9343c2439a8c",
+      "source_tree_clean_at_launch": false,
+      "worker_startup_seconds": 0.008961000014096498,
+      "worker_wall_seconds": 22.01600000000326
+    },
+    "verification": {
+      "independent_reference_receipts": [
+        {
+          "amplitude_tolerance": 1e-12,
+          "cirq_core": "1.6.1",
+          "kind": "independent Cirq full-statevector comparison",
+          "matched_circuit_sha256": "201859ee8cc1c5248ef5ca49d191f1fb35d4878cb4b7257a5e7a2d5c6455758e",
+          "matched_source_sha256": "a24d8f389850e4a298f611d45ab4c5e953ead59c153777071916ecea73cd5316",
+          "maximum_amplitude_error": 6.363918117455167e-19,
+          "receipt_path": "benchmarks/sb_quantum_benchmark/scaling-16777216-cirq.json",
+          "receipt_sha256": "1bdbd879ee5f1b4a1928798c14014959235fa3d2b0f2272b2240a714ef829617",
+          "reference_revision": "df57e9839b5c70efcb4c3e27ce7264e48497f782"
+        },
+        {
+          "amplitude_tolerance": 1e-12,
+          "cirq_core": "1.7.0",
+          "kind": "independent Cirq full-statevector comparison",
+          "matched_circuit_sha256": "201859ee8cc1c5248ef5ca49d191f1fb35d4878cb4b7257a5e7a2d5c6455758e",
+          "matched_source_sha256": "a24d8f389850e4a298f611d45ab4c5e953ead59c153777071916ecea73cd5316",
+          "maximum_amplitude_error": 6.363918117455167e-19,
+          "receipt_path": "evidence/windows-arm64-cirq/cirq-16777216.json",
+          "receipt_sha256": "a088f0e1af7a4846cba85fbbb5a6952309ceacbf9070514c79400bbb5160df5b",
+          "reference_revision": "d9bfd054eef3693c89164aefd8091bad81f4c02b"
+        }
+      ],
+      "method": "exact populated-state count and probability checks against the uniform analytic distribution; circuit identity also matches archived independent Cirq full-statevector receipts",
+      "normalization_pass": true,
+      "peak_state_count_pass": true,
+      "populated_state_count_pass": true,
+      "status": "PASS",
+      "uniform_probability_pass": true
+    }
+  },
+  "schema": 1,
+  "source": "quantum frontier_sparse_40_131072 {\n    qubits 40;\n    h 0;\n    h 2;\n    h 4;\n    h 6;\n    h 8;\n    h 10;\n    h 12;\n    h 14;\n    h 16;\n    h 18;\n    h 20;\n    h 22;\n    cx 0 1;\n    cx 2 3;\n    cx 4 5;\n    cx 6 7;\n    cx 8 9;\n    cx 10 11;\n    cx 12 13;\n    cx 14 15;\n    cx 16 17;\n    cx 18 19;\n    cx 20 21;\n    cx 22 23;\n    cx 0 24;\n    cx 2 25;\n    cx 4 26;\n    cx 6 27;\n    cx 8 28;\n    cx 10 29;\n    cx 12 30;\n    cx 14 31;\n    cx 16 32;\n    cx 18 33;\n    cx 20 34;\n    cx 22 35;\n    cx 0 36;\n    cx 2 37;\n    cx 4 38;\n    cx 6 39;\n    cp 1.0471975511965976 0 12;\n    cp -0.7853981633974483 4 16;\n    cp 0.5235987755982988 8 20;\n    cp 0.39269908169872414 2 29;\n    h 0;\n    h 4;\n    h 8;\n    h 10;\n    h 12;\n    measure_all;\n}\n",
+  "source_sha256": "a24d8f389850e4a298f611d45ab4c5e953ead59c153777071916ecea73cd5316",
+  "toolchain_version": "0.2.1a2"
+}

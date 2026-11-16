@@ -9,7 +9,7 @@
 header,main{max-width:1500px;margin:auto;padding:22px 4vw}header{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}h1{font-size:24px;margin:0}h1 span{color:var(--accent)}h2{font-size:16px;margin:0}.badge,label,small{color:var(--muted)}
 main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}.panel{border:1px solid var(--line);border-radius:12px;background:var(--panel);min-width:0;overflow:hidden}.bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:14px 16px;border-bottom:1px solid var(--line)}.bar h2{margin-right:auto}
 button,select{font:inherit;background:#252e35;color:var(--text);border:1px solid var(--line);border-radius:7px;padding:8px 11px}button{cursor:pointer}button:disabled{opacity:.5;cursor:default}button:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}.primary{background:var(--accent);color:#16200c;font-weight:750}.view[aria-pressed=true]{border-color:var(--accent);color:var(--accent)}
-textarea,pre{font:14px/1.6 'IBM Plex Mono',Consolas,monospace;tab-size:4}textarea{width:100%;min-height:430px;display:block;background:#11171b;color:var(--text);border:0;resize:vertical;padding:18px}pre{min-height:300px;max-height:570px;overflow:auto;padding:16px;margin:0;white-space:pre-wrap;overflow-wrap:anywhere}.foot{padding:12px 16px;border-top:1px solid var(--line)}#status{min-height:1.4em;color:var(--accent);overflow-wrap:anywhere}#status[data-error=true]{color:#ffad9f}
+textarea,pre{font:14px/1.6 'IBM Plex Mono',Consolas,monospace;tab-size:4}textarea{width:100%;min-height:430px;display:block;background:#11171b;color:var(--text);border:0;resize:vertical;padding:18px}pre{min-height:300px;max-height:570px;overflow:auto;padding:16px;margin:0;white-space:pre-wrap;overflow-wrap:anywhere}.foot{padding:12px 16px;border-top:1px solid var(--line)}#status{min-height:1.4em;color:var(--accent);overflow-wrap:anywhere}#status[data-error=true]{color:#ffad9f}#runProgress{width:100%;height:8px;accent-color:var(--accent);margin-top:8px}
 @media(max-width:860px){main{grid-template-columns:1fr}textarea{min-height:270px}}
 .noise-panel{grid-column:1/-1;padding:20px 22px}.noise-panel>p{max-width:100ch;color:var(--muted);line-height:1.55}.noise-layout{display:grid;grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr);gap:24px;align-items:center}.noise-control{display:grid;gap:14px}.noise-control label{display:flex;justify-content:space-between;gap:12px}.noise-control output{color:var(--accent);font-variant-numeric:tabular-nums}.noise-control input{width:100%;accent-color:var(--accent)}.noise-values{display:grid;gap:8px;margin:0}.noise-values div{display:flex;justify-content:space-between;gap:12px}.noise-values dt{color:var(--muted)}.noise-values dd{margin:0;font-variant-numeric:tabular-nums}.noise-chart{width:100%;height:auto;min-height:230px;background:#11171b;border:1px solid var(--line);border-radius:8px}.noise-chart text{fill:var(--muted);font:12px Inter,system-ui,sans-serif}.noise-chart .axis,.noise-chart .grid{stroke:var(--line);stroke-width:1}.noise-chart .direct{stroke:#60b9ff;stroke-width:3;fill:none}.noise-chart .encoded{stroke:var(--accent);stroke-width:3;fill:none}.noise-chart .cursor{stroke:#edf1ec;stroke-dasharray:4 5;opacity:.65}.noise-legend{display:flex;gap:20px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin-top:8px}.noise-legend span::before{content:"";display:inline-block;width:16px;height:3px;vertical-align:middle;margin-right:7px;background:#60b9ff}.noise-legend span+span::before{background:var(--accent)}
 @media(max-width:860px){.noise-panel{grid-column:1}.noise-layout{grid-template-columns:1fr}}
@@ -18,12 +18,12 @@ textarea,pre{font:14px/1.6 'IBM Plex Mono',Consolas,monospace;tab-size:4}textare
 <main>
   <section class="panel" aria-labelledby="sourceTitle">
     <div class="bar"><h2 id="sourceTitle">Source</h2><label for="mode">Mode</label>
-      <select id="mode"><option value="classical">Classical</option><option value="quantum">Quantum</option><option value="hybrid">Bounded Hybrid (2–6 qubits)</option><option value="frontier">Frontier30 (sparse)</option><option value="scaling">Million-state benchmark</option></select>
-      <button id="example" disabled>Load example</button><button id="phaseRecovery" hidden disabled>Load phase-flip recovery</button><button id="phaseFailure" hidden disabled>Load two-error control</button><button id="run" class="primary" disabled>Run</button></div>
+      <select id="mode"><option value="classical">Classical</option><option value="quantum">Quantum</option><option value="hybrid">Bounded Hybrid (2–6 qubits)</option><option value="frontier">Frontier30 (sparse)</option><option value="scaling">Million-state benchmark</option><option value="scaling_16m">16,777,216-state benchmark</option></select>
+      <button id="example" disabled>Load example</button><button id="phaseRecovery" hidden disabled>Load phase-flip recovery</button><button id="phaseFailure" hidden disabled>Load two-error control</button><button id="run" class="primary" disabled>Run</button><button id="cancelRun" hidden disabled>Cancel benchmark</button></div>
     <div class="bar" id="sparseOptions" hidden style="display:none"><label for="supportCap">Sparse state cap</label>
       <select id="supportCap"><option value="4096">4,096</option><option value="8192">8,192</option><option value="16384">16,384</option><option value="32768">32,768</option><option value="65536">65,536</option><option value="131072">131,072</option></select></div>
     <textarea id="source" aria-label="SharkByte source" spellcheck="false"></textarea>
-    <div class="foot"><small>Ctrl / ⌘ + Enter to run · SharkVM and CPU simulation</small></div>
+    <div class="foot"><small>Ctrl / ⌘ + Enter to run · SharkVM and CPU simulation</small><progress id="runProgress" value="0" max="56" hidden aria-label="Benchmark gate progress"></progress></div>
   </section>
   <section class="panel" aria-labelledby="resultsTitle">
     <div class="bar"><h2 id="resultsTitle">Results</h2><button id="save" disabled>Save receipt</button></div>
@@ -72,9 +72,10 @@ textarea,pre{font:14px/1.6 'IBM Plex Mono',Consolas,monospace;tab-size:4}textare
 const byId = id => document.getElementById(id);
 const source = byId('source'), mode = byId('mode'), run = byId('run');
 const save = byId('save'), status = byId('status'), output = byId('result');
+const cancelRun = byId('cancelRun'), runProgress = byId('runProgress');
 const example = byId('example'), views = document.querySelectorAll('.view');
 const format = value => JSON.stringify(value, null, 2);
-let active = 'output', latest = null, examples = {}, busy = false;
+let active = 'output', latest = null, examples = {}, busy = false, activeExecutionId = null;
 
 function render() {
   if (!latest?.record) return;
@@ -87,6 +88,7 @@ function render() {
     metrics: format({execution_id, toolchain_version, worker_wall_seconds,
       vm_instruction_count:result.vm_instruction_count, vm_step_limit:result.vm_step_limit,
       qubits:result.qubits, support_cap:result.support_cap, peak_populated_states:result.peak_populated_states,
+      circuit_identity:result.circuit_identity, studio_execution:result.studio_execution,
       source_sha256, bytecode_sha256, record_sha256}),
     bytecode: disassembly ? `${disassembly}\n\nEncoded bytes (hex${record.bytecode_preview ? ', preview' : ''})\n${record.bytecode_hex}` : 'This run did not emit a SharkVM bytecode artifact.',
     source: record.source,
@@ -114,17 +116,60 @@ async function execute() {
     const response = await fetch('/run', {method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({source:source.value,mode:mode.value,support_cap:Number(byId('supportCap').value)})});
     const data = await response.json();
-    if (!response.ok) throw new Error(data.error || `Request failed (${response.status})`);
-    latest = data;
-    status.textContent = `Completed · ${data.execution_id}`;
-    save.disabled = false;
-    render();
+    if (response.status === 202 && data.execution_id) {
+      activeExecutionId = data.execution_id;
+      cancelRun.hidden = false; cancelRun.disabled = false;
+      runProgress.hidden = false; runProgress.value = 0; runProgress.max = 56;
+      await pollLargeRun(data.execution_id);
+    } else if (response.status === 503 && data.status === 'refused') {
+      status.dataset.error = 'true'; status.textContent = 'Run refused by resource preflight';
+      const gib = bytes => bytes == null ? 'unavailable' : `${(bytes/1024**3).toFixed(2)} GiB`;
+      output.textContent = `${data.error}\nAvailable memory: ${gib(data.available_memory_bytes)}\nRequired reserve: ${gib(data.required_available_memory_bytes)}\nWorker memory ceiling: ${gib(data.process_memory_limit_bytes)}`;
+    } else {
+      if (!response.ok) throw new Error(data.error || `Request failed (${response.status})`);
+      latest = data;
+      status.textContent = `Completed · ${data.execution_id}`;
+      save.disabled = false;
+      render();
+    }
   } catch (error) {
     status.dataset.error = 'true';
     status.textContent = 'Run failed';
     output.textContent = error.message;
   } finally {
     busy = run.disabled = false;
+    activeExecutionId = null;
+    cancelRun.hidden = true; cancelRun.disabled = true;
+  }
+}
+
+function formatBytes(value) { return value ? `${(value/1024**3).toFixed(2)} GiB` : 'measuring…'; }
+async function pollLargeRun(executionId) {
+  while (true) {
+    const response = await fetch(`/jobs/${executionId}`, {cache:'no-store'});
+    const job = await response.json();
+    if (!response.ok) throw new Error(job.error || `Status request failed (${response.status})`);
+    runProgress.max = job.gate_count || 56;
+    runProgress.value = Math.min(job.gate_index || 0, runProgress.max);
+    const progressText = job.gate_count
+      ? `gate ${job.gate_index}/${job.gate_count} · ${Number(job.active_states).toLocaleString()} active states`
+      : job.phase;
+    status.textContent = `${job.status === 'cancelling' ? 'Cancelling' : 'Running'} · ${progressText} · ${Number(job.elapsed_seconds).toFixed(1)} s · peak ${formatBytes(job.peak_memory_bytes)}`;
+    if (job.status === 'completed') {
+      latest = {execution_id:job.execution_id, receipt_url:job.receipt_url,
+        worker_wall_seconds:job.record.result.studio_execution.worker_wall_seconds,
+        record:job.record, disassembly:null};
+      status.textContent = `Completed · ${job.execution_id} · ${Number(job.elapsed_seconds).toFixed(1)} s · peak ${formatBytes(job.peak_memory_bytes)}`;
+      runProgress.value = runProgress.max;
+      save.disabled = false; render(); return;
+    }
+    if (['failed','cancelled','timed_out'].includes(job.status)) {
+      status.dataset.error = 'true';
+      status.textContent = job.status === 'cancelled' ? 'Run cancelled · worker process stopped' : `Run ${job.status}`;
+      output.textContent = job.error || `Run ${job.status}.`;
+      return;
+    }
+    await new Promise(resolve => setTimeout(resolve, 350));
   }
 }
 
@@ -136,8 +181,8 @@ mode.addEventListener('change', () => {
   const options = byId('sparseOptions');
   options.hidden = mode.value !== 'frontier';
   options.style.display = options.hidden ? 'none' : '';
-  source.readOnly = mode.value === 'scaling';
-  if (source.readOnly && examples.scaling) source.value = examples.scaling;
+  source.readOnly = mode.value === 'scaling' || mode.value === 'scaling_16m';
+  if (source.readOnly && examples[mode.value]) source.value = examples[mode.value];
 });
 byId('phaseRecovery').addEventListener('click', () => { source.value = examples.phase_recovery; });
 byId('phaseFailure').addEventListener('click', () => {
@@ -155,6 +200,17 @@ save.addEventListener('click', () => {
   link.href = latest.receipt_url;
   link.download = `sharkbyte-${latest.execution_id}.json`;
   link.click();
+});
+cancelRun.addEventListener('click', async () => {
+  if (!activeExecutionId) return;
+  cancelRun.disabled = true;
+  status.textContent = 'Cancelling benchmark…';
+  try {
+    await fetch(`/jobs/${activeExecutionId}/cancel`, {method:'POST'});
+  } catch (error) {
+    status.dataset.error = 'true'; status.textContent = `Cancellation request failed: ${error.message}`;
+    cancelRun.disabled = false;
+  }
 });
 run.disabled = false;
 fetch('/examples').then(response => {

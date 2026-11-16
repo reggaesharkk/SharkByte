@@ -1,0 +1,16 @@
+{
+  "bytes": 87788,
+  "code_sha256": {
+    "benchmarks/sb_quantum_benchmark/sparse_backend.py": "7870c39077f6bc4163475c31ddf42e4a3713c81a6bdb9e8f288d424914903dbe",
+    "tools/high_support/adaptive_statevector.py": "f2dc6b86351c720b1ac50b67e76c17a93dbadc36acca0a2b5e708c42a6551630",
+    "tools/high_support/benchmark_adaptive.py": "6dead68ffeb75acb7e1ff9abb306aa58445a885201a0030b3bec68daa310e134",
+    "tools/high_support/dense_statevector.py": "dc1670f363e555930f2ca1e5ee9a8e478559883af6b83c64f35c00396eb8faf6"
+  },
+  "path": "adaptive-sparse-dense-windows-arm64.json",
+  "sha256": "0611ec8fd37e284ecc4280dc6fc52086c9876323c54411a477e25142b4e56449",
+  "source_sha256": {
+    "intermediate_20q": "3809d05214a93cc2826b54ceb844d35cc2315f5efcb06f7529ac3f8ec6f80c90",
+    "random_connected_20q": "b87f4bbff2b69854575c71dcb38b6e1cbc15e10f28ad2bfa902f14bf099cebe8",
+    "sparse_ghz_20q": "f92d8363d883093bb4cde83997c97735ed80c9d5a57abde76da2abfa015de67f"
+  }
+}

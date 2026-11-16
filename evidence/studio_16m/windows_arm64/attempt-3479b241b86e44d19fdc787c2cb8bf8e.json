@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "status": "FAILED",
+  "attempt": "3479b241b86e44d19fdc787c2cb8bf8e",
+  "date": "2026-11-16",
+  "mode": "scaling_16m",
+  "source_file": "examples/frontier_sparse_40_131072.sb",
+  "source_file_sha256": "a24d8f389850e4a298f611d45ab4c5e953ead59c153777071916ecea73cd5316",
+  "worker_sha256_at_attempt": "7a63df5e1f871ff43536d0cc2798aee64a792bc9623aafaa266dd98ab6ec24ef",
+  "preflight": "PASS",
+  "worker_started": true,
+  "gates_started": false,
+  "peak_worker_memory_bytes": 9682944,
+  "failure_stage": "worker_import",
+  "error": "ModuleNotFoundError: No module named 'frontier30'",
+  "details": "The wrapper applied the resource limit but did not add benchmarks/sb_quantum_benchmark to sys.path before loading support_scaling.py. No circuit evolution occurred and no result receipt was produced. This record is diagnostic evidence, not a benchmark receipt."
+}

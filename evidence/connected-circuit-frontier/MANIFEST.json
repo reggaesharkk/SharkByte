@@ -1,0 +1,182 @@
+{
+  "files": [
+    {
+      "bytes": 702,
+      "path": ".gitattributes",
+      "sha256": "9b42ed7feceb29d869198d6650d01018fc7a2bf1997a873c9ec6218963385d08"
+    },
+    {
+      "bytes": 4157,
+      "path": ".github/workflows/ci.yml",
+      "sha256": "c8da7674fa5fe9b49f77abf8dc9a8c950621bf7eeed0d16c433c94f668bf97e2"
+    },
+    {
+      "bytes": 15695,
+      "path": "README.md",
+      "sha256": "ea5c51e33f981a6e68ba98f74bb255deffed4b70bc6c426407e25cb0ed6d09d7"
+    },
+    {
+      "bytes": 3059,
+      "path": "benchmarks/sb_quantum_benchmark/frontier30.py",
+      "sha256": "26d4d258ca87cc78e449879744478d714f162aa0cf5f474692d31cd18040cb52"
+    },
+    {
+      "bytes": 20145,
+      "path": "benchmarks/sb_quantum_benchmark/quantum_frontend.py",
+      "sha256": "1e373410a5494c5c257dd4916494d964d75758f1432997ebd704c07c07fcaf93"
+    },
+    {
+      "bytes": 14743,
+      "path": "benchmarks/sb_quantum_benchmark/sparse_backend.py",
+      "sha256": "f655de6f68d392cc72af1d87430466d8c5ee7dff4861755bd2bbdea7756ec42b"
+    },
+    {
+      "bytes": 8966,
+      "path": "docs/connected-circuit-frontier.md",
+      "sha256": "3f8d9a4244cac53585e546a2f3baab4538c5ff399107ea9b24e6299f67db2003"
+    },
+    {
+      "bytes": 17770,
+      "path": "evidence/connected-circuit-frontier/ubuntu-wsl2/analytic-connected-entangled-final.json",
+      "sha256": "63c20a8c465cd32092eb4315b1f292821fedf7771612a6e10d57968acd0cf3df"
+    },
+    {
+      "bytes": 2772,
+      "path": "evidence/connected-circuit-frontier/ubuntu-wsl2/ci-acceptance-final.json",
+      "sha256": "a7c299f99b421766ce567d6ba1fb7f318b7a797fc13d14dbeae36cbb63472405"
+    },
+    {
+      "bytes": 6507,
+      "path": "evidence/connected-circuit-frontier/ubuntu-wsl2/unittest-discover-final.log",
+      "sha256": "e2115a6687b816a3126d84e94694df7fb08b2123381a4407d7f0bfd73e5859ae"
+    },
+    {
+      "bytes": 17835,
+      "path": "evidence/connected-circuit-frontier/windows-arm64/analytic-connected-entangled-final.json",
+      "sha256": "7572f3ca76d26abfa55da29417218777753da67c92580bebbcf2744696867d04"
+    },
+    {
+      "bytes": 2773,
+      "path": "evidence/connected-circuit-frontier/windows-arm64/ci-acceptance-final.json",
+      "sha256": "c17536b056ceee7b9b8cd6e0c5054a15d1f20e17f7bd4119bb3b9ab07f91e624"
+    },
+    {
+      "bytes": 172711,
+      "path": "evidence/connected-circuit-frontier/windows-arm64/cirq-connected-entanglement-final.json",
+      "sha256": "b426cc2a9df9491ab03968fec12ec8e5799b6212140daa7cfd285f410a062d7c"
+    },
+    {
+      "bytes": 1065,
+      "path": "evidence/connected-circuit-frontier/windows-arm64/cirq-connected-entanglement-final.log",
+      "sha256": "cf3c4d0d989bc9dc60e6216166b2c12ca9c65cc096b2dddd8854bfbb22274272"
+    },
+    {
+      "bytes": 5628294,
+      "path": "evidence/connected-circuit-frontier/windows-arm64/cirq-connected-entanglement-final.states.npz",
+      "sha256": "36a266d103442c93d51007ec8e67ef2dd844d68ac62bd3b08c45215b6786ffdb"
+    },
+    {
+      "bytes": 6254,
+      "path": "evidence/connected-circuit-frontier/windows-arm64/connected-sparse-performance-baseline.json",
+      "sha256": "9a1a4e20d11a8f42aef6d92a369cace8280d32edac3f751ba12c88c4b26c6c7b"
+    },
+    {
+      "bytes": 6257,
+      "path": "evidence/connected-circuit-frontier/windows-arm64/connected-sparse-performance-inplace-diagonal-experiment.json",
+      "sha256": "423d2599c7cbd734ea2a49ec557049ed6b0bc6c5f8e3caf68a10da09347b5c44"
+    },
+    {
+      "bytes": 70387,
+      "path": "evidence/connected-circuit-frontier/windows-arm64/qiskit-cirq-connected-entanglement-density-final.json",
+      "sha256": "e9ce62f51de0a624f2b294cc8ea51b5c2b115c8ad569935772888976e7da8830"
+    },
+    {
+      "bytes": 775983,
+      "path": "evidence/connected-circuit-frontier/windows-arm64/qiskit-connected-entanglement-final.json",
+      "sha256": "19ab4dd9e1cb6b57c64897c890dea2f0fd04c5e1b4d14956087c9134b6499a15"
+    },
+    {
+      "bytes": 1071,
+      "path": "evidence/connected-circuit-frontier/windows-arm64/qiskit-connected-entanglement-final.log",
+      "sha256": "70032b110526909c318f3dae6e5efe0113677067b59c60b44928612c8e50db1f"
+    },
+    {
+      "bytes": 5628294,
+      "path": "evidence/connected-circuit-frontier/windows-arm64/qiskit-connected-entanglement-final.states.npz",
+      "sha256": "5a69b84aae88c66b25ea1a5b9bc972ad1dee2e565e1b4a80c7dc6d1ab45fa17e"
+    },
+    {
+      "bytes": 2059,
+      "path": "evidence/connected-circuit-frontier/windows-arm64/qiskit-connected-entanglement-rerun.log",
+      "sha256": "b2ae692c08fc4531876f5f49ff238663981dd1afa01261174ac303cd53867d53"
+    },
+    {
+      "bytes": 6507,
+      "path": "evidence/connected-circuit-frontier/windows-arm64/unittest-discover-final.log",
+      "sha256": "4a12f57cc8c47d2a8f00013c24b6b82100a668eaf7bfaf9695c537d1390cfaa2"
+    },
+    {
+      "bytes": 58728,
+      "path": "sharkbyte_alpha/vm.py",
+      "sha256": "7a251e61acb94c06421a9b0e17b040be8c118ba06dab53d1188fa17008897dcd"
+    },
+    {
+      "bytes": 2526,
+      "path": "tests/test_compiler_hardening.py",
+      "sha256": "e0a6ebad420f82dc8f65f9c771ccb4c2d63770b24e2ba727765d295cd9dc9852"
+    },
+    {
+      "bytes": 10173,
+      "path": "tests/test_connected_quantum_corpus.py",
+      "sha256": "80e2dda48ce232a450d4d8296562707061b7062eabbdc85f58cd7917c6c322c0"
+    },
+    {
+      "bytes": 7462,
+      "path": "tools/benchmark_connected_sparse.py",
+      "sha256": "11bd9f7e2460f51c09f0f0ff5a8a598ee7aa8652bc2eaa1abf6c5eab5c8f84af"
+    },
+    {
+      "bytes": 3075,
+      "path": "tools/build_connected_circuit_manifest.py",
+      "sha256": "70b7f1142aa0e375ea0b3665d4a79109c417c64dedfcafe28c5006f9e8453a7c"
+    },
+    {
+      "bytes": 5594,
+      "path": "tools/ci_acceptance.py",
+      "sha256": "2e6dd7627f4d9d37b98e43641b8e05fc7c11daac1e287b1cdef28db37fceef24"
+    },
+    {
+      "bytes": 10873,
+      "path": "tools/compare_connected_quantum_receipts.py",
+      "sha256": "f9fcde750abf1bdbe11e81472cd55404be135c412020eea2c8e418bbe7729301"
+    },
+    {
+      "bytes": 20063,
+      "path": "tools/run_connected_quantum_validation.py",
+      "sha256": "a00c37fc0a32c2192b064d51d3b225eb9bf0988e2d0743197cc05630dda14c92"
+    },
+    {
+      "bytes": 9192,
+      "path": "tools/run_connected_sparse_analytic_validation.py",
+      "sha256": "35a8f50a495df7ed31597c5ff901bc2ef0b1cc47c60e63e186147a147221662c"
+    },
+    {
+      "bytes": 8108,
+      "path": "tools/verify_connected_circuit_evidence.py",
+      "sha256": "5115d7ca04a4c00862e5dc88a32c54e58992fc129eac9ed69b56b03f330082b0"
+    },
+    {
+      "bytes": 90,
+      "path": "validation/connected_quantum/__init__.py",
+      "sha256": "d65f22e3cb9cb850d87178e851ab9b3bb69e6eab39b8e0ed7671b331719a20bc"
+    },
+    {
+      "bytes": 11839,
+      "path": "validation/connected_quantum/corpus.py",
+      "sha256": "9c32eddafb59566e51d76953421b272d27592711f5a428d827a33d579a0a1e5f"
+    }
+  ],
+  "integrity_note": "Unkeyed SHA-256 detects byte changes; it does not prove authorship or correctness.",
+  "manifest_sha256": "68688a875cabc5e7d97734e28be6fab82e600da5dabc0bca2083c24be28aee71",
+  "schema": 1
+}

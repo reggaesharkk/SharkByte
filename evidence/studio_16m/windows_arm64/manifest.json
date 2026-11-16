@@ -1,0 +1,36 @@
+{
+  "attempts": [
+    {
+      "bytes": 877,
+      "path": "attempt-3479b241b86e44d19fdc787c2cb8bf8e.json",
+      "sha256": "d2e8e1279a1a708df867a08128b38bd9a1510241a85665f0cb5f0d27db65cbc2",
+      "status": "FAILED before circuit execution"
+    }
+  ],
+  "manual_browser_receipt": {
+    "bytes": 8944,
+    "matching_implementation_revision": "d251b7d4d29cc10826d9b086b6fcbe126eb5d5c9",
+    "path": "sharkbyte-85c74d14dcb54040a295e3c2fe422e53.json",
+    "provenance": "Operator launched in Studio and saved the receipt. All five recorded implementation hashes match the recorded local commit, the prior Studio receipt, and the reviewed GitHub revision.",
+    "sha256": "cc7933496899fa56d962e6d87d8fef893f7e5857fc9f099c1f5bc23dedf4af13",
+    "source_revision": "bf3b980cda0a389b99cd88cb59cb62757658a2cb",
+    "source_tree_clean_at_launch": false,
+    "status": "PASS"
+  },
+  "receipt": "sharkbyte-studio-154ec294e514455890da424efe9b9361.json",
+  "receipt_bytes": 8942,
+  "receipt_sha256": "24fe87cd14d8fb66984da69a1d44cd3c1161ae0e6ccad4a4fdbd9b2ea9a99f77",
+  "schema": 1,
+  "status": "PASS",
+  "verification_command": "python -B tools/verify_studio_scaling_receipt.py sharkbyte-studio-154ec294e514455890da424efe9b9361.json",
+  "verification_output": {
+    "active_states": 16777216,
+    "circuit_sha256": "201859ee8cc1c5248ef5ca49d191f1fb35d4878cb4b7257a5e7a2d5c6455758e",
+    "gates": 56,
+    "integrity": "INTEGRITY_VERIFIED",
+    "note": "Hashes establish integrity, not authorship. The archived Cirq records are separate historical runs of the identical source and gate sequence.",
+    "process_peak_memory_bytes": 2975457280,
+    "qubits": 40,
+    "status": "STUDIO_SCALING_RECEIPT_VERIFIED"
+  }
+}

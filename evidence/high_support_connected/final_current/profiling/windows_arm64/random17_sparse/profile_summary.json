@@ -1,0 +1,67 @@
+{
+  "calls": 761965,
+  "hot_functions": [
+    {
+      "calls": 1,
+      "cumulative_seconds": 1.638116,
+      "function": "sparse_backend.py:113 evolve",
+      "self_seconds": 1.553802
+    },
+    {
+      "calls": 1,
+      "cumulative_seconds": 0.000224,
+      "function": "sparse_backend.py:55 validate",
+      "self_seconds": 0.000152
+    },
+    {
+      "calls": 434,
+      "cumulative_seconds": 0.000209,
+      "function": "sparse_backend.py:107 _check_deadline",
+      "self_seconds": 0.000136
+    },
+    {
+      "calls": 1,
+      "cumulative_seconds": 0.001328,
+      "function": "sparse_backend.py:1 <module>",
+      "self_seconds": 1.6e-05
+    },
+    {
+      "calls": 148,
+      "cumulative_seconds": 1.5e-05,
+      "function": "sparse_backend.py:102 _check_qubit",
+      "self_seconds": 1.5e-05
+    },
+    {
+      "calls": 1,
+      "cumulative_seconds": 1e-06,
+      "function": "sparse_backend.py:33 ResourceLimitError",
+      "self_seconds": 1e-06
+    },
+    {
+      "calls": 1,
+      "cumulative_seconds": 1e-06,
+      "function": "sparse_backend.py:42 EvolutionStats",
+      "self_seconds": 1e-06
+    },
+    {
+      "calls": 1,
+      "cumulative_seconds": 1e-06,
+      "function": "sparse_backend.py:48 Circuit",
+      "self_seconds": 1e-06
+    },
+    {
+      "calls": 1,
+      "cumulative_seconds": 0.0,
+      "function": "sparse_backend.py:29 CircuitError",
+      "self_seconds": 0.0
+    }
+  ],
+  "numpy": "2.5.3",
+  "profile_command": "python -B -m cProfile -o cprofile.pstats tools/high_support/run_backend.py --case random_connected --width 17 --backend sparse --source-dir examples/high_support --output-dir profiling/windows_arm64/random17_sparse --repeat 1",
+  "profile_sha256": "a5e831a80037a87ac536437417263cdae4bd1c90cd283b88f37a89bf1c27e188",
+  "profiled_backend_evolution_seconds": 1.740093899948988,
+  "profiled_total_seconds": 3.267068,
+  "python": "3.12.10",
+  "revision": "a2b59ec83b5a00dbca11b5548ac1f5982289ce2b",
+  "schema": 1
+}

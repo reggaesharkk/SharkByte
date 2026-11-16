@@ -1,0 +1,53 @@
+name: High-support connected entanglement
+
+on:
+  pull_request:
+    paths:
+      - "examples/high_support/**"
+      - "validation/high_support/**"
+      - "tools/high_support/**"
+      - "benchmarks/sb_quantum_benchmark/frontier30.py"
+      - "benchmarks/sb_quantum_benchmark/quantum_frontend.py"
+      - "benchmarks/sb_quantum_benchmark/sparse_backend.py"
+      - "requirements-high-support.txt"
+      - "requirements-independent-quantum.txt"
+      - "docs/high-support-connected-entanglement.md"
+      - ".github/workflows/high-support-entanglement.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  connected-full-statevector:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pinned Qiskit and Cirq references
+        run: python -m pip install -r requirements-high-support.txt
+      - name: Verify deterministic high-support source corpus
+        run: |
+          python -B tools/high_support/generate.py --source-dir examples/high_support --plan-dir validation/high_support/plans
+          python -B -m unittest validation.high_support.test_high_support -v
+      - name: Run randomized 20-qubit connected statevector
+        run: python -B tools/high_support/run_suite.py --case random_connected --width 20 --source-dir examples/high_support --plan-dir validation/high_support/plans --output-dir build/high_support/random_connected_20q --repeat 1 --delete-vectors-after-comparison
+      - name: Run connected but separable negative control
+        run: python -B tools/high_support/run_suite.py --case connected_separable --width 20 --source-dir examples/high_support --plan-dir validation/high_support/plans --output-dir build/high_support/connected_separable_20q --repeat 1 --delete-vectors-after-comparison
+      - name: Run near-4pi numerical adversary
+        run: python -B tools/high_support/run_suite.py --case numerical_adversary --width 17 --source-dir examples/high_support --plan-dir validation/high_support/plans --output-dir build/high_support/numerical_adversary_17q --repeat 1 --delete-vectors-after-comparison
+      - name: Run 17-qubit forward-inverse cancellation
+        run: python -B tools/high_support/run_suite.py --case roundtrip --width 17 --source-dir examples/high_support --plan-dir validation/high_support/plans --output-dir build/high_support/roundtrip_17q --repeat 1 --delete-vectors-after-comparison
+      - name: Create evidence manifest
+        run: python -B tools/high_support/manifest.py --repo . --sources examples/high_support --plans validation/high_support/plans --results build/high_support --output build/high_support/manifest.json
+      - name: Upload high-support verification receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: high-support-connected-entanglement
+          path: |
+            build/high_support/**/*.json
+          if-no-files-found: error

@@ -113,7 +113,9 @@ def _check_deadline(deadline: float, gate_index=None) -> None:
 def evolve(circuit: Circuit, *, support_cap: int = DEFAULT_SUPPORT_CAP,
            memory_budget_bytes: int = 64 * 1024 * 1024,
            max_seconds: float = 30.0,
-           stats: EvolutionStats | None = None) -> dict[int, complex]:
+           stats: EvolutionStats | None = None,
+           progress_callback=None,
+           initial_state: dict[int, complex] | None = None) -> dict[int, complex]:
     if stats is not None:
         stats.peak_support = 1
         stats.peak_gate_index = None
@@ -123,7 +125,20 @@ def evolve(circuit: Circuit, *, support_cap: int = DEFAULT_SUPPORT_CAP,
     if not math.isfinite(max_seconds) or not 0 < max_seconds <= MAX_WALL_SECONDS:
         raise CircuitError(f"max_seconds must be in (0,{MAX_WALL_SECONDS}]")
     deadline = time.monotonic() + float(max_seconds)
-    state: dict[int, complex] = {0: 1.0 + 0.0j}
+    if initial_state is None:
+        state: dict[int, complex] = {0: 1.0 + 0.0j}
+    else:
+        if not isinstance(initial_state, dict) or not initial_state:
+            raise CircuitError("initial_state must be a nonempty basis-to-amplitude dictionary")
+        if any(type(basis) is not int or not 0 <= basis < (1 << circuit.qubits)
+               or not isinstance(amplitude, complex) or amplitude == 0.0j
+               for basis, amplitude in initial_state.items()):
+            raise CircuitError("initial_state contains an invalid basis or zero/non-complex amplitude")
+        if len(initial_state) > support_cap:
+            raise ResourceLimitError("initial_state exceeds support cap")
+        state = initial_state
+        if stats is not None:
+            stats.peak_support = len(state)
     for gate_no, gate in enumerate(circuit.gates):
         _check_deadline(deadline, gate_no)
         op = gate[0].lower()
@@ -194,6 +209,8 @@ def evolve(circuit: Circuit, *, support_cap: int = DEFAULT_SUPPORT_CAP,
         if stats is not None and len(state) > stats.peak_support:
             stats.peak_support = len(state)
             stats.peak_gate_index = gate_no
+        if progress_callback is not None:
+            progress_callback(gate_no + 1, len(circuit.gates), len(state))
     _check_deadline(deadline, len(circuit.gates) - 1 if circuit.gates else None)
     return state
 

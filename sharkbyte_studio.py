@@ -1,7 +1,7 @@
 """Launch the local SharkByte Studio with Python 3.10+."""
 
 import argparse
-from http.server import BaseHTTPRequestHandler, HTTPServer
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
 from itertools import islice
 from pathlib import Path
@@ -16,11 +16,13 @@ import webbrowser
 
 from sharkbyte_alpha import vm
 from sharkbyte_alpha.cli import MAX_SOURCE_BYTES, envelope
+from tools.studio_scaling_jobs import ScalingJobManager, StudioResourceRefusal
 
 
 ROOT = Path(__file__).resolve().parent
 EXAMPLES = {"classical": "example.sb", "quantum": "bell.sb", "hybrid": "adaptive.sb",
-            "frontier": "frontier_sparse_40_131072.sb", "scaling": "frontier_sparse_40_131072.sb"}
+            "frontier": "frontier_sparse_40_131072.sb", "scaling": "frontier_sparse_40_131072.sb",
+            "scaling_16m": "frontier_sparse_40_131072.sb"}
 
 
 class Studio(BaseHTTPRequestHandler):
@@ -47,6 +49,10 @@ class Studio(BaseHTTPRequestHandler):
         if self.path == "/examples":
             return self.reply(200, {mode: (ROOT / "examples" / name).read_text(encoding="utf-8")
                                     for mode, name in {**EXAMPLES, "phase_recovery": "phase_flip_recovery.sb"}.items()})
+        match = re.fullmatch(r"/jobs/([a-f0-9]{32})", self.path)
+        if match:
+            snapshot = self.server.scaling_jobs.snapshot(match[1])
+            return self.reply(200, snapshot) if snapshot else self.reply(404, {"error": "Run not found."})
         match = re.fullmatch(r"/receipts/([a-f0-9]{32})\.json", self.path)
         if match and match[1] in self.server.receipts:
             path = self.server.receipts[match[1]]
@@ -65,6 +71,10 @@ class Studio(BaseHTTPRequestHandler):
         execution_id = uuid4().hex
         if not self.local_request():
             return self.reply(403, {"execution_id": execution_id, "error": "Use the local Studio page."})
+        cancel_match = re.fullmatch(r"/jobs/([a-f0-9]{32})/cancel", self.path)
+        if cancel_match:
+            snapshot = self.server.scaling_jobs.cancel(cancel_match[1])
+            return self.reply(202, snapshot) if snapshot else self.reply(404, {"error": "Run not found."})
         if self.path != "/run":
             return self.reply(404, {"execution_id": execution_id, "error": "Endpoint not found."})
         try:
@@ -80,12 +90,28 @@ class Studio(BaseHTTPRequestHandler):
             if source.lstrip().startswith("hybrid ") and request["mode"] != "hybrid":
                 raise ValueError("Select Bounded Hybrid for a hybrid block. Frontier30 accepts a quantum block with fixed numeric angles.")
             support_cap = request.get("support_cap", 4096)
+            if request["mode"] in ("scaling", "scaling_16m") and source != (
+                    ROOT / "examples" / EXAMPLES[request["mode"]]).read_text(encoding="utf-8"):
+                raise ValueError("Load the bundled scaling example before running the benchmark.")
             if request["mode"] == "scaling" and source != (ROOT / "examples" / EXAMPLES["scaling"]).read_text(encoding="utf-8"):
                 raise ValueError("Load the bundled scaling example before running the benchmark.")
             if request["mode"] == "frontier" and (type(support_cap) is not int or support_cap not in (4096, 8192, 16384, 32768, 65536, 131072)):
                 raise ValueError("Choose a Frontier30 support cap of 4,096, 8,192, 16,384, 32,768, 65,536, or 131,072 states.")
         except (ValueError, TypeError) as exc:
             return self.reply(400, {"execution_id": execution_id, "error": str(exc)})
+
+        if request["mode"] == "scaling_16m":
+            try:
+                large_execution_id = self.server.scaling_jobs.start(source)
+            except StudioResourceRefusal as exc:
+                return self.reply(503, {
+                    "execution_id": execution_id, "status": "refused", "error": str(exc),
+                    "available_memory_bytes": exc.available_bytes,
+                    "required_available_memory_bytes": exc.required_bytes,
+                    "process_memory_limit_bytes": self.server.scaling_jobs.process_memory_limit_bytes,
+                })
+            return self.reply(202, {"execution_id": large_execution_id,
+                                    "status": "running", "phase": "starting"})
 
         started = time.perf_counter()
         try:
@@ -147,9 +173,10 @@ def main():
     parser.add_argument("--port", type=int, default=8120)
     parser.add_argument("--no-browser", action="store_true")
     args = parser.parse_args()
-    with tempfile.TemporaryDirectory(prefix="sharkbyte-receipts-") as folder, HTTPServer(("127.0.0.1", args.port), Studio) as server:
+    with tempfile.TemporaryDirectory(prefix="sharkbyte-receipts-") as folder, ThreadingHTTPServer(("127.0.0.1", args.port), Studio) as server:
         server.receipt_dir = Path(folder)
         server.receipts = {}
+        server.scaling_jobs = ScalingJobManager(server.receipt_dir, server.receipts)
         url = f"http://127.0.0.1:{server.server_port}/"
         print(f"SharkByte Studio · {url}", flush=True)
         if not args.no_browser:
@@ -158,6 +185,8 @@ def main():
             server.serve_forever()
         except KeyboardInterrupt:
             pass
+        finally:
+            server.scaling_jobs.shutdown()
 
 
 if __name__ == "__main__":

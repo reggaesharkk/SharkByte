@@ -1,0 +1,46 @@
+PASS connected_02q_seed_2026111800
+PASS connected_02q_seed_2026111801
+Traceback (most recent call last):
+PASS connected_03q_seed_2026111900
+PASS connected_03q_seed_2026111901
+PASS connected_04q_seed_2026112000
+PASS connected_04q_seed_2026112001
+PASS connected_05q_seed_2026112100
+PASS connected_05q_seed_2026112101
+PASS connected_06q_seed_2026112200
+PASS connected_06q_seed_2026112201
+PASS connected_08q_seed_2026112400
+PASS connected_08q_seed_2026112401
+PASS connected_10q_seed_2026112600
+PASS connected_10q_seed_2026112601
+PASS connected_12q_seed_2026112800
+PASS connected_12q_seed_2026112801
+PASS connected_14q_seed_2026113000
+PASS connected_14q_seed_2026113001
+PASS connected_16q_seed_2026113200
+PASS connected_16q_seed_2026113201
+PASS adversarial_connected_cancellation_8q
+PASS adversarial_connected_sparse_ghz_8q
+PASS adversarial_gate_budget_256_2q
+PASS adversarial_connected_but_separable_6q
+  File "[WORKTREE]\tools\run_connected_quantum_validation.py", line 505, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "[WORKTREE]\tools\run_connected_quantum_validation.py", line 494, in main
+    receipt["receipt_sha256"] = _sha256(_canonical(receipt))
+                                        ^^^^^^^^^^^^^^^^^^^
+  File "[WORKTREE]\tools\run_connected_quantum_validation.py", line 53, in _canonical
+    return json.dumps(value, sort_keys=True, separators=(",", ":"),
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "[PYTHON312_ARM64]\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "[PYTHON312_ARM64]\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "[PYTHON312_ARM64]\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "[PYTHON312_ARM64]\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type int64 is not JSON serializable
