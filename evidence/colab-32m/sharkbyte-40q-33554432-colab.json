@@ -1,0 +1,170 @@
+{
+  "status": "PASS",
+  "claim_scope": "Exact finite sparse evolution; every populated amplitude compared with a tensor product of independent Cirq component simulations. The circuit has disconnected components.",
+  "execution_id": "4d52f65f7dbd08c5a11c73c352b47dd1",
+  "circuit_sha256": "4d52f65f7dbd08c5a11c73c352b47dd1c872e6722fb4d3f079cba596d67ef102",
+  "source_commit": "151ed72caa4d0a1424e1660710e9a426b7223af4",
+  "source_sha256": "a24d8f389850e4a298f611d45ab4c5e953ead59c153777071916ecea73cd5316",
+  "parent_16m_receipt_sha256": "d3560811ff8885c50aedaf2b8dff0af7f70b66804182a9f89bc2543762493da6",
+  "worker_sha256": "e600788201089e5e779f0e9f9d09d30be6a777d96a41efa9ed14fedcbf9f418e",
+  "qubits": 40,
+  "gate_count": 57,
+  "added_gates_after_16m_baseline": [
+    [
+      "h",
+      1
+    ]
+  ],
+  "all_added_gates": [
+    [
+      "h",
+      14
+    ],
+    [
+      "h",
+      16
+    ],
+    [
+      "h",
+      18
+    ],
+    [
+      "h",
+      20
+    ],
+    [
+      "h",
+      22
+    ],
+    [
+      "h",
+      2
+    ],
+    [
+      "h",
+      6
+    ],
+    [
+      "h",
+      1
+    ]
+  ],
+  "target_active_states": 33554432,
+  "components": [
+    {
+      "qubits": [
+        0,
+        1,
+        12,
+        13,
+        24,
+        30,
+        36
+      ],
+      "active_states": 32,
+      "norm": 1.0000000000000004
+    },
+    {
+      "qubits": [
+        2,
+        3,
+        10,
+        11,
+        25,
+        29,
+        37
+      ],
+      "active_states": 16,
+      "norm": 1.0000000000000004
+    },
+    {
+      "qubits": [
+        4,
+        5,
+        16,
+        17,
+        26,
+        32,
+        38
+      ],
+      "active_states": 16,
+      "norm": 1.0000000000000004
+    },
+    {
+      "qubits": [
+        6,
+        7,
+        27,
+        39
+      ],
+      "active_states": 4,
+      "norm": 1.0
+    },
+    {
+      "qubits": [
+        8,
+        9,
+        20,
+        21,
+        28,
+        34
+      ],
+      "active_states": 16,
+      "norm": 1.0
+    },
+    {
+      "qubits": [
+        14,
+        15,
+        31
+      ],
+      "active_states": 4,
+      "norm": 1.0
+    },
+    {
+      "qubits": [
+        18,
+        19,
+        33
+      ],
+      "active_states": 4,
+      "norm": 1.0
+    },
+    {
+      "qubits": [
+        22,
+        23,
+        35
+      ],
+      "active_states": 4,
+      "norm": 1.0
+    }
+  ],
+  "reference_active_states": 33554432,
+  "sharkbyte_peak_active_states": 33554432,
+  "compared_amplitudes": 33554432,
+  "reference_norm": 1.0000000000000013,
+  "probability_sum": 0.9999999999999959,
+  "max_complex_amplitude_error": 5.454786957818715e-19,
+  "max_probability_error": 1.852884572118782e-22,
+  "minimum_reference_amplitude_magnitude": 0.00017263349150062202,
+  "amplitude_tolerance": 1e-12,
+  "component_zero_threshold": 1e-14,
+  "sharkbyte_evolution_seconds": 55.00954405300001,
+  "cirq_comparison_seconds": 15.981994904000032,
+  "environment": {
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "architecture": "x86_64",
+    "python": "3.13.18",
+    "cirq_core": "1.6.1",
+    "numpy": "2.5.4",
+    "worker_address_space_limit_bytes": 7516192768
+  },
+  "colab_measurement": {
+    "available_ram_at_start_bytes": 12392517632,
+    "sampled_peak_worker_rss_bytes": 5959057408,
+    "parent_elapsed_seconds": 82.09070871,
+    "worker_address_space_limit_bytes": 7516192768,
+    "worker_sampled_rss_stop_bytes": 6979321856
+  }
+}

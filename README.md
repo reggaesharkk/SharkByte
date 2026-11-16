@@ -10,6 +10,7 @@ SharkByte is an experimental programming language and CPU simulation toolchain. 
 
 | Result | What the evidence establishes | Evidence |
 | --- | --- | --- |
+| **40 qubits, 33,554,432 active states** | Colab Linux x86_64, Python 3.13.18, Cirq 1.6.1: all 33,554,432 populated amplitudes were compared against independently simulated Cirq components; maximum error `5.45e-19`. Evolution took 55.010 s, comparison 15.982 s, and sampled worker peak RSS was 5.55 GiB. The circuit has eight disconnected components; this is not evidence of global 40-qubit entanglement or a dense 40-qubit simulation. | [Receipt](evidence/colab-32m/sharkbyte-40q-33554432-colab.json) · [Run bundle](evidence/colab-32m/sharkbyte-colab-32m-results.zip) · [SHA-256 manifest](evidence/colab-32m/manifest.json) · [Colab screenshot](evidence/colab-32m/colab-run-pass.png) · [Reproduction notebook](notebooks/SharkByte-Colab-32M-Scaling.ipynb) |
 | **40 qubits, 16,777,216 active states** | Colab Linux x86_64, Cirq 1.7.0: every populated complex amplitude compared; maximum error `7.40e-19`. SharkByte evolution took 33.996 s and comparison took 7.816 s. The 56-gate circuit has eight disconnected components. | [Colab receipt](evidence/colab-q8w4bj57/cirq-40q-16777216.json) · [Complete run bundle](evidence/colab-q8w4bj57/integrated-results-q8w4bj57.zip) · [Scaling details](#scaling-to-16777216-active-states) |
 | **16,777,216 active states from Studio** | A manual Windows ARM64 browser run completed in 21.672 s of worker time with 2.77 GiB peak process memory. Receipt hashes establish record integrity, not authorship. | [Studio receipt](evidence/studio_16m/windows_arm64/sharkbyte-85c74d14dcb54040a295e3c2fe422e53.json) |
 | **20 connected qubits, 1,048,576 amplitudes** | Four engines agreed on the complete statevector. The balanced cut had Schmidt rank 1,024 and 9.005 bits of entropy in the documented experiment. | [High-support methods and controls](docs/high-support-connected-entanglement.md) · [Colab comparison](evidence/colab-q8w4bj57/random_connected-20/random_connected_20q_comparison.json) |
@@ -20,7 +21,7 @@ The complete Colab bundle is preserved byte-for-byte. Its 54 inventoried payload
 
 **Open limitation — sparse support compaction:** In the 17-qubit round-trip case, all four backends return the state to `|0⟩` within the recorded tolerances, but each still reports 131,072 exact nonzero amplitudes because floating-point residuals are not pruned. Exact sparse uncomputation/compaction remains **OPEN**; the passing comparison does not establish that support shrinks back to one state. [Round-trip comparison](evidence/colab-q8w4bj57/roundtrip-17/roundtrip_17q_comparison.json)
 
-![SharkByte Studio and the 16,777,216-active-state terminal benchmark](docs/sharkbyte-studio-banner.svg)
+![SharkByte Studio and a 40-qubit sparse CPU benchmark](docs/sharkbyte-studio-banner.svg)
 
 ## SharkByte Studio
 
@@ -111,6 +112,32 @@ The Ubuntu process ran with a 3.06 GiB address-space limit. These are single loc
 python -B benchmarks/sb_quantum_benchmark/support_scaling.py 16777216
 ```
 
+### Scaling to 33,554,432 active states in Colab
+
+A separate Colab CPU run extended the same 40-qubit sparse circuit by one
+Hadamard, reaching **33,554,432 active states** in a 57-gate circuit. SharkByte
+evolution took **55.010 s** and the Cirq comparison took **15.982 s**. The
+sampled worker peak RSS was **5.55 GiB** with 11.54 GiB available at launch.
+The receipt reports a probability sum of `0.9999999999999959` and maximum
+complex-amplitude error `5.45e-19` at tolerance `1e-12`.
+
+The eight component support sizes were 32, 16, 16, 4, 16, 4, 4, and 4; their
+product is 33,554,432. Cirq independently simulated each component, and the
+checker compared every populated SharkByte amplitude with the product
+reference. This confirms higher sparse support for this structured workload.
+It does **not** prove global 40-qubit entanglement or a dense 40-qubit
+simulation. The [separate connected GHZ evidence](docs/connected-circuit-frontier.md)
+proves global entanglement for that GHZ family at 40 qubits, with only two
+populated amplitudes; it does not combine global entanglement with this
+33.55-million-state run. A dense 40-qubit complex128 statevector would require
+16 TiB and was not allocated.
+
+[33.55M receipt](evidence/colab-32m/sharkbyte-40q-33554432-colab.json) ·
+[Full result ZIP](evidence/colab-32m/sharkbyte-colab-32m-results.zip) ·
+[SHA-256 manifest](evidence/colab-32m/manifest.json) ·
+[Run screenshot](evidence/colab-32m/colab-run-pass.png) ·
+[Uploadable Colab notebook](notebooks/SharkByte-Colab-32M-Scaling.ipynb)
+
 A separate manual browser run on Windows ARM64 completed the same 40-qubit, 56-gate circuit in **15.900 s** of evolution and **21.672 s** of worker time, with **2.77 GiB** peak process memory and a probability sum of `0.999999999999996`. Its receipt retains the original local revision and dirty-tree flag. The five recorded implementation hashes match the reviewed code. [Manual browser receipt](evidence/studio_16m/windows_arm64/sharkbyte-85c74d14dcb54040a295e3c2fe422e53.json) · [Evidence manifest](evidence/studio_16m/windows_arm64/manifest.json)
 
 #### Independent Cirq comparison
@@ -162,6 +189,21 @@ qubits, plus exact sparse/analytic connected GHZ checks at 20, 24, 30, and 40
 qubits. A connected-but-separable control confirms that a connected gate graph
 alone does not prove entanglement. The 20–40-qubit checks use a closed-form GHZ
 oracle; they are not dense general-circuit simulations.
+
+The 33,554,432-state Colab scaling result is a separate experiment: its gate
+graph has eight disconnected components. This raises sparse support, but does
+not establish global 40-qubit entanglement. That distinction should have been
+made explicit earlier when we discussed extending the H4/high-support run.
+
+A separate connected GHZ-family circuit and guarded Colab notebook now target
+the same 33,554,432 active states. The circuit starts with a 40-qubit GHZ
+chain, then applies 24 local Hadamards. Analytically, it remains entangled
+across every nontrivial bipartition, and its exact sparse support is
+33,554,432. The source and notebook are ready for execution, but this combined
+connected high-support run is **NOT TESTED** until a new receipt is produced.
+Even a passing run would verify this structured sparse circuit, not a dense
+40-qubit general-circuit simulation. [Circuit source](examples/connected_ghz40_33554432.sb) ·
+[Guarded Colab notebook](notebooks/SharkByte-Colab-Connected-40Q-32M.ipynb)
 
 The new suite, compiler edge-case fix, exact commands, limits, performance
 measurements, source hashes, and receipts are documented in the

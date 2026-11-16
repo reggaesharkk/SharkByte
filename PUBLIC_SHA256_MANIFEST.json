@@ -1,5 +1,5 @@
 {
-  "file_count": 202,
+  "file_count": 211,
   "files": [
     {
       "path": ".gitattributes",
@@ -113,8 +113,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "05fc685b10b619f0597b7a6f876a2c7b1b4a96b9bd2f1a71a5e26ab7ac9b0553",
-      "size_bytes": 24920
+      "sha256": "ce50fb49d288cfa1ba0939a5e267470d9013d8e912b109a9792972ad54cbda02",
+      "size_bytes": 28215
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
@@ -333,8 +333,33 @@
     },
     {
       "path": "docs/sharkbyte-studio-banner.svg",
-      "sha256": "bcf3da9745d5e3be14599b8e262175b7ed7583c61c3898893c9a28a6cfdb9c7a",
-      "size_bytes": 2095
+      "sha256": "2c94215dfab70dce49725b1dc07f75f58910db8a0f7c0c570c90a812ba57474e",
+      "size_bytes": 2135
+    },
+    {
+      "path": "evidence/colab-32m/colab-run-pass.png",
+      "sha256": "9ec2d0e29364cbaf6aa34b0f1ef54a9660da42f10ba8bc4c0e0d19894a7e3167",
+      "size_bytes": 273802
+    },
+    {
+      "path": "evidence/colab-32m/manifest.json",
+      "sha256": "c6b056e0bc4bf2a4af6c7cfec784a38651832eaeeda0b8b101e472cfdfd6de0f",
+      "size_bytes": 1226
+    },
+    {
+      "path": "evidence/colab-32m/sharkbyte-40q-33554432-colab.json",
+      "sha256": "e6a9447de5ce430f21d0b6c3f97647984a9103e981e42764601ba4c79bf5da58",
+      "size_bytes": 3379
+    },
+    {
+      "path": "evidence/colab-32m/sharkbyte-40q-33554432-colab.sha256",
+      "sha256": "cefe219166b257f55b941768cb2db90dc0a3d5368942855356c03eb86a4c7b93",
+      "size_bytes": 100
+    },
+    {
+      "path": "evidence/colab-32m/sharkbyte-colab-32m-results.zip",
+      "sha256": "a8eae66b6276918e2db4f8cc94bf56a798409db3b02aa79f5f11ea78702c7b72",
+      "size_bytes": 2461
     },
     {
       "path": "evidence/colab-bfad672/cirq-120.json",
@@ -358,8 +383,8 @@
     },
     {
       "path": "evidence/colab-q8w4bj57/bundle-verification.json",
-      "sha256": "f07c6f8b0e36dab69c4ed41967c139b50453fd6f04db992454921b60d5a51ae2",
-      "size_bytes": 1604
+      "sha256": "d7250aaaf6b2a1aa05c02e4137c9bb0b97ee22ae8d8c538efd2c49232251cab7",
+      "size_bytes": 1549
     },
     {
       "path": "evidence/colab-q8w4bj57/cirq-40q-16777216.json",
@@ -672,6 +697,11 @@
       "size_bytes": 74
     },
     {
+      "path": "examples/connected_ghz40_33554432.sb",
+      "sha256": "3cc2dcc5d9732e12b51041be1bfbc940e4c4fc059d2bc35c48a6ca08d31fa34d",
+      "size_bytes": 755
+    },
+    {
       "path": "examples/drawdown_risk_demo.receipt.json",
       "sha256": "e2d93bbb7b4af1f2f5fcc26614d434941dea15d7f3506696a66568f7fcad9e1b",
       "size_bytes": 2068
@@ -775,6 +805,16 @@
       "path": "examples/research/strength_h4_split_audit.sb",
       "sha256": "8f3794282381a8e17dcf748eb7121357a67292ceaee5e6f6cb09021504336d84",
       "size_bytes": 1857
+    },
+    {
+      "path": "notebooks/SharkByte-Colab-32M-Scaling.ipynb",
+      "sha256": "08f3b2de8df4580ec41897c0d57f73d9f3feadec7f5cb3b68ac6998a9dcec0b1",
+      "size_bytes": 26861
+    },
+    {
+      "path": "notebooks/SharkByte-Colab-Connected-40Q-32M.ipynb",
+      "sha256": "7a2a451c757f54e87e714fe64b2267b48ca914f4dc7d6c6223a464207641ed5e",
+      "size_bytes": 13295
     },
     {
       "path": "notebooks/SharkByte-Colab-Verification.ipynb",
@@ -980,6 +1020,11 @@
       "path": "tools/run_cirq_scaling_check.py",
       "sha256": "8dc540f9c79c6bde0bd4896ba247d41a3241ef2b88f6fed2d09d8e5a2196f6da",
       "size_bytes": 5448
+    },
+    {
+      "path": "tools/run_connected_ghz40_high_support.py",
+      "sha256": "8eab65b8967476880486ce815b66eb832755f398953617ab2e6388370efa20f8",
+      "size_bytes": 11091
     },
     {
       "path": "tools/run_independent_quantum_validation.py",

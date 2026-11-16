@@ -165,3 +165,30 @@ python3 -B tools/verify_connected_circuit_evidence.py
 
 SHA-256 here is an unkeyed integrity mechanism. It detects byte changes; it
 does not establish authorship or independent correctness by itself.
+
+## Connected 40-qubit high-support follow-up
+
+The separate 33,554,432-state Colab scaling run uses eight disconnected
+components. It demonstrates sparse support scaling only; it does not establish
+global 40-qubit entanglement. That claim boundary was not made prominent
+enough while discussing the earlier H4/high-support experiment.
+
+A new candidate combines the two properties in one structured circuit. It
+prepares a 40-qubit GHZ state with `h 0` and a 39-edge `cx` chain, then applies
+`h 0` through `h 23`. The chain's interaction graph is connected. The circuit
+has a closed-form state: the last 16 bits are either all zero or all one, the
+first 24 bits are free, and the all-one tail branch has sign
+`(-1)^popcount(low24)`. This gives exactly `2^25 = 33,554,432` populated
+amplitudes. Because the 24 Hadamards are local unitaries, the GHZ state's
+Schmidt rank two and one-bit entropy across every nontrivial bipartition are
+preserved.
+
+The SharkByte source and a guarded Colab notebook are available at
+[`examples/connected_ghz40_33554432.sb`](../examples/connected_ghz40_33554432.sb)
+and [`notebooks/SharkByte-Colab-Connected-40Q-32M.ipynb`](../notebooks/SharkByte-Colab-Connected-40Q-32M.ipynb).
+The notebook compares every sparse amplitude to the analytic formula and uses
+Cirq's Clifford simulator for an independent sampled measurement check. The
+combined 33.55M connected run has **NOT TESTED** status until that notebook
+produces a receipt. This is a sparse structured-circuit experiment, not a
+dense general 40-qubit statevector simulation; dense complex128 storage would
+require 16 TiB before overhead.

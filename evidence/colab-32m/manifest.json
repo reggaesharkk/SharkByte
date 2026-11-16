@@ -1,0 +1,32 @@
+{
+  "bundle_sha256": "a8eae66b6276918e2db4f8cc94bf56a798409db3b02aa79f5f11ea78702c7b72",
+  "claim_scope": "40-qubit sparse support scaling; eight disconnected components; factorwise independent Cirq comparison; no dense 40-qubit statevector or global-entanglement claim.",
+  "files": {
+    "colab-run-pass.png": {
+      "bytes": 273802,
+      "sha256": "9ec2d0e29364cbaf6aa34b0f1ef54a9660da42f10ba8bc4c0e0d19894a7e3167"
+    },
+    "sharkbyte-40q-33554432-colab.json": {
+      "bytes": 3379,
+      "sha256": "e6a9447de5ce430f21d0b6c3f97647984a9103e981e42764601ba4c79bf5da58"
+    },
+    "sharkbyte-40q-33554432-colab.sha256": {
+      "bytes": 100,
+      "sha256": "cefe219166b257f55b941768cb2db90dc0a3d5368942855356c03eb86a4c7b93"
+    },
+    "sharkbyte-colab-32m-results.zip": {
+      "bytes": 2461,
+      "sha256": "a8eae66b6276918e2db4f8cc94bf56a798409db3b02aa79f5f11ea78702c7b72"
+    }
+  },
+  "receipt_sha256": "e6a9447de5ce430f21d0b6c3f97647984a9103e981e42764601ba4c79bf5da58",
+  "schema": 1,
+  "source_commit": "151ed72caa4d0a1424e1660710e9a426b7223af4",
+  "status": "PASS",
+  "target_active_states": 33554432,
+  "verification": {
+    "receipt_sidecar": "PASS",
+    "run_status_sha256": "PASS",
+    "zip_crc": "PASS"
+  }
+}

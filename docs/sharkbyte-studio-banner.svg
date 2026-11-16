@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" role="img" aria-labelledby="title desc">
   <title id="title">SharkByte Studio</title>
-  <desc id="desc">A 40-qubit circuit reached 16,777,216 active states in a terminal CPU benchmark.</desc>
+  <desc id="desc">A 40-qubit sparse circuit reached 33,554,432 active states in a Colab CPU benchmark. The circuit has disconnected components.</desc>
   <defs>
     <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
       <path d="M28 0H0V28" fill="none" stroke="#26373b" stroke-width="1"/>
@@ -25,9 +25,9 @@
     <circle cx="898" cy="175" r="5"/><circle cx="898" cy="228" r="5"/>
   </g>
   <g font-family="system-ui, sans-serif">
-    <text x="46" y="64" fill="#afbfba" font-size="18" letter-spacing="2">LOCAL BROWSER WORKSPACE</text>
+    <text x="46" y="64" fill="#afbfba" font-size="18" letter-spacing="2">SPARSE CPU SIMULATION</text>
     <text x="44" y="126" fill="#f6faf6" font-size="54" font-weight="700">SharkByte Studio</text>
-    <text x="44" y="197" fill="#d6fa91" font-size="49" font-weight="700">16,777,216</text>
-    <text x="46" y="236" fill="#e2ece7" font-size="22">active states · 40 qubits · terminal run</text>
+    <text x="44" y="197" fill="#d6fa91" font-size="49" font-weight="700">33,554,432</text>
+    <text x="46" y="236" fill="#e2ece7" font-size="22">active states · 40 qubits · Colab CPU</text>
   </g>
 </svg>
