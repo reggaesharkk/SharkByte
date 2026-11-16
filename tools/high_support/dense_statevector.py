@@ -4,10 +4,22 @@ import math
 import numpy as np
 
 
-def evolve(qubits: int, gates):
+def evolve(qubits: int, gates, *, initial_state=None, copy_initial_state=True):
+    """Evolve a dense complex128 state; an optional input array is mutated in place.
+
+    ``copy_initial_state`` defaults to true for caller isolation. The experimental
+    adaptive driver can pass false to avoid a second full-sized copy per gate.
+    """
     size = 1 << qubits
-    state = np.zeros(size, dtype=np.complex128)
-    state[0] = 1.0
+    if initial_state is None:
+        state = np.zeros(size, dtype=np.complex128)
+        state[0] = 1.0
+    else:
+        state = np.asarray(initial_state, dtype=np.complex128)
+        if state.ndim != 1 or state.size != size:
+            raise ValueError("initial dense state has the wrong shape")
+        if copy_initial_state:
+            state = state.copy()
     root2 = 1.0 / math.sqrt(2.0)
     for gate in gates:
         op = gate[0]

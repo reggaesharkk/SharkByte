@@ -1,0 +1,76 @@
+{
+  "measurement_plan": {
+    "primary_statistic": "median",
+    "support_pruning": "disabled",
+    "timed_repetitions_per_backend_case": 7,
+    "warmups_per_backend_case": 1
+  },
+  "notes": [
+    "The first WSL Studio-test invocation could not resolve the Windows-format .git pointer and failed only while creating a synthetic receipt source revision; rerunning with the existing Git directory exported passed all tests.",
+    "No historical 16,777,216-state or 120-circuit Qiskit/Cirq benchmark was rerun as part of the adaptive comparison."
+  ],
+  "platforms": {
+    "ubuntu_wsl2": {
+      "manifest": "evidence/adaptive_sparse_dense/ubuntu_wsl2/manifest.json",
+      "manifest_sha256": "4f33c26bb5d983f1ff30227c83244e6f2b084b675892507c3f3d53e7b2c18a50",
+      "report": "evidence/adaptive_sparse_dense/ubuntu_wsl2/adaptive-sparse-dense-ubuntu-wsl2-aarch64.json",
+      "report_bytes": 87517,
+      "report_sha256": "4b6d0cb4870b8f81b096ea0948678347a7de435e0eaf8bef8124a7db935a260a"
+    },
+    "windows_arm64": {
+      "manifest": "evidence/adaptive_sparse_dense/windows_arm64/manifest.json",
+      "manifest_sha256": "ec203837fc3c4f6148850f62924283137b90a36ee4163f9f53896cb1da40703e",
+      "report": "evidence/adaptive_sparse_dense/windows_arm64/adaptive-sparse-dense-windows-arm64.json",
+      "report_bytes": 87788,
+      "report_sha256": "0611ec8fd37e284ecc4280dc6fc52086c9876323c54411a477e25142b4e56449"
+    }
+  },
+  "previously_verified_independent_references_reused_without_rerun": [
+    {
+      "kind": "comparison",
+      "path": "evidence/high_support_connected/final_current/windows_arm64/random_20/random_connected_20q_comparison.json",
+      "sha256": "5bdd00ec738cd31c82415da120b759fe12f81fb28acd1bf1d752738b6bb5e9d5"
+    },
+    {
+      "kind": "qiskit",
+      "path": "evidence/high_support_connected/final_current/windows_arm64/random_20/random_connected_20q_qiskit.json",
+      "sha256": "130951eab13d34cb29593b294e7a9a73bd32f95e96a876e411b5150ec7d29a52"
+    },
+    {
+      "kind": "cirq",
+      "path": "evidence/high_support_connected/final_current/windows_arm64/random_20/random_connected_20q_cirq.json",
+      "sha256": "2c4522bad7c732b2b3bbe00f0c247cc7821d8a435ba0b12c8a012399fa98bd0c"
+    },
+    {
+      "kind": "dense",
+      "path": "evidence/high_support_connected/final_current/windows_arm64/random_20/random_connected_20q_dense.json",
+      "sha256": "3dab14272152a1ba1ccc3dd0be9e31674e82323fe8a5824b50975f7133b79b27"
+    }
+  ],
+  "schema": 1,
+  "source_revision": "8dc227002186f58b1c667000239d9343c2439a8c",
+  "status": "PASS",
+  "test_runs": [
+    {
+      "command": "python -B -m unittest discover -s tests -v",
+      "elapsed_seconds": 4.115,
+      "numpy": "2.5.3",
+      "platform": "Windows 11 ARM64",
+      "python": "3.12.10",
+      "status": "PASS",
+      "tests": 47
+    },
+    {
+      "command": "python3 -B -m unittest discover -s tests -v",
+      "elapsed_seconds": 6.049,
+      "git_metadata": "GIT_DIR and GIT_WORK_TREE pointed at the existing Windows worktree metadata",
+      "numpy": "2.3.5",
+      "platform": "Ubuntu WSL2 ARM64",
+      "python": "3.14.4",
+      "status": "PASS",
+      "tests": 47
+    }
+  ],
+  "title": "Adaptive sparse/dense 20-qubit comparison evidence index",
+  "working_tree_clean_at_run": false
+}
