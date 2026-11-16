@@ -41,6 +41,25 @@ jobs:
           path: phase-flip-recovery-ci.json
           if-no-files-found: error
 
+      - name: Verify rotation gates (normal)
+        run: python -B tools/rotation_gate_evidence.py > rotation-gates-normal.json
+
+      - name: Verify rotation gates (-O)
+        run: python -O -B tools/rotation_gate_evidence.py > rotation-gates-O.json
+
+      - name: Verify rotation gates (-OO)
+        run: python -OO -B tools/rotation_gate_evidence.py > rotation-gates-OO.json
+
+      - name: Upload rotation-gate evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: rotation-gates-${{ matrix.os }}-python-${{ matrix.python }}
+          path: |
+            rotation-gates-normal.json
+            rotation-gates-O.json
+            rotation-gates-OO.json
+          if-no-files-found: error
+
       - name: Verify Frontier30 source benchmarks
         run: python -B benchmarks/sb_quantum_benchmark/sb_end_to_end_bench.py > frontier30-ci.json
 

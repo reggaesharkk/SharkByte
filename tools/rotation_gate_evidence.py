@@ -75,7 +75,8 @@ def main():
     for row in history:
         report = row["report"]
         circuit = parse_quantum(report["quantum_source"])
-        assert circuit["gates"] == [("ry", (row["theta"], 0))]
+        if circuit["gates"] != [("ry", (row["theta"], 0))]:
+            raise ValueError("Hybrid theta was not bound to the expected ry gate")
         close(report["quantum_result"]["result"]["probabilities"]["00"],
               math.cos(row["theta"] / 2) ** 2)
     receipt = envelope(source, "hybrid", result)
