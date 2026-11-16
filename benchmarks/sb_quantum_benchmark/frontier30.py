@@ -21,7 +21,7 @@ def load_circuit(path):
     match = re.fullmatch(r"\s*quantum\s+([A-Za-z_]\w*)\s*\{([^{}]*)\}\s*", data.decode("utf-8-sig"))
     if match is None:
         raise ValueError("Expected one named quantum block")
-    parsed = parse(match[2], max_qubits=40, sparse=True)
+    parsed = parse(match[2], max_qubits=50, sparse=True)
     gates = []
     for op, args in parsed["gates"]:
         if op == "cp":

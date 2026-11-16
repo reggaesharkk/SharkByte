@@ -17,6 +17,7 @@ from datetime import datetime, timezone
 
 MAX_QUBITS = 12
 EXPERIMENTAL_MAX_QUBITS = 16
+SPARSE_MAX_QUBITS = 50
 MAX_STATEVECTOR_BYTES = 64 * 1024 * 1024
 # Conservative estimate for a Python complex state entry (reference + object)
 # plus the cumulative float/list entry required by indexed sampling. It excludes
@@ -38,7 +39,7 @@ def digest(data):
 
 
 def parse(source, max_qubits=MAX_QUBITS, *, sparse=False):
-    ceiling = 40 if sparse else EXPERIMENTAL_MAX_QUBITS
+    ceiling = SPARSE_MAX_QUBITS if sparse else EXPERIMENTAL_MAX_QUBITS
     if type(max_qubits) is not int or not 1 <= max_qubits <= ceiling:
         raise ValueError("Qubit capacity must be between 1 and the backend ceiling")
     if len(source.encode("utf-8")) > 65536:

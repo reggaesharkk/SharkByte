@@ -16,7 +16,7 @@ from dataclasses import dataclass
 from typing import Iterable
 
 
-MAX_QUBITS = 40  # representational ceiling; not a feasibility promise
+MAX_QUBITS = 50  # representational ceiling; not a feasibility promise
 MAX_GATES = 10_000
 MAX_SHOTS = 1_000_000
 DEFAULT_SUPPORT_CAP = 65_536
@@ -262,7 +262,7 @@ def format_basis(basis: int, qubits: int) -> str:
 def structured_frontier_circuit(qubits: int, *, theta: float = math.pi / 3.0) -> Circuit:
     """Sparse, nonuniform, entangled family; fanout entangles remaining qubits."""
     if type(qubits) is not int or not 2 <= qubits <= MAX_QUBITS:
-        raise CircuitError("structured family supports 2..40 qubits")
+        raise CircuitError(f"structured family supports 2..{MAX_QUBITS} qubits")
     gates: list[tuple] = [("h", 0), ("h", 1), ("cp", 0, 1, theta), ("h", 0)]
     gates.extend(("cx", 1, target) for target in range(2, qubits))
     gates.append(("cp", 0, qubits - 1, 0.37))
@@ -277,7 +277,7 @@ def structured_analytic_reference(qubits: int, *, theta: float = math.pi / 3.0) 
     does not call the sparse evolution kernel.
     """
     if type(qubits) is not int or not 2 <= qubits <= MAX_QUBITS:
-        raise CircuitError("analytic family reference supports 2..40 qubits")
+        raise CircuitError(f"analytic family reference supports 2..{MAX_QUBITS} qubits")
     common = INV_SQRT2
     branch_a = (1.0 + cmath.exp(1j * theta)) / (2.0 * math.sqrt(2.0))
     branch_b = (1.0 - cmath.exp(1j * theta)) / (2.0 * math.sqrt(2.0))

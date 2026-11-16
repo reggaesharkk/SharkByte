@@ -59,6 +59,53 @@ class ConnectedCircuitCorpusTests(unittest.TestCase):
                 self.assertEqual(circuit.gates,
                                  tuple(tuple(gate) for gate in case["gates"]))
 
+    def test_sparse_frontend_accepts_50_qubits_and_rejects_51(self):
+        prefix = "quantum connected_ghz50_test { qubits 50; h 0; "
+        chain = " ".join(f"cx {q} {q + 1};" for q in range(49))
+        local = " ".join(f"h {q};" for q in range(25))
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "connected-50.sb"
+            path.write_text(prefix + chain + " " + local + " measure_all; }\n",
+                            encoding="utf-8", newline="\n")
+            circuit, _ = load_circuit(path)
+            self.assertEqual(circuit.qubits, 50)
+            self.assertEqual(len(circuit.gates), 75)
+            self.assertEqual(circuit.gates[-25:], tuple(("h", q) for q in range(25)))
+            path.write_text("quantum too_wide { qubits 51; h 0; }\n",
+                            encoding="utf-8", newline="\n")
+            with self.assertRaisesRegex(ValueError, "Qubit limit exceeded"):
+                load_circuit(path)
+
+    def test_sparse_backend_executes_qubit_49_and_keeps_memory_guard(self):
+        circuit = sparse_backend.Circuit(50, (("x", 49),), "high-index-smoke")
+        state = sparse_backend.evolve(
+            circuit, support_cap=1, memory_budget_bytes=512, max_seconds=1.0
+        )
+        self.assertEqual(state, {1 << 49: 1.0 + 0.0j})
+        with self.assertRaises(sparse_backend.ResourceLimitError):
+            sparse_backend.evolve(
+                sparse_backend.Circuit(50, (("h", 49),), "guard-smoke"),
+                support_cap=1, memory_budget_bytes=512, max_seconds=1.0,
+            )
+
+    def test_checked_in_50q_frontier_sources_have_connected_exact_support_identity(self):
+        sources = sorted((ROOT / "examples").glob("connected_ghz50_*.sb"))
+        self.assertEqual(len(sources), 7)
+        for path in sources:
+            with self.subTest(source=path.name):
+                circuit, _ = load_circuit(path)
+                expanded = len(circuit.gates) - circuit.qubits
+                self.assertEqual(circuit.qubits, 50)
+                self.assertGreaterEqual(expanded, 0)
+                self.assertLessEqual(expanded, 31)
+                self.assertEqual(circuit.gates[:50],
+                                 (("h", 0),) + tuple(
+                                     ("cx", q, q + 1) for q in range(49)))
+                self.assertEqual(circuit.gates[50:], tuple(
+                    ("h", q) for q in range(expanded)))
+                self.assertEqual(1 << (expanded + 1),
+                                 int(path.stem.rsplit("_", 1)[1]))
+
     def test_exact_256_gate_limit_is_accepted_and_257th_is_rejected(self):
         case = next(case for case in self.cases
                     if case["kind"] == "adversarial-maximum-gate-budget")

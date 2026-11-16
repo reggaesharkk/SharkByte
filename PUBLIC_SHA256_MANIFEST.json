@@ -1,5 +1,5 @@
 {
-  "file_count": 215,
+  "file_count": 225,
   "files": [
     {
       "path": ".gitattributes",
@@ -113,8 +113,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "9dce88313abd4d9b8c4be00a8a9cb5650cfec22193513a90784d90f1275df07e",
-      "size_bytes": 29939
+      "sha256": "7d895a192d89a6d796eb74f0e0f8c680a9bf86f65a306cc9ea532169f17a8604",
+      "size_bytes": 30805
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
@@ -243,7 +243,7 @@
     },
     {
       "path": "benchmarks/sb_quantum_benchmark/frontier30.py",
-      "sha256": "26d4d258ca87cc78e449879744478d714f162aa0cf5f474692d31cd18040cb52",
+      "sha256": "d221c2157fc22ae0b1d517fd64003c9aa933df7eba00b4133a61ff698647529d",
       "size_bytes": 3059
     },
     {
@@ -263,8 +263,8 @@
     },
     {
       "path": "benchmarks/sb_quantum_benchmark/quantum_frontend.py",
-      "sha256": "1e373410a5494c5c257dd4916494d964d75758f1432997ebd704c07c07fcaf93",
-      "size_bytes": 20145
+      "sha256": "beec7c5f3e428143a74035c842cd08ecc545310d428a5f6173d3896d2615f837",
+      "size_bytes": 20184
     },
     {
       "path": "benchmarks/sb_quantum_benchmark/results.json",
@@ -308,8 +308,8 @@
     },
     {
       "path": "benchmarks/sb_quantum_benchmark/sparse_backend.py",
-      "sha256": "7870c39077f6bc4163475c31ddf42e4a3713c81a6bdb9e8f288d424914903dbe",
-      "size_bytes": 15709
+      "sha256": "186aad8bed0b0c0ff13efc642fe284a6d1fc9cccdd2c36174b434b6ddbe8572c",
+      "size_bytes": 15731
     },
     {
       "path": "benchmarks/sb_quantum_benchmark/support_scaling.py",
@@ -722,6 +722,41 @@
       "size_bytes": 755
     },
     {
+      "path": "examples/connected_ghz50_1073741824.sb",
+      "size_bytes": 1027,
+      "sha256": "0dfdd72907d50ed8fb73e9683305f02787b0d4d5223e8eb68305f572ecb3e184"
+    },
+    {
+      "path": "examples/connected_ghz50_134217728.sb",
+      "size_bytes": 996,
+      "sha256": "0931c5d85b1cae3134834834fbc891a0f3bcb1579f956aeb227b9ace6360d042"
+    },
+    {
+      "path": "examples/connected_ghz50_2147483648.sb",
+      "size_bytes": 1037,
+      "sha256": "40de63f115489d9e8ae1071d105a15c7aa25e9a971405abd2dbcb5940cf2f975"
+    },
+    {
+      "path": "examples/connected_ghz50_268435456.sb",
+      "size_bytes": 1006,
+      "sha256": "4a2471ddbf5d2c34d7174384bf955ff67a9819cebf8dd69b4689fa5db0bf9b2c"
+    },
+    {
+      "path": "examples/connected_ghz50_4294967296.sb",
+      "size_bytes": 1047,
+      "sha256": "ef63f4e335e113d1e7123cf04370c9cc265c678cee1c19077b1afa012a9f894d"
+    },
+    {
+      "path": "examples/connected_ghz50_536870912.sb",
+      "size_bytes": 1016,
+      "sha256": "cd509cb35b7c0afd9e1b01b7ad8e22a6534e2fcde3c87952d6c421cf0bde7316"
+    },
+    {
+      "path": "examples/connected_ghz50_67108864.sb",
+      "size_bytes": 985,
+      "sha256": "9db5046d5630b95f59157f9305d9fd22621ea96f603aba8bc05ece72b5f731c5"
+    },
+    {
       "path": "examples/drawdown_risk_demo.receipt.json",
       "sha256": "e2d93bbb7b4af1f2f5fcc26614d434941dea15d7f3506696a66568f7fcad9e1b",
       "size_bytes": 2068
@@ -835,6 +870,11 @@
       "path": "notebooks/SharkByte-Colab-Connected-40Q-32M.ipynb",
       "sha256": "7a2a451c757f54e87e714fe64b2267b48ca914f4dc7d6c6223a464207641ed5e",
       "size_bytes": 13295
+    },
+    {
+      "path": "notebooks/SharkByte-Colab-Connected-50Q-2B.ipynb",
+      "size_bytes": 16298,
+      "sha256": "122809300812b8e82f71a1e02f097ccdeb2a5b1da7762a57863cfe3039c974fc"
     },
     {
       "path": "notebooks/SharkByte-Colab-Verification.ipynb",
@@ -1047,9 +1087,19 @@
       "size_bytes": 11091
     },
     {
+      "path": "tools/run_connected_ghz50_materialization.py",
+      "size_bytes": 22416,
+      "sha256": "baf044d04046aa41d2e62467f6dab8ce31a3cdc010ca8357e64dbf3e4f1c878a"
+    },
+    {
       "path": "tools/run_independent_quantum_validation.py",
       "sha256": "f63b9941fc3f817c2f734e385c3d84d425273f3216e6da6cd75e5fe8738733ef",
       "size_bytes": 1186
+    },
+    {
+      "path": "tools/verify_connected_ghz50_receipt.py",
+      "size_bytes": 4938,
+      "sha256": "c38365f03e5c9cd7faf2322074eb060a7db584053c057b96e8f9a37b29f01127"
     },
     {
       "path": "tools/verify_windows_arm64_qiskit_wheels.py",
