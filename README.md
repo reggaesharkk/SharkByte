@@ -204,6 +204,7 @@ connected high-support run is **NOT TESTED** until a new receipt is produced.
 Even a passing run would verify this structured sparse circuit, not a dense
 40-qubit general-circuit simulation. [Circuit source](examples/connected_ghz40_33554432.sb) ·
 [Guarded Colab notebook](notebooks/SharkByte-Colab-Connected-40Q-32M.ipynb)
+[Open the notebook in Google Colab](https://colab.research.google.com/github/reggaesharkk/SharkByte/blob/main/notebooks/SharkByte-Colab-Connected-40Q-32M.ipynb)
 
 The new suite, compiler edge-case fix, exact commands, limits, performance
 measurements, source hashes, and receipts are documented in the

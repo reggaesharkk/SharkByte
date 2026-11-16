@@ -113,8 +113,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "ce50fb49d288cfa1ba0939a5e267470d9013d8e912b109a9792972ad54cbda02",
-      "size_bytes": 28215
+      "sha256": "3f35a51c1ac9b594301b67b7dead990175b86082b27ced6818d246aadbd3fa0e",
+      "size_bytes": 28376
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
