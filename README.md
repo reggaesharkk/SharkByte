@@ -23,16 +23,6 @@ Download and extract the GitHub source ZIP or clone the repository. From the che
 
 Open [http://127.0.0.1:8120/](http://127.0.0.1:8120/). Studio listens on your own computer. Keep the terminal running and press Ctrl+C to stop it. If the port is busy, pass `--port 8121` and open the URL printed by the launcher.
 
-To try the 16-million-state preset while [PR #9](https://github.com/reggaesharkk/SharkByte/pull/9) is in review, select `codex/studio-16m-adaptive` on GitHub before downloading the source ZIP, or clone that branch directly:
-
-```text
-git clone --branch codex/studio-16m-adaptive https://github.com/reggaesharkk/SharkByte.git
-cd SharkByte
-python -B sharkbyte_studio.py --no-browser --port 8123
-```
-
-Use `python3` on Linux or WSL. Once the launcher prints its address, open [http://127.0.0.1:8123/](http://127.0.0.1:8123/) in the browser on the same computer. If a previously opened tab reports a connection error, check that the launcher terminal is still running and that the address matches the printed port. Select **16-million-state benchmark** from the mode menu.
-
 | Mode | What it runs |
 | --- | --- |
 | Classical | SharkVM, with a 50,000,000-instruction limit |
@@ -111,6 +101,8 @@ The Ubuntu process ran with a 3.06 GiB address-space limit. These are single loc
 python -B benchmarks/sb_quantum_benchmark/support_scaling.py 16777216
 ```
 
+A separate manual browser run on Windows ARM64 completed the same 40-qubit, 56-gate circuit in **15.900 s** of evolution and **21.672 s** of worker time, with **2.77 GiB** peak process memory and a probability sum of `0.999999999999996`. Its receipt retains the original local revision and dirty-tree flag. The five recorded implementation hashes match the reviewed code. [Manual browser receipt](evidence/studio_16m/windows_arm64/sharkbyte-85c74d14dcb54040a295e3c2fe422e53.json) · [Evidence manifest](evidence/studio_16m/windows_arm64/manifest.json)
+
 #### Independent Cirq comparison
 
 A separate Ubuntu ARM64 WSL2 run checked **all 16,777,216 complex amplitudes**
@@ -154,7 +146,7 @@ took 8.901 s. The Colab receipts are tied to source revision `bfad672`.
 ### Connected-circuit verification
 
 The earlier 120-circuit reference suite and 16,777,216-state disconnected
-benchmark are described above. New isolated-branch work adds 24 connected
+benchmark are described above. The connected reference suite adds 24 connected
 circuits compared with independent Qiskit and Cirq statevectors through 16
 qubits, plus exact sparse/analytic connected GHZ checks at 20, 24, 30, and 40
 qubits. A connected-but-separable control confirms that a connected gate graph
@@ -165,6 +157,8 @@ The new suite, compiler edge-case fix, exact commands, limits, performance
 measurements, source hashes, and receipts are documented in the
 [connected-circuit audit](docs/connected-circuit-frontier.md). The packaged
 receipts and state vectors are indexed by its [SHA-256 manifest](evidence/connected-circuit-frontier/MANIFEST.json).
+
+The 17-, 18-, and 20-qubit high-support experiments compare complete vectors across SharkByte sparse, dense NumPy, Qiskit, and Cirq. Their balanced-cut Schmidt ranks were 256, 512, and 1,024, respectively, at the documented cutoff. The 20-qubit case populated 1,048,576 amplitudes and reached 9.005 bits of balanced-cut entropy. A separate connected control had the same support and Schmidt rank 1. See the [methods, limits, and reproduction commands](docs/high-support-connected-entanglement.md).
 
 ### Experimental adaptive sparse/dense comparison
 

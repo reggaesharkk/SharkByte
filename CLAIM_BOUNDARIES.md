@@ -14,3 +14,6 @@ Claims are limited to the documented CLI, VM, classical statevector simulator, b
 - The working grammar is not normative or complete.
 - This is not a general-purpose production compiler.
 - The current public source tree is licensed under Apache License 2.0 (SPDX identifier `Apache-2.0`); see [LICENSE](LICENSE), [NOTICE](NOTICE), and [License and branch history](LICENSE_STATUS.md). This applies to first-party material in this tree. Earlier MIT-licensed revisions retain their original grant, archived revisions keep the license file distributed with them, and external tools retain their own terms.
+
+- The connected reference corpus, the high-support Schmidt comparisons, and the 40-qubit sparse scaling benchmark establish different results. The scaling circuit has eight disconnected components. The connected GHZ checks through 40 qubits use a closed-form oracle.
+- The WP19 replay bounds arithmetic rounding for assumed rates and defect. Its mathematical assumptions and PDE bounds remain open.
