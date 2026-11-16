@@ -1,0 +1,79 @@
+// Conditional upper replay of the WP19 120-step assumed-rate study.
+// Rates, defect, and signed lower bound are the protocol's illustrative
+// inputs, not certified Navier-Stokes bounds. This is integer arithmetic,
+// not Arb interval arithmetic and does not close the protocol gate.
+
+let scale = 1000000;
+let whole_x = 245000;
+
+// Upper-bound exp(0.245): every positive Taylor term is rounded upward.
+// After term 20, bound the remaining positive tail by a geometric series;
+// the first omitted-term ratio is 0.245/22 and later ratios are smaller.
+let whole_term_upper = scale;
+let whole_factor_sum_upper = scale;
+let term_index = 1;
+while (term_index <= 20) {
+    let denominator = scale * term_index;
+    let numerator = whole_term_upper * whole_x;
+    whole_term_upper = (numerator + denominator - 1) / denominator;
+    whole_factor_sum_upper = whole_factor_sum_upper + whole_term_upper;
+    term_index = term_index + 1;
+}
+
+let omitted_denominator = scale * 21;
+let omitted_numerator = whole_term_upper * whole_x;
+let omitted_term_upper = (omitted_numerator + omitted_denominator - 1)
+    / omitted_denominator;
+let tail_denominator = scale * 22 - whole_x;
+let tail_numerator = omitted_term_upper * 22 * scale;
+let tail_upper = (tail_numerator + tail_denominator - 1) / tail_denominator;
+let whole_factor_upper = whole_factor_sum_upper + tail_upper;
+
+// exp(-0.035) <= 1 / S20(0.035). The positive Taylor partial sum S20 is
+// rounded downward term by term, so it is a lower bound for exp(0.035).
+let local_x = 35000;
+let local_term_lower = scale;
+let local_factor_sum_lower = scale;
+term_index = 1;
+while (term_index <= 20) {
+    local_term_lower = local_term_lower * local_x / (scale * term_index);
+    local_factor_sum_lower = local_factor_sum_lower + local_term_lower;
+    term_index = term_index + 1;
+}
+let local_factor_numerator = scale * scale;
+let local_factor_upper = (local_factor_numerator + local_factor_sum_lower - 1)
+    / local_factor_sum_lower;
+
+// Propagate integer-micro error ceilings. Quotient/remainder splitting keeps
+// intermediates in signed i64; the remainder term is rounded upward.
+let defect_micro = 235;
+let whole_error_upper_micro = 0;
+let local_error_upper_micro = 0;
+let segment = 0;
+while (segment < 120) {
+    whole_error_upper_micro = (whole_error_upper_micro / scale) * whole_factor_upper
+        + ((whole_error_upper_micro % scale) * whole_factor_upper + scale - 1) / scale
+        + defect_micro;
+    local_error_upper_micro = (local_error_upper_micro / scale) * local_factor_upper
+        + ((local_error_upper_micro % scale) * local_factor_upper + scale - 1) / scale
+        + defect_micro;
+    segment = segment + 1;
+}
+
+let signed_c500_lower_micro = 5758600000000000;
+let whole_recurrence_margin_micro = signed_c500_lower_micro - whole_error_upper_micro;
+let preserved_remainder_milli = 163640000000000000;
+let signed_c500_lower_milli = 5758600000000;
+let preserved_remainder_margin_milli = signed_c500_lower_milli - preserved_remainder_milli;
+
+// Outputs: factor upper bounds, final recurrence error upper bounds,
+// recurrence margin, then the separately preserved whole-path margin.
+print whole_factor_upper;
+print local_factor_upper;
+print whole_error_upper_micro;
+print local_error_upper_micro;
+print signed_c500_lower_micro;
+print whole_recurrence_margin_micro;
+print preserved_remainder_milli;
+print signed_c500_lower_milli;
+print preserved_remainder_margin_milli;
