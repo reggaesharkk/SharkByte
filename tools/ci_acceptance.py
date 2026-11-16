@@ -1,5 +1,10 @@
 """Install and test the package outside its source checkout."""
 import argparse,hashlib,json,os,pathlib,platform,shutil,subprocess,sys,tempfile,venv
+
+# These tests exercise only the installed standalone package. The checkout-only
+# Studio and adaptive simulator tests run in the separate full-suite CI step.
+PACKAGE_TESTS=("test_acceptance.py","test_cli.py","test_independent_qiskit_evidence.py","test_release_edges.py","test_three_mode.py")
+
 def run(cmd,cwd,env,timeout=180):return subprocess.run(cmd,cwd=cwd,env=env,stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=timeout,text=True,encoding="utf-8",errors="replace")
 def test_count(s):
  import re;m=re.search(r"Ran (\d+) tests?",s);return int(m.group(1)) if m else 0
@@ -28,6 +33,8 @@ def main():
   if p.returncode:raise RuntimeError("isolated package installation failed")
   fixture=w/"fixture";fixture.mkdir()
   for n in ("tests","examples","evidence"):shutil.copytree(root/n,fixture/n)
+  package_tests=fixture/"package_tests";package_tests.mkdir()
+  for n in PACKAGE_TESTS:shutil.copy2(root/"tests"/n,package_tests/n)
   ident=run([str(py),"-c","import pathlib,sharkbyte_alpha;print(pathlib.Path(sharkbyte_alpha.__file__).resolve())"],fixture,env,20);ip=pathlib.Path(ident.stdout.strip()).resolve()
   check("installed_import_outside_checkout",ident.returncode==0 and root not in ip.parents,"exit="+str(ident.returncode))
   sp=root/"sharkbyte_alpha";dp=ip.parent;files=sorted(x for x in sp.rglob("*") if x.is_file() and x.suffix in (".py",".json"));matched=0
@@ -37,7 +44,7 @@ def main():
    matched+=1
   check("installed_source_identity",matched==len(files),str(matched)+"/"+str(len(files)))
   for flags,name in (([],"normal"),(["-O"],"O"),(["-OO"],"OO")):
-   p=run([str(py),*flags,"-m","unittest","discover","-s","tests","-v"],fixture,env,240);ok=p.returncode==0 and "OK" in p.stderr
+   p=run([str(py),*flags,"-m","unittest","discover","-s","package_tests","-v"],fixture,env,240);ok=p.returncode==0 and "OK" in p.stderr
    modes[name]={"status":"PASS" if ok else "FAIL","exit_code":p.returncode,"tests_run":test_count(p.stderr)};check("tests_"+name,ok,"tests="+str(modes[name]["tests_run"])+"; exit="+str(p.returncode))
   def smoke_one(n,args,pred):
    p=run([str(exe),*args],fixture,env,45);ok=pred(p);smoke.append({"name":n,"status":"PASS" if ok else "FAIL","exit_code":p.returncode});check("smoke_"+n,ok,"exit="+str(p.returncode));return p
