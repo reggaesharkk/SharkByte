@@ -3,7 +3,7 @@ import argparse,hashlib,json,os,pathlib,platform,shutil,subprocess,sys,tempfile,
 
 # These tests exercise only the installed standalone package. The checkout-only
 # Studio and adaptive simulator tests run in the separate full-suite CI step.
-PACKAGE_TESTS=("test_acceptance.py","test_cli.py","test_independent_qiskit_evidence.py","test_release_edges.py","test_three_mode.py")
+PACKAGE_TESTS=("test_acceptance.py","test_cli.py","test_compiler_hardening.py","test_connected_quantum_corpus.py","test_independent_qiskit_evidence.py","test_release_edges.py","test_three_mode.py")
 
 def run(cmd,cwd,env,timeout=180):return subprocess.run(cmd,cwd=cwd,env=env,stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=timeout,text=True,encoding="utf-8",errors="replace")
 def test_count(s):
@@ -32,7 +32,11 @@ def main():
   cmd += [str(root)];p=run(cmd,w,env,240);check("isolated_pep517_install",p.returncode==0,"exit="+str(p.returncode))
   if p.returncode:raise RuntimeError("isolated package installation failed")
   fixture=w/"fixture";fixture.mkdir()
-  for n in ("tests","examples","evidence"):shutil.copytree(root/n,fixture/n)
+  for n in ("tests","examples","evidence","validation"):shutil.copytree(root/n,fixture/n)
+  # The tests include the experimental sparse-circuit corpus, which imports
+  # the checked-in Frontier30 parser/backend from this precise subdirectory.
+  shutil.copytree(root/"benchmarks"/"sb_quantum_benchmark",
+                  fixture/"benchmarks"/"sb_quantum_benchmark")
   package_tests=fixture/"package_tests";package_tests.mkdir()
   for n in PACKAGE_TESTS:shutil.copy2(root/"tests"/n,package_tests/n)
   ident=run([str(py),"-c","import pathlib,sharkbyte_alpha;print(pathlib.Path(sharkbyte_alpha.__file__).resolve())"],fixture,env,20);ip=pathlib.Path(ident.stdout.strip()).resolve()
