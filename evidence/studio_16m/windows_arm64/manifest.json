@@ -7,6 +7,16 @@
       "status": "FAILED before circuit execution"
     }
   ],
+  "manual_browser_receipt": {
+    "bytes": 8944,
+    "matching_implementation_revision": "d251b7d4d29cc10826d9b086b6fcbe126eb5d5c9",
+    "path": "sharkbyte-85c74d14dcb54040a295e3c2fe422e53.json",
+    "provenance": "Operator launched in Studio and saved the receipt. All five recorded implementation hashes match the recorded local commit, the prior Studio receipt, and the reviewed GitHub revision.",
+    "sha256": "cc7933496899fa56d962e6d87d8fef893f7e5857fc9f099c1f5bc23dedf4af13",
+    "source_revision": "bf3b980cda0a389b99cd88cb59cb62757658a2cb",
+    "source_tree_clean_at_launch": false,
+    "status": "PASS"
+  },
   "receipt": "sharkbyte-studio-154ec294e514455890da424efe9b9361.json",
   "receipt_bytes": 8942,
   "receipt_sha256": "24fe87cd14d8fb66984da69a1d44cd3c1161ae0e6ccad4a4fdbd9b2ea9a99f77",
