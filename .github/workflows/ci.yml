@@ -21,6 +21,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+          fetch-depth: 0
 
       - name: Set up Python ${{ matrix.python }}
         uses: actions/setup-python@v5
@@ -32,8 +33,22 @@ jobs:
           python -m pip install -r requirements-independent-quantum.txt cirq-core==1.7.0
           python -m pip check
 
-      - name: Verify checked-in connected-circuit evidence
-        run: python -B tools/verify_connected_circuit_evidence.py
+      - name: Verify historical connected-circuit evidence at its source revision
+        shell: pwsh
+        run: |
+          $revision = '5b882fb430f00fcd15fd1fe32d5294883ba9dd13'
+          git diff --exit-code $revision HEAD -- evidence/connected-circuit-frontier
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $archive = Join-Path $env:RUNNER_TEMP 'connected-circuit-source.zip'
+          $historical = Join-Path $env:RUNNER_TEMP 'connected-circuit-source'
+          git archive --format=zip --output=$archive $revision
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -m zipfile -e $archive $historical
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -B (Join-Path $historical 'tools/verify_connected_circuit_evidence.py')
+
+      - name: Verify the manual Studio receipt
+        run: python -B tools/verify_studio_scaling_receipt.py evidence/studio_16m/windows_arm64/sharkbyte-85c74d14dcb54040a295e3c2fe422e53.json
 
       - name: Compare connected circuits with Qiskit and Cirq
         run: |

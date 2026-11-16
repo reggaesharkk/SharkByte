@@ -158,6 +158,8 @@ measurements, source hashes, and receipts are documented in the
 [connected-circuit audit](docs/connected-circuit-frontier.md). The packaged
 receipts and state vectors are indexed by its [SHA-256 manifest](evidence/connected-circuit-frontier/MANIFEST.json).
 
+The historical manifest binds repository files to revision `5b882fb430f00fcd15fd1fe32d5294883ba9dd13`. Run `python -B tools/verify_connected_circuit_evidence.py` from that revision to verify those exact bytes. Hosted CI verifies the historical bundle there and runs fresh Qiskit and Cirq comparisons from the integrated checkout.
+
 The 17-, 18-, and 20-qubit high-support experiments compare complete vectors across SharkByte sparse, dense NumPy, Qiskit, and Cirq. Their balanced-cut Schmidt ranks were 256, 512, and 1,024, respectively, at the documented cutoff. The 20-qubit case populated 1,048,576 amplitudes and reached 9.005 bits of balanced-cut entropy. A separate connected control had the same support and Schmidt rank 1. See the [methods, limits, and reproduction commands](docs/high-support-connected-entanglement.md).
 
 ### Experimental adaptive sparse/dense comparison
