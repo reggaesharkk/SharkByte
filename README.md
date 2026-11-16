@@ -23,6 +23,16 @@ Download and extract the GitHub source ZIP or clone the repository. From the che
 
 Open [http://127.0.0.1:8120/](http://127.0.0.1:8120/). Studio listens on your own computer. Keep the terminal running and press Ctrl+C to stop it. If the port is busy, pass `--port 8121` and open the URL printed by the launcher.
 
+To try the 16-million-state preset while [PR #9](https://github.com/reggaesharkk/SharkByte/pull/9) is in review, select `codex/studio-16m-adaptive` on GitHub before downloading the source ZIP, or clone that branch directly:
+
+```text
+git clone --branch codex/studio-16m-adaptive https://github.com/reggaesharkk/SharkByte.git
+cd SharkByte
+python -B sharkbyte_studio.py --no-browser --port 8123
+```
+
+Use `python3` on Linux or WSL. Once the launcher prints its address, open [http://127.0.0.1:8123/](http://127.0.0.1:8123/) in the browser on the same computer. If a previously opened tab reports a connection error, check that the launcher terminal is still running and that the address matches the printed port. Select **16-million-state benchmark** from the mode menu.
+
 | Mode | What it runs |
 | --- | --- |
 | Classical | SharkVM, with a 50,000,000-instruction limit |
