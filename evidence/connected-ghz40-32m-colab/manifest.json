@@ -1,0 +1,39 @@
+{
+  "bundle_payload": {
+    "progress.jsonl": {
+      "bytes": 5176,
+      "sha256": "7d9dcd30da71d41e31a610f43dc616723872c1a9fd4f414cc3d33a2a06033981"
+    },
+    "run-status.json": {
+      "bytes": 158,
+      "sha256": "194b2ae5025e62e592ea04b8e84fd59214087aef30b9ca610403944484eaf71e"
+    },
+    "sharkbyte-connected-ghz40-33554432-colab.json": {
+      "bytes": 3479,
+      "sha256": "e679ded5192b12dabb87c6360f24d6cdd7b12872fa018eb965b13ff6786874ee"
+    },
+    "worker.log": {
+      "bytes": 221,
+      "sha256": "3d9d5d51f5bd60c32436cb0defd2bf0e4cf02a0c701ebf116edd68b99285abad"
+    }
+  },
+  "bundle_sha256": "97d7120bc045ffda3d17025512cbb6cc1344c878196d3bbe5cf499cb9e287c2f",
+  "canonical_receipt_sha256": "541c2e2493d93e6de006d0cb0d1336980385cc35571eb253e1fce53600b2d6f2",
+  "claim_scope": "Connected 40-qubit GHZ-family sparse simulation with an exact analytical full-amplitude oracle; no dense 40-qubit statevector is computed.",
+  "receipt_sha256": "e679ded5192b12dabb87c6360f24d6cdd7b12872fa018eb965b13ff6786874ee",
+  "schema": 1,
+  "source_commit": "8884c88b99e0254463890f817a93874065410314",
+  "source_path": "examples/connected_ghz40_33554432.sb",
+  "source_sha256": "3cc2dcc5d9732e12b51041be1bfbc940e4c4fc059d2bc35c48a6ca08d31fa34d",
+  "status": "PASS",
+  "target_active_states": 33554432,
+  "verification": {
+    "all_nontrivial_bipartition_entanglement_witness": "PASS",
+    "all_sparse_amplitudes_against_closed_form_oracle": "PASS",
+    "canonical_receipt_hash": "PASS",
+    "cirq_512_shot_measurement_check": "PASS",
+    "dense_40q_statevector": "NOT RUN",
+    "run_status_hash": "PASS",
+    "source_and_code_hashes_against_source_commit": "PASS"
+  }
+}

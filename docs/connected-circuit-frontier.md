@@ -183,12 +183,24 @@ amplitudes. Because the 24 Hadamards are local unitaries, the GHZ state's
 Schmidt rank two and one-bit entropy across every nontrivial bipartition are
 preserved.
 
-The SharkByte source and a guarded Colab notebook are available at
+The SharkByte source and guarded Colab notebook are available at
 [`examples/connected_ghz40_33554432.sb`](../examples/connected_ghz40_33554432.sb)
 and [`notebooks/SharkByte-Colab-Connected-40Q-32M.ipynb`](../notebooks/SharkByte-Colab-Connected-40Q-32M.ipynb).
-The notebook compares every sparse amplitude to the analytic formula and uses
-Cirq's Clifford simulator for an independent sampled measurement check. The
-combined 33.55M connected run has **NOT TESTED** status until that notebook
-produces a receipt. This is a sparse structured-circuit experiment, not a
-dense general 40-qubit statevector simulation; dense complex128 storage would
-require 16 TiB before overhead.
+The Colab Linux x86_64 CPU run passed on 2026-11-17. It compared all
+33,554,432 sparse amplitudes to the closed-form formula: maximum complex
+amplitude error `3.2526065174565133e-19`, maximum probability error
+`1.1249656330721176e-22`, and probability sum `0.999999999999996`. The
+independent Cirq Clifford measurement check passed 512 repetitions. It verifies
+the all-zero/all-one tail invariant by sampling; it is not a full second
+statevector comparison. The receipt records 25.638 s sparse evolution, 4.887 s
+for the Cirq check, 11.52 GiB available RAM at worker start, and 5.56 GiB
+sampled worker peak RSS. Its exact entanglement witness gives Schmidt rank 2
+and 1 ebit across every nontrivial bipartition. The dense 40-qubit statevector
+was **NOT RUN**; complex128 storage would require 16 TiB before overhead.
+
+The [receipt](../evidence/connected-ghz40-32m-colab/sharkbyte-connected-ghz40-33554432-colab.json),
+[downloaded run bundle](../evidence/connected-ghz40-32m-colab/sharkbyte-connected-ghz40-32m-results.zip),
+and [evidence manifest](../evidence/connected-ghz40-32m-colab/manifest.json)
+preserve the run status, progress trace, and worker log. This is evidence for
+the exact connected GHZ-family sparse workload, not a dense general 40-qubit
+statevector simulation.

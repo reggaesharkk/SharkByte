@@ -1,5 +1,5 @@
 {
-  "file_count": 211,
+  "file_count": 215,
   "files": [
     {
       "path": ".gitattributes",
@@ -113,8 +113,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "3f35a51c1ac9b594301b67b7dead990175b86082b27ced6818d246aadbd3fa0e",
-      "size_bytes": 28376
+      "sha256": "9dce88313abd4d9b8c4be00a8a9cb5650cfec22193513a90784d90f1275df07e",
+      "size_bytes": 29939
     },
     {
       "path": "RELEASE_GATE_MATRIX.md",
@@ -332,6 +332,11 @@
       "size_bytes": 14148
     },
     {
+      "path": "docs/connected-circuit-frontier.md",
+      "sha256": "d2b52e2ef42387c2c00997378e94343c9d37fb6d46f467a916fc1dfaeb0de2f2",
+      "size_bytes": 11449
+    },
+    {
       "path": "docs/sharkbyte-studio-banner.svg",
       "sha256": "2c94215dfab70dce49725b1dc07f75f58910db8a0f7c0c570c90a812ba57474e",
       "size_bytes": 2135
@@ -415,6 +420,21 @@
       "path": "evidence/colab-q8w4bj57/roundtrip-17/roundtrip_17q_comparison.json",
       "sha256": "2db3b02c695da55fa3e9bd3c5b750da0dbc63cd15da0a16d4e2f880aa6ae9cb1",
       "size_bytes": 6155
+    },
+    {
+      "path": "evidence/connected-ghz40-32m-colab/manifest.json",
+      "sha256": "8397c1b34e44e3f3fcac8642588ddcbfb6f062ed0ed7bf93a1836fea9fe77d1a",
+      "size_bytes": 1672
+    },
+    {
+      "path": "evidence/connected-ghz40-32m-colab/sharkbyte-connected-ghz40-32m-results.zip",
+      "sha256": "97d7120bc045ffda3d17025512cbb6cc1344c878196d3bbe5cf499cb9e287c2f",
+      "size_bytes": 2824
+    },
+    {
+      "path": "evidence/connected-ghz40-32m-colab/sharkbyte-connected-ghz40-33554432-colab.json",
+      "sha256": "e679ded5192b12dabb87c6360f24d6cdd7b12872fa018eb965b13ff6786874ee",
+      "size_bytes": 3479
     },
     {
       "path": "evidence/phase_flip_recovery_cases.json",
