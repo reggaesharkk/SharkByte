@@ -1,0 +1,135 @@
+{
+  "case_contracts": {
+    "ghz20-completed": {
+      "expected": "COMPLETED sparse; exit 0",
+      "memory_budget_bytes": 268435456
+    },
+    "random-connected20-dense-switch": {
+      "expected": "COMPLETED; sparse to dense at gate 16 with support 65536; exit 0",
+      "memory_budget_bytes": 268435456
+    },
+    "random-connected20-resource-stop": {
+      "expected": "RESOURCE_STOP at gate 10; exit 1",
+      "memory_budget_bytes": 1048576
+    }
+  },
+  "limitations": [
+    "Receipt hashes are unkeyed and establish integrity, not authorship or correctness.",
+    "Replay wall times are single executions and are not performance benchmarks.",
+    "Ubuntu acceptance is Ubuntu WSL2 ARM64, not a native physical Ubuntu installation.",
+    "The adaptive replay CI step runs on hosted x86-64 test jobs; a separate hosted Ubuntu ARM64 job checks backend agreement only and does not exercise these adaptive CLI cases.",
+    "Full-vector candidate comparisons, repeated timing/RSS measurements, and Qiskit/Cirq references are separate pre-existing evidence listed below."
+  ],
+  "method": "Original user-provided receipt bytes are preserved; SHA-256 and embedded source are verified; each receipt is replayed with the checked-in CLI and compared as a complete JSON object.",
+  "platforms": {
+    "ubuntu-wsl2-arm64": {
+      "environment": {
+        "architecture": "aarch64",
+        "numpy": "2.3.5",
+        "python": "3.14.4",
+        "release": "6.18.58.1-microsoft-standard-WSL2",
+        "sys_platform": "linux",
+        "system": "Linux"
+      },
+      "receipts": {
+        "ghz20-completed": {
+          "path": "evidence/adaptive-cli-cross-platform-20261118/ubuntu-wsl2-arm64/ghz20-completed.json",
+          "record_sha256": "3d769ee1375a89f561d26f1fc9635053b7d5b06acd498e32607f7c3eb3e33d24",
+          "sha256": "87aef0098eb1efe307d0d55c0244aaeafc3c5f39be7a968446f523158852e6af"
+        },
+        "random-connected20-dense-switch": {
+          "path": "evidence/adaptive-cli-cross-platform-20261118/ubuntu-wsl2-arm64/random-connected20-dense-switch.json",
+          "record_sha256": "abdb2721b3991f516b7df9a23710eed08ac128a3318ad4327b81c852954472e0",
+          "sha256": "88df08858c9e4f94a91328ea88cf2fe85c542a1cbfee481956ea1071bcd14f75"
+        },
+        "random-connected20-resource-stop": {
+          "path": "evidence/adaptive-cli-cross-platform-20261118/ubuntu-wsl2-arm64/random-connected20-resource-stop.json",
+          "record_sha256": "286f64fbe95c45197bbba7d02f29b1e671656634efdd595b8b89cd0e41bf8f87",
+          "sha256": "265ed1aa4a4b7d8a4a1ebb02e8cfdbd85400f21ba9f428d6862b696c5816ff82"
+        }
+      },
+      "replay_report": "evidence/adaptive-cli-cross-platform-20261118/ubuntu-wsl2-arm64/replay-verification.json",
+      "replay_report_sha256": "42d79cab997285cf2d63a1575c9bdf568a68a88da73c1d4bc5ca131a55aca5a2"
+    },
+    "windows-arm64": {
+      "environment": {
+        "architecture": "ARM64",
+        "numpy": "2.5.5",
+        "python": "3.12.10",
+        "release": "11",
+        "sys_platform": "win32",
+        "system": "Windows"
+      },
+      "receipts": {
+        "ghz20-completed": {
+          "path": "evidence/adaptive-cli-cross-platform-20261118/windows-arm64/ghz20-completed.json",
+          "record_sha256": "3d769ee1375a89f561d26f1fc9635053b7d5b06acd498e32607f7c3eb3e33d24",
+          "sha256": "87aef0098eb1efe307d0d55c0244aaeafc3c5f39be7a968446f523158852e6af"
+        },
+        "random-connected20-dense-switch": {
+          "path": "evidence/adaptive-cli-cross-platform-20261118/windows-arm64/random-connected20-dense-switch.json",
+          "record_sha256": "abdb2721b3991f516b7df9a23710eed08ac128a3318ad4327b81c852954472e0",
+          "sha256": "88df08858c9e4f94a91328ea88cf2fe85c542a1cbfee481956ea1071bcd14f75"
+        },
+        "random-connected20-resource-stop": {
+          "path": "evidence/adaptive-cli-cross-platform-20261118/windows-arm64/random-connected20-resource-stop.json",
+          "record_sha256": "286f64fbe95c45197bbba7d02f29b1e671656634efdd595b8b89cd0e41bf8f87",
+          "sha256": "265ed1aa4a4b7d8a4a1ebb02e8cfdbd85400f21ba9f428d6862b696c5816ff82"
+        }
+      },
+      "replay_report": "evidence/adaptive-cli-cross-platform-20261118/windows-arm64/replay-verification.json",
+      "replay_report_sha256": "812e7cab8058487a851aceaef47eabf81660e86a5b2a3caa77eae6df361bbd28"
+    }
+  },
+  "regression_tests": "tests/test_adaptive_cli_acceptance.py",
+  "related_existing_evidence": [
+    {
+      "path": "evidence/adaptive_sparse_dense/manifest.json",
+      "relationship": "separate pre-existing vector, performance, or reference evidence; not regenerated in this acceptance run",
+      "sha256": "26cd1efead22911a449e22116dbe9f2faae3ff1ec4b895ff0dd075c8f325225e"
+    },
+    {
+      "path": "evidence/adaptive_sparse_dense/windows_arm64/adaptive-sparse-dense-windows-arm64.json",
+      "relationship": "separate pre-existing vector, performance, or reference evidence; not regenerated in this acceptance run",
+      "sha256": "0611ec8fd37e284ecc4280dc6fc52086c9876323c54411a477e25142b4e56449"
+    },
+    {
+      "path": "evidence/adaptive_sparse_dense/ubuntu_wsl2/adaptive-sparse-dense-ubuntu-wsl2-aarch64.json",
+      "relationship": "separate pre-existing vector, performance, or reference evidence; not regenerated in this acceptance run",
+      "sha256": "4b6d0cb4870b8f81b096ea0948678347a7de435e0eaf8bef8124a7db935a260a"
+    },
+    {
+      "path": "evidence/high_support_connected/final_current/windows_arm64/random_20/random_connected_20q_comparison.json",
+      "relationship": "separate pre-existing vector, performance, or reference evidence; not regenerated in this acceptance run",
+      "sha256": "5bdd00ec738cd31c82415da120b759fe12f81fb28acd1bf1d752738b6bb5e9d5"
+    },
+    {
+      "path": "evidence/high_support_connected/final_current/windows_arm64/random_20/random_connected_20q_qiskit.json",
+      "relationship": "separate pre-existing vector, performance, or reference evidence; not regenerated in this acceptance run",
+      "sha256": "130951eab13d34cb29593b294e7a9a73bd32f95e96a876e411b5150ec7d29a52"
+    },
+    {
+      "path": "evidence/high_support_connected/final_current/windows_arm64/random_20/random_connected_20q_cirq.json",
+      "relationship": "separate pre-existing vector, performance, or reference evidence; not regenerated in this acceptance run",
+      "sha256": "2c4522bad7c732b2b3bbe00f0c247cc7821d8a435ba0b12c8a012399fa98bd0c"
+    }
+  ],
+  "schema": 1,
+  "source_revision": "69b360bca690c608a5eda68f344cf66f370d3b0b",
+  "status": "PASS",
+  "test_suites": {
+    "ubuntu-wsl2-arm64": {
+      "command": "python3 -B -m unittest discover -s tests -v",
+      "status": "PASS",
+      "tests": 69
+    },
+    "windows-arm64": {
+      "command": "python -B -m unittest discover -s tests -v",
+      "status": "PASS",
+      "tests": 69
+    }
+  },
+  "title": "Adaptive Quantum CLI Windows ARM64 and Ubuntu ARM64 acceptance",
+  "verifier": "tools/verify_adaptive_cli_acceptance.py",
+  "verifier_sha256": "897d4e8c6d00778149cd97aa24d096a1eb2ae21741037c69a71bd530210f8687"
+}

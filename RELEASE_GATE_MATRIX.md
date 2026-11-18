@@ -4,6 +4,7 @@
 |---|---|---|
 | Classical VM | PASS, scoped | Exact public tree installed and smoke-tested on Windows ARM64; 30 tests passed in normal, -O, and -OO. |
 | Statevector simulator | PASS, scoped | Local CLI smoke and archived Qiskit comparison: 22 circuits / 320 probabilities. |
+| Opt-in adaptive CLI | PASS, scoped | Three recorded 20-qubit policy cases replay byte-identically on Windows ARM64 and Ubuntu WSL2 ARM64; resource refusal is expected to exit 1. Does not replace vector/reference comparisons or establish ARM64 hosted CI. |
 | Bounded hybrid | PASS, scoped | Four-iteration adaptive fixture through installed CLI. |
 | OpenQASM output | PASS, scoped | 22 archived fixture outputs replay byte-for-byte; not universal conformance. |
 | Exact public-tree install/regressions | PASS on prior accepted snapshot | PEP 517 isolated Windows ARM64 install and scoped regressions are recorded in PUBLIC_STAGE_ACCEPTANCE.md; this local source revision needs its own CI result. |

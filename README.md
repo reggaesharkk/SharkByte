@@ -285,6 +285,14 @@ python -m sharkbyte_alpha verify-run auto-run.json
 
 Auto starts sparse and considers dense conversion through 20 qubits. Wider circuits stay sparse. The receipt records seeded measurement counts on completion, representation changes and their causes. A resource refusal returns a nonzero exit code and records the reason and gate index when available. The budget covers estimated state working memory; interpreter, receipt and sampling overhead contribute to total process memory. Existing CLI defaults are unchanged.
 
+### Adaptive Quantum CLI — Windows ARM64 and Ubuntu ARM64 Acceptance
+
+The checked-in acceptance bundle preserves the three original CLI receipts from Windows ARM64 and Ubuntu WSL2 ARM64. Each platform’s three receipts was independently hash-checked and replayed on its corresponding local environment against the exact checked-in source fixture. The GHZ20 case completes using sparse storage at 256 MiB; the connected random20 case switches to dense storage at gate 16 with support 65,536 at 256 MiB; and the same random20 source stops at gate 10 with `RESOURCE_STOP` and exit code 1 at 1 MiB. All six replays reproduce the original record digests and complete JSON results. The original receipt files match byte-for-byte between platforms. CI replays both receipt sets on its Ubuntu and Windows x86-64 test jobs. The separate Ubuntu ARM64 job checks backend agreement, not these adaptive CLI cases.
+
+The 20-qubit complete-vector comparisons, repeated timings, process peak-memory estimates, and archived Qiskit/Cirq references are separate evidence in the [adaptive sparse/dense comparison](evidence/adaptive_sparse_dense/manifest.json). The CLI acceptance receipts establish reproducible policy outcomes and integrity, not a new independent correctness proof or a performance result. Record hashes are unkeyed.
+
+[Acceptance evidence and receipts](evidence/adaptive-cli-cross-platform-20261118/) · [Replay verifier](tools/verify_adaptive_cli_acceptance.py)
+
 Compare sparse, dense and adaptive execution with the repository benchmark (NumPy and its documented reference fixtures required):
 
 ```sh

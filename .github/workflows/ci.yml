@@ -81,6 +81,11 @@ jobs:
       - name: Install numerical test dependency
         run: python -m pip install numpy==2.3.5
 
+      - name: Replay archived adaptive CLI receipts
+        run: |
+          python -B tools/verify_adaptive_cli_acceptance.py --receipt-dir evidence/adaptive-cli-cross-platform-20261118/windows-arm64 --output adaptive-cli-windows-replay-ci.json
+          python -B tools/verify_adaptive_cli_acceptance.py --receipt-dir evidence/adaptive-cli-cross-platform-20261118/ubuntu-wsl2-arm64 --output adaptive-cli-ubuntu-replay-ci.json
+
       - name: Isolated install + acceptance regressions
         run: python tools/ci_acceptance.py
 
