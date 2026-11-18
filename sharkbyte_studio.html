@@ -13,8 +13,18 @@ textarea,pre{font:14px/1.6 'IBM Plex Mono',Consolas,monospace;tab-size:4}textare
 @media(max-width:860px){main{grid-template-columns:1fr}textarea{min-height:270px}}
 .noise-panel{grid-column:1/-1;padding:20px 22px}.noise-panel>p{max-width:100ch;color:var(--muted);line-height:1.55}.noise-layout{display:grid;grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr);gap:24px;align-items:center}.noise-control{display:grid;gap:14px}.noise-control label{display:flex;justify-content:space-between;gap:12px}.noise-control output{color:var(--accent);font-variant-numeric:tabular-nums}.noise-control input{width:100%;accent-color:var(--accent)}.noise-values{display:grid;gap:8px;margin:0}.noise-values div{display:flex;justify-content:space-between;gap:12px}.noise-values dt{color:var(--muted)}.noise-values dd{margin:0;font-variant-numeric:tabular-nums}.noise-chart{width:100%;height:auto;min-height:230px;background:#11171b;border:1px solid var(--line);border-radius:8px}.noise-chart text{fill:var(--muted);font:12px Inter,system-ui,sans-serif}.noise-chart .axis,.noise-chart .grid{stroke:var(--line);stroke-width:1}.noise-chart .direct{stroke:#60b9ff;stroke-width:3;fill:none}.noise-chart .encoded{stroke:var(--accent);stroke-width:3;fill:none}.noise-chart .cursor{stroke:#edf1ec;stroke-dasharray:4 5;opacity:.65}.noise-legend{display:flex;gap:20px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin-top:8px}.noise-legend span::before{content:"";display:inline-block;width:16px;height:3px;vertical-align:middle;margin-right:7px;background:#60b9ff}.noise-legend span+span::before{background:var(--accent)}
 @media(max-width:860px){.noise-panel{grid-column:1}.noise-layout{grid-template-columns:1fr}}
+.studio-header,.studio-navigation{display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.studio-navigation a{color:var(--accent);padding:8px 4px}
 </style>
-<header><h1>SharkByte <span>Studio</span></h1><div><button id="quantumTab" aria-pressed="true">Quantum / VM</button> <button id="webTab" aria-pressed="false">Web / App</button></div><span class="badge">Local workspace</span></header>
+<header class="studio-header">
+  <h1>SharkByte <span>Studio</span></h1>
+  <nav class="studio-navigation" aria-label="Studio workspaces">
+    <button id="quantumTab" aria-pressed="true">Quantum / VM</button>
+    <button id="webTab" aria-pressed="false">Web / App</button>
+    <a href="/lucid">Lucid Dynamics</a>
+  </nav>
+  <span class="badge">Local workspace</span>
+</header>
 <main>
   <div id="quantumWorkspace" class="quantum-workspace">
   <section class="panel" aria-labelledby="sourceTitle">
@@ -266,6 +276,8 @@ drawNoiseCurves();
 </script>
 <style>
 [hidden]{display:none!important}.quantum-workspace{display:contents}.web-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;padding:16px}.web-layout>div{min-width:0}.web-layout textarea{min-height:560px;border:1px solid var(--line);border-radius:8px}.web-layout iframe{width:100%;height:560px;background:white;border:1px solid var(--line);border-radius:8px}.web-layout pre{min-height:50px;max-height:120px;color:var(--accent)}#exportWeb{color:var(--accent);padding:8px}@media(max-width:860px){.web-layout{grid-template-columns:1fr}.web-layout textarea,.web-layout iframe{min-height:320px;height:55vh}}
+.studio-header,.studio-navigation{display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.studio-navigation a{color:var(--accent);padding:8px 4px}
 </style>
 <script>
 const webExamples={};const webSource=document.getElementById('webSource'),webStatus=document.getElementById('webStatus'),webProject=document.getElementById('webExample');

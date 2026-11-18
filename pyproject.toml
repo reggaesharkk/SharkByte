@@ -10,6 +10,9 @@ requires-python = ">=3.10"
 license = "Apache-2.0"
 dependencies = []
 
+[project.optional-dependencies]
+lucid = ["numpy>=1.26,<3", "scipy>=1.11,<2"]
+
 [project.scripts]
 sharkbyte = "sharkbyte_guarded_entry:main"
 
