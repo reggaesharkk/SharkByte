@@ -17,6 +17,7 @@ import webbrowser
 from sharkbyte_alpha import vm
 from sharkbyte_alpha.cli import MAX_SOURCE_BYTES, envelope
 from tools.studio_scaling_jobs import ScalingJobManager, StudioResourceRefusal
+from sharkbyte_alpha.lucid_dynamics import validate_request as validate_lucid_request, verify_receipt as verify_lucid_receipt
 
 
 ROOT = Path(__file__).resolve().parent
@@ -46,6 +47,8 @@ class Studio(BaseHTTPRequestHandler):
             return self.reply(403, {"error": "Open Studio from its local launch URL."})
         if self.path == "/":
             return self.reply(200, (ROOT / "sharkbyte_studio.html").read_bytes(), "text/html; charset=utf-8")
+        if self.path == "/lucid":
+            return self.reply(200, (ROOT / "lucid_dynamics_studio.html").read_bytes(), "text/html; charset=utf-8")
         if self.path == "/examples":
             return self.reply(200, {mode: (ROOT / "examples" / name).read_text(encoding="utf-8")
                                     for mode, name in {**EXAMPLES, "phase_recovery": "phase_flip_recovery.sb"}.items()})
@@ -67,6 +70,50 @@ class Studio(BaseHTTPRequestHandler):
             return
         self.reply(404, {"error": "Page not found."})
 
+
+    def run_lucid(self, execution_id):
+        """Opt-in dimensionless ODE worker; never passes source to SharkVM or quantum modes."""
+        try:
+            size = int(self.headers.get("Content-Length", "0"))
+            if self.headers.get_content_type() != "application/json" or not 0 < size <= 4096:
+                raise ValueError("Expected a bounded JSON request (4096 bytes max).")
+            request = json.loads(self.rfile.read(size))
+            normalized = validate_lucid_request(request)
+        except (ValueError, TypeError) as exc:
+            return self.reply(400, {"execution_id": execution_id, "error": str(exc)})
+        started = time.perf_counter()
+        try:
+            worker = subprocess.run(
+                [sys.executable, "-B", "-m", "sharkbyte_alpha.lucid_dynamics"],
+                input=json.dumps(normalized), cwd=ROOT,
+                capture_output=True, text=True, encoding="utf-8", errors="replace",
+                timeout=20,
+            )
+        except (subprocess.TimeoutExpired, OSError) as exc:
+            return self.reply(503, {"execution_id": execution_id, "error": str(exc)})
+        if worker.returncode:
+            return self.reply(422, {"execution_id": execution_id,
+                                     "error": (worker.stderr.strip() or "Lucid worker failed.")[:1000]})
+        try:
+            record = json.loads(worker.stdout)
+            if not verify_lucid_receipt(record):
+                raise ValueError("Worker returned an invalid receipt digest.")
+            path = self.server.receipt_dir / f"{execution_id}.json"
+            with path.open("w", encoding="utf-8", newline="\n") as output:
+                json.dump(record, output, indent=2, allow_nan=False)
+            self.server.receipts[execution_id] = path
+            if len(self.server.receipts) > 4:
+                oldest = next(iter(self.server.receipts))
+                self.server.receipts.pop(oldest).unlink()
+        except (ValueError, TypeError, OSError) as exc:
+            return self.reply(503, {"execution_id": execution_id, "error": str(exc)})
+        return self.reply(200, {
+            "execution_id": execution_id,
+            "worker_wall_seconds": time.perf_counter() - started,
+            "record": record,
+            "receipt_url": f"/receipts/{execution_id}.json",
+        })
+
     def do_POST(self):
         execution_id = uuid4().hex
         if not self.local_request():
@@ -75,6 +122,8 @@ class Studio(BaseHTTPRequestHandler):
         if cancel_match:
             snapshot = self.server.scaling_jobs.cancel(cancel_match[1])
             return self.reply(202, snapshot) if snapshot else self.reply(404, {"error": "Run not found."})
+        if self.path == "/lucid/run":
+            return self.run_lucid(execution_id)
         if self.path != "/run":
             return self.reply(404, {"execution_id": execution_id, "error": "Endpoint not found."})
         try:

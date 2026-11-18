@@ -34,6 +34,9 @@ The complete Colab bundle is preserved byte-for-byte. Its 54 inventoried payload
 
 ## SharkByte Studio
 
+**Lucid Dynamics v0.1 (opt-in mathematical mode):** A separate [local Studio page](http://127.0.0.1:8120/lucid) explores the dimensionless bounded-existence 4D soft-wall ODE, including memoryless decay and the IVc/IVb relaxation cycles. Install `python -m pip install -e '.[lucid]'` first; ordinary SharkByte remains dependency-free. The numerical experiments are not evidence of physiological lucid dreaming or global mathematical existence. See [source and verification scope](docs/lucid-dynamics.md).
+
+
 Download and extract the GitHub source ZIP or clone the repository. From the checkout, use Python 3.10 or later:
 
 | Platform | Command |
