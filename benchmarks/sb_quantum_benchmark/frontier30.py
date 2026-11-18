@@ -7,8 +7,12 @@ from pathlib import Path
 import re
 import time
 
-from quantum_frontend import parse
-from sparse_backend import Circuit, EvolutionStats, ResourceLimitError, evolve, format_basis, probabilities
+if __package__:
+    from .quantum_frontend import parse
+    from .sparse_backend import Circuit, EvolutionStats, ResourceLimitError, evolve, format_basis, probabilities
+else:
+    from quantum_frontend import parse
+    from sparse_backend import Circuit, EvolutionStats, ResourceLimitError, evolve, format_basis, probabilities
 
 DEFAULT_CAP = 4096
 
@@ -18,7 +22,12 @@ def load_circuit(path):
         data = source.read(65537)
     if len(data) > 65536:
         raise ValueError("Source exceeds 65536 bytes")
-    match = re.fullmatch(r"\s*quantum\s+([A-Za-z_]\w*)\s*\{([^{}]*)\}\s*", data.decode("utf-8-sig"))
+    circuit, _ = parse_program(data.decode("utf-8-sig"))
+    return circuit, hashlib.sha256(data).hexdigest()
+
+
+def parse_program(source):
+    match = re.fullmatch(r"\s*quantum\s+([A-Za-z_]\w*)\s*\{([^{}]*)\}\s*", source)
     if match is None:
         raise ValueError("Expected one named quantum block")
     parsed = parse(match[2], max_qubits=50, sparse=True)
@@ -32,7 +41,7 @@ def load_circuit(path):
             gates.append((op, target, angle))
         else:
             gates.append((op, *args))
-    return Circuit(parsed["n"], tuple(gates), match[1]), hashlib.sha256(data).hexdigest()
+    return Circuit(parsed["n"], tuple(gates), match[1]), parsed
 
 
 def main():

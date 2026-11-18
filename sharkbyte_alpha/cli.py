@@ -34,6 +34,7 @@ def main(argv=None):
     parser=argparse.ArgumentParser(prog='sharkbyte');parser.add_argument('--version',action='version',version='SharkByte standalone '+__version__)
     sub=parser.add_subparsers(dest='command',required=True);sub.add_parser('doctor')
     run=sub.add_parser('run');run.add_argument('source');run.add_argument('--mode',choices=('classical','quantum','hybrid'),default='classical');run.add_argument('--backend',default='vm');run.add_argument('--summary',action='store_true',help='print a human summary; requires --output to preserve the full record');run.add_argument('--output',help='create a new UTF-8 JSON execution record')
+    run.add_argument('--memory-mib', type=int, help='auto backend state-memory planning budget (default 256 MiB)')
     qasm=sub.add_parser('qasm');qasm.add_argument('source');qasm.add_argument('--output',required=True)
     v=sub.add_parser('verify-run');v.add_argument('record')
     args=parser.parse_args(argv)
@@ -46,9 +47,15 @@ def main(argv=None):
             with target.open('x',encoding='utf8',newline='\n') as f:f.write(output)
             value={'status':'QASM_WRITTEN','output':str(target),'sha256':digest(output.encode('utf8'))}
         else:
-            if args.backend!='vm':raise ValueError('native backends are disabled: containment unavailable')
+            if args.memory_mib is not None and args.backend != 'auto':
+                raise ValueError('--memory-mib requires --backend auto')
+            if args.backend != 'vm' and (args.backend != 'auto' or args.mode != 'quantum'):raise ValueError('native backends are disabled: containment unavailable')
             source=read_source(args.source)
-            if args.mode=='quantum':value=envelope(source,'quantum',quantum.evaluate(parse_quantum(source)))
+            if args.backend == 'auto':
+                from .auto import evaluate
+                budget = 256 if args.memory_mib is None else args.memory_mib
+                value = envelope(source, 'quantum', evaluate(source, budget))
+            elif args.mode=='quantum':value=envelope(source,'quantum',quantum.evaluate(parse_quantum(source)))
             elif args.mode=='hybrid':
                 from . import hybrid
                 value=envelope(source,'hybrid',hybrid.run(source,min(VM_STEPS, hybrid.MAX_VM_STEPS)))
@@ -69,7 +76,9 @@ def main(argv=None):
                     for row in result.get('history',[]):print('  iteration '+str(row['iteration'])+': count='+str(row['zero_state_count'])+' theta='+str(row['theta']))
                 elif args.mode=='classical':print('Output: '+repr(result.get('stdout','')))
                 else:print('Qubits: '+str(result.get('qubits'))+' | Shots: '+str(result.get('shots')))
-                print('Complete JSON record: '+str(args.output));return 0
-        print(encoded);return 0
+                print('Complete JSON record: '+str(args.output))
+                return 1 if result.get('status') == 'RESOURCE_STOP' else 0
+        print(encoded)
+        return 1 if value.get('result', {}).get('status') == 'RESOURCE_STOP' else 0
     except (ValueError,RuntimeError,OSError,UnicodeError,vm.SharkError) as exc:
         print('sharkbyte: '+type(exc).__name__+': '+str(exc),file=sys.stderr);return 1

@@ -39,10 +39,12 @@ def evolve(qubits: int, gates, *, initial_state=None, copy_initial_state=True):
                 else:
                     blocks[:, 0, :] = cosine * low - sine * high
                     blocks[:, 1, :] = sine * low + cosine * high
-        elif op in ("rz", "z"):
+        elif op == "z":
+            state.reshape((-1, 2, 1 << gate[1]))[:, 1, :] *= -1
+        elif op == "rz":
             q = gate[1]
             blocks = state.reshape((-1, 2, 1 << q))
-            angle = math.pi if op == "z" else float(gate[2])
+            angle = float(gate[2])
             blocks[:, 0, :] *= np.exp(-0.5j * angle)
             blocks[:, 1, :] *= np.exp(0.5j * angle)
         elif op == "x":

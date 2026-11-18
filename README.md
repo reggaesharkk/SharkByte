@@ -274,6 +274,23 @@ The adaptive candidate switched once from sparse to dense on the random connecte
 
 [Combined evidence index](evidence/adaptive_sparse_dense/manifest.json) · [Windows ARM64 report](evidence/adaptive_sparse_dense/windows_arm64/adaptive-sparse-dense-windows-arm64.json) · [Windows manifest](evidence/adaptive_sparse_dense/windows_arm64/manifest.json) · [Ubuntu WSL2 ARM64 report](evidence/adaptive_sparse_dense/ubuntu_wsl2/adaptive-sparse-dense-ubuntu-wsl2-aarch64.json) · [Ubuntu manifest](evidence/adaptive_sparse_dense/ubuntu_wsl2/manifest.json) · [Run the comparison](tools/high_support/benchmark_adaptive.py) · [Adaptive implementation](tools/high_support/adaptive_statevector.py)
 
+### Opt-in adaptive CLI
+
+From a source checkout with NumPy installed, run a quantum program with an explicit state-memory budget:
+
+```sh
+python -m sharkbyte_alpha run examples/high_support/adaptive_sparse_ghz_20q.sbq --mode quantum --backend auto --memory-mib 256 --output auto-run.json
+python -m sharkbyte_alpha verify-run auto-run.json
+```
+
+Auto starts sparse and considers dense conversion through 20 qubits. Wider circuits stay sparse. The receipt records seeded measurement counts on completion, representation changes and their causes. A resource refusal returns a nonzero exit code and records the reason and gate index when available. The budget covers estimated state working memory; interpreter, receipt and sampling overhead contribute to total process memory. Existing CLI defaults are unchanged.
+
+Compare sparse, dense and adaptive execution with the repository benchmark (NumPy and its documented reference fixtures required):
+
+```sh
+python tools/high_support/benchmark_adaptive.py --repetitions 3
+```
+
 ## Terminal quickstart
 
 From the checkout, run `python -B sharkbyte_terminal.py` (`python3` on Linux). Try `/help`, `/bell`, `/bell-phase`, or `/qft`. The QFT example embeds a six-qubit transform in a 30-qubit register. Use `/run FILE.sb` for a custom quantum circuit, or `/run-frontier FILE.sb` for a sparse circuit at the default cap.

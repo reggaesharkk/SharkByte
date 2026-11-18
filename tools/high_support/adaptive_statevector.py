@@ -7,11 +7,18 @@ from dataclasses import dataclass, field
 
 import numpy as np
 
-from sparse_backend import (
-    ANGLE_LIMIT, Circuit, CircuitError, ResourceLimitError, evolve as sparse_evolve,
-    validate as validate_circuit,
-)
-from dense_statevector import evolve as dense_evolve
+if __package__:
+    from benchmarks.sb_quantum_benchmark.sparse_backend import (
+        ANGLE_LIMIT, Circuit, CircuitError, ResourceLimitError, evolve as sparse_evolve,
+        validate as validate_circuit,
+    )
+    from .dense_statevector import evolve as dense_evolve
+else:
+    from sparse_backend import (
+        ANGLE_LIMIT, Circuit, CircuitError, ResourceLimitError, evolve as sparse_evolve,
+        validate as validate_circuit,
+    )
+    from dense_statevector import evolve as dense_evolve
 
 
 DEFAULT_SPARSE_BYTES_PER_AMPLITUDE = 512
@@ -112,7 +119,7 @@ def evolve_adaptive(circuit: Circuit, *, support_cap: int,
             predicted_density = projected / total_states
             should_enter_dense = (predicted_density >= dense_enter_density
                                   or sparse_peak > memory_budget_bytes)
-            if should_enter_dense and dense_bytes <= memory_budget_bytes:
+            if circuit.qubits <= 20 and should_enter_dense and dense_bytes <= memory_budget_bytes:
                 transition_peak = max(dense_bytes,
                                       support * sparse_bytes_per_amplitude + total_states * 16)
                 if transition_peak > memory_budget_bytes:
@@ -124,9 +131,11 @@ def evolve_adaptive(circuit: Circuit, *, support_cap: int,
                     dense_state[basis] = amplitude
                 stats.transitions.append({
                     "gate_index": gate_index, "from": "sparse-dict", "to": "dense-complex128",
+                    "reason": "density threshold" if predicted_density >= dense_enter_density else "sparse budget",
                     "support": support, "estimated_transition_peak_bytes": transition_peak,
                 })
                 state = dense_state
+                del dense_state
                 stats.representation = "dense-complex128"
             elif sparse_peak > memory_budget_bytes:
                 raise ResourceLimitError(
@@ -164,9 +173,11 @@ def evolve_adaptive(circuit: Circuit, *, support_cap: int,
                     sparse_state = {int(basis): complex(state[basis]) for basis in nonzero}
                     stats.transitions.append({
                         "gate_index": gate_index, "from": "dense-complex128", "to": "sparse-dict",
+                        "reason": "low density",
                         "support": support, "estimated_transition_peak_bytes": transition_peak,
                     })
                     state = sparse_state
+                    del sparse_state, nonzero
                     stats.representation = "sparse-dict"
                     current_estimate = support * sparse_bytes_per_amplitude
 
