@@ -64,12 +64,12 @@ def validate_request(request: Any) -> dict[str, Any]:
     params = dict(PRESETS[preset])
     for name, val in overrides.items():
         low, high = LIMITS[name]
-        if isinstance(val, bool) or not isinstance(val, (float, int)) or not math.isfinite(val) or not low <= val <= high:
+        if isinstance(val, bool) or not isinstance(val, (float, int)) or not low <= val <= high:
             raise ValueError(f"{name} must be finite and between {low} and {high}.")
         params[name] = float(val)
     duration = request.get("duration", 160)
     samples = request.get("samples", 600)
-    if type(duration) not in (int, float) or not math.isfinite(duration) or not 40 <= duration <= 400:
+    if type(duration) not in (int, float) or not 40 <= duration <= 400:
         raise ValueError("duration must be in [40, 400] model time units.")
     if type(samples) is not int or not 100 <= samples <= 1600:
         raise ValueError("samples must be an integer in [100, 1600].")
@@ -85,7 +85,10 @@ def verify_receipt(receipt: dict[str, Any]) -> bool:
         return False
     copy = dict(receipt)
     recorded = copy.pop("record_sha256")
-    return hashlib.sha256(_canonical(copy)).hexdigest() == recorded
+    try:
+        return hashlib.sha256(_canonical(copy)).hexdigest() == recorded
+    except (ValueError, TypeError, OverflowError):
+        return False
 
 
 def simulate(request: Any) -> dict[str, Any]:
@@ -119,11 +122,13 @@ def simulate(request: Any) -> dict[str, Any]:
     tail = sol.y[:, t_eval >= (0.8 * duration)]
     tail_span = {name: float(np.ptp(tail[i])) for i, name in enumerate(trajectory)}
     final_norm = float(np.linalg.norm(sol.y[:, -1]))
+    effective = next((name for name, values in PRESETS.items() if params == values), "custom")
+    reference = {"IVc_pure_psi_memory": 17.936755, "IVb_coupled_memory": 19.387103}.get(effective)
     receipt = {
         "schema": "sharkbyte.lucid-dynamics.v0.1", "mode": "lucid_dynamics",
         "source": {"repository": SOURCE_REPO, "commit": SOURCE_COMMIT, "path": SOURCE_PATH,
                    "note": "4D soft-wall ODE, dimensionless toy model"},
-        "config": {**cfg, "initial_state": list(INITIAL_STATE),
+        "config": {**cfg, "effective_regime": effective, "initial_state": list(INITIAL_STATE),
                    "model_constants": PARAMETERS,
                    "solver": {"method": "LSODA", "rtol": 1e-9, "atol": 1e-12, "max_step": 0.5}},
         "runtime": {"python": f"{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}",
@@ -132,7 +137,8 @@ def simulate(request: Any) -> dict[str, Any]:
                    "diagnostics": {"solver_success": True, "nfev": int(sol.nfev),
                                    "final_state_norm": final_norm, "tail_range": tail_span,
                                    "poincare_upcrossings_in_second_half": crossings,
-                                   "observed_period": cycle_period,
+                                   "observed_period": cycle_period, "reference_period": reference,
+                                   "period_difference": cycle_period - reference if cycle_period is not None and reference is not None else None,
                                    "cycle_observed": bool(cycle_period is not None),
                                    "cycle_interpretation": "Finite-time Poincare observation, not global existence proof"}},
         "claims": {"scientific_scope": "dimensionless 4D toy ODE only",

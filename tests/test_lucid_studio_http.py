@@ -50,6 +50,7 @@ class LucidStudioHTTPTests(unittest.TestCase):
         self.assertEqual(status, 200)
         self.assertIn(b"Lucid Dynamics", body)
         self.assertIn(b"/lucid/run", body)
+        self.assertIn(b"Custom parameters", body)
         status, _, _ = self.request("/lucid", origin="https://example.com")
         self.assertEqual(status, 403)
 
@@ -63,6 +64,14 @@ class LucidStudioHTTPTests(unittest.TestCase):
         self.assertEqual(status, 200)
         self.assertTrue(verify_receipt(json.loads(receipt)))
         self.assertIn("attachment", headers["Content-Disposition"])
+
+    def test_overridden_preset(self):
+        status, body, _ = self.request("/lucid/run", {"parameters": {"kappa_meta": 0}, "duration": 40})
+        self.assertEqual(status, 200)
+        record = json.loads(body)["record"]
+        self.assertEqual(record["config"]["effective_regime"], "custom")
+        self.assertIsNone(record["result"]["diagnostics"]["reference_period"])
+        self.assertTrue(verify_receipt(record))
 
     def test_invalid_inputs_and_cross_origin_refused(self):
         status, _, _ = self.request("/lucid/run", {"samples": 999999})

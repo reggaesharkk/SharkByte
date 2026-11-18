@@ -34,7 +34,7 @@ class LucidDynamicsTests(unittest.TestCase):
         invalid = [None, [], {"preset": "wat"}, {"preset": "__class__"},
                    {"parameters": {"P_0": float("nan")}},
                    {"parameters": {"lambda_lucid": 999}},
-                   {"parameters": {"lambda_sim": True}},
+                   {"parameters": {"lambda_sim": 10**400}}, {"parameters": {"lambda_sim": True}},
                    {"parameters": {"evil": 1}},
                    {"duration": -1}, {"duration": 401}, {"duration": float("inf")},
                    {"duration": True}, {"samples": 99}, {"samples": 1601},
@@ -50,6 +50,8 @@ class LucidDynamicsTests(unittest.TestCase):
         for preset in PRESETS:
             with self.subTest(preset=preset):
                 rec = simulate({"preset": preset, "duration": 160, "samples": 300})
+                self.assertEqual(rec["source"]["commit"], "5bc839e6e0cf492882268d8ed47bef6ff82d65fc")
+                self.assertEqual(rec["config"]["effective_regime"], preset)
                 self.assertTrue(verify_receipt(rec))
                 d = rec["result"]["diagnostics"]
                 self.assertEqual(d["cycle_observed"], expected[preset][0])

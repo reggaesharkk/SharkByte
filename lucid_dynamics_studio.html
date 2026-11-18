@@ -35,8 +35,8 @@ canvas{display:block;width:100%;height:auto;aspect-ratio:1000/300;border-radius:
 <h1>Where memory <em>meets recurrence.</em></h1>
 <p class="lede">Explore the original dimensionless four-state soft-wall ODE, zero-drive relaxation cycles and Ψ-memory persistence. This is a mathematical simulation, not a physiological dream model.</p>
 <div class="layout">
-  <aside class="panel"><h2>Model controls</h2><label for="preset">Research regime</label>
-    <select id="preset"><option value="memoryless_collapse">Memoryless feedback · collapse</option><option value="IVc_pure_psi_memory">IVc · Ψ-memory only</option><option value="IVb_coupled_memory" selected>IVb · coupled recovery</option></select>
+  <aside class="panel"><h2>Model controls</h2><label for="preset">Starting preset</label>
+    <select id="preset"><option value="memoryless_collapse">Memoryless feedback · collapse</option><option value="IVc_pure_psi_memory">IVc · Ψ-memory only</option><option value="IVb_coupled_memory" selected>IVb · coupled recovery</option></select><p id="identity" class="meta" aria-live="polite"></p>
     <label for="p0">P₀ · external drive <output id="p0v">0.00</output></label><input id="p0" type="range" min="0" max="6" step="0.05" value="0">
     <label for="sim">λ_sim · self-feedback <output id="simv">7.20</output></label><input id="sim" type="range" min="0" max="10" step="0.05" value="7.2">
     <label for="lucid">λ_lucid · memory coupling <output id="lucidv">0.30</output></label><input id="lucid" type="range" min="0" max="1" step="0.01" value="0.3">
@@ -46,7 +46,7 @@ canvas{display:block;width:100%;height:auto;aspect-ratio:1000/300;border-radius:
     <div class="note">Fixed model constants and initial state from Appendix B v1.0. SciPy LSODA, rtol 10⁻⁹, atol 10⁻¹². Restricted to safe parameter ranges and a bounded request duration. Native SharkByte execution and the quantum engines are unchanged.</div>
   </aside>
   <section class="viz">
-    <div class="metrics"><div class="metric"><small>Observed period</small><strong id="period">—</strong></div><div class="metric"><small>Late γ range</small><strong id="gammaRange">—</strong></div><div class="metric"><small>Terminal state norm</small><strong id="norm">—</strong></div></div>
+    <div class="metrics"><div class="metric"><small>Observed period</small><strong id="period">—</strong><small id="reference"></small></div><div class="metric"><small>Late γ range</small><strong id="gammaRange">—</strong></div><div class="metric"><small>Terminal state norm</small><strong id="norm">—</strong></div></div>
     <div class="panel"><div class="chart-head"><h2>Trajectory · all four states</h2><div class="legend"><span><i style="background:#56f3ed"></i>γ</span><span><i style="background:#b99aff"></i>H_obs</span><span><i style="background:#ffc87b"></i>İ</span><span><i style="background:#8cffa6"></i>Ψ</span></div></div><canvas id="series" width="1000" height="300" role="img" aria-label="Normalized dimensionless state trajectories; each channel scaled independently, see receipt for numerical values"></canvas><p class="note">Each channel is scaled separately to show shape. Use the saved JSON for unnormalized numerical values.</p></div>
     <div class="panel"><div class="chart-head"><h2>Phase portrait · γ vs İ</h2><span class="meta" id="cycles">No simulation loaded</span></div><canvas id="phase" width="1000" height="220" role="img" aria-label="Phase portrait of gamma versus I dot"></canvas><div id="status" role="status" class="status">Select a preset and run the model.</div></div>
   </section>
@@ -62,7 +62,11 @@ const presets = {
   IVb_coupled_memory:[0,7.2,0.3,2.5]
 };
 const keys=['p0','sim','lucid','meta'];let receiptUrl=null, activeReceipt=null, animationId=0, busy=false;
-function updateLabels(){ for(const id of keys) $(id+'v').textContent=Number($(id).value).toFixed(2); $('durationv').textContent=$('duration').value; }
+function updateLabels(){
+  const selected = $('preset').value;
+  const changed = keys.some((key,i) => Number($(key).value) !== presets[selected][i]);
+  $('identity').textContent = changed ? 'Custom parameters' : 'Preset parameters';
+ for(const id of keys) $(id+'v').textContent=Number($(id).value).toFixed(2); $('durationv').textContent=$('duration').value; }
 $('preset').addEventListener('change',()=>{presets[$('preset').value].forEach((v,i)=>{$(keys[i]).value=String(v)});updateLabels()});
 for(const id of [...keys,'duration']) $(id).addEventListener('input',updateLabels);
 function chart(canvas, arrays, palette, mode){
@@ -79,23 +83,24 @@ function chart(canvas, arrays, palette, mode){
     ctx.beginPath();const count=arrays[0].length;for(let j=0;j<count;j++){const [x,y]=transform(i,j);if(j===0)ctx.moveTo(x,y);else ctx.lineTo(x,y)}
     ctx.strokeStyle=palette[i];ctx.lineWidth=mode==='phase'?2.5:1.8;ctx.stroke();
   }
-  ctx.fillStyle='#abb7d7';ctx.font='12px system-ui';ctx.fillText(mode==='phase'?'γ →':'time →',left,bottom+20);
+  ctx.fillStyle='#abb7d7';ctx.font='12px system-ui';ctx.fillText(mode==='phase'?'γ  '+ranges[0][0].toPrecision(3)+' → '+ranges[0][1].toPrecision(3)+'     İ  '+ranges[1][0].toPrecision(3)+' → '+ranges[1][1].toPrecision(3):'model time   0 → '+activeReceipt.config.duration,left,bottom+20);
   return (index)=>{const j=Math.min(arrays[0].length-1,index);const [x,y]=transform(0,j);ctx.beginPath();ctx.arc(x,y,5,0,Math.PI*2);ctx.fillStyle='#ffffff';ctx.fill();};
 }
 function render(rec){
   cancelAnimationFrame(animationId);activeReceipt=rec;
   const d=rec.result.diagnostics;
   $('period').textContent=d.observed_period===null?'not observed':d.observed_period.toFixed(6);
+  $('reference').textContent = d.reference_period == null ? 'No reference period for these parameters' : 'Source '+d.reference_period.toFixed(6)+(d.period_difference == null ? ' · insufficient late crossings' : ' · Δ '+d.period_difference.toExponential(2));
   $('gammaRange').textContent=d.tail_range.gamma.toFixed(4);
   $('norm').textContent=d.final_state_norm.toExponential(3);
-  $('cycles').textContent=d.cycle_observed?'Repeated upward γ=2 crossings':'No repeated late upward crossing';
+  $('cycles').textContent=d.poincare_upcrossings_in_second_half.length+' upward γ=2 crossings in second half';
   const series=[rec.result.gamma,rec.result.H_obs,rec.result.I_dot,rec.result.Psi];
   const colors=['#56f3ed','#b99aff','#ffc87b','#8cffa6'];
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
   function frame(start){
     const mark1=chart($('series'),series,colors,'series');
     const mark2=chart($('phase'),[series[0],series[2]],['#b99aff'],'phase');
-    if(!reduced){const j=Math.floor((performance.now()-start)/28)%series[0].length;mark1(j);mark2(j);animationId=requestAnimationFrame(()=>frame(start))}
+    if(!reduced){const j=Math.floor((performance.now()-start)/28);if(j<series[0].length){mark1(j);mark2(j);animationId=requestAnimationFrame(()=>frame(start))}}
   }
   frame(performance.now());
 }
@@ -107,8 +112,8 @@ async function run(){
     const response=await fetch('/lucid/run',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
     const output=await response.json();if(!response.ok)throw Error(output.error||`HTTP ${response.status}`);
     render(output.record);receiptUrl=output.receipt_url;$('save').disabled=false;
-    status.textContent=`Completed · ${output.record.config.preset} · ${output.record.result.diagnostics.nfev.toLocaleString()} field evaluations · SHA-256 receipt available`;
-  }catch(e){status.classList.add('error');status.textContent=`Simulation refused: ${e.message}`}
+    status.textContent=`Completed · ${output.record.config.effective_regime} · starting preset ${output.record.config.preset} · ${output.record.result.diagnostics.nfev.toLocaleString()} field evaluations · SHA-256 receipt available`;
+  }catch(e){status.classList.add('error');status.textContent=`Run failed: ${e.message}. Plots show the last completed run, if available.`}
   finally{busy=false;$('run').disabled=false}
 }
 $('run').addEventListener('click',run);
