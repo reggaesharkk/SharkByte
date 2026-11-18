@@ -1,0 +1,104 @@
+{
+  "circuit_identity": {
+    "connected_cnot_chain_edges": 49,
+    "expanded_local_hadamards": 31,
+    "gate_count": 81,
+    "ordered_gates_sha256": "7945eae6c8e6b814d7689fc1041e098bd1a6f9729c2155e604f4253a68a26a74",
+    "qubits": 50
+  },
+  "cirq_reference": {
+    "all_tail_bits_correlated_per_shot": true,
+    "elapsed_seconds": 3.5437371609999673,
+    "method": "independent Cirq CliffordSimulator measurement invariant",
+    "observed_correlated_tail_branches": [
+      0,
+      1
+    ],
+    "repetitions": 512,
+    "seed": 20261117,
+    "status": "PASS",
+    "unexpanded_tail_qubits": 19
+  },
+  "code_sha256": {
+    "benchmarks/sb_quantum_benchmark/frontier30.py": "d221c2157fc22ae0b1d517fd64003c9aa933df7eba00b4133a61ff698647529d",
+    "benchmarks/sb_quantum_benchmark/quantum_frontend.py": "beec7c5f3e428143a74035c842cd08ecc545310d428a5f6173d3896d2615f837",
+    "benchmarks/sb_quantum_benchmark/sparse_backend.py": "186aad8bed0b0c0ff13efc642fe284a6d1fc9cccdd2c36174b434b6ddbe8572c",
+    "examples/connected_ghz50_4294967296.sb": "ef63f4e335e113d1e7123cf04370c9cc265c678cee1c19077b1afa012a9f894d",
+    "tools/run_connected_ghz50_materialization.py": "baf044d04046aa41d2e62467f6dab8ce31a3cdc010ca8357e64dbf3e4f1c878a"
+  },
+  "entanglement_witness": {
+    "all_nontrivial_bipartitions": {
+      "entropy_bits": 1.0,
+      "reason": "The pre-local-unitary GHZ branches differ on every nonempty side of every proper bipartition; later gates are local unitaries and preserve Schmidt coefficients.",
+      "schmidt_probabilities": [
+        0.5,
+        0.5
+      ],
+      "schmidt_rank": 2
+    },
+    "state_construction": "H on q0 followed by a connected 49-edge CNOT chain, then local H gates on q0..q(expanded-1)",
+    "status": "PASS"
+  },
+  "environment": {
+    "architecture": "x86_64",
+    "available_memory_before_bytes": 32524480512,
+    "chunk_elements": 4194304,
+    "cirq_core": "1.6.1",
+    "disk_reserve_bytes": 10737418240,
+    "free_disk_before_bytes": 502999674880,
+    "memory_budget_bytes": 4294967296,
+    "numpy": "2.5.5",
+    "platform": "Linux-6.12.117+deb13-cloud-amd64-x86_64-with-glibc2.41",
+    "python": "3.13.5"
+  },
+  "format": "sharkbyte-connected-ghz50-disk-materialization-v1",
+  "full_array_check": {
+    "all_expected_amplitudes_matched": true,
+    "amplitude_array_sha256": "a2a80de9ba3ab8b8a275f9ba5ef95487bc68ca866f84a5384ba23bb2b51b3e4b",
+    "basis_array_sha256": "8df865de3c227d77a94063a8e0acd162aa290a2ac5f16293603d299b05c2191a",
+    "basis_entries_compared": 4294967296,
+    "complex_amplitudes_compared": 4294967296,
+    "max_complex_amplitude_error": 0.0,
+    "max_probability_error": 0.0,
+    "probability_sum": 1.0,
+    "status": "PASS",
+    "strictly_increasing_basis_proof": true,
+    "temporary_arrays_retained": false,
+    "tolerance": {
+      "amplitude": 1e-15,
+      "normalization": 2e-12,
+      "probability": 1e-15
+    }
+  },
+  "interpretation": {
+    "claim_limit": "The amplitude table is a structured GHZ-family result. Cirq independently checks a Clifford measurement invariant; it does not independently compare every amplitude.",
+    "dense_complex128_statevector_bytes": 18014398509481984,
+    "dense_size_human": "16 PiB",
+    "method": "exhaustive disk-backed materialization and full-array verification from the closed-form GHZ/local-H amplitude equation",
+    "not_a_dense_50_qubit_statevector": true,
+    "not_a_general_gate_by_gate_simulation": true
+  },
+  "memory_measurements": {
+    "configured_budget_bytes": 4294967296,
+    "worker_current_rss_at_receipt_bytes": 318156800,
+    "worker_high_water_rss_bytes": 620064768,
+    "worker_sampled_peak_rss_bytes": 418828288
+  },
+  "notebook_sha256": null,
+  "packed_array_bytes": 103079215104,
+  "packed_format": {
+    "amplitude": "little-endian complex128",
+    "basis": "little-endian uint64"
+  },
+  "receipt_sha256": "3df36dc723a1ae06424348210fac39e5f7823e2db73ecec672fc79da21469c7f",
+  "source_commit": "441b5df1cbfc7060a9656537ca9feb2c78f7d955",
+  "source_path": "examples/connected_ghz50_4294967296.sb",
+  "source_sha256": "ef63f4e335e113d1e7123cf04370c9cc265c678cee1c19077b1afa012a9f894d",
+  "status": "PASS",
+  "target_active_states": 4294967296,
+  "timing_seconds": {
+    "full_array_verification_and_hashing": 1655.350729754,
+    "packed_disk_materialization": 1150.616781683,
+    "total_before_receipt": 2805.967557437
+  }
+}
