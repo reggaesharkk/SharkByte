@@ -1,0 +1,95 @@
+{
+  "cases": {
+    "ghz20-completed": {
+      "receipt_sha256": "87aef0098eb1efe307d0d55c0244aaeafc3c5f39be7a968446f523158852e6af",
+      "record_sha256": "3d769ee1375a89f561d26f1fc9635053b7d5b06acd498e32607f7c3eb3e33d24",
+      "replay": {
+        "exit_code": 0,
+        "record_sha256": "3d769ee1375a89f561d26f1fc9635053b7d5b06acd498e32607f7c3eb3e33d24",
+        "single_replay_wall_seconds": 0.200855,
+        "status": "PASS"
+      },
+      "result": {
+        "backend": "auto",
+        "counts": {
+          "00000000000000000000": 1
+        },
+        "memory_budget_bytes": 268435456,
+        "qubits": 20,
+        "representation": "sparse-dict",
+        "seed": 20261116,
+        "shots": 1,
+        "status": "COMPLETED",
+        "transitions": []
+      },
+      "source_sha256": "f92d8363d883093bb4cde83997c97735ed80c9d5a57abde76da2abfa015de67f"
+    },
+    "random-connected20-dense-switch": {
+      "receipt_sha256": "88df08858c9e4f94a91328ea88cf2fe85c542a1cbfee481956ea1071bcd14f75",
+      "record_sha256": "abdb2721b3991f516b7df9a23710eed08ac128a3318ad4327b81c852954472e0",
+      "replay": {
+        "exit_code": 0,
+        "record_sha256": "abdb2721b3991f516b7df9a23710eed08ac128a3318ad4327b81c852954472e0",
+        "single_replay_wall_seconds": 0.501553,
+        "status": "PASS"
+      },
+      "result": {
+        "backend": "auto",
+        "counts": {
+          "01011100110110011101": 1
+        },
+        "memory_budget_bytes": 268435456,
+        "qubits": 20,
+        "representation": "dense-complex128",
+        "seed": 2026111620,
+        "shots": 1,
+        "status": "COMPLETED",
+        "transitions": [
+          {
+            "estimated_transition_peak_bytes": 50331648,
+            "from": "sparse-dict",
+            "gate_index": 16,
+            "reason": "density threshold",
+            "support": 65536,
+            "to": "dense-complex128"
+          }
+        ]
+      },
+      "source_sha256": "b87f4bbff2b69854575c71dcb38b6e1cbc15e10f28ad2bfa902f14bf099cebe8"
+    },
+    "random-connected20-resource-stop": {
+      "receipt_sha256": "265ed1aa4a4b7d8a4a1ebb02e8cfdbd85400f21ba9f428d6862b696c5816ff82",
+      "record_sha256": "286f64fbe95c45197bbba7d02f29b1e671656634efdd595b8b89cd0e41bf8f87",
+      "replay": {
+        "exit_code": 1,
+        "record_sha256": "286f64fbe95c45197bbba7d02f29b1e671656634efdd595b8b89cd0e41bf8f87",
+        "single_replay_wall_seconds": 0.18857,
+        "status": "PASS"
+      },
+      "result": {
+        "backend": "auto",
+        "gate_index": 10,
+        "memory_budget_bytes": 1048576,
+        "qubits": 20,
+        "reason": "sparse gate would exceed memory budget and dense representation is not safe",
+        "representation": "sparse-dict",
+        "seed": 2026111620,
+        "shots": 1,
+        "status": "RESOURCE_STOP",
+        "transitions": []
+      },
+      "source_sha256": "b87f4bbff2b69854575c71dcb38b6e1cbc15e10f28ad2bfa902f14bf099cebe8"
+    }
+  },
+  "environment": {
+    "architecture": "aarch64",
+    "numpy": "2.3.5",
+    "python": "3.14.4",
+    "release": "6.18.58.1-microsoft-standard-WSL2",
+    "sys_platform": "linux",
+    "system": "Linux"
+  },
+  "schema": 1,
+  "scope": "Receipt integrity and deterministic CLI replay; not a benchmark or a correctness proof.",
+  "status": "PASS"
+}

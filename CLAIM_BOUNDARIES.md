@@ -5,6 +5,7 @@ Claims are limited to the documented CLI, VM, classical statevector simulator, b
 - Quantum results are classical simulation, not hardware results.
 - The 16,777,216-state Studio mode is one fixed CPU sparse benchmark. Its receipt verifies the analytical count and probability checks and links historical Cirq checks for the exact same circuit; the Studio worker does not run Cirq or independently recompute every amplitude.
 - Adaptive sparse/dense results cover three 20-qubit workloads. Complete candidate vectors matched the dense NumPy candidate; the connected high-support circuit additionally reuses pre-existing Qiskit and Cirq receipts. Sparse remains faster for the tested low-support circuits, and the adaptive candidate is not enabled by default.
+- The separate adaptive CLI acceptance packet replays three recorded opt-in policy outcomes on Windows ARM64 and Ubuntu WSL2 ARM64. It confirms deterministic receipt identity, sparse/dense selection, and one bounded resource refusal. It does not by itself establish quantum correctness, speed, physical hardware behavior, or an ARM64 GitHub-hosted CI result; the dense-vector and independent-reference evidence is documented separately.
 - No dense 40-qubit statevector was allocated or tested.
 - OpenQASM behavior is checked for a finite subset, not all of OpenQASM 3.
 - Sampled counts may vary across PRNG/runtime versions.
