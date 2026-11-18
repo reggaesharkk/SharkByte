@@ -92,6 +92,12 @@ jobs:
       - name: Unit test suite
         run: python -m unittest discover -s tests -v
 
+      - name: Build the three SharkByte Web/App examples
+        run: |
+          python -m sharkbyte_alpha web build examples/web/research-portfolio
+          python -m sharkbyte_alpha app build examples/web/interactive-dashboard
+          python -m sharkbyte_alpha app build examples/web/task-app
+
       - name: Verify phase-flip recovery and negative controls
         run: python -B tools/phase_flip_recovery_cases.py > phase-flip-recovery-ci.json
 

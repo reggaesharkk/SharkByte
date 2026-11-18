@@ -23,3 +23,8 @@ sharkbyte qasm examples/bell.sb --output bell.qasm
 Run the full acceptance with `python tools/ci_acceptance.py`. It creates a fresh environment, installs this source tree, runs tests outside the checkout under normal/`-O`/`-OO`, and checks both native guard refusals. The guard checks are negative tests only.
 
 Run the scoped archived-vector comparison with `python tools/replay_qiskit_vectors.py --output qiskit-replay.json`; it does not install or invoke Qiskit.
+
+
+## Create websites and web apps
+
+From the checkout or installed CLI, use `sharkbyte web new my-website`, `sharkbyte web build my-website`, and `sharkbyte web serve my-website`. Use `sharkbyte app new my-app` to start with PWA output enabled. The generated static files are in `dist/`; preview listens on localhost. See the [Web/App Builder guide](docs/web-app-builder.md) for the SharkByte project JSON format, examples, security boundaries, and test commands.

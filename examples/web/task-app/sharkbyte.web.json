@@ -1,0 +1,34 @@
+{
+  "schema": "sharkbyte.web/v1",
+  "type": "app",
+  "name": "SharkByte Tasks",
+  "home": "tasks",
+  "pwa": true,
+  "state": {},
+  "theme": {
+    "primary": "#176b63",
+    "background": "#f1f6f4",
+    "surface": "#ffffff",
+    "text": "#172622"
+  },
+  "pages": [
+    {
+      "id": "tasks",
+      "title": "My tasks",
+      "sections": [
+        {
+          "kind": "text",
+          "text": "Add tasks, mark them complete, or delete them. Your list stays in this browser and the app shell works offline after its first visit."
+        },
+        {
+          "kind": "task_form"
+        },
+        {
+          "kind": "card",
+          "title": "Private to this browser",
+          "text": "Tasks use local browser storage. They are not uploaded."
+        }
+      ]
+    }
+  ]
+}

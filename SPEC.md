@@ -11,3 +11,6 @@ Rotation gates `rx`, `ry`, and `rz` use radians and accept the same bounds as co
 QASM emits OpenQASM 3 declarations, supported gates in source order, and `c[i] = measure q[i]`. Qubit 0 is the least-significant state-index bit; displayed bitstrings are MSB-left. The Qiskit reference subset covers 22 circuits only; this is not a general OpenQASM conformance claim.
 
 Both native backends refuse execution with `native backends are disabled: containment unavailable`. No native execution, containment, or cancellation claim is made.
+
+
+The web/app builder accepts `sharkbyte.web/v1` JSON source and emits static HTML/CSS/JavaScript. CLI commands are `web|app new|build|serve`. It supports a bounded set of pages, navigation, content sections, local state, task persistence, image assets, and optional PWA output. It does not run user code, provide a backend, or create native mobile packages. See [docs/web-app-builder.md](docs/web-app-builder.md).

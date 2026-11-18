@@ -37,9 +37,29 @@ def main(argv=None):
     run.add_argument('--memory-mib', type=int, help='auto backend state-memory planning budget (default 256 MiB)')
     qasm=sub.add_parser('qasm');qasm.add_argument('source');qasm.add_argument('--output',required=True)
     v=sub.add_parser('verify-run');v.add_argument('record')
+    for group in ('web','app'):
+        gp=sub.add_parser(group,help='create, build, or serve a SharkByte '+group+' project')
+        actions=gp.add_subparsers(dest=group+'_action',required=True)
+        new=actions.add_parser('new');new.add_argument('name');new.add_argument('--path')
+        build=actions.add_parser('build');build.add_argument('project');build.add_argument('--output')
+        serve=actions.add_parser('serve');serve.add_argument('project');serve.add_argument('--port',type=int,default=8121)
     args=parser.parse_args(argv)
     try:
-        if args.command=='doctor':value={'version':__version__,'python':platform.python_version(),'architecture':platform.machine(),'vm_step_limit':VM_STEPS,'native':'disabled','hybrid':'experimental vm'}
+        if args.command in ('web','app'):
+            from . import web as web_builder
+            action = getattr(args, args.command + '_action')
+            if action == 'new':
+                path = pathlib.Path(args.path) if args.path else pathlib.Path(args.name)
+                value=web_builder.new_project(args.name,path,app=args.command=='app')
+            else:
+                project=pathlib.Path(args.project)
+                if not project.is_dir(): raise ValueError('project directory does not exist: '+str(project))
+                source=project/'sharkbyte.web.json'
+                output=pathlib.Path(args.output) if args.output else project/'dist'
+                value=web_builder.build_project(source,project,output)
+                if action == 'serve':
+                    print(json.dumps(value,sort_keys=True));web_builder.serve_output(output,args.port);return 0
+        elif args.command=='doctor':value={'version':__version__,'python':platform.python_version(),'architecture':platform.machine(),'vm_step_limit':VM_STEPS,'native':'disabled','hybrid':'experimental vm'}
         elif args.command=='verify-run':value=verify(json.loads(pathlib.Path(args.record).read_text(encoding='utf8')))
         elif args.command=='qasm':
             source=read_source(args.source);output=quantum.to_qasm(parse_quantum(source));target=pathlib.Path(args.output)
@@ -80,5 +100,5 @@ def main(argv=None):
                 return 1 if result.get('status') == 'RESOURCE_STOP' else 0
         print(encoded)
         return 1 if value.get('result', {}).get('status') == 'RESOURCE_STOP' else 0
-    except (ValueError,RuntimeError,OSError,UnicodeError,vm.SharkError) as exc:
+    except (ValueError,RuntimeError,OSError,UnicodeError,TypeError,vm.SharkError) as exc:
         print('sharkbyte: '+type(exc).__name__+': '+str(exc),file=sys.stderr);return 1

@@ -3,6 +3,7 @@
 import argparse
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
+import mimetypes
 from itertools import islice
 from pathlib import Path
 import re
@@ -10,9 +11,13 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import threading
 import time
 from uuid import uuid4
 import webbrowser
+from io import BytesIO
+from zipfile import ZipFile, ZIP_DEFLATED
+from sharkbyte_alpha.web import build_project, WebProjectError, MAX_PROJECT_BYTES
 
 from sharkbyte_alpha import vm
 from sharkbyte_alpha.cli import MAX_SOURCE_BYTES, envelope
@@ -20,6 +25,7 @@ from tools.studio_scaling_jobs import ScalingJobManager, StudioResourceRefusal
 
 
 ROOT = Path(__file__).resolve().parent
+WEB_EXAMPLES = {"portfolio": "research-portfolio", "dashboard": "interactive-dashboard", "tasks": "task-app"}
 EXAMPLES = {"classical": "example.sb", "quantum": "bell.sb", "hybrid": "adaptive.sb",
             "frontier": "frontier_sparse_40_131072.sb", "scaling": "frontier_sparse_40_131072.sb",
             "scaling_16m": "frontier_sparse_40_131072.sb"}
@@ -49,6 +55,26 @@ class Studio(BaseHTTPRequestHandler):
         if self.path == "/examples":
             return self.reply(200, {mode: (ROOT / "examples" / name).read_text(encoding="utf-8")
                                     for mode, name in {**EXAMPLES, "phase_recovery": "phase_flip_recovery.sb"}.items()})
+        if self.path == "/web/examples":
+            return self.reply(200, {key: (ROOT / "examples" / "web" / folder / "sharkbyte.web.json").read_text(encoding="utf-8")
+                                    for key, folder in WEB_EXAMPLES.items()})
+        match = re.fullmatch(r"/web/export/([a-f0-9]{32})\.zip", self.path)
+        if match and match[1] in self.server.web_builds:
+            root = self.server.web_builds[match[1]]
+            marker = json.loads((root / ".sharkbyte-build.json").read_text(encoding="utf-8"))
+            archive = BytesIO()
+            with ZipFile(archive, "w", ZIP_DEFLATED) as z:
+                for rel in marker["files"]:
+                    z.writestr(rel, (root / rel).read_bytes())
+            body = archive.getvalue()
+            self.send_response(200)
+            self.send_header("Content-Type", "application/zip")
+            self.send_header("Content-Disposition", f'attachment; filename="sharkbyte-web-{match[1]}.zip"')
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            self.wfile.write(body)
+            return
         match = re.fullmatch(r"/jobs/([a-f0-9]{32})", self.path)
         if match:
             snapshot = self.server.scaling_jobs.snapshot(match[1])
@@ -71,6 +97,36 @@ class Studio(BaseHTTPRequestHandler):
         execution_id = uuid4().hex
         if not self.local_request():
             return self.reply(403, {"execution_id": execution_id, "error": "Use the local Studio page."})
+        if self.path == "/web/build":
+            try:
+                size = int(self.headers.get("Content-Length", "0"))
+                if self.headers.get_content_type() != "application/json" or not 0 < size <= MAX_PROJECT_BYTES + 1024:
+                    raise ValueError("Expected a bounded SharkByte web project JSON request.")
+                request = json.loads(self.rfile.read(size))
+                if not isinstance(request, dict):
+                    raise ValueError("Expected a project object.")
+                key, source = request.get("example"), request.get("source")
+                if key not in WEB_EXAMPLES or not isinstance(source, str):
+                    raise ValueError("Choose one of the bundled web/app examples.")
+                if len(source.encode("utf-8")) > MAX_PROJECT_BYTES:
+                    raise ValueError("Project source exceeds 1,000,000 bytes.")
+                token = uuid4().hex
+                project = ROOT / "examples" / "web" / WEB_EXAMPLES[key]
+                output = self.server.receipt_dir / "web" / token
+                result = build_project(source, project, output)
+                self.server.web_builds[token] = output
+                self.server.preview_server.preview_builds[token] = output
+                while len(self.server.web_builds) > 4:
+                    oldest = next(iter(self.server.web_builds))
+                    self.server.web_builds.pop(oldest)
+                    self.server.preview_server.preview_builds.pop(oldest, None)
+                    shutil.rmtree(self.server.receipt_dir / "web" / oldest, ignore_errors=True)
+                home = json.loads(source).get("home", "index")
+                return self.reply(200, {"status": result["status"], "files": result["files"],
+                                        "preview_url": f"http://127.0.0.1:{self.server.preview_server.server_port}/{token}/{home}.html",
+                                        "export_url": f"/web/export/{token}.zip"})
+            except (ValueError, TypeError, OSError, WebProjectError) as exc:
+                return self.reply(422, {"error": str(exc)})
         cancel_match = re.fullmatch(r"/jobs/([a-f0-9]{32})/cancel", self.path)
         if cancel_match:
             snapshot = self.server.scaling_jobs.cancel(cancel_match[1])
@@ -168,15 +224,56 @@ class Studio(BaseHTTPRequestHandler):
                          "disassembly": vm.disassemble(bytes.fromhex(bytecode))[:32768] if bytecode else None})
 
 
+class WebPreviewHandler(BaseHTTPRequestHandler):
+    """Serve only generated build-manifest files from a separate localhost origin."""
+
+    def do_GET(self):
+        match = re.fullmatch(r"/([a-f0-9]{32})/(.+)", self.path)
+        if self.headers.get("Host") != f"127.0.0.1:{self.server.server_port}" or not match:
+            return self.send_error(404)
+        root = self.server.preview_builds.get(match[1])
+        if root is None:
+            return self.send_error(404)
+        try:
+            allowed = json.loads((root / ".sharkbyte-build.json").read_text(encoding="utf-8"))["files"]
+        except Exception:
+            allowed = []
+        rel = match[2]
+        if rel not in allowed or not (root / rel).is_file():
+            return self.send_error(404)
+        path = root / rel
+        ctype = mimetypes.guess_type(path.name)[0] or "application/octet-stream"
+        if path.suffix == ".webmanifest":
+            ctype = "application/manifest+json"
+        body = path.read_bytes()
+        self.send_response(200)
+        self.send_header("Content-Type", ctype)
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.send_header("Content-Security-Policy", "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors " + self.server.studio_origin)
+        self.end_headers()
+        self.wfile.write(body)
+
+    def log_message(self, *args):
+        pass
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--port", type=int, default=8120)
     parser.add_argument("--no-browser", action="store_true")
     args = parser.parse_args()
-    with tempfile.TemporaryDirectory(prefix="sharkbyte-receipts-") as folder, ThreadingHTTPServer(("127.0.0.1", args.port), Studio) as server:
+    with tempfile.TemporaryDirectory(prefix="sharkbyte-receipts-") as folder, ThreadingHTTPServer(("127.0.0.1", args.port), Studio) as server, ThreadingHTTPServer(("127.0.0.1", 0), WebPreviewHandler) as preview_server:
         server.receipt_dir = Path(folder)
         server.receipts = {}
+        server.web_builds = {}
+        preview_server.preview_builds = {}
+        preview_server.studio_origin = f"http://127.0.0.1:{server.server_port}"
+        server.preview_server = preview_server
         server.scaling_jobs = ScalingJobManager(server.receipt_dir, server.receipts)
+        preview_thread = threading.Thread(target=preview_server.serve_forever, daemon=True)
+        preview_thread.start()
         url = f"http://127.0.0.1:{server.server_port}/"
         print(f"SharkByte Studio · {url}", flush=True)
         if not args.no_browser:
@@ -187,6 +284,8 @@ def main():
             pass
         finally:
             server.scaling_jobs.shutdown()
+            preview_server.shutdown()
+            preview_thread.join()
 
 
 if __name__ == "__main__":

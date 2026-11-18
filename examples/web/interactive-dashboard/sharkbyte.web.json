@@ -1,0 +1,74 @@
+{
+  "schema": "sharkbyte.web/v1",
+  "type": "app",
+  "name": "Research Metrics Dashboard",
+  "home": "overview",
+  "state": {
+    "visits": 0,
+    "threshold": 50
+  },
+  "theme": {
+    "primary": "#5b4bc4",
+    "background": "#f5f4fa",
+    "surface": "#ffffff",
+    "text": "#211d32"
+  },
+  "pages": [
+    {
+      "id": "overview",
+      "title": "Project Dashboard",
+      "sections": [
+        {
+          "kind": "text",
+          "text": "An interactive sample dashboard. The controls update browser-side state; chart data is illustrative."
+        },
+        {
+          "kind": "stat",
+          "label": "Active sessions",
+          "value": 128
+        },
+        {
+          "kind": "stat",
+          "label": "Completion",
+          "value": "84%"
+        },
+        {
+          "kind": "button",
+          "label": "Refresh count: {value}",
+          "target": "visits",
+          "action": "increment"
+        },
+        {
+          "kind": "range",
+          "label": "Alert threshold",
+          "min": 0,
+          "max": 100,
+          "value": 50,
+          "target": "threshold"
+        },
+        {
+          "kind": "chart",
+          "title": "Weekly activity",
+          "values": [
+            18,
+            27,
+            22,
+            38,
+            31,
+            49,
+            42,
+            60
+          ]
+        },
+        {
+          "kind": "list",
+          "items": [
+            "Controls update locally",
+            "No data leaves your browser",
+            "Replace sample values in the source JSON"
+          ]
+        }
+      ]
+    }
+  ]
+}

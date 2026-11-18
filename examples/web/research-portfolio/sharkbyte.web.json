@@ -1,0 +1,91 @@
+{
+  "schema": "sharkbyte.web/v1",
+  "type": "website",
+  "name": "SharkByte Research Portfolio",
+  "home": "home",
+  "theme": {
+    "primary": "#176b63",
+    "background": "#f3f7f6",
+    "surface": "#ffffff",
+    "text": "#172622"
+  },
+  "pages": [
+    {
+      "id": "home",
+      "title": "Research & Engineering",
+      "sections": [
+        {
+          "kind": "text",
+          "text": "An independent research portfolio exploring computation, reproducibility, and useful developer tools."
+        },
+        {
+          "kind": "card",
+          "title": "Current focus",
+          "text": "Open-source software, reproducible experiments, and carefully scoped scientific computing."
+        },
+        {
+          "kind": "link",
+          "text": "Explore projects →",
+          "href": "projects.html"
+        }
+      ]
+    },
+    {
+      "id": "projects",
+      "title": "Selected Projects",
+      "sections": [
+        {
+          "kind": "card",
+          "title": "SharkByte",
+          "text": "A small programming language and bounded CPU simulation toolkit."
+        },
+        {
+          "kind": "card",
+          "title": "Reproducible research",
+          "text": "Versioned methods, explicit assumptions, and machine-checkable receipts."
+        },
+        {
+          "kind": "list",
+          "items": [
+            "Compiler and VM experiments",
+            "Scientific computing tools",
+            "Open-source documentation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "publications",
+      "title": "Publications & Notes",
+      "sections": [
+        {
+          "kind": "text",
+          "text": "This page is a public project index. Add verified citation metadata here as it becomes available."
+        },
+        {
+          "kind": "list",
+          "items": [
+            "Research notes",
+            "Methods and reproducibility reports",
+            "Software release documentation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "documentation",
+      "title": "Documentation",
+      "sections": [
+        {
+          "kind": "text",
+          "text": "Browse the SharkByte source repository for installation, examples, compatibility notes, and release boundaries."
+        },
+        {
+          "kind": "link",
+          "text": "SharkByte repository",
+          "href": "https://github.com/reggaesharkk/SharkByte"
+        }
+      ]
+    }
+  ]
+}

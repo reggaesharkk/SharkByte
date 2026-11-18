@@ -43,6 +43,22 @@ Download and extract the GitHub source ZIP or clone the repository. From the che
 
 Open [http://127.0.0.1:8120/](http://127.0.0.1:8120/). Studio listens on your own computer. Keep the terminal running and press Ctrl+C to stop it. If the port is busy, pass `--port 8121` and open the URL printed by the launcher.
 
+### Build a website or installable web app
+
+Studio also includes a **Web / App** workspace with editable SharkByte project JSON, a build action, a sandboxed local preview, and ZIP export. The CLI can create and compile websites and PWAs:
+
+```sh
+sharkbyte web new my-website
+sharkbyte web build my-website
+sharkbyte web serve my-website
+
+sharkbyte app new my-tasks
+sharkbyte app build my-tasks
+sharkbyte app serve my-tasks
+```
+
+Projects use the `sharkbyte.web/v1` declarative DSL; `app new` enables PWA output by default. The task example supports add, complete, and delete with browser-local persistence and a generated offline cache. This creates static browser applications, not native mobile packages or server-side services. See the [Web/App Builder guide](docs/web-app-builder.md) for complete examples, source format, limitations, and checks.
+
 | Mode | What it runs |
 | --- | --- |
 | Classical | SharkVM, with a 50,000,000-instruction limit |

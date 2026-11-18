@@ -17,3 +17,13 @@
 | Hosted CI | PASS on current functional source | Source commit `bfe52efe568249f7d9c5dd0f5bc26dcbd132d624` passed [run 43602167885](https://github.com/reggaesharkk/SharkByte/actions/runs/43602167885): Ubuntu, Windows, and Ubuntu 24.04 ARM64 backend agreement. Later updates record documentation status only. |
 
 Historical evidence applies only to its stated artifact, version, host, and scope. See PUBLIC_STAGE_ACCEPTANCE.md.
+
+
+## Web/App Builder v0.1 feature gate
+
+| Gate | Status | Scope |
+|---|---|---|
+| Declarative compiler and CLI | IMPLEMENTED, local checks | Strict JSON DSL, deterministic HTML/CSS/JS output, `web` and `app` new/build/serve commands. Current feature-branch Windows and hosted Windows/Ubuntu CI checks are pending. |
+| Studio source/build/preview/export | IMPLEMENTED, endpoint tests | Bundled project editor, validated compiler call, allow-listed preview files, sandboxed iframe, ZIP export. Visual editing is not included. |
+| PWA packaging | IMPLEMENTED, static checks | Manifest, SVG icon, pre-cache service worker, task CRUD and browser-local persistence. Real browser offline behavior is not yet browser-automated. |
+| Backend, auth, native apps | NOT IMPLEMENTED | No API integrations, server-side execution, authentication, databases, or native Android/iOS/desktop outputs. |
