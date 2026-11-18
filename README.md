@@ -153,6 +153,8 @@ The first **4,294,967,296-state** attempt remains recorded as **RESOURCE_STOP**:
 
 A dense complex128 vector for 50 qubits would require **16 PiB**. No dense 50-qubit statevector was allocated. This result demonstrates exhaustive disk-backed materialization and structured analytical verification for this GHZ family, not a general-purpose 50-qubit gate-by-gate simulation. The retry receipt binds source, code, and notebook hashes to commit `441b5df1cbfc7060a9656537ca9feb2c78f7d955`; the verifier confirms receipt integrity and provenance against that commit, but does not recreate the deleted arrays or prove authorship. The earlier 2³² resource-stop and the 2³¹ PASS remain preserved as separate historical records.
 
+A Google Compute Engine replay at the same 4,294,967,296-state tier recorded `PASS`. The SHA-256 digests for the packed basis and amplitude arrays both match the Colab retry. [GCP receipt](evidence/connected-ghz50-gcp/2p32/sharkbyte-ghz50-4b-gcp-receipt.json) · [Colab retry receipt](evidence/connected-ghz50-colab/retry-2p32/sharkbyte-connected-ghz50-4294967296-colab.json)
+
 [50-qubit run bundles, receipts, and manifests](evidence/connected-ghz50-colab/) ·
 [Reproduction notebook](notebooks/SharkByte-Colab-Connected-50Q-2B.ipynb) ·
 [Worker implementation](tools/run_connected_ghz50_materialization.py)
