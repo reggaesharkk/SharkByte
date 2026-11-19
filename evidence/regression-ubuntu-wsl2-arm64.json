@@ -1,0 +1,53 @@
+{
+  "schema": "sharkbyte-platform-regression-v1",
+  "target": "ubuntu-wsl2-arm64",
+  "head_commit": "ad2b39a2ed9b017564e5510472ff1dea424a2de2",
+  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "implementation": "CPython",
+  "system": "Linux",
+  "release": "6.18.58.1-microsoft-standard-WSL2",
+  "machine": "AARCH64",
+  "windows_pe_machine": null,
+  "tests_run": 131,
+  "failures": 0,
+  "errors": 0,
+  "skipped": [
+    {
+      "test": "test_assignment_failure_prevents_execution (test_windows_bounded_job.JobTests.test_assignment_failure_prevents_execution)",
+      "reason": "Win32 Job Object"
+    },
+    {
+      "test": "test_descendant_drained_on_failure (test_windows_bounded_job.JobTests.test_descendant_drained_on_failure)",
+      "reason": "Win32 Job Object"
+    },
+    {
+      "test": "test_invalid_receipt_and_existing_destination (test_windows_bounded_job.JobTests.test_invalid_receipt_and_existing_destination)",
+      "reason": "Win32 Job Object"
+    },
+    {
+      "test": "test_last_handle_closes_suspended_worker (test_windows_bounded_job.JobTests.test_last_handle_closes_suspended_worker)",
+      "reason": "Win32 Job Object"
+    },
+    {
+      "test": "test_publication_deadline_rolls_back_only_this_result (test_windows_bounded_job.JobTests.test_publication_deadline_rolls_back_only_this_result)",
+      "reason": "Win32 Job Object"
+    }
+  ],
+  "elapsed_seconds": 15.358244374000009,
+  "status": "PASS",
+  "sha256": {
+    "tools/high_support/check_platform_regressions.py": "0cdde070fbeeced295c32df3c0048cff2fe1b9520746a3467bb6b087786118d4",
+    "tools/high_support/check_certified_support.py": "0185916fe6eaf892f77f2a31d37fc5f9f86e440daa8e5a5054d7978ed805cb25",
+    "benchmarks/sb_quantum_benchmark/certified_support.py": "0619fe00cbde7c8d17cce7861e4bc505308d0089efd65f9c7c1c9b993d6361f4",
+    "benchmarks/sb_quantum_benchmark/bounded_support.py": "1e4de0404d6d2cd41892fbd0fb7882da66334d58dbfc8fff98ded5edd0dd973e",
+    "benchmarks/sb_quantum_benchmark/sparse_backend.py": "186aad8bed0b0c0ff13efc642fe284a6d1fc9cccdd2c36174b434b6ddbe8572c",
+    "tests/test_certified_support.py": "42a108010269cc4ad4d66a56d84905525428da62cd189d9a3a7f6942d45cfef6",
+    "README.md": "7c37867b424fdb0d51157a4e6925c0d34b029345ffd70e552b238b0fe94dd10d",
+    "CLAIM_BOUNDARIES.md": "d1e2cc829846df5182e3bb83632923b7ca91a547b4e4d27729dfb091c57b99df",
+    "REPRODUCIBILITY.md": "87e0373752ca6c4405eff316c0646926c3d345287f2aa4cf51386e1bda47cc8a",
+    "docs/certified-bounded-support.md": "00a178d4ab032b894495efdba3fb8310f1e5e88179c451671544dc47e2598c77",
+    "requirements-high-support.txt": "c0ac9b3ada1139c018dcff32347d29a40b785947bb70076960c1124cd5cc01db",
+    "requirements-independent-quantum.txt": "d5af996a5943b421f663848707fc9d34c549b4e01fb29190ad49f45b3706acda",
+    ".github/workflows/certified-support.yml": "1260d787a6bfdbd6bd97b661828ed7ff9a2c7a70d8eba9959b0a6e236e439f8a"
+  }
+}
