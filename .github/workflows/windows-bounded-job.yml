@@ -1,0 +1,27 @@
+name: Windows bounded-support containment
+on:
+  push:
+    branches: [feat/windows-bounded-job]
+  pull_request:
+    paths:
+      - 'tools/high_support/*windows*.py'
+      - 'tests/test_windows_bounded_job.py'
+      - 'benchmarks/sb_quantum_benchmark/**'
+      - '.github/workflows/windows-bounded-job.yml'
+  workflow_dispatch:
+jobs:
+  windows-x64:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          architecture: x64
+      - run: python -m unittest discover -s tests -p test_windows_bounded_job.py -v
+      - run: python -m tools.high_support.check_windows_bounded --architecture AMD64 --output windows-job-x64.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows-job-x64
+          path: windows-job-x64.json
