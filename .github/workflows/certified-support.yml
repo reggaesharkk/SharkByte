@@ -1,0 +1,38 @@
+name: Certified bounded-support subset
+on:
+  pull_request:
+    paths:
+      - 'benchmarks/sb_quantum_benchmark/certified_support.py'
+      - 'benchmarks/sb_quantum_benchmark/bounded_support.py'
+      - 'tests/test_certified_support.py'
+      - 'tools/high_support/check_certified_support.py'
+      - 'tools/high_support/check_platform_regressions.py'
+      - 'requirements-high-support.txt'
+      - '.github/workflows/certified-support.yml'
+  workflow_dispatch:
+jobs:
+  windows-x64:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          architecture: x64
+      - run: python -m unittest discover -s tests -p test_certified_support.py -v
+  exact-and-reference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-high-support.txt
+      - run: python -m unittest discover -s tests -p test_certified_support.py -v
+      - run: python tools/high_support/check_certified_support.py > certified-support-evidence.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: certified-support-reference-evidence
+          path: certified-support-evidence.json

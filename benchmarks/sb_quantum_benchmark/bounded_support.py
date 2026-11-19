@@ -56,7 +56,7 @@ def compact(state, tick, remaining, protected, *, deadline=float("inf"), scratch
 
 
 def simulate(circuit, budget, *, support_cap, memory_budget_bytes, max_seconds=30,
-             interval=1, protected=(), progress_callback=None):
+             interval=1, protected=(), progress_callback=None, initial_state=None):
     if not 0 < max_seconds <= MAX_WALL_SECONDS:
         raise ValueError('invalid execution deadline')
     budget = Fraction(budget)
@@ -70,7 +70,18 @@ def simulate(circuit, budget, *, support_cap, memory_budget_bytes, max_seconds=3
     tick = budget / TICKS
     events = []
     witness_bytes = 0
-    state = {0: 1+0j}
+    if initial_state is None:
+        state = {0: 1+0j}
+    else:
+        if not isinstance(initial_state, dict) or not initial_state:
+            raise ValueError("initial_state must be a nonempty basis-to-amplitude dictionary")
+        state = dict(initial_state)
+        if any(type(basis) is not int or not 0 <= basis < 1 << circuit.qubits
+               or not isinstance(value, complex) or value == 0j
+               for basis, value in state.items()):
+            raise ValueError("invalid initial state")
+        if len(state) > support_cap:
+            raise ResourceLimitError("initial_state exceeds support cap")
     deadline = time.monotonic() + max_seconds
     for index, gate in enumerate(circuit.gates, 1):
         if witness_bytes + min(support_cap, len(state)*2)*512 > memory_budget_bytes:

@@ -1,2 +1,3 @@
 -r requirements-independent-quantum.txt
 cirq-core==1.7.0
+mpmath==1.3.0
