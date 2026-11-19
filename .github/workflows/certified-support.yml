@@ -6,6 +6,14 @@ on:
       - 'benchmarks/sb_quantum_benchmark/bounded_support.py'
       - 'tests/test_certified_support.py'
       - 'tools/high_support/check_certified_support.py'
+      - 'tools/high_support/check_moving_branch_protection.py'
+      - 'benchmarks/sb_quantum_benchmark/verify_bounded.py'
+      - 'docs/certified-bounded-support.md'
+      - 'docs/bounded-support.md'
+      - 'docs/bounded-support-audit.md'
+      - 'CLAIM_BOUNDARIES.md'
+      - 'REPRODUCIBILITY.md'
+      - 'README.md'
       - 'tools/high_support/check_platform_regressions.py'
       - 'requirements-high-support.txt'
       - '.github/workflows/certified-support.yml'
@@ -21,6 +29,11 @@ jobs:
           python-version: '3.12'
           architecture: x64
       - run: python -m unittest discover -s tests -p test_certified_support.py -v
+      - run: python tools/high_support/check_moving_branch_protection.py > moving-branch-protection-evidence.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: moving-branch-protection-windows-x64-evidence
+          path: moving-branch-protection-evidence.json
   exact-and-reference:
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -31,8 +44,11 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install -r requirements-high-support.txt
       - run: python -m unittest discover -s tests -p test_certified_support.py -v
+      - run: python tools/high_support/check_moving_branch_protection.py > moving-branch-protection-evidence.json
       - run: python tools/high_support/check_certified_support.py > certified-support-evidence.json
       - uses: actions/upload-artifact@v4
         with:
           name: certified-support-reference-evidence
-          path: certified-support-evidence.json
+          path: |
+            certified-support-evidence.json
+            moving-branch-protection-evidence.json

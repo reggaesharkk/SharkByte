@@ -231,6 +231,8 @@ Frontier30 can simplify adjacent inverse gates before sparse evolution. Pass `--
 
 **Certified numerical subset:** the opt-in exact-error certificate supports finite binary64 initial amplitudes with x, z, and cx signed permutations. Mixing gates, angle gates, decimal conversion error, and renormalization return UNSUPPORTED. See [the derivation and source-bound comparisons](docs/certified-bounded-support.md), including 96 exact-subset configurations and 48 explicitly unsupported legacy configurations compared with high-precision references.
 
+**Opt-in moving-branch protection:** the certified subset can follow selected initial basis-coordinate amplitudes through x, z, and cx gates with `protected_branches=` (or repeated `--protect-branch INITIAL_INDEX` in the bounded runner). This mode rejects mixing gates and is distinct from legacy fixed-index protection; both remain opt-in. It tracks coordinate amplitudes under signed permutations, not physical paths through mixing operations.
+
 **Open numerical issue:** sparse round-trip cancellation can leave tiny floating-point residuals represented as nonzero entries. Exact support compaction remains an open engineering limitation. [Recorded round-trip control](evidence/colab-q8w4bj57/roundtrip-17/roundtrip_17q_comparison.json).
 
 ### Reproduce and inspect evidence
