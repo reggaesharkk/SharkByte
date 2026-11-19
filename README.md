@@ -11,6 +11,38 @@ Write classical programs in `.sb`, describe quantum circuits for **CPU simulatio
 
 **[Quick start](#quick-start)** · **[Language examples](#write-sharkbyte)** · **[Studio](#three-workspaces-one-local-studio)** · **[Evidence](#independent-verification-and-benchmarks)** · **[Documentation](#documentation-map)** · **[Research boundaries](#what-sharkbyte-does-not-claim)**
 
+## Verified achievements — Google Cloud, Colab, and local systems
+
+**SharkByte's public results span local Windows ARM64, Ubuntu ARM64 under WSL2, Google Colab CPUs, and Google Compute Engine.** These are measured, source-linked experiments with distinct verification methods—not a single claim that every workload is supported by the same execution engine.
+
+| Where it ran | Verified milestone | Evidence |
+| --- | --- | --- |
+| **Google Compute Engine (Linux x86_64)** | **4,294,967,296 packed GHZ-family basis/amplitude entries checked** against a closed-form parity reference. The two array SHA-256 digests matched the independent Colab replay; the temporary packed arrays totaled **96 GiB**. | [GCE 2³² receipt](evidence/connected-ghz50-gcp/2p32/sharkbyte-ghz50-4b-gcp-receipt.json) |
+| **Google Colab (Linux x86_64)** | Independently completed the same **4,294,967,296-entry** structured materialization and full-array check. A separate connected **40-qubit / 33,554,432-populated-amplitude** sparse experiment matched its closed-form oracle. | [50-qubit Colab receipt](evidence/connected-ghz50-colab/retry-2p32/sharkbyte-connected-ghz50-4294967296-colab.json) · [40-qubit Colab receipt](evidence/connected-ghz40-32m-colab/sharkbyte-connected-ghz40-33554432-colab.json) |
+| **Windows ARM64 (local Studio)** | The fixed **40-qubit / 16,777,216-state** CPU benchmark ran from Studio, recording **2.77 GiB** peak process memory. The unified release also passed **87 local tests** and **17 installed-package acceptance checks**. | [Windows Studio receipt](evidence/studio_16m/windows_arm64/sharkbyte-85c74d14dcb54040a295e3c2fe422e53.json) · [Release integration PR](https://github.com/reggaesharkk/SharkByte/pull/13) |
+| **Ubuntu ARM64 under WSL2 (local)** | The same 16-million-state sparse benchmark and independent quantum reference checks were exercised in the documented ARM64 environment. This is **WSL2**, not an independent physical Ubuntu host. | [Ubuntu scaling receipt](benchmarks/sb_quantum_benchmark/scaling-16777216-ubuntu-wsl.json) · [Qiskit/Cirq methods](INDEPENDENT_QUANTUM_VALIDATION.md) |
+| **Hosted GitHub Actions (Windows and Ubuntu)** | The merged unified codebase passed [SharkByte CI](https://github.com/reggaesharkk/SharkByte/actions/runs/44484290586), with separate [independent quantum validation](https://github.com/reggaesharkk/SharkByte/actions/runs/44401252706) on the integration head. | [Workflow sources](.github/workflows/) |
+
+**One-click: open a reproducible notebook in Google Colab**
+
+**Integrated verification** — 16-million-state comparison and scoped checks:
+
+[![Open integrated verification in Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/reggaesharkk/SharkByte/blob/main/notebooks/SharkByte-Colab-Integrated-Verification.ipynb)
+
+**Connected 40-qubit / 33.55-million-state experiment:**
+
+[![Open connected 40-qubit benchmark in Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/reggaesharkk/SharkByte/blob/main/notebooks/SharkByte-Colab-Connected-40Q-32M.ipynb)
+
+**Connected 50-qubit GHZ-family, up to 4.29 billion entries:**
+
+[![Open connected 50-qubit experiment in Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/reggaesharkk/SharkByte/blob/main/notebooks/SharkByte-Colab-Connected-50Q-2B.ipynb)
+
+These badges **open notebooks in Colab**; choose a **CPU runtime**, review the resource requirements, and use **Runtime → Run all** to execute. The integrated notebook pins a historical source revision; its checks are not automatically re-run against today's `main`. The large-state notebooks include resource gates: availability of RAM, disk, and execution time determines which tier can run, and a session may refuse the largest tier. Running them can consume substantial resources.
+
+**Scope matters:** the 4.29-billion-entry milestone used a dedicated **disk-backed, formula-based GHZ-family materializer**, not SharkByte's general sparse simulator or a dense 50-qubit statevector. Cirq checked a separate 512-shot measurement invariant, **not** all 4.29 billion amplitudes. The 16-million-state 40-qubit benchmark is a different, disconnected CPU sparse workload. See the [full methods and limitations](#scientific-evidence-with-the-important-distinction) below.
+
+---
+
 ![SharkByte Studio and a 40-qubit sparse CPU benchmark](docs/sharkbyte-studio-banner.svg)
 
 > **What makes SharkByte distinctive:** a compact language/VM and bounded quantum simulation environment connected to independently checkable execution records, explicit resource refusals, reference-engine comparisons, and research-specific experiments. The public implementation is **not** a production compiler, quantum computer, or security sandbox.
