@@ -1,54 +1,138 @@
 # SharkByte
 
-SharkByte is an experimental programming language and CPU simulation toolchain. Run `.sb` programs in Studio or through the CLI, inspect SharkVM output and quantum simulation results, and save source-bound JSON receipts.
+**A programming language, bounded execution toolchain, and reproducible computational research workspace.**
 
-## Google Compute Engine replay
+Write classical programs in `.sb`, describe quantum circuits for **CPU simulation**, combine them with bounded classical feedback, build static websites and browser apps, and explore a separately integrated numerical-dynamics laboratory. SharkByte is an experimental, inspectable alpha: implementations, limitations, tests, and source-bound evidence are part of the project—not an afterthought.
 
-**4,294,967,296 active states · 50-qubit connected GHZ-family circuit · 96 GiB of packed arrays.** SharkByte generated the basis indices and amplitudes on disk and checked every entry against a closed-form reference. Google Compute Engine and Google Colab both recorded `PASS`, with matching SHA-256 digests for each array. Cirq separately checked a 512-shot measurement invariant.
+[![SharkByte CI](https://github.com/reggaesharkk/SharkByte/actions/workflows/ci.yml/badge.svg)](https://github.com/reggaesharkk/SharkByte/actions/workflows/ci.yml)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB.svg)](pyproject.toml)
+[![Status: experimental alpha](https://img.shields.io/badge/status-experimental%20alpha-6f42c1.svg)](CLAIM_BOUNDARIES.md)
 
-[Compute Engine receipt](evidence/connected-ghz50-gcp/2p32/sharkbyte-ghz50-4b-gcp-receipt.json) · [Colab receipt](evidence/connected-ghz50-colab/retry-2p32/sharkbyte-connected-ghz50-4294967296-colab.json) · [Reproduction notebook](notebooks/SharkByte-Colab-Connected-50Q-2B.ipynb)
-
-[Start Studio](#sharkbyte-studio) · [CLI and install](#install) · [Language grammar](GRAMMAR.md) · [Specification](SPEC.md) · [Examples](examples/) · [Verification and evidence](#verified-results) · [Reproduce](#reproduce-the-public-benchmarks) · [Limits](CLAIM_BOUNDARIES.md) · [Cite](#cite-sharkbyte)
-
-[![Open integrated verification in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/reggaesharkk/SharkByte/blob/main/notebooks/SharkByte-Colab-Integrated-Verification.ipynb)
-
-## Verified results
-
-| Result | What the evidence establishes | Evidence |
-| --- | --- | --- |
-| **Connected 50-qubit GHZ family, 4,294,967,296 active states** | **PASS** on Colab CPU, Linux x86_64, Python 3.13.18 / NumPy 2.5.4 / Cirq 1.6.1. All 4,294,967,296 packed basis/amplitude entries matched a separate closed-form parity calculation (maximum complex error `0.0`; probability sum `1.0`). Disk-backed materialization plus verification took 1,811.329 s; supervised worker time was 1,825.593 s with sampled peak RSS 662,106,112 bytes. Cirq independently passed a 512-shot Clifford measurement invariant; it did not compare the complete amplitude table. A dedicated formula materializer produced and checked the GHZ-family state; this was not a SharkByte sparse-backend run or general gate-by-gate simulation. | [Full receipt](evidence/connected-ghz50-colab/retry-2p32/sharkbyte-connected-ghz50-4294967296-colab.json) · [Retry bundle](evidence/connected-ghz50-colab/retry-2p32-results.zip) · [Evidence manifest](evidence/connected-ghz50-colab/manifest.json) · [Run notebook](notebooks/SharkByte-Colab-Connected-50Q-2B.ipynb)  · [Google Compute Engine replay](evidence/connected-ghz50-gcp/2p32/sharkbyte-ghz50-4b-gcp-receipt.json) |
-| **40 qubits, 33,554,432 active states (disconnected circuit)** | Colab Linux x86_64, Python 3.13.18, Cirq 1.6.1: all populated amplitudes matched independently simulated components; maximum error `5.45e-19`. This circuit has eight disconnected components and does not establish global 40-qubit entanglement. | [Receipt](evidence/colab-32m/sharkbyte-40q-33554432-colab.json) · [Run bundle](evidence/colab-32m/sharkbyte-colab-32m-results.zip) · [SHA-256 manifest](evidence/colab-32m/manifest.json) · [Colab screenshot](evidence/colab-32m/colab-run-pass.png) · [Reproduction notebook](notebooks/SharkByte-Colab-32M-Scaling.ipynb) |
-| **Connected 40-qubit GHZ family, 33,554,432 active states** | Colab Linux x86_64 CPU: the sparse run matched a closed-form oracle for every amplitude (maximum error `3.25e-19`); 39 entangling edges connect the interaction graph. The exact GHZ-family witness has Schmidt rank 2 and 1 ebit across every nontrivial cut. A separate 512-shot Cirq Clifford measurement check passed. Dense 40-qubit simulation was not run. | [Receipt](evidence/connected-ghz40-32m-colab/sharkbyte-connected-ghz40-33554432-colab.json) · [Run bundle](evidence/connected-ghz40-32m-colab/sharkbyte-connected-ghz40-32m-results.zip) · [Evidence manifest](evidence/connected-ghz40-32m-colab/manifest.json) · [Reproduction notebook](notebooks/SharkByte-Colab-Connected-40Q-32M.ipynb) |
-| **Connected 50-qubit GHZ family, 2,147,483,648 active states** | **PASS** on Colab CPU, Linux x86_64: all 2,147,483,648 packed basis/amplitude entries checked against a separate closed-form parity calculation; maximum complex-amplitude error 0; probability sum `0.9999999999999999`; 512-shot independent Cirq Clifford measurement invariant passed. A dedicated disk-backed formula materializer produced and checked this structured GHZ-family state; it did not execute through SharkByte's sparse simulator. | [Receipt](evidence/connected-ghz50-colab/sharkbyte-connected-ghz50-2147483648-colab.json) · [Colab run bundle](evidence/connected-ghz50-colab/sharkbyte-connected-ghz50-results-first-run.zip) · [Evidence manifest](evidence/connected-ghz50-colab/manifest.json) · [Run notebook](notebooks/SharkByte-Colab-Connected-50Q-2B.ipynb) |
-| **40 qubits, 16,777,216 active states** | Colab Linux x86_64, Cirq 1.7.0: every populated complex amplitude compared; maximum error `7.40e-19`. SharkByte evolution took 33.996 s and comparison took 7.816 s. The 56-gate circuit has eight disconnected components. | [Colab receipt](evidence/colab-q8w4bj57/cirq-40q-16777216.json) · [Complete run bundle](evidence/colab-q8w4bj57/integrated-results-q8w4bj57.zip) · [Scaling details](#scaling-to-16777216-active-states) |
-| **16,777,216 active states from Studio** | A manual Windows ARM64 browser run completed in 21.672 s of worker time with 2.77 GiB peak process memory. Receipt hashes establish record integrity, not authorship. | [Studio receipt](evidence/studio_16m/windows_arm64/sharkbyte-85c74d14dcb54040a295e3c2fe422e53.json) |
-| **20 connected qubits, 1,048,576 amplitudes** | Four engines agreed on the complete statevector. The balanced cut had Schmidt rank 1,024 and 9.005 bits of entropy in the documented experiment. | [High-support methods and controls](docs/high-support-connected-entanglement.md) · [Colab comparison](evidence/colab-q8w4bj57/random_connected-20/random_connected_20q_comparison.json) |
-| **120 seeded circuits and 24 connected cases** | The 120-case suite covers up to six qubits. A separate Qiskit/Cirq corpus covers connected cases through 16 qubits, with analytic GHZ checks through 40 qubits. | [120-case suite](INDEPENDENT_QUANTUM_VALIDATION.md) · [24-case Colab comparison](evidence/colab-q8w4bj57/connected-comparison.json) · [Connected methods](docs/connected-circuit-frontier.md) |
-| **17 integrated Colab checks passed** | Includes the 40-qubit comparison, checkout tests, receipt verification, optimized-Python rotation checks, and connected numerical controls. | [Run summary](evidence/colab-q8w4bj57/colab-summary.json) · [Complete run bundle](evidence/colab-q8w4bj57/integrated-results-q8w4bj57.zip) · [Bundle integrity record](evidence/colab-q8w4bj57/bundle-verification.json) |
-
-The complete Colab bundle is preserved byte-for-byte. Its 54 inventoried payload files match the embedded size and SHA-256 inventory; the archive SHA-256 is `215a436cdf5a72f8cd8babc7f0ae73ebe446b3cff4c2b71337951c3b7268951d`. The run summary records Linux x86_64, Python 3.13.18, Qiskit 2.6.2, Cirq 1.7.0, and 17/17 passing checks. These hashes establish integrity, not authorship. [Bundle verification record](evidence/colab-q8w4bj57/bundle-verification.json)
-
-**Open limitation — sparse support compaction:** In the 17-qubit round-trip case, all four backends return the state to `|0⟩` within the recorded tolerances, but each still reports 131,072 exact nonzero amplitudes because floating-point residuals are not pruned. Exact sparse uncomputation/compaction remains **OPEN**; the passing comparison does not establish that support shrinks back to one state. [Round-trip comparison](evidence/colab-q8w4bj57/roundtrip-17/roundtrip_17q_comparison.json)
+**[Quick start](#quick-start)** · **[Language examples](#write-sharkbyte)** · **[Studio](#three-workspaces-one-local-studio)** · **[Evidence](#independent-verification-and-benchmarks)** · **[Documentation](#documentation-map)** · **[Research boundaries](#what-sharkbyte-does-not-claim)**
 
 ![SharkByte Studio and a 40-qubit sparse CPU benchmark](docs/sharkbyte-studio-banner.svg)
 
-## SharkByte Studio
+> **What makes SharkByte distinctive:** a compact language/VM and bounded quantum simulation environment connected to independently checkable execution records, explicit resource refusals, reference-engine comparisons, and research-specific experiments. The public implementation is **not** a production compiler, quantum computer, or security sandbox.
 
-**Lucid Dynamics v0.1 (opt-in mathematical mode):** The **Lucid Dynamics** link in the Studio header opens the [local simulation page](http://127.0.0.1:8120/lucid) explores the dimensionless bounded-existence 4D soft-wall ODE, including memoryless decay and the IVc/IVb relaxation cycles. Install `python -m pip install -e '.[lucid]'` first; ordinary SharkByte remains dependency-free. The numerical experiments are not evidence of physiological lucid dreaming or global mathematical existence. See [source and verification scope](docs/lucid-dynamics.md).
+## Explore the project
 
+| Component | What you can do | Implementation and limits |
+| --- | --- | --- |
+| **Classical SharkByte** | Run integer arithmetic, variables, functions, arrays, conditions, and loops in a small language | `.sb` source compiled to SharkVM bytecode; source and instruction limits |
+| **Quantum simulation** | Specify gates, seed measurements, inspect probabilities, and export supported OpenQASM 3 | Classical CPU statevector simulator; standard mode supports **1–6 qubits** |
+| **Bounded Hybrid** | Run small quantum circuits with classical feedback and parameter updates | Experimental **2–6-qubit**, **1–8-iteration** subset |
+| **Frontier sparse mode** | Explore supported circuits with wide registers and bounded populated state support | CPU sparse representation; a wider register does **not** imply dense simulation |
+| **Adaptive quantum CLI** | Opt into sparse-to-dense switching with an explicit memory planning budget | Separate experimental backend, up to **20 qubits** for dense conversion; not the default |
+| **Web / App Builder** | Author and export static websites and installable browser PWAs | Separate declarative `sharkbyte.web/v1` JSON format, not arbitrary `.sb`-to-web compilation |
+| **Lucid Dynamics** | Integrate and visualize a four-state bounded-existence ODE | Optional NumPy/SciPy numerical model with pinned mathematical provenance; not a dreaming model |
+| **Studio, terminal, and receipts** | Edit, run, view results, export project ZIPs and verify execution records | Local browser and CLI interfaces, with bounded and differently scoped execution paths |
 
-Download and extract the GitHub source ZIP or clone the repository. From the checkout, use Python 3.10 or later:
+Read the [working language grammar](GRAMMAR.md), [scoped specification](SPEC.md), [system architecture map](ECOSYSTEM_MAP.md), and [claim boundaries](CLAIM_BOUNDARIES.md) before extending any result beyond its documented workload.
 
-| Platform | Command |
-| --- | --- |
-| Windows PowerShell | `python -B sharkbyte_studio.py` |
-| Linux or WSL | `python3 -B sharkbyte_studio.py --no-browser` |
+## Quick start
 
-Open [http://127.0.0.1:8120/](http://127.0.0.1:8120/). Studio listens on your own computer. Keep the terminal running and press Ctrl+C to stop it. If the port is busy, pass `--port 8121` and open the URL printed by the launcher.
+**Requirements:** CPython **3.10+**, Git (for cloning), and pip. The ordinary CLI has **no external runtime dependencies**. Studio's Lucid Dynamics mode requires the optional `lucid` extra.
 
-### Build a website or installable web app
+```sh
+git clone https://github.com/reggaesharkk/SharkByte.git
+cd SharkByte
+python -m pip install .
+sharkbyte doctor
+sharkbyte run examples/example.sb --backend vm
+sharkbyte run examples/bell.sb --mode quantum
+sharkbyte run examples/adaptive.sb --mode hybrid --backend vm
+```
 
-Studio also includes a **Web / App** workspace with editable SharkByte project JSON, a build action, a sandboxed local preview, and ZIP export. The CLI can create and compile websites and PWAs:
+The first classical example prints `42` inside a source-bound JSON execution record. The Bell example produces simulated probabilities and seeded counts; it does not use quantum hardware.
+
+**Launch the unified local Studio** from a source checkout:
+
+```sh
+python -m pip install -e ".[lucid]"
+python -B sharkbyte_studio.py
+```
+
+Open the **local address printed by the server**, normally `http://127.0.0.1:8120/`. On Linux/WSL use `python3` if `python` is unavailable; add `--no-browser` if you want to open the URL yourself. If port 8120 is occupied, use `--port 8135` and open the printed URL. Stop the server with **Ctrl+C**.
+
+The `lucid` extra is optional. Without it, the standard language, Quantum/VM, and Web/App tools do not need NumPy or SciPy. See [installation and isolated checks](INSTALL.md).
+
+## Write SharkByte
+
+SharkByte source files use the `.sb` extension. The grammar below illustrates the **implemented, bounded subset**; it is not a promise of Python/C/JavaScript compatibility.
+
+### 1. Classical language and SharkVM
+
+```sharkbyte
+let answer = 40 + 2;
+print answer;
+```
+
+Save as `hello.sb`, then run:
+
+```sh
+sharkbyte run hello.sb --backend vm --output hello-receipt.json
+sharkbyte verify-run hello-receipt.json
+```
+
+The bundled equivalent is [`examples/example.sb`](examples/example.sb). For more than arithmetic, try the [fixed-point gradient-descent example](examples/research/gradient_descent_linear_fit.sb) or [research calculations](docs/RESEARCH_GAP_CALCULATIONS.md). These are finite integer computations, not machine-learning training or mathematical proofs.
+
+### 2. Quantum circuit syntax
+
+```sharkbyte
+quantum bell {
+    qubits 2;
+    shots 1024;
+    seed 42;
+    h 0;
+    cx 0 1;
+    measure_all;
+}
+```
+
+This is the exact syntax of the bundled [`examples/bell.sb`](examples/bell.sb). Run it with:
+
+```sh
+sharkbyte run examples/bell.sb --mode quantum --output bell-receipt.json
+sharkbyte qasm examples/bell.sb --output bell.qasm
+```
+
+The supported subset includes `h`, `x`, `z`, `cx`, `cp`, and bounded-angle `rx`, `ry`, `rz` operations. The simulator is classical, and the OpenQASM 3 exporter covers only the [documented subset](SPEC.md). Qubit `q0` is the least-significant state-index bit; displayed bitstrings are MSB-left.
+
+### 3. Classical feedback with bounded hybrid programs
+
+The [`hybrid` example](examples/adaptive.sb) has `prepare`, `quantum`, `feedback`, and `update` blocks. It runs a fixed, small number of iterations with a bounded parameter such as `theta`.
+
+```sh
+sharkbyte run examples/adaptive.sb --mode hybrid --backend vm --output hybrid-receipt.json
+```
+
+Hybrid programs combine a classical VM with a classical quantum **simulation**, not a physical hybrid processor.
+
+### 4. Experimental adaptive sparse/dense CLI
+
+```sh
+python -m sharkbyte_alpha run examples/high_support/adaptive_sparse_ghz_20q.sbq --mode quantum --backend auto --memory-mib 256 --output auto-run.json
+python -m sharkbyte_alpha verify-run auto-run.json
+```
+
+The opt-in `auto` backend starts sparse, evaluates a bounded dense conversion for supported cases, and records representation changes or an explicit `RESOURCE_STOP` refusal. The memory budget estimates state working memory, not total operating-system process memory. The ordinary CLI backend remains unchanged. [Adaptive evaluation and cross-platform receipts](evidence/adaptive-cli-cross-platform-20261118/).
+
+## Three workspaces, one local Studio
+
+Studio brings three distinct workflows together **without pretending they share the same execution engine**.
+
+| Workspace | In Studio | What is actually executed |
+| --- | --- | --- |
+| **Quantum / VM** | Load `.sb` examples, run, inspect output, metrics, bytecode, and receipts | SharkVM, bounded CPU quantum simulation, hybrid subsets, and separately guarded sparse benchmark workers |
+| **Web / App** | Edit a project definition, build, preview, export ZIP | A restricted JSON-to-static-HTML/CSS/JavaScript compiler; isolated local preview |
+| **Lucid Dynamics** | Choose a model regime, adjust bounded parameters, inspect trajectories and phase portraits, download receipts | A separate SciPy solver for the pinned dimensionless four-state ODE |
+
+**Quantum / VM:** the main page offers Classical, Quantum, Bounded Hybrid, Frontier30, and fixed million-state and 16-million-state demonstration modes. The latter are **specific benchmark workloads** with memory checks and resource limits, not arbitrary large-circuit guarantees. [Calculation capabilities](docs/CALCULATION_CAPABILITIES.md).
+
+### Web / App Builder
+
+SharkByte's Web/App feature uses a deliberately separate, typed-by-schema project representation: `sharkbyte.web/v1`. The compiler accepts selected content, navigation, chart, control, and task-form components and emits **static files**. PWA output includes a manifest and service worker; it is not a native Android/iOS app or a hosted backend.
 
 ```sh
 sharkbyte web new my-website
@@ -60,321 +144,164 @@ sharkbyte app build my-tasks
 sharkbyte app serve my-tasks
 ```
 
-Projects use the `sharkbyte.web/v1` declarative DSL; `app new` enables PWA output by default. The task example supports add, complete, and delete with browser-local persistence and a generated offline cache. This creates static browser applications, not native mobile packages or server-side services. See the [Web/App Builder guide](docs/web-app-builder.md) for complete examples, source format, limitations, and checks.
+Explore the [research portfolio](examples/web/research-portfolio/sharkbyte.web.json), [interactive dashboard](examples/web/interactive-dashboard/sharkbyte.web.json), and [browser-local task PWA](examples/web/task-app/sharkbyte.web.json). Studio can preview on a separate loopback origin and export a ZIP. See [the compiler specification, examples, and security scope](docs/web-app-builder.md).
 
-| Mode | What it runs |
-| --- | --- |
-| Classical | SharkVM, with a 50,000,000-instruction limit |
-| Quantum | CPU statevector simulation for circuits with 1–6 qubits, including the recovery presets |
-| Bounded Hybrid | Experimental quantum circuits with classical feedback and limited adaptive updates, using 2–6 qubits |
-| Frontier30 (sparse) | Fixed quantum circuits with registers up to 50 qubits. Select a support cap from 4,096 to 131,072 active states. Register width is a representational limit, not a promise that arbitrary high-support circuits fit the selected resource cap. |
-| Million-state benchmark | Bundled 40-qubit scaling case with a compact 1,048,576-state result |
-| 16-million-state benchmark | Fixed 40-qubit, 56-gate run in a background worker; checks available RAM first, reports progress and process peak memory, and supports cancellation |
+### Lucid Dynamics — bounded numerical research
 
-Choose **Load example** or paste source, then select **Run**. Studio shows output, metrics, the source used for the run, and SharkVM bytecode when available. The sparse mode previews large probability tables and **Save receipt** downloads the full JSON directly from the local server. Frontier30 returns probabilities. Standard Quantum mode can also report sampled counts. The [30-qubit GHZ example](examples/ghz_phase_30.sb) fits the default sparse cap, and the bundled Frontier30 example selects 131,072 automatically.
+The opt-in **`/lucid`** page integrates the dimensionless four-state soft-wall ODE from [Theory of Bounded Existence](https://github.com/reggaesharkk/theory-of-bounded-existence), pinned to revision `5bc839e6e0cf492882268d8ed47bef6ff82d65fc`. It retains the source equations and model constants and uses a bounded LSODA integration.
 
-Verify downloads with `python -m sharkbyte_alpha verify-run FILE.json` (`python3` on Linux). Hash verification checks record integrity. Replay and reference comparisons address reproducibility and numerical correctness separately.
-
-The 16-million-state Studio mode is a fixed bundled workload. It does not send its amplitude table to the browser. Before launch, Studio requires at least **4.25 GiB available physical memory** and limits the worker to **3.25 GiB**; it enforces a 90-second timeout and lets you cancel the worker. A completed run can be downloaded as a compact receipt with the source and expanded gate identity, measured elapsed time and worker memory, environment, implementation hashes, numerical checks, and references to the already archived independent Cirq checks. Verify it with `python -B tools/verify_studio_scaling_receipt.py FILE.json`. The receipt verifier checks integrity and recorded claims; hashes alone do not establish authorship.
-
-Try `rx 1.5707963267948966 0;`, `ry -.5 0;`, or `rz .25 0;` inside a
-Quantum or Frontier30 circuit. Bounded Hybrid also accepts a bound angle such as
-`ry theta 0;`. Reproduce the local analytical checks with
-`python -B tools/rotation_gate_evidence.py`.
-[Grammar](GRAMMAR.md) · [Local rotation evidence](evidence/rotation_gate_local.json)
-
-### Five-qubit phase-flip recovery
-
-Choose **Quantum → Load phase-flip recovery → Run**. The [circuit](examples/phase_flip_recovery.sb) encodes a logical superposition with relative phase +π/3, extracts two parity bits, and applies coherent correction before the final measurement. Outcome strings start with the ancillas `q4 q3`, followed by the decoded data bits.
-
-| Case | Syndrome | Expected probability of decoded data `000` |
+| Reference regime | Model behavior at the tested initial condition | Approximate late crossing period |
 | --- | --- | ---: |
-| No error, recovery on | `00` | 100% |
-| Single Z on q0, q1, or q2, recovery on | `01`, `11`, or `10` | 100% |
-| Single Z on q0, q1, or q2, recovery off | `01`, `11`, or `10` | 0% |
-| Z on q1, input phase −π/3, check fixed at +π/3 | `11` | 25% |
-| Two Z errors, recovery on | `10` for q0+q1, `11` for q0+q2, `01` for q1+q2 | 25% |
+| Memoryless feedback | Decay toward the near-zero state | No repeated late crossings |
+| IVc — pure Ψ memory | Finite-time relaxation-cycle observation | **17.936755** |
+| IVb — coupled memory | Finite-time relaxation-cycle observation | **19.387103** |
 
-**Load two-error control** injects Z on q1 and q2. Its syndrome matches a single error on q0, so the decoder flips q0 and leaves a logical X. The wrong-phase and two-error controls each returned `000` in 247 of 1,024 shots (24.1%). The ideal probability is 25% (256 counts); the observed difference is 9 counts, about 0.65 binomial standard deviations, consistent with finite-shot sampling noise. The recovery cases returned `000` in all 1,024 shots each. The results describe ideal simulated gates, this logical input, and the specified injected errors.
+The [nine-receipt Windows ARM64 audit](docs/lucid-dynamics-audit.md) verified all canonical record digests and independently compared the original equations with a tighter Radau integration. Nine files covered **five distinct configurations**; six used overridden parameters, now labeled separately from their starting presets.
 
-[All eleven receipts and their exact circuits](evidence/phase_flip_recovery_cases.json) · Reproduce with `python -B tools/phase_flip_recovery_cases.py`.
+**Interpretation:** Ψ is a mathematical state variable. Numerical crossing periods do not prove a global periodic attractor or establish real lucid dreaming, consciousness, biological processes, or cosmology. Read the [ODE, solver bounds, and reproducibility guide](docs/lucid-dynamics.md).
 
-Studio also includes an interactive **Phase-flip noise sweep**. It shows the exact expected decoded-`000` probability under an independent per-data-qubit Z channel, comparing one unencoded qubit with the three-qubit code and ideal recovery. For this logical input, zero or one error is corrected exactly; two or more errors leave a 25% decoded-`000` overlap. Thus the curves are `1 − 0.75p` (unencoded) and `1 − 0.75(3p² − 2p³)` (encoded). This is an analytical channel model, not gate-by-gate noise, noisy readout, finite-shot sampling, or a claim about hardware.
+## Independent verification and benchmarks
 
-## Sparse simulation benchmarks
+SharkByte treats **record integrity**, **numerical agreement**, **runtime performance**, and **mathematical proof** as different questions. Check each result at its actual commit, host, solver, workload, and resource limit.
 
-For backend speed, start with the [adaptive comparison](#experimental-adaptive-sparsedense-comparison). On the connected 20-qubit test, switching from sparse to dense storage reduced Windows ARM64 runtime from 22.070 s to 0.480 s with exact agreement against the dense candidate. The default backend remains sparse.
+### Current integrated release checks
 
-Active states are the basis states tracked at once. Register width and active state count measure different things. A dense array for 40 qubits would occupy 16 TiB at 16 bytes per complex amplitude. The production simulator uses sparse storage and runs on a CPU; the adaptive candidate below is an experimental 20-qubit comparison and does not change the default backend.
+The unified Studio integration was merged through [PR #13](https://github.com/reggaesharkk/SharkByte/pull/13) into `main` at commit [`df7731a0`](https://github.com/reggaesharkk/SharkByte/commit/df7731a0fb69d455ad9c050268854ce8777b0ae8).
 
-### Experimental sparse scaling to 1,048,576 active states
-
-In Studio, choose **Million-state benchmark → Run**. The runner appends the three Hadamards listed in the receipt to the source shown in the editor. The recorded browser-launched run reached **1,048,576 active states in 3.020 s** of sparse evolution on Windows ARM64. [Browser receipt](benchmarks/sb_quantum_benchmark/million-state-browser-receipt.json)
-
-The terminal measurements use this same 40-qubit circuit family, with additional Hadamards to grow its support. Times cover sparse evolution. Windows peak working set was observed by polling the runner process.
-
-| Active states | Gates | Windows ARM64 evolution | Runner peak |
-| ---: | ---: | ---: | ---: |
-| 131,072 | 49 | 0.210 s | 46.5 MiB |
-| 262,144 | 50 | 0.647 s | 70.6 MiB |
-| 524,288 | 51 | 0.906 s | 110.4 MiB |
-| 1,048,576 | 52 | 2.033 s | 195.8 MiB |
-| 2,097,152 | 53 | 2.768 s | 369 MiB |
-| 4,194,304 | 54 | 5.988 s | 723 MiB |
-| 8,388,608 | 55 | 11.095 s | 1.39 GiB |
-
-[2-million run data](benchmarks/sb_quantum_benchmark/scaling-2097152.json) · [4-million run data](benchmarks/sb_quantum_benchmark/scaling-4194304.json) · [8-million run data](benchmarks/sb_quantum_benchmark/scaling-8388608.json)
-
-### Scaling to 16,777,216 active states
-
-The terminal runner completed the **40-qubit, 56-gate** experiment on both platforms. Each run checked state count, probability normalization, and agreement with the expected uniform probabilities.
-
-The new Studio worker was also launched through the local Studio `/run` endpoint on Windows ARM64. It reached **16,777,216 active states**, passed its exact count and probability checks, and produced a compact downloadable receipt. Sparse evolution took **16.338 s**, total worker time including startup and validation was **22.016 s**, and the Windows Job Object recorded **2.77 GiB peak process memory**. The probability sum was `0.999999999999996`; the maximum uniform-probability error was `2.65e-22`. [Studio receipt](evidence/studio_16m/windows_arm64/sharkbyte-studio-154ec294e514455890da424efe9b9361.json) · [Evidence manifest](evidence/studio_16m/windows_arm64/manifest.json)
-
-| Environment | Python | Sparse evolution | Runner process memory | Evidence |
-| --- | --- | ---: | ---: | --- |
-| Windows ARM64 | 3.12.10 | 17.614 s | 2.77 GiB peak working set | [Windows JSON](benchmarks/sb_quantum_benchmark/scaling-16777216.json) |
-| Ubuntu ARM64 under WSL2 | 3.14.4 | 15.639 s | 2.78 GiB peak RSS | [Ubuntu JSON](benchmarks/sb_quantum_benchmark/scaling-16777216-ubuntu-wsl.json) |
-
-The Ubuntu process ran with a 3.06 GiB address-space limit. These are single local measurements and use different OS memory counters. The terminal runner prints a compact summary. Studio now also offers this fixed 16-million-state case as a resource-bounded background run; it does not materialize the full probability table in the browser.
-
-```text
-python -B benchmarks/sb_quantum_benchmark/support_scaling.py 16777216
-```
-
-### Scaling to 33,554,432 active states in Colab
-
-A separate Colab CPU run extended the same 40-qubit sparse circuit by one
-Hadamard, reaching **33,554,432 active states** in a 57-gate circuit. SharkByte
-evolution took **55.010 s** and the Cirq comparison took **15.982 s**. The
-sampled worker peak RSS was **5.55 GiB** with 11.54 GiB available at launch.
-The receipt reports a probability sum of `0.9999999999999959` and maximum
-complex-amplitude error `5.45e-19` at tolerance `1e-12`.
-
-The eight component support sizes were 32, 16, 16, 4, 16, 4, 4, and 4; their
-product is 33,554,432. Cirq independently simulated each component, and the
-checker compared every populated SharkByte amplitude with the product
-reference. This confirms higher sparse support for this structured workload.
-It does **not** prove global 40-qubit entanglement or a dense 40-qubit
-simulation. The [separate connected GHZ evidence](docs/connected-circuit-frontier.md)
-proves global entanglement for that GHZ family at 40 qubits, with only two
-populated amplitudes; it does not combine global entanglement with this
-33.55-million-state run. A dense 40-qubit complex128 statevector would require
-16 TiB and was not allocated.
-
-[33.55M receipt](evidence/colab-32m/sharkbyte-40q-33554432-colab.json) ·
-[Full result ZIP](evidence/colab-32m/sharkbyte-colab-32m-results.zip) ·
-[SHA-256 manifest](evidence/colab-32m/manifest.json) ·
-[Run screenshot](evidence/colab-32m/colab-run-pass.png) ·
-[Uploadable Colab notebook](notebooks/SharkByte-Colab-32M-Scaling.ipynb)
-
-### Connected 50-qubit disk-backed frontier
-
-The Colab notebook checked a frozen 50-qubit connected GHZ-family source. A Hadamard on `q0` followed by a 49-edge CNOT chain connects all 50 qubits; additional local Hadamards preserve the GHZ Schmidt coefficients. The resulting state is entangled across every nontrivial bipartition, with Schmidt rank 2 and one ebit. This entanglement statement follows from the exact GHZ construction and local-unitary invariance.
-
-**Execution scope:** the 50-qubit evidence uses a dedicated disk-backed closed-form materializer. It validates the SharkByte source identity and exact ordered gate list, then constructs packed basis/amplitude arrays from the GHZ-family equation and checks every entry with a separate parity implementation. It does **not** execute the gates through SharkByte's sparse quantum simulator. Cirq independently checks only the 512-shot Clifford measurement invariant; it does not compare the full amplitude table. This is therefore evidence for the specified analytical GHZ family and materialization procedure, not a general 50-qubit simulation capability of SharkByte's production backend.
-
-At the **2,147,483,648-state** tier, the worker wrote two temporary packed disk arrays totaling **48 GiB** (uint64 basis indices and complex128 amplitudes), independently recomputed the expected support and amplitudes in chunks, compared all entries, checked normalization, hashed both arrays, and deleted them. It completed in **887.637 s** of worker time (**904.773 s** under the supervisor), with **663,875,584 bytes** worker high-water RSS. The maximum complex-amplitude error was `0.0`; the probability sum was `0.9999999999999999`. Cirq 1.6.1 independently checked a 512-shot Clifford measurement invariant; Cirq did not compare the full amplitude table.
-
-The first **4,294,967,296-state** attempt remains recorded as **RESOURCE_STOP**: it materialized the 96-GiB packed arrays, then reached its 900-second verification limit after **1,245,708,288** entries. A later run from the updated notebook selected only this top tier; it completed materialization and compared every entry before the 2,400-second worker limit. The full receipt records a 617.820 s materialization phase, a 1,193.509 s verification-and-hashing phase, maximum amplitude error `0.0`, probability sum `1.0`, and 4,294,967,296 compared basis and amplitude entries. The supervisor measured 1,825.593 s total worker time and 662,106,112 bytes sampled peak RSS. The independent Cirq check verifies a 512-shot Clifford measurement invariant only; it is not a full-statevector cross-check.
-
-A dense complex128 vector for 50 qubits would require **16 PiB**. No dense 50-qubit statevector was allocated. This result demonstrates exhaustive disk-backed materialization and structured analytical verification for this GHZ family, not a general-purpose 50-qubit gate-by-gate simulation. The retry receipt binds source, code, and notebook hashes to commit `441b5df1cbfc7060a9656537ca9feb2c78f7d955`; the verifier confirms receipt integrity and provenance against that commit, but does not recreate the deleted arrays or prove authorship. The earlier 2³² resource-stop and the 2³¹ PASS remain preserved as separate historical records.
-
-A Google Compute Engine replay at the same 4,294,967,296-state tier recorded `PASS`. The SHA-256 digests for the packed basis and amplitude arrays both match the Colab retry. [GCP receipt](evidence/connected-ghz50-gcp/2p32/sharkbyte-ghz50-4b-gcp-receipt.json) · [Colab retry receipt](evidence/connected-ghz50-colab/retry-2p32/sharkbyte-connected-ghz50-4294967296-colab.json)
-
-[50-qubit run bundles, receipts, and manifests](evidence/connected-ghz50-colab/) ·
-[Reproduction notebook](notebooks/SharkByte-Colab-Connected-50Q-2B.ipynb) ·
-[Worker implementation](tools/run_connected_ghz50_materialization.py)
-
-A separate manual browser run on Windows ARM64 completed the same 40-qubit, 56-gate circuit in **15.900 s** of evolution and **21.672 s** of worker time, with **2.77 GiB** peak process memory and a probability sum of `0.999999999999996`. Its receipt retains the original local revision and dirty-tree flag. The five recorded implementation hashes match the reviewed code. [Manual browser receipt](evidence/studio_16m/windows_arm64/sharkbyte-85c74d14dcb54040a295e3c2fe422e53.json) · [Evidence manifest](evidence/studio_16m/windows_arm64/manifest.json)
-
-#### Independent Cirq comparison
-
-A separate Ubuntu ARM64 WSL2 run checked **all 16,777,216 complex amplitudes**
-against Google Cirq 1.6.1. The 56-gate circuit separates into eight groups
-with at most seven qubits each. Cirq simulated each group in double precision,
-and the checker multiplied their amplitudes for every populated SharkByte
-basis state. The reference support count matched SharkByte's, and the maximum
-complex amplitude error was **6.36e-19**. This result relies on the circuit's
-disconnected groups. [Cirq receipt](benchmarks/sb_quantum_benchmark/scaling-16777216-cirq.json)
-
-Run from the repository root using the
-[Cirq validation environment](INDEPENDENT_QUANTUM_VALIDATION.md#google-cirq-cross-check-on-ubuntu):
-
-```sh
-"$CIRQ_ENV/bin/python" -B tools/run_cirq_scaling_check.py --output cirq-scaling-receipt.json
-```
-
-#### Cross-platform evidence
-
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/reggaesharkk/SharkByte/blob/main/notebooks/SharkByte-Colab-Verification.ipynb)
-
-Select a CPU runtime and choose **Run all** to reproduce the checks and download the receipts.
-
-| Environment | Qiskit and Cirq reference suite | 16,777,216 active states |
-| --- | --- | --- |
-| Windows ARM64 | Native Qiskit 2.6.2 and Cirq 1.7.0 both passed 120/120 using the same host. Qiskit and rustworkx were built locally from pinned source. | Cirq matched every populated amplitude |
-| Ubuntu WSL2 ARM64 | Both references passed 120 seeded circuits | Cirq matched every populated amplitude |
-| GitHub Actions Ubuntu | Both references passed 120 seeded circuits | Large run is separate from CI |
-| Google Colab Linux x86_64 | Both references passed 120 seeded circuits | Cirq matched every populated amplitude |
-
-On native Windows ARM64, Cirq 1.7.0 also matched all 16,777,216 populated
-amplitudes with a maximum complex amplitude error of `6.36e-19`.
-[Windows ARM64 Cirq scaling receipt](evidence/windows-arm64-cirq/cirq-16777216.json) · [Native Qiskit and Cirq suite receipts](evidence/windows-arm64-qiskit/)
-
-An earlier Colab Linux x86_64 run compared 3,196 amplitudes in the seeded suite with a maximum error of
-`5.93e-16` against each engine. The 40-qubit circuit's maximum complex amplitude
-error was `7.40e-19`. SharkByte evolution took 36.025 s and the amplitude comparison
-took 8.901 s. The Colab receipts are tied to source revision `bfad672`.
-[Colab receipts and SHA-256 index](evidence/colab-bfad672/)
-
-### Connected-circuit verification
-
-The earlier 120-circuit reference suite and 16,777,216-state disconnected
-benchmark are described above. The connected reference suite adds 24 connected
-circuits compared with independent Qiskit and Cirq statevectors through 16
-qubits, plus exact sparse/analytic connected GHZ checks at 20, 24, 30, and 40
-qubits. A connected-but-separable control confirms that a connected gate graph
-alone does not prove entanglement. The 20–40-qubit checks use a closed-form GHZ
-oracle; they are not dense general-circuit simulations.
-
-The 33,554,432-state Colab scaling result is a separate experiment: its gate
-graph has eight disconnected components. This raises sparse support, but does
-not establish global 40-qubit entanglement. That distinction should have been
-made explicit earlier when we discussed extending the H4/high-support run.
-
-A separate connected GHZ-family circuit and guarded Colab notebook ran at the
-same 33,554,432 active states. The circuit starts with a 40-qubit GHZ chain,
-then applies 24 local Hadamards. The 39-edge interaction graph is connected;
-the exact witness establishes Schmidt rank 2 and 1 ebit across every
-nontrivial bipartition. On Colab Linux x86_64 (Python 3.13.18, Cirq 1.6.1,
-NumPy 2.5.4), all 33,554,432 sparse amplitudes matched the closed-form oracle
-with maximum complex-amplitude error `3.25e-19`; the probability sum was
-`0.999999999999996`. Cirq's independent Clifford measurement check passed
-512 repetitions, with every observed tail either all zero or all one. This is
-a measurement check, not a second full-amplitude statevector comparison.
-
-Sparse evolution took `25.638 s`; the Cirq check took `4.887 s`; parent elapsed
-time was `60.072 s`. Available RAM at worker start was
-`11.52 GiB`, and sampled worker peak RSS was `5.56 GiB`. The full receipt,
-run status, progress trace, and worker log are in the evidence bundle. A dense
-complex128 statevector for 40 qubits would require `16 TiB` and was **NOT RUN**.
-This confirms the exact connected GHZ-family sparse workload, not dense
-40-qubit general-circuit simulation. [Receipt](evidence/connected-ghz40-32m-colab/sharkbyte-connected-ghz40-33554432-colab.json) ·
-[Run bundle](evidence/connected-ghz40-32m-colab/sharkbyte-connected-ghz40-32m-results.zip) ·
-[Evidence manifest](evidence/connected-ghz40-32m-colab/manifest.json) ·
-[Circuit source](examples/connected_ghz40_33554432.sb) ·
-[Guarded Colab notebook](notebooks/SharkByte-Colab-Connected-40Q-32M.ipynb) ·
-[Open the notebook in Google Colab](https://colab.research.google.com/github/reggaesharkk/SharkByte/blob/main/notebooks/SharkByte-Colab-Connected-40Q-32M.ipynb)
-
-The new suite, compiler edge-case fix, exact commands, limits, performance
-measurements, source hashes, and receipts are documented in the
-[connected-circuit audit](docs/connected-circuit-frontier.md). The packaged
-receipts and state vectors are indexed by its [SHA-256 manifest](evidence/connected-circuit-frontier/MANIFEST.json).
-
-The historical manifest binds repository files to revision `5b882fb430f00fcd15fd1fe32d5294883ba9dd13`. Run `python -B tools/verify_connected_circuit_evidence.py` from that revision to verify those exact bytes. Hosted CI verifies the historical bundle there and runs fresh Qiskit and Cirq comparisons from the integrated checkout.
-
-The 17-, 18-, and 20-qubit high-support experiments compare complete vectors across SharkByte sparse, dense NumPy, Qiskit, and Cirq. Their balanced-cut Schmidt ranks were 256, 512, and 1,024, respectively, at the documented cutoff. The 20-qubit case populated 1,048,576 amplitudes and reached 9.005 bits of balanced-cut entropy. A separate connected control had the same support and Schmidt rank 1. See the [methods, limits, and reproduction commands](docs/high-support-connected-entanglement.md).
-
-### Experimental adaptive sparse/dense comparison
-
-This experimental driver runs the same connected 20-qubit circuits through the original sparse engine, a dense NumPy candidate, and an adaptive sparse/dense candidate. Each backend ran in its own process, with one warmup and seven timed repetitions. The table reports median state evolution time and process-lifetime peak RSS. All three cases passed full componentwise comparison against the dense candidate, exact support checks, and normalization checks. The 1,048,576-state connected circuit also reuses the already archived complete Qiskit and Cirq comparisons for this exact source and gate sequence; those reference runs were not repeated here.
-
-| Host | Circuit | Exact support | Sparse median / RSS | Dense median / RSS | Adaptive median / RSS |
-| --- | --- | ---: | ---: | ---: | ---: |
-| Windows ARM64 | Connected GHZ | 2 | 0.000039 s / 67.7 MiB | 0.211745 s / 101.1 MiB | 0.000114 s / 67.6 MiB |
-| Windows ARM64 | Intermediate support | 1,024 | 0.002583 s / 67.9 MiB | 0.376259 s / 101.2 MiB | 0.007553 s / 68.0 MiB |
-| Windows ARM64 | Random connected | 1,048,576 | 22.070 s / 439.0 MiB | 0.629 s / 118.7 MiB | 0.480 s / 110.6 MiB |
-| Ubuntu WSL2 ARM64 | Connected GHZ | 2 | 0.000038 s / 53.3 MiB | 0.117005 s / 104.0 MiB | 0.000108 s / 53.3 MiB |
-| Ubuntu WSL2 ARM64 | Intermediate support | 1,024 | 0.001712 s / 93.3 MiB | 0.154134 s / 102.0 MiB | 0.003983 s / 93.3 MiB |
-| Ubuntu WSL2 ARM64 | Random connected | 1,048,576 | 15.508 s / 481.7 MiB | 0.239 s / 126.0 MiB | 0.236 s / 115.0 MiB |
-
-The adaptive candidate switched once from sparse to dense on the random connected case, before a Hadamard expanded support from 65,536 to 131,072 states. Its complete vector matched the dense candidate exactly in both environments. It was substantially faster than the sparse dictionary on this high-support workload, faster than dense on Windows, and effectively tied with dense on WSL2; the small WSL2 timing difference is not treated as a demonstrated speedup. Sparse remains faster for the low-support cases, where adaptive bookkeeping adds overhead. The candidate therefore remains experimental and is not enabled by default. No amplitudes were pruned, and dense simulation was limited to 20 qubits.
-
-[Combined evidence index](evidence/adaptive_sparse_dense/manifest.json) · [Windows ARM64 report](evidence/adaptive_sparse_dense/windows_arm64/adaptive-sparse-dense-windows-arm64.json) · [Windows manifest](evidence/adaptive_sparse_dense/windows_arm64/manifest.json) · [Ubuntu WSL2 ARM64 report](evidence/adaptive_sparse_dense/ubuntu_wsl2/adaptive-sparse-dense-ubuntu-wsl2-aarch64.json) · [Ubuntu manifest](evidence/adaptive_sparse_dense/ubuntu_wsl2/manifest.json) · [Run the comparison](tools/high_support/benchmark_adaptive.py) · [Adaptive implementation](tools/high_support/adaptive_statevector.py)
-
-### Opt-in adaptive CLI
-
-From a source checkout with NumPy installed, run a quantum program with an explicit state-memory budget:
-
-```sh
-python -m sharkbyte_alpha run examples/high_support/adaptive_sparse_ghz_20q.sbq --mode quantum --backend auto --memory-mib 256 --output auto-run.json
-python -m sharkbyte_alpha verify-run auto-run.json
-```
-
-Auto starts sparse and considers dense conversion through 20 qubits. Wider circuits stay sparse. The receipt records seeded measurement counts on completion, representation changes and their causes. A resource refusal returns a nonzero exit code and records the reason and gate index when available. The budget covers estimated state working memory; interpreter, receipt and sampling overhead contribute to total process memory. Existing CLI defaults are unchanged.
-
-### Adaptive Quantum CLI — Windows ARM64 and Ubuntu ARM64 Acceptance
-
-The checked-in acceptance bundle preserves the three original CLI receipts from Windows ARM64 and Ubuntu WSL2 ARM64. Each platform’s three receipts was independently hash-checked and replayed on its corresponding local environment against the exact checked-in source fixture. The GHZ20 case completes using sparse storage at 256 MiB; the connected random20 case switches to dense storage at gate 16 with support 65,536 at 256 MiB; and the same random20 source stops at gate 10 with `RESOURCE_STOP` and exit code 1 at 1 MiB. All six replays reproduce the original record digests and complete JSON results. The original receipt files match byte-for-byte between platforms. CI replays both receipt sets on its Ubuntu and Windows x86-64 test jobs. The separate Ubuntu ARM64 job checks backend agreement, not these adaptive CLI cases.
-
-The 20-qubit complete-vector comparisons, repeated timings, process peak-memory estimates, and archived Qiskit/Cirq references are separate evidence in the [adaptive sparse/dense comparison](evidence/adaptive_sparse_dense/manifest.json). The CLI acceptance receipts establish reproducible policy outcomes and integrity, not a new independent correctness proof or a performance result. Record hashes are unkeyed.
-
-[Acceptance evidence and receipts](evidence/adaptive-cli-cross-platform-20261118/) · [Replay verifier](tools/verify_adaptive_cli_acceptance.py)
-
-Compare sparse, dense and adaptive execution with the repository benchmark (NumPy and its documented reference fixtures required):
-
-```sh
-python tools/high_support/benchmark_adaptive.py --repetitions 3
-```
-
-## Terminal quickstart
-
-From the checkout, run `python -B sharkbyte_terminal.py` (`python3` on Linux). Try `/help`, `/bell`, `/bell-phase`, or `/qft`. The QFT example embeds a six-qubit transform in a 30-qubit register. Use `/run FILE.sb` for a custom quantum circuit, or `/run-frontier FILE.sb` for a sparse circuit at the default cap.
-
-Save a result with `/save result.json`, check it with `/verify result.json`, and rerun compatible circuit receipts with `/replay result.json`. Quote paths with spaces. Floating-point results can vary across platforms.
-
-### Enable local NPU chat on Windows ARM64
-
-For optional chat, install [Qualcomm GenieX](https://geniex.aihub.qualcomm.com/en/get-started/what-is-geniex) and run from the checkout:
-
-```powershell
-geniex --skip-update pull qualcomm/Qwen3-0.6B:W4A16 --model-hub aihub
-.\Open-SharkByte-AI.ps1 -Terminal
-```
-
-The launcher uses Qualcomm's precompiled model weights and connects via loopback. Check live GenieX runtime status to confirm the device used for inference. The circuit and VM commands run independently on the CPU. For custom paths, see the [launcher parameters](Open-SharkByte-AI.ps1).
-
-## Install
-
-Use CPython 3.10+ and pip. The CLI has no external runtime dependencies. Studio runs from the source checkout.
-
-```text
-python -m pip install .
-sharkbyte doctor
-sharkbyte run examples/example.sb --backend vm
-sharkbyte run examples/bell.sb --mode quantum
-sharkbyte run examples/adaptive.sb --mode hybrid --backend vm
-sharkbyte qasm examples/bell.sb --output bell.qasm
-sharkbyte verify-run examples/drawdown_risk_demo_overflow_guard.receipt.json
-```
-
-The OpenQASM 3 exporter covers the documented circuit subset. See [installation and offline builds](INSTALL.md), [language grammar](GRAMMAR.md), and [calculation limits](docs/CALCULATION_CAPABILITIES.md). The [research examples](docs/RESEARCH_GAP_CALCULATIONS.md) include finite calculations in the language. The [drawdown example](examples/drawdown_risk_demo.sb) is a fixed-point VM demonstration.
-
-## Reproduce the public benchmarks
-
-To check the published Google Compute Engine receipt from the repository root:
-
-```sh
-python tools/verify_connected_ghz50_receipt.py evidence/connected-ghz50-gcp/2p32/sharkbyte-ghz50-4b-gcp-receipt.json
-```
-
-The verifier checks the recorded evidence for internal consistency. To regenerate the arrays, run the [connected 50-qubit notebook](notebooks/SharkByte-Colab-Connected-50Q-2B.ipynb).
-
-- [Frontier30 reference suite](benchmarks/sb_quantum_benchmark/) checks analytical amplitudes under a 4,096-state cap and verifies refusal when a gate would exceed it. [GitHub Actions](.github/workflows/ci.yml) runs this suite. The 16-million-state measurements above came from local runs.
-- The same Windows and Ubuntu CI matrix runs the [eleven phase-flip recovery cases](tools/phase_flip_recovery_cases.py) and uploads each platform's JSON receipts as a workflow artifact. The committed [reference receipts](evidence/phase_flip_recovery_cases.json) remain directly reproducible from the command above.
-- [Backend agreement](benchmarks/backend_agreement/README.md) compares SharkVM, the native interpreter, and Direct AArch64 on Linux ARM64. [The recorded reference check](https://github.com/reggaesharkk/SharkByte/commit/0beed08fc99235d8de1f594448dfa7fc80a46c08) passed 27 cases. Native execution remains disabled in the public CLI and Studio.
-- [Live Qiskit and Cirq validation](INDEPENDENT_QUANTUM_VALIDATION.md) compares 120 seeded circuits across SharkByte's dense and sparse CPU simulators and two independent reference engines. GitHub Actions uploads the reports.
-- [High-support connected-circuit verification](docs/high-support-connected-entanglement.md) compares seeded 17-, 18-, and 20-qubit full statevectors with Qiskit and Cirq, checks entanglement by Schmidt spectra, and records the connected separable control and cancellation limitation.
-- [Qiskit reference provenance](QISKIT_PROVENANCE.md) describes the archived comparisons for 22 circuits and 320 probabilities. Run `python tools/replay_qiskit_vectors.py` to compare those archived reference values.
-- [Acceptance scope](PUBLIC_STAGE_ACCEPTANCE.md) · [Claim boundaries](CLAIM_BOUNDARIES.md) · [System map](ECOSYSTEM_MAP.md) · [Reggae Shark Universe](https://github.com/reggaesharkk/Reggae-shark-universe-)
-
-## Cite SharkByte
-
-| Cite | Zenodo DOI |
+| Check | Recorded outcome |
 | --- | --- |
-| SharkByte across all versions | [10.5281/zenodo.24213558](https://doi.org/10.5281/zenodo.24213558) |
-| Studio source snapshot with the million-state browser receipt | [10.5281/zenodo.24246003](https://doi.org/10.5281/zenodo.24246003) |
-| Original standalone alpha 0.2.1a2 | [10.5281/zenodo.24213559](https://doi.org/10.5281/zenodo.24213559) |
+| Full local Windows ARM64 regression run | **87/87 tests passed** on the integrated source |
+| Public installed-package acceptance | **17/17 checks passed** in the recorded Windows ARM64 release check |
+| Merged `main` GitHub Actions | [SharkByte CI passed on the actual merge commit](https://github.com/reggaesharkk/SharkByte/actions/runs/44484290586) |
+| Independent quantum validation of integration | [Passed on the validated integration head](https://github.com/reggaesharkk/SharkByte/actions/runs/44401252706) |
+| Unified Studio browser acceptance | Local Windows ARM64 tests exercised the three workspaces, Web/App export, and Lucid page |
 
-The Studio archive freezes commit [18e4eae](https://github.com/reggaesharkk/SharkByte/commit/18e4eae2463eef9c768f15c0818963337456d9a6). For the later phase-flip controls and 16-million-state runs, cite the applicable GitHub revision and evidence file. Current first-party source and the Studio archive use [Apache 2.0](LICENSE). The earlier Zenodo alpha remains MIT. See [license history](LICENSE_STATUS.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
+**Re-run the current source tree**:
+
+```sh
+python -m unittest discover -s tests -v
+python tools/ci_acceptance.py
+```
+
+The acceptance harness installs the core package outside the checkout, runs normal/`-O`/`-OO` regression checks, and confirms that unsupported native execution is **refused**. The reported native refusal exit code is expected, not an executable native backend. [CI workflow](.github/workflows/ci.yml) · [Release gates](RELEASE_GATE_MATRIX.md).
+
+### Scientific evidence, with the important distinction
+
+| Experiment | Recorded result | What it does **not** show | Read the evidence |
+| --- | --- | --- | --- |
+| **120 seeded quantum circuits** | Scoped comparisons with Qiskit and Cirq reference engines | Universal quantum correctness or hardware execution | [Independent validation](INDEPENDENT_QUANTUM_VALIDATION.md) |
+| **20-qubit connected, high-support circuit** | 1,048,576 amplitudes compared across four methods; measured balanced-cut Schmidt rank **1,024** | A general efficient large-qubit simulation method | [Methods and receipts](docs/high-support-connected-entanglement.md) |
+| **40-qubit / 16,777,216-state sparse workload** | CPU run and exact independent amplitude comparison for the specified **disconnected** circuit | A dense 40-qubit statevector or globally entangled 40-qubit experiment | [Studio receipt](evidence/studio_16m/windows_arm64/sharkbyte-85c74d14dcb54040a295e3c2fe422e53.json) · [Cirq comparison](evidence/windows-arm64-cirq/cirq-16777216.json) |
+| **40-qubit / 33,554,432-state connected GHZ-family workload** | Populated sparse amplitudes matched a closed-form oracle; connected GHZ entanglement has a separate analytical justification | General dense 40-qubit evolution or a full Cirq amplitude replay of this larger state | [Receipt and manifest](evidence/connected-ghz40-32m-colab/) |
+| **50-qubit / 4,294,967,296-entry GHZ-family materialization** | Disk-backed packed basis/amplitude arrays exhaustively checked against independent parity calculations; Colab and Google Compute Engine array digests matched | A **general 50-qubit gate-by-gate SharkByte simulator**; no 50-qubit dense vector was allocated | [Colab receipt](evidence/connected-ghz50-colab/retry-2p32/sharkbyte-connected-ghz50-4294967296-colab.json) · [Compute Engine replay](evidence/connected-ghz50-gcp/2p32/sharkbyte-ghz50-4b-gcp-receipt.json) |
+| **Adaptive sparse/dense comparisons** | Repeated CPU benchmarks for three specified 20-qubit cases; full vectors matched the dense candidate | Universal speedup; low-support cases favor sparse storage | [Reports and methodology](evidence/adaptive_sparse_dense/manifest.json) |
+| **Lucid Dynamics** | IVc/IVb periods reproduced; memoryless reference decayed; all nine receipts verified | Global stability, formal existence proof, or physiological interpretation | [Nine-receipt audit](docs/lucid-dynamics-audit.md) |
+
+The 50-qubit 2³² case is an important **large-scale, structured validation**, not a general sparse-backend milestone. A dedicated formula materializer produced disk arrays of the specified GHZ-family amplitudes; every entry was checked. Cirq independently tested a 512-shot Clifford measurement invariant **only**, not the 4.29-billion-entry statevector. The earlier `RESOURCE_STOP` attempt is retained in the [historical evidence](evidence/connected-ghz50-colab/). Read the [materialization worker](tools/run_connected_ghz50_materialization.py) and [notebook](notebooks/SharkByte-Colab-Connected-50Q-2B.ipynb) for the exact protocol.
+
+For the 40-qubit 16-million-state case, the Windows Studio worker recorded approximately **2.77 GiB** peak process memory, while a separate Linux/WSL and Colab reference program compared the populated amplitudes under its documented circuit decomposition. Times are **workload-, hardware-, and environment-specific**, not a generic benchmark against other languages.
+
+**Open numerical issue:** sparse round-trip cancellation can leave tiny floating-point residuals represented as nonzero entries. Exact support compaction remains an open engineering limitation. [Recorded round-trip control](evidence/colab-q8w4bj57/roundtrip-17/roundtrip_17q_comparison.json).
+
+### Reproduce and inspect evidence
+
+```sh
+# Hash-check a source-bound CLI receipt
+sharkbyte verify-run examples/drawdown_risk_demo_overflow_guard.receipt.json
+
+# Replay archived reference vectors for the documented subset
+python -B tools/replay_qiskit_vectors.py --output qiskit-replay.json
+
+# Verify a released 50-qubit structured-materialization receipt
+python -B tools/verify_connected_ghz50_receipt.py evidence/connected-ghz50-gcp/2p32/sharkbyte-ghz50-4b-gcp-receipt.json
+
+# Reproduce the small phase-flip recovery controls
+python -B tools/phase_flip_recovery_cases.py
+
+# Replay archived adaptive policy receipts
+python -B tools/verify_adaptive_cli_acceptance.py --receipt-dir evidence/adaptive-cli-cross-platform-20261118/windows-arm64 --output adaptive-replay.json
+```
+
+Complete reproducibility instructions and environment-specific comparisons are in [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [INDEPENDENT_QUANTUM_VALIDATION.md](INDEPENDENT_QUANTUM_VALIDATION.md), and the checked-in [evidence tree](evidence/).
+
+**Receipt integrity is not authentication.** SHA-256 verifies the file's canonical contents against its recorded digest; it does not prove the author, the source of the run, independent correctness, or the truth of external scientific assumptions.
+
+## Architecture and implementation boundaries
+
+```text
+                        SHARKBYTE
+                           |
+              +------------+-------------+
+              |                          |
+      .sb language / CLI             Local Studio
+              |                          |
+       compiler + SharkVM          +------+-------+
+              |                    |      |       |
+        classical integer        VM/CPU  Web/App  /lucid
+          execution             simulator  DSL    SciPy ODE
+              |                    |      |       |
+              +----- receipts -----+   static   numerical
+                   + hashes             output    receipts
+```
+
+**Designed constraints:** explicit source-size, instruction, qubit, shot, iteration, and state-support bounds; guarded resource refusals; separate web preview origin; optional scientific dependencies. These controls improve auditability and reduce accidental overreach, but **do not create an operating-system sandbox**.
+
+The optional Windows ARM64 [GenieX local-chat launcher](Open-SharkByte-AI.ps1) is an interface to separately obtained model weights. The language runtime, VM, and simulation are **not** a trained language model, and the presence of the launcher does not demonstrate NPU inference. [Architecture and scope](ECOSYSTEM_MAP.md).
+
+## What SharkByte does not claim
+
+- **Not quantum hardware.** All quantum experiments here are classical CPU simulation or analytical materialization.
+- **Not an arbitrary large-qubit statevector engine.** Register width, sparse support, connected entanglement, formula-based materialization, and full-vector reference comparison are distinct properties.
+- **Not a production compiler or unrestricted language implementation.** The [grammar](GRAMMAR.md) and [specification](SPEC.md) document an intentionally bounded alpha subset.
+- **Not a security sandbox.** Native interpreter and Direct AArch64 execution are **disabled** until containment/cancellation requirements are met. Do not execute untrusted inputs in sensitive environments. [Security policy](SECURITY.md).
+- **Not a general web backend or native mobile builder.** The Web/App feature compiles the documented declarative JSON schema into static sites and browser PWAs.
+- **Not a proof of human lucid dreaming or a global dynamical theorem.** Lucid Dynamics integrates a dimensionless model over tested finite horizons.
+- **Not a cryptographically authenticated provenance system.** Hash checks verify integrity; independent replay, code comparison, and trusted signing are separate concerns.
+
+See [CLAIM_BOUNDARIES.md](CLAIM_BOUNDARIES.md) for the complete claim inventory. Research examples describe finite, explicit calculations—not solutions to the Riemann hypothesis, Navier–Stokes regularity, or other open problems.
+
+## Documentation map
+
+| Start here | For |
+| --- | --- |
+| [GRAMMAR.md](GRAMMAR.md) · [SPEC.md](SPEC.md) | `.sb` syntax, semantics, and supported subsets |
+| [INSTALL.md](INSTALL.md) · [COMPATIBILITY.md](COMPATIBILITY.md) | Install, execution environments, known compatibility |
+| [ECOSYSTEM_MAP.md](ECOSYSTEM_MAP.md) | How the VM, simulators, web compiler, Studio, and optional chat relate |
+| [docs/web-app-builder.md](docs/web-app-builder.md) | Web/App project DSL, PWA scope, and preview/export |
+| [docs/lucid-dynamics.md](docs/lucid-dynamics.md) · [Lucid audit](docs/lucid-dynamics-audit.md) | Model equations, parameter ranges, solvers, numerical evidence |
+| [docs/high-support-connected-entanglement.md](docs/high-support-connected-entanglement.md) | Statevector comparisons and Schmidt diagnostics |
+| [docs/connected-circuit-frontier.md](docs/connected-circuit-frontier.md) | Sparse and analytical connected-circuit methods |
+| [INDEPENDENT_QUANTUM_VALIDATION.md](INDEPENDENT_QUANTUM_VALIDATION.md) | Qiskit/Cirq methods and host-specific evidence |
+| [REPRODUCIBILITY.md](REPRODUCIBILITY.md) · [Evidence](evidence/) | Receipts, integrity manifests, notebooks, exact replay scope |
+| [RELEASE_GATE_MATRIX.md](RELEASE_GATE_MATRIX.md) · [SECURITY.md](SECURITY.md) | Release status, security and native-execution limitations |
+| [LICENSE_STATUS.md](LICENSE_STATUS.md) · [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) | License history, software notices, third-party boundaries |
+
+## Development and verification
+
+From a source checkout with Python 3.10+:
+
+```sh
+python -m pip install -e ".[lucid]"
+python -m unittest discover -s tests -v
+python tools/ci_acceptance.py
+```
+
+The complete checkout suite covers features that are not included in the installed CLI-only package. The acceptance script deliberately tests the installed distribution **outside** the source tree. Core CI runs on Windows and Ubuntu; separate workflows cover documented independent reference-engine checks and selected ARM64 environments. Review [the workflows](.github/workflows/) rather than assuming every large experiment runs in hosted CI.
+
+When proposing new features or numerical claims, include an executable example, deterministic or seeded regression tests where possible, input bounds, evidence tied to the exact source revision, and explicit statements of what the result does **not** establish.
+
+## Author, citation, and license
+
+**SharkByte was created by Prince Upadhyay.** Development history, public tests, examples, and reproducibility records are available in this repository.
+
+| Research software record | DOI |
+| --- | --- |
+| SharkByte — concept DOI across versions | [10.5281/zenodo.24213558](https://doi.org/10.5281/zenodo.24213558) |
+| Archived Studio source snapshot and million-state browser record | [10.5281/zenodo.24246003](https://doi.org/10.5281/zenodo.24246003) |
+| Original standalone alpha `0.2.1a2` | [10.5281/zenodo.24213559](https://doi.org/10.5281/zenodo.24213559) |
+
+The current first-party repository is licensed under **[Apache License 2.0](LICENSE)**. Earlier published **MIT** revisions retain their historical grants; the Zenodo alpha record is not silently relicensed. Consult [NOTICE](NOTICE), [LICENSE_STATUS.md](LICENSE_STATUS.md), and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The `pyproject.toml` package version remains `0.2.1a2`; the unified Studio integration did **not** create a new tagged software release.
+
+---
+
+**SharkByte's central proposition is testable computation:** write a bounded program, run the appropriate engine, preserve a source-bound record, and check the result against the right independent reference—without turning a successful experiment into a broader claim than the evidence supports.
