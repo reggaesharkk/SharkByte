@@ -27,6 +27,7 @@ Write classical programs in `.sb`, describe quantum circuits for **CPU simulatio
 
 | Notebook | Verified experiment / scope | Launch |
 | --- | --- | --- |
+| Certified moving-branch | Exact signed-permutation branch tracking, affine-map closure and independent replay | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/reggaesharkk/SharkByte/blob/main/notebooks/SharkByte-Colab-Moving-Branch-Certification.ipynb) |
 | Integrated verification | 16,777,216-state comparison and scoped checks | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/reggaesharkk/SharkByte/blob/main/notebooks/SharkByte-Colab-Integrated-Verification.ipynb) |
 | Connected 40-qubit | 33,554,432-state sparse GHZ-family experiment | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/reggaesharkk/SharkByte/blob/main/notebooks/SharkByte-Colab-Connected-40Q-32M.ipynb) |
 | Connected 50-qubit | GHZ-family disk materialization, **up to 4,294,967,296 entries** | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/reggaesharkk/SharkByte/blob/main/notebooks/SharkByte-Colab-Connected-50Q-2B.ipynb) |
