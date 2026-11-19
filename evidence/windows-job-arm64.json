@@ -1,0 +1,970 @@
+{
+  "final_support": 1,
+  "deletion_events": 1,
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:31:18) [MSC v.1943 64 bit (ARM64)]",
+  "machine": "ARM64",
+  "pe_machine": "0xaa64",
+  "windows": "10.0.26300",
+  "source_sha256": "3023e64e7e1df05a284927fc0e625385e3a43baeeda7deaa0e5a4896e0c49c11",
+  "receipt_sha256": "c24ebb136bb6384ddfd6eef33741b9bf034fae3faecf425ff9535276c79f5b5e",
+  "receipt_bytes": 7884234,
+  "cases": [
+    {
+      "operation": "generate",
+      "commit_limit_bytes": 536870912,
+      "seconds": 180,
+      "status": "pass",
+      "stages": [
+        {
+          "phase": "generate",
+          "pid": 27000,
+          "membership_verified": true,
+          "exit_status": 0
+        },
+        {
+          "phase": "validate",
+          "pid": 24400,
+          "membership_verified": true,
+          "exit_status": 0
+        },
+        {
+          "phase": "publish",
+          "pid": 27584,
+          "membership_verified": true,
+          "exit_status": 0
+        }
+      ],
+      "inner_commit_limit_bytes": 524288000,
+      "verified_receipt_sha256": "c24ebb136bb6384ddfd6eef33741b9bf034fae3faecf425ff9535276c79f5b5e",
+      "published_seconds": 25.953000000008615,
+      "active_after_cleanup": 0,
+      "total_processes": 3,
+      "peak_job_committed_bytes": 92323840,
+      "inner_peak_job_committed_bytes": 92323840,
+      "elapsed_seconds": 25.953000000008615,
+      "output_sha256": "c24ebb136bb6384ddfd6eef33741b9bf034fae3faecf425ff9535276c79f5b5e",
+      "repetition": 1
+    },
+    {
+      "operation": "generate",
+      "commit_limit_bytes": 33554432,
+      "seconds": 180,
+      "status": "memory_refusal",
+      "stages": [
+        {
+          "phase": "generate",
+          "pid": 20000,
+          "membership_verified": true,
+          "exit_status": 86
+        }
+      ],
+      "inner_commit_limit_bytes": 20971520,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 22167552,
+      "inner_peak_job_committed_bytes": 22167552,
+      "error": "86",
+      "elapsed_seconds": 0.14100000000325963,
+      "repetition": 1
+    },
+    {
+      "operation": "generate",
+      "commit_limit_bytes": 33554432,
+      "seconds": 180,
+      "status": "memory_refusal",
+      "stages": [
+        {
+          "phase": "generate",
+          "pid": 12088,
+          "membership_verified": true,
+          "exit_status": 86
+        }
+      ],
+      "inner_commit_limit_bytes": 20971520,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 21032960,
+      "inner_peak_job_committed_bytes": 21032960,
+      "error": "86",
+      "elapsed_seconds": 0.14100000000325963,
+      "repetition": 2
+    },
+    {
+      "operation": "generate",
+      "commit_limit_bytes": 33554432,
+      "seconds": 180,
+      "status": "memory_refusal",
+      "stages": [
+        {
+          "phase": "generate",
+          "pid": 10488,
+          "membership_verified": true,
+          "exit_status": 86
+        }
+      ],
+      "inner_commit_limit_bytes": 20971520,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 21884928,
+      "inner_peak_job_committed_bytes": 21884928,
+      "error": "86",
+      "elapsed_seconds": 0.15600000000267755,
+      "repetition": 3
+    },
+    {
+      "operation": "generate",
+      "commit_limit_bytes": 33554432,
+      "seconds": 180,
+      "status": "memory_refusal",
+      "stages": [
+        {
+          "phase": "generate",
+          "pid": 18472,
+          "membership_verified": true,
+          "exit_status": 86
+        }
+      ],
+      "inner_commit_limit_bytes": 20971520,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 21540864,
+      "inner_peak_job_committed_bytes": 21540864,
+      "error": "86",
+      "elapsed_seconds": 0.20299999999406282,
+      "repetition": 4
+    },
+    {
+      "operation": "generate",
+      "commit_limit_bytes": 33554432,
+      "seconds": 180,
+      "status": "memory_refusal",
+      "stages": [
+        {
+          "phase": "generate",
+          "pid": 26904,
+          "membership_verified": true,
+          "exit_status": 86
+        }
+      ],
+      "inner_commit_limit_bytes": 20971520,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 21934080,
+      "inner_peak_job_committed_bytes": 21934080,
+      "error": "86",
+      "elapsed_seconds": 0.14100000000325963,
+      "repetition": 5
+    },
+    {
+      "operation": "generate",
+      "commit_limit_bytes": 33554432,
+      "seconds": 180,
+      "status": "memory_refusal",
+      "stages": [
+        {
+          "phase": "generate",
+          "pid": 2556,
+          "membership_verified": true,
+          "exit_status": 86
+        }
+      ],
+      "inner_commit_limit_bytes": 20971520,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 21397504,
+      "inner_peak_job_committed_bytes": 21397504,
+      "error": "86",
+      "elapsed_seconds": 0.20299999999406282,
+      "repetition": 6
+    },
+    {
+      "operation": "generate",
+      "commit_limit_bytes": 33554432,
+      "seconds": 180,
+      "status": "memory_refusal",
+      "stages": [
+        {
+          "phase": "generate",
+          "pid": 22396,
+          "membership_verified": true,
+          "exit_status": 86
+        }
+      ],
+      "inner_commit_limit_bytes": 20971520,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 21499904,
+      "inner_peak_job_committed_bytes": 21499904,
+      "error": "86",
+      "elapsed_seconds": 0.1870000000053551,
+      "repetition": 7
+    },
+    {
+      "operation": "generate",
+      "commit_limit_bytes": 33554432,
+      "seconds": 180,
+      "status": "memory_refusal",
+      "stages": [
+        {
+          "phase": "generate",
+          "pid": 27260,
+          "membership_verified": true,
+          "exit_status": 86
+        }
+      ],
+      "inner_commit_limit_bytes": 20971520,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 21770240,
+      "inner_peak_job_committed_bytes": 21770240,
+      "error": "86",
+      "elapsed_seconds": 0.1869999999908032,
+      "repetition": 8
+    },
+    {
+      "operation": "generate",
+      "commit_limit_bytes": 33554432,
+      "seconds": 180,
+      "status": "memory_refusal",
+      "stages": [
+        {
+          "phase": "generate",
+          "pid": 12928,
+          "membership_verified": true,
+          "exit_status": 86
+        }
+      ],
+      "inner_commit_limit_bytes": 20971520,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 21467136,
+      "inner_peak_job_committed_bytes": 21467136,
+      "error": "86",
+      "elapsed_seconds": 0.1880000000091968,
+      "repetition": 9
+    },
+    {
+      "operation": "generate",
+      "commit_limit_bytes": 33554432,
+      "seconds": 180,
+      "status": "memory_refusal",
+      "stages": [
+        {
+          "phase": "generate",
+          "pid": 22448,
+          "membership_verified": true,
+          "exit_status": 86
+        }
+      ],
+      "inner_commit_limit_bytes": 20971520,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 22155264,
+      "inner_peak_job_committed_bytes": 22155264,
+      "error": "86",
+      "elapsed_seconds": 0.15600000000267755,
+      "repetition": 10
+    },
+    {
+      "operation": "generate",
+      "commit_limit_bytes": 536870912,
+      "seconds": 0.25,
+      "status": "timeout",
+      "stages": [
+        {
+          "phase": "generate",
+          "pid": 7600,
+          "membership_verified": true,
+          "exit_status": 124
+        }
+      ],
+      "inner_commit_limit_bytes": 524288000,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 39526400,
+      "inner_peak_job_committed_bytes": 39526400,
+      "error": "worker deadline",
+      "elapsed_seconds": 0.2659999999887077,
+      "repetition": 1
+    },
+    {
+      "operation": "generate",
+      "commit_limit_bytes": 536870912,
+      "seconds": 0.25,
+      "status": "timeout",
+      "stages": [
+        {
+          "phase": "generate",
+          "pid": 24776,
+          "membership_verified": true,
+          "exit_status": 124
+        }
+      ],
+      "inner_commit_limit_bytes": 524288000,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 39034880,
+      "inner_peak_job_committed_bytes": 39034880,
+      "error": "worker deadline",
+      "elapsed_seconds": 0.25,
+      "repetition": 2
+    },
+    {
+      "operation": "generate",
+      "commit_limit_bytes": 536870912,
+      "seconds": 0.25,
+      "status": "timeout",
+      "stages": [
+        {
+          "phase": "generate",
+          "pid": 26728,
+          "membership_verified": true,
+          "exit_status": 124
+        }
+      ],
+      "inner_commit_limit_bytes": 524288000,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 40243200,
+      "inner_peak_job_committed_bytes": 40243200,
+      "error": "worker deadline",
+      "elapsed_seconds": 0.25,
+      "repetition": 3
+    },
+    {
+      "operation": "generate",
+      "commit_limit_bytes": 536870912,
+      "seconds": 0.25,
+      "status": "timeout",
+      "stages": [
+        {
+          "phase": "generate",
+          "pid": 4620,
+          "membership_verified": true,
+          "exit_status": 124
+        }
+      ],
+      "inner_commit_limit_bytes": 524288000,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 39841792,
+      "inner_peak_job_committed_bytes": 39841792,
+      "error": "worker deadline",
+      "elapsed_seconds": 0.2649999999994179,
+      "repetition": 4
+    },
+    {
+      "operation": "generate",
+      "commit_limit_bytes": 536870912,
+      "seconds": 0.25,
+      "status": "timeout",
+      "stages": [
+        {
+          "phase": "generate",
+          "pid": 18540,
+          "membership_verified": true,
+          "exit_status": 124
+        }
+      ],
+      "inner_commit_limit_bytes": 524288000,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 39448576,
+      "inner_peak_job_committed_bytes": 39448576,
+      "error": "worker deadline",
+      "elapsed_seconds": 0.26600000000325963,
+      "repetition": 5
+    },
+    {
+      "operation": "generate",
+      "commit_limit_bytes": 536870912,
+      "seconds": 0.25,
+      "status": "timeout",
+      "stages": [
+        {
+          "phase": "generate",
+          "pid": 11356,
+          "membership_verified": true,
+          "exit_status": 124
+        }
+      ],
+      "inner_commit_limit_bytes": 524288000,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 38993920,
+      "inner_peak_job_committed_bytes": 38993920,
+      "error": "worker deadline",
+      "elapsed_seconds": 0.26600000000325963,
+      "repetition": 6
+    },
+    {
+      "operation": "generate",
+      "commit_limit_bytes": 536870912,
+      "seconds": 0.25,
+      "status": "timeout",
+      "stages": [
+        {
+          "phase": "generate",
+          "pid": 1652,
+          "membership_verified": true,
+          "exit_status": 124
+        }
+      ],
+      "inner_commit_limit_bytes": 524288000,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 39550976,
+      "inner_peak_job_committed_bytes": 39550976,
+      "error": "worker deadline",
+      "elapsed_seconds": 0.2649999999994179,
+      "repetition": 7
+    },
+    {
+      "operation": "generate",
+      "commit_limit_bytes": 536870912,
+      "seconds": 0.25,
+      "status": "timeout",
+      "stages": [
+        {
+          "phase": "generate",
+          "pid": 14612,
+          "membership_verified": true,
+          "exit_status": 124
+        }
+      ],
+      "inner_commit_limit_bytes": 524288000,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 39030784,
+      "inner_peak_job_committed_bytes": 39030784,
+      "error": "worker deadline",
+      "elapsed_seconds": 0.26600000000325963,
+      "repetition": 8
+    },
+    {
+      "operation": "generate",
+      "commit_limit_bytes": 536870912,
+      "seconds": 0.25,
+      "status": "timeout",
+      "stages": [
+        {
+          "phase": "generate",
+          "pid": 20400,
+          "membership_verified": true,
+          "exit_status": 124
+        }
+      ],
+      "inner_commit_limit_bytes": 524288000,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 39510016,
+      "inner_peak_job_committed_bytes": 39510016,
+      "error": "worker deadline",
+      "elapsed_seconds": 0.2649999999994179,
+      "repetition": 9
+    },
+    {
+      "operation": "generate",
+      "commit_limit_bytes": 536870912,
+      "seconds": 0.25,
+      "status": "timeout",
+      "stages": [
+        {
+          "phase": "generate",
+          "pid": 11496,
+          "membership_verified": true,
+          "exit_status": 124
+        }
+      ],
+      "inner_commit_limit_bytes": 524288000,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 39260160,
+      "inner_peak_job_committed_bytes": 39260160,
+      "error": "worker deadline",
+      "elapsed_seconds": 0.26600000000325963,
+      "repetition": 10
+    },
+    {
+      "operation": "verify",
+      "commit_limit_bytes": 536870912,
+      "seconds": 180,
+      "status": "pass",
+      "stages": [
+        {
+          "phase": "verify",
+          "pid": 20844,
+          "membership_verified": true,
+          "exit_status": 0
+        },
+        {
+          "phase": "publish",
+          "pid": 24128,
+          "membership_verified": true,
+          "exit_status": 0
+        }
+      ],
+      "inner_commit_limit_bytes": 524288000,
+      "verified_receipt_sha256": "c24ebb136bb6384ddfd6eef33741b9bf034fae3faecf425ff9535276c79f5b5e",
+      "published_seconds": 11.405999999988126,
+      "active_after_cleanup": 0,
+      "total_processes": 2,
+      "peak_job_committed_bytes": 81465344,
+      "inner_peak_job_committed_bytes": 81465344,
+      "elapsed_seconds": 11.405999999988126,
+      "output_sha256": "66eb84e1f3248e9ae88cba95b0cf7831e9869690f51470b14c47563e5d2f5413",
+      "repetition": 1
+    },
+    {
+      "operation": "verify",
+      "commit_limit_bytes": 33554432,
+      "seconds": 180,
+      "status": "memory_refusal",
+      "stages": [
+        {
+          "phase": "verify",
+          "pid": 2844,
+          "membership_verified": true,
+          "exit_status": 86
+        }
+      ],
+      "inner_commit_limit_bytes": 20971520,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 27586560,
+      "inner_peak_job_committed_bytes": 27586560,
+      "error": "86",
+      "elapsed_seconds": 0.13999999999941792,
+      "repetition": 1
+    },
+    {
+      "operation": "verify",
+      "commit_limit_bytes": 33554432,
+      "seconds": 180,
+      "status": "memory_refusal",
+      "stages": [
+        {
+          "phase": "verify",
+          "pid": 4968,
+          "membership_verified": true,
+          "exit_status": 86
+        }
+      ],
+      "inner_commit_limit_bytes": 20971520,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 27652096,
+      "inner_peak_job_committed_bytes": 27652096,
+      "error": "86",
+      "elapsed_seconds": 0.125,
+      "repetition": 2
+    },
+    {
+      "operation": "verify",
+      "commit_limit_bytes": 33554432,
+      "seconds": 180,
+      "status": "memory_refusal",
+      "stages": [
+        {
+          "phase": "verify",
+          "pid": 16896,
+          "membership_verified": true,
+          "exit_status": 86
+        }
+      ],
+      "inner_commit_limit_bytes": 20971520,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 27906048,
+      "inner_peak_job_committed_bytes": 27906048,
+      "error": "86",
+      "elapsed_seconds": 0.125,
+      "repetition": 3
+    },
+    {
+      "operation": "verify",
+      "commit_limit_bytes": 33554432,
+      "seconds": 180,
+      "status": "memory_refusal",
+      "stages": [
+        {
+          "phase": "verify",
+          "pid": 27912,
+          "membership_verified": true,
+          "exit_status": 86
+        }
+      ],
+      "inner_commit_limit_bytes": 20971520,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 27561984,
+      "inner_peak_job_committed_bytes": 27561984,
+      "error": "86",
+      "elapsed_seconds": 0.125,
+      "repetition": 4
+    },
+    {
+      "operation": "verify",
+      "commit_limit_bytes": 33554432,
+      "seconds": 180,
+      "status": "memory_refusal",
+      "stages": [
+        {
+          "phase": "verify",
+          "pid": 28376,
+          "membership_verified": true,
+          "exit_status": 86
+        }
+      ],
+      "inner_commit_limit_bytes": 20971520,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 27627520,
+      "inner_peak_job_committed_bytes": 27627520,
+      "error": "86",
+      "elapsed_seconds": 0.125,
+      "repetition": 5
+    },
+    {
+      "operation": "verify",
+      "commit_limit_bytes": 33554432,
+      "seconds": 180,
+      "status": "memory_refusal",
+      "stages": [
+        {
+          "phase": "verify",
+          "pid": 10560,
+          "membership_verified": true,
+          "exit_status": 86
+        }
+      ],
+      "inner_commit_limit_bytes": 20971520,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 27639808,
+      "inner_peak_job_committed_bytes": 27639808,
+      "error": "86",
+      "elapsed_seconds": 0.125,
+      "repetition": 6
+    },
+    {
+      "operation": "verify",
+      "commit_limit_bytes": 33554432,
+      "seconds": 180,
+      "status": "memory_refusal",
+      "stages": [
+        {
+          "phase": "verify",
+          "pid": 18668,
+          "membership_verified": true,
+          "exit_status": 86
+        }
+      ],
+      "inner_commit_limit_bytes": 20971520,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 27697152,
+      "inner_peak_job_committed_bytes": 27697152,
+      "error": "86",
+      "elapsed_seconds": 0.125,
+      "repetition": 7
+    },
+    {
+      "operation": "verify",
+      "commit_limit_bytes": 33554432,
+      "seconds": 180,
+      "status": "memory_refusal",
+      "stages": [
+        {
+          "phase": "verify",
+          "pid": 24840,
+          "membership_verified": true,
+          "exit_status": 86
+        }
+      ],
+      "inner_commit_limit_bytes": 20971520,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 27611136,
+      "inner_peak_job_committed_bytes": 27611136,
+      "error": "86",
+      "elapsed_seconds": 0.125,
+      "repetition": 8
+    },
+    {
+      "operation": "verify",
+      "commit_limit_bytes": 33554432,
+      "seconds": 180,
+      "status": "memory_refusal",
+      "stages": [
+        {
+          "phase": "verify",
+          "pid": 17816,
+          "membership_verified": true,
+          "exit_status": 86
+        }
+      ],
+      "inner_commit_limit_bytes": 20971520,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 27639808,
+      "inner_peak_job_committed_bytes": 27639808,
+      "error": "86",
+      "elapsed_seconds": 0.125,
+      "repetition": 9
+    },
+    {
+      "operation": "verify",
+      "commit_limit_bytes": 33554432,
+      "seconds": 180,
+      "status": "memory_refusal",
+      "stages": [
+        {
+          "phase": "verify",
+          "pid": 6852,
+          "membership_verified": true,
+          "exit_status": 86
+        }
+      ],
+      "inner_commit_limit_bytes": 20971520,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 27648000,
+      "inner_peak_job_committed_bytes": 27648000,
+      "error": "86",
+      "elapsed_seconds": 0.11000000000058208,
+      "repetition": 10
+    },
+    {
+      "operation": "verify",
+      "commit_limit_bytes": 536870912,
+      "seconds": 0.25,
+      "status": "timeout",
+      "stages": [
+        {
+          "phase": "verify",
+          "pid": 9240,
+          "membership_verified": true,
+          "exit_status": 124
+        }
+      ],
+      "inner_commit_limit_bytes": 524288000,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 61771776,
+      "inner_peak_job_committed_bytes": 61771776,
+      "error": "worker deadline",
+      "elapsed_seconds": 0.2649999999994179,
+      "repetition": 1
+    },
+    {
+      "operation": "verify",
+      "commit_limit_bytes": 536870912,
+      "seconds": 0.25,
+      "status": "timeout",
+      "stages": [
+        {
+          "phase": "verify",
+          "pid": 27116,
+          "membership_verified": true,
+          "exit_status": 124
+        }
+      ],
+      "inner_commit_limit_bytes": 524288000,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 61775872,
+      "inner_peak_job_committed_bytes": 61775872,
+      "error": "worker deadline",
+      "elapsed_seconds": 0.26600000000325963,
+      "repetition": 2
+    },
+    {
+      "operation": "verify",
+      "commit_limit_bytes": 536870912,
+      "seconds": 0.25,
+      "status": "timeout",
+      "stages": [
+        {
+          "phase": "verify",
+          "pid": 23284,
+          "membership_verified": true,
+          "exit_status": 124
+        }
+      ],
+      "inner_commit_limit_bytes": 524288000,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 64126976,
+      "inner_peak_job_committed_bytes": 64126976,
+      "error": "worker deadline",
+      "elapsed_seconds": 0.2649999999994179,
+      "repetition": 3
+    },
+    {
+      "operation": "verify",
+      "commit_limit_bytes": 536870912,
+      "seconds": 0.25,
+      "status": "timeout",
+      "stages": [
+        {
+          "phase": "verify",
+          "pid": 12984,
+          "membership_verified": true,
+          "exit_status": 124
+        }
+      ],
+      "inner_commit_limit_bytes": 524288000,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 61755392,
+      "inner_peak_job_committed_bytes": 61755392,
+      "error": "worker deadline",
+      "elapsed_seconds": 0.25,
+      "repetition": 4
+    },
+    {
+      "operation": "verify",
+      "commit_limit_bytes": 536870912,
+      "seconds": 0.25,
+      "status": "timeout",
+      "stages": [
+        {
+          "phase": "verify",
+          "pid": 14312,
+          "membership_verified": true,
+          "exit_status": 124
+        }
+      ],
+      "inner_commit_limit_bytes": 524288000,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 63053824,
+      "inner_peak_job_committed_bytes": 63053824,
+      "error": "worker deadline",
+      "elapsed_seconds": 0.26600000000325963,
+      "repetition": 5
+    },
+    {
+      "operation": "verify",
+      "commit_limit_bytes": 536870912,
+      "seconds": 0.25,
+      "status": "timeout",
+      "stages": [
+        {
+          "phase": "verify",
+          "pid": 2176,
+          "membership_verified": true,
+          "exit_status": 124
+        }
+      ],
+      "inner_commit_limit_bytes": 524288000,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 61759488,
+      "inner_peak_job_committed_bytes": 61759488,
+      "error": "worker deadline",
+      "elapsed_seconds": 0.2659999999887077,
+      "repetition": 6
+    },
+    {
+      "operation": "verify",
+      "commit_limit_bytes": 536870912,
+      "seconds": 0.25,
+      "status": "timeout",
+      "stages": [
+        {
+          "phase": "verify",
+          "pid": 26380,
+          "membership_verified": true,
+          "exit_status": 124
+        }
+      ],
+      "inner_commit_limit_bytes": 524288000,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 61927424,
+      "inner_peak_job_committed_bytes": 61927424,
+      "error": "worker deadline",
+      "elapsed_seconds": 0.28100000000267755,
+      "repetition": 7
+    },
+    {
+      "operation": "verify",
+      "commit_limit_bytes": 536870912,
+      "seconds": 0.25,
+      "status": "timeout",
+      "stages": [
+        {
+          "phase": "verify",
+          "pid": 21836,
+          "membership_verified": true,
+          "exit_status": 124
+        }
+      ],
+      "inner_commit_limit_bytes": 524288000,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 67063808,
+      "inner_peak_job_committed_bytes": 67063808,
+      "error": "worker deadline",
+      "elapsed_seconds": 0.28100000000267755,
+      "repetition": 8
+    },
+    {
+      "operation": "verify",
+      "commit_limit_bytes": 536870912,
+      "seconds": 0.25,
+      "status": "timeout",
+      "stages": [
+        {
+          "phase": "verify",
+          "pid": 3292,
+          "membership_verified": true,
+          "exit_status": 124
+        }
+      ],
+      "inner_commit_limit_bytes": 524288000,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 73879552,
+      "inner_peak_job_committed_bytes": 73879552,
+      "error": "worker deadline",
+      "elapsed_seconds": 0.28100000000267755,
+      "repetition": 9
+    },
+    {
+      "operation": "verify",
+      "commit_limit_bytes": 536870912,
+      "seconds": 0.25,
+      "status": "timeout",
+      "stages": [
+        {
+          "phase": "verify",
+          "pid": 10172,
+          "membership_verified": true,
+          "exit_status": 124
+        }
+      ],
+      "inner_commit_limit_bytes": 524288000,
+      "active_after_cleanup": 0,
+      "total_processes": 1,
+      "peak_job_committed_bytes": 67776512,
+      "inner_peak_job_committed_bytes": 67776512,
+      "error": "worker deadline",
+      "elapsed_seconds": 0.28199999999196734,
+      "repetition": 10
+    }
+  ],
+  "implementation_sha256": {
+    "tools/high_support/check_windows_bounded.py": "c292ac21166bfd10dbc2791a1f7bc959f022e2bf053aa7f0dca3a1304b50e185",
+    "tools/high_support/windows_job.py": "5fc9f36163eb85d076301aad2c66694681375579c10d432197db3d3d007eff5e",
+    "tools/high_support/windows_bounded_worker.py": "d9bb7d6e69da27af0cc646b943186b14b0de81fdc1ce5c757bf49f1497a82ea2",
+    "tools/high_support/limit_bounded_windows.py": "83825abe06739943d82615f81b15b5f391119b335207e5506d7ed7e35a860413",
+    "benchmarks/sb_quantum_benchmark/bounded_support.py": "b440e742be144b9ce8541eb3fe37ed509d88b7042c9e5294b52be0e20751a781",
+    "benchmarks/sb_quantum_benchmark/verify_bounded.py": "32001c90479d5ad75357edbb9ba8f814b440176160c5d34ab739e5fc6bf02ad7",
+    "benchmarks/sb_quantum_benchmark/sparse_backend.py": "186aad8bed0b0c0ff13efc642fe284a6d1fc9cccdd2c36174b434b6ddbe8572c",
+    "benchmarks/sb_quantum_benchmark/frontier30.py": "279ad305ded37f143d0319770d18e8f4164b10e6b8838cff270072a88a5936ca",
+    "benchmarks/sb_quantum_benchmark/quantum_frontend.py": "beec7c5f3e428143a74035c842cd08ecc545310d428a5f6173d3896d2615f837"
+  }
+}
