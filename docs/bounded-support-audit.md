@@ -12,7 +12,7 @@ Base commit `9dce751e3660ae54a108acabf2a00c8b72be23ca`. The numerical and scalin
 | 6. Protection | PASS for fixed coordinates. A small amplitude protected at index 1 moves to index 3 under X on qubit 1 and can then be deleted. A guarantee for that moving physical branch would be false. |
 | 7. Scaling | PASS for bounded experiments at 8, 12, 16 and 20 qubits. Each baseline and compacted case runs in its own process. The record includes support after completed gates, lifetime peak RSS, traced peak allocations, serialized certificate bytes and one traced wall time. At 16 and 20 qubits the 8192-entry safety cap refused both uniform runs and the original product runs. Full-support performance above that cap is OPEN. |
 | 8. Resource enforcement | The original implementation checked the clock only after compaction and replay restarted it per gate. Candidate ordering now uses interruptible heap operations and replay shares one deadline. Estimated workspace charges remain estimates. Linux supervisor PASS covers startup through serialization or parsing with an OS address-space limit and wall deadline. Native Windows hard process containment is OPEN. Individual Python arithmetic operations and allocations have no preemptive in-process deadline. |
-| 9. Regression environments | Native Windows ARM64 and Ubuntu WSL2 each passed 113 tests. The PR workflow repeats the bounded tests, reference comparisons and Linux process limit controls. |
+| 9. Regression environments | Native Windows ARM64 and Ubuntu WSL2 each passed 114 tests. The PR workflow repeats the bounded tests, reference comparisons and Linux process limit controls. |
 | 10. Reproduction | PASS for the checked-in workload definitions, exact reference versions, receipts and commands below. Runtime, RSS and cross-platform transcendental results depend on the environment. |
 
 The 12-qubit small-rotation product retained one entry and completed in 1.56 ms, compared with 87.54 ms for the 4096-entry baseline. The uniform circuit retained all 4096 entries and took 93.17 ms compared with 63.49 ms. Tracing contributes overhead. Worker timings exclude JSON serialization; certificate sizes measure serialized payload and the process-limit check includes serialization.
@@ -31,3 +31,5 @@ python tools/high_support/check_bounded_limits.py > local-limits.json
 ```
 
 The limit control regenerates the 17-qubit witness in a temporary directory and replays it. Its RSS can exceed the sparse kernel estimate because Python objects, allocator overhead and the receipt parser also occupy memory. The supervisor limits the child process's virtual address space and publishes its output only on success.
+
+The original interference control now exercises the 128 KiB kernel-only budget as a required workspace refusal. Its full-vector comparison uses 512 KiB for kernel, candidates and witnesses, with the original numerical acceptance criteria.

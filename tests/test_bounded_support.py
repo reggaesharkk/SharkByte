@@ -100,3 +100,10 @@ class AuditTests(unittest.TestCase):
                                      str(source),str(path)],cwd=root,capture_output=True,text=True)
             self.assertNotEqual(result.returncode,0)
             self.assertIn("source digest mismatch",result.stderr)
+
+    def test_original_interference_workspace(self):
+        forward = [("h", q) for q in range(8)] + [("cp", 0, 7, 0.713), ("ry", 2, 0.417)]
+        inverse = [("ry", 2, -0.417), ("cp", 0, 7, -0.713)] + [("h", q) for q in reversed(range(8))]
+        with self.assertRaises(ResourceLimitError):
+            simulate(Circuit(8, tuple(forward+inverse)), "1e-4",
+                     support_cap=256, memory_budget_bytes=256*512)
