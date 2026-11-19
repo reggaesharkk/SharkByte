@@ -1,0 +1,223 @@
+{
+  "adversarial_replay": {
+    "forged_certificates_rejected": [
+      "wrong-final-map",
+      "wrong-origin",
+      "wrong-policy",
+      "deleting-current-protected-coordinate"
+    ],
+    "mixing_gate_reason": "gate 0 (h) is outside the certified signed-permutation subset",
+    "mixing_gate_status": "UNSUPPORTED"
+  },
+  "architecture": "ARM64",
+  "archived_counterexample": {
+    "fixed_mode": {
+      "deleted": [
+        [
+          0,
+          "0x1.ad7f29abcaf48p-24",
+          "0x0.0p+0"
+        ]
+      ],
+      "final_support": 1,
+      "status": "PASS"
+    },
+    "moving_mode": {
+      "exact_squared_error": "0/1",
+      "final_positions": [
+        [
+          1,
+          0
+        ]
+      ],
+      "final_support": 2,
+      "status": "PASS",
+      "verifier_status": "PASS"
+    }
+  },
+  "decisions": {
+    "archived_counterexample_repaired_in_moving_mode": "PASS",
+    "fixed_index_mode_preserved": "PASS",
+    "mixing_gates_rejected": "PASS",
+    "moving_protection_through_mixing_gates": "UNSUPPORTED",
+    "performance_generalization": "OPEN",
+    "randomized_larger_circuits_exactly_replayed": "PASS",
+    "single_gate_mappings_all_origins_through_four_qubits": "PASS"
+  },
+  "exhaustive_mappings": {
+    "exhaustive_over_each_legal_single_gate_and_basis_origin": true,
+    "families": [
+      "x",
+      "z",
+      "cx"
+    ],
+    "individual_gate_origin_mappings": 444,
+    "widths": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "implementation_commit": "6c2c23f8a332c9d96d22a53c6af600571dc00f07",
+  "opt_in_overhead": {
+    "branch_count": 32,
+    "gates": 1200,
+    "initial_support": 33,
+    "ledger_json_bytes": {
+      "fixed": 209,
+      "moving": 591
+    },
+    "moving_to_fixed_ledger_size_delta_bytes": 382,
+    "moving_to_fixed_traced_peak_ratio": 1.0760994704121576,
+    "moving_to_fixed_wall_ratio": 0.6215997652981239,
+    "notes": "Single local CPython sample set; tracemalloc is not process RSS; no speedup claim.",
+    "samples": 7,
+    "traced_peak_bytes_median": {
+      "fixed": 8686,
+      "moving": 9347
+    },
+    "wall_seconds_median": {
+      "fixed": 0.43935570000030566,
+      "moving": 0.27310340000258293
+    },
+    "width": 10
+  },
+  "platform": "Windows-11-10.0.26300-SP0",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:31:18) [MSC v.1943 64 bit (ARM64)]",
+  "randomized_signed_permutation_circuits": [
+    {
+      "certified_l2_bound": "42949673/4294967296000",
+      "deleted_coordinates": 1,
+      "events": 1,
+      "exact_squared_error": "34844914372704104359490377921249/348449143727040986586495598010130648530944",
+      "final_positions": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          19
+        ],
+        [
+          31,
+          29
+        ]
+      ],
+      "gate_sha256": "16fa2c564c630844be16279c7ad80a053ce7aa5c5f5533dec9a556dc07449598",
+      "gates": 250,
+      "origins": [
+        0,
+        1,
+        31
+      ],
+      "seed": 17,
+      "width": 5
+    },
+    {
+      "certified_l2_bound": "42949673/4294967296000",
+      "deleted_coordinates": 1,
+      "events": 1,
+      "exact_squared_error": "34844914372704104359490377921249/348449143727040986586495598010130648530944",
+      "final_positions": [
+        [
+          0,
+          97
+        ],
+        [
+          1,
+          56
+        ],
+        [
+          255,
+          21
+        ]
+      ],
+      "gate_sha256": "1ff219e223c295787f3425c8c5d53118f85889b6372335461be5c3b4f79d4f16",
+      "gates": 250,
+      "origins": [
+        0,
+        1,
+        255
+      ],
+      "seed": 29,
+      "width": 8
+    },
+    {
+      "certified_l2_bound": "42949673/4294967296000",
+      "deleted_coordinates": 1,
+      "events": 1,
+      "exact_squared_error": "34844914372704104359490377921249/348449143727040986586495598010130648530944",
+      "final_positions": [
+        [
+          0,
+          132
+        ],
+        [
+          1,
+          725
+        ],
+        [
+          4095,
+          2314
+        ]
+      ],
+      "gate_sha256": "aa176f57ed5b7017b76ac8ebb344195a4e692ae2822f2741c9fc1cdf9441452e",
+      "gates": 250,
+      "origins": [
+        0,
+        1,
+        4095
+      ],
+      "seed": 43,
+      "width": 12
+    },
+    {
+      "certified_l2_bound": "42949673/4294967296000",
+      "deleted_coordinates": 1,
+      "events": 1,
+      "exact_squared_error": "34844914372704104359490377921249/348449143727040986586495598010130648530944",
+      "final_positions": [
+        [
+          0,
+          96016
+        ],
+        [
+          1,
+          79761
+        ],
+        [
+          1048575,
+          138410
+        ]
+      ],
+      "gate_sha256": "fb2b46ae4ef7ac961b38201984540adc9ecbe44dc088099977a719a7bd4c1fb1",
+      "gates": 250,
+      "origins": [
+        0,
+        1,
+        1048575
+      ],
+      "seed": 71,
+      "width": 20
+    }
+  ],
+  "reproducible_command": "python tools/high_support/check_moving_branch_protection.py > <evidence.json>",
+  "schema": "sharkbyte/moving-branch-protection-evidence-v1",
+  "source_hashes": {
+    ".github/workflows/certified-support.yml": "592691474c7f4a3d852e71512ac1ad2d10f15e2e4d99197857d27a9482cfe8df",
+    "CLAIM_BOUNDARIES.md": "ccb74e57b949cd1663bed46e8fbe2d44324dd583b69a51276f12dfa4f6c416ab",
+    "README.md": "a7c15bcaec5b682914014600fce3c164f325fbacef0f876cfd42ecb5750fc2f7",
+    "REPRODUCIBILITY.md": "9054f7510e2f48e1dd12002237f4554ab930ff75d0ad5423a09057b8fa49de21",
+    "benchmarks/sb_quantum_benchmark/bounded_support.py": "f7f00a5ee689e93003ff03e50a1e93e1b1d4c8fd77665cd9e42eb942aa1b1ab9",
+    "benchmarks/sb_quantum_benchmark/certified_support.py": "88b8245fad744c7b3fc3ad7ab156808f7f256eca396f567dc51e01dc01aef52d",
+    "benchmarks/sb_quantum_benchmark/verify_bounded.py": "9c5f726640e4c7e6410d270ec0e1e26a1d2d1068ad2668ebf6f58f8a89687d62",
+    "docs/bounded-support-audit.md": "879df49e1a05d51a546d6a2b03fe1ff52cf93904127a8e28962b62b2b17cdb9f",
+    "docs/bounded-support.md": "0d216901e58941bf8386c77c3b9bc5e00b46778ad61611e74481c0e4ed36ea96",
+    "docs/certified-bounded-support.md": "9b201cb9f2ea245ca8682a66ec4a6d52ef7edc49e6367e7117512dc2354c8c5c",
+    "tests/test_certified_support.py": "ca1960d6bbcb0422127e2bc632c09989bd83d24b190e38c27123f0935bd5b7c1",
+    "tools/high_support/check_moving_branch_protection.py": "e900d20b8b451df68c44aec701aeecb756297abaa45359bca83182c88e6a63e4",
+    "tools/high_support/check_platform_regressions.py": "71068f1d3f14f10c5e048db50ad7a3b0a79861352edee184706ceb71ccdb6837"
+  }
+}

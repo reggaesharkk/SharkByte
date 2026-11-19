@@ -1,0 +1,57 @@
+{
+  "schema": "sharkbyte-platform-regression-v1",
+  "target": "ubuntu-wsl2-arm64",
+  "head_commit": "6c2c23f8a332c9d96d22a53c6af600571dc00f07",
+  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "implementation": "CPython",
+  "system": "Linux",
+  "release": "6.18.58.1-microsoft-standard-WSL2",
+  "machine": "AARCH64",
+  "windows_pe_machine": null,
+  "tests_run": 138,
+  "failures": 0,
+  "errors": 0,
+  "skipped": [
+    {
+      "test": "test_assignment_failure_prevents_execution (test_windows_bounded_job.JobTests.test_assignment_failure_prevents_execution)",
+      "reason": "Win32 Job Object"
+    },
+    {
+      "test": "test_descendant_drained_on_failure (test_windows_bounded_job.JobTests.test_descendant_drained_on_failure)",
+      "reason": "Win32 Job Object"
+    },
+    {
+      "test": "test_invalid_receipt_and_existing_destination (test_windows_bounded_job.JobTests.test_invalid_receipt_and_existing_destination)",
+      "reason": "Win32 Job Object"
+    },
+    {
+      "test": "test_last_handle_closes_suspended_worker (test_windows_bounded_job.JobTests.test_last_handle_closes_suspended_worker)",
+      "reason": "Win32 Job Object"
+    },
+    {
+      "test": "test_publication_deadline_rolls_back_only_this_result (test_windows_bounded_job.JobTests.test_publication_deadline_rolls_back_only_this_result)",
+      "reason": "Win32 Job Object"
+    }
+  ],
+  "elapsed_seconds": 16.1518333,
+  "status": "PASS",
+  "sha256": {
+    "tools/high_support/check_platform_regressions.py": "71068f1d3f14f10c5e048db50ad7a3b0a79861352edee184706ceb71ccdb6837",
+    "tools/high_support/check_certified_support.py": "0185916fe6eaf892f77f2a31d37fc5f9f86e440daa8e5a5054d7978ed805cb25",
+    "tools/high_support/check_moving_branch_protection.py": "e900d20b8b451df68c44aec701aeecb756297abaa45359bca83182c88e6a63e4",
+    "benchmarks/sb_quantum_benchmark/certified_support.py": "88b8245fad744c7b3fc3ad7ab156808f7f256eca396f567dc51e01dc01aef52d",
+    "benchmarks/sb_quantum_benchmark/bounded_support.py": "f7f00a5ee689e93003ff03e50a1e93e1b1d4c8fd77665cd9e42eb942aa1b1ab9",
+    "benchmarks/sb_quantum_benchmark/verify_bounded.py": "9c5f726640e4c7e6410d270ec0e1e26a1d2d1068ad2668ebf6f58f8a89687d62",
+    "benchmarks/sb_quantum_benchmark/sparse_backend.py": "186aad8bed0b0c0ff13efc642fe284a6d1fc9cccdd2c36174b434b6ddbe8572c",
+    "tests/test_certified_support.py": "ca1960d6bbcb0422127e2bc632c09989bd83d24b190e38c27123f0935bd5b7c1",
+    "README.md": "a7c15bcaec5b682914014600fce3c164f325fbacef0f876cfd42ecb5750fc2f7",
+    "CLAIM_BOUNDARIES.md": "ccb74e57b949cd1663bed46e8fbe2d44324dd583b69a51276f12dfa4f6c416ab",
+    "REPRODUCIBILITY.md": "9054f7510e2f48e1dd12002237f4554ab930ff75d0ad5423a09057b8fa49de21",
+    "docs/certified-bounded-support.md": "9b201cb9f2ea245ca8682a66ec4a6d52ef7edc49e6367e7117512dc2354c8c5c",
+    "docs/bounded-support.md": "0d216901e58941bf8386c77c3b9bc5e00b46778ad61611e74481c0e4ed36ea96",
+    "docs/bounded-support-audit.md": "879df49e1a05d51a546d6a2b03fe1ff52cf93904127a8e28962b62b2b17cdb9f",
+    "requirements-high-support.txt": "c0ac9b3ada1139c018dcff32347d29a40b785947bb70076960c1124cd5cc01db",
+    "requirements-independent-quantum.txt": "d5af996a5943b421f663848707fc9d34c549b4e01fb29190ad49f45b3706acda",
+    ".github/workflows/certified-support.yml": "592691474c7f4a3d852e71512ac1ad2d10f15e2e4d99197857d27a9482cfe8df"
+  }
+}
