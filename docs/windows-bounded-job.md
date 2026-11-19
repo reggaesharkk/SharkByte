@@ -4,7 +4,7 @@ From the repository root on 64-bit Windows with CPython 3.12, use fresh destinat
 
 ```powershell
 python -m tools.high_support.limit_bounded_windows --commit-mib 512 --seconds 180 generate examples/high_support/roundtrip_17q.sbq roundtrip.json --budget 1e-10 --interval 214 --support-cap 131072 --memory-mib 256 --seconds 180
-python -m tools.high_support.limit_bounded_windows --commit-mib 512 --seconds 180 verify examples/high_support/roundtrip_17q.sbq verified.json
+python -m tools.high_support.limit_bounded_windows --commit-mib 512 --seconds 180 verify examples/high_support/roundtrip_17q.sbq verified.json roundtrip.json
 python -m tools.high_support.check_windows_bounded --architecture ARM64 --output local-arm64.json
 python -m unittest discover -s tests -v
 ```
