@@ -1,0 +1,58 @@
+{
+  "receipt_sha256": "ccbefe83e3813e55ed83ca69738c4de606b1764add7cbf4d0270dbb30b4b7b54",
+  "receipt_bytes": 7884374,
+  "source_sha256": "3023e64e7e1df05a284927fc0e625385e3a43baeeda7deaa0e5a4896e0c49c11",
+  "cases": [
+    {
+      "operation": "generate",
+      "address_mib": 512,
+      "seconds": 180,
+      "outcome": "pass",
+      "exit": 0
+    },
+    {
+      "operation": "generate",
+      "address_mib": 32,
+      "seconds": 180,
+      "outcome": "memory",
+      "exit": 1
+    },
+    {
+      "operation": "generate",
+      "address_mib": 512,
+      "seconds": 0.05,
+      "outcome": "timeout",
+      "exit": 124
+    },
+    {
+      "operation": "verify",
+      "address_mib": 512,
+      "seconds": 180,
+      "outcome": "pass",
+      "exit": 0
+    },
+    {
+      "operation": "verify",
+      "address_mib": 32,
+      "seconds": 180,
+      "outcome": "memory",
+      "exit": 1
+    },
+    {
+      "operation": "verify",
+      "address_mib": 512,
+      "seconds": 0.05,
+      "outcome": "timeout",
+      "exit": 124
+    }
+  ],
+  "head_commit": "ad2b39a2ed9b017564e5510472ff1dea424a2de2",
+  "implementation_sha256": {
+    "tools/high_support/check_bounded_limits.py": "8c575edfb22033de160d227ab0385b8e99eaa9e096269755c867a43cf4323b3e",
+    "tools/high_support/limit_bounded.py": "6d0e0c503fe9219975357b759c41bdcf11697fa037f18164a7184c752530db4a",
+    "benchmarks/sb_quantum_benchmark/bounded_support.py": "1e4de0404d6d2cd41892fbd0fb7882da66334d58dbfc8fff98ded5edd0dd973e",
+    "benchmarks/sb_quantum_benchmark/verify_bounded.py": "32001c90479d5ad75357edbb9ba8f814b440176160c5d34ab739e5fc6bf02ad7",
+    "benchmarks/sb_quantum_benchmark/sparse_backend.py": "186aad8bed0b0c0ff13efc642fe284a6d1fc9cccdd2c36174b434b6ddbe8572c",
+    "benchmarks/sb_quantum_benchmark/frontier30.py": "279ad305ded37f143d0319770d18e8f4164b10e6b8838cff270072a88a5936ca"
+  }
+}

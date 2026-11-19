@@ -229,6 +229,8 @@ For the 40-qubit 16-million-state case, the Windows Studio worker recorded appro
 
 Frontier30 can simplify adjacent inverse gates before sparse evolution. Pass `--simplify-inverses` to its benchmark CLI. For roundtrip-17, all 107 pairs cancel and the final sparse dictionary has one entry. The report lists original gate indices in cancellation order.
 
+**Certified numerical subset:** the opt-in exact-error certificate supports finite binary64 initial amplitudes with x, z, and cx signed permutations. Mixing gates, angle gates, decimal conversion error, and renormalization return UNSUPPORTED. See [the derivation and source-bound comparisons](docs/certified-bounded-support.md), including 96 exact-subset configurations and 48 explicitly unsupported legacy configurations compared with high-precision references.
+
 **Open numerical issue:** sparse round-trip cancellation can leave tiny floating-point residuals represented as nonzero entries. Exact support compaction remains an open engineering limitation. [Recorded round-trip control](evidence/colab-q8w4bj57/roundtrip-17/roundtrip_17q_comparison.json).
 
 ### Reproduce and inspect evidence
