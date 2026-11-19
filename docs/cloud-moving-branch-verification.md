@@ -1,6 +1,8 @@
 # SharkByte moving-branch certification: Colab and GCE reproduction
 
-**Baseline revision:** `7793d5eace34456ce1cc57f85f4d75cf84c8e889` (PR #22 merge). This procedure uses the existing audited `tools/high_support/check_moving_branch_protection.py`; it does not add a new numerical engine. No new Google Cloud or Colab run is claimed until an actual source-bound receipt is produced.
+**Baseline revision:** `7793d5eace34456ce1cc57f85f4d75cf84c8e889` (PR #22 merge). This procedure uses the existing audited `tools/high_support/check_moving_branch_protection.py`; it does not add a new numerical engine. An archived GCE receipt at this revision is preserved in [the cross-platform evidence package](../evidence/gce-moving-branch-cross-platform-20261120/). The verifier checks the existing record; it does not rerun the cloud experiment. No additional Google Cloud or Colab run is implied.
+
+The GCE receipt and manifest passed independent byte-integrity, source-blob, exact-rational, and cross-platform payload comparisons. The original Colab ZIP referenced by the audit was also recovered, preserved, and verified: its receipt digest, manifest, 13 source hashes, and seven payload fields match GCE and the Windows ARM64/WSL2 records. This does not rerun Colab. The GCE host reported 33,658,982,400 bytes of RAM, the worker had a 24 GiB `RLIMIT_AS` virtual-address-space limit, recorded wall time was 13.961806 seconds, and sampled peak VmRSS was 58,368,000 bytes. The host capacity was available, not consumed; the sample is not a strict peak and `RLIMIT_AS` does not cap RSS. See the [reproducible verifier](../tools/high_support/verify_gce_cross_platform_audit.py) and [criterion decisions](../evidence/gce-moving-branch-cross-platform-20261120/README.md).
 
 ## One-click Google Colab
 

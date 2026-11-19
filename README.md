@@ -11,12 +11,20 @@ Write classical programs in `.sb`, describe quantum circuits for **CPU simulatio
 
 **[Quick start](#quick-start)** · **[Language examples](#write-sharkbyte)** · **[Studio](#three-workspaces-one-local-studio)** · **[Evidence](#independent-verification-and-benchmarks)** · **[Documentation](#documentation-map)** · **[Research boundaries](#what-sharkbyte-does-not-claim)**
 
+I do not treat a correct output as sufficient evidence. I ask whether its source is pinned, whether its result survives an independent replay, and where the argument stops. I am not trying to make a machine appear powerful. I am trying to understand the boundary between what can be computed, what can be verified, and what can honestly be claimed as known.
+
 ## Verified achievements — Google Cloud, Colab, and local systems
 
 **SharkByte's public results span local Windows ARM64, Ubuntu ARM64 under WSL2, Google Colab CPUs, and Google Compute Engine.** These are measured, source-linked experiments with distinct verification methods—not a single claim that every workload is supported by the same execution engine.
 
 | Where it ran | Verified milestone | Evidence |
 | --- | --- | --- |
+| **Exact inverse-gate simplification** | The opt-in pass cancels **107 adjacent inverse pairs** in the original 214-gate, 17-qubit roundtrip circuit while preserving the input source. The certificate records `reference_checked: false`; this is an algebraic identity result, not an independent simulator comparison. | [Roundtrip-17 certificate](evidence/roundtrip17-inverses.json) · [Simplifier tests](tests/test_inverse_simplifier.py) |
+| **Opt-in cumulative L2 support compaction** | Exact rational deletion charges compose to an unnormalized L2 bound for finite binary64 inputs under `x`, `z`, and `cx`. The 96 exact-subset configurations are certified; 48 broader gate schedules are explicitly unsupported and separately compared with high-precision references. | [Derivation and limits](docs/certified-bounded-support.md) · [WSL2 evidence](evidence/certified-support-linux.json) |
+| **Moving-coordinate protection and adversarial replay** | Exact replay follows protected initial coordinates through `x`, `z`, and `cx`; 444 single-gate/origin mappings and all 322,560 four-qubit affine maps (5,160,960 basis images) are checked. Forged origin, policy, final-map, and protected-deletion receipts are rejected. Mixing operations return `UNSUPPORTED`. | [Windows ARM64](evidence/moving-branch-protection-windows-arm64-v2.json) · [Ubuntu WSL2 ARM64](evidence/moving-branch-protection-ubuntu-wsl2-arm64-v2.json) |
+| **Native Windows worker containment** | The opt-in bounded-support Job Object supervisor passed a 42-case Windows ARM64 record, including repeated memory-refusal and timeout cases, with process cleanup accounting. It is scoped to this worker and is not a general sandbox. | [ARM64 containment record](evidence/windows-job-arm64-certified-support-final.json) · [Limits and failures](docs/windows-bounded-job.md) |
+| **Google Colab (Linux x86_64)** | The original moving-branch receipt is pinned to the same `7793d5e` source as GCE; its manifest, 13 source hashes, and seven payload fields match GCE and the Windows/WSL records. The recorded execution took **28.67 s**; no fresh Colab run is claimed here. | [Archived Colab ZIP](evidence/gce-moving-branch-cross-platform-20261120/sharkbyte-moving-cloud-evidence.zip) · [Audit and verifier](evidence/gce-moving-branch-cross-platform-20261120/) |
+| **GCE cross-platform audit (Linux x86_64)** | The archived source-bound run took **13.96 s** on a host reporting 33,658,982,400 bytes RAM (**31.35 GiB**). The worker used a **24 GiB virtual-address-space ceiling** and had a **55.66 MiB sampled peak VmRSS**. The run matched the pinned Windows ARM64 and WSL2 payload records. | [Original ZIP and audit reports](evidence/gce-moving-branch-cross-platform-20261120/) · [Reproducible verifier](tools/high_support/verify_gce_cross_platform_audit.py) |
 | **Google Compute Engine (Linux x86_64)** | **4,294,967,296 packed GHZ-family basis/amplitude entries checked** against a closed-form parity reference. The two array SHA-256 digests matched the independent Colab replay; the temporary packed arrays totaled **96 GiB**. | [GCE 2³² receipt](evidence/connected-ghz50-gcp/2p32/sharkbyte-ghz50-4b-gcp-receipt.json) |
 | **Google Colab (Linux x86_64)** | Independently completed the same **4,294,967,296-entry** structured materialization and full-array check. A separate connected **40-qubit / 33,554,432-populated-amplitude** sparse experiment matched its closed-form oracle. | [50-qubit Colab receipt](evidence/connected-ghz50-colab/retry-2p32/sharkbyte-connected-ghz50-4294967296-colab.json) · [40-qubit Colab receipt](evidence/connected-ghz40-32m-colab/sharkbyte-connected-ghz40-33554432-colab.json) |
 | **Windows ARM64 (local Studio)** | The fixed **40-qubit / 16,777,216-state** CPU benchmark ran from Studio, recording **2.77 GiB** peak process memory. The unified release also passed **87 local tests** and **17 installed-package acceptance checks**. | [Windows Studio receipt](evidence/studio_16m/windows_arm64/sharkbyte-85c74d14dcb54040a295e3c2fe422e53.json) · [Release integration PR](https://github.com/reggaesharkk/SharkByte/pull/13) |
@@ -35,6 +43,8 @@ Write classical programs in `.sb`, describe quantum circuits for **CPU simulatio
 **Run requirements:** larger experiments need substantial RAM, disk space, and execution time; a notebook may select a smaller tier or refuse a run. Integrated verification pins a historical revision, not today's `main`.
 
 **Scope:** The 4.29-billion-entry result is **formula-based, disk-backed GHZ-family verification**, not general 50-qubit statevector simulation. Cirq checked a separate 512-shot invariant, not the entire array. The 16-million-state experiment is a separate disconnected CPU sparse workload. [Methods](tools/run_connected_ghz50_materialization.py) · [Full claim boundaries](CLAIM_BOUNDARIES.md).
+
+The audit also included a Colab run. I found and preserved its original ZIP, then checked its receipt digest, manifest, 13 pinned source hashes, and seven payload fields against GCE and the checked-in Windows ARM64 and WSL2 records. This verifies the archived comparison; it does not rerun Colab. The 32 GiB-class GCE host capacity was available, not consumed. Sampled VmRSS is not a strict peak, and `RLIMIT_AS` limits virtual address space rather than resident memory.
 
 ---
 
@@ -234,7 +244,7 @@ Frontier30 can simplify adjacent inverse gates before sparse evolution. Pass `--
 
 **Opt-in moving-branch protection:** the certified subset can follow selected initial basis-coordinate amplitudes through x, z, and cx gates with `protected_branches=` (or repeated `--protect-branch INITIAL_INDEX` in the bounded runner). This mode rejects mixing gates and is distinct from legacy fixed-index protection; both remain opt-in. It tracks coordinate amplitudes under signed permutations, not physical paths through mixing operations.
 
-**Open numerical issue:** sparse round-trip cancellation can leave tiny floating-point residuals represented as nonzero entries. Exact support compaction remains an open engineering limitation. [Recorded round-trip control](evidence/colab-q8w4bj57/roundtrip-17/roundtrip_17q_comparison.json).
+**Remaining numerical boundary:** the default simulator can still retain tiny floating-point residuals after sparse round trips. The opt-in exact compactor gives a cumulative deletion bound only on finite binary64 input states under `x`, `z`, and `cx`, without normalization. It does not certify support pruning for mixing gates or extend the guarantee to the default simulator. [Recorded round-trip control](evidence/colab-q8w4bj57/roundtrip-17/roundtrip_17q_comparison.json) · [Certificate scope](docs/certified-bounded-support.md).
 
 ### Reproduce and inspect evidence
 
@@ -253,6 +263,9 @@ python -B tools/phase_flip_recovery_cases.py
 
 # Replay archived adaptive policy receipts
 python -B tools/verify_adaptive_cli_acceptance.py --receipt-dir evidence/adaptive-cli-cross-platform-20261118/windows-arm64 --output adaptive-replay.json
+
+# Independently verify the archived GCE moving-branch evidence and source hashes
+python -B tools/high_support/verify_gce_cross_platform_audit.py
 ```
 
 Complete reproducibility instructions and environment-specific comparisons are in [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [INDEPENDENT_QUANTUM_VALIDATION.md](INDEPENDENT_QUANTUM_VALIDATION.md), and the checked-in [evidence tree](evidence/).
@@ -285,7 +298,7 @@ The optional Windows ARM64 [GenieX local-chat launcher](Open-SharkByte-AI.ps1) i
 
 - **Not quantum hardware.** All quantum experiments here are classical CPU simulation or analytical materialization.
 - **Not a production compiler or unrestricted language implementation.** The [grammar](GRAMMAR.md) and [specification](SPEC.md) document an intentionally bounded alpha subset.
-- **Not a security sandbox.** Native interpreter and Direct AArch64 execution are **disabled** until containment/cancellation requirements are met. Do not execute untrusted inputs in sensitive environments. [Security policy](SECURITY.md).
+- **Not a security sandbox.** The native interpreter and Direct AArch64 execution remain **disabled**. The Windows Job Object supervisor contains only the opt-in bounded-support generation/replay worker on tested systems; that evidence does not establish containment for arbitrary SharkByte programs. Do not execute untrusted inputs in sensitive environments. [Supervisor limits](docs/windows-bounded-job.md) · [Security policy](SECURITY.md).
 - **Not a general web backend or native mobile builder.** The Web/App feature compiles the documented declarative JSON schema into static sites and browser PWAs.
 - **Not a proof of human lucid dreaming or a global dynamical theorem.** Lucid Dynamics integrates a dimensionless model over tested finite horizons.
 - **Not a cryptographically authenticated provenance system.** Hash checks verify integrity; independent replay, code comparison, and trusted signing are separate concerns.

@@ -9,8 +9,7 @@ Claims are limited to the documented CLI, VM, classical statevector simulator, b
 - No dense 40-qubit statevector was allocated or tested.
 - OpenQASM behavior is checked for a finite subset, not all of OpenQASM 3.
 - Sampled counts may vary across PRNG/runtime versions.
-- Native interpreter and direct AArch64 execution remain disabled.
-- Native process containment and cancellation (Gate 1) remain unresolved.
+- Native interpreter and direct AArch64 execution remain disabled. The Windows Job Object supervisor has native ARM64 and hosted x64 evidence for the opt-in bounded-support generation/replay worker only; it is not a general process sandbox. Arbitrary SharkByte program containment remains unsupported.
 - SharkVM is not a security sandbox.
 - The working grammar is not normative or complete.
 - This is not a general-purpose production compiler.
@@ -28,3 +27,5 @@ For numerical compaction, deleting entries of total squared magnitude p changes 
 The opt-in certified support path proves an absolute unnormalized L2 deletion bound only for finite binary64 initial states and x, z, cx signed permutations. It performs no coefficient evaluation, mixing arithmetic, or normalization. Decimal-to-binary input conversion and all other gate families are outside that certificate and produce UNSUPPORTED. This result does not establish a floating-point bound for the general statevector simulator. See docs/certified-bounded-support.md.
 
 The optional moving-branch protection identifies an initial basis-coordinate amplitude and follows its coordinate only through x, z, and cx. It does not track a physical branch through mixing gates; those operations are rejected. Fixed-index protection retains its previous meaning, and neither protection policy changes the default simulator.
+
+The GCE moving-branch archive pins source revision `7793d5eace34456ce1cc57f85f4d75cf84c8e889`. Its 13 source file hashes, ZIP integrity, four seeded gate identities, mapping counts, and exact rational bounds are independently checked by `tools/high_support/verify_gce_cross_platform_audit.py`. Seven payload fields match across the archived Colab receipt and the checked-in Windows ARM64 and Ubuntu WSL2 ARM64 v2 records. Colab uses the same pinned commit as GCE; the Windows and WSL2 records name `6316a85f2870ba6ec37e51551420acd2837f78f5`, and the verifier checks all 13 listed source blobs at that revision as well. The file payload is identical across the two commits; the commits themselves are different. The Colab archive is checked in at `evidence/gce-moving-branch-cross-platform-20261120/sharkbyte-moving-cloud-evidence.zip`; validation does not constitute a fresh Colab run. The GCE host's 31.35 GiB reported RAM is available capacity, not measured consumption. Its approximately 55.7 MiB worker VmRSS is sampled, not a strict maximum; 24 GiB `RLIMIT_AS` is a virtual-address-space ceiling, not a resident-memory limit. No fresh GCE execution or general performance claim follows from this archive.
