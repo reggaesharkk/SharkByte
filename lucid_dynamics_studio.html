@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SharkByte · Lucid Dynamics</title>
+<style>
+:root{color-scheme:dark;--bg:#080b19;--panel:#121731;--line:#343859;--text:#eef5ff;--muted:#a3b1d0;--cyan:#56f3ed;--violet:#b99aff;--gold:#ffc87b;--green:#8cffa6}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse 80% 40% at 70% -20%,#352567 0,transparent 75%),radial-gradient(ellipse 60% 45% at -15% 100%,#123548 0,transparent 80%),var(--bg);font:15px/1.55 system-ui,Segoe UI,sans-serif;color:var(--text);min-height:100vh}
+a{color:var(--cyan)}.shell{max-width:1500px;margin:auto;padding:24px clamp(16px,4vw,60px)}
+header{display:flex;align-items:center;gap:18px;justify-content:space-between;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:23px}
+.brand{font-size:24px;font-weight:800;letter-spacing:-.8px}.brand span{color:var(--cyan)}.meta{color:var(--muted);font-size:13px}h1{font-size:clamp(32px,5vw,56px);letter-spacing:-2px;line-height:1.08;margin:28px 0 12px}
+h1 em{font-style:normal;color:var(--violet)}h2{font-size:16px;margin:0 0 12px}p{margin:0 0 15px;color:var(--muted)}.lede{max-width:820px;font-size:17px}
+.layout{display:grid;grid-template-columns:minmax(275px,320px) minmax(0,1fr);gap:20px;margin-top:24px}
+.panel{background:linear-gradient(140deg,#161c39ed,#101428f5);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 20px 60px #0003;min-width:0}
+label{display:flex;align-items:center;justify-content:space-between;color:#c3ccdf;gap:14px;font-size:13px;margin-top:18px}label output{color:var(--cyan);font-variant-numeric:tabular-nums}
+select,input,button{font:inherit}select{width:100%;margin-top:6px;padding:12px 13px;background:#0b1128;color:var(--text);border:1px solid var(--line);border-radius:10px}
+input[type=range]{display:block;width:100%;accent-color:var(--cyan);margin:8px 0 0}
+button{border:1px solid #586687;border-radius:10px;padding:11px 15px;background:#202944;color:var(--text);cursor:pointer;font-weight:700}
+button:disabled{opacity:.55;cursor:wait}button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.primary{background:linear-gradient(125deg,#5df0e5,#a49cff);color:#0b1130;border:0}.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.row button{flex:1}
+.note{font-size:12px;color:#9daacd;line-height:1.5;margin-top:18px}.viz{display:grid;gap:16px}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.metric{background:#0a1027;border:1px solid var(--line);border-radius:12px;padding:15px}
+.metric small{color:var(--muted);display:block}.metric strong{display:block;font-size:22px;color:var(--cyan);font-variant-numeric:tabular-nums;margin-top:4px}
+.chart-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:space-between;margin-bottom:8px}.chart-head h2{margin:0}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:#c0c8d7}.legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
+canvas{display:block;width:100%;height:auto;aspect-ratio:1000/300;border-radius:10px;background:linear-gradient(#0b1230,#080c1f);border:1px solid #283351}
+#phase{aspect-ratio:1000/220}.status{min-height:28px;margin-top:12px;color:var(--cyan)}.status.error{color:#ffb0b0}
+.credits{margin-top:20px;border-top:1px solid var(--line);padding-top:16px;color:#99a5c5;font-size:12px}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:560px){.metrics{grid-template-columns:1fr}.panel{padding:16px}.metric strong{font-size:19px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body><div class="shell">
+<header><div class="brand">Shark<span>Byte</span> <small class="meta">/ Lucid Dynamics v0.1</small></div><nav><a href="/">← Studio / Compute</a></nav></header>
+<h1>Where memory <em>meets recurrence.</em></h1>
+<p class="lede">Explore the original dimensionless four-state soft-wall ODE, zero-drive relaxation cycles and Ψ-memory persistence. This is a mathematical simulation, not a physiological dream model.</p>
+<div class="layout">
+  <aside class="panel"><h2>Model controls</h2><label for="preset">Starting preset</label>
+    <select id="preset"><option value="memoryless_collapse">Memoryless feedback · collapse</option><option value="IVc_pure_psi_memory">IVc · Ψ-memory only</option><option value="IVb_coupled_memory" selected>IVb · coupled recovery</option></select><p id="identity" class="meta" aria-live="polite"></p>
+    <label for="p0">P₀ · external drive <output id="p0v">0.00</output></label><input id="p0" type="range" min="0" max="6" step="0.05" value="0">
+    <label for="sim">λ_sim · self-feedback <output id="simv">7.20</output></label><input id="sim" type="range" min="0" max="10" step="0.05" value="7.2">
+    <label for="lucid">λ_lucid · memory coupling <output id="lucidv">0.30</output></label><input id="lucid" type="range" min="0" max="1" step="0.01" value="0.3">
+    <label for="meta">κ_meta · memory formation <output id="metav">2.50</output></label><input id="meta" type="range" min="0" max="4" step="0.05" value="2.5">
+    <label for="duration">Duration (model units) <output id="durationv">160</output></label><input id="duration" type="range" min="40" max="400" step="20" value="160">
+    <div class="row"><button class="primary" id="run">Run dynamics</button><button id="save" disabled>Save receipt</button></div>
+    <div class="note">Fixed model constants and initial state from Appendix B v1.0. SciPy LSODA, rtol 10⁻⁹, atol 10⁻¹². Restricted to safe parameter ranges and a bounded request duration. Native SharkByte execution and the quantum engines are unchanged.</div>
+  </aside>
+  <section class="viz">
+    <div class="metrics"><div class="metric"><small>Observed period</small><strong id="period">—</strong><small id="reference"></small></div><div class="metric"><small>Late γ range</small><strong id="gammaRange">—</strong></div><div class="metric"><small>Terminal state norm</small><strong id="norm">—</strong></div></div>
+    <div class="panel"><div class="chart-head"><h2>Trajectory · all four states</h2><div class="legend"><span><i style="background:#56f3ed"></i>γ</span><span><i style="background:#b99aff"></i>H_obs</span><span><i style="background:#ffc87b"></i>İ</span><span><i style="background:#8cffa6"></i>Ψ</span></div></div><canvas id="series" width="1000" height="300" role="img" aria-label="Normalized dimensionless state trajectories; each channel scaled independently, see receipt for numerical values"></canvas><p class="note">Each channel is scaled separately to show shape. Use the saved JSON for unnormalized numerical values.</p></div>
+    <div class="panel"><div class="chart-head"><h2>Phase portrait · γ vs İ</h2><span class="meta" id="cycles">No simulation loaded</span></div><canvas id="phase" width="1000" height="220" role="img" aria-label="Phase portrait of gamma versus I dot"></canvas><div id="status" role="status" class="status">Select a preset and run the model.</div></div>
+  </section>
+</div>
+<div class="credits">Model: <a href="https://github.com/reggaesharkk/theory-of-bounded-existence">Theory of Bounded Existence — Appendix B</a> · Integrator: CPU-only, opt-in SciPy · Receipts: deterministic canonical SHA-256 (integrity, not authorship) · Numerical cycles do not establish global attractors, cosmology, self-awareness or literal lucid dreaming.</div>
+</div>
+<script>
+'use strict';
+const $ = id => document.getElementById(id);
+const presets = {
+  memoryless_collapse:[0,7.2,0,2.5],
+  IVc_pure_psi_memory:[0,0,0.3,2.5],
+  IVb_coupled_memory:[0,7.2,0.3,2.5]
+};
+const keys=['p0','sim','lucid','meta'];let receiptUrl=null, activeReceipt=null, animationId=0, busy=false;
+function updateLabels(){
+  const selected = $('preset').value;
+  const changed = keys.some((key,i) => Number($(key).value) !== presets[selected][i]);
+  $('identity').textContent = changed ? 'Custom parameters' : 'Preset parameters';
+ for(const id of keys) $(id+'v').textContent=Number($(id).value).toFixed(2); $('durationv').textContent=$('duration').value; }
+$('preset').addEventListener('change',()=>{presets[$('preset').value].forEach((v,i)=>{$(keys[i]).value=String(v)});updateLabels()});
+for(const id of [...keys,'duration']) $(id).addEventListener('input',updateLabels);
+function chart(canvas, arrays, palette, mode){
+  const ctx=canvas.getContext('2d');if(!ctx)return;
+  const W=canvas.width,H=canvas.height,left=35,right=W-18,top=16,bottom=H-29;
+  ctx.clearRect(0,0,W,H);ctx.strokeStyle='#304363';ctx.lineWidth=1;
+  for(let j=0;j<=4;j++){const y=top+(bottom-top)*j/4;ctx.beginPath();ctx.moveTo(left,y);ctx.lineTo(right,y);ctx.stroke()}
+  let ranges=arrays.map(a=>{let min=Math.min(...a), max=Math.max(...a);if(max-min<1e-12)max=min+1;return [min,max]});
+  function transform(i,j){
+    if(mode==='phase')return [left+(right-left)*(arrays[0][j]-ranges[0][0])/(ranges[0][1]-ranges[0][0]),bottom-(bottom-top)*(arrays[1][j]-ranges[1][0])/(ranges[1][1]-ranges[1][0])];
+    return [left+(right-left)*j/(arrays[i].length-1),bottom-(bottom-top)*(arrays[i][j]-ranges[i][0])/(ranges[i][1]-ranges[i][0])];
+  }
+  for(let i=0;i<(mode==='phase'?1:arrays.length);i++){
+    ctx.beginPath();const count=arrays[0].length;for(let j=0;j<count;j++){const [x,y]=transform(i,j);if(j===0)ctx.moveTo(x,y);else ctx.lineTo(x,y)}
+    ctx.strokeStyle=palette[i];ctx.lineWidth=mode==='phase'?2.5:1.8;ctx.stroke();
+  }
+  ctx.fillStyle='#abb7d7';ctx.font='12px system-ui';ctx.fillText(mode==='phase'?'γ  '+ranges[0][0].toPrecision(3)+' → '+ranges[0][1].toPrecision(3)+'     İ  '+ranges[1][0].toPrecision(3)+' → '+ranges[1][1].toPrecision(3):'model time   0 → '+activeReceipt.config.duration,left,bottom+20);
+  return (index)=>{const j=Math.min(arrays[0].length-1,index);const [x,y]=transform(0,j);ctx.beginPath();ctx.arc(x,y,5,0,Math.PI*2);ctx.fillStyle='#ffffff';ctx.fill();};
+}
+function render(rec){
+  cancelAnimationFrame(animationId);activeReceipt=rec;
+  const d=rec.result.diagnostics;
+  $('period').textContent=d.observed_period===null?'not observed':d.observed_period.toFixed(6);
+  $('reference').textContent = d.reference_period == null ? 'No reference period for these parameters' : 'Source '+d.reference_period.toFixed(6)+(d.period_difference == null ? ' · insufficient late crossings' : ' · Δ '+d.period_difference.toExponential(2));
+  $('gammaRange').textContent=d.tail_range.gamma.toFixed(4);
+  $('norm').textContent=d.final_state_norm.toExponential(3);
+  $('cycles').textContent=d.poincare_upcrossings_in_second_half.length+' upward γ=2 crossings in second half';
+  const series=[rec.result.gamma,rec.result.H_obs,rec.result.I_dot,rec.result.Psi];
+  const colors=['#56f3ed','#b99aff','#ffc87b','#8cffa6'];
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function frame(start){
+    const mark1=chart($('series'),series,colors,'series');
+    const mark2=chart($('phase'),[series[0],series[2]],['#b99aff'],'phase');
+    if(!reduced){const j=Math.floor((performance.now()-start)/28);if(j<series[0].length){mark1(j);mark2(j);animationId=requestAnimationFrame(()=>frame(start))}}
+  }
+  frame(performance.now());
+}
+async function run(){
+  if(busy)return;busy=true;$('run').disabled=true;$('save').disabled=true;receiptUrl=null;
+  const status=$('status');status.classList.remove('error');status.textContent='Computing bounded ODE trajectory…';
+  const data={preset:$('preset').value,parameters:{P_0:Number($('p0').value),lambda_sim:Number($('sim').value),lambda_lucid:Number($('lucid').value),kappa_meta:Number($('meta').value)},duration:Number($('duration').value),samples:600};
+  try{
+    const response=await fetch('/lucid/run',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    const output=await response.json();if(!response.ok)throw Error(output.error||`HTTP ${response.status}`);
+    render(output.record);receiptUrl=output.receipt_url;$('save').disabled=false;
+    status.textContent=`Completed · ${output.record.config.effective_regime} · starting preset ${output.record.config.preset} · ${output.record.result.diagnostics.nfev.toLocaleString()} field evaluations · SHA-256 receipt available`;
+  }catch(e){status.classList.add('error');status.textContent=`Run failed: ${e.message}. Plots show the last completed run, if available.`}
+  finally{busy=false;$('run').disabled=false}
+}
+$('run').addEventListener('click',run);
+$('save').addEventListener('click',()=>{if(!receiptUrl)return;const a=document.createElement('a');a.href=receiptUrl;a.download='sharkbyte-lucid-receipt.json';a.click()});
+updateLabels();
+</script></body></html>

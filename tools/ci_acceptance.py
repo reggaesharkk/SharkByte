@@ -57,6 +57,10 @@ def main():
   smoke_one("classical",["run","examples/example.sb","--backend","vm"],lambda p:json_ok(p,lambda d:d.get("result",{}).get("stdout")=="42\n" and d["result"].get("vm_instruction_count")==5))
   smoke_one("quantum",["run","examples/bell.sb","--mode","quantum"],lambda p:json_ok(p,lambda d:abs(sum(d["result"]["probabilities"].values())-1.)<1e-10))
   smoke_one("hybrid",["run","examples/adaptive.sb","--mode","hybrid","--backend","vm"],lambda p:json_ok(p,lambda d:d["result"].get("iterations_executed")==4))
+  smoke_one("web_new",["web","new","ci-web"],lambda p:p.returncode==0 and (fixture/"ci-web"/"sharkbyte.web.json").is_file())
+  smoke_one("web_build",["web","build","ci-web"],lambda p:p.returncode==0 and (fixture/"ci-web"/"dist"/"index.html").is_file())
+  smoke_one("app_new",["app","new","ci-app"],lambda p:p.returncode==0 and json.loads((fixture/"ci-app"/"sharkbyte.web.json").read_text(encoding="utf-8")).get("pwa") is True)
+  smoke_one("app_build",["app","build","ci-app"],lambda p:p.returncode==0 and (fixture/"ci-app"/"dist"/"service-worker.js").is_file())
   for b in ("native_interpreter","direct_native"):
    smoke_one("native_guard_"+b,["run","examples/example.sb","--backend",b],lambda p:p.returncode==1 and not p.stdout and "native backends are disabled: containment unavailable" in p.stderr)
   report={"schema":1,"status":"FAIL" if fail else "PASS","candidate":"SharkByte standalone alpha 0.2.1a2 public source copy","host":{"system":platform.system(),"architecture":platform.machine(),"python":platform.python_version()},"checks":checks,"summary":{"check_count":len(checks),"failures":fail,"optimization_test_runs":modes,"installed_source_files_compared":matched,"smoke_checks":smoke,"native_functionality":"DISABLED; guard refusals are negative tests only"}}

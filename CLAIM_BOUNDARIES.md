@@ -18,3 +18,5 @@ Claims are limited to the documented CLI, VM, classical statevector simulator, b
 
 - The connected reference corpus, the high-support Schmidt comparisons, and the 40-qubit sparse scaling benchmark establish different results. The scaling circuit has eight disconnected components. The connected GHZ checks through 40 qubits use a closed-form oracle.
 - The WP19 replay bounds arithmetic rounding for assumed rates and defect. Its mathematical assumptions and PDE bounds remain open.
+
+- The alpha web/app compiler covers only the documented declarative section and interaction set. Its PWA output is a static browser-installable web app, not a native mobile/desktop package or hosted backend. The local preview is not a general-purpose security sandbox. Browser automation and compatibility across browsers remain unverified until dedicated CI/evidence is added.

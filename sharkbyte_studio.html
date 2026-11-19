@@ -13,9 +13,20 @@ textarea,pre{font:14px/1.6 'IBM Plex Mono',Consolas,monospace;tab-size:4}textare
 @media(max-width:860px){main{grid-template-columns:1fr}textarea{min-height:270px}}
 .noise-panel{grid-column:1/-1;padding:20px 22px}.noise-panel>p{max-width:100ch;color:var(--muted);line-height:1.55}.noise-layout{display:grid;grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr);gap:24px;align-items:center}.noise-control{display:grid;gap:14px}.noise-control label{display:flex;justify-content:space-between;gap:12px}.noise-control output{color:var(--accent);font-variant-numeric:tabular-nums}.noise-control input{width:100%;accent-color:var(--accent)}.noise-values{display:grid;gap:8px;margin:0}.noise-values div{display:flex;justify-content:space-between;gap:12px}.noise-values dt{color:var(--muted)}.noise-values dd{margin:0;font-variant-numeric:tabular-nums}.noise-chart{width:100%;height:auto;min-height:230px;background:#11171b;border:1px solid var(--line);border-radius:8px}.noise-chart text{fill:var(--muted);font:12px Inter,system-ui,sans-serif}.noise-chart .axis,.noise-chart .grid{stroke:var(--line);stroke-width:1}.noise-chart .direct{stroke:#60b9ff;stroke-width:3;fill:none}.noise-chart .encoded{stroke:var(--accent);stroke-width:3;fill:none}.noise-chart .cursor{stroke:#edf1ec;stroke-dasharray:4 5;opacity:.65}.noise-legend{display:flex;gap:20px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin-top:8px}.noise-legend span::before{content:"";display:inline-block;width:16px;height:3px;vertical-align:middle;margin-right:7px;background:#60b9ff}.noise-legend span+span::before{background:var(--accent)}
 @media(max-width:860px){.noise-panel{grid-column:1}.noise-layout{grid-template-columns:1fr}}
+.studio-header,.studio-navigation{display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.studio-navigation a{color:var(--accent);padding:8px 4px}
 </style>
-<header><h1>SharkByte <span>Studio</span></h1><span class="badge">Local workspace</span></header>
+<header class="studio-header">
+  <h1>SharkByte <span>Studio</span></h1>
+  <nav class="studio-navigation" aria-label="Studio workspaces">
+    <button id="quantumTab" aria-pressed="true">Quantum / VM</button>
+    <button id="webTab" aria-pressed="false">Web / App</button>
+    <a href="/lucid">Lucid Dynamics</a>
+  </nav>
+  <span class="badge">Local workspace</span>
+</header>
 <main>
+  <div id="quantumWorkspace" class="quantum-workspace">
   <section class="panel" aria-labelledby="sourceTitle">
     <div class="bar"><h2 id="sourceTitle">Source</h2><label for="mode">Mode</label>
       <select id="mode"><option value="classical">Classical</option><option value="quantum">Quantum</option><option value="hybrid">Bounded Hybrid (2–6 qubits)</option><option value="frontier">Frontier30 (sparse)</option><option value="scaling">Million-state benchmark</option><option value="scaling_16m">16,777,216-state benchmark</option></select>
@@ -65,6 +76,15 @@ textarea,pre{font:14px/1.6 'IBM Plex Mono',Consolas,monospace;tab-size:4}textare
         <div class="noise-legend"><span>Single unencoded qubit</span><span>Three-qubit code, ideal recovery</span></div>
       </div>
     </div>
+  </section>
+  </div>
+  <section id="webWorkspace" class="panel" hidden style="grid-column:1/-1" aria-labelledby="webTitle">
+    <div class="bar"><h2 id="webTitle">SharkByte Web / App Builder</h2><label for="webExample">Project</label>
+      <select id="webExample"><option value="portfolio">Research portfolio</option><option value="dashboard">Interactive dashboard</option><option value="tasks">Installable task app</option></select>
+      <button id="loadWeb">Load source</button><button id="buildWeb" class="primary">Build &amp; preview</button><a id="exportWeb" hidden download>Export ZIP</a></div>
+    <div class="web-layout"><div><label for="webSource">SharkByte project JSON</label><textarea id="webSource" spellcheck="false" aria-label="SharkByte web project source"></textarea><pre id="webStatus" role="status">Choose a project, edit its source, and build.</pre></div>
+      <div><div class="bar"><h2>Sandboxed preview</h2></div><iframe id="webPreview" title="Website preview" sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer"></iframe></div></div>
+    <div class="foot"><small>Builds use a bounded declarative DSL. Preview is sandboxed; generated projects have no access to VM execution or Studio endpoints.</small></div>
   </section>
 </main>
 <script>
@@ -253,5 +273,19 @@ function drawNoiseCurves() {
 }
 noiseRate.addEventListener('input', updateNoiseSweep);
 drawNoiseCurves();
+</script>
+<style>
+[hidden]{display:none!important}.quantum-workspace{display:contents}.web-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;padding:16px}.web-layout>div{min-width:0}.web-layout textarea{min-height:560px;border:1px solid var(--line);border-radius:8px}.web-layout iframe{width:100%;height:560px;background:white;border:1px solid var(--line);border-radius:8px}.web-layout pre{min-height:50px;max-height:120px;color:var(--accent)}#exportWeb{color:var(--accent);padding:8px}@media(max-width:860px){.web-layout{grid-template-columns:1fr}.web-layout textarea,.web-layout iframe{min-height:320px;height:55vh}}
+.studio-header,.studio-navigation{display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.studio-navigation a{color:var(--accent);padding:8px 4px}
+</style>
+<script>
+const webExamples={};const webSource=document.getElementById('webSource'),webStatus=document.getElementById('webStatus'),webProject=document.getElementById('webExample');
+document.getElementById('quantumTab').addEventListener('click',()=>{document.getElementById('quantumWorkspace').hidden=false;document.getElementById('webWorkspace').hidden=true;document.getElementById('quantumTab').setAttribute('aria-pressed','true');document.getElementById('webTab').setAttribute('aria-pressed','false')});
+document.getElementById('webTab').addEventListener('click',()=>{document.getElementById('quantumWorkspace').hidden=true;document.getElementById('webWorkspace').hidden=false;document.getElementById('quantumTab').setAttribute('aria-pressed','false');document.getElementById('webTab').setAttribute('aria-pressed','true');if(!webSource.value)loadWebExample()});
+function loadWebExample(){webSource.value=webExamples[webProject.value]||'';webStatus.textContent=webSource.value?'Ready to build.':'Could not load the bundled example.';document.getElementById('exportWeb').hidden=true}
+document.getElementById('loadWeb').addEventListener('click',loadWebExample);webProject.addEventListener('change',loadWebExample);
+document.getElementById('buildWeb').addEventListener('click',async()=>{webStatus.textContent='Building…';document.getElementById('exportWeb').hidden=true;try{const r=await fetch('/web/build',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({example:webProject.value,source:webSource.value})});const data=await r.json();if(!r.ok)throw Error(data.error||'Build failed');document.getElementById('webPreview').src=data.preview_url;const a=document.getElementById('exportWeb');a.href=data.export_url;a.hidden=false;webStatus.textContent='Build complete. Generated files:\n'+data.files.join('\n')}catch(e){webStatus.textContent=e.message}});
+fetch('/web/examples').then(r=>r.json()).then(data=>{Object.assign(webExamples,data);loadWebExample()}).catch(e=>webStatus.textContent='Could not load examples: '+e.message);
 </script>
 </html>

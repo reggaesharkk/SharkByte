@@ -79,3 +79,8 @@ The [adaptive example](examples/adaptive.sb) shows the full syntax.
 
 Bounded Hybrid supports 2–6 qubits and 1–8 iterations. See [SPEC.md](SPEC.md)
 for the CLI limits. The Studio phase-flip noise sweep is controlled by the UI.
+
+
+## SharkByte Web/App project DSL
+
+Web applications use a distinct declarative JSON grammar (`sharkbyte.web/v1`), not the classical VM statement grammar. Each project defines a `type`, `name`, one or more `pages`, optional `home`, `theme`, scalar `state`, and `pwa` boolean. Pages contain a slug `id`, title, and typed sections. Supported section kinds are `heading`, `text`, `image`, `link`, `list`, `card`, `stat`, `button`, `range`, `chart`, and `task_form`. The validating implementation in `sharkbyte_alpha/web.py` defines the accepted fields and bounds; the complete guide is [docs/web-app-builder.md](docs/web-app-builder.md).
