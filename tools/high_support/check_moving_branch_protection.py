@@ -15,7 +15,8 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
 from benchmarks.sb_quantum_benchmark.bounded_support import simulate
-from benchmarks.sb_quantum_benchmark.certified_support import certify, verify
+from benchmarks.sb_quantum_benchmark.certified_support import (
+    _move_branch_positions, certify, verify)
 from benchmarks.sb_quantum_benchmark.sparse_backend import Circuit
 
 
@@ -103,6 +104,67 @@ def exhaustive_single_gate_maps():
                 checked += 1
     return dict(widths=[1, 2, 3, 4], individual_gate_origin_mappings=checked,
                 families=["x", "z", "cx"], exhaustive_over_each_legal_single_gate_and_basis_origin=True)
+
+
+def exhaustive_affine_mappings():
+    """Enumerate the full X/CX basis-permutation closure through four qubits."""
+    rows = []
+    for width in range(1, 5):
+        dimension = 1 << width
+        x_masks = {
+            ("x", q): sum((1 << q) << (4*origin) for origin in range(dimension))
+            for q in range(width)
+        }
+        gates = [("x", q) for q in range(width)]
+        gates += [("cx", control, target) for control in range(width)
+                  for target in range(width) if control != target]
+        identity = sum(origin << (4*origin) for origin in range(dimension))
+        seen = {identity}
+        queue = [identity]
+        production_transitions = 0
+        cursor = 0
+        while cursor < len(queue):
+            code = queue[cursor]
+            cursor += 1
+            image = [(code >> (4*origin)) & (dimension-1)
+                     for origin in range(dimension)]
+            if len(set(image)) != dimension:
+                raise AssertionError((width, code, "non-bijective affine map"))
+            for gate in gates:
+                if gate[0] == "x":
+                    next_code = code ^ x_masks[gate]
+                else:
+                    control_bit, target_bit = 1 << gate[1], 1 << gate[2]
+                    toggle_mask = sum(target_bit << (4*origin)
+                                      for origin, position in enumerate(image)
+                                      if position & control_bit)
+                    next_code = code ^ toggle_mask
+                if next_code in seen:
+                    continue
+                # Check the production propagator on the full image of each
+                # newly discovered composed mapping, not just on basis zero.
+                propagated = {origin: position for origin, position in enumerate(image)}
+                _move_branch_positions(propagated, gate)
+                propagated_code = sum(position << (4*origin)
+                                      for origin, position in propagated.items())
+                if propagated_code != next_code:
+                    raise AssertionError((width, gate, code, propagated_code, next_code))
+                production_transitions += 1
+                seen.add(next_code)
+                queue.append(next_code)
+        linear_maps = 1
+        for rank in range(width):
+            linear_maps *= dimension-(1 << rank)
+        expected = dimension*linear_maps
+        if len(seen) != expected:
+            raise AssertionError((width, len(seen), expected))
+        rows.append(dict(qubits=width, affine_coordinate_maps=len(seen),
+                         expected_affine_maps=expected,
+                         basis_images_checked=len(seen)*dimension,
+                         production_propagation_edges=production_transitions,
+                         closure_generators=["x", "cx"],
+                         z_coordinate_action="identity; sign is separately Fraction-replayed"))
+    return rows
 
 
 def randomized_circuits():
@@ -244,6 +306,7 @@ def overhead_benchmark():
 def main():
     archive = archived_case()
     exhaustive = exhaustive_single_gate_maps()
+    affine_closure = exhaustive_affine_mappings()
     randomized = randomized_circuits()
     adversarial = adversarial_replay_checks()
     overhead = overhead_benchmark()
@@ -256,6 +319,7 @@ def main():
         source_hashes={path: sha((ROOT/path).read_bytes()) for path in TRACKED},
         archived_counterexample=archive,
         exhaustive_mappings=exhaustive,
+        exhaustive_composed_affine_mappings=affine_closure,
         randomized_signed_permutation_circuits=randomized,
         adversarial_replay=adversarial,
         opt_in_overhead=overhead,
@@ -263,6 +327,7 @@ def main():
             "archived_counterexample_repaired_in_moving_mode": "PASS",
             "fixed_index_mode_preserved": "PASS",
             "single_gate_mappings_all_origins_through_four_qubits": "PASS",
+            "full_affine_coordinate_mapping_closure_through_four_qubits": "PASS",
             "randomized_larger_circuits_exactly_replayed": "PASS",
             "mixing_gates_rejected": "PASS",
             "performance_generalization": "OPEN",
