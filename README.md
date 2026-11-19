@@ -227,6 +227,8 @@ The earlier 2³² `RESOURCE_STOP` attempt is preserved alongside the later succe
 
 For the 40-qubit 16-million-state case, the Windows Studio worker recorded approximately **2.77 GiB** peak process memory, while a separate Linux/WSL and Colab reference program compared the populated amplitudes under its documented circuit decomposition. Times are **workload-, hardware-, and environment-specific**, not a generic benchmark against other languages.
 
+Frontier30 can simplify adjacent inverse gates before sparse evolution. Pass `--simplify-inverses` to its benchmark CLI. For roundtrip-17, all 107 pairs cancel and the final sparse dictionary has one entry. The report lists original gate indices in cancellation order.
+
 **Open numerical issue:** sparse round-trip cancellation can leave tiny floating-point residuals represented as nonzero entries. Exact support compaction remains an open engineering limitation. [Recorded round-trip control](evidence/colab-q8w4bj57/roundtrip-17/roundtrip_17q_comparison.json).
 
 ### Reproduce and inspect evidence

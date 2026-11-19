@@ -14,3 +14,6 @@ SHA-256 proves identity/integrity, not correctness. Tests and numerical comparis
 
 
 The web/app DSL compiler is deterministic for the checked-in project source and environment-independent generated files. Rebuild examples with `python -m sharkbyte_alpha web build examples/web/research-portfolio` and `python -m sharkbyte_alpha app build examples/web/interactive-dashboard` / `... task-app`. Run `python -m unittest tests.test_web_builder -v` for DSL and Studio endpoint regressions. These checks do not yet include a browser engine automation run.
+
+### Roundtrip-17 cancellation
+Run `python benchmarks/sb_quantum_benchmark/frontier30.py examples/high_support/roundtrip_17q.sbq --simplify-inverses`. Compare the source digest and ordered pairs with `evidence/roundtrip17-inverses.json`. Independent decimal-token and operand checks run with `python -m unittest discover -s tests -p test_inverse_simplifier.py`.

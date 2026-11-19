@@ -20,3 +20,7 @@ Claims are limited to the documented CLI, VM, classical statevector simulator, b
 - The WP19 replay bounds arithmetic rounding for assumed rates and defect. Its mathematical assumptions and PDE bounds remain open.
 
 - The alpha web/app compiler covers only the documented declarative section and interaction set. Its PWA output is a static browser-installable web app, not a native mobile/desktop package or hosted backend. The local preview is not a general-purpose security sandbox. Browser automation and compatibility across browsers remain unverified until dedicated CI/evidence is added.
+
+Frontier30 inverse cancellation proves an identity in ideal gate algebra. H and CX square to identity. CP phases multiply and same-axis rotations add angles, so equal ordered operands and opposite angles suffice. The opt-in pass compares parsed angles exactly and only cancels gates that become adjacent. Floating-point execution of the original sequence can retain residuals.
+
+For numerical compaction, deleting entries of total squared magnitude p changes the unnormalized vector by sqrt(p) in Euclidean norm. Unitary evolution preserves that error and repeated deletions require a cumulative norm budget. A tiny Ry rotation can create a legitimate amplitude below any fixed positive cutoff. The simplifier never thresholds amplitudes.

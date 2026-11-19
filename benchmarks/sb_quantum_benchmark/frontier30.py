@@ -44,11 +44,34 @@ def parse_program(source):
     return Circuit(parsed["n"], tuple(gates), match[1]), parsed
 
 
+def simplify_inverses(circuit):
+    """Reduce adjacent inverses in a validated Frontier30 gate stream."""
+    stack = []
+    pairs = []
+    for index, gate in enumerate(circuit.gates):
+        if stack:
+            left, previous = stack[-1]
+            op = gate[0]
+            if op in ("h", "x", "z", "cx"):
+                inverse = previous == gate
+            elif op in ("cp", "rx", "ry", "rz"):
+                inverse = previous[:-1] == gate[:-1] and previous[-1] == -gate[-1]
+            else:
+                inverse = False
+            if inverse:
+                stack.pop()
+                pairs.append((left, index))
+                continue
+        stack.append((index, gate))
+    return Circuit(circuit.qubits, tuple(g for _, g in stack), circuit.name), pairs
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("source", type=Path)
     parser.add_argument("--support-cap", type=int, default=DEFAULT_CAP)
     parser.add_argument("--timeout", type=float, default=5.0, help="Evolution deadline in seconds")
+    parser.add_argument("--simplify-inverses", action="store_true", help="Cancel adjacent algebraic inverses before evolution")
     args = parser.parse_args()
     try:
         circuit, source_digest = load_circuit(args.source)
@@ -56,6 +79,9 @@ def main():
         report = dict(source=args.source.name, source_sha256=source_digest,
                       qubits=circuit.qubits, gates=len(circuit.gates),
                       support_cap=args.support_cap, timeout_seconds=args.timeout)
+        if args.simplify_inverses:
+            circuit, pairs = simplify_inverses(circuit)
+            report.update(cancellation_pairs_zero_based=pairs, executed_gates=len(circuit.gates))
         start = time.perf_counter()
         try:
             state = evolve(circuit, support_cap=args.support_cap, max_seconds=args.timeout, stats=stats)
