@@ -9,7 +9,8 @@ from pathlib import Path
 
 from benchmarks.sb_quantum_benchmark.certified_support import certify, verify
 from benchmarks.sb_quantum_benchmark.sparse_backend import Circuit
-from benchmarks.sb_quantum_benchmark.bounded_support import simulate
+from benchmarks.sb_quantum_benchmark.bounded_support import (
+    UnsupportedProtectionError, simulate)
 
 
 class CertifiedSupportTests(unittest.TestCase):
@@ -53,10 +54,10 @@ class CertifiedSupportTests(unittest.TestCase):
         self.assertEqual(result["certificate"]["error_components"]["coefficient_evaluation"],"0")
 
     def test_protection_is_a_fixed_basis_coordinate(self):
-        circuit=Circuit(3,(("x",0),),"moving-protected-branch")
+        circuit=Circuit(4,(("x",0),),"archived-moving-protected-branch")
         initial={2:1+0j,1:complex(1e-7,0)}
-        result=certify(circuit,initial,"1e-6",support_cap=4,
-                       memory_budget_bytes=8192,protected=(1,))
+        result=certify(circuit,initial,"1e-6",support_cap=8,
+                       memory_budget_bytes=16384,protected=(1,))
         self.assertEqual(result["status"],"PASS")
         # X(0) moves the small branch from protected index 1 to index 0.
         # The fixed protection set does not follow it, so the ledger may delete it.
@@ -64,6 +65,138 @@ class CertifiedSupportTests(unittest.TestCase):
                          for item in event["removed"]])
         self.assertNotIn(0,result["state"])
         self.assertIn(1,result["certificate"]["ledger"]["protected"])
+
+    def test_archived_moving_branch_counterexample_is_repaired_opt_in(self):
+        # Archived evidence: the branch at index 1 moves to index 0 under X(0).
+        circuit = Circuit(4, (("x", 0),), "archived-moving-protected-branch")
+        initial = {2: 1+0j, 1: complex(1e-7, 0)}
+        result = certify(circuit, initial, "1e-6", support_cap=8,
+                         memory_budget_bytes=16384, protected_branches=(1,))
+        self.assertEqual(result["status"], "PASS")
+        self.assertIn(0, result["state"])
+        certificate = result["certificate"]
+        self.assertEqual(certificate["semantics"].split("/")[-1],
+                         "moving-initial-basis-branches-v1")
+        self.assertEqual(certificate["ledger"]["final_protected_positions"], [[1, 0]])
+        self.assertEqual(verify(circuit, initial, result["state"], certificate,
+                                "1e-6", protected_branches=(1,))["status"], "PASS")
+
+    def test_moving_protection_follows_x_z_cx_and_all_single_gate_maps_through_four_qubits(self):
+        for width in range(1, 5):
+            gates = [("x", q) for q in range(width)]
+            gates += [("z", q) for q in range(width)]
+            gates += [("cx", c, t) for c in range(width) for t in range(width) if c != t]
+            for gate in gates:
+                for origin in range(1 << width):
+                    amplitude = complex(0.25, -0.125)
+                    initial = {origin: amplitude}
+                    circuit = Circuit(width, (gate,), "exhaustive-moving-map")
+                    result = certify(circuit, initial, "1e-8", support_cap=1 << width,
+                                     memory_budget_bytes=(1 << width)*2048,
+                                     protected_branches=(origin,))
+                    self.assertEqual(result["status"], "PASS", (width, gate, origin))
+                    expected = origin
+                    if gate[0] == "x":
+                        expected ^= 1 << gate[1]
+                    elif gate[0] == "cx" and origin & (1 << gate[1]):
+                        expected ^= 1 << gate[2]
+                    expected_amplitude = (-amplitude if gate[0] == "z" and
+                                          origin & (1 << gate[1]) else amplitude)
+                    self.assertEqual(result["state"], {expected: expected_amplitude})
+                    self.assertEqual(result["certificate"]["ledger"][
+                        "final_protected_positions"], [[origin, expected]])
+
+    def test_randomized_long_moving_maps_and_replay(self):
+        for width, seed in ((5, 17), (8, 29), (12, 43)):
+            rng = random.Random(width*1000+seed)
+            gates = []
+            for _ in range(120):
+                op = rng.choice(("x", "z", "cx"))
+                if op == "cx":
+                    gates.append((op, *rng.sample(range(width), 2)))
+                else:
+                    gates.append((op, rng.randrange(width)))
+            origins = (0, 1, (1 << width)-1)
+            initial = {0: 0.75+0.25j, 1: complex(1e-7, -2e-7),
+                       (1 << width)-1: complex(3e-7, 0)}
+            circuit = Circuit(width, tuple(gates), "random-moving-map")
+            result = certify(circuit, initial, "1e-5", support_cap=8,
+                             memory_budget_bytes=8*4096, interval=3,
+                             protected_branches=origins)
+            self.assertEqual(result["status"], "PASS", (width, seed))
+            replayed = verify(circuit, initial, result["state"], result["certificate"],
+                              "1e-5", protected_branches=origins)
+            self.assertEqual(replayed["status"], "PASS")
+            self.assertGreaterEqual(Fraction(replayed["certified_l2_bound"])**2,
+                                    Fraction(replayed["exact_squared_error"]))
+
+    def test_moving_protection_blocks_only_current_coordinate_and_replay_checks_it(self):
+        from benchmarks.sb_quantum_benchmark.verify_bounded import replay
+
+        circuit = Circuit(4, (("x", 0), ("cx", 0, 2), ("z", 2)), "tracked-event")
+        initial = {2: 1+0j, 1: complex(1e-7, 0), 4: complex(2e-7, 0)}
+        result = certify(circuit, initial, "1e-6", support_cap=8,
+                         memory_budget_bytes=16384, protected_branches=(1,))
+        self.assertEqual(result["status"], "PASS")
+        ledger = result["certificate"]["ledger"]
+        self.assertTrue(ledger["events"])
+        self.assertTrue(all(item[0] != 4 for event in ledger["events"]
+                            for item in event["removed"]))
+        recovered = replay(circuit, ledger, support_cap=8,
+                           memory_budget_bytes=16384, initial_state=initial)
+        self.assertEqual(recovered, result["state"])
+        bad = copy.deepcopy(ledger)
+        bad["final_protected_positions"][0][1] ^= 1
+        with self.assertRaises(ValueError):
+            replay(circuit, bad, support_cap=8, memory_budget_bytes=16384,
+                   initial_state=initial)
+
+    def test_moving_protection_preserves_subnormal_initial_branch(self):
+        tiny = math.ulp(0.0)
+        circuit = Circuit(3, (("cx", 0, 2), ("x", 0), ("z", 2)),
+                          "tracked-subnormal")
+        initial = {0: 1+0j, 1: complex(tiny, 0)}
+        result = certify(circuit, initial, "1e-320", support_cap=4,
+                         memory_budget_bytes=8192, protected_branches=(1,))
+        self.assertEqual(result["status"], "PASS")
+        # 1 -> CX(0,2): 5 -> X(0): 4; Z(2) flips this branch's sign.
+        self.assertEqual(result["certificate"]["ledger"][
+            "final_protected_positions"], [[1, 4]])
+        self.assertEqual(result["state"][4], complex(-tiny, 0))
+        self.assertEqual(result["verification"]["exact_squared_error"], "0/1")
+
+    def test_moving_certificate_rejects_forged_maps_and_wrong_expected_policy(self):
+        circuit = Circuit(3, (("cx", 0, 2), ("x", 1), ("z", 2)))
+        initial = {0: 0.5+0j, 1: complex(1e-7, 0)}
+        result = certify(circuit, initial, "1e-6", support_cap=8,
+                         memory_budget_bytes=16384, protected_branches=(1,))
+        self.assertEqual(result["status"], "PASS")
+        cert = result["certificate"]
+        self.assertEqual(verify(circuit, initial, result["state"], cert, "1e-6",
+                                protected_branches=(2,))["status"], "FAIL")
+        for mutate in (
+            lambda c: c["ledger"]["final_protected_positions"][0].__setitem__(1, 6),
+            lambda c: c["ledger"].__setitem__("protected_branches", [0]),
+            lambda c: c["ledger"].__setitem__("protection_mode", "fixed"),
+            lambda c: c.__setitem__("semantics", "binary64-input/signed-permutation/canonical-unnormalized-v1"),
+        ):
+            bad = copy.deepcopy(cert)
+            mutate(bad)
+            self.assertEqual(verify(circuit, initial, result["state"], bad,
+                                    "1e-6")["status"], "FAIL")
+
+    def test_moving_protection_rejects_mixing_and_conflicting_modes(self):
+        mixing = Circuit(2, (("h", 0),), "mixing-rejected")
+        answer = certify(mixing, {0: 1+0j}, "1e-8", support_cap=4,
+                         memory_budget_bytes=8192, protected_branches=(0,))
+        self.assertEqual(answer["status"], "UNSUPPORTED")
+        self.assertIn("outside the certified signed-permutation subset", answer["reason"])
+        with self.assertRaises(UnsupportedProtectionError):
+            simulate(mixing, "1e-8", support_cap=4, memory_budget_bytes=8192,
+                     protected_branches=(0,))
+        with self.assertRaises(ValueError):
+            simulate(Circuit(2, (("x", 0),)), "1e-8", support_cap=4,
+                     memory_budget_bytes=8192, protected=(0,), protected_branches=(0,))
 
     def test_supported_gate_fuzz_against_independent_reference(self):
         for width in (2,4,7,12):

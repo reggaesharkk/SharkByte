@@ -9,11 +9,14 @@ import json
 import math
 import platform
 import sys
+import time
 
-from .bounded_support import TICKS, simulate as compact_simulate
-from .sparse_backend import Circuit, validate
+from .bounded_support import (MOVING_BRANCH_MODE, TICKS,
+                              simulate as compact_simulate)
+from .sparse_backend import Circuit, MAX_WALL_SECONDS, validate
 
 SEMANTICS = "binary64-input/signed-permutation/canonical-unnormalized-v1"
+TRACKED_SEMANTICS = SEMANTICS + "/moving-initial-basis-branches-v1"
 ROOT_PRECISION = 1200
 ROOT_SCALE = 1 << ROOT_PRECISION
 SUPPORTED = frozenset(("x", "z", "cx"))
@@ -71,6 +74,17 @@ def _input_state(initial_state, qubits):
     return state
 
 
+def _branch_origins(origins, qubits):
+    try:
+        values = tuple(origins)
+    except TypeError as exc:
+        raise ValueError("protected_branches must be an iterable of basis indices") from exc
+    if (any(type(i) is not int or not 0 <= i < (1 << qubits) for i in values)
+            or len(values) != len(set(values))):
+        raise ValueError("invalid or duplicate protected branch origin")
+    return tuple(sorted(values))
+
+
 def _float_fraction(value):
     numerator, denominator = value.as_integer_ratio()
     return Fraction(numerator, denominator)
@@ -105,6 +119,25 @@ def _gate_exact(state, gate):
     bit = 1 << gate[1]
     return {basis: ((-value[0], -value[1]) if basis & bit else value)
             for basis, value in state.items()}
+
+
+def _move_branch_positions(positions, gate, deadline=float("inf")):
+    """Propagate initial-coordinate identities through an exact signed permutation."""
+    op = gate[0]
+    bit = 1 << gate[1] if op in ("x", "z") else None
+    control = (1 << gate[1]) if op == "cx" else None
+    target = (1 << gate[2]) if op == "cx" else None
+    if op not in ("x", "z", "cx"):
+        raise ValueError(f"moving-branch protection does not support gate {op}")
+    for index, origin in enumerate(positions):
+        if index % 256 == 0 and time.monotonic() >= deadline:
+            raise ValueError("moving-branch verification deadline exceeded")
+        basis = positions[origin]
+        if op == "x":
+            positions[origin] = basis ^ bit
+        elif op == "cx" and basis & control:
+            positions[origin] = basis ^ target
+    return positions
 
 
 def _ceil_sqrt_fraction(value, scale):
@@ -144,7 +177,8 @@ def _decode_witness(real_hex, imag_hex):
 
 
 def certify(circuit, initial_state, budget, *, support_cap, memory_budget_bytes,
-            max_seconds=30, interval=1, protected=(), normalize=False):
+            max_seconds=30, interval=1, protected=(), normalize=False,
+            protected_branches=None):
     """Return PASS plus a deletion certificate, or explicit UNSUPPORTED."""
     environment = _environment_reason()
     if environment:
@@ -158,15 +192,21 @@ def certify(circuit, initial_state, budget, *, support_cap, memory_budget_bytes,
         return dict(status="UNSUPPORTED", reason=reason)
     budget = _rational_budget(budget)
     initial = _input_state(initial_state, circuit.qubits)
+    tracking = protected_branches is not None
+    if tracking and protected:
+        raise ValueError("fixed and moving-branch protection cannot be combined")
+    branch_origins = _branch_origins(protected_branches, circuit.qubits) if tracking else None
+    if tracking and any(origin not in initial for origin in branch_origins):
+        raise ValueError("each protected branch origin must have a nonzero initial amplitude")
     state, ledger = compact_simulate(
         Circuit(circuit.qubits, gates, circuit.name), str(budget),
         support_cap=support_cap, memory_budget_bytes=memory_budget_bytes,
         max_seconds=max_seconds, interval=interval, protected=protected,
-        initial_state=dict(initial),
+        initial_state=dict(initial), protected_branches=branch_origins,
     )
     bound = Fraction(ledger["charged_l2"])
     certificate = dict(
-        semantics=SEMANTICS,
+        semantics=TRACKED_SEMANTICS if tracking else SEMANTICS,
         circuit_sha256=_circuit_digest(circuit, gates),
         initial_state_sha256=_state_digest(initial),
         requested_budget=str(budget),
@@ -181,21 +221,28 @@ def certify(circuit, initial_state, budget, *, support_cap, memory_budget_bytes,
         root_interval_bits=ROOT_PRECISION,
         ledger=ledger,
     )
-    verification = verify(circuit, initial, state, certificate, budget)
+    verification = verify(circuit, initial, state, certificate, budget,
+                          protected_branches=branch_origins if tracking else None)
     if verification["status"] != "PASS":
         raise ArithmeticError("self-verification of exact-subset certificate failed")
     return dict(status="PASS", state=state, certificate=certificate,
                 verification=verification)
 
 
-def verify(circuit, initial_state, output_state, certificate, budget):
+def verify(circuit, initial_state, output_state, certificate, budget,
+           *, protected_branches=None, max_seconds=30):
     """Verify with an exact Fraction signed-permutation oracle, independent of evolve."""
     environment = _environment_reason()
     if environment:
         return dict(status="UNSUPPORTED", reason=environment)
     try:
-        if certificate.get("semantics") != SEMANTICS:
+        semantics = certificate.get("semantics")
+        if semantics not in (SEMANTICS, TRACKED_SEMANTICS):
             raise ValueError("unknown mathematical semantics")
+        tracking = semantics == TRACKED_SEMANTICS
+        if tracking and (not 0 < max_seconds <= MAX_WALL_SECONDS):
+            raise ValueError("invalid moving-branch verification deadline")
+        deadline = time.monotonic() + max_seconds if tracking else float("inf")
         budget = _rational_budget(budget)
         initial = _input_state(initial_state, circuit.qubits)
         cap = max(1, len(initial))
@@ -228,6 +275,32 @@ def verify(circuit, initial_state, output_state, certificate, budget):
                 or any(type(i) is not int or not 0 <= i < 1 << circuit.qubits
                        for i in protected)):
             raise ValueError("invalid protected coordinate set")
+        initial_exact = _fraction_state(initial)
+        if tracking:
+            if protected:
+                raise ValueError("tracked mode cannot also declare fixed protected coordinates")
+            if ledger.get("protection_mode") != MOVING_BRANCH_MODE:
+                raise ValueError("unknown moving-branch protection mode")
+            branch_origins = _branch_origins(ledger.get("protected_branches"), circuit.qubits)
+            if list(branch_origins) != ledger.get("protected_branches"):
+                raise ValueError("protected branch origins are not canonical")
+            if any(origin not in initial for origin in branch_origins):
+                raise ValueError("protected branch origin is absent from the initial state")
+            if protected_branches is not None:
+                expected_origins = _branch_origins(protected_branches, circuit.qubits)
+                if expected_origins != branch_origins:
+                    raise ValueError("protected branch origins do not match requested policy")
+            positions = {origin: origin for origin in branch_origins}
+            branch_values = {origin: initial_exact[origin] for origin in branch_origins}
+        else:
+            if protected_branches is not None:
+                raise ValueError("certificate does not use moving-branch protection")
+            if any(key in ledger for key in ("protection_mode", "protected_branches",
+                                             "final_protected_positions")):
+                raise ValueError("moving-branch metadata has the wrong semantics")
+            branch_origins = ()
+            positions = {}
+            branch_values = {}
         if Fraction(ledger["budget"]) != budget:
             raise ValueError("ledger budget mismatch")
         events = ledger["events"]
@@ -235,15 +308,33 @@ def verify(circuit, initial_state, output_state, certificate, budget):
             raise ValueError("invalid event list")
         if not isinstance(output_state, dict):
             raise ValueError("output state must be a dictionary")
-        current = _fraction_state(initial)
+        current = dict(initial_exact)
         reference = dict(current)
         remaining = TICKS
         event_index = 0
         total_charged = 0
         exact_deletion_mass = Fraction(0)
         for gate_index, gate in enumerate(gates, 1):
+            if tracking and gate[0] == "z":
+                bit = 1 << gate[1]
+                for branch_index, origin in enumerate(branch_origins):
+                    if branch_index % 256 == 0 and time.monotonic() >= deadline:
+                        raise ValueError("moving-branch verification deadline exceeded")
+                    if positions[origin] & bit:
+                        real, imag = branch_values[origin]
+                        branch_values[origin] = (-real, -imag)
             current = _gate_exact(current, gate)
             reference = _gate_exact(reference, gate)
+            if tracking:
+                positions = _move_branch_positions(positions, gate, deadline)
+                protected_positions = set(positions.values())
+                for origin, position in positions.items():
+                    if time.monotonic() >= deadline:
+                        raise ValueError("moving-branch verification deadline exceeded")
+                    if position not in current or current[position] != branch_values[origin]:
+                        raise ValueError(f"protected branch {origin} lost its exact Fraction amplitude")
+            else:
+                protected_positions = set()
             if event_index < len(events) and events[event_index].get("after_gate") == gate_index:
                 event = events[event_index]
                 if type(event["after_gate"]) is not int:
@@ -262,7 +353,7 @@ def verify(circuit, initial_state, output_state, certificate, budget):
                     if type(basis) is not int or basis in seen or basis not in current:
                         raise ValueError("invalid or duplicate deletion index")
                     seen.add(basis)
-                    if basis in protected:
+                    if basis in protected or basis in protected_positions:
                         raise ValueError("protected coordinate was deleted")
                     witness = _decode_witness(real_hex, imag_hex)
                     if witness != current[basis]:
@@ -285,6 +376,12 @@ def verify(circuit, initial_state, output_state, certificate, budget):
                 event_index += 1
         if event_index != len(events):
             raise ValueError("event order or position is invalid")
+        if tracking:
+            if time.monotonic() >= deadline:
+                raise ValueError("moving-branch verification deadline exceeded")
+            expected_positions = [[origin, positions[origin]] for origin in branch_origins]
+            if ledger.get("final_protected_positions") != expected_positions:
+                raise ValueError("final moving-branch position map mismatch")
         if not gates and events:
             raise ValueError("empty circuit cannot contain deletion events")
         charged_bound = budget * total_charged / ticks
