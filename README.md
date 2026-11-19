@@ -23,23 +23,17 @@ Write classical programs in `.sb`, describe quantum circuits for **CPU simulatio
 | **Ubuntu ARM64 under WSL2 (local)** | The same 16-million-state sparse benchmark and independent quantum reference checks were exercised in the documented ARM64 environment. This is **WSL2**, not an independent physical Ubuntu host. | [Ubuntu scaling receipt](benchmarks/sb_quantum_benchmark/scaling-16777216-ubuntu-wsl.json) · [Qiskit/Cirq methods](INDEPENDENT_QUANTUM_VALIDATION.md) |
 | **Hosted GitHub Actions (Windows and Ubuntu)** | The merged unified codebase passed [SharkByte CI](https://github.com/reggaesharkk/SharkByte/actions/runs/44484290586), with separate [independent quantum validation](https://github.com/reggaesharkk/SharkByte/actions/runs/44401252706) on the integration head. | [Workflow sources](.github/workflows/) |
 
-**One-click: open a reproducible notebook in Google Colab**
+**One-click Google Colab notebooks** — open a notebook, select a **CPU runtime**, then choose **Runtime → Run all**.
 
-**Integrated verification** — 16-million-state comparison and scoped checks:
+| Notebook | Verified experiment / scope | Launch |
+| --- | --- | --- |
+| Integrated verification | 16,777,216-state comparison and scoped checks | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/reggaesharkk/SharkByte/blob/main/notebooks/SharkByte-Colab-Integrated-Verification.ipynb) |
+| Connected 40-qubit | 33,554,432-state sparse GHZ-family experiment | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/reggaesharkk/SharkByte/blob/main/notebooks/SharkByte-Colab-Connected-40Q-32M.ipynb) |
+| Connected 50-qubit | GHZ-family disk materialization, **up to 4,294,967,296 entries** | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/reggaesharkk/SharkByte/blob/main/notebooks/SharkByte-Colab-Connected-50Q-2B.ipynb) |
 
-[![Open integrated verification in Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/reggaesharkk/SharkByte/blob/main/notebooks/SharkByte-Colab-Integrated-Verification.ipynb)
+**Run requirements:** larger experiments need substantial RAM, disk space, and execution time; a notebook may select a smaller tier or refuse a run. Integrated verification pins a historical revision, not today's `main`.
 
-**Connected 40-qubit / 33.55-million-state experiment:**
-
-[![Open connected 40-qubit benchmark in Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/reggaesharkk/SharkByte/blob/main/notebooks/SharkByte-Colab-Connected-40Q-32M.ipynb)
-
-**Connected 50-qubit GHZ-family, up to 4.29 billion entries:**
-
-[![Open connected 50-qubit experiment in Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/reggaesharkk/SharkByte/blob/main/notebooks/SharkByte-Colab-Connected-50Q-2B.ipynb)
-
-These badges **open notebooks in Colab**; choose a **CPU runtime**, review the resource requirements, and use **Runtime → Run all** to execute. The integrated notebook pins a historical source revision; its checks are not automatically re-run against today's `main`. The large-state notebooks include resource gates: availability of RAM, disk, and execution time determines which tier can run, and a session may refuse the largest tier. Running them can consume substantial resources.
-
-**Scope matters:** the 4.29-billion-entry milestone used a dedicated **disk-backed, formula-based GHZ-family materializer**, not SharkByte's general sparse simulator or a dense 50-qubit statevector. Cirq checked a separate 512-shot measurement invariant, **not** all 4.29 billion amplitudes. The 16-million-state 40-qubit benchmark is a different, disconnected CPU sparse workload. See the [full methods and limitations](#scientific-evidence-with-the-important-distinction) below.
+**Scope:** The 4.29-billion-entry result is **formula-based, disk-backed GHZ-family verification**, not general 50-qubit statevector simulation. Cirq checked a separate 512-shot invariant, not the entire array. The 16-million-state experiment is a separate disconnected CPU sparse workload. [Methods](tools/run_connected_ghz50_materialization.py) · [Full claim boundaries](CLAIM_BOUNDARIES.md).
 
 ---
 
@@ -217,7 +211,7 @@ python tools/ci_acceptance.py
 
 The acceptance harness installs the core package outside the checkout, runs normal/`-O`/`-OO` regression checks, and confirms that unsupported native execution is **refused**. The reported native refusal exit code is expected, not an executable native backend. [CI workflow](.github/workflows/ci.yml) · [Release gates](RELEASE_GATE_MATRIX.md).
 
-### Scientific evidence, with the important distinction
+### Experimental evidence and reproducibility
 
 | Experiment | Recorded result | What it does **not** show | Read the evidence |
 | --- | --- | --- | --- |
@@ -225,11 +219,11 @@ The acceptance harness installs the core package outside the checkout, runs norm
 | **20-qubit connected, high-support circuit** | 1,048,576 amplitudes compared across four methods; measured balanced-cut Schmidt rank **1,024** | A general efficient large-qubit simulation method | [Methods and receipts](docs/high-support-connected-entanglement.md) |
 | **40-qubit / 16,777,216-state sparse workload** | CPU run and exact independent amplitude comparison for the specified **disconnected** circuit | A dense 40-qubit statevector or globally entangled 40-qubit experiment | [Studio receipt](evidence/studio_16m/windows_arm64/sharkbyte-85c74d14dcb54040a295e3c2fe422e53.json) · [Cirq comparison](evidence/windows-arm64-cirq/cirq-16777216.json) |
 | **40-qubit / 33,554,432-state connected GHZ-family workload** | Populated sparse amplitudes matched a closed-form oracle; connected GHZ entanglement has a separate analytical justification | General dense 40-qubit evolution or a full Cirq amplitude replay of this larger state | [Receipt and manifest](evidence/connected-ghz40-32m-colab/) |
-| **50-qubit / 4,294,967,296-entry GHZ-family materialization** | Disk-backed packed basis/amplitude arrays exhaustively checked against independent parity calculations; Colab and Google Compute Engine array digests matched | A **general 50-qubit gate-by-gate SharkByte simulator**; no 50-qubit dense vector was allocated | [Colab receipt](evidence/connected-ghz50-colab/retry-2p32/sharkbyte-connected-ghz50-4294967296-colab.json) · [Compute Engine replay](evidence/connected-ghz50-gcp/2p32/sharkbyte-ghz50-4b-gcp-receipt.json) |
+| **50-qubit / 4,294,967,296-entry GHZ-family materialization** | Disk-backed packed basis/amplitude arrays exhaustively checked against independent parity calculations; Colab and Google Compute Engine array digests matched | Structured analytical workload; see [scope above](#verified-achievements--google-cloud-colab-and-local-systems) | [Colab receipt](evidence/connected-ghz50-colab/retry-2p32/sharkbyte-connected-ghz50-4294967296-colab.json) · [Compute Engine replay](evidence/connected-ghz50-gcp/2p32/sharkbyte-ghz50-4b-gcp-receipt.json) |
 | **Adaptive sparse/dense comparisons** | Repeated CPU benchmarks for three specified 20-qubit cases; full vectors matched the dense candidate | Universal speedup; low-support cases favor sparse storage | [Reports and methodology](evidence/adaptive_sparse_dense/manifest.json) |
 | **Lucid Dynamics** | IVc/IVb periods reproduced; memoryless reference decayed; all nine receipts verified | Global stability, formal existence proof, or physiological interpretation | [Nine-receipt audit](docs/lucid-dynamics-audit.md) |
 
-The 50-qubit 2³² case is an important **large-scale, structured validation**, not a general sparse-backend milestone. A dedicated formula materializer produced disk arrays of the specified GHZ-family amplitudes; every entry was checked. Cirq independently tested a 512-shot Clifford measurement invariant **only**, not the 4.29-billion-entry statevector. The earlier `RESOURCE_STOP` attempt is retained in the [historical evidence](evidence/connected-ghz50-colab/). Read the [materialization worker](tools/run_connected_ghz50_materialization.py) and [notebook](notebooks/SharkByte-Colab-Connected-50Q-2B.ipynb) for the exact protocol.
+The earlier 2³² `RESOURCE_STOP` attempt is preserved alongside the later successful run in [historical evidence](evidence/connected-ghz50-colab/). The [materialization worker](tools/run_connected_ghz50_materialization.py) and [notebook](notebooks/SharkByte-Colab-Connected-50Q-2B.ipynb) document the exact method.
 
 For the 40-qubit 16-million-state case, the Windows Studio worker recorded approximately **2.77 GiB** peak process memory, while a separate Linux/WSL and Colab reference program compared the populated amplitudes under its documented circuit decomposition. Times are **workload-, hardware-, and environment-specific**, not a generic benchmark against other languages.
 
@@ -283,7 +277,6 @@ The optional Windows ARM64 [GenieX local-chat launcher](Open-SharkByte-AI.ps1) i
 ## What SharkByte does not claim
 
 - **Not quantum hardware.** All quantum experiments here are classical CPU simulation or analytical materialization.
-- **Not an arbitrary large-qubit statevector engine.** Register width, sparse support, connected entanglement, formula-based materialization, and full-vector reference comparison are distinct properties.
 - **Not a production compiler or unrestricted language implementation.** The [grammar](GRAMMAR.md) and [specification](SPEC.md) document an intentionally bounded alpha subset.
 - **Not a security sandbox.** Native interpreter and Direct AArch64 execution are **disabled** until containment/cancellation requirements are met. Do not execute untrusted inputs in sensitive environments. [Security policy](SECURITY.md).
 - **Not a general web backend or native mobile builder.** The Web/App feature compiles the documented declarative JSON schema into static sites and browser PWAs.
