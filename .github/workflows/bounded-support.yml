@@ -1,0 +1,20 @@
+name: Bounded support reference comparisons
+on:
+  pull_request:
+    paths:
+      - 'benchmarks/sb_quantum_benchmark/**'
+      - 'tools/high_support/**'
+      - 'tests/test_bounded_support.py'
+      - '.github/workflows/bounded-support.yml'
+  workflow_dispatch:
+jobs:
+  references:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-high-support.txt
+      - run: python -m unittest discover -s tests -p test_bounded_support.py
+      - run: python tools/high_support/check_bounded.py
