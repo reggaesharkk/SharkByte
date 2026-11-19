@@ -26,7 +26,7 @@ def measure(fn):
 
 def compare(name, gates, protected=()):
     circuit = Circuit(8, tuple(gates))
-    limits = dict(support_cap=256, memory_budget_bytes=256*512)
+    limits = dict(support_cap=256, memory_budget_bytes=256*(512+1024+512))
     exact, baseline = measure(lambda: evolve(circuit, **limits))
     (state, cert), compacted = measure(lambda: simulate(circuit, "1e-4", protected=protected, **limits))
     if state != replay(circuit, cert):

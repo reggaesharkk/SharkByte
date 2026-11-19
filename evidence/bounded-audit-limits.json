@@ -1,0 +1,49 @@
+{
+  "receipt_sha256": "ccbefe83e3813e55ed83ca69738c4de606b1764add7cbf4d0270dbb30b4b7b54",
+  "receipt_bytes": 7884374,
+  "source_sha256": "3023e64e7e1df05a284927fc0e625385e3a43baeeda7deaa0e5a4896e0c49c11",
+  "cases": [
+    {
+      "operation": "generate",
+      "address_mib": 512,
+      "seconds": 180,
+      "outcome": "pass",
+      "exit": 0
+    },
+    {
+      "operation": "generate",
+      "address_mib": 32,
+      "seconds": 180,
+      "outcome": "memory",
+      "exit": 1
+    },
+    {
+      "operation": "generate",
+      "address_mib": 512,
+      "seconds": 0.05,
+      "outcome": "timeout",
+      "exit": 124
+    },
+    {
+      "operation": "verify",
+      "address_mib": 512,
+      "seconds": 180,
+      "outcome": "pass",
+      "exit": 0
+    },
+    {
+      "operation": "verify",
+      "address_mib": 32,
+      "seconds": 180,
+      "outcome": "memory",
+      "exit": 1
+    },
+    {
+      "operation": "verify",
+      "address_mib": 512,
+      "seconds": 0.05,
+      "outcome": "timeout",
+      "exit": 124
+    }
+  ]
+}

@@ -3,7 +3,7 @@
 The opt-in runner starts in basis state zero and advances the existing sparse kernel one gate at a time. Use a decimal L2 budget, a positive gate interval, and optional protected basis indices. For example:
 
 ```
-python -m benchmarks.sb_quantum_benchmark.bounded_support examples/high_support/roundtrip_17q.sbq --budget 1e-10 --interval 214 --support-cap 131072 > record.json
+python -m benchmarks.sb_quantum_benchmark.bounded_support examples/high_support/roundtrip_17q.sbq --budget 1e-10 --interval 214 --support-cap 131072 --memory-mib 256 --seconds 180 > record.json
 python -m benchmarks.sb_quantum_benchmark.verify_bounded examples/high_support/roundtrip_17q.sbq record.json
 ```
 
