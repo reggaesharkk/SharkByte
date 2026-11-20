@@ -1,0 +1,96 @@
+{
+  "audit_date_utc": "2026-11-19T18:55:06.007028+00:00",
+  "colab": {
+    "elapsed_seconds": 28.672366107000016,
+    "receipt_sha256": "a7060f8151dfc1c09bc7281214abeddae85aae896b464c9734ae3d68b82008c2",
+    "source_revision": "7793d5eace34456ce1cc57f85f4d75cf84c8e889",
+    "zip_sha256": "30b11f6a4909c83659f8b3d2f2e4fa7ed16dc3634fd58749c946a98da01ab489"
+  },
+  "comparison_equalities": {
+    "Google Colab": {
+      "adversarial_replay": true,
+      "archived_counterexample": true,
+      "decisions": true,
+      "exhaustive_composed_affine_mappings": true,
+      "exhaustive_mappings": true,
+      "randomized_signed_permutation_circuits": true,
+      "source_hashes": true
+    },
+    "Ubuntu WSL2 ARM64": {
+      "adversarial_replay": true,
+      "archived_counterexample": true,
+      "decisions": true,
+      "exhaustive_composed_affine_mappings": true,
+      "exhaustive_mappings": true,
+      "randomized_signed_permutation_circuits": true,
+      "source_hashes": true
+    },
+    "Windows ARM64": {
+      "adversarial_replay": true,
+      "archived_counterexample": true,
+      "decisions": true,
+      "exhaustive_composed_affine_mappings": true,
+      "exhaustive_mappings": true,
+      "randomized_signed_permutation_circuits": true,
+      "source_hashes": true
+    }
+  },
+  "exact_bound_checks": [
+    {
+      "certified_l2_bound": "42949673/4294967296000",
+      "deleted_coordinates": 1,
+      "exact_squared_error": "34844914372704104359490377921249/348449143727040986586495598010130648530944",
+      "gates": 250,
+      "inequality_holds": true,
+      "seed": 17,
+      "width": 5
+    },
+    {
+      "certified_l2_bound": "42949673/4294967296000",
+      "deleted_coordinates": 1,
+      "exact_squared_error": "34844914372704104359490377921249/348449143727040986586495598010130648530944",
+      "gates": 250,
+      "inequality_holds": true,
+      "seed": 29,
+      "width": 8
+    },
+    {
+      "certified_l2_bound": "42949673/4294967296000",
+      "deleted_coordinates": 1,
+      "exact_squared_error": "34844914372704104359490377921249/348449143727040986586495598010130648530944",
+      "gates": 250,
+      "inequality_holds": true,
+      "seed": 43,
+      "width": 12
+    },
+    {
+      "certified_l2_bound": "42949673/4294967296000",
+      "deleted_coordinates": 1,
+      "exact_squared_error": "34844914372704104359490377921249/348449143727040986586495598010130648530944",
+      "gates": 250,
+      "inequality_holds": true,
+      "seed": 71,
+      "width": 20
+    }
+  ],
+  "gce": {
+    "elapsed_seconds": 13.961806276000061,
+    "host_platform": "Linux-6.12.117+deb13-cloud-amd64-x86_64-with-glibc2.41",
+    "ram_reported_bytes": 33658982400,
+    "receipt_sha256": "c7647057c449d732c089d9782c9ac1319e2ee5c3d96eb896ce9f4d31733a2f02",
+    "receipt_size_bytes": 7903,
+    "source_hash_count": 13,
+    "source_revision": "7793d5eace34456ce1cc57f85f4d75cf84c8e889",
+    "worker_exit_code": 0,
+    "worker_peak_rss_sampled_bytes": 58368000,
+    "worker_rlimit_as_bytes": 25769803776,
+    "worker_rlimit_as_is_rss_limit": false,
+    "worker_timed_out": false,
+    "zip_sha256": "7c6af2e6fa933cc82248d8a778793642ff21b49f8e99467ae882e909e9bd033b",
+    "zip_size_bytes": 4399
+  },
+  "note": "Unkeyed SHA-256 verifies byte integrity/binding, not authorship. Source hashes were checked against the existing archived records; no fresh third-party independent simulator execution was performed here. Sampled VmRSS is not a strict peak upper bound, and RLIMIT_AS is virtual address space.",
+  "result": "PASS",
+  "schema": "sharkbyte/gce-colab-arm64-cross-platform-audit-v1",
+  "scope": "source-bound recorded moving-branch certificate comparison only; no new execution of VM source"
+}
