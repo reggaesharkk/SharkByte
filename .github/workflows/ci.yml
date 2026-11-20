@@ -58,7 +58,7 @@ jobs:
 
       - name: Run contained audited scaling controls
         run: |
-          python -B tools/high_support/frontier_scaling.py --output frontier-scaling-ci.json --qubits 12 --families basis-walk connected-ghz interference --repeats 1 --memory-mib 2048 --worker-seconds 180 --max-total-seconds 300 --reference-qubits 12 --reference-backends numpy,qiskit,cirq
+          python -B tools/high_support/frontier_scaling.py --output frontier-scaling-ci.json --qubits 12 --families basis-walk connected-ghz growing-support interference uncomputation dense-no-benefit --repeats 1 --memory-mib 2048 --worker-seconds 180 --max-total-seconds 300 --reference-qubits 12 --reference-backends numpy,qiskit,cirq --include-compaction
           python -B tools/high_support/verify_frontier_scaling.py frontier-scaling-ci.json --require-backends numpy,qiskit,cirq
 
       - name: Upload connected-circuit receipts and statevectors

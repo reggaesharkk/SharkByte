@@ -40,22 +40,24 @@ From the checkout root, with NumPy, Qiskit, and Cirq installed for all three ind
 
 ```powershell
 python -B tools/high_support/frontier_scaling.py `
-  --output evidence/frontier-scaling-2026-11-20/windows-arm64/frontier.json `
+  --output evidence/frontier-scaling-2026-11-20/windows-arm64/frontier-reproduction.json `
   --qubits 12 16 20 24 28 30 --repeats 3 --seed 20261120 `
   --memory-mib 1536 --worker-seconds 90 --max-total-seconds 1800 `
   --reference-qubits 12 --reference-backends numpy,qiskit,cirq `
   --include-compaction
 python -B tools/high_support/verify_frontier_scaling.py `
-  evidence/frontier-scaling-2026-11-20/windows-arm64/frontier.json
+  evidence/frontier-scaling-2026-11-20/windows-arm64/frontier-reproduction.json
 ```
+
+On Ubuntu WSL2, run the same command with `python3 -B` and output to `evidence/frontier-scaling-2026-11-20/ubuntu-wsl2-arm64/frontier-reproduction.json`. The archived platform receipts and their exact file and record hashes are indexed in [the evidence manifest](../evidence/frontier-scaling-2026-11-20/README.md). The historical Windows `frontier.json` is retained with its original producer revision; the clarified receipt is `frontier-v2.json`.
 
 The runner publishes a new receipt atomically and refuses to overwrite an existing destination. It includes a 30-minute total wall-time safeguard by default. It does not contain a cloud client and will not start, resize, or stop a Google Compute Engine VM. A timeout limit bounds worker time, not cloud cost in dollars; researchers must use the actual region and machine's hourly rate to compute their own maximum charge.
 
-For Colab, clone the exact feature-branch commit into a fresh runtime, install the versions recorded in `requirements-independent-quantum.txt`, use a worker limit no larger than 2 GiB, and set a total runtime limit of at most 30 minutes. Save the generated receipt and verifier output before disconnecting the runtime.
+For Colab, check out the exact feature-branch source commit recorded in the evidence manifest in a fresh runtime, install the versions recorded in `requirements-independent-quantum.txt`, use a worker limit no larger than 2 GiB, and set a total runtime limit of at most 30 minutes. Save the generated receipt and verifier output before disconnecting the runtime.
 
 For the existing 32-GiB GCE machine, use a worker limit no larger than 8 GiB, keep the default 90-second per-worker timeout, and set `--max-total-seconds 3600` or lower. Do not create another VM. Record the machine type, region, hourly price, attached disk, and actual runtime alongside the receipt. The runner's Linux containment is an address-space limit, so the measured peak RSS and the configured address-space cap must be reported separately.
 
-The CPU-cost safeguard is intentionally a wall-time and per-worker cap, paired with no automated cloud provisioning. It cannot determine or guarantee a USD charge without the researcher's current billing configuration.
+The CPU-cost safeguard is intentionally a wall-time and per-worker cap, paired with no automated cloud provisioning. No Colab runtime or billable VM was started for the evidence in this repository. It cannot determine or guarantee a USD charge without the researcher's current billing configuration.
 
 ## Compaction and optimization interpretation
 
