@@ -18,6 +18,17 @@ OUTCOMES = {"PASS": "VERIFIED_PASS", "FAIL": "VERIFIED_BUDGET_EXCEEDED"}
 INVALID = (ValueError, TypeError, KeyError, AttributeError, RecursionError, ArithmeticError)
 
 
+class WorkerUnavailable(RuntimeError):
+    """Containment could not complete a worker within the runtime contract."""
+
+
+def contained_worker(command, deadline, diagnostics):
+    try:
+        return _run_worker(command, deadline, MEMORY, diagnostics)
+    except (OSError, RuntimeError, MemoryError) as exc:
+        raise WorkerUnavailable(str(exc)) from exc
+
+
 def read(path, limit):
     with path.open("rb") as stream:
         data = stream.read(limit + 1)
@@ -65,9 +76,9 @@ def run(source_path, output):
         for phase in ("generate", "verify"):
             stats = root/(phase+".json")
             flags = ["-"+"O"*sys.flags.optimize] if sys.flags.optimize else []
-            supervisor = _run_worker([sys.executable, "-B", *flags, "-m", MODULE,
+            supervisor = contained_worker([sys.executable, "-B", *flags, "-m", MODULE,
                                       "--worker", phase, str(frozen), str(ledger), str(stats)],
-                                     min(deadline, monotonic()+25), MEMORY, root/"worker.log")
+                                     min(deadline, monotonic()+25), root/"worker.log")
             require(supervisor["exit_status"] == 0, "worker failed")
             phase_result = json.loads(read(stats, LIMIT))
             if phase_result["decision"] not in OUTCOMES:
@@ -95,10 +106,10 @@ def replay(source_path, receipt_path, *, ledger_only=False):
         receipt.write_bytes(wrapper.encode("utf-8"))
         stats = root/"stats.json"
         flags = ["-"+"O"*sys.flags.optimize] if sys.flags.optimize else []
-        supervisor = _run_worker([sys.executable, "-B", *flags, "-m", MODULE,
+        supervisor = contained_worker([sys.executable, "-B", *flags, "-m", MODULE,
                                   "--worker", "ledger" if ledger_only else "receipt",
                                   str(source), str(receipt), str(stats)],
-                                 deadline, MEMORY, root/"worker.log")
+                                 deadline, root/"worker.log")
         require(supervisor["exit_status"] == 0, "replay worker failed")
         return json.loads(read(stats, LIMIT))["decision"]
 
@@ -108,10 +119,11 @@ def main():
         mode = sys.argv[2]
         try:
             worker(mode, *map(Path, sys.argv[3:]))
-        except INVALID as exc:
-            if mode == "generate" and (isinstance(exc, UnsupportedOperation)
+        except INVALID + (MemoryError,) as exc:
+            if (isinstance(exc, MemoryError) or str(exc) in ("replay deadline", "generation deadline")
+                    or mode == "generate" and (isinstance(exc, UnsupportedOperation)
                     or str(exc) in ("binary64 overflow", "nonfinite binary64",
-                                    "width outside experiment domain", "gate limit exceeded")):
+                                    "width outside experiment domain", "gate limit exceeded"))):
                 outcome = "UNSUPPORTED"
             else:
                 outcome = "INVALID_RECORD"
@@ -132,6 +144,8 @@ def main():
             decision = replay(args.source, args.output, ledger_only=args.ledger_only)
         else:
             decision = run(args.source, args.output)
+    except (WorkerUnavailable, TimeoutError, MemoryError):
+        decision = "UNSUPPORTED"
     except INVALID + (OSError,):
         decision = "INVALID_RECORD"
     print(OUTCOMES.get(decision, decision))

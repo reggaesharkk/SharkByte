@@ -44,3 +44,13 @@ class H4WorkerReplay(unittest.TestCase):
                 result = self.invoke(src, path, *flags)
                 self.assertEqual((result.returncode, result.stdout.strip()),
                                  (0, "VERIFIED_BUDGET_EXCEEDED"), result.stderr)
+
+    def test_unsupported_gate_publishes_nothing(self):
+        source = json.loads(SOURCE.read_bytes())
+        source["gates"][0][0] = "rx"
+        with tempfile.TemporaryDirectory() as temp:
+            src, path = Path(temp) / "source.json", Path(temp) / "receipt.json"
+            src.write_text(json.dumps(source), encoding="utf-8")
+            result = self.invoke(src, path)
+            self.assertEqual((result.returncode, result.stdout.strip()), (3, "UNSUPPORTED"))
+            self.assertFalse(path.exists())
