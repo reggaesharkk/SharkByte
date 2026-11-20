@@ -104,9 +104,13 @@ def extract_pinned(archive_bytes, destination):
                     name in seen):
                 raise ValueError("unsafe historical archive path")
             seen.add(name)
-            if not any(name == prefix or name.startswith(prefix + "/")
-                       for prefix in ("tools", "benchmarks/sb_quantum_benchmark",
-                                      "evidence/h4-candidate")):
+            # Git includes parent-directory entries for selected subtrees.
+            # Permit those as directories only, never as payload files.
+            parent_only = member.isdir() and name in {"benchmarks", "evidence", "evidence/h4-candidate"}
+            selected = any(name == prefix or name.startswith(prefix + "/")
+                           for prefix in ("tools", "benchmarks/sb_quantum_benchmark",
+                                          "evidence/h4-candidate"))
+            if not (parent_only or selected):
                 raise ValueError("unexpected historical archive member")
             target = Path(destination).joinpath(*path.parts)
             if member.isdir():
