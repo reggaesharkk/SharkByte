@@ -315,6 +315,7 @@ See [CLAIM_BOUNDARIES.md](CLAIM_BOUNDARIES.md) for the complete claim inventory.
 | [docs/web-app-builder.md](docs/web-app-builder.md) | Web/App project DSL, PWA scope, and preview/export |
 | [docs/lucid-dynamics.md](docs/lucid-dynamics.md) · [Lucid audit](docs/lucid-dynamics-audit.md) | Model equations, parameter ranges, solvers, numerical evidence |
 | [docs/high-support-connected-entanglement.md](docs/high-support-connected-entanglement.md) | Statevector comparisons and Schmidt diagnostics |
+| [docs/audited-high-support-frontier.md](docs/audited-high-support-frontier.md) · [Hadamard proof obligations](docs/hadamard-certification-proof-obligations.md) | Resource-bounded scaling method and the separate OPEN Hadamard certification assessment |
 | [docs/connected-circuit-frontier.md](docs/connected-circuit-frontier.md) | Sparse and analytical connected-circuit methods |
 | [INDEPENDENT_QUANTUM_VALIDATION.md](INDEPENDENT_QUANTUM_VALIDATION.md) | Qiskit/Cirq methods and host-specific evidence |
 | [REPRODUCIBILITY.md](REPRODUCIBILITY.md) · [Evidence](evidence/) | Receipts, integrity manifests, notebooks, exact replay scope |

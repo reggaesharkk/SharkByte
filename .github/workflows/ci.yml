@@ -56,11 +56,23 @@ jobs:
           python -B tools/run_connected_quantum_validation.py --backend cirq --output connected-reference-results/cirq.json --support-cap 65536 --memory-budget-mib 64 --timeout-seconds 60
           python -B tools/compare_connected_quantum_receipts.py connected-reference-results/qiskit.json connected-reference-results/cirq.json --output connected-reference-results/qiskit-cirq-comparison.json
 
+      - name: Run contained audited scaling controls
+        run: |
+          python -B tools/high_support/frontier_scaling.py --output frontier-scaling-ci.json --qubits 12 --families basis-walk connected-ghz interference --repeats 1 --memory-mib 2048 --worker-seconds 180 --max-total-seconds 300 --reference-qubits 12 --reference-backends numpy,qiskit,cirq
+          python -B tools/high_support/verify_frontier_scaling.py frontier-scaling-ci.json --require-backends numpy,qiskit,cirq
+
       - name: Upload connected-circuit receipts and statevectors
         uses: actions/upload-artifact@v4
         with:
           name: connected-statevector-${{ matrix.os }}-python-${{ matrix.python }}
           path: connected-reference-results/
+          if-no-files-found: error
+
+      - name: Upload audited scaling receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: audited-frontier-scaling-${{ matrix.os }}
+          path: frontier-scaling-ci.json
           if-no-files-found: error
 
   test:
