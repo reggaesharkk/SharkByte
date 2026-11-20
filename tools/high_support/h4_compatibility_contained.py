@@ -14,6 +14,7 @@ import os
 from pathlib import Path
 import platform
 import signal
+import stat
 import subprocess
 import sys
 import tempfile
@@ -166,6 +167,11 @@ def supervise(arguments, *, memory_mib=MEMORY_MIB, seconds=WALL_SECONDS):
                 (history.SOURCE_LIMIT, history.RECEIPT_LIMIT,
                  history.SOURCE_LIMIT, history.RECEIPT_LIMIT),
             )):
+                # Refuse FIFOs, device nodes, sockets, directories and symlinks
+                # before any blocking read in the parent. Only trusted local
+                # regular-file paths are supported; concurrent writers remain open.
+                if not stat.S_ISREG(Path(name).lstat().st_mode):
+                    raise ValueError("Gate 4c requires regular input files")
                 data = history.read_bytes(Path(name), limit)
                 path = root / ("input-%d.json" % index)
                 path.write_bytes(data)
