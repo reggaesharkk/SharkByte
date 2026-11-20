@@ -8,7 +8,7 @@ import re
 
 from . import h3_verify, h4_ledger
 from .h3_format import digest, request, require, rows
-from .h4_run import LIMIT, MEMORY
+from .h4_limits import LIMIT, MEMORY
 
 SCHEMA = "sharkbyte-strict-hadamard-receipt-v1"
 LEGACY = {"machine", "platform", "python", "worker_memory_bytes",
