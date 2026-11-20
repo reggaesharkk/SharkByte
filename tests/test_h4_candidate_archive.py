@@ -139,14 +139,16 @@ class ArchiveV1(unittest.TestCase):
 
             check("VERIFIED_PASS")
             zero_source, zero_record = zero_budget_record()
-            src.write_text(zero_source, encoding="utf-8")
-            receipt.write_text(zero_record, encoding="utf-8")
+            src.write_bytes(zero_source.encode("utf-8"))
+            self.assertEqual(src.read_bytes(), zero_source.encode("utf-8"))
+            receipt.write_bytes(zero_record.encode("utf-8"))
+            self.assertEqual(receipt.read_bytes(), zero_record.encode("utf-8"))
             check("VERIFIED_BUDGET_EXCEEDED")
-            receipt.write_text(archive.canonical(dict(json.loads(zero_record), candidate_sha256="f"*64)))
+            receipt.write_bytes(archive.canonical(dict(json.loads(zero_record), candidate_sha256="f"*64)).encode("utf-8"))
             check("INVALID_RECORD")
             req = json.loads(zero_source)
             req["contract"] = "sharkbyte-xz-cx-h-candidate-v2"
-            src.write_text(archive.canonical(req))
+            src.write_bytes(archive.canonical(req).encode("utf-8"))
             check("UNSUPPORTED")
             self.assertEqual(RECEIPT.read_bytes(), archived_bytes,
                              "archival verifier must not edit historical receipts")
