@@ -32,3 +32,13 @@ The fixture includes mixed gates, an explicit negative-zero input and a minimum 
 ## Review obligations
 
 I keep this candidate experimental. I still need independent review of the canonical encoding, budget and module pinning policy, transition rules for future implementations, and compatibility before any installed API exposure. The new modules are version-bound at replay, so future changes need an explicit compatibility policy or replay at the recorded revision. Hashes bind content and provide no execution authentication. The tested boundary excludes normalization, pruning, general sparse mixing and wider circuits. I make no claim that all supported-size circuits fit each host's runtime or that this stage proves a general floating-point result.
+
+## Frozen historical v1 replay
+
+The separate [H4 candidate archive verification policy](h4-candidate-archival-policy.md) records the exact accepted v1 implementation SHA and H4 module map. Its read-only, bounded command verifies the original source and receipt without importing the potentially changed candidate script:
+
+```sh
+python -B -m tools.high_support.h4_candidate_archive verify evidence/h4-candidate/source.json evidence/h4-candidate/receipt.json
+```
+
+This archival tool checks the fixed version identity and independently recomputes all numerical fields. It does not authorize reinterpreting an unknown implementation as v1, and it fails closed if the underlying H4 replay dependencies drift. The installed public certificate remains unchanged.
