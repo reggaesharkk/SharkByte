@@ -5,6 +5,7 @@ from pathlib import Path
 import random
 import sys
 import unittest
+from fractions import Fraction
 
 from tools.high_support.h3_format import encode
 from tools.high_support.h3_generate import generate
@@ -38,6 +39,16 @@ class CumulativeHadamard(unittest.TestCase):
                 gates.append([op, wires, delete])
             circuit = source(gates, {0: .125-.25j, 3: complex(0., math.ulp(0.))}, "4")
             self.assertEqual(verify(circuit, generate(circuit)), "PASS")
+
+    def test_two_nonzero_deletions_and_actual_input_norm(self):
+        circuit = source([["h", [0], [1]], ["h", [0], [1]]],
+                         {0: complex(.5, -.5)}, "1")
+        ledger = generate(circuit)
+        first, second = ledger["steps"]
+        self.assertGreater(Fraction(first["deleted_mass"]), 0)
+        self.assertGreater(Fraction(second["deleted_mass"]), 0)
+        self.assertLess(Fraction(second["norm_upper"]), Fraction(first["norm_upper"]))
+        self.assertEqual(verify(circuit, ledger), "PASS")
 
     def test_forged_ledger(self):
         circuit = source([["h",[0],[]], ["h",[1],[1]]])
