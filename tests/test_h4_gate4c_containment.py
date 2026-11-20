@@ -54,6 +54,21 @@ class Gate4c(unittest.TestCase):
                 result, status = c.supervise(args(source=bad))
             self.assertEqual((result["decision"], status), ("INVALID_RECORD", 2))
 
+    def test_refuse_nonregular_inputs_before_worker(self):
+        with tempfile.TemporaryDirectory() as temp:
+            directory = Path(temp) / "not-a-file"
+            directory.mkdir()
+            with patch.object(c, "_windows_launch", side_effect=AssertionError("launched")), \
+                 patch.object(c, "_linux_launch", side_effect=AssertionError("launched")):
+                report, code = c.supervise(args(source=directory))
+            self.assertEqual((code, report["decision"]), (2, "INVALID_RECORD"))
+            if hasattr(__import__("os"), "mkfifo"):
+                pipe = Path(temp) / "pipe"
+                __import__("os").mkfifo(pipe)
+                with patch.object(c, "_linux_launch", side_effect=AssertionError("launched")):
+                    report, code = c.supervise(args(source=pipe))
+                self.assertEqual((code, report["decision"]), (2, "INVALID_RECORD"))
+
     def test_verified_identity_inside_os_worker(self):
         report, code = c.supervise(args(), seconds=90)
         self.assertEqual((code, report["decision"]), (0, "COMPATIBLE"), report)
