@@ -19,6 +19,8 @@ The generated circuit and the complete original gate list are included in each c
 
 The default ladder is 12, 16, 20, 24, 28, and 30 qubits. The 30-qubit controls run only when their calculated peak-support plan fits the worker limit. Full-support families are refused before process launch when their sparse estimate plus worker reserve exceeds the configured cap. The runner never allocates a vector just to test whether a planned workload fits.
 
+The primary sparse engine always stores a dictionary of its populated coordinates. If that dictionary contains `2^n` entries, it represents the complete statevector even though it is not a dense contiguous array. The receipt separately records register dimension, nonzero support, whether support fills the register, and whether a dense array was materialized by the primary engine. No amplitudes are injected from an analytic formula; analytic formulas are references against which computed sparse entries are checked.
+
 Each successful worker reports:
 
 - process CPU time and wall time for sparse evolution, exact simplification, and adaptive comparison where applicable;

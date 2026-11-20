@@ -8,6 +8,8 @@ import json
 import math
 from pathlib import Path
 import random
+import re
+import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -49,7 +51,7 @@ def _read_state(rows):
     return state
 
 
-def _source_hashes():
+def _source_hashes(revision=None):
     names = (
         "benchmarks/sb_quantum_benchmark/sparse_backend.py",
         "benchmarks/sb_quantum_benchmark/frontier30.py",
@@ -60,8 +62,21 @@ def _source_hashes():
         "tools/high_support/frontier_scaling.py",
         "tools/high_support/verify_frontier_scaling.py",
     )
-    return {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
-            for name in names if (ROOT / name).is_file()}
+    if revision is None:
+        return {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
+                for name in names if (ROOT / name).is_file()}
+    if not isinstance(revision, str) or re.fullmatch(r"[0-9a-f]{40}", revision) is None:
+        raise ValueError("source revision is missing or malformed")
+    result = {}
+    for name in names:
+        try:
+            data = subprocess.check_output(
+                ["git", "-C", str(ROOT), "show", f"{revision}:{name}"],
+                stderr=subprocess.DEVNULL, timeout=10)
+        except (OSError, subprocess.SubprocessError) as exc:
+            raise ValueError(f"source file {name} is unavailable at recorded revision") from exc
+        result[name] = hashlib.sha256(data).hexdigest()
+    return result
 
 
 def _reduce_independently(gates):
@@ -203,7 +218,7 @@ def verify_receipt(path, *, required_backends=()):
     unsigned.pop("record_sha256", None)
     if recorded != _canonical_hash(unsigned):
         raise ValueError("receipt hash mismatch")
-    if receipt.get("source_sha256") != _source_hashes():
+    if receipt.get("source_sha256") != _source_hashes(receipt.get("git_revision")):
         raise ValueError("source-bound module hash mismatch")
     memory_limit = receipt["configuration"]["worker_memory_limit_bytes"]
     ref_qubits = receipt["configuration"]["full_reference_qubits"]
@@ -241,7 +256,9 @@ def verify_receipt(path, *, required_backends=()):
         expected_digest = _expected_sparse_digest(family, qubits, gates)
         for repetition in repetitions:
             if (repetition.get("primary_representation") != "sparse basis-to-amplitude dictionary"
-                    or repetition.get("full_statevector_materialized_by_primary_engine") is not False
+                    or repetition.get("dense_array_materialized_by_primary_engine") is not False
+                    or repetition.get("support_equals_register_dimension") != (
+                        repetition.get("final_support") == (1 << qubits))
                     or repetition.get("analytically_generated_state_entries") != 0
                     or repetition.get("state_dimension") != 1 << qubits):
                 raise ValueError("state storage and analytic-reference labels are inconsistent")

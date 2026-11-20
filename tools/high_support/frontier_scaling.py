@@ -415,7 +415,8 @@ def _run_case_worker(family, qubits, seed, repeats, reference_backends, referenc
                 adaptive = {"status": "UNSUPPORTED", "reason": type(exc).__name__}
         rss, rss_method = _worker_peak_rss()
         results.append({"repeat": repeat, "primary_representation": "sparse basis-to-amplitude dictionary",
-                        "full_statevector_materialized_by_primary_engine": False,
+                        "dense_array_materialized_by_primary_engine": False,
+                        "support_equals_register_dimension": len(state) == (1 << qubits),
                         "analytically_generated_state_entries": 0,
                         "state_dimension": 1 << qubits,
                         "state_sha256": _state_hash(state),
