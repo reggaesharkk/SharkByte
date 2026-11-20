@@ -66,7 +66,7 @@ The nine-gate H4 fixture produced a **31,730-byte** ledger, approximately **2.94
 
 **Certification boundary:** the installed/public certified-support interface currently certifies the finite binary64 **`x/z/cx` signed-permutation subset only**. Hadamard, renormalization, mixing-gate pruning and arbitrary circuit certification remain **`UNSUPPORTED`** there. Use the standalone H3/H4 research commands below for their own documented guarantees.
 
-[Foundations](docs/hadamard-foundations.md) · [H3 derivation](docs/h3-cumulative-hadamard.md) · [H4 reproducibility](docs/h4-software-binary64.md) · [Strict receipt validator](docs/strict-hadamard-receipts.md) · [Remaining certification gates](docs/h4-certification-gates.md) · [Bounded replay and public H candidate](docs/h4-replay-remediation.md)
+[Foundations](docs/hadamard-foundations.md) · [H3 derivation](docs/h3-cumulative-hadamard.md) · [H4 reproducibility](docs/h4-software-binary64.md) · [Strict receipt validator](docs/strict-hadamard-receipts.md) · [Remaining certification gates](docs/h4-certification-gates.md) · [Bounded replay and public H candidate](docs/h4-replay-remediation.md) · [Versioned experimental candidate](docs/h4-versioned-candidate.md)
 
 ---
 
