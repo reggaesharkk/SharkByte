@@ -1,15 +1,15 @@
 # SharkByte
 
-**A programming language, bounded execution toolchain, and reproducible computational research workspace.**
+**An independent programming language, CPU simulation and numerical-verification toolchain, and reproducible research workspace.**
 
-Write classical programs in `.sb`, describe quantum circuits for **CPU simulation**, combine them with bounded classical feedback, build static websites and browser apps, and explore a separately integrated numerical-dynamics laboratory. SharkByte is an experimental, inspectable alpha: implementations, limitations, tests, and source-bound evidence are part of the project—not an afterthought.
+Write classical programs in `.sb`, simulate bounded quantum circuits on a CPU, build websites and browser apps, and investigate independently replayable numerical certificates. SharkByte's standard language/VM and core simulation do **not require NumPy or SciPy**; the separately integrated Lucid Dynamics laboratory uses an optional NumPy/SciPy extra. SharkByte remains an experimental, inspectable alpha: implementations, limitations, tests, and source-bound evidence are part of the project—not an afterthought.
 
 [![SharkByte CI](https://github.com/reggaesharkk/SharkByte/actions/workflows/ci.yml/badge.svg)](https://github.com/reggaesharkk/SharkByte/actions/workflows/ci.yml)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB.svg)](pyproject.toml)
 [![Status: experimental alpha](https://img.shields.io/badge/status-experimental%20alpha-6f42c1.svg)](CLAIM_BOUNDARIES.md)
 
-**[Quick start](#quick-start)** · **[Language examples](#write-sharkbyte)** · **[Studio](#three-workspaces-one-local-studio)** · **[Evidence](#independent-verification-and-benchmarks)** · **[Documentation](#documentation-map)** · **[Research boundaries](#what-sharkbyte-does-not-claim)**
+**[Verified milestones](#verified-achievements--google-cloud-colab-and-local-systems)** · **[Colab notebooks](#verified-achievements--google-cloud-colab-and-local-systems)** · **[Quick start](#quick-start)** · **[Studio](#three-workspaces-one-local-studio)** · **[H3/H4 certification](#h3h4-hadamard-research-what-is-established)** · **[Evidence](#independent-verification-and-benchmarks)** · **[Research boundaries](#what-sharkbyte-does-not-claim)**
 
 I do not treat a correct output as sufficient evidence. I ask whether its source is pinned, whether its result survives an independent replay, and where the argument stops. I am not trying to make a machine appear powerful. I am trying to understand the boundary between what can be computed, what can be verified, and what can honestly be claimed as known.
 
@@ -23,13 +23,16 @@ I do not treat a correct output as sufficient evidence. I ask whether its source
 | **Opt-in cumulative L2 support compaction** | Exact rational deletion charges compose to an unnormalized L2 bound for finite binary64 inputs under `x`, `z`, and `cx`. The 96 exact-subset configurations are certified; 48 broader gate schedules are explicitly unsupported and separately compared with high-precision references. | [Derivation and limits](docs/certified-bounded-support.md) · [WSL2 evidence](evidence/certified-support-linux.json) |
 | **Moving-coordinate protection and adversarial replay** | Exact replay follows protected initial coordinates through `x`, `z`, and `cx`; 444 single-gate/origin mappings and all 322,560 four-qubit affine maps (5,160,960 basis images) are checked. Forged origin, policy, final-map, and protected-deletion receipts are rejected. Mixing operations return `UNSUPPORTED`. | [Windows ARM64](evidence/moving-branch-protection-windows-arm64-v2.json) · [Ubuntu WSL2 ARM64](evidence/moving-branch-protection-ubuntu-wsl2-arm64-v2.json) |
 | **Native Windows worker containment** | The opt-in bounded-support Job Object supervisor passed a 42-case Windows ARM64 record, including repeated memory-refusal and timeout cases, with process cleanup accounting. It is scoped to this worker and is not a general sandbox. | [ARM64 containment record](evidence/windows-job-arm64-certified-support-final.json) · [Limits and failures](docs/windows-bounded-job.md) |
+| **H3: cumulative Hadamard error ledger** | The standalone composition inequality bounds unnormalized L2 error across restricted `x`, `z`, `cx`, and `h` sequences under explicit binary64 arithmetic assumptions. Independent exact rational replay checks each prefix; native signed-zero bits are not certified. | [Derivation](docs/h3-cumulative-hadamard.md) · [Windows/WSL2 evidence](evidence/h3/) |
+| **H4: deterministic software-defined binary64** | An opt-in research runner implements nearest-even and gradual-underflow semantics in software. Independent rational replay reconstructed **matching output bits and charges** on Windows ARM64 and Ubuntu WSL2 ARM64. The nine-gate ledger was **31,730 bytes**; public H certification remains `UNSUPPORTED`. | [Arithmetic contract](docs/h4-software-binary64.md) · [H4 receipts](evidence/h4-gate1/) |
+| **Strict H3/H4 receipt validation** | A separate versioned validator rejects noncanonical rows, duplicate keys, changed event order, altered wrapper fields and forged H4 zero-sign bits. All four archived H3/H4 platform receipts passed strict validation; **who executed them remains unauthenticated**. | [Validation contract](docs/strict-hadamard-receipts.md) · [Hostile tests](tests/test_strict_hadamard_receipt.py) |
 | **Google Colab (Linux x86_64)** | The original moving-branch receipt is pinned to the same `7793d5e` source as GCE; its manifest, 13 source hashes, and seven payload fields match GCE and the Windows/WSL records. The recorded execution took **28.67 s**; no fresh Colab run is claimed here. | [Archived Colab ZIP](evidence/gce-moving-branch-cross-platform-20261120/sharkbyte-moving-cloud-evidence.zip) · [Audit and verifier](evidence/gce-moving-branch-cross-platform-20261120/) |
 | **GCE cross-platform audit (Linux x86_64)** | The archived source-bound run took **13.96 s** on a host reporting 33,658,982,400 bytes RAM (**31.35 GiB**). The worker used a **24 GiB virtual-address-space ceiling** and had a **55.66 MiB sampled peak VmRSS**. The run matched the pinned Windows ARM64 and WSL2 payload records. | [Original ZIP and audit reports](evidence/gce-moving-branch-cross-platform-20261120/) · [Reproducible verifier](tools/high_support/verify_gce_cross_platform_audit.py) |
 | **Google Compute Engine (Linux x86_64)** | **4,294,967,296 packed GHZ-family basis/amplitude entries checked** against a closed-form parity reference. The two array SHA-256 digests matched the independent Colab replay; the temporary packed arrays totaled **96 GiB**. | [GCE 2³² receipt](evidence/connected-ghz50-gcp/2p32/sharkbyte-ghz50-4b-gcp-receipt.json) |
 | **Google Colab (Linux x86_64)** | Independently completed the same **4,294,967,296-entry** structured materialization and full-array check. A separate connected **40-qubit / 33,554,432-populated-amplitude** sparse experiment matched its closed-form oracle. | [50-qubit Colab receipt](evidence/connected-ghz50-colab/retry-2p32/sharkbyte-connected-ghz50-4294967296-colab.json) · [40-qubit Colab receipt](evidence/connected-ghz40-32m-colab/sharkbyte-connected-ghz40-33554432-colab.json) |
 | **Windows ARM64 (local Studio)** | The fixed **40-qubit / 16,777,216-state** CPU benchmark ran from Studio, recording **2.77 GiB** peak process memory. The unified release also passed **87 local tests** and **17 installed-package acceptance checks**. | [Windows Studio receipt](evidence/studio_16m/windows_arm64/sharkbyte-85c74d14dcb54040a295e3c2fe422e53.json) · [Release integration PR](https://github.com/reggaesharkk/SharkByte/pull/13) |
 | **Ubuntu ARM64 under WSL2 (local)** | The same 16-million-state sparse benchmark and independent quantum reference checks were exercised in the documented ARM64 environment. This is **WSL2**, not an independent physical Ubuntu host. | [Ubuntu scaling receipt](benchmarks/sb_quantum_benchmark/scaling-16777216-ubuntu-wsl.json) · [Qiskit/Cirq methods](INDEPENDENT_QUANTUM_VALIDATION.md) |
-| **Hosted GitHub Actions (Windows and Ubuntu)** | The merged unified codebase passed [SharkByte CI](https://github.com/reggaesharkk/SharkByte/actions/runs/44484290586), with separate [independent quantum validation](https://github.com/reggaesharkk/SharkByte/actions/runs/44401252706) on the integration head. | [Workflow sources](.github/workflows/) |
+| **Hosted GitHub Actions (Windows and Ubuntu)** | The combined H4 integration passed all **five applicable workflows** before merging. Hosted Windows CI is x64 and distinct from the separately recorded native ARM64 and WSL2 ARM64 runs. | [Combined integration record (PR #30)](https://github.com/reggaesharkk/SharkByte/pull/30) · [Workflow sources](.github/workflows/) |
 
 **One-click Google Colab notebooks** — open a notebook, select a **CPU runtime**, then choose **Runtime → Run all**.
 
@@ -42,9 +45,28 @@ I do not treat a correct output as sufficient evidence. I ask whether its source
 
 **Run requirements:** larger experiments need substantial RAM, disk space, and execution time; a notebook may select a smaller tier or refuse a run. Integrated verification pins a historical revision, not today's `main`.
 
-**Scope:** The 4.29-billion-entry result is **formula-based, disk-backed GHZ-family verification**, not general 50-qubit statevector simulation. Cirq checked a separate 512-shot invariant, not the entire array. The 16-million-state experiment is a separate disconnected CPU sparse workload. [Methods](tools/run_connected_ghz50_materialization.py) · [Full claim boundaries](CLAIM_BOUNDARIES.md).
+**Scope:** The 4.29-billion-entry result is **formula-based, disk-backed GHZ-family verification**, not general 50-qubit statevector simulation. Cirq checked a separate 512-shot invariant, not the entire array. The 16-million-state experiment is a separate disconnected CPU sparse workload. The new H3/H4 certificates are also restricted research tools, not extensions of the public certified-support API. [Methods](tools/run_connected_ghz50_materialization.py) · [Full claim boundaries](CLAIM_BOUNDARIES.md).
 
 The audit also examined an archived Colab run. I found and preserved its original ZIP, then checked its receipt digest, manifest, 13 pinned source hashes, and seven payload fields against GCE and the checked-in Windows ARM64 and WSL2 records. This verifies the archived comparison; it does not rerun Colab. The 32 GiB-class GCE host capacity was available, not consumed. Sampled VmRSS is not a strict peak, and `RLIMIT_AS` limits virtual address space rather than resident memory.
+
+---
+
+## H3/H4 Hadamard research: what is established
+
+I separate **a mathematical error inequality**, **an independently replayable ledger**, **bit-level arithmetic reproducibility**, and **authenticated execution provenance**. They are not interchangeable.
+
+| Research stage | Verified scope | Remaining boundary |
+| --- | --- | --- |
+| **Hadamard foundations (A1/A2)** | Exact rational deletion-charge search and a conditional single-Hadamard L2 allowance under specified nearest-even binary64 semantics. | Not a general floating-point proof for arbitrary native environments. |
+| **H3 cumulative ledger** | Gate-by-gate error composition and exact ideal-prefix replay for finite, unnormalized `x/z/cx/h` experiments. Historical Windows and Ubuntu receipts agree mathematically. | Native signed-zero output bits are recorded but not independently reproduced. |
+| **H4 software binary64** | Software-defined rounding with independent rational, **bit-exact** gate replay; matching Windows ARM64 and Ubuntu WSL2 ARM64 research ledgers. | Experimental **up to eight qubits, 64 gates**; computational and certificate overhead is significant. |
+| **Strict receipt validation** | Canonical H3 sparse states, full wrapper consistency, duplicate-key refusal, event-order checking, strict H4 bits, and external-digest support. | A receipt digest, even one independently pinned, does **not authenticate** the machine, operator, or telemetry. |
+
+The nine-gate H4 fixture produced a **31,730-byte** ledger, approximately **2.94 × 10⁻¹⁶** cumulative L2 allowance, and about **1.86×** native H3 verification time on the two ARM64 hosts. A separate 64-Hadamard, 256-coordinate fixture took substantially longer to replay; these are individual measurements, **not generalized performance claims**.
+
+**Certification boundary:** the installed/public certified-support interface currently certifies the finite binary64 **`x/z/cx` signed-permutation subset only**. Hadamard, renormalization, mixing-gate pruning and arbitrary circuit certification remain **`UNSUPPORTED`** there. Use the standalone H3/H4 research commands below for their own documented guarantees.
+
+[Foundations](docs/hadamard-foundations.md) · [H3 derivation](docs/h3-cumulative-hadamard.md) · [H4 reproducibility](docs/h4-software-binary64.md) · [Strict receipt validator](docs/strict-hadamard-receipts.md) · [Remaining certification gates](docs/h4-certification-gates.md)
 
 ---
 
@@ -69,7 +91,7 @@ Read the [working language grammar](GRAMMAR.md), [scoped specification](SPEC.md)
 
 ## Quick start
 
-**Requirements:** CPython **3.10+**, Git (for cloning), and pip. The ordinary CLI has **no external runtime dependencies**. Studio's Lucid Dynamics mode requires the optional `lucid` extra.
+**Requirements:** CPython **3.10+**, Git (for cloning), and pip. The ordinary CLI and core SharkByte runtime have **zero required third-party Python runtime dependencies**. Studio's Lucid Dynamics mode uses the optional `lucid` extra (`numpy>=1.26,<3`, `scipy>=1.11,<2`). Independent comparisons may use additional reference packages.
 
 ```sh
 git clone https://github.com/reggaesharkk/SharkByte.git
@@ -201,17 +223,18 @@ The [nine-receipt Windows ARM64 audit](docs/lucid-dynamics-audit.md) verified al
 
 SharkByte treats **record integrity**, **numerical agreement**, **runtime performance**, and **mathematical proof** as different questions. Check each result at its actual commit, host, solver, workload, and resource limit.
 
-### Current integrated release checks
+### Current integration and historical release checks
 
-The unified Studio integration was merged through [PR #13](https://github.com/reggaesharkk/SharkByte/pull/13) into `main` at commit [`df7731a0`](https://github.com/reggaesharkk/SharkByte/commit/df7731a0fb69d455ad9c050268854ce8777b0ae8).
+The unified Studio integration was introduced by [PR #13](https://github.com/reggaesharkk/SharkByte/pull/13). The later **H3/H4 research and strict-validation integration** was verified on the combined [draft PR #30](https://github.com/reggaesharkk/SharkByte/pull/30) before sequentially merging [PR #28](https://github.com/reggaesharkk/SharkByte/pull/28), [PR #29](https://github.com/reggaesharkk/SharkByte/pull/29), and [PR #31](https://github.com/reggaesharkk/SharkByte/pull/31). These merge commits are source-integration milestones, **not a new tagged package release**.
 
 | Check | Recorded outcome |
 | --- | --- |
-| Full local Windows ARM64 regression run | **87/87 tests passed** on the integrated source |
-| Public installed-package acceptance | **17/17 checks passed** in the recorded Windows ARM64 release check |
-| Merged `main` GitHub Actions | [SharkByte CI passed on the actual merge commit](https://github.com/reggaesharkk/SharkByte/actions/runs/44484290586) |
-| Independent quantum validation of integration | [Passed on the validated integration head](https://github.com/reggaesharkk/SharkByte/actions/runs/44401252706) |
-| Unified Studio browser acceptance | Local Windows ARM64 tests exercised the three workspaces, Web/App export, and Lucid page |
+| **Combined H4 — Windows ARM64** | **174/174 tests passed** on the integrated research revision, as recorded in the local Windows run |
+| **Combined H4 — Ubuntu WSL2 ARM64** | **174 tests collected: 169 passed, five skipped** (Windows Job Object tests only). A separate manual run used Python 3.14.4, NumPy 2.5.5, SciPy 1.18.1 |
+| **Optional Lucid on Ubuntu** | All **nine tests passed** under normal, `-O`, and `-OO`; NumPy/SciPy were installed only in an isolated environment |
+| **Combined H4 GitHub Actions** | **Five applicable workflows passed** on [the draft integration head](https://github.com/reggaesharkk/SharkByte/pull/30); hosted CI uses Windows/Ubuntu **x64** where noted |
+| **Historical Studio integration acceptance** | [PR #13](https://github.com/reggaesharkk/SharkByte/pull/13): 87 local Windows ARM64 tests and 17 installed-package checks; historical release baseline, not the latest suite count |
+| **Archived H3/H4 evidence** | Four original platform receipts replayed under the [strict validator](docs/strict-hadamard-receipts.md); source hashes and original bytes preserved |
 
 **Re-run the current source tree**:
 
@@ -227,6 +250,8 @@ The acceptance harness installs the core package outside the checkout, runs norm
 | Experiment | Recorded result | What it does **not** show | Read the evidence |
 | --- | --- | --- | --- |
 | **120 seeded quantum circuits** | Scoped comparisons with Qiskit and Cirq reference engines | Universal quantum correctness or hardware execution | [Independent validation](INDEPENDENT_QUANTUM_VALIDATION.md) |
+| **H3/H4 Hadamard research** | Conditional cumulative error theorem, exact rational per-gate ledger, deterministic H4 binary64 bit replay and strict archival receipt checks | Arbitrary gates, generic hardware attestations, authenticated provenance, or an enabled public H-certified API | [H3](docs/h3-cumulative-hadamard.md) · [H4](docs/h4-software-binary64.md) · [Strict receipt contract](docs/strict-hadamard-receipts.md) |
+| **High-support scaling frontier** | 20-qubit circuits filled **1,048,576 sparse dictionary entries** in tested cases; 30-qubit low-support controls retained one or two entries; q24/q28/q30 full-support plans refused before worker launch under the stated 1.5-GiB cap | Arbitrary dense 24–30-qubit simulation, a general sparse speedup or proven large-state compaction efficiency | [Scaling audit](docs/audited-high-support-frontier.md) |
 | **20-qubit connected, high-support circuit** | 1,048,576 amplitudes compared across four methods; measured balanced-cut Schmidt rank **1,024** | A general efficient large-qubit simulation method | [Methods and receipts](docs/high-support-connected-entanglement.md) |
 | **40-qubit / 16,777,216-state sparse workload** | CPU run and exact independent amplitude comparison for the specified **disconnected** circuit | A dense 40-qubit statevector or globally entangled 40-qubit experiment | [Studio receipt](evidence/studio_16m/windows_arm64/sharkbyte-85c74d14dcb54040a295e3c2fe422e53.json) · [Cirq comparison](evidence/windows-arm64-cirq/cirq-16777216.json) |
 | **40-qubit / 33,554,432-state connected GHZ-family workload** | Populated sparse amplitudes matched a closed-form oracle; connected GHZ entanglement has a separate analytical justification | General dense 40-qubit evolution or a full Cirq amplitude replay of this larger state | [Receipt and manifest](evidence/connected-ghz40-32m-colab/) |
@@ -244,7 +269,7 @@ Frontier30 can simplify adjacent inverse gates before sparse evolution. Pass `--
 
 **Opt-in moving-branch protection:** the certified subset can follow selected initial basis-coordinate amplitudes through x, z, and cx gates with `protected_branches=` (or repeated `--protect-branch INITIAL_INDEX` in the bounded runner). This mode rejects mixing gates and is distinct from legacy fixed-index protection; both remain opt-in. It tracks coordinate amplitudes under signed permutations, not physical paths through mixing operations.
 
-**Remaining numerical boundary:** the default simulator can still retain tiny floating-point residuals after sparse round trips. The opt-in exact compactor gives a cumulative deletion bound only on finite binary64 input states under `x`, `z`, and `cx`, without normalization. It does not certify support pruning for mixing gates or extend the guarantee to the default simulator. [Recorded round-trip control](evidence/colab-q8w4bj57/roundtrip-17/roundtrip_17q_comparison.json) · [Certificate scope](docs/certified-bounded-support.md).
+**Remaining numerical boundary:** the default simulator can retain tiny floating-point residuals after round trips. The opt-in **public certified-support** compactor is limited to finite binary64 `x/z/cx` signed permutations without normalization. Separately, the standalone **H3/H4 research tools** support bounded `x/z/cx/h` circuits with cumulative error checks and deterministic H4 bit replay, but they do **not** change the public API's supported set or certify mixing-gate support pruning generally. [Round-trip control](evidence/colab-q8w4bj57/roundtrip-17/roundtrip_17q_comparison.json) · [H4 scope](docs/h4-software-binary64.md) · [Public subset](docs/certified-bounded-support.md).
 
 ### Reproduce and inspect evidence
 
@@ -266,6 +291,13 @@ python -B tools/verify_adaptive_cli_acceptance.py --receipt-dir evidence/adaptiv
 
 # Independently verify the archived GCE moving-branch evidence and source hashes
 python -B tools/high_support/verify_gce_cross_platform_audit.py
+
+# Research-only: strictly validate an archived H3 receipt and its outer wrapper
+python -B -m tools.high_support.strict_hadamard_receipt archive evidence/h3/circuit.json evidence/h3/windows-arm64.json
+
+# Research-only: seal and strictly verify an existing H4 experimental receipt
+python -B -m tools.high_support.strict_hadamard_receipt seal evidence/h3/circuit.json evidence/h4-gate1/windows-arm64.json > strict.json
+python -B -m tools.high_support.strict_hadamard_receipt verify evidence/h3/circuit.json strict.json
 ```
 
 Complete reproducibility instructions and environment-specific comparisons are in [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [INDEPENDENT_QUANTUM_VALIDATION.md](INDEPENDENT_QUANTUM_VALIDATION.md), and the checked-in [evidence tree](evidence/).
@@ -297,6 +329,7 @@ The optional Windows ARM64 [GenieX local-chat launcher](Open-SharkByte-AI.ps1) i
 ## What SharkByte does not claim
 
 - **Not quantum hardware.** All quantum experiments here are classical CPU simulation or analytical materialization.
+- **Not general certified Hadamard execution.** The standalone H3/H4 experiments have finite, unnormalized, resource-bounded semantics. The public certified-support API still returns `UNSUPPORTED` for `h`.
 - **Not a production compiler or unrestricted language implementation.** The [grammar](GRAMMAR.md) and [specification](SPEC.md) document an intentionally bounded alpha subset.
 - **Not a security sandbox.** The native interpreter and Direct AArch64 execution remain **disabled**. The Windows Job Object supervisor contains only the opt-in bounded-support generation/replay worker on tested systems; that evidence does not establish containment for arbitrary SharkByte programs. Do not execute untrusted inputs in sensitive environments. [Supervisor limits](docs/windows-bounded-job.md) · [Security policy](SECURITY.md).
 - **Not a general web backend or native mobile builder.** The Web/App feature compiles the documented declarative JSON schema into static sites and browser PWAs.
@@ -315,7 +348,10 @@ See [CLAIM_BOUNDARIES.md](CLAIM_BOUNDARIES.md) for the complete claim inventory.
 | [docs/web-app-builder.md](docs/web-app-builder.md) | Web/App project DSL, PWA scope, and preview/export |
 | [docs/lucid-dynamics.md](docs/lucid-dynamics.md) · [Lucid audit](docs/lucid-dynamics-audit.md) | Model equations, parameter ranges, solvers, numerical evidence |
 | [docs/high-support-connected-entanglement.md](docs/high-support-connected-entanglement.md) | Statevector comparisons and Schmidt diagnostics |
-| [docs/audited-high-support-frontier.md](docs/audited-high-support-frontier.md) · [Hadamard proof obligations](docs/hadamard-certification-proof-obligations.md) | Resource-bounded scaling method and the separate OPEN Hadamard certification assessment |
+| [docs/audited-high-support-frontier.md](docs/audited-high-support-frontier.md) · [Hadamard proof obligations](docs/hadamard-certification-proof-obligations.md) | Resource-bounded scaling and historically open Hadamard certification obligations |
+| [Hadamard mathematical foundations](docs/hadamard-foundations.md) · [H3 cumulative ledger](docs/h3-cumulative-hadamard.md) | Conditional A1/A2 and exact ideal-prefix composition |
+| [H4 software-defined arithmetic](docs/h4-software-binary64.md) · [H4 certification gates](docs/h4-certification-gates.md) | Deterministic binary64 replay and remaining open integration requirements |
+| [Strict receipt validation](docs/strict-hadamard-receipts.md) | Canonical archived H3/H4 receipt semantics, tamper checks and unauthenticated execution provenance |
 | [docs/connected-circuit-frontier.md](docs/connected-circuit-frontier.md) | Sparse and analytical connected-circuit methods |
 | [INDEPENDENT_QUANTUM_VALIDATION.md](INDEPENDENT_QUANTUM_VALIDATION.md) | Qiskit/Cirq methods and host-specific evidence |
 | [REPRODUCIBILITY.md](REPRODUCIBILITY.md) · [Evidence](evidence/) | Receipts, integrity manifests, notebooks, exact replay scope |
@@ -332,7 +368,7 @@ python -m unittest discover -s tests -v
 python tools/ci_acceptance.py
 ```
 
-The complete checkout suite covers features that are not included in the installed CLI-only package. The acceptance script deliberately tests the installed distribution **outside** the source tree. Core CI runs on Windows and Ubuntu; separate workflows cover documented independent reference-engine checks and selected ARM64 environments. Review [the workflows](.github/workflows/) rather than assuming every large experiment runs in hosted CI.
+The complete checkout suite covers features that are not included in the installed CLI-only package. The acceptance script deliberately tests the installed distribution **outside** the source tree. Core CI runs on Windows and Ubuntu. The nine Lucid tests need the optional `lucid` extra; Windows Job Object tests are intentionally skipped on Linux. Hosted CI is **not** a substitute for native Windows ARM64, WSL2 ARM64, or large Colab/GCE workloads. Review [the workflows](.github/workflows/) and [current verification records](#current-integration-and-historical-release-checks).
 
 When proposing new features or numerical claims, include an executable example, deterministic or seeded regression tests where possible, input bounds, evidence tied to the exact source revision, and explicit statements of what the result does **not** establish.
 
@@ -350,4 +386,4 @@ The current first-party repository is licensed under **[Apache License 2.0](LICE
 
 ---
 
-**SharkByte's central proposition is testable computation:** write a bounded program, run the appropriate engine, preserve a source-bound record, and check the result against the right independent reference—without turning a successful experiment into a broader claim than the evidence supports.
+**SharkByte's central proposition is testable computation:** write a bounded program, run the appropriate engine, preserve a source-bound record, and check the result against the right independent reference. H3/H4 now extend this discipline to restricted Hadamard research, while the public certification boundary remains intentionally narrower. A larger calculation is not necessarily a stronger claim.
