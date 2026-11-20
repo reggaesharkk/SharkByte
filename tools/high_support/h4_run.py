@@ -149,7 +149,7 @@ def main():
     except INVALID + (OSError,):
         decision = "INVALID_RECORD"
     print(OUTCOMES.get(decision, decision))
-    return {"PASS": 0, "FAIL": 0, "UNSUPPORTED": 3}.get(decision, 2)
+    return {"PASS": 0, "FAIL": 1, "UNSUPPORTED": 3}.get(decision, 2)
 
 
 if __name__ == "__main__":

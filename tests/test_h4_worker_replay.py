@@ -43,7 +43,8 @@ class H4WorkerReplay(unittest.TestCase):
             for flags in ((), ("--replay",)):
                 result = self.invoke(src, path, *flags)
                 self.assertEqual((result.returncode, result.stdout.strip()),
-                                 (0, "VERIFIED_BUDGET_EXCEEDED"), result.stderr)
+                                 (1, "VERIFIED_BUDGET_EXCEEDED"), result.stderr)
+                self.assertTrue(path.is_file(), "valid exceeded-budget receipt must remain published")
 
     def test_unsupported_gate_publishes_nothing(self):
         source = json.loads(SOURCE.read_bytes())
