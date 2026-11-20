@@ -21,6 +21,16 @@ class HadamardFoundations(unittest.TestCase):
             # Its reciprocal lies strictly between p+q and p+2q.
             a, b = (-1)**i*p, -(-1)**i*q
             self.assertEqual(deletion_ticks(a, b, 1, Fraction(1)), 1)
+            # Independent interval oracle uses the reciprocal of the
+            # conjugate, avoiding subtraction of close Pell terms.
+            scale = 2**1024
+            root = math.isqrt(2*scale**2)
+            lower = 1 / (p + q*Fraction(root+1, scale))
+            upper = 1 / (p + q*Fraction(root, scale))
+            unit = Fraction(1, 2**100)
+            charge = deletion_ticks(a, b, 1, unit)
+            self.assertLess((charge-1)**2 * unit**2, lower)
+            self.assertGreaterEqual(charge**2 * unit**2, upper)
             p, q = p + 2*q, p + q
         self.assertEqual(131836323 - 93222358*math.sqrt(2), 0)
         with self.assertRaises(ValueError):
@@ -47,6 +57,8 @@ class HadamardFoundations(unittest.TestCase):
 
     def test_historical_counterexamples_and_zero_contracts(self):
         c = 1/math.sqrt(2)
+        midpoint = (Fraction(c) + Fraction(math.sqrt(.5))) / 2
+        self.assertLess(2*midpoint**2, 1)
         self.assertEqual((2*c*c).hex(), "0x1.ffffffffffffep-1")
         self.assertEqual(math.prod([c]*20).hex(), "0x1.ffffffffffff2p-11")
         self.assertNotEqual(bits(-0.), bits(0.))
