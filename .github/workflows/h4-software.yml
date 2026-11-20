@@ -11,9 +11,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -B -m unittest tests.test_h4_software tests.test_h4_gate2_compatibility
-      - run: python -B -O -m unittest tests.test_h4_software tests.test_h4_gate2_compatibility
-      - run: python -B -OO -m unittest tests.test_h4_software tests.test_h4_gate2_compatibility
+      - run: python -B -m unittest tests.test_h4_software tests.test_h4_gate2_compatibility tests.test_h4_worker_replay
+      - run: python -B -O -m unittest tests.test_h4_software tests.test_h4_gate2_compatibility tests.test_h4_worker_replay
+      - run: python -B -OO -m unittest tests.test_h4_software tests.test_h4_gate2_compatibility tests.test_h4_worker_replay
       - run: python -B -m tools.high_support.h4_run evidence/h3/circuit.json h4-ci.json
       - run: python -B -OO -m tools.high_support.h4_run evidence/h3/circuit.json h4-ci.json --replay
       - run: python -B -m tools.high_support.h4_run evidence/h3/circuit.json evidence/h4-gate1/windows-arm64.json --replay

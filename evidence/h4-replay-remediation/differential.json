@@ -1,0 +1,22 @@
+{
+  "schema": "sharkbyte-h4-differential-observations-v1",
+  "seed": "sharkbyte-h4-hostile-v1",
+  "cases_per_run": 50000,
+  "overflow_refusals_per_run": 7956,
+  "mismatches_per_run": 0,
+  "words_sha256": "482bd7f5e07d31911661d266d6001be709ec066375724fb30ea382751bdf6029",
+  "source_sha256": {
+    "h4_bits.py": "ab121d9ef611992665ad55842bc39c547223c372f6dc06067d861fc793619237",
+    "h4_differential.py": "b23a642242a63fd39eb8253bac9abbbf54d4322c178752a11b39e2195f14b77f",
+    "h4_replay.py": "1ffffddaf40cf8608a26af5c3f2773cbb93d94d88a73229fedf4a82c47771d8b"
+  },
+  "runs": [
+    {"host": "Windows ARM64", "python": "3.12.10", "mode": "normal", "seconds": 84.44912779999959},
+    {"host": "Windows ARM64", "python": "3.12.10", "mode": "-O", "seconds": 84.90994330000012},
+    {"host": "Windows ARM64", "python": "3.12.10", "mode": "-OO", "seconds": 85.03431300000011},
+    {"host": "Ubuntu WSL2 ARM64", "python": "3.14.4", "mode": "normal", "seconds": 59.314847473999635},
+    {"host": "Ubuntu WSL2 ARM64", "python": "3.14.4", "mode": "-O", "seconds": 59.47480113499978},
+    {"host": "Ubuntu WSL2 ARM64", "python": "3.14.4", "mode": "-OO", "seconds": 60.47551030700015}
+  ],
+  "focused_tests_passed_per_host_and_mode": 14
+}

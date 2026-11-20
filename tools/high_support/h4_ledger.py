@@ -14,6 +14,14 @@ from .h3_verify import ideal_within, upper_root
 SCHEMA = "sharkbyte-h4-software-binary64-v1"
 ZERO = (0, 0)
 RULES = "dense scalar binary64 RN-even; H add/sub then multiply; delete to +0"
+ARCHIVED_MODULES = {
+    "h4_ledger.py": "7e08ee47b829a307edf71d258924db32211996a40563fa07201785687a6c9861",
+    "h4_run.py": "1146dba4901981fc340dfcb31f729b5d0a443abdffc3520a06b34670efecc474",
+}
+
+
+class UnsupportedOperation(ValueError):
+    """A well-formed gate name outside the H4 operation set."""
 
 
 def strict_json(text):
@@ -28,6 +36,12 @@ def parse(source):
     require(isinstance(source, str) and len(source) <= 32768)
     data = strict_json(source)
     require(isinstance(data, dict) and "initial" in data)
+    gates = data.get("gates")
+    if isinstance(gates, list) and len(gates) <= 64:
+        for gate in gates:
+            if (isinstance(gate, list) and len(gate) == 3
+                    and isinstance(gate[0], str) and gate[0] not in ("x", "z", "cx", "h")):
+                raise UnsupportedOperation(gate[0])
     size, _, budget, gates = request(json.dumps(dict(data, initial=[])))
     state = [ZERO]*size
     seen = set()
@@ -109,6 +123,11 @@ def verify(source, ledger, seconds=20):
     deadline = monotonic()+seconds
     state, budget, gates = parse(source)
     expected = binding(source)
+    # Accept the original Gate 1 pair together, with every other module
+    # still bound to its current hash. Replay all numerical fields below.
+    archived = dict(expected["modules"], **ARCHIVED_MODULES)
+    if isinstance(ledger, dict) and ledger.get("modules") == archived:
+        expected["modules"] = archived
     coefficient = h4_replay.value(h4_replay.COEFFICIENT)
     u = Q(1, 2**53)
     relative = Q(799, 1000)*u
