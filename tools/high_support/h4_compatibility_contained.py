@@ -79,27 +79,58 @@ def _linux_launch(command, deadline, memory_bytes, working_dir):
                                stderr=subprocess.DEVNULL, start_new_session=True,
                                preexec_fn=limits, close_fds=True)
     try:
-        remaining = deadline - time.monotonic()
-        if remaining <= 0:
-            raise TimeoutError("deadline before wait")
-        code = process.wait(timeout=remaining)
-        if code != 0:
-            raise ContainmentUnavailable("contained worker did not return an outcome")
-        if time.monotonic() >= deadline:
-            raise TimeoutError("deadline after child exit")
-        return {"os_limit": "RLIMIT_AS_per_process", "limit_bytes": memory_bytes,
-                "worker_exit_status": code, "worker_pid": process.pid}
+        # Observe exit without reaping the session leader. Its reserved PID
+        # prevents group-ID reuse before the cleanup signal.
+        while True:
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                raise TimeoutError("worker deadline")
+            exited = os.waitid(os.P_PID, process.pid, os.WEXITED | os.WNOHANG | os.WNOWAIT)
+            if exited is not None:
+                break
+            time.sleep(min(0.005, remaining))
     finally:
         # The comparator's bounded Git subprocesses inherit RLIMIT_AS. Terminate
         # the process group even when its direct parent already exited.
+        end = time.monotonic()+5
         try:
-            os.killpg(process.pid, signal.SIGKILL)
-        except ProcessLookupError:
-            pass
+            try:
+                os.killpg(process.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+            except OSError as exc:
+                process.kill()
+                raise ContainmentUnavailable("group termination signal failed") from exc
+            while _linux_group_live(process.pid):
+                if time.monotonic() >= end:
+                    raise ContainmentUnavailable("live process group after SIGKILL")
+                time.sleep(0.005)
+        finally:
+            try:
+                code = process.wait(timeout=max(0, end-time.monotonic()))
+            except subprocess.TimeoutExpired as exc:
+                raise ContainmentUnavailable("child termination unconfirmed") from exc
+    if code != 0:
+        raise ContainmentUnavailable("contained worker did not return an outcome")
+    if time.monotonic() >= deadline:
+        raise TimeoutError("deadline after group drain")
+    return {"os_limit": "RLIMIT_AS_per_process", "limit_bytes": memory_bytes,
+            "active_after_cleanup": 0, "worker_exit_status": code, "worker_pid": process.pid}
+
+
+def _linux_group_live(group):
+    """Check for runnable group members, excluding dead processes awaiting reap."""
+    for entry in Path("/proc").iterdir():
+        if not entry.name.isdecimal():
+            continue
         try:
-            process.wait(timeout=5)
-        except subprocess.TimeoutExpired as exc:
-            raise ContainmentUnavailable("child termination unconfirmed") from exc
+            # comm may contain spaces and parentheses.
+            fields = (entry/"stat").read_bytes().rsplit(b")", 1)[1].split()
+        except (FileNotFoundError, ProcessLookupError):
+            continue
+        if int(fields[2]) == group and fields[0] not in (b"Z", b"X"):
+            return True
+    return False
 
 
 def _windows_launch(command, deadline, memory_bytes, working_dir):
@@ -117,7 +148,9 @@ def _windows_launch(command, deadline, memory_bytes, working_dir):
     if accounting.get("active_after_cleanup") != 0:
         raise ContainmentUnavailable("job descendants remain active")
     if accounting.get("peak_job_committed_bytes", memory_bytes+1) > memory_bytes:
-        raise ContainmentUnavailable("outer job commit limit exceeded")
+        raise ContainmentUnavailable(
+            "outer job commit telemetry exceeded cap: "
+            f"{accounting.get('peak_job_committed_bytes')} > {memory_bytes}")
     if time.monotonic() >= deadline:
         raise TimeoutError("deadline after Windows job drain")
     return {"os_limit": "Windows_JOB_OBJECT_LIMIT_JOB_MEMORY",
@@ -133,7 +166,9 @@ def _check_child_result(blob):
         raise ContainmentUnavailable("child result exceeded byte cap")
     try:
         payload = json.loads(blob.decode("ascii"))
-    except (UnicodeError, json.JSONDecodeError) as exc:
+        if _canonical(payload).encode("ascii") != blob:
+            raise ValueError("noncanonical child result")
+    except (ValueError, RecursionError) as exc:
         raise ContainmentUnavailable("invalid child result encoding") from exc
     if type(payload) is not dict or set(payload) != {"exit_code", "report"}:
         raise ContainmentUnavailable("invalid child result shape")
@@ -143,6 +178,26 @@ def _check_child_result(blob):
     if report.get("decision") != DECISIONS[code]:
         raise ContainmentUnavailable("child result and exit category disagree")
     return payload
+
+
+def _snapshot(path, limit):
+    original = path.lstat()
+    if not stat.S_ISREG(original.st_mode):
+        raise ValueError("Gate 4c requires regular input files")
+    flags = os.O_RDONLY | getattr(os, "O_BINARY", 0)
+    flags |= getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_NONBLOCK", 0)
+    with os.fdopen(os.open(path, flags), "rb") as stream:
+        before = os.fstat(stream.fileno())
+        if not stat.S_ISREG(before.st_mode) or not os.path.samestat(original,before):
+            raise ValueError("input changed before snapshot")
+        data = stream.read(limit+1)
+        after = os.fstat(stream.fileno())
+    if len(data) > limit:
+        raise ValueError("input byte limit exceeded")
+    if (before.st_size != after.st_size or before.st_mtime_ns != after.st_mtime_ns
+            or len(data) != before.st_size):
+        raise ValueError("input changed during snapshot")
+    return data
 
 
 def supervise(arguments, *, memory_mib=MEMORY_MIB, seconds=WALL_SECONDS):
@@ -170,9 +225,7 @@ def supervise(arguments, *, memory_mib=MEMORY_MIB, seconds=WALL_SECONDS):
                 # Refuse FIFOs, device nodes, sockets, directories and symlinks
                 # before any blocking read in the parent. Only trusted local
                 # regular-file paths are supported; concurrent writers remain open.
-                if not stat.S_ISREG(Path(name).lstat().st_mode):
-                    raise ValueError("Gate 4c requires regular input files")
-                data = history.read_bytes(Path(name), limit)
+                data = _snapshot(Path(name), limit)
                 path = root / ("input-%d.json" % index)
                 path.write_bytes(data)
                 frozen.append(str(path))
@@ -181,7 +234,7 @@ def supervise(arguments, *, memory_mib=MEMORY_MIB, seconds=WALL_SECONDS):
                 raise TimeoutError("deadline during input snapshot")
             outcome = root / "child-result.json"
             flags = ["-" + "O" * sys.flags.optimize] if sys.flags.optimize else []
-            command = [sys.executable, "-B", *flags, "-m", MODULE, "--worker",
+            command = [sys.executable, "-B", "-E", "-s", *flags, "-m", MODULE, "--worker",
                        arguments[0], frozen[0], frozen[1],
                        arguments[3], frozen[2], frozen[3], str(outcome)]
             memory_bytes = memory_mib * 1024**2
@@ -205,6 +258,7 @@ def supervise(arguments, *, memory_mib=MEMORY_MIB, seconds=WALL_SECONDS):
     except (TimeoutError, ContainmentUnavailable, ChildProcessError, MemoryError,
             OSError, RuntimeError) as exc:
         return {"decision": "UNSUPPORTED", "reason": type(exc).__name__,
+                "detail": str(exc)[:200],
                 "limit_seconds": seconds}, 3
     except (ValueError, TypeError) as exc:
         return {"decision": "INVALID_RECORD", "reason": str(exc)[:200]}, 2

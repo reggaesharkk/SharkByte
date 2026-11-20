@@ -1,0 +1,30 @@
+{
+  "tested_base": "173119b1118eec9e3d71a647e08e43aaaa32428d",
+  "sha256_lf_normalized": {
+    "tools/high_support/h4_compatibility_contained.py": "b2b4479804732c2a0a4de27bc96c0aa9062be80f52687ec392922e5619f07cbe",
+    "tools/high_support/windows_job.py": "5fc9f36163eb85d076301aad2c66694681375579c10d432197db3d3d007eff5e",
+    "tests/test_h4_gate4c_containment.py": "2268eac1f5c8eed59c2d6c8ac93cb29d709b6da3d65c38751d7534b386921d30"
+  },
+  "inputs_sha256_raw": {
+    "source": "9bda8fe9794ea6af6ab431ee1c6b81ccf8ad792ef1f11f5668ff7568bb761d59",
+    "receipt": "2d5d9f4a767cca1fe933a05f7b729efb1e72db4dbe6c0ac48e96bbd981909c33"
+  },
+  "modes": ["normal", "-O", "-OO"],
+  "tests": ["tests.test_h4_gate4c_containment", "tests.test_h4_compatibility", "tests.test_h4_historical_checkout"],
+  "windows_arm64": {
+    "python": "3.12.10",
+    "passed_per_mode": [29, 29, 29],
+    "suite_seconds": [16.814, 17.110, 16.783],
+    "fixture": {"decision": "COMPATIBLE", "limit_bytes": 268435456, "peak_job_committed_bytes": 26001408, "active_after_cleanup": 0, "elapsed_seconds": 0.641},
+    "allocation_probe": {"requested_bytes": 100663296, "outer_cap_bytes": 67108864, "peak_job_committed_bytes": 108593152, "allocation_refused": true, "result_rejected": true}
+  },
+  "ubuntu_wsl2_arm64": {
+    "python": "3.14.4",
+    "kernel": "6.18.58.1-microsoft-standard-WSL2",
+    "passed_per_mode": [29, 29, 29],
+    "suite_seconds": [9.070, 14.768, 14.722],
+    "tested_suite_sha256_before_windows_only_wait_change": "099a9a0aaac88be5cb892f8f71e4b479e36bf762fe2268e9bd2a3b09a271a362",
+    "fixture": {"decision": "COMPATIBLE", "limit_bytes": 268435456, "limit_type": "RLIMIT_AS_per_process", "active_after_cleanup": 0, "elapsed_seconds": 0.23457316900021397}
+  },
+  "execution_authenticity": "UNAUTHENTICATED"
+}
