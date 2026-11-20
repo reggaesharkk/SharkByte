@@ -13,6 +13,7 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[2]
+LEGACY_STORAGE_LABEL_REVISION = "ee562ed3e25a9eb719d890b7a1c12e96bd3c3a8b"
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 BENCH = ROOT / "benchmarks" / "sb_quantum_benchmark"
@@ -77,6 +78,27 @@ def _source_hashes(revision=None):
             raise ValueError(f"source file {name} is unavailable at recorded revision") from exc
         result[name] = hashlib.sha256(data).hexdigest()
     return result
+
+
+def _validate_storage_labels(repetition, qubits, git_revision):
+    dimension = 1 << qubits
+    support = repetition.get("final_support")
+    if ("dense_array_materialized_by_primary_engine" in repetition or
+            "support_equals_register_dimension" in repetition):
+        if (repetition.get("dense_array_materialized_by_primary_engine") is not False or
+                repetition.get("support_equals_register_dimension") != (support == dimension)):
+            raise ValueError("state storage labels are inconsistent")
+    elif git_revision == LEGACY_STORAGE_LABEL_REVISION:
+        # This source-bound historical receipt used an ambiguous field name.
+        # Its false value records that the engine did not materialize a dense
+        # array; support completeness is still independently derived below.
+        if repetition.get("full_statevector_materialized_by_primary_engine") is not False:
+            raise ValueError("legacy state storage label is inconsistent")
+    else:
+        raise ValueError("state storage labels are missing")
+    if type(support) is not int or not 0 <= support <= dimension:
+        raise ValueError("invalid populated-state support count")
+    return support == dimension
 
 
 def _reduce_independently(gates):
@@ -256,12 +278,10 @@ def verify_receipt(path, *, required_backends=()):
         expected_digest = _expected_sparse_digest(family, qubits, gates)
         for repetition in repetitions:
             if (repetition.get("primary_representation") != "sparse basis-to-amplitude dictionary"
-                    or repetition.get("dense_array_materialized_by_primary_engine") is not False
-                    or repetition.get("support_equals_register_dimension") != (
-                        repetition.get("final_support") == (1 << qubits))
                     or repetition.get("analytically_generated_state_entries") != 0
                     or repetition.get("state_dimension") != 1 << qubits):
                 raise ValueError("state storage and analytic-reference labels are inconsistent")
+            _validate_storage_labels(repetition, qubits, receipt.get("git_revision"))
             if repetition["gates"] != gates or repetition["circuit_sha256"] != circuit_digest:
                 raise ValueError("generated circuit changed between repetitions or digest mismatch")
             simplified, pairs = _reduce_independently(gates)

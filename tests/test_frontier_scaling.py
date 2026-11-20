@@ -17,7 +17,8 @@ from tools.high_support.frontier_scaling import (
 )
 from tools.high_support.verify_frontier_scaling import (
     verify_receipt, _verify_compaction, _read_state,
-    _state_hash as verifier_state_hash,
+    _state_hash as verifier_state_hash, _validate_storage_labels,
+    LEGACY_STORAGE_LABEL_REVISION,
 )
 
 
@@ -79,6 +80,19 @@ class FrontierScalingTests(unittest.TestCase):
                          [0, "0x1.0p+1", "0x0.0p+0"]])
         with self.assertRaises(ValueError):
             _read_state([[0, "1.0", "0x0.0p+0"]])
+
+    def test_storage_labels_distinguish_dense_arrays_from_complete_sparse_support(self):
+        current = {"dense_array_materialized_by_primary_engine": False,
+                   "support_equals_register_dimension": True, "final_support": 16}
+        self.assertTrue(_validate_storage_labels(current, 4, "f" * 40))
+        legacy = {"full_statevector_materialized_by_primary_engine": False,
+                  "final_support": 16}
+        self.assertTrue(_validate_storage_labels(legacy, 4, LEGACY_STORAGE_LABEL_REVISION))
+        with self.assertRaises(ValueError):
+            _validate_storage_labels(legacy, 4, "f" * 40)
+        current["support_equals_register_dimension"] = False
+        with self.assertRaises(ValueError):
+            _validate_storage_labels(current, 4, "f" * 40)
 
     def test_source_bound_receipt_replay_and_hostile_hash_substitution(self):
         payload = _run_case_worker("basis-walk", 12, 73, 1, ("numpy",), 12)
