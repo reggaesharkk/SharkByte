@@ -1,8 +1,8 @@
 {
   "source_sha256": {
-    "hadamard_foundations.py": "eeeddb5e630e4c3c824ab1eaaf6d6aaf68647ad87d290b9d978ec2353ca159f2",
-    "replay_hadamard_foundations.py": "411a66b76da14400a5b385f005b3bafc0f3cfb1a615102eaca0d6b98be01c5f6",
-    "hadamard_transcript.py": "6f103fcef13a45abdb53428b73ab8d53dc47b8020946435817fc18d1088e1e6d"
+    "hadamard_foundations.py": "733dbd8408bed5ec3c30cd78709c83d958a93a2fcda0434da1f3c21dbfcb7a03",
+    "replay_hadamard_foundations.py": "98393562d4ebe4232c217f113a79a6f67015e92187420960ee3f40fe6a22b07f",
+    "hadamard_transcript.py": "e304c4537925463c2138442a29b9ee0f46530f7ebbfe8fc5c5f119069e3d8844"
   },
   "pair": {
     "input_bits": [
@@ -32,5 +32,5 @@
   "platform": "Windows-11-10.0.26300-SP0",
   "machine": "ARM64",
   "python": "3.12.10",
-  "elapsed_seconds": 0.5979896000062581
+  "elapsed_seconds": 0.06799650000175461
 }

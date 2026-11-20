@@ -11,7 +11,7 @@ from replay_hadamard_foundations import verify
 
 
 def source_hashes():
-    return {name: hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest()
+    return {name: hashlib.sha256(Path(__file__).with_name(name).read_text(encoding="ascii").encode("ascii")).hexdigest()
             for name in ("hadamard_foundations.py", "replay_hadamard_foundations.py",
                          "hadamard_transcript.py")}
 
