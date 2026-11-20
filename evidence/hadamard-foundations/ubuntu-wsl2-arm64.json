@@ -1,0 +1,36 @@
+{
+  "source_sha256": {
+    "hadamard_foundations.py": "733dbd8408bed5ec3c30cd78709c83d958a93a2fcda0434da1f3c21dbfcb7a03",
+    "replay_hadamard_foundations.py": "98393562d4ebe4232c217f113a79a6f67015e92187420960ee3f40fe6a22b07f",
+    "hadamard_transcript.py": "e304c4537925463c2138442a29b9ee0f46530f7ebbfe8fc5c5f119069e3d8844"
+  },
+  "pair": {
+    "input_bits": [
+      "8000000000000000",
+      "3ff0000000000000",
+      "0000000000000000",
+      "bff0000000000000"
+    ],
+    "coefficient_bits": "3fe6a09e667f3bcc",
+    "output_bits": [
+      "0000000000000000",
+      "0000000000000000",
+      "8000000000000000",
+      "3ff6a09e667f3bcc"
+    ],
+    "operations": [
+      "complex add",
+      "complex subtract",
+      "complex times real"
+    ],
+    "assumptions": "binary64 nearest-even gradual underflow, separate operations",
+    "input_norm_squared": "2",
+    "relative_charge": "3/9007199254740992",
+    "absolute_charge": "1/202402253307310618352495346718917307049556649764142118356901358027430339567995346891960383701437124495187077864316811911389808737385793476867013399940738509921517424276566361364466907742093216341239767678472745068562007483424692698618103355649159556340810056512358769552333414615230502532186327508646006263307707741093494784"
+  },
+  "decision": "PASS",
+  "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-aarch64-with-glibc2.43",
+  "machine": "aarch64",
+  "python": "3.14.4",
+  "elapsed_seconds": 0.022635645999997678
+}

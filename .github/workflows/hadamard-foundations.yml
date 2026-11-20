@@ -1,0 +1,16 @@
+name: Hadamard mathematical foundations
+on: [pull_request, workflow_dispatch]
+jobs:
+  foundations:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -B -m unittest tests.test_hadamard_foundations
+      - run: python -B -O -m unittest tests.test_hadamard_foundations
+      - run: python -B -OO -m unittest tests.test_hadamard_foundations
