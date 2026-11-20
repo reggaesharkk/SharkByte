@@ -49,14 +49,14 @@ class HistoricalCheckoutReplay(unittest.TestCase):
             self.assertEqual(history.verify(source, receipt), ("VERIFIED_PASS", 0))
             tampered = json.loads(original_receipt)
             tampered["ledger"]["steps"][0]["total"] = "0"
-            receipt.write_text(json.dumps(tampered, sort_keys=True,
-                                          separators=(",", ":")) + "\n", encoding="utf-8")
+            receipt.write_bytes((json.dumps(tampered, sort_keys=True,
+                                            separators=(",", ":")) + "\n").encode("utf-8"))
             self.assertEqual(history.verify(source, receipt), ("INVALID_RECORD", 2))
             receipt.write_bytes(original_receipt)
             changed = json.loads(source.read_text(encoding="utf-8"))
             changed["budget"] = "0"
-            source.write_text(json.dumps(changed, sort_keys=True,
-                                         separators=(",", ":")) + "\n", encoding="utf-8")
+            source.write_bytes((json.dumps(changed, sort_keys=True,
+                                           separators=(",", ":")) + "\n").encode("utf-8"))
             self.assertEqual(history.verify(source, receipt), ("INVALID_RECORD", 2))
 
     def test_current_candidate_module_is_not_required_for_historical_replay(self):
@@ -82,8 +82,8 @@ class HistoricalCheckoutReplay(unittest.TestCase):
             receipt = root / "zero-receipt.json"
             request = json.loads(SOURCE.read_bytes())
             request["budget"] = "0"
-            source.write_text(json.dumps(request, sort_keys=True,
-                                         separators=(",", ":")) + "\n", encoding="utf-8")
+            source.write_bytes((json.dumps(request, sort_keys=True,
+                                           separators=(",", ":")) + "\n").encode("utf-8"))
             flags = ["-" + "O"*sys.flags.optimize] if sys.flags.optimize else []
             command = [sys.executable, "-B", *flags, "-m",
                        "tools.high_support.h4_candidate", "generate",
