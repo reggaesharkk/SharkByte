@@ -11,3 +11,4 @@ examples/qft_basis_37.sbq -text whitespace=cr-at-eol
 tests/test_cli.py -text whitespace=cr-at-eol
 tests/fixtures/historical_qiskit_quantum.py.txt -text whitespace=cr-at-eol
 benchmarks/sb_quantum_benchmark/quantum_frontend.py whitespace=cr-at-eol
+evidence/h3/circuit.json text eol=lf
