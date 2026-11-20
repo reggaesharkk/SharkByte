@@ -1,0 +1,36 @@
+{
+  "source_sha256": {
+    "hadamard_foundations.py": "eeeddb5e630e4c3c824ab1eaaf6d6aaf68647ad87d290b9d978ec2353ca159f2",
+    "replay_hadamard_foundations.py": "411a66b76da14400a5b385f005b3bafc0f3cfb1a615102eaca0d6b98be01c5f6",
+    "hadamard_transcript.py": "6f103fcef13a45abdb53428b73ab8d53dc47b8020946435817fc18d1088e1e6d"
+  },
+  "pair": {
+    "input_bits": [
+      "8000000000000000",
+      "3ff0000000000000",
+      "0000000000000000",
+      "bff0000000000000"
+    ],
+    "coefficient_bits": "3fe6a09e667f3bcc",
+    "output_bits": [
+      "0000000000000000",
+      "0000000000000000",
+      "8000000000000000",
+      "3ff6a09e667f3bcc"
+    ],
+    "operations": [
+      "complex add",
+      "complex subtract",
+      "complex times real"
+    ],
+    "assumptions": "binary64 nearest-even gradual underflow, separate operations",
+    "input_norm_squared": "2",
+    "relative_charge": "3/9007199254740992",
+    "absolute_charge": "1/202402253307310618352495346718917307049556649764142118356901358027430339567995346891960383701437124495187077864316811911389808737385793476867013399940738509921517424276566361364466907742093216341239767678472745068562007483424692698618103355649159556340810056512358769552333414615230502532186327508646006263307707741093494784"
+  },
+  "decision": "PASS",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "machine": "ARM64",
+  "python": "3.12.10",
+  "elapsed_seconds": 0.5979896000062581
+}
