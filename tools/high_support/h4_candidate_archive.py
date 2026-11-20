@@ -127,7 +127,7 @@ def run(source_path, receipt_path):
         receipt.write_bytes(read(receipt_path, LIMIT).encode("utf-8"))
         flags = ["-"+"O"*sys.flags.optimize] if sys.flags.optimize else []
         supervisor = contained_worker(
-            [sys.executable, "-B", *flags, "-m", MODULE, "--worker",
+            [sys.executable, "-B", *flags, "-m", MODULE, "--worker", "verify",
              str(src), str(receipt), str(status)],
             deadline, root/"worker.log")
         require(supervisor["exit_status"] == 0, "archive verification worker failed")
@@ -137,7 +137,7 @@ def run(source_path, receipt_path):
 
 
 def main():
-    if len(sys.argv) == 6 and sys.argv[1] == "--worker":
+    if len(sys.argv) == 6 and sys.argv[1:3] == ["--worker", "verify"]:
         worker(*map(Path, sys.argv[3:]))
         return 0
     parser = argparse.ArgumentParser(description=__doc__)
