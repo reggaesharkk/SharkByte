@@ -13,6 +13,20 @@ Write classical programs in `.sb`, simulate bounded quantum circuits on a CPU, b
 
 I do not treat a correct output as sufficient evidence. I ask whether its source is pinned, whether its result survives an independent replay, and where the argument stops. I am not trying to make a machine appear powerful. I am trying to understand the boundary between what can be computed, what can be verified, and what can honestly be claimed as known.
 
+## Private research milestones — Gates 6B.15–6B.23
+
+**SharkByte Certify RC1 is ready for scoped private developer trials.** These milestones summarize private research and deployment evidence. The proofs, original fixtures, SDK, and native verifier are held privately. The public checkout provides the language, VM, Studio, builders, notebooks, and research replays documented below.
+
+| Milestone | Verified scope |
+| --- | --- |
+| **Lean 4 quantum certificate soundness** | Kernel-checked soundness for the admitted contract, with concrete byte acceptance for a one-X certificate and a mixed X/Z/CX/H certificate. |
+| **Exact rational dot products** | Kernel-checked exact dot-product soundness and concrete source-bound byte acceptance for the weighted-return result **13/250**. |
+| **Clean proof reproduction** | All **74 project Lean modules** rebuilt from pinned sources on ARM64 Ubuntu WSL2 and uncapped Linux x86-64 on Google Compute Engine. These were private proof rebuilds. |
+| **Native verifier on Google Compute Engine** | The Linux x86-64 executable matched expected outcomes on **220/220 benchmark samples** across 44 cases. Maximum observed verifier RSS was **144,080 KiB**. |
+| **Private SDK integration** | **10/10 Linux regression tests** and **9/9 live native integration cases** passed. The verifier binds certificates to expected requests and separates certificate validity, budget satisfaction, and policy authorization. A valid budget-exceeded receipt was denied authorization. |
+
+The quantum contract covers admitted circuits with **X/Z/CX/H**, at most **eight qubits and 64 gates**, and **no pruning**. Exact arithmetic trials and Linux x86-64 native quantum trials are ready within their tested scope. Native ARM64 deployment remains **BLOCKED**. Universal Python-to-Lean correspondence, universal checker equivalence, and authenticated execution provenance remain **OPEN**. Graceful handling of address-space failure remains **OPEN** after a restrictive control exited 139. The historical **Gate 4c strict containment FAIL** remains in effect, and [PR #39](https://github.com/reggaesharkk/SharkByte/pull/39) remains an open research draft. This evidence establishes neither arbitrary Python verification nor general AI security.
+
 ## Verified achievements — Google Cloud, Colab, and local systems
 
 **SharkByte's public results span local Windows ARM64, Ubuntu ARM64 under WSL2, Google Colab CPUs, and Google Compute Engine.** These are measured, source-linked experiments with distinct verification methods—not a single claim that every workload is supported by the same execution engine.
