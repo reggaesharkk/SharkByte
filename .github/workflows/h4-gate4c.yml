@@ -1,0 +1,27 @@
+name: H4 Gate 4c contained compatibility comparator
+on: [pull_request, workflow_dispatch]
+
+jobs:
+  contained-compatibility:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # fixed historical v1 Git object needed by Gate 4b
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check default Python tests
+        run: python -B -m unittest tests.test_h4_gate4c_containment -v
+      - name: Check -O
+        run: python -B -O -m unittest tests.test_h4_gate4c_containment -v
+      - name: Check -OO
+        run: python -B -OO -m unittest tests.test_h4_gate4c_containment -v
+      - name: Validate bounded compatibility baseline
+        run: python -B -m tools.high_support.h4_compatibility_contained --memory-mib 256 --seconds 90 sharkbyte-xz-cx-h-candidate-v1 evidence/h4-candidate/source.json evidence/h4-candidate/receipt.json sharkbyte-xz-cx-h-candidate-v1 evidence/h4-candidate/source.json evidence/h4-candidate/receipt.json

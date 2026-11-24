@@ -1,0 +1,78 @@
+{
+  "machine": "aarch64",
+  "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-aarch64-with-glibc2.43",
+  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "runs": [
+    {
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "tests.test_h4_gate4c_containment",
+        "tests.test_h4_compatibility",
+        "tests.test_h4_historical_checkout"
+      ],
+      "exit_code": 0,
+      "stderr": ".............................\n----------------------------------------------------------------------\nRan 29 tests in 9.027s\n\nOK\n",
+      "stdout": ""
+    },
+    {
+      "arguments": [
+        "-B",
+        "-O",
+        "-m",
+        "unittest",
+        "tests.test_h4_gate4c_containment",
+        "tests.test_h4_compatibility",
+        "tests.test_h4_historical_checkout"
+      ],
+      "exit_code": 0,
+      "stderr": ".............................\n----------------------------------------------------------------------\nRan 29 tests in 14.876s\n\nOK\n",
+      "stdout": ""
+    },
+    {
+      "arguments": [
+        "-B",
+        "-OO",
+        "-m",
+        "unittest",
+        "tests.test_h4_gate4c_containment",
+        "tests.test_h4_compatibility",
+        "tests.test_h4_historical_checkout"
+      ],
+      "exit_code": 0,
+      "stderr": ".............................\n----------------------------------------------------------------------\nRan 29 tests in 14.752s\n\nOK\n",
+      "stdout": ""
+    },
+    {
+      "arguments": [
+        "-B",
+        "-m",
+        "tools.high_support.h4_compatibility_contained",
+        "sharkbyte-xz-cx-h-candidate-v1",
+        "evidence/h4-candidate/source.json",
+        "evidence/h4-candidate/receipt.json",
+        "sharkbyte-xz-cx-h-candidate-v1",
+        "evidence/h4-candidate/source.json",
+        "evidence/h4-candidate/receipt.json"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "{\"accuracy\":[\"VERIFIED_PASS\",\"VERIFIED_PASS\"],\"archival\":\"PINNED_TREE_AND_INDEPENDENT_REPLAY\",\"arithmetic_contract_equal\":true,\"bit_level\":\"PASS\",\"certificate\":\"PASS\",\"containment\":{\"active_after_cleanup\":0,\"limit_bytes\":268435456,\"os_limit\":\"RLIMIT_AS_per_process\",\"worker_exit_status\":0,\"worker_pid\":694},\"decision\":\"COMPATIBLE\",\"elapsed_seconds\":0.23727287799999885,\"execution_authenticity\":\"UNAUTHENTICATED\",\"final_mathematical_state_equal\":true,\"input_sha256\":{\"input_0_sha256\":\"9bda8fe9794ea6af6ab431ee1c6b81ccf8ad792ef1f11f5668ff7568bb761d59\",\"input_1_sha256\":\"2d5d9f4a767cca1fe933a05f7b729efb1e72db4dbe6c0ac48e96bbd981909c33\",\"input_2_sha256\":\"9bda8fe9794ea6af6ab431ee1c6b81ccf8ad792ef1f11f5668ff7568bb761d59\",\"input_3_sha256\":\"2d5d9f4a767cca1fe933a05f7b729efb1e72db4dbe6c0ac48e96bbd981909c33\"},\"limit_seconds\":90,\"mathematical\":\"PASS\",\"observed_words_equal\":true,\"registered_versions\":[\"sharkbyte-xz-cx-h-candidate-v1\"],\"source_bytes_equal\":true,\"syntax\":\"PASS\",\"within_budget_certified\":[true,true]}\n"
+    }
+  ],
+  "sha256": {
+    "evidence/h4-candidate/receipt.json": "2d5d9f4a767cca1fe933a05f7b729efb1e72db4dbe6c0ac48e96bbd981909c33",
+    "evidence/h4-candidate/source.json": "9bda8fe9794ea6af6ab431ee1c6b81ccf8ad792ef1f11f5668ff7568bb761d59",
+    "tests/test_h4_compatibility.py": "c43b47293175846c6c6160a18fc616717f5662318fdc83297a2ea5bf0bd241c8",
+    "tests/test_h4_gate4c_containment.py": "2268eac1f5c8eed59c2d6c8ac93cb29d709b6da3d65c38751d7534b386921d30",
+    "tests/test_h4_historical_checkout.py": "7e12bc8933938601b2ed11b6493c9a04c838cad9d6b2e61a9d0933902add2328",
+    "tools/high_support/audit_gate4c_native.py": "1cf3794894856a14c6d997fbb9862bf76ec894f991be8e455f49e475fb2a3ddd",
+    "tools/high_support/h4_compatibility.py": "50dcab082ab2c6db7de76a71883b59b83f1fa4a66be4832d02ddd771c25b7a8a",
+    "tools/high_support/h4_compatibility_contained.py": "b2b4479804732c2a0a4de27bc96c0aa9062be80f52687ec392922e5619f07cbe",
+    "tools/high_support/h4_historical_checkout.py": "aafa2945227e3db0c010354e6f83a40747028615b8d401a90d4dc5df177e3559",
+    "tools/high_support/windows_job.py": "5fc9f36163eb85d076301aad2c66694681375579c10d432197db3d3d007eff5e"
+  },
+  "tested_commit": "0e6655cd4166ab99b91c1bbcf87fb4bde04173aa",
+  "windows_probe_matrix": []
+}
